@@ -30,12 +30,15 @@ import com.android.settings.spa.app.specialaccess.AlarmsAndRemindersAppListProvi
 import com.android.settings.spa.app.specialaccess.AllFilesAccessAppListProvider
 import com.android.settings.spa.app.specialaccess.DisplayOverOtherAppsAppListProvider
 import com.android.settings.spa.app.specialaccess.InstallUnknownAppsListProvider
+import com.android.settings.spa.app.specialaccess.LongBackgroundTasksAppListProvider
 import com.android.settings.spa.app.specialaccess.MediaManagementAppsAppListProvider
 import com.android.settings.spa.app.specialaccess.ModifySystemSettingsAppListProvider
 import com.android.settings.spa.app.specialaccess.NfcTagAppsSettingsProvider
 import com.android.settings.spa.app.specialaccess.PictureInPictureListProvider
 import com.android.settings.spa.app.specialaccess.SpecialAppAccessPageProvider
+import com.android.settings.spa.app.specialaccess.TurnScreenOnAppsAppListProvider
 import com.android.settings.spa.app.specialaccess.UseFullScreenIntentAppListProvider
+import com.android.settings.spa.app.specialaccess.VoiceActivationAppsListProvider
 import com.android.settings.spa.app.specialaccess.WifiControlAppListProvider
 import com.android.settings.spa.app.storage.StorageAppListPageProvider
 import com.android.settings.spa.core.instrumentation.SpaLogProvider
@@ -66,8 +69,11 @@ open class SettingsSpaEnvironment(context: Context) : SpaEnvironment(context) {
             PictureInPictureListProvider,
             InstallUnknownAppsListProvider,
             AlarmsAndRemindersAppListProvider,
+            VoiceActivationAppsListProvider,
             WifiControlAppListProvider,
             NfcTagAppsSettingsProvider,
+            LongBackgroundTasksAppListProvider,
+            TurnScreenOnAppsAppListProvider,
         )
     }
 

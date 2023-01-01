@@ -135,8 +135,11 @@
     <string name="stylus_connected_devices_title" msgid="2823967577941359812">"Pekepenn"</string>
     <string name="audio_sharing_title" msgid="4144157137502923821">"Lyddeling"</string>
     <string name="audio_sharing_switch_title" msgid="7052827328670825701">"Del lyd"</string>
-    <!-- no translation found for calls_and_alarms_device_title (6993559028175454198) -->
-    <skip />
+    <string name="calls_and_alarms_device_title" msgid="6993559028175454198">"Anrop og alarmer"</string>
+    <string name="audio_sharing_streams_category_title" msgid="862958129650324581">"Koble til en LE-lydstrøm"</string>
+    <string name="audio_sharing_streams_pref_title" msgid="4636293245167657721">"Lydstrømmer i nærheten"</string>
+    <string name="audio_sharing_streams_title" msgid="8269455097512153101">"Lydstrømmer"</string>
+    <string name="audio_sharing_streams_qr_code_summary" msgid="4231875597377863735">"Koble til en lydstrøm med en QR-kode"</string>
     <string name="date_and_time" msgid="1788358029823431692">"Dato og klokkeslett"</string>
     <string name="proxy_settings_title" msgid="4201866858226087066">"Proxy-tjener"</string>
     <string name="proxy_clear_text" msgid="6529658759984031149">"Tøm"</string>
@@ -540,24 +543,15 @@
     <string name="private_space_title" msgid="7078627930195569767">"Private Space"</string>
     <string name="private_space_summary" msgid="8237652417163408001">"Skjul apper i en privat mappe"</string>
     <string name="private_space_one_lock_title" msgid="7306547190751832568">"Lås opp med skjermlås"</string>
-    <!-- no translation found for private_space_hide_title (8687034008994037610) -->
-    <skip />
-    <!-- no translation found for privatespace_hide_page_title (972581369094289386) -->
-    <skip />
-    <!-- no translation found for privatespace_hide_page_summary (1052569521186403642) -->
-    <skip />
-    <!-- no translation found for privatespace_access_header (982809349769470185) -->
-    <skip />
-    <!-- no translation found for privatespace_search_description (983837656432484282) -->
-    <skip />
-    <!-- no translation found for privatespace_tap_tile_description (4146608898639668340) -->
-    <skip />
-    <!-- no translation found for privatespace_unlock_description (4132755357482447360) -->
-    <skip />
-    <!-- no translation found for privatespace_hide_off_summary (7227778747159633671) -->
-    <skip />
-    <!-- no translation found for privatespace_hide_on_summary (6136704537527640183) -->
-    <skip />
+    <string name="private_space_hide_title" msgid="8687034008994037610">"Skjul når låst"</string>
+    <string name="privatespace_hide_page_title" msgid="972581369094289386">"Skjul Private Space når låst"</string>
+    <string name="privatespace_hide_page_summary" msgid="1052569521186403642">"For å unngå at andre ser at du har Private Space på telefonen, kan du skjule den i applisten"</string>
+    <string name="privatespace_access_header" msgid="982809349769470185">"Gå til Private Space når den er skjult"</string>
+    <string name="privatespace_search_description" msgid="983837656432484282">"Søk etter «Private Space» i søkefeltet"</string>
+    <string name="privatespace_tap_tile_description" msgid="4146608898639668340">"Trykk på Private Space-brikken"</string>
+    <string name="privatespace_unlock_description" msgid="4132755357482447360">"Lås opp Private Space"</string>
+    <string name="privatespace_hide_off_summary" msgid="7227778747159633671">"Av"</string>
+    <string name="privatespace_hide_on_summary" msgid="6136704537527640183">"På"</string>
     <string name="private_space_category_system" msgid="1286843321867285700">"System"</string>
     <string name="private_space_create_title" msgid="47273568884806726">"Opprett Private Space"</string>
     <string name="private_space_delete_title" msgid="3075645119800272800">"Slett Private Space"</string>
@@ -570,53 +564,33 @@
     <string name="no_device_lock_summary" msgid="7653477413589207824">"For å bruke Private Space, angi en skjermlås på enheten."</string>
     <string name="no_device_lock_action_label" msgid="2640487005629001288">"Konfigurer en skjermlås"</string>
     <string name="no_device_lock_cancel" msgid="4412602160321228863">"Avbryt"</string>
-    <!-- no translation found for privatespace_cancel_label (362351004019511784) -->
+    <string name="privatespace_cancel_label" msgid="362351004019511784">"Avbryt"</string>
+    <string name="privatespace_setup_button_label" msgid="3696372546231047258">"Konfigurer"</string>
+    <string name="privatespace_setup_title" msgid="177623114624330394">"Konfigurer Private Space"</string>
+    <string name="privatespace_hide_apps_summary" msgid="4016518749055602268">"Skjul private apper på et sikkert sted bare du kan gå til"</string>
+    <string name="privatespace_how_title" msgid="8794102046435526065">"Slik fungerer det"</string>
+    <string name="privatespace_access_bottom_text" msgid="1075244097441349030">"Du kan gå til Private Space fra bunnen av applisten"</string>
+    <string name="privatespace_protected_lock_text" msgid="7320604832432017423">"Apper i Private Space er beskyttet med en lås"</string>
+    <string name="privatespace_hidden_notifications_text" msgid="8121285743543004812">"Varsler fra apper i Private Space er skjult når den er låst"</string>
+    <string name="privatespace_apps_permission_text" msgid="4418511924151828812">"Private Space-apper vises ikke i tillatelseskontroll, personvernoversikt eller andre innstillinger når Private Space er låst"</string>
+    <string name="privatespace_setting_up_text" msgid="8532777749891406509">"Konfigurerer Private Space …"</string>
+    <string name="privatespace_lock_protected_title" msgid="7409801274869666860">"Private Space er beskyttet av en lås"</string>
+    <string name="privatespace_apps_hidden_title" msgid="6146605677591599107">"Bruksinformasjon for Private Space-apper er skjult når den er låst"</string>
+    <string name="privatespace_access_from_apps_title" msgid="6787000636686810564">"Åpne Private Space fra applisten"</string>
+    <string name="privatespace_error_screen_title" msgid="8658511165913662275">"Kunne ikke konfigurere Private Space"</string>
+    <string name="privatespace_error_screen_summary" msgid="5679626031159521676">"Prøv igjen nå, eller kom tilbake senere"</string>
+    <string name="privatespace_tryagain_label" msgid="4091466165724929876">"Prøv på nytt"</string>
+    <string name="privatespace_lockscreen_title" msgid="7459425150560213662">"Vil du bruke skjermlås for å låse opp?"</string>
+    <string name="privatespace_lockscreen_summary" msgid="980268845497843861">"Du kan låse opp Private Space på samme måte som du låser opp enheten, eller du kan velge en annen lås"</string>
+    <string name="privatespace_use_screenlock_label" msgid="2775404941450049991">"Bruk skjermlåsen"</string>
+    <string name="privatespace_set_lock_label" msgid="6277529807188602545">"Velg en ny lås"</string>
+    <string name="privatespace_success_title" msgid="4854425684898602993">"Alt er klart!"</string>
+    <string name="privatespace_access_text" msgid="8756118686974614618">"For å åpne Private Space, sveip opp fra bunnen av startskjermen og rull ned"</string>
+    <string name="privatespace_done_label" msgid="5534818213879562387">"Ferdig"</string>
+    <string name="scrolldown_to_access" msgid="5160743933093369151">"Rull ned for å åpne Private Space"</string>
+    <!-- no translation found for privatespace_retry_signin_title (495054309243289223) -->
     <skip />
-    <!-- no translation found for privatespace_setup_button_label (3696372546231047258) -->
-    <skip />
-    <!-- no translation found for privatespace_setup_title (177623114624330394) -->
-    <skip />
-    <!-- no translation found for privatespace_hide_apps_summary (4016518749055602268) -->
-    <skip />
-    <!-- no translation found for privatespace_how_title (8794102046435526065) -->
-    <skip />
-    <!-- no translation found for privatespace_access_bottom_text (1075244097441349030) -->
-    <skip />
-    <!-- no translation found for privatespace_protected_lock_text (7320604832432017423) -->
-    <skip />
-    <!-- no translation found for privatespace_hidden_notifications_text (8121285743543004812) -->
-    <skip />
-    <!-- no translation found for privatespace_apps_permission_text (4418511924151828812) -->
-    <skip />
-    <!-- no translation found for privatespace_setting_up_text (8532777749891406509) -->
-    <skip />
-    <!-- no translation found for privatespace_lock_protected_title (7409801274869666860) -->
-    <skip />
-    <!-- no translation found for privatespace_apps_hidden_title (6146605677591599107) -->
-    <skip />
-    <!-- no translation found for privatespace_access_from_apps_title (6787000636686810564) -->
-    <skip />
-    <!-- no translation found for privatespace_error_screen_title (8658511165913662275) -->
-    <skip />
-    <!-- no translation found for privatespace_error_screen_summary (5679626031159521676) -->
-    <skip />
-    <!-- no translation found for privatespace_tryagain_label (4091466165724929876) -->
-    <skip />
-    <!-- no translation found for privatespace_lockscreen_title (7459425150560213662) -->
-    <skip />
-    <!-- no translation found for privatespace_lockscreen_summary (980268845497843861) -->
-    <skip />
-    <!-- no translation found for privatespace_use_screenlock_label (2775404941450049991) -->
-    <skip />
-    <!-- no translation found for privatespace_set_lock_label (6277529807188602545) -->
-    <skip />
-    <!-- no translation found for privatespace_success_title (4854425684898602993) -->
-    <skip />
-    <!-- no translation found for privatespace_access_text (8756118686974614618) -->
-    <skip />
-    <!-- no translation found for privatespace_done_label (5534818213879562387) -->
-    <skip />
-    <!-- no translation found for scrolldown_to_access (5160743933093369151) -->
+    <!-- no translation found for privatespace_retry_summary (2888518420576278925) -->
     <skip />
     <string name="fingerprint_add_max" msgid="8639321019299347447">"Du kan legge til opptil <xliff:g id="COUNT">%d</xliff:g> fingeravtrykk"</string>
     <string name="fingerprint_intro_error_max" msgid="4431784409732135610">"Du har lagt til maksimalt antall fingeravtrykk"</string>
@@ -781,7 +755,8 @@
     <string name="bluetooth_device_context_connect" msgid="4913860372216815855">"Koble til"</string>
     <string name="bluetooth_device_context_disconnect" msgid="4464167389972513232">"Koble fra"</string>
     <string name="bluetooth_device_context_pair_connect" msgid="2406032703622371826">"Koble sammen"</string>
-    <string name="bluetooth_empty_list_bluetooth_off" msgid="316627049372961941">"Når Bluetooth er slått på, kan enheten kommunisere med andre Bluetooth-enheter i nærheten."</string>
+    <!-- no translation found for bluetooth_empty_list_bluetooth_off (7326727272747345476) -->
+    <skip />
     <string name="bluetooth_scanning_on_info_message" msgid="786648535600075223">"Når Bluetooth er slått på, kan enheten kommunisere med Bluetooth-enheter i nærheten.\n\nFor å gi deg en bedre enhetsopplevelse kan apper og tjenester søke etter enheter i nærheten når som helst – selv når Bluetooth er slått av. Dette kan for eksempel brukes for å forbedre posisjonsbaserte funksjoner og tjenester. Du kan endre dette i innstillingene for Bluetooth-skanning."</string>
     <string name="bluetooth_scan_change" msgid="1744636222637390367">"Endre"</string>
     <string name="device_details_title" msgid="1155622417516195481">"Enhetsdetaljer"</string>
@@ -834,6 +809,10 @@
     <string name="art_verifier_for_debuggable_summary" msgid="4802875841862652879">"Tillat at ART bekrefter bytekode for feilsøkbare apper"</string>
     <string name="show_refresh_rate" msgid="5742688821872354973">"Vis oppdateringsfrekvens"</string>
     <string name="show_refresh_rate_summary" msgid="3558118122374609663">"Vis skjermens nåværende oppdateringsfrekvens"</string>
+    <!-- no translation found for show_hdr_sdr_ratio (4188007289024955585) -->
+    <skip />
+    <!-- no translation found for show_hdr_sdr_ratio_summary (986292785096013733) -->
+    <skip />
     <string name="nfc_quick_toggle_title" msgid="3607620705230351666">"NFC"</string>
     <string name="nfc_secure_settings_title" msgid="4906958426927741485">"Krev opplåst enhet for NFC"</string>
     <string name="android_beam_settings_title" msgid="2797963824490671295">"Android Beam"</string>
@@ -1135,8 +1114,7 @@
     <string name="display_white_balance_summary" msgid="7625456704950209050"></string>
     <string name="fold_lock_behavior_title" msgid="786228803694268449">"Fortsett å bruke apper etter sammenlegging"</string>
     <string name="peak_refresh_rate_title" msgid="1878771412897140903">"Smooth Display"</string>
-    <!-- no translation found for peak_refresh_rate_summary (3212309985294885790) -->
-    <skip />
+    <string name="peak_refresh_rate_summary" msgid="3212309985294885790">"Øker oppdateringsfrekvensen automatisk til <xliff:g id="ID_1">%1$d</xliff:g> Hz for noe innhold. Dette øker batteribruken."</string>
     <string name="force_high_refresh_rate_toggle" msgid="3325789621928312050">"Maks oppdateringsfrekvens"</string>
     <string name="force_high_refresh_rate_desc" msgid="7794566420873814875">"Maksimal oppdateringsfrekvens for bedre trykkfølsomhet og animasjonskvalitet. Øker batteribruken."</string>
     <string name="adaptive_sleep_title" msgid="2987961991423539233">"Skjermoppmerksomhet"</string>
@@ -1372,6 +1350,7 @@
     <string name="communal_settings_summary" msgid="4923914136953940317">"Fellesinnstillinger"</string>
     <string name="apn_settings" msgid="4295467389400441299">"APN"</string>
     <string name="apn_edit" msgid="2003683641840248741">"Rediger tilgangspunkt"</string>
+    <string name="apn_add" msgid="9069613192201630934">"Legg til tilgangspunkt"</string>
     <string name="apn_not_set" msgid="8246646433109750293">"Ikke angitt"</string>
     <string name="apn_not_set_for_mvno" msgid="1141490067313964640">"Ikke angitt"</string>
     <string name="apn_name" msgid="6677695784108157953">"Navn"</string>
@@ -2006,12 +1985,14 @@
     <string name="accessibility_tutorial_dialog_title_button" msgid="4681164949716215131">"Bruk Tilgjengelighet-knappen for å åpne"</string>
     <string name="accessibility_tutorial_dialog_title_volume" msgid="494810949830845234">"Hold volumtastene for å åpne"</string>
     <string name="accessibility_tutorial_dialog_title_triple" msgid="7089562919284464400">"Trippeltrykk på skjermen for å åpne"</string>
+    <string name="accessibility_tutorial_dialog_title_two_finger_triple" msgid="1090593773487065541">"Trippeltrykk på skjermen med to fingre for å åpne"</string>
     <string name="accessibility_tutorial_dialog_title_gesture" msgid="4965810097646659332">"Bruk bevegelse for å åpne"</string>
     <string name="accessibility_tutorial_dialog_title_gesture_settings" msgid="6800684770875867559">"Bruk tilgjengelighetsbevegelse"</string>
     <string name="accessibility_tutorial_dialog_message_button" msgid="7002398857479782303">"For å bruke denne funksjonen må du trykke på Tilgjengelighet-knappen <xliff:g id="ACCESSIBILITY_ICON">%s</xliff:g> nederst på skjermen.\n\nFor å bytte mellom funksjoner, trykk og hold på Tilgjengelighet-knappen."</string>
     <string name="accessibility_tutorial_dialog_message_floating_button" msgid="2551777208185138391">"For å bruke denne funksjonen, trykk på Tilgjengelighet-knappen på skjermen."</string>
     <string name="accessibility_tutorial_dialog_message_volume" msgid="5033080515460519183">"For å bruke denne funksjonen, trykk og hold inne begge volumtastene."</string>
     <string name="accessibility_tutorial_dialog_message_triple" msgid="5219991116201165146">"For å starte og stoppe forstørrelse, trippeltrykk hvor som helst på skjermen."</string>
+    <string name="accessibility_tutorial_dialog_message_two_finger_triple" msgid="6205072282308562361">"For å starte og stoppe forstørring, trippeltrykk hvor som helst på skjermen med to fingre."</string>
     <string name="accessibility_tutorial_dialog_message_gesture" msgid="4148062210755434854">"For å bruke denne funksjonen, sveip opp fra bunnen av skjermen med to fingre.\n\nFor å bytte mellom funksjoner, sveip opp med to fingre og hold."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_talkback" msgid="8142847782708562793">"For å bruke denne funksjonen, sveip opp fra bunnen av skjermen med tre fingre.\n\nFor å bytte mellom funksjoner, sveip opp med tre fingre og hold."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"For å bruke en tilgjengelighetsfunksjon, sveip opp fra bunnen av skjermen med to fingre.\n\nFor å bytte mellom funksjoner, sveip opp med to fingre og hold."</string>
@@ -2033,12 +2014,9 @@
     <string name="accessibility_shortcut_edit_dialog_title_hardware" msgid="2356853121810443026">"Hold inne volumtastene"</string>
     <string name="accessibility_shortcut_hardware_keyword" msgid="3921915304537166064">"hold inne volumtastene"</string>
     <string name="accessibility_shortcut_edit_dialog_summary_hardware" msgid="2503134386397991634">"Trykk og hold inne begge volumtastene"</string>
-    <!-- no translation found for accessibility_shortcut_edit_dialog_title_two_finger_triple_tap (6687765191490040899) -->
-    <skip />
-    <!-- no translation found for accessibility_shortcut_two_finger_triple_tap_keyword (4200744613585702430) -->
-    <skip />
-    <!-- no translation found for accessibility_shortcut_edit_dialog_summary_two_finger_triple_tap (2631127444247448793) -->
-    <skip />
+    <string name="accessibility_shortcut_edit_dialog_title_two_finger_triple_tap" msgid="6687765191490040899">"Trippeltrykk på skjermen med to fingre"</string>
+    <string name="accessibility_shortcut_two_finger_triple_tap_keyword" msgid="4200744613585702430">"trippeltrykk på skjermen med to fingre"</string>
+    <string name="accessibility_shortcut_edit_dialog_summary_two_finger_triple_tap" msgid="2631127444247448793">"Trykk raskt på skjermen {0,number,integer} ganger med to fingre"</string>
     <string name="accessibility_shortcut_edit_dialog_title_triple_tap" msgid="6672798007229795841">"Trippeltrykk på skjermen"</string>
     <string name="accessibility_shortcut_triple_tap_keyword" msgid="6863958573135995927">"trippeltrykk på skjermen"</string>
     <string name="accessibility_shortcut_edit_dialog_summary_triple_tap" msgid="2102327956423320536">"Trykk raskt på skjermen {0,number,integer} ganger. Denne snarveien kan gjøre enheten tregere"</string>
@@ -2336,6 +2314,8 @@
     <string name="background_activity_warning_dialog_text" msgid="8202776985767701095">"Hvis du begrenser bakgrunnsaktivitet for en app, kan det oppstå problemer"</string>
     <string name="background_activity_disabled_dialog_text" msgid="4053170297325882494">"Du kan ikke begrense appen siden den ikke er satt til å optimalisere batteriet.\n\nFor å begrense appen, slå på batterioptimalisering."</string>
     <string name="manager_battery_usage_category_title" msgid="1493303237531629961">"Administrer batteribruk"</string>
+    <string name="manager_battery_usage_allow_background_usage_title" msgid="6294649996820358852">"Tillat bruk i bakgrunnen"</string>
+    <string name="manager_battery_usage_allow_background_usage_summary" msgid="8021153755201340819">"Slå på for å få oppdateringer i sanntid, slå av for å spare batteri"</string>
     <string name="manager_battery_usage_unrestricted_title" msgid="2426486290463258032">"Ubegrenset"</string>
     <string name="manager_battery_usage_optimized_title" msgid="8080765739761921817">"Optimalisert"</string>
     <string name="manager_battery_usage_restricted_title" msgid="7702863764130323118">"Begrenset"</string>
@@ -3357,7 +3337,8 @@
     <string name="lock_screen_notifications_summary_show" msgid="6540443483088311328">"Vis alt innhold i varsler"</string>
     <string name="lock_screen_notifications_summary_hide" msgid="7837303171531166789">"Bare vis sensitivt innhold når enheten er låst opp"</string>
     <string name="lock_screen_notifications_summary_disable" msgid="3388290397947365744">"Ikke vis varsler i det hele tatt"</string>
-    <string name="lock_screen_notifications_interstitial_message" msgid="4688399629301178487">"Hvordan vil du vise låseskjermen?"</string>
+    <!-- no translation found for lock_screen_notifications_interstitial_message (6326229471276829730) -->
+    <skip />
     <string name="lock_screen_notifications_interstitial_title" msgid="1360388192096354315">"Låseskjerm"</string>
     <string name="lock_screen_notifications_summary_show_profile" msgid="8373401288962523946">"Vis alt innhold i jobbvarsler"</string>
     <string name="lock_screen_notifications_summary_hide_profile" msgid="2183455323048921579">"Skjul sensitivt jobbinnhold"</string>
@@ -3849,6 +3830,10 @@
     <string name="permit_manage_external_storage" msgid="6928847280689401761">"Kan administrere alle filer"</string>
     <string name="allow_manage_external_storage_description" msgid="5707948153603253225">"Gi denne appen tillatelse til å lese, endre og slette alle filer på denne enheten eller tilkoblede lagringsvolum. Hvis du gir appen denne tillatelsen, kan den få tilgang til filer uten at du er klar over det."</string>
     <string name="filter_manage_external_storage" msgid="6751640571715343804">"Har tilgang til alle filer"</string>
+    <string name="voice_activation_apps_title" msgid="7130045161611529825">"Apper som kan taleaktiveres"</string>
+    <string name="permit_voice_activation_apps" msgid="9152780172988949319">"Tillat taleaktivering"</string>
+    <!-- no translation found for allow_voice_activation_apps_description (6369745626995060656) -->
+    <skip />
     <string name="full_screen_intent_title" msgid="747270185715224130">"Fullskjermvarsler"</string>
     <string name="permit_full_screen_intent" msgid="9035367640019960861">"Tillat fullskjermvarsler fra denne appen"</string>
     <string name="footer_description_full_screen_intent" msgid="7716518411349225528">"La denne appen vise varsler som fyller hele skjermen, når enheten er låst. Apper kan bruke disse til å fremheve alarmer, innkommende anrop eller andre viktige varsler."</string>
@@ -4109,7 +4094,8 @@
     <string name="keywords_system_navigation" msgid="3131782378486554934">"systemnavigasjon, navigasjon med to knapper, navigasjon med tre knapper, navigasjon med bevegelser, sveip"</string>
     <string name="assistant_gesture_category_title" msgid="2478251256585807920">"Digital assistent"</string>
     <string name="assistant_corner_gesture_title" msgid="1895061522687002106">"Sveip for å kalle opp assistenten"</string>
-    <string name="assistant_corner_gesture_summary" msgid="7279576276455168075">"Sveip opp fra et av de nederste hjørnene for å kalle opp den digitale assistenten."</string>
+    <!-- no translation found for assistant_corner_gesture_summary (5012534700233017955) -->
+    <skip />
     <string name="assistant_long_press_home_gesture_title" msgid="4865972278738178753">"Hold på hjemknappen for å åpne assistenten"</string>
     <string name="assistant_long_press_home_gesture_summary" msgid="592882226105081447">"Trykk og hold inne hjemknappen for å kalle opp den digitale assistenten."</string>
     <string name="low_label" msgid="6525629096999711220">"Lav"</string>
@@ -4273,7 +4259,7 @@
     <string name="credman_credentials" msgid="4931371941253324143">"Andre leverandører"</string>
     <string name="autofill_passwords_count" msgid="6359289285822955973">"{count,plural, =1{# passord}other{# passord}}"</string>
     <string name="autofill_keywords" msgid="8598763328489346438">"auto, fyll, autofyll, passord"</string>
-    <string name="credman_keywords" msgid="8305600680836806170">"data, tilgangsnøkkel, passord"</string>
+    <string name="credman_keywords" msgid="8305600680836806170">"data, passnøkkel, passord"</string>
     <string name="credman_autofill_keywords" msgid="701180623776848914">"auto, fyll, autofyll, data, passnøkkel, passord"</string>
     <string name="autofill_confirmation_message" msgid="4888767934273494272">"&lt;b&gt;Stoler du på denne appen?&lt;/b&gt; &lt;br/&gt; &lt;br/&gt; &lt;xliff:g id=app_name example=Google autofyll&gt;%1$s&lt;/xliff:g&gt; bruker det som er på skjermen, til å fastslå hva som kan fylles ut automatisk."</string>
     <string name="credman_autofill_confirmation_message" msgid="843829628024668466">"&lt;b&gt;Vil du bruke &lt;xliff:g id=app_name example=Provider&gt;%1$s&lt;/xliff:g&gt;?&lt;/b&gt; &lt;br/&gt; &lt;br/&gt; Fra nå av blir nye passord, nye passnøkler og annen informasjon lagret her. &lt;xliff:g id=app_name example=Provider&gt;%1$s&lt;/xliff:g&gt; kan bruke det som er på skjermen, for å avgjøre hva som kan fylles ut automatisk."</string>
@@ -4962,8 +4948,8 @@
     <string name="grammatical_gender_dialog_title" msgid="8754048592099871587">"Velg grammatisk kjønn"</string>
     <string name="content_protection_preference_title" msgid="5069260032659193074">"Skanner etter villedende apper"</string>
     <string name="content_protection_preference_summary" msgid="2252393849408445391">"Kontroller appaktivitet for å oppdage nettfisking"</string>
-    <string name="content_protection_preference_user_consent_switch_title" msgid="60088482227901638">"Bruk skanning"</string>
-    <string name="content_protection_preference_user_consent_work_profile_switch_title" msgid="2868495870224174097">"Bruk skanning for jobbapper"</string>
+    <string name="content_protection_preference_user_consent_switch_title" msgid="1797782616799594426">"Bruk skanning etter villedende apper"</string>
+    <string name="content_protection_preference_user_consent_work_profile_switch_title" msgid="3004347470520916069">"Bruk skanning etter villedende apper for jobb"</string>
     <string name="content_protection_preference_subpage_summary" msgid="3595621220981703364"></string>
     <string name="content_protection_preference_subpage_info" msgid="6890886357653365489"></string>
 </resources>

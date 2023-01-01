@@ -539,9 +539,6 @@ public class MobileNetworkRepository extends SubscriptionManager.OnSubscriptions
         mMobileNetworkDatabase.deleteSubInfoBySubId(subId);
         mMobileNetworkDatabase.deleteUiccInfoBySubId(subId);
         mMobileNetworkDatabase.deleteMobileNetworkInfoBySubId(subId);
-        synchronized (this) {
-            mActiveSubInfoEntityList.removeIf(info -> info.subId.equals(subId));
-        }
         mUiccInfoEntityList.removeIf(info -> info.subId.equals(subId));
         mMobileNetworkInfoEntityList.removeIf(info -> info.subId.equals(subId));
         int id = Integer.parseInt(subId);
