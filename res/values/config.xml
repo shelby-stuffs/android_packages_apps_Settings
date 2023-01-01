@@ -349,9 +349,6 @@
          Fetch resource from overlay package directly if this is set. -->
     <string name="config_regulatory_info_overlay_package_name" translatable="false" />
 
-    <!-- Whether to show a preference item for mobile plan -->
-    <bool name="config_show_mobile_plan">true</bool>
-
     <!-- Whether none security option is hide or not  (country specific). -->
     <bool name="config_hide_none_security_option">false</bool>
 
@@ -792,4 +789,7 @@
         <item>@layout/screen_zoom_preview_1</item>
         <item>@layout/accessibility_text_reading_preview_mail_content</item>
     </array>
+
+    <!-- Package responsible for updating Mainline Modules -->
+    <string name="config_mainline_module_update_package" translatable="false">com.android.vending</string>
 </resources>

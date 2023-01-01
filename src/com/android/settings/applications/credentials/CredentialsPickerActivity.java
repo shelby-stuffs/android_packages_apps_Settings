@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,19 +14,17 @@
  * limitations under the License.
  */
 
-package com.android.settings.development;
+package com.android.settings.applications.credentials;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.widget.Toast;
 
-import com.android.settings.R;
+import com.android.settings.SettingsActivity;
 
-public class DevelopmentSettingsDisabledActivity extends Activity {
+/** Standalone activity used to launch a {@link DefaultCombinedPicker} fragment. */
+public class CredentialsPickerActivity extends SettingsActivity {
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Toast.makeText(this, R.string.dev_settings_disabled_warning, Toast.LENGTH_SHORT).show();
-        finish();
+    protected boolean isValidFragment(String fragmentName) {
+        return super.isValidFragment(fragmentName)
+                || DefaultCombinedPicker.class.getName().equals(fragmentName);
     }
 }
