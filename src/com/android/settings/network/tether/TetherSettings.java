@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The Android Open Source Project
+ * Copyright (C) 2022 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings;
+package com.android.settings.network.tether;
 
 import static android.net.ConnectivityManager.TETHERING_BLUETOOTH;
 import static android.net.ConnectivityManager.TETHERING_USB;
@@ -53,6 +53,9 @@ import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 import androidx.preference.SwitchPreference;
 
+import com.android.settings.R;
+import com.android.settings.RestrictedSettingsFragment;
+import com.android.settings.Utils;
 import com.android.settings.core.FeatureFlags;
 import com.android.settings.datausage.DataSaverBackend;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -69,12 +72,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
-/*
+/**
  * Displays preferences for Tethering.
  */
 @SearchIndexable
 public class TetherSettings extends RestrictedSettingsFragment
-        implements DataSaverBackend.Listener {
+        implements DataSaverBackend.Listener, TetheringManager.TetheringEventCallback {
 
     @VisibleForTesting
     static final String KEY_TETHER_PREFS_SCREEN = "tether_prefs_screen";
@@ -108,7 +111,6 @@ public class TetherSettings extends RestrictedSettingsFragment
     private OnStartTetheringCallback mStartTetheringCallback;
     private ConnectivityManager mCm;
     private EthernetManager mEm;
-    private TetheringEventCallback mTetheringEventCallback;
     private EthernetListener mEthernetListener;
     private final HashSet<String> mAvailableInterfaces = new HashSet<>();
 
@@ -130,6 +132,7 @@ public class TetherSettings extends RestrictedSettingsFragment
     Context mContext;
     @VisibleForTesting
     TetheringManager mTm;
+    private TetheringHelper mTetheringHelper;
 
     @Override
     public int getMetricsCategory() {
@@ -145,6 +148,8 @@ public class TetherSettings extends RestrictedSettingsFragment
         super.onAttach(context);
         mWifiTetherPreferenceController =
                 new WifiTetherPreferenceController(context, getSettingsLifecycle());
+        mTetheringHelper = TetheringHelper.getInstance(context, this /* TetheringEventCallback */,
+                getSettingsLifecycle());
     }
 
     @Override
@@ -183,7 +188,7 @@ public class TetherSettings extends RestrictedSettingsFragment
         mDataSaverBackend.addListener(this);
 
         mCm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        mTm = (TetheringManager) getSystemService(Context.TETHERING_SERVICE);
+        mTm = mTetheringHelper.getTetheringManager();
         // Some devices do not have available EthernetManager. In that case getSystemService will
         // return null.
         mEm = mContext.getSystemService(EthernetManager.class);
@@ -361,15 +366,15 @@ public class TetherSettings extends RestrictedSettingsFragment
 
 
         mStartTetheringCallback = new OnStartTetheringCallback(this);
-        mTetheringEventCallback = new TetheringEventCallback(this);
-        mTm.registerTetheringEventCallback(r -> mHandler.post(r), mTetheringEventCallback);
 
         mMassStorageActive = Environment.MEDIA_SHARED.equals(Environment.getExternalStorageState());
         registerReceiver();
 
         mEthernetListener = new EthernetListener(this);
-        if (mEm != null)
-            mEm.addInterfaceStateListener(r -> mHandler.post(r), mEthernetListener);
+        if (mEm != null) {
+            mEm.addInterfaceStateListener(mContext.getApplicationContext().getMainExecutor(),
+                    mEthernetListener);
+        }
 
         updateUsbState();
         updateBluetoothAndEthernetState();
@@ -383,12 +388,11 @@ public class TetherSettings extends RestrictedSettingsFragment
             return;
         }
         getActivity().unregisterReceiver(mTetherChangeReceiver);
-        mTm.unregisterTetheringEventCallback(mTetheringEventCallback);
-        if (mEm != null)
+        if (mEm != null) {
             mEm.removeInterfaceStateListener(mEthernetListener);
+        }
         mTetherChangeReceiver = null;
         mStartTetheringCallback = null;
-        mTetheringEventCallback = null;
     }
 
     @VisibleForTesting
@@ -683,25 +687,8 @@ public class TetherSettings extends RestrictedSettingsFragment
         }
     }
 
-    private static final class TetheringEventCallback implements
-            TetheringManager.TetheringEventCallback {
-        final WeakReference<TetherSettings> mTetherSettings;
-
-        TetheringEventCallback(TetherSettings settings) {
-            mTetherSettings = new WeakReference<>(settings);
-        }
-
-        @Override
-        public void onTetheredInterfacesChanged(List<String> interfaces) {
-            final TetherSettings tetherSettings = mTetherSettings.get();
-            if (tetherSettings == null) {
-                return;
-            }
-            tetherSettings.onTetheredInterfacesChanged(interfaces);
-        }
-    }
-
-    void onTetheredInterfacesChanged(List<String> interfaces) {
+    @Override
+    public void onTetheredInterfacesChanged(List<String> interfaces) {
         Log.d(TAG, "onTetheredInterfacesChanged() interfaces : " + interfaces.toString());
         final String[] tethered = interfaces.toArray(new String[interfaces.size()]);
         updateUsbState(tethered);
