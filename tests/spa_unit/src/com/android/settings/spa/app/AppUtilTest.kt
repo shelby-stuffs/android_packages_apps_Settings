@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,28 +14,27 @@
  * limitations under the License.
  */
 
-package com.android.settings.spa
+package com.android.settings.spa.app
 
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.UserHandle
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.android.settings.spa.SpaActivity.Companion.startSpaActivity
-import com.android.settings.spa.SpaActivity.Companion.startSpaActivityForApp
-import com.android.settingslib.spa.framework.util.KEY_DESTINATION
 import com.google.common.truth.Truth.assertThat
 import org.junit.Rule
+
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.ArgumentCaptor
 import org.mockito.Mock
+import org.mockito.Mockito.eq
 import org.mockito.Mockito.verify
 import org.mockito.junit.MockitoJUnit
 import org.mockito.junit.MockitoRule
 
 @RunWith(AndroidJUnit4::class)
-class SpaActivityTest {
+class AppUtilTest {
     @get:Rule
     val mockito: MockitoRule = MockitoJUnit.rule()
 
@@ -43,34 +42,19 @@ class SpaActivityTest {
     private lateinit var context: Context
 
     @Test
-    fun startSpaActivity() {
-        context.startSpaActivity(DESTINATION)
+    fun startUninstallActivity() {
+        context.startUninstallActivity(packageName = PACKAGE_NAME, userHandle = USER_HANDLE)
 
         val intentCaptor = ArgumentCaptor.forClass(Intent::class.java)
-        verify(context).startActivity(intentCaptor.capture())
+        verify(context).startActivityAsUser(intentCaptor.capture(), eq(USER_HANDLE))
         val intent = intentCaptor.value
-        assertThat(intent.component?.className).isEqualTo(SpaActivity::class.qualifiedName)
-        assertThat(intent.getStringExtra(KEY_DESTINATION)).isEqualTo(DESTINATION)
-    }
-
-    @Test
-    fun startSpaActivityForApp() {
-        val intent = Intent().apply {
-            data = Uri.parse("package:$PACKAGE_NAME")
-        }
-
-        context.startSpaActivityForApp(DESTINATION, intent)
-
-        val intentCaptor = ArgumentCaptor.forClass(Intent::class.java)
-        verify(context).startActivity(intentCaptor.capture())
-        val capturedIntent = intentCaptor.value
-        assertThat(capturedIntent.component?.className).isEqualTo(SpaActivity::class.qualifiedName)
-        assertThat(capturedIntent.getStringExtra(KEY_DESTINATION))
-            .isEqualTo("Destination/package.name/${UserHandle.myUserId()}")
+        assertThat(intent.action).isEqualTo(Intent.ACTION_UNINSTALL_PACKAGE)
+        assertThat(intent.data).isEqualTo(Uri.parse("package:$PACKAGE_NAME"))
+        assertThat(intent.extras?.getBoolean(Intent.EXTRA_UNINSTALL_ALL_USERS)).isFalse()
     }
 
     private companion object {
-        const val DESTINATION = "Destination"
         const val PACKAGE_NAME = "package.name"
+        val USER_HANDLE: UserHandle = UserHandle.of(0)
     }
 }

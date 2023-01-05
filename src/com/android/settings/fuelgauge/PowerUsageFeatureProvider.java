@@ -22,6 +22,7 @@ import android.util.SparseIntArray;
 
 import com.android.settingslib.fuelgauge.Estimate;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -33,6 +34,11 @@ public interface PowerUsageFeatureProvider {
      * Check whether the battery usage button is enabled in the battery page
      */
     boolean isBatteryUsageEnabled(Context context);
+
+    /**
+     * Returns an allowlist of app names combined into the system-apps item
+     */
+    List<String> getSystemAppsAllowlist(Context context);
 
     /**
      * Check whether location setting is enabled
@@ -125,6 +131,11 @@ public interface PowerUsageFeatureProvider {
      * Gets a intent for one time bypass charge limited to resume charging.
      */
     Intent getResumeChargeIntent(boolean isDockDefender);
+
+    /**
+     * Returns {@link Set} for the system component ids which are combined into others.
+     */
+    Set<Integer> getOthersSystemComponentSet(Context context);
 
     /**
      * Returns {@link Set} for hiding system component ids in the usage screen.
