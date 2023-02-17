@@ -27,6 +27,8 @@ import android.provider.Settings.Secure;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.InputDevice;
+import android.view.inputmethod.InputMethodInfo;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
@@ -85,16 +87,24 @@ public class StylusDevicesController extends AbstractPreferenceController implem
     }
 
     @Nullable
-    private Preference createDefaultNotesPreference() {
+    private Preference createOrUpdateDefaultNotesPreference(@Nullable Preference preference) {
         RoleManager rm = mContext.getSystemService(RoleManager.class);
-        if (rm == null) {
+        if (rm == null || !rm.isRoleAvailable(RoleManager.ROLE_NOTES)) {
             return null;
         }
+
+        Preference pref = preference == null ? new Preference(mContext) : preference;
+        pref.setKey(KEY_DEFAULT_NOTES);
+        pref.setTitle(mContext.getString(R.string.stylus_default_notes_app));
+        pref.setIcon(R.drawable.ic_article);
+        pref.setOnPreferenceClickListener(this);
+        pref.setEnabled(true);
 
         List<String> roleHolders = rm.getRoleHoldersAsUser(RoleManager.ROLE_NOTES,
                 mContext.getUser());
         if (roleHolders.isEmpty()) {
-            return null;
+            pref.setSummary(R.string.default_app_none);
+            return pref;
         }
 
         String packageName = roleHolders.get(0);
@@ -107,25 +117,19 @@ public class StylusDevicesController extends AbstractPreferenceController implem
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(TAG, "Notes role package not found.");
         }
-
-        Preference pref = new Preference(mContext);
-        pref.setKey(KEY_DEFAULT_NOTES);
-        pref.setTitle(mContext.getString(R.string.stylus_default_notes_app));
-        pref.setIcon(R.drawable.ic_article);
-        pref.setOnPreferenceClickListener(this);
-        pref.setEnabled(true);
         pref.setSummary(appName);
         return pref;
     }
 
-    private SwitchPreference createHandwritingPreference() {
-        SwitchPreference pref = new SwitchPreference(mContext);
+    private SwitchPreference createOrUpdateHandwritingPreference(SwitchPreference preference) {
+        SwitchPreference pref = preference == null ? new SwitchPreference(mContext) : preference;
         pref.setKey(KEY_HANDWRITING);
         pref.setTitle(mContext.getString(R.string.stylus_textfield_handwriting));
         pref.setIcon(R.drawable.ic_text_fields_alt);
         pref.setOnPreferenceClickListener(this);
         pref.setChecked(Settings.Global.getInt(mContext.getContentResolver(),
                 Settings.Global.STYLUS_HANDWRITING_ENABLED, 0) == 1);
+        pref.setVisible(currentInputMethodSupportsHandwriting());
         return pref;
     }
 
@@ -136,7 +140,7 @@ public class StylusDevicesController extends AbstractPreferenceController implem
         pref.setIcon(R.drawable.ic_block);
         pref.setOnPreferenceClickListener(this);
         pref.setChecked(Settings.Secure.getInt(mContext.getContentResolver(),
-                Settings.Secure.STYLUS_BUTTONS_DISABLED, 0) == 1);
+                Settings.Secure.STYLUS_BUTTONS_ENABLED, 1) == 0);
         return pref;
     }
 
@@ -156,11 +160,23 @@ public class StylusDevicesController extends AbstractPreferenceController implem
                 Settings.Global.putInt(mContext.getContentResolver(),
                         Settings.Global.STYLUS_HANDWRITING_ENABLED,
                         ((SwitchPreference) preference).isChecked() ? 1 : 0);
+
+                if (((SwitchPreference) preference).isChecked()) {
+                    InputMethodManager imm = mContext.getSystemService(InputMethodManager.class);
+                    InputMethodInfo inputMethod = imm.getCurrentInputMethodInfo();
+                    if (inputMethod == null) break;
+
+                    Intent handwritingIntent =
+                            inputMethod.createStylusHandwritingSettingsActivityIntent();
+                    if (handwritingIntent != null) {
+                        mContext.startActivity(handwritingIntent);
+                    }
+                }
                 break;
             case KEY_IGNORE_BUTTON:
                 Settings.Secure.putInt(mContext.getContentResolver(),
-                        Secure.STYLUS_BUTTONS_DISABLED,
-                        ((SwitchPreference) preference).isChecked() ? 1 : 0);
+                        Secure.STYLUS_BUTTONS_ENABLED,
+                        ((SwitchPreference) preference).isChecked() ? 0 : 1);
                 break;
         }
         return true;
@@ -187,25 +203,29 @@ public class StylusDevicesController extends AbstractPreferenceController implem
     private void refresh() {
         if (!isAvailable()) return;
 
-        Preference notesPref = mPreferencesContainer.findPreference(KEY_DEFAULT_NOTES);
-        if (notesPref == null) {
-            notesPref = createDefaultNotesPreference();
-            if (notesPref != null) {
-                mPreferencesContainer.addPreference(notesPref);
-            }
+        Preference currNotesPref = mPreferencesContainer.findPreference(KEY_DEFAULT_NOTES);
+        Preference notesPref = createOrUpdateDefaultNotesPreference(currNotesPref);
+        if (currNotesPref == null && notesPref != null) {
+            mPreferencesContainer.addPreference(notesPref);
         }
 
-        Preference handwritingPref = mPreferencesContainer.findPreference(KEY_HANDWRITING);
-        // TODO(b/255732419): add proper InputMethodInfo conditional to show or hide
-        // InputMethodManager imm = mContext.getSystemService(InputMethodManager.class);
-        if (handwritingPref == null) {
-            mPreferencesContainer.addPreference(createHandwritingPreference());
+        SwitchPreference currHandwritingPref = mPreferencesContainer.findPreference(
+                KEY_HANDWRITING);
+        Preference handwritingPref = createOrUpdateHandwritingPreference(currHandwritingPref);
+        if (currHandwritingPref == null) {
+            mPreferencesContainer.addPreference(handwritingPref);
         }
 
         Preference buttonPref = mPreferencesContainer.findPreference(KEY_IGNORE_BUTTON);
         if (buttonPref == null) {
             mPreferencesContainer.addPreference(createButtonPressPreference());
         }
+    }
+
+    private boolean currentInputMethodSupportsHandwriting() {
+        InputMethodManager imm = mContext.getSystemService(InputMethodManager.class);
+        InputMethodInfo inputMethod = imm.getCurrentInputMethodInfo();
+        return inputMethod != null && inputMethod.supportsStylusHandwriting();
     }
 
     /**

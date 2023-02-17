@@ -164,6 +164,8 @@ import com.android.settings.print.PrintJobSettingsFragment;
 import com.android.settings.print.PrintSettingsFragment;
 import com.android.settings.privacy.PrivacyControlsFragment;
 import com.android.settings.privacy.PrivacyDashboardFragment;
+import com.android.settings.regionalpreferences.RegionalPreferencesEntriesFragment;
+import com.android.settings.safetycenter.MoreSecurityPrivacyFragment;
 import com.android.settings.security.LockscreenDashboardFragment;
 import com.android.settings.security.MemtagPage;
 import com.android.settings.security.SecurityAdvancedSettings;
@@ -239,6 +241,7 @@ public class SettingsGateway {
             LocationServices.class.getName(),
             SecuritySettings.class.getName(),
             SecurityAdvancedSettings.class.getName(),
+            MoreSecurityPrivacyFragment.class.getName(),
             UsageAccessDetails.class.getName(),
             PrivacySettings.class.getName(),
             DeviceAdminSettings.class.getName(),
@@ -367,7 +370,8 @@ public class SettingsGateway {
             TurnScreenOnDetails.class.getName(),
             NfcAndPaymentFragment.class.getName(),
             ColorAndMotionFragment.class.getName(),
-            LongBackgroundTasksDetails.class.getName()
+            LongBackgroundTasksDetails.class.getName(),
+            RegionalPreferencesEntriesFragment.class.getName()
     };
 
     public static final String[] SETTINGS_FOR_RESTRICTED = {

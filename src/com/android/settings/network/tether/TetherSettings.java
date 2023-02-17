@@ -50,6 +50,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.Preference;
 import androidx.preference.SwitchPreference;
 
@@ -77,7 +78,7 @@ import java.util.concurrent.atomic.AtomicReference;
  */
 @SearchIndexable
 public class TetherSettings extends RestrictedSettingsFragment
-        implements DataSaverBackend.Listener, TetheringManager.TetheringEventCallback {
+        implements DataSaverBackend.Listener {
 
     @VisibleForTesting
     static final String KEY_TETHER_PREFS_SCREEN = "tether_prefs_screen";
@@ -95,11 +96,12 @@ public class TetherSettings extends RestrictedSettingsFragment
     private static final String TAG = "TetheringSettings";
     private static final boolean DEBUG = Log.isLoggable(TAG, Log.DEBUG);
 
-    private RestrictedSwitchPreference mUsbTether;
-
-    private SwitchPreference mBluetoothTether;
-
-    private SwitchPreference mEthernetTether;
+    @VisibleForTesting
+    RestrictedSwitchPreference mUsbTether;
+    @VisibleForTesting
+    SwitchPreference mBluetoothTether;
+    @VisibleForTesting
+    SwitchPreference mEthernetTether;
 
     private BroadcastReceiver mTetherChangeReceiver;
     private BroadcastReceiver mBluetoothStateReceiver;
@@ -114,7 +116,8 @@ public class TetherSettings extends RestrictedSettingsFragment
     private EthernetListener mEthernetListener;
     private final HashSet<String> mAvailableInterfaces = new HashSet<>();
 
-    private WifiTetherPreferenceController mWifiTetherPreferenceController;
+    @VisibleForTesting
+    WifiTetherPreferenceController mWifiTetherPreferenceController;
 
     private boolean mUsbConnected;
     private boolean mMassStorageActive;
@@ -124,7 +127,8 @@ public class TetherSettings extends RestrictedSettingsFragment
 
     private DataSaverBackend mDataSaverBackend;
     private boolean mDataSaverEnabled;
-    private Preference mDataSaverFooter;
+    @VisibleForTesting
+    Preference mDataSaverFooter;
 
     @VisibleForTesting
     String[] mUsbRegexs;
@@ -132,7 +136,6 @@ public class TetherSettings extends RestrictedSettingsFragment
     Context mContext;
     @VisibleForTesting
     TetheringManager mTm;
-    private TetheringHelper mTetheringHelper;
 
     @Override
     public int getMetricsCategory() {
@@ -146,10 +149,11 @@ public class TetherSettings extends RestrictedSettingsFragment
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        TetheringManagerModel model = new ViewModelProvider(this).get(TetheringManagerModel.class);
         mWifiTetherPreferenceController =
-                new WifiTetherPreferenceController(context, getSettingsLifecycle());
-        mTetheringHelper = TetheringHelper.getInstance(context, this /* TetheringEventCallback */,
-                getSettingsLifecycle());
+                new WifiTetherPreferenceController(context, getSettingsLifecycle(), model);
+        mTm = model.getTetheringManager();
+        model.getTetheredInterfaces().observe(this, this::onTetheredInterfacesChanged);
     }
 
     @Override
@@ -188,7 +192,6 @@ public class TetherSettings extends RestrictedSettingsFragment
         mDataSaverBackend.addListener(this);
 
         mCm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        mTm = mTetheringHelper.getTetheringManager();
         // Some devices do not have available EthernetManager. In that case getSystemService will
         // return null.
         mEm = mContext.getSystemService(EthernetManager.class);
@@ -248,6 +251,7 @@ public class TetherSettings extends RestrictedSettingsFragment
     @Override
     public void onDataSaverChanged(boolean isDataSaving) {
         mDataSaverEnabled = isDataSaving;
+        mWifiTetherPreferenceController.setDataSaverEnabled(mDataSaverEnabled);
         mUsbTether.setEnabled(!mDataSaverEnabled);
         mBluetoothTether.setEnabled(!mDataSaverEnabled);
         mEthernetTether.setEnabled(!mDataSaverEnabled);
@@ -687,8 +691,7 @@ public class TetherSettings extends RestrictedSettingsFragment
         }
     }
 
-    @Override
-    public void onTetheredInterfacesChanged(List<String> interfaces) {
+    protected void onTetheredInterfacesChanged(List<String> interfaces) {
         Log.d(TAG, "onTetheredInterfacesChanged() interfaces : " + interfaces.toString());
         final String[] tethered = interfaces.toArray(new String[interfaces.size()]);
         updateUsbState(tethered);

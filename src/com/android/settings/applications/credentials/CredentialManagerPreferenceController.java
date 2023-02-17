@@ -21,7 +21,6 @@ import static androidx.lifecycle.Lifecycle.Event.ON_CREATE;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.app.Dialog;
-import android.app.settings.SettingsEnums;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -36,13 +35,13 @@ import android.os.Bundle;
 import android.os.CancellationSignal;
 import android.os.OutcomeReceiver;
 import android.os.UserHandle;
-import android.service.credentials.CredentialProviderInfo;
 import android.util.IconDrawableFactory;
 import android.util.Log;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.OnLifecycleEvent;
@@ -54,12 +53,13 @@ import com.android.internal.annotations.VisibleForTesting;
 import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.core.BasePreferenceController;
-import com.android.settings.core.instrumentation.InstrumentedDialogFragment;
 import com.android.settings.dashboard.DashboardFragment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Executor;
 
@@ -76,8 +76,9 @@ public class CredentialManagerPreferenceController extends BasePreferenceControl
     private final @Nullable CredentialManager mCredentialManager;
     private final CancellationSignal mCancellationSignal = new CancellationSignal();
     private final Executor mExecutor;
+    private final Map<String, SwitchPreference> mPrefs = new HashMap<>(); // key is package name
 
-    private @Nullable DashboardFragment mParentFragment = null;
+    private @Nullable FragmentManager mFragmentManager = null;
 
     public CredentialManagerPreferenceController(Context context, String preferenceKey) {
         super(context, preferenceKey);
@@ -110,13 +111,15 @@ public class CredentialManagerPreferenceController extends BasePreferenceControl
     }
 
     /**
-     * Sets the parent fragment and attaches this controller to the settings lifecycle.
+     * Initializes the controller with the parent fragment and adds the controller to observe its
+     * lifecycle. Also stores the fragment manager which is used to open dialogs.
      *
      * @param fragment the fragment to use as the parent
+     * @param fragmentManager the fragment manager to use
      */
-    public void setParentFragment(DashboardFragment fragment) {
-        mParentFragment = fragment;
+    public void init(DashboardFragment fragment, FragmentManager fragmentManager) {
         fragment.getSettingsLifecycle().addObserver(this);
+        mFragmentManager = fragmentManager;
     }
 
     @OnLifecycleEvent(ON_CREATE)
@@ -124,6 +127,11 @@ public class CredentialManagerPreferenceController extends BasePreferenceControl
         if (mCredentialManager == null) {
             return;
         }
+
+        setAvailableServices(
+                lifecycleOwner,
+                mCredentialManager.getCredentialProviderServices(
+                        getUser(), CredentialManager.PROVIDER_FILTER_USER_PROVIDERS_ONLY));
 
         mCredentialManager.listEnabledProviders(
                 mCancellationSignal,
@@ -140,13 +148,7 @@ public class CredentialManagerPreferenceController extends BasePreferenceControl
                             }
                         }
 
-                        List<ServiceInfo> services = new ArrayList<>();
-                        for (CredentialProviderInfo cpi :
-                                CredentialProviderInfo.getAvailableServices(mContext, getUser())) {
-                            services.add(cpi.getServiceInfo());
-                        }
-
-                        init(lifecycleOwner, services, enabledPackages);
+                        setEnabledPackageNames(enabledPackages);
                     }
 
                     @Override
@@ -157,15 +159,19 @@ public class CredentialManagerPreferenceController extends BasePreferenceControl
     }
 
     @VisibleForTesting
-    void init(
-            LifecycleOwner lifecycleOwner,
-            List<ServiceInfo> availableServices,
-            Set<String> enabledPackages) {
+    void setAvailableServices(LifecycleOwner lifecycleOwner, List<ServiceInfo> availableServices) {
         mServices.clear();
         mServices.addAll(availableServices);
+    }
 
+    @VisibleForTesting
+    void setEnabledPackageNames(Set<String> enabledPackages) {
         mEnabledPackageNames.clear();
         mEnabledPackageNames.addAll(enabledPackages);
+
+        for (String packageName : mPrefs.keySet()) {
+            mPrefs.get(packageName).setChecked(mEnabledPackageNames.contains(packageName));
+        }
     }
 
     @Override
@@ -176,6 +182,9 @@ public class CredentialManagerPreferenceController extends BasePreferenceControl
     @Override
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
+
+        // Since the UI is being cleared, clear any refs.
+        mPrefs.clear();
 
         PreferenceGroup group = screen.findPreference(getPreferenceKey());
         Context context = screen.getContext();
@@ -254,6 +263,7 @@ public class CredentialManagerPreferenceController extends BasePreferenceControl
         final SwitchPreference pref = new SwitchPreference(prefContext);
         pref.setTitle(title);
         pref.setChecked(mEnabledPackageNames.contains(packageName));
+        mPrefs.put(packageName, pref);
 
         if (icon != null) {
             pref.setIcon(Utils.getSafeIcon(icon));
@@ -268,13 +278,11 @@ public class CredentialManagerPreferenceController extends BasePreferenceControl
                         if (!togglePackageNameEnabled(packageName)) {
                             final DialogFragment fragment = newErrorDialogFragment();
 
-                            if (fragment == null || mParentFragment == null) {
+                            if (fragment == null || mFragmentManager == null) {
                                 return true;
                             }
 
-                            fragment.show(
-                                    mParentFragment.getActivity().getSupportFragmentManager(),
-                                    ErrorDialogFragment.TAG);
+                            fragment.show(mFragmentManager, ErrorDialogFragment.TAG);
 
                             // The user set the check to true so we need to set it back.
                             pref.setChecked(false);
@@ -282,17 +290,19 @@ public class CredentialManagerPreferenceController extends BasePreferenceControl
 
                         return true;
                     } else {
-                        // Show the confirm disable dialog.
-                        final DialogFragment fragment =
-                                newConfirmationDialogFragment(packageName, title, pref);
+                        // If we are disabling the last enabled provider then show a warning.
+                        if (mEnabledPackageNames.size() <= 1) {
+                            final DialogFragment fragment =
+                                    newConfirmationDialogFragment(packageName, title, pref);
 
-                        if (fragment == null || mParentFragment == null) {
-                            return true;
+                            if (fragment == null || mFragmentManager == null) {
+                                return true;
+                            }
+
+                            fragment.show(mFragmentManager, ConfirmationDialogFragment.TAG);
+                        } else {
+                            togglePackageNameDisabled(packageName);
                         }
-
-                        fragment.show(
-                                mParentFragment.getActivity().getSupportFragmentManager(),
-                                ConfirmationDialogFragment.TAG);
                     }
 
                     return true;
@@ -325,17 +335,22 @@ public class CredentialManagerPreferenceController extends BasePreferenceControl
                 });
     }
 
+    private @Nullable ErrorDialogFragment newErrorDialogFragment() {
+        DialogHost host =
+                new DialogHost() {
+                    @Override
+                    public void onDialogClick(int whichButton) {}
+                };
+
+        return new ErrorDialogFragment(host);
+    }
+
     private @Nullable ConfirmationDialogFragment newConfirmationDialogFragment(
             @NonNull String packageName,
             @NonNull CharSequence appName,
             @NonNull SwitchPreference pref) {
         DialogHost host =
                 new DialogHost() {
-                    @Override
-                    public DashboardFragment getParentFragment() {
-                        return mParentFragment;
-                    }
-
                     @Override
                     public void onDialogClick(int whichButton) {
                         if (whichButton == DialogInterface.BUTTON_POSITIVE) {
@@ -350,30 +365,7 @@ public class CredentialManagerPreferenceController extends BasePreferenceControl
                     }
                 };
 
-        if (host.getParentFragment() == null) {
-            return null;
-        }
-
         return new ConfirmationDialogFragment(host, packageName, appName);
-    }
-
-    private @Nullable ErrorDialogFragment newErrorDialogFragment() {
-        DialogHost host =
-                new DialogHost() {
-                    @Override
-                    public DashboardFragment getParentFragment() {
-                        return mParentFragment;
-                    }
-
-                    @Override
-                    public void onDialogClick(int whichButton) {}
-                };
-
-        if (host.getParentFragment() == null) {
-            return null;
-        }
-
-        return new ErrorDialogFragment(host);
     }
 
     private int getUser() {
@@ -384,12 +376,10 @@ public class CredentialManagerPreferenceController extends BasePreferenceControl
     /** Called when the dialog button is clicked. */
     private interface DialogHost {
         void onDialogClick(int whichButton);
-
-        DashboardFragment getParentFragment();
     }
 
     /** Dialog fragment parent class. */
-    private abstract static class CredentialManagerDialogFragment extends InstrumentedDialogFragment
+    private abstract static class CredentialManagerDialogFragment extends DialogFragment
             implements DialogInterface.OnClickListener {
 
         public static final String TAG = "CredentialManagerDialogFragment";
@@ -400,22 +390,16 @@ public class CredentialManagerPreferenceController extends BasePreferenceControl
 
         CredentialManagerDialogFragment(DialogHost dialogHost) {
             super();
-            setTargetFragment(dialogHost.getParentFragment(), 0);
             mDialogHost = dialogHost;
         }
 
         public DialogHost getDialogHost() {
             return mDialogHost;
         }
-
-        @Override
-        public int getMetricsCategory() {
-            return SettingsEnums.ACCOUNT;
-        }
     }
 
     /** Dialog showing error when too many providers are selected. */
-    private static class ErrorDialogFragment extends CredentialManagerDialogFragment {
+    public static class ErrorDialogFragment extends CredentialManagerDialogFragment {
 
         ErrorDialogFragment(DialogHost dialogHost) {
             super(dialogHost);
@@ -438,7 +422,7 @@ public class CredentialManagerPreferenceController extends BasePreferenceControl
      * Confirmation dialog fragment shows a dialog to the user to confirm that they are disabling a
      * provider.
      */
-    private static class ConfirmationDialogFragment extends CredentialManagerDialogFragment {
+    public static class ConfirmationDialogFragment extends CredentialManagerDialogFragment {
 
         ConfirmationDialogFragment(
                 DialogHost dialogHost, @NonNull String packageName, @NonNull CharSequence appName) {

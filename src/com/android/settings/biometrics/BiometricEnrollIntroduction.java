@@ -157,6 +157,8 @@ public abstract class BiometricEnrollIntroduction extends BiometricEnrollBase
         if (savedInstanceState != null) {
             mConfirmingCredentials = savedInstanceState.getBoolean(KEY_CONFIRMING_CREDENTIALS);
             mHasScrolledToBottom = savedInstanceState.getBoolean(KEY_SCROLLED_TO_BOTTOM);
+            mLaunchedPostureGuidance = savedInstanceState.getBoolean(
+                    EXTRA_LAUNCHED_POSTURE_GUIDANCE);
         }
 
         Intent intent = getIntent();
@@ -220,7 +222,9 @@ public abstract class BiometricEnrollIntroduction extends BiometricEnrollBase
 
                     // Show secondary button once scroll is completed.
                     if (!scrollNeeded) {
-                        getSecondaryFooterButton().setVisibility(View.VISIBLE);
+                        if (!enrollmentCompleted) {
+                            getSecondaryFooterButton().setVisibility(View.VISIBLE);
+                        }
                         mHasScrolledToBottom = true;
                     }
                 });
@@ -240,6 +244,7 @@ public abstract class BiometricEnrollIntroduction extends BiometricEnrollBase
             mErrorText.setVisibility(View.VISIBLE);
             getNextButton().setText(getResources().getString(R.string.done));
             getNextButton().setVisibility(View.VISIBLE);
+            getSecondaryFooterButton().setVisibility(View.INVISIBLE);
         }
     }
 
@@ -295,6 +300,7 @@ public abstract class BiometricEnrollIntroduction extends BiometricEnrollBase
                 finish();
             }
         }
+        mNextLaunched = true;
     }
 
     private void launchChooseLock() {

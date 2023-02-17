@@ -22,7 +22,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -38,12 +37,12 @@ import com.android.settings.SettingsActivity;
 import com.android.settings.core.BasePreferenceController;
 import com.android.settings.core.InstrumentedPreferenceFragment;
 import com.android.settings.fuelgauge.AdvancedPowerUsageDetail;
+import com.android.settings.fuelgauge.BatteryUtils;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settingslib.core.instrumentation.MetricsFeatureProvider;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.core.lifecycle.LifecycleObserver;
 import com.android.settingslib.core.lifecycle.events.OnDestroy;
-import com.android.settingslib.utils.StringUtil;
 import com.android.settingslib.widget.FooterPreference;
 
 import java.util.HashMap;
@@ -165,6 +164,10 @@ public class BatteryUsageBreakdownController extends BasePreferenceController
                             mHandler.post(() -> {
                                 removeAndCacheAllPreferences();
                                 addAllPreferences();
+                                mMetricsFeatureProvider.action(
+                                        mPrefContext,
+                                        SettingsEnums.ACTION_BATTERY_USAGE_SPINNER,
+                                        mSpinnerPosition);
                             });
                         }
                     }
@@ -191,10 +194,9 @@ public class BatteryUsageBreakdownController extends BasePreferenceController
 
         showCategoryTitle(slotTimestamp);
         showSpinnerAndAppList();
-        showFooterPreference(isAllUsageDataEmpty);
+        showFooterPreference(isAllUsageDataEmpty, slotTimestamp);
     }
 
-    // TODO: request accessibility focus on category title when slot selection updated.
     private void showCategoryTitle(String slotTimestamp) {
         mRootPreference.setTitle(slotTimestamp == null
                 ? mPrefContext.getString(
@@ -204,22 +206,30 @@ public class BatteryUsageBreakdownController extends BasePreferenceController
         mRootPreference.setVisible(true);
     }
 
-    private void showFooterPreference(boolean isAllBatteryUsageEmpty) {
-        mFooterPreference.setTitle(mPrefContext.getString(
+    private void showFooterPreference(boolean isAllBatteryUsageEmpty, String slotTimestamp) {
+        mFooterPreference.setTitle(
                 isAllBatteryUsageEmpty
-                        ? R.string.battery_usage_screen_footer_empty
-                        : R.string.battery_usage_screen_footer));
+                        ? mPrefContext.getString(R.string.battery_usage_screen_footer_empty)
+                        : (slotTimestamp == null
+                                ? mPrefContext.getString(
+                                        R.string.battery_usage_screen_footer_since_last_full_charge)
+                                : mPrefContext.getString(
+                                        R.string.battery_usage_screen_footer_of_timestamp,
+                                        slotTimestamp)));
         mFooterPreference.setVisible(true);
     }
 
     private void showSpinnerAndAppList() {
-        removeAndCacheAllPreferences();
         if (mBatteryDiffData == null) {
+            mHandler.post(() -> {
+                removeAndCacheAllPreferences();
+            });
             return;
         }
         mSpinnerPreference.setVisible(true);
         mAppListPreferenceGroup.setVisible(true);
         mHandler.post(() -> {
+            removeAndCacheAllPreferences();
             addAllPreferences();
         });
     }
@@ -291,44 +301,9 @@ public class BatteryUsageBreakdownController extends BasePreferenceController
     @VisibleForTesting
     void setPreferenceSummary(
             PowerGaugePreference preference, BatteryDiffEntry entry) {
-        final long foregroundUsageTimeInMs = entry.mForegroundUsageTimeInMs;
-        final long backgroundUsageTimeInMs = entry.mBackgroundUsageTimeInMs;
-        final long totalUsageTimeInMs = foregroundUsageTimeInMs + backgroundUsageTimeInMs;
-        String usageTimeSummary = null;
-        // Not shows summary for some system components without usage time.
-        if (totalUsageTimeInMs == 0) {
-            preference.setSummary(null);
-            // Shows background summary only if we don't have foreground usage time.
-        } else if (foregroundUsageTimeInMs == 0 && backgroundUsageTimeInMs != 0) {
-            usageTimeSummary = buildUsageTimeInfo(backgroundUsageTimeInMs, true);
-            // Shows total usage summary only if total usage time is small.
-        } else if (totalUsageTimeInMs < DateUtils.MINUTE_IN_MILLIS) {
-            usageTimeSummary = buildUsageTimeInfo(totalUsageTimeInMs, false);
-        } else {
-            usageTimeSummary = buildUsageTimeInfo(totalUsageTimeInMs, false);
-            // Shows background usage time if it is larger than a minute.
-            if (backgroundUsageTimeInMs > 0) {
-                usageTimeSummary +=
-                        "\n" + buildUsageTimeInfo(backgroundUsageTimeInMs, true);
-            }
-        }
-        preference.setSummary(usageTimeSummary);
-    }
-
-    private String buildUsageTimeInfo(long usageTimeInMs, boolean isBackground) {
-        if (usageTimeInMs < DateUtils.MINUTE_IN_MILLIS) {
-            return mPrefContext.getString(
-                    isBackground
-                            ? R.string.battery_usage_background_less_than_one_minute
-                            : R.string.battery_usage_total_less_than_one_minute);
-        }
-        final CharSequence timeSequence =
-                StringUtil.formatElapsedTime(mPrefContext, (double) usageTimeInMs,
-                        /*withSeconds=*/ false, /*collapseTimeUnit=*/ false);
-        final int resourceId =
-                isBackground
-                        ? R.string.battery_usage_for_background_time
-                        : R.string.battery_usage_for_total_time;
-        return mPrefContext.getString(resourceId, timeSequence);
+        preference.setSummary(
+                BatteryUtils.buildBatteryUsageTimeSummary(mPrefContext, entry.isSystemEntry(),
+                        entry.mForegroundUsageTimeInMs, entry.mBackgroundUsageTimeInMs,
+                        entry.mScreenOnTimeInMs));
     }
 }

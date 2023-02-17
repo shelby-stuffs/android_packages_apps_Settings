@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.InstallSourceInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -34,6 +35,8 @@ import android.os.SystemClock;
 import android.os.UidBatteryConsumer;
 import android.os.UserHandle;
 import android.provider.Settings;
+import android.text.TextUtils;
+import android.text.format.DateUtils;
 import android.util.Base64;
 import android.util.Log;
 
@@ -43,6 +46,7 @@ import androidx.annotation.VisibleForTesting;
 import androidx.annotation.WorkerThread;
 
 import com.android.internal.util.ArrayUtils;
+import com.android.settings.R;
 import com.android.settings.fuelgauge.batterytip.AnomalyDatabaseHelper;
 import com.android.settings.fuelgauge.batterytip.AnomalyInfo;
 import com.android.settings.fuelgauge.batterytip.BatteryDatabaseManager;
@@ -53,6 +57,7 @@ import com.android.settingslib.fuelgauge.Estimate;
 import com.android.settingslib.fuelgauge.EstimateKt;
 import com.android.settingslib.fuelgauge.PowerAllowlistBackend;
 import com.android.settingslib.utils.PowerUtil;
+import com.android.settingslib.utils.StringUtil;
 import com.android.settingslib.utils.ThreadUtils;
 
 import com.google.protobuf.InvalidProtocolBufferException;
@@ -79,6 +84,8 @@ public class BatteryUtils {
     public static final String SETTINGS_GLOBAL_DOCK_DEFENDER_BYPASS = "dock_defender_bypass";
 
     public static final String BYPASS_DOCK_DEFENDER_ACTION = "battery.dock.defender.bypass";
+
+    private static final String GOOGLE_PLAY_STORE_PACKAGE = "com.android.vending";
 
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({StatusType.SCREEN_USAGE,
@@ -522,7 +529,7 @@ public class BatteryUtils {
             return true;
         }
 
-        return isSystemUid(uid) || powerAllowlistBackend.isAllowlisted(packageNames)
+        return isSystemUid(uid) || powerAllowlistBackend.isAllowlisted(packageNames, uid)
                 || (isSystemApp(mPackageManager, packageNames) && !hasLauncherEntry(packageNames))
                 || (isExcessiveBackgroundAnomaly(anomalyInfo) && !isPreOApp(packageNames));
     }
@@ -594,10 +601,24 @@ public class BatteryUtils {
         return -1L;
     }
 
+    /** Whether the package is installed from Google Play Store or not */
+    public static boolean isAppInstalledFromGooglePlayStore(Context context, String packageName) {
+        if (TextUtils.isEmpty(packageName)) {
+            return false;
+        }
+        InstallSourceInfo installSourceInfo;
+        try {
+            installSourceInfo = context.getPackageManager().getInstallSourceInfo(packageName);
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+        return installSourceInfo != null
+                && GOOGLE_PLAY_STORE_PACKAGE.equals(installSourceInfo.getInitiatingPackageName());
+    }
+
     /** Gets the latest sticky battery intent from the Android system. */
     public static Intent getBatteryIntent(Context context) {
-        return context.registerReceiver(
-                /*receiver=*/ null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+        return com.android.settingslib.fuelgauge.BatteryUtils.getBatteryIntent(context);
     }
 
     /** Gets the current dock defender mode */
@@ -615,5 +636,53 @@ public class BatteryUtils {
             }
         }
         return DockDefenderMode.DISABLED;
+    }
+
+    /** Formats elapsed time without commas in between.  */
+    public static CharSequence formatElapsedTimeWithoutComma(
+            Context context, double millis, boolean withSeconds, boolean collapseTimeUnit) {
+        return StringUtil.formatElapsedTime(context, millis, withSeconds, collapseTimeUnit)
+                .toString().replaceAll(",", "");
+    }
+
+    /** Builds the battery usage time summary. */
+    public static String buildBatteryUsageTimeSummary(final Context context, final boolean isSystem,
+            final long foregroundUsageTimeInMs, final long backgroundUsageTimeInMs,
+            final long screenOnTimeInMs) {
+        StringBuilder summary = new StringBuilder();
+        if (isSystem) {
+            final long totalUsageTimeInMs = foregroundUsageTimeInMs + backgroundUsageTimeInMs;
+            if (totalUsageTimeInMs != 0) {
+                summary.append(buildBatteryUsageTimeInfo(context, totalUsageTimeInMs,
+                        R.string.battery_usage_total_less_than_one_minute,
+                        R.string.battery_usage_for_total_time));
+            }
+        } else {
+            if (screenOnTimeInMs != 0) {
+                summary.append(buildBatteryUsageTimeInfo(context, screenOnTimeInMs,
+                        R.string.battery_usage_screen_time_less_than_one_minute,
+                        R.string.battery_usage_screen_time));
+            }
+            if (screenOnTimeInMs != 0 && backgroundUsageTimeInMs != 0) {
+                summary.append('\n');
+            }
+            if (backgroundUsageTimeInMs != 0) {
+                summary.append(buildBatteryUsageTimeInfo(context, backgroundUsageTimeInMs,
+                        R.string.battery_usage_background_less_than_one_minute,
+                        R.string.battery_usage_for_background_time));
+            }
+        }
+        return summary.toString();
+    }
+
+    /** Builds the battery usage time information for one timestamp. */
+    private static String buildBatteryUsageTimeInfo(final Context context, long timeInMs,
+            final int lessThanOneMinuteResId, final int normalResId) {
+        if (timeInMs < DateUtils.MINUTE_IN_MILLIS) {
+            return context.getString(lessThanOneMinuteResId);
+        }
+        final CharSequence timeSequence = formatElapsedTimeWithoutComma(
+                context, (double) timeInMs, /*withSeconds=*/ false, /*collapseTimeUnit=*/ false);
+        return context.getString(normalResId, timeSequence);
     }
 }

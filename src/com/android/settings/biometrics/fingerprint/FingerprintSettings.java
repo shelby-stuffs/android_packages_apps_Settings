@@ -84,6 +84,8 @@ import com.android.settingslib.transition.SettingsTransitionHelper;
 import com.android.settingslib.widget.FooterPreference;
 import com.android.settingslib.widget.TwoTargetPreference;
 
+import com.google.android.setupdesign.util.DeviceHelper;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -451,8 +453,9 @@ public class FingerprintSettings extends SubSettings {
                 mFooterColumns.add(column2);
             } else {
                 final FooterColumn column = new FooterColumn();
-                column.mTitle = getText(
-                        R.string.security_settings_fingerprint_enroll_introduction_v2_message);
+                column.mTitle = getString(
+                        R.string.security_settings_fingerprint_enroll_introduction_v3_message,
+                        DeviceHelper.getDeviceName(getActivity()));
                 column.mLearnMoreClickListener = learnMoreClickListener;
                 mFooterColumns.add(column);
             }
@@ -499,8 +502,10 @@ public class FingerprintSettings extends SubSettings {
             if (root != null) {
                 root.removeAll();
             }
-            root = getPreferenceScreen();
-            addFingerprintItemPreferences(root);
+            final String fpPrefKey = addFingerprintItemPreferences(root);
+            if (isSfps()) {
+                scrollToPreference(fpPrefKey);
+            }
             addPreferencesFromResource(getPreferenceScreenResId());
             mRequireScreenOnToAuthPreference = findPreference(KEY_REQUIRE_SCREEN_ON_TO_AUTH);
             mFingerprintUnlockCategory = findPreference(KEY_FINGERPRINT_UNLOCK_CATEGORY);
@@ -534,15 +539,20 @@ public class FingerprintSettings extends SubSettings {
             }
         }
 
-        private void addFingerprintItemPreferences(PreferenceGroup root) {
+        private String addFingerprintItemPreferences(PreferenceGroup root) {
             root.removeAll();
+            String keyToReturn = KEY_FINGERPRINT_ADD;
             final List<Fingerprint> items = mFingerprintManager.getEnrolledFingerprints(mUserId);
             final int fingerprintCount = items.size();
             for (int i = 0; i < fingerprintCount; i++) {
                 final Fingerprint item = items.get(i);
                 FingerprintPreference pref = new FingerprintPreference(root.getContext(),
                         this /* onDeleteClickListener */);
-                pref.setKey(genKey(item.getBiometricId()));
+                String key = genKey(item.getBiometricId());
+                if (i == 0) {
+                    keyToReturn = key;
+                }
+                pref.setKey(key);
                 pref.setTitle(item.getName());
                 pref.setFingerprint(item);
                 pref.setPersistent(false);
@@ -565,6 +575,8 @@ public class FingerprintSettings extends SubSettings {
             addPreference.setOnPreferenceChangeListener(this);
             updateAddPreference();
             createFooterPreference(root);
+
+            return keyToReturn;
         }
 
         private void updateAddPreference() {
@@ -637,6 +649,7 @@ public class FingerprintSettings extends SubSettings {
             if (mAuthenticateSidecar != null) {
                 mAuthenticateSidecar.setListener(null);
                 mAuthenticateSidecar.stopAuthentication();
+                mHandler.removeCallbacks(mFingerprintLockoutReset);
             }
         }
 

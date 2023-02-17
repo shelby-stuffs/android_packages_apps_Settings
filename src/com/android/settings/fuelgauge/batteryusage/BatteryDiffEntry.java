@@ -49,7 +49,7 @@ public class BatteryDiffEntry {
 
     /** A comparator for {@link BatteryDiffEntry} based on consumed percentage. */
     public static final Comparator<BatteryDiffEntry> COMPARATOR =
-            (a, b) -> Double.compare(b.getPercentOfTotal(), a.getPercentOfTotal());
+            (a, b) -> Double.compare(b.getSortingKey(), a.getSortingKey());
 
     public long mForegroundUsageTimeInMs;
     public long mBackgroundUsageTimeInMs;
@@ -119,6 +119,11 @@ public class BatteryDiffEntry {
     /** Gets the percentage of total consumed power. */
     public double getPercentOfTotal() {
         return mPercentOfTotal;
+    }
+
+    /** Gets the key for sorting */
+    public double getSortingKey() {
+        return getPercentOfTotal();
     }
 
     /** Clones a new instance. */
@@ -265,15 +270,14 @@ public class BatteryDiffEntry {
         }
     }
 
-    @VisibleForTesting
     String getKey() {
         return mBatteryHistEntry.getKey();
     }
 
     @VisibleForTesting
     void updateRestrictionFlagState() {
-        mValidForRestriction = true;
         if (!mBatteryHistEntry.isAppEntry()) {
+            mValidForRestriction = false;
             return;
         }
         final boolean isValidPackage =
@@ -434,6 +438,26 @@ public class BatteryDiffEntry {
         public boolean isSystemEntry() {
             return false;
         }
+
+        @Override
+        public double getSortingKey() {
+            // Always on the bottom of the app list.
+            return -1;
+        }
+
+        @Override
+        public BatteryDiffEntry clone() {
+            SystemAppsBatteryDiffEntry newEntry = new SystemAppsBatteryDiffEntry(this.mContext);
+            newEntry.mForegroundUsageTimeInMs = this.mForegroundUsageTimeInMs;
+            newEntry.mBackgroundUsageTimeInMs = this.mBackgroundUsageTimeInMs;
+            newEntry.mScreenOnTimeInMs = this.mScreenOnTimeInMs;
+            newEntry.mConsumePower = this.mConsumePower;
+            newEntry.mForegroundUsageConsumePower = this.mForegroundUsageConsumePower;
+            newEntry.mForegroundServiceUsageConsumePower = this.mForegroundServiceUsageConsumePower;
+            newEntry.mBackgroundUsageConsumePower = this.mBackgroundUsageConsumePower;
+            newEntry.mCachedUsageConsumePower = this.mCachedUsageConsumePower;
+            return newEntry;
+        }
     }
 
     /** Specific battery diff entry for others. */
@@ -463,7 +487,7 @@ public class BatteryDiffEntry {
 
         @Override
         public Drawable getAppIcon() {
-            return mContext.getDrawable(R.drawable.ic_settings_ethernet);
+            return mContext.getDrawable(R.drawable.ic_settings_battery_usage_others);
         }
 
         @Override
@@ -474,6 +498,26 @@ public class BatteryDiffEntry {
         @Override
         public boolean isSystemEntry() {
             return true;
+        }
+
+        @Override
+        public double getSortingKey() {
+            // Always on the bottom of the system list.
+            return -1;
+        }
+
+        @Override
+        public BatteryDiffEntry clone() {
+            OthersBatteryDiffEntry newEntry = new OthersBatteryDiffEntry(this.mContext);
+            newEntry.mForegroundUsageTimeInMs = this.mForegroundUsageTimeInMs;
+            newEntry.mBackgroundUsageTimeInMs = this.mBackgroundUsageTimeInMs;
+            newEntry.mScreenOnTimeInMs = this.mScreenOnTimeInMs;
+            newEntry.mConsumePower = this.mConsumePower;
+            newEntry.mForegroundUsageConsumePower = this.mForegroundUsageConsumePower;
+            newEntry.mForegroundServiceUsageConsumePower = this.mForegroundServiceUsageConsumePower;
+            newEntry.mBackgroundUsageConsumePower = this.mBackgroundUsageConsumePower;
+            newEntry.mCachedUsageConsumePower = this.mCachedUsageConsumePower;
+            return newEntry;
         }
     }
 }

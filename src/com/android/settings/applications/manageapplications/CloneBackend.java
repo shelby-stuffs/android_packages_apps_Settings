@@ -75,12 +75,13 @@ public class CloneBackend {
      * dialog to the user and handles actual uninstall.
      */
     void uninstallClonedApp(String packageName, boolean allUsers, FragmentActivity activity) {
-        // Create new intent to launch Uninstaller activity
+        // Create new intent to launch Uninstaller activity.
         Uri packageUri = Uri.parse("package:" + packageName);
         Intent uninstallIntent = new Intent(Intent.ACTION_UNINSTALL_PACKAGE, packageUri);
         uninstallIntent.putExtra(Intent.EXTRA_UNINSTALL_ALL_USERS, allUsers);
         uninstallIntent.putExtra(Intent.EXTRA_USER, UserHandle.of(mCloneUserId));
-        activity.startActivityForResult(uninstallIntent, 0);
+        // Trigger uninstall as clone user.
+        activity.startActivityAsUser(uninstallIntent, UserHandle.of(mCloneUserId));
     }
 
     /**
@@ -90,7 +91,7 @@ public class CloneBackend {
      * @param packageName
      * @return error/success code
      */
-    int installCloneApp(String packageName) {
+    public int installCloneApp(String packageName) {
         String userName = "cloneUser";
         UserHandle cloneUserHandle = null;
         boolean newlyCreated = false;
@@ -159,5 +160,9 @@ public class CloneBackend {
             Log.i(TAG, "Package " + packageName + " cloned successfully.");
         }
         return SUCCESS;
+    }
+
+    public int getCloneUserId() {
+        return mCloneUserId;
     }
 }

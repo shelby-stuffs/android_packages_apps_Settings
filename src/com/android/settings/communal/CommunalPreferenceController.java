@@ -19,6 +19,7 @@ package com.android.settings.communal;
 import android.content.Context;
 
 import com.android.settings.R;
+import com.android.settings.Utils;
 import com.android.settings.core.BasePreferenceController;
 
 /**
@@ -31,7 +32,8 @@ public class CommunalPreferenceController extends BasePreferenceController {
 
     @Override
     public int getAvailabilityStatus() {
-        return mContext.getResources().getBoolean(R.bool.config_show_communal_settings)
+        return (mContext.getResources().getBoolean(R.bool.config_show_communal_settings)
+                && Utils.canCurrentUserDream(mContext))
                 ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
     }
 }

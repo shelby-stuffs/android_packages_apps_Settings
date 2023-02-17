@@ -67,12 +67,22 @@ public class PowerUsageFeatureProviderImpl implements PowerUsageFeatureProvider 
     }
 
     @Override
-    public boolean isBatteryUsageEnabled(Context context) {
+    public boolean isBatteryUsageEnabled() {
         return true;
     }
 
     @Override
-    public List<String> getSystemAppsAllowlist(Context context) {
+    public double getBatteryUsageListScreenOnTimeThresholdInMs() {
+        return 0;
+    }
+
+    @Override
+    public double getBatteryUsageListConsumePowerThreshold() {
+        return 0;
+    }
+
+    @Override
+    public List<String> getSystemAppsAllowlist() {
         return null;
     }
 
@@ -143,6 +153,11 @@ public class PowerUsageFeatureProviderImpl implements PowerUsageFeatureProvider 
     }
 
     @Override
+    public String getFullChargeIntentAction() {
+        return Intent.ACTION_BATTERY_LEVEL_CHANGED;
+    }
+
+    @Override
     public boolean isExtraDefend() {
         return false;
     }
@@ -153,27 +168,27 @@ public class PowerUsageFeatureProviderImpl implements PowerUsageFeatureProvider 
     }
 
     @Override
-    public Set<Integer> getOthersSystemComponentSet(Context context) {
+    public Set<Integer> getOthersSystemComponentSet() {
         return new ArraySet<>();
     }
 
     @Override
-    public Set<Integer> getHideSystemComponentSet(Context context) {
+    public Set<Integer> getHideSystemComponentSet() {
         return new ArraySet<>();
     }
 
     @Override
-    public Set<CharSequence> getHideApplicationSet(Context context) {
+    public Set<String> getHideApplicationSet() {
         return new ArraySet<>();
     }
 
     @Override
-    public Set<CharSequence> getHideBackgroundUsageTimeSet(Context context) {
+    public Set<String> getHideBackgroundUsageTimeSet() {
         return new ArraySet<>();
     }
 
     @Override
-    public Set<CharSequence> getIgnoreScreenOnTimeTaskRootSet(Context context) {
+    public Set<String> getIgnoreScreenOnTimeTaskRootSet() {
         return new ArraySet<>();
     }
 }

@@ -183,14 +183,6 @@
                 android:persistent="true"
                 settings:controller="com.android.settings.network.telephony.VideoCallingPreferenceController"/>
 
-            <SwitchPreference
-                android:key="backup_calling_key"
-                android:title="@string/backup_calling_settings_title"
-                android:persistent="false"
-                android:summary="@string/backup_calling_setting_summary"
-                settings:keywords="@string/keywords_backup_calling"
-                settings:controller="com.android.settings.network.telephony.BackupCallingPreferenceController"/>
-
         </PreferenceCategory>
 
         <com.android.settings.network.telephony.cdma.CdmaListPreference
@@ -251,9 +243,9 @@
             settings:userRestriction="no_cellular_2g"/>
 
         <SwitchPreference
-            android:key="allow_null_algorithms"
-            android:title="@string/allow_null_algorithms_title"
-            android:summary="@string/allow_null_algorithms_summary"
+            android:key="require_cellular_encryption"
+            android:title="@string/require_cellular_encryption_title"
+            android:summary="@string/require_cellular_encryption_summary"
             settings:controller=
                 "com.android.settings.network.telephony.NullAlgorithmsPreferenceController" />
 

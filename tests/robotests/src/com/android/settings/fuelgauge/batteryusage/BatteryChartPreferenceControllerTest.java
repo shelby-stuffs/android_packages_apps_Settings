@@ -88,6 +88,7 @@ public final class BatteryChartPreferenceControllerTest {
         Locale.setDefault(new Locale("en_US"));
         org.robolectric.shadows.ShadowSettings.set24HourTimeFormat(false);
         TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+        DataProcessor.sTestSystemAppsSet = Set.of();
         mFeatureFactory = FakeFeatureFactory.setupForTest();
         mContext = spy(RuntimeEnvironment.application);
         doReturn(mContext).when(mContext).getApplicationContext();
@@ -101,7 +102,7 @@ public final class BatteryChartPreferenceControllerTest {
         doReturn(resources).when(mContext).getResources();
         doReturn(Set.of("com.android.gms.persistent"))
                 .when(mFeatureFactory.powerUsageFeatureProvider)
-                .getHideApplicationSet(mContext);
+                .getHideApplicationSet();
         doReturn(mLayoutParams).when(mDailyChartView).getLayoutParams();
         doReturn(mIntent).when(mContext).registerReceiver(any(), any());
         doReturn(100).when(mIntent).getIntExtra(eq(BatteryManager.EXTRA_SCALE), anyInt());
@@ -404,7 +405,7 @@ public final class BatteryChartPreferenceControllerTest {
             entryMap.put("fake_entry_key" + index, entry);
             batteryHistoryMap.put(generateTimestamp(index), entryMap);
         }
-        DataProcessor.sFakeCurrentTimeMillis =
+        DataProcessor.sTestCurrentTimeMillis =
                 generateTimestamp(numOfHours - 1) + DateUtils.MINUTE_IN_MILLIS;
         return batteryHistoryMap;
     }

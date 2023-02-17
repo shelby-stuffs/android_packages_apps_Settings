@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,20 +20,19 @@ import static android.hardware.fingerprint.FingerprintSensorProperties.TYPE_REAR
 import static android.hardware.fingerprint.FingerprintSensorProperties.TYPE_UDFPS_OPTICAL;
 import static android.hardware.fingerprint.FingerprintSensorProperties.TYPE_UDFPS_ULTRASONIC;
 
-import static com.android.settings.biometrics2.data.repository.FingerprintRepositoryTest.setupSuwMaxFingerprintsEnrollable;
 import static com.android.settings.biometrics2.ui.model.FingerprintEnrollIntroStatus.FINGERPRINT_ENROLLABLE_ERROR_REACH_MAX;
 import static com.android.settings.biometrics2.ui.model.FingerprintEnrollIntroStatus.FINGERPRINT_ENROLLABLE_OK;
-import static com.android.settings.biometrics2.ui.model.FingerprintEnrollIntroStatus.FINGERPRINT_ENROLLABLE_UNKNOWN;
 import static com.android.settings.biometrics2.ui.viewmodel.FingerprintEnrollIntroViewModel.FINGERPRINT_ENROLL_INTRO_ACTION_CONTINUE_ENROLL;
 import static com.android.settings.biometrics2.ui.viewmodel.FingerprintEnrollIntroViewModel.FINGERPRINT_ENROLL_INTRO_ACTION_DONE_AND_FINISH;
 import static com.android.settings.biometrics2.ui.viewmodel.FingerprintEnrollIntroViewModel.FINGERPRINT_ENROLL_INTRO_ACTION_SKIP_OR_CANCEL;
-import static com.android.settings.biometrics2.util.EnrollmentRequestUtil.newAllFalseRequest;
-import static com.android.settings.biometrics2.util.EnrollmentRequestUtil.newIsSuwDeferredRequest;
-import static com.android.settings.biometrics2.util.EnrollmentRequestUtil.newIsSuwPortalRequest;
-import static com.android.settings.biometrics2.util.EnrollmentRequestUtil.newIsSuwRequest;
-import static com.android.settings.biometrics2.util.EnrollmentRequestUtil.newIsSuwSuggestedActionFlowRequest;
-import static com.android.settings.biometrics2.util.FingerprintManagerUtil.setupFingerprintEnrolledFingerprints;
-import static com.android.settings.biometrics2.util.FingerprintManagerUtil.setupFingerprintFirstSensor;
+import static com.android.settings.biometrics2.utils.EnrollmentRequestUtils.newAllFalseRequest;
+import static com.android.settings.biometrics2.utils.EnrollmentRequestUtils.newIsSuwDeferredRequest;
+import static com.android.settings.biometrics2.utils.EnrollmentRequestUtils.newIsSuwPortalRequest;
+import static com.android.settings.biometrics2.utils.EnrollmentRequestUtils.newIsSuwRequest;
+import static com.android.settings.biometrics2.utils.EnrollmentRequestUtils.newIsSuwSuggestedActionFlowRequest;
+import static com.android.settings.biometrics2.utils.FingerprintRepositoryUtils.newFingerprintRepository;
+import static com.android.settings.biometrics2.utils.FingerprintRepositoryUtils.setupFingerprintEnrolledFingerprints;
+import static com.android.settings.biometrics2.utils.FingerprintRepositoryUtils.setupSuwMaxFingerprintsEnrollable;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -45,7 +44,6 @@ import android.content.res.Resources;
 import android.hardware.fingerprint.FingerprintManager;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -66,118 +64,168 @@ import org.mockito.junit.MockitoRule;
 @RunWith(AndroidJUnit4.class)
 public class FingerprintEnrollIntroViewModelTest {
 
+    private static final int TEST_USER_ID = 33;
+
     @Rule public final MockitoRule mockito = MockitoJUnit.rule();
     @Rule public final InstantTaskExecutorRule mTaskExecutorRule = new InstantTaskExecutorRule();
 
     @Mock private Resources mResources;
-    @Mock private LifecycleOwner mLifecycleOwner;
     @Mock private FingerprintManager mFingerprintManager;
 
     private Application mApplication;
-    private FingerprintRepository mFingerprintRepository;
-    private FingerprintEnrollIntroViewModel mViewModel;
+
+    private FingerprintEnrollIntroViewModel newFingerprintEnrollIntroViewModel(
+            @NonNull FingerprintRepository fingerprintRepository,
+            @NonNull EnrollmentRequest enrollmentRequest) {
+        final FingerprintEnrollIntroViewModel viewModel =
+                new FingerprintEnrollIntroViewModel(mApplication, fingerprintRepository,
+                        enrollmentRequest, TEST_USER_ID);
+        // MediatorLiveData won't update itself unless observed
+        viewModel.getPageStatusLiveData().observeForever(event -> {});
+        return viewModel;
+    }
 
     @Before
     public void setUp() {
         mApplication = ApplicationProvider.getApplicationContext();
-        mFingerprintRepository = new FingerprintRepository(mFingerprintManager);
-        mViewModel = new FingerprintEnrollIntroViewModel(mApplication, mFingerprintRepository);
-        // MediatorLiveData won't update itself unless observed
-        mViewModel.getPageStatusLiveData().observeForever(event -> {});
     }
 
     @Test
     public void testPageStatusLiveDataDefaultValue() {
-        final FingerprintEnrollIntroStatus status = mViewModel.getPageStatusLiveData().getValue();
+        final FingerprintEnrollIntroViewModel viewModel = newFingerprintEnrollIntroViewModel(
+                newFingerprintRepository(mFingerprintManager, TYPE_UDFPS_OPTICAL, 5),
+                newAllFalseRequest(mApplication));
+        final FingerprintEnrollIntroStatus status = viewModel.getPageStatusLiveData().getValue();
         assertThat(status.hasScrollToBottom()).isFalse();
-        assertThat(status.getEnrollableStatus()).isEqualTo(FINGERPRINT_ENROLLABLE_UNKNOWN);
+        assertThat(status.getEnrollableStatus()).isEqualTo(FINGERPRINT_ENROLLABLE_OK);
     }
 
     @Test
     public void testClearActionLiveData() {
+        final FingerprintEnrollIntroViewModel viewModel = newFingerprintEnrollIntroViewModel(
+                newFingerprintRepository(mFingerprintManager, TYPE_UDFPS_OPTICAL, 5),
+                newAllFalseRequest(mApplication));
+
         final MutableLiveData<Integer> actionLiveData =
-                (MutableLiveData<Integer>) mViewModel.getActionLiveData();
+                (MutableLiveData<Integer>) viewModel.getActionLiveData();
         actionLiveData.postValue(1);
         assertThat(actionLiveData.getValue()).isEqualTo(1);
 
-        mViewModel.clearActionLiveData();
+        viewModel.clearActionLiveData();
 
         assertThat(actionLiveData.getValue()).isNull();
     }
 
     @Test
     public void testGetEnrollmentRequest() {
-        final EnrollmentRequest request = newAllFalseRequest(mApplication);
+        final FingerprintEnrollIntroViewModel viewModel = newFingerprintEnrollIntroViewModel(
+                newFingerprintRepository(mFingerprintManager, TYPE_UDFPS_OPTICAL, 5),
+                newAllFalseRequest(mApplication));
 
-        mViewModel.setEnrollmentRequest(request);
-
-        assertThat(mViewModel.getEnrollmentRequest()).isEqualTo(request);
+        assertThat(viewModel.getRequest()).isNotNull();
     }
 
     @Test
-    public void testOnStartToUpdateEnrollableStatus_isSuw() {
-        final int userId = 44;
-        mViewModel.setUserId(userId);
-        mViewModel.setEnrollmentRequest(newIsSuwRequest(mApplication));
-
-        setupFingerprintEnrolledFingerprints(mFingerprintManager, userId, 0);
+    public void testOnStartToUpdateEnrollableStatusOk_isSuw() {
+        setupFingerprintEnrolledFingerprints(mFingerprintManager, TEST_USER_ID, 0);
         setupSuwMaxFingerprintsEnrollable(mApplication, mResources, 1);
-        mViewModel.onStart(mLifecycleOwner);
-        FingerprintEnrollIntroStatus status = mViewModel.getPageStatusLiveData().getValue();
+
+        final FingerprintEnrollIntroViewModel viewModel = newFingerprintEnrollIntroViewModel(
+                newFingerprintRepository(mFingerprintManager, TYPE_UDFPS_OPTICAL, 5),
+                newIsSuwRequest(mApplication));
+        final FingerprintEnrollIntroStatus status = viewModel.getPageStatusLiveData().getValue();
         assertThat(status.getEnrollableStatus()).isEqualTo(FINGERPRINT_ENROLLABLE_OK);
+    }
 
-        setupFingerprintEnrolledFingerprints(mFingerprintManager, userId, 1);
+    @Test
+    public void testOnStartToUpdateEnrollableStatusReachMax_isSuw() {
+        setupFingerprintEnrolledFingerprints(mFingerprintManager, TEST_USER_ID, 1);
         setupSuwMaxFingerprintsEnrollable(mApplication, mResources, 1);
-        mViewModel.onStart(mLifecycleOwner);
-        status = mViewModel.getPageStatusLiveData().getValue();
+
+        final FingerprintEnrollIntroViewModel viewModel = newFingerprintEnrollIntroViewModel(
+                newFingerprintRepository(mFingerprintManager, TYPE_UDFPS_OPTICAL, 5),
+                newIsSuwRequest(mApplication));
+        final FingerprintEnrollIntroStatus status = viewModel.getPageStatusLiveData().getValue();
         assertThat(status.getEnrollableStatus()).isEqualTo(FINGERPRINT_ENROLLABLE_ERROR_REACH_MAX);
     }
 
     @Test
-    public void testOnStartToUpdateEnrollableStatus_isNotSuw() {
-        testOnStartToUpdateEnrollableStatus(newAllFalseRequest(mApplication));
+    public void testOnStartToUpdateEnrollableStatusOk_isNotSuw() {
+        testOnStartToUpdateEnrollableStatusOk(newAllFalseRequest(mApplication));
     }
 
     @Test
-    public void testOnStartToUpdateEnrollableStatus_isSuwDeferred() {
-        testOnStartToUpdateEnrollableStatus(newIsSuwDeferredRequest(mApplication));
+    public void testOnStartToUpdateEnrollableStatusReachMax_isNotSuw() {
+        testOnStartToUpdateEnrollableStatusReachMax(newAllFalseRequest(mApplication));
     }
 
     @Test
-    public void testOnStartToUpdateEnrollableStatus_isSuwPortal() {
-        testOnStartToUpdateEnrollableStatus(newIsSuwPortalRequest(mApplication));
+    public void testOnStartToUpdateEnrollableStatusOk_isSuwDeferred() {
+        testOnStartToUpdateEnrollableStatusOk(newIsSuwDeferredRequest(mApplication));
     }
 
     @Test
-    public void testOnStartToUpdateEnrollableStatus_isSuwSuggestedActionFlow() {
-        testOnStartToUpdateEnrollableStatus(newIsSuwSuggestedActionFlowRequest(mApplication));
+    public void testOnStartToUpdateEnrollableStatusReachMax_isSuwDeferred() {
+        testOnStartToUpdateEnrollableStatusReachMax(newIsSuwDeferredRequest(mApplication));
     }
 
-    private void testOnStartToUpdateEnrollableStatus(@NonNull EnrollmentRequest request) {
-        final int userId = 45;
-        mViewModel.setUserId(userId);
-        mViewModel.setEnrollmentRequest(request);
+    @Test
+    public void testOnStartToUpdateEnrollableStatusOk_isSuwPortal() {
+        testOnStartToUpdateEnrollableStatusOk(newIsSuwPortalRequest(mApplication));
+    }
 
-        setupFingerprintEnrolledFingerprints(mFingerprintManager, userId, 0);
-        setupFingerprintFirstSensor(mFingerprintManager, TYPE_UDFPS_OPTICAL, 5);
-        mViewModel.onStart(mLifecycleOwner);
-        FingerprintEnrollIntroStatus status = mViewModel.getPageStatusLiveData().getValue();
+    @Test
+    public void testOnStartToUpdateEnrollableStatusReachMax_isSuwPortal() {
+        testOnStartToUpdateEnrollableStatusReachMax(newIsSuwPortalRequest(mApplication));
+    }
+
+    @Test
+    public void testOnStartToUpdateEnrollableStatusOk_isSuwSuggestedActionFlow() {
+        testOnStartToUpdateEnrollableStatusOk(newIsSuwSuggestedActionFlowRequest(mApplication));
+    }
+
+    @Test
+    public void testOnStartToUpdateEnrollableStatusReachMax_isSuwSuggestedActionFlow() {
+        testOnStartToUpdateEnrollableStatusReachMax(
+                newIsSuwSuggestedActionFlowRequest(mApplication));
+    }
+
+    private void testOnStartToUpdateEnrollableStatusOk(@NonNull EnrollmentRequest request) {
+        setupFingerprintEnrolledFingerprints(mFingerprintManager, TEST_USER_ID, 0);
+
+        final FingerprintEnrollIntroViewModel viewModel = newFingerprintEnrollIntroViewModel(
+                newFingerprintRepository(mFingerprintManager, TYPE_UDFPS_OPTICAL, 5),
+                request);
+        FingerprintEnrollIntroStatus status = viewModel.getPageStatusLiveData().getValue();
         assertThat(status.getEnrollableStatus()).isEqualTo(FINGERPRINT_ENROLLABLE_OK);
+    }
 
-        setupFingerprintEnrolledFingerprints(mFingerprintManager, userId, 5);
-        setupFingerprintFirstSensor(mFingerprintManager, TYPE_UDFPS_OPTICAL, 5);
-        mViewModel.onStart(mLifecycleOwner);
-        status = mViewModel.getPageStatusLiveData().getValue();
+    private void testOnStartToUpdateEnrollableStatusReachMax(@NonNull EnrollmentRequest request) {
+        setupFingerprintEnrolledFingerprints(mFingerprintManager, TEST_USER_ID, 5);
+
+        final FingerprintEnrollIntroViewModel viewModel = newFingerprintEnrollIntroViewModel(
+                newFingerprintRepository(mFingerprintManager, TYPE_UDFPS_OPTICAL, 5),
+                request);
+        FingerprintEnrollIntroStatus status = viewModel.getPageStatusLiveData().getValue();
         assertThat(status.getEnrollableStatus()).isEqualTo(FINGERPRINT_ENROLLABLE_ERROR_REACH_MAX);
     }
 
     @Test
-    public void textCanAssumeUdfps() {
-        setupFingerprintFirstSensor(mFingerprintManager, TYPE_UDFPS_ULTRASONIC, 1);
-        assertThat(mViewModel.canAssumeUdfps()).isEqualTo(true);
+    public void textCanAssumeUdfps_forUdfpsUltrasonicSensor() {
+        final FingerprintEnrollIntroViewModel viewModel = newFingerprintEnrollIntroViewModel(
+                newFingerprintRepository(mFingerprintManager, TYPE_UDFPS_ULTRASONIC, 5),
+                newAllFalseRequest(mApplication));
 
-        setupFingerprintFirstSensor(mFingerprintManager, TYPE_REAR, 1);
-        assertThat(mViewModel.canAssumeUdfps()).isEqualTo(false);
+        assertThat(viewModel.canAssumeUdfps()).isEqualTo(true);
+    }
+
+    @Test
+    public void textCanAssumeUdfps_forRearSensor() {
+        final FingerprintEnrollIntroViewModel viewModel = newFingerprintEnrollIntroViewModel(
+                newFingerprintRepository(mFingerprintManager, TYPE_REAR, 5),
+                newAllFalseRequest(mApplication));
+
+        assertThat(viewModel.canAssumeUdfps()).isEqualTo(false);
     }
 
     @Test
@@ -186,13 +234,15 @@ public class FingerprintEnrollIntroViewModelTest {
         // FingerprintRepository.isParentalConsentRequired() calls static method inside, we can't
         // mock static method
         final FingerprintRepository fingerprintRepository = mock(FingerprintRepository.class);
-        mViewModel = new FingerprintEnrollIntroViewModel(mApplication, fingerprintRepository);
+        final FingerprintEnrollIntroViewModel viewModel = new FingerprintEnrollIntroViewModel(
+                mApplication, fingerprintRepository, newAllFalseRequest(mApplication),
+                TEST_USER_ID);
 
         when(fingerprintRepository.isParentalConsentRequired(mApplication)).thenReturn(true);
-        assertThat(mViewModel.isParentalConsentRequired()).isEqualTo(true);
+        assertThat(viewModel.isParentalConsentRequired()).isEqualTo(true);
 
         when(fingerprintRepository.isParentalConsentRequired(mApplication)).thenReturn(false);
-        assertThat(mViewModel.isParentalConsentRequired()).isEqualTo(false);
+        assertThat(viewModel.isParentalConsentRequired()).isEqualTo(false);
     }
 
     @Test
@@ -201,74 +251,79 @@ public class FingerprintEnrollIntroViewModelTest {
         // FingerprintRepository.isDisabledByAdmin() calls static method inside, we can't mock
         // static method
         final FingerprintRepository fingerprintRepository = mock(FingerprintRepository.class);
-        mViewModel = new FingerprintEnrollIntroViewModel(mApplication, fingerprintRepository);
+        final FingerprintEnrollIntroViewModel viewModel = new FingerprintEnrollIntroViewModel(
+                mApplication, fingerprintRepository, newAllFalseRequest(mApplication),
+                TEST_USER_ID);
 
-        final int userId = 33;
-        mViewModel.setUserId(userId);
+        when(fingerprintRepository.isDisabledByAdmin(mApplication, TEST_USER_ID)).thenReturn(true);
+        assertThat(viewModel.isBiometricUnlockDisabledByAdmin()).isEqualTo(true);
 
-        when(fingerprintRepository.isDisabledByAdmin(mApplication, userId)).thenReturn(true);
-        assertThat(mViewModel.isBiometricUnlockDisabledByAdmin()).isEqualTo(true);
-
-        when(fingerprintRepository.isDisabledByAdmin(mApplication, userId)).thenReturn(false);
-        assertThat(mViewModel.isBiometricUnlockDisabledByAdmin()).isEqualTo(false);
+        when(fingerprintRepository.isDisabledByAdmin(mApplication, TEST_USER_ID)).thenReturn(false);
+        assertThat(viewModel.isBiometricUnlockDisabledByAdmin()).isEqualTo(false);
     }
 
     @Test
     public void testSetHasScrolledToBottom() {
-        mViewModel.setHasScrolledToBottom(true);
-        FingerprintEnrollIntroStatus status = mViewModel.getPageStatusLiveData().getValue();
+        final FingerprintEnrollIntroViewModel viewModel = newFingerprintEnrollIntroViewModel(
+                newFingerprintRepository(mFingerprintManager, TYPE_UDFPS_OPTICAL, 5),
+                newAllFalseRequest(mApplication));
+
+        viewModel.setHasScrolledToBottom(true);
+        FingerprintEnrollIntroStatus status = viewModel.getPageStatusLiveData().getValue();
         assertThat(status.hasScrollToBottom()).isEqualTo(true);
 
-        mViewModel.setHasScrolledToBottom(false);
-        status = mViewModel.getPageStatusLiveData().getValue();
+        viewModel.setHasScrolledToBottom(false);
+        status = viewModel.getPageStatusLiveData().getValue();
         assertThat(status.hasScrollToBottom()).isEqualTo(false);
     }
 
     @Test
     public void testOnNextButtonClick_enrollNext() {
-        final int userId = 46;
-        mViewModel.setUserId(userId);
-        mViewModel.setEnrollmentRequest(newIsSuwRequest(mApplication));
-
         // Set latest status to FINGERPRINT_ENROLLABLE_OK
-        setupFingerprintEnrolledFingerprints(mFingerprintManager, userId, 0);
+        setupFingerprintEnrolledFingerprints(mFingerprintManager, TEST_USER_ID, 0);
         setupSuwMaxFingerprintsEnrollable(mApplication, mResources, 1);
-        mViewModel.onStart(mLifecycleOwner);
-        FingerprintEnrollIntroStatus status = mViewModel.getPageStatusLiveData().getValue();
+
+        final FingerprintEnrollIntroViewModel viewModel = newFingerprintEnrollIntroViewModel(
+                newFingerprintRepository(mFingerprintManager, TYPE_UDFPS_OPTICAL, 5),
+                newIsSuwRequest(mApplication));
+        FingerprintEnrollIntroStatus status = viewModel.getPageStatusLiveData().getValue();
         assertThat(status.getEnrollableStatus()).isEqualTo(FINGERPRINT_ENROLLABLE_OK);
 
         // Perform click on `next`
-        mViewModel.onNextButtonClick(null);
+        viewModel.onNextButtonClick();
 
-        assertThat(mViewModel.getActionLiveData().getValue())
+        assertThat(viewModel.getActionLiveData().getValue())
                 .isEqualTo(FINGERPRINT_ENROLL_INTRO_ACTION_CONTINUE_ENROLL);
     }
 
     @Test
     public void testOnNextButtonClick_doneAndFinish() {
-        final int userId = 46;
-        mViewModel.setUserId(userId);
-        mViewModel.setEnrollmentRequest(newIsSuwRequest(mApplication));
-
         // Set latest status to FINGERPRINT_ENROLLABLE_ERROR_REACH_MAX
-        setupFingerprintEnrolledFingerprints(mFingerprintManager, userId, 1);
+        setupFingerprintEnrolledFingerprints(mFingerprintManager, TEST_USER_ID, 1);
         setupSuwMaxFingerprintsEnrollable(mApplication, mResources, 1);
-        mViewModel.onStart(mLifecycleOwner);
-        FingerprintEnrollIntroStatus status = mViewModel.getPageStatusLiveData().getValue();
+
+        final FingerprintEnrollIntroViewModel viewModel = newFingerprintEnrollIntroViewModel(
+                newFingerprintRepository(mFingerprintManager, TYPE_UDFPS_OPTICAL, 5),
+                newIsSuwRequest(mApplication));
+        FingerprintEnrollIntroStatus status = viewModel.getPageStatusLiveData().getValue();
         assertThat(status.getEnrollableStatus()).isEqualTo(FINGERPRINT_ENROLLABLE_ERROR_REACH_MAX);
 
         // Perform click on `next`
-        mViewModel.onNextButtonClick(null);
+        viewModel.onNextButtonClick();
 
-        assertThat(mViewModel.getActionLiveData().getValue())
+        assertThat(viewModel.getActionLiveData().getValue())
                 .isEqualTo(FINGERPRINT_ENROLL_INTRO_ACTION_DONE_AND_FINISH);
     }
 
     @Test
     public void testOnSkipOrCancelButtonClick() {
-        mViewModel.onSkipOrCancelButtonClick(null);
+        final FingerprintEnrollIntroViewModel viewModel = newFingerprintEnrollIntroViewModel(
+                newFingerprintRepository(mFingerprintManager, TYPE_UDFPS_OPTICAL, 5),
+                newAllFalseRequest(mApplication));
 
-        assertThat(mViewModel.getActionLiveData().getValue())
+        viewModel.onSkipOrCancelButtonClick();
+
+        assertThat(viewModel.getActionLiveData().getValue())
                 .isEqualTo(FINGERPRINT_ENROLL_INTRO_ACTION_SKIP_OR_CANCEL);
     }
 }

@@ -49,7 +49,6 @@ import com.android.settings.network.telephony.gsm.OpenNetworkSelectPagePreferenc
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.wifi.WifiPickerTrackerHelper;
 import com.android.settingslib.core.AbstractPreferenceController;
-import com.android.settingslib.mobile.dataservice.DataServiceUtils;
 import com.android.settingslib.mobile.dataservice.MobileNetworkInfoEntity;
 import com.android.settingslib.mobile.dataservice.SubscriptionInfoEntity;
 import com.android.settingslib.mobile.dataservice.UiccInfoEntity;
@@ -281,11 +280,8 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
 
         final VideoCallingPreferenceController videoCallingPreferenceController =
                 use(VideoCallingPreferenceController.class).init(mSubId);
-        final BackupCallingPreferenceController crossSimCallingPreferenceController =
-                use(BackupCallingPreferenceController.class).init(mSubId);
         use(CallingPreferenceCategoryController.class).setChildren(
-                Arrays.asList(wifiCallingPreferenceController, videoCallingPreferenceController,
-                        crossSimCallingPreferenceController));
+                Arrays.asList(wifiCallingPreferenceController, videoCallingPreferenceController));
         use(Enhanced4gLtePreferenceController.class).init(mSubId)
                 .addListener(videoCallingPreferenceController);
         use(Enhanced4gCallingPreferenceController.class).init(mSubId)
@@ -474,35 +470,32 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
 
     @Override
     public void onAvailableSubInfoChanged(List<SubscriptionInfoEntity> subInfoEntityList) {
-        if (DataServiceUtils.shouldUpdateEntityList(mSubInfoEntityList, subInfoEntityList)) {
+        // Check the current subId is existed or not, if so, finish it.
+        if (!mSubscriptionInfoMap.isEmpty()) {
 
-            // Check the current subId is existed or not, if so, finish it.
-            if (!mSubscriptionInfoMap.isEmpty()) {
-
-                // Check each subInfo and remove it in the map based on the new list.
-                for (SubscriptionInfoEntity entity : subInfoEntityList) {
-                    mSubscriptionInfoMap.remove(Integer.parseInt(entity.subId));
-                }
-
-                Iterator<Integer> iterator = mSubscriptionInfoMap.keySet().iterator();
-                while (iterator.hasNext()) {
-                    if (iterator.next() == mSubId) {
-                        finishFragment();
-                        return;
-                    }
-                }
+            // Check each subInfo and remove it in the map based on the new list.
+            for (SubscriptionInfoEntity entity : subInfoEntityList) {
+                mSubscriptionInfoMap.remove(Integer.parseInt(entity.subId));
             }
 
-            mSubInfoEntityList = subInfoEntityList;
-            mSubInfoEntityList.forEach(entity -> {
-                int subId = Integer.parseInt(entity.subId);
-                mSubscriptionInfoMap.put(subId, entity);
-                if (subId == mSubId) {
-                    mSubscriptionInfoEntity = entity;
-                    onSubscriptionDetailChanged();
+            Iterator<Integer> iterator = mSubscriptionInfoMap.keySet().iterator();
+            while (iterator.hasNext()) {
+                if (iterator.next() == mSubId) {
+                    finishFragment();
+                    return;
                 }
-            });
+            }
         }
+
+        mSubInfoEntityList = subInfoEntityList;
+        mSubInfoEntityList.forEach(entity -> {
+            int subId = Integer.parseInt(entity.subId);
+            mSubscriptionInfoMap.put(subId, entity);
+            if (subId == mSubId) {
+                mSubscriptionInfoEntity = entity;
+                onSubscriptionDetailChanged();
+            }
+        });
     }
 
     @Override

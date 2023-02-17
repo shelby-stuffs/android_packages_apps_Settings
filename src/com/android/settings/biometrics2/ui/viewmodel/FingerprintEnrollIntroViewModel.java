@@ -22,14 +22,10 @@ import static com.android.settings.biometrics2.ui.model.FingerprintEnrollIntroSt
 
 import android.annotation.IntDef;
 import android.app.Application;
-import android.os.UserHandle;
 import android.util.Log;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.DefaultLifecycleObserver;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -44,8 +40,7 @@ import java.lang.annotation.RetentionPolicy;
 /**
  * Fingerprint intro onboarding page view model implementation
  */
-public class FingerprintEnrollIntroViewModel extends AndroidViewModel
-        implements DefaultLifecycleObserver {
+public class FingerprintEnrollIntroViewModel extends AndroidViewModel {
 
     private static final String TAG = "FingerprintEnrollIntroViewModel";
     private static final boolean HAS_SCROLLED_TO_BOTTOM_DEFAULT = false;
@@ -83,13 +78,16 @@ public class FingerprintEnrollIntroViewModel extends AndroidViewModel
     private final MediatorLiveData<FingerprintEnrollIntroStatus> mPageStatusLiveData =
             new MediatorLiveData<>();
     private final MutableLiveData<Integer> mActionLiveData = new MutableLiveData<>();
-    private int mUserId = UserHandle.myUserId();
-    private EnrollmentRequest mEnrollmentRequest = null;
+    private final int mUserId;
+    @NonNull private final EnrollmentRequest mRequest;
 
     public FingerprintEnrollIntroViewModel(@NonNull Application application,
-            @NonNull FingerprintRepository fingerprintRepository) {
+            @NonNull FingerprintRepository fingerprintRepository,
+            @NonNull EnrollmentRequest request, int userId) {
         super(application);
         mFingerprintRepository = fingerprintRepository;
+        mRequest = request;
+        mUserId = userId;
 
         mPageStatusLiveData.addSource(
                 mEnrollableStatusLiveData,
@@ -109,27 +107,21 @@ public class FingerprintEnrollIntroViewModel extends AndroidViewModel
                             enrollableValue != null ? enrollableValue : ENROLLABLE_STATUS_DEFAULT);
                     mPageStatusLiveData.setValue(status);
                 });
-    }
 
-    public void setUserId(int userId) {
-        mUserId = userId;
-    }
-
-    public void setEnrollmentRequest(@NonNull EnrollmentRequest enrollmentRequest) {
-        mEnrollmentRequest = enrollmentRequest;
+        updateEnrollableStatus();
     }
 
     /**
      * Get enrollment request
      */
-    public EnrollmentRequest getEnrollmentRequest() {
-        return mEnrollmentRequest;
+    public EnrollmentRequest getRequest() {
+        return mRequest;
     }
 
     private void updateEnrollableStatus() {
         final int num = mFingerprintRepository.getNumOfEnrolledFingerprintsSize(mUserId);
         final int max =
-                mEnrollmentRequest.isSuw() && !mEnrollmentRequest.isAfterSuwOrSuwSuggestedAction()
+                mRequest.isSuw() && !mRequest.isAfterSuwOrSuwSuggestedAction()
                 ? mFingerprintRepository.getMaxFingerprintsInSuw(getApplication().getResources())
                 : mFingerprintRepository.getMaxFingerprints();
         mEnrollableStatusLiveData.postValue(num >= max
@@ -189,7 +181,7 @@ public class FingerprintEnrollIntroViewModel extends AndroidViewModel
     /**
      * User clicks next button
      */
-    public void onNextButtonClick(View ignoredView) {
+    public void onNextButtonClick() {
         final Integer status = mEnrollableStatusLiveData.getValue();
         switch (status != null ? status : ENROLLABLE_STATUS_DEFAULT) {
             case FINGERPRINT_ENROLLABLE_ERROR_REACH_MAX:
@@ -206,13 +198,7 @@ public class FingerprintEnrollIntroViewModel extends AndroidViewModel
     /**
      * User clicks skip/cancel button
      */
-    public void onSkipOrCancelButtonClick(View ignoredView) {
+    public void onSkipOrCancelButtonClick() {
         mActionLiveData.postValue(FINGERPRINT_ENROLL_INTRO_ACTION_SKIP_OR_CANCEL);
     }
-
-    @Override
-    public void onStart(@NonNull LifecycleOwner owner) {
-        updateEnrollableStatus();
-    }
-
 }

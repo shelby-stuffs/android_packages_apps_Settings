@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The Android Open Source Project
+ * Copyright (C) 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,7 @@ import android.annotation.NonNull;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.os.UserHandle;
 
 import androidx.annotation.Nullable;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -145,7 +146,14 @@ public class CredentialModelTest {
     }
 
     @Test
-    public void sameValueFromBundle() {
+    public void testNullBundle() {
+        final CredentialModel credentialModel = new CredentialModel(null, mClock);
+
+        assertThat(credentialModel.getUserId()).isEqualTo(UserHandle.myUserId());
+    }
+
+    @Test
+    public void testSameValueFromBundle() {
         final Bundle bundle = newCredentialModelIntentExtras(1234, 6677L, 1,
                 new byte[] { 33, 44, 55 }, 987654321);
 
@@ -156,7 +164,7 @@ public class CredentialModelTest {
     }
 
     @Test
-    public void sameValueFromBundle_nullToken() {
+    public void testSameValueFromBundle_nullToken() {
         final Bundle bundle = newCredentialModelIntentExtras(22, 33L, 1, null, 21L);
 
         final CredentialModel model1 = new CredentialModel(bundle, mClock);

@@ -64,7 +64,12 @@ public class PowerUsageFeatureProviderImplTest {
 
     @Test
     public void testIsBatteryUsageEnabled_returnFalse() {
-        assertThat(mPowerFeatureProvider.isBatteryUsageEnabled(mContext)).isTrue();
+        assertThat(mPowerFeatureProvider.isBatteryUsageEnabled()).isTrue();
+    }
+
+    @Test
+    public void testGetBatteryUsageListConsumePowerThreshold_return0() {
+        assertThat(mPowerFeatureProvider.getBatteryUsageListConsumePowerThreshold()).isEqualTo(0.0);
     }
 
     @Test
