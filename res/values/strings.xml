@@ -147,7 +147,7 @@
     <string name="bluetooth_call_title">Audio during calls</string>
     <!-- Bluetooth audio output settings. Title of the option managing media audio path. [CHAR LIMIT=30] -->
     <string name="bluetooth_media_title">Media</string>
-    <!-- Bluetooth audio output settings. Title of the option managing system sounds related audio path. [CHAR LIMIT=30] -->
+    <!-- Bluetooth audio output settings. Title of the option managing system sounds related audio path. [CHAR LIMIT=60] -->
     <string name="bluetooth_system_sounds_title">Notifications and other system sounds</string>
     <!-- Description for text in accessibility hearing aids footer. [CHAR LIMIT=NONE] -->
     <string name="bluetooth_audio_routing_footer_summary">By default, audio output is determined by individual apps</string>
@@ -5272,7 +5272,7 @@
     <!-- Title for usage time that full charge lasts. [CHAR LIMIT=60] -->
     <string name="battery_full_charge_last">Full charge lasts about</string>
     <!-- Description for text in battery footer. [CHAR LIMIT=NONE] -->
-    <string name="battery_footer_summary">Battery usage data is approximate and can change based on usage.</string>
+    <string name="battery_footer_summary">Remaining battery life is approximate and can change based on usage</string>
     <!-- Title for battery usage amount by this app. [CHAR LIMIT=80] -->
     <string name="battery_detail_power_usage">Battery usage</string>
 
@@ -7611,8 +7611,8 @@
     <!-- Configure lock screen: Title for the option of unlocking directly to home. [CHAR LIMIT=30] -->
     <string name="lockscreen_bypass_title">Skip lock screen</string>
 
-    <!-- Configure lock screen: Summary for the option of unlocking directly to home. [CHAR LIMIT=100] -->
-    <string name="lockscreen_bypass_summary">After unlocking, go directly to last used screen</string>
+    <!-- Configure lock screen: Summary for the option of unlocking directly to home. [CHAR LIMIT=150] -->
+    <string name="lockscreen_bypass_summary">After unlocking, go directly to last used screen. Notifications won’t show on lock screen. Swipe down from top to see them.</string>
 
     <!-- Configure lock screen: Search keywords for the option of unlocking directly to home. [CHAR LIMIT=100] -->
     <string name="keywords_lockscreen_bypass">Lock screen, Lockscreen, Skip, Bypass</string>
