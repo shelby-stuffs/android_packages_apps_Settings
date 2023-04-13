@@ -43,6 +43,7 @@ import com.android.settings.sim.SwitchToEsimConfirmDialogActivity;
 
 import com.google.common.collect.ImmutableList;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -99,9 +100,6 @@ public class SimSlotChangeHandler {
 
         int lastRemovableSlotState = getLastRemovableSimSlotState(mContext);
         int currentRemovableSlotState = removableSlotInfo.getCardStateInfo();
-        Log.i(TAG,
-                "lastRemovableSlotState: " + lastRemovableSlotState + ",currentRemovableSlotState: "
-                        + currentRemovableSlotState);
         boolean isRemovableSimInserted =
                 lastRemovableSlotState == UiccSlotInfo.CARD_STATE_INFO_ABSENT
                         && currentRemovableSlotState == UiccSlotInfo.CARD_STATE_INFO_PRESENT;
@@ -261,7 +259,7 @@ public class SimSlotChangeHandler {
         }
 
         List<SubscriptionInfo> subscriptionInfos = getAvailableRemovableSubscription();
-        if (subscriptionInfos.isEmpty()) {
+        if (subscriptionInfos == null || subscriptionInfos.get(0) == null) {
             Log.e(TAG, "Unable to find the removable subscriptionInfo. Do nothing.");
             return;
         }
@@ -277,7 +275,6 @@ public class SimSlotChangeHandler {
     private void setRemovableSimSlotState(Context context, int state) {
         final SharedPreferences prefs = context.getSharedPreferences(EUICC_PREFS, MODE_PRIVATE);
         prefs.edit().putInt(KEY_REMOVABLE_SLOT_STATE, state).apply();
-        Log.d(TAG, "setRemovableSimSlotState: " + state);
     }
 
     private int getSuwRemovableSlotAction(Context context) {
@@ -335,14 +332,13 @@ public class SimSlotChangeHandler {
     }
 
     protected List<SubscriptionInfo> getAvailableRemovableSubscription() {
-        List<SubscriptionInfo> removableSubscriptions =
-                SubscriptionUtil.getAvailableSubscriptions(mContext);
-        return ImmutableList.copyOf(
-                removableSubscriptions.stream()
-                        // ToDo: This condition is for psim only. If device supports removable
-                        //  esim, it needs an new condition.
-                        .filter(sub -> !sub.isEmbedded())
-                        .collect(Collectors.toList()));
+        List<SubscriptionInfo> subList = new ArrayList<>();
+        for (SubscriptionInfo info : SubscriptionUtil.getAvailableSubscriptions(mContext)) {
+            if (!info.isEmbedded()) {
+                subList.add(info);
+            }
+        }
+        return subList;
     }
 
     private void startChooseSimActivity(boolean psimInserted) {

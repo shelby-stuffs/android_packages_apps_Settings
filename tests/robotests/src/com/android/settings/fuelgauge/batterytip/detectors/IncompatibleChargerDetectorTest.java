@@ -25,6 +25,7 @@ import android.hardware.usb.UsbManager;
 import android.hardware.usb.UsbPort;
 import android.hardware.usb.UsbPortStatus;
 
+import com.android.settings.fuelgauge.BatteryInfo;
 import com.android.settings.fuelgauge.batterytip.tips.BatteryTip;
 
 import org.junit.Before;
@@ -41,6 +42,7 @@ import java.util.List;
 @RunWith(RobolectricTestRunner.class)
 public final class IncompatibleChargerDetectorTest {
 
+    @Mock private BatteryInfo mBatteryInfo;
     @Mock private UsbPort mUsbPort;
     @Mock private UsbManager mUsbManager;
     @Mock private UsbPortStatus mUsbPortStatus;
@@ -53,11 +55,14 @@ public final class IncompatibleChargerDetectorTest {
         MockitoAnnotations.initMocks(this);
         mContext = spy(RuntimeEnvironment.application);
         when(mContext.getSystemService(UsbManager.class)).thenReturn(mUsbManager);
-        mIncompatibleChargerDetector = new IncompatibleChargerDetector(mContext);
+        mIncompatibleChargerDetector =
+                new IncompatibleChargerDetector(mContext, mBatteryInfo);
     }
 
     @Test
-    public void detect_withoutIncompatibleCharger_shouldNotShowTip() {
+    public void detect_unplugDevice_shouldNotShowTip() {
+        mBatteryInfo.pluggedStatus = 0;
+
         BatteryTip batteryTip = mIncompatibleChargerDetector.detect();
 
         assertThat(batteryTip.isVisible()).isFalse();
@@ -65,7 +70,18 @@ public final class IncompatibleChargerDetectorTest {
     }
 
     @Test
-    public void detect_withIncompatibleCharger_showTip() {
+    public void detect_plugDeviceWithoutIncompatibleCharger_shouldNotShowTip() {
+        mBatteryInfo.pluggedStatus = 1;
+
+        BatteryTip batteryTip = mIncompatibleChargerDetector.detect();
+
+        assertThat(batteryTip.isVisible()).isFalse();
+        assertThat(batteryTip.getState()).isEqualTo(BatteryTip.StateType.INVISIBLE);
+    }
+
+    @Test
+    public void detect_plugDeviceWithIncompatibleCharger_showTip() {
+        mBatteryInfo.pluggedStatus = 1;
         setupIncompatibleCharging();
 
         BatteryTip batteryTip = mIncompatibleChargerDetector.detect();

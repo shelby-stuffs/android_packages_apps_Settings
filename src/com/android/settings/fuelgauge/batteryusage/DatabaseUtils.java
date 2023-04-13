@@ -110,7 +110,13 @@ public final class DatabaseUtils {
 
     // For testing only.
     @VisibleForTesting
-    static Supplier<Cursor> sFakeSupplier;
+    static Supplier<Cursor> sFakeBatteryStateSupplier;
+    @VisibleForTesting
+    static Supplier<Cursor> sFakeAppUsageEventSupplier;
+    @VisibleForTesting
+    static Supplier<Cursor> sFakeAppUsageLatestTimestampSupplier;
+    @VisibleForTesting
+    static Supplier<Cursor> sFakeBatteryEventSupplier;
 
     private DatabaseUtils() {
     }
@@ -334,7 +340,7 @@ public final class DatabaseUtils {
             resolver.insert(BATTERY_EVENT_URI, contentValues);
             Log.d(TAG, "insert() battery event data into database: " + batteryEvent.toString());
         } catch (Exception e) {
-            Log.e(TAG, "insert() battery event data into database error:", e);
+            Log.e(TAG, "insert() battery event data into database error:\n" + e);
         }
         Log.d(TAG, String.format("sendBatteryEventData() in %d/ms",
                 (System.currentTimeMillis() - startTime)));
@@ -481,8 +487,8 @@ public final class DatabaseUtils {
             Context context, final Uri appUsageLatestTimestampUri) {
         // We have already make sure the context here is with profile parent's user identity. Don't
         // need to check whether current user is work profile.
-        try (Cursor cursor = sFakeSupplier != null
-                ? sFakeSupplier.get()
+        try (Cursor cursor = sFakeAppUsageLatestTimestampSupplier != null
+                ? sFakeAppUsageLatestTimestampSupplier.get()
                 : context.getContentResolver().query(
                         appUsageLatestTimestampUri, null, null, null)) {
             if (cursor == null || cursor.getCount() == 0) {
@@ -508,8 +514,8 @@ public final class DatabaseUtils {
         if (context == null) {
             return appUsageEventList;
         }
-        try (Cursor cursor = sFakeSupplier != null
-                ? sFakeSupplier.get()
+        try (Cursor cursor = sFakeAppUsageEventSupplier != null
+                ? sFakeAppUsageEventSupplier.get()
                 : context.getContentResolver().query(appUsageEventUri, null, null, null)) {
             if (cursor == null || cursor.getCount() == 0) {
                 return appUsageEventList;
@@ -534,8 +540,8 @@ public final class DatabaseUtils {
         if (context == null) {
             return batteryEventList;
         }
-        try (Cursor cursor = sFakeSupplier != null
-                ? sFakeSupplier.get()
+        try (Cursor cursor = sFakeBatteryEventSupplier != null
+                ? sFakeBatteryEventSupplier.get()
                 : context.getContentResolver().query(batteryEventUri, null, null, null)) {
             if (cursor == null || cursor.getCount() == 0) {
                 return batteryEventList;
@@ -560,7 +566,7 @@ public final class DatabaseUtils {
             return null;
         }
         final Map<Long, Map<String, BatteryHistEntry>> resultMap = new HashMap();
-        try (Cursor cursor = sFakeSupplier != null ? sFakeSupplier.get() :
+        try (Cursor cursor = sFakeBatteryStateSupplier != null ? sFakeBatteryStateSupplier.get() :
                      context.getContentResolver().query(batteryStateUri, null, null, null)) {
             if (cursor == null || cursor.getCount() == 0) {
                 return resultMap;

@@ -33,10 +33,8 @@ import com.android.settings.applications.AppLocaleUtil
 import com.android.settings.applications.appinfo.AppLocaleDetails
 import com.android.settings.localepicker.AppLocalePickerActivity
 import com.android.settingslib.spa.framework.util.filterItem
-import com.android.settingslib.spaprivileged.framework.common.asUser
 import com.android.settingslib.spaprivileged.model.app.AppListModel
 import com.android.settingslib.spaprivileged.model.app.AppRecord
-import com.android.settingslib.spaprivileged.model.app.userHandle
 import com.android.settingslib.spaprivileged.template.app.AppListItem
 import com.android.settingslib.spaprivileged.template.app.AppListItemModel
 import kotlinx.coroutines.Dispatchers
@@ -56,18 +54,17 @@ class AppLanguagesListModel(private val context: Context) : AppListModel<AppLang
 
     override fun transform(userIdFlow: Flow<Int>, appListFlow: Flow<List<ApplicationInfo>>) =
         userIdFlow.map { userId ->
-            userId to packageManager.queryIntentActivitiesAsUser(
+            packageManager.queryIntentActivitiesAsUser(
                 AppLocaleUtil.LAUNCHER_ENTRY_INTENT,
                 PackageManager.ResolveInfoFlags.of(PackageManager.GET_META_DATA.toLong()),
                 userId,
             )
-        }.combine(appListFlow) { (userId, resolveInfos), appList ->
-            val userContext = context.asUser(UserHandle.of(userId))
+        }.combine(appListFlow) { resolveInfos, appList ->
             appList.map { app ->
                 AppLanguagesRecord(
                     app = app,
                     isAppLocaleSupported = AppLocaleUtil.canDisplayLocaleUi(
-                        userContext, app, resolveInfos
+                        context, app, resolveInfos
                     ),
                 )
             }
@@ -89,7 +86,9 @@ class AppLanguagesListModel(private val context: Context) : AppListModel<AppLang
         }.collectAsStateWithLifecycle(initialValue = stringResource(R.string.summary_placeholder))
 
     private fun getSummary(app: ApplicationInfo): String =
-        AppLocaleDetails.getSummary(context, app).toString()
+        AppLocaleDetails.getAppDefaultLocale(context, app.packageName)?.let {
+            AppLocaleDetails.getSummary(context, app).toString()
+        } ?: context.getString(R.string.preference_of_system_locale_summary)
 
     @Composable
     override fun AppListItemModel<AppLanguagesRecord>.AppItem() {
@@ -97,7 +96,8 @@ class AppLanguagesListModel(private val context: Context) : AppListModel<AppLang
             val intent = Intent(context, AppLocalePickerActivity::class.java).apply {
                 data = Uri.parse("package:${record.app.packageName}")
             }
-            context.startActivityAsUser(intent, record.app.userHandle)
+            val userHandle : UserHandle = UserHandle.getUserHandleForUid(record.app.uid)
+            context.startActivityAsUser(intent, userHandle)
         }
     }
 }

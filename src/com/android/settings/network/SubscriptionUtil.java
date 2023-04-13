@@ -438,7 +438,6 @@ public class SubscriptionUtil {
                 }
 
             }
-            Log.d(TAG, "getSelectableSubscriptionInfoList: " + selectableList);
             return selectableList;
         }
     }

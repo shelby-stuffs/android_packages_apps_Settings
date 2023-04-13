@@ -47,14 +47,13 @@ public class FaceEnrollParentalConsent extends FaceEnrollIntroduction {
             R.string.security_settings_face_enroll_introduction_control_consent_title,
             R.string.security_settings_face_enroll_introduction_control_consent_message,
             R.string.security_settings_face_enroll_introduction_consent_message_0,
-            R.string.security_settings_face_enroll_introduction_consent_message_0_class3,
             R.string.security_settings_face_enroll_introduction_info_consent_less_secure
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        updateDescriptionText();
+        setDescriptionText(R.string.security_settings_face_enroll_introduction_consent_message_0);
     }
 
     @Override
@@ -144,17 +143,5 @@ public class FaceEnrollParentalConsent extends FaceEnrollIntroduction {
     @Override
     public int getMetricsCategory() {
         return SettingsEnums.FACE_PARENTAL_CONSENT;
-    }
-
-    @Override
-    protected void updateDescriptionText() {
-        super.updateDescriptionText();
-        if (isFaceStrong()) {
-            setDescriptionText(getString(
-                    R.string.security_settings_face_enroll_introduction_consent_message_0_class3));
-        } else {
-            setDescriptionText(
-                    R.string.security_settings_face_enroll_introduction_consent_message_0);
-        }
     }
 }

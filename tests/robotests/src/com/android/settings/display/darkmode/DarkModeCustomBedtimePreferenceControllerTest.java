@@ -77,7 +77,7 @@ public class DarkModeCustomBedtimePreferenceControllerTest {
         when(mContext.getSystemService(UiModeManager.class)).thenReturn(mService);
 
         when(mContext.getResources()).thenReturn(mResources);
-        when(mResources.getString(com.android.internal.R.string.config_systemWellbeing))
+        when(mResources.getString(com.android.internal.R.string.config_defaultWellbeingPackage))
                 .thenReturn("wellbeing");
 
         when(mScreen.findPreference(anyString())).thenReturn(mFooterPreference);
