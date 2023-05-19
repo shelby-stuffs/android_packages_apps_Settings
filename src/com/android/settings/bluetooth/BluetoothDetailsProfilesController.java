@@ -16,7 +16,6 @@
 
 package com.android.settings.bluetooth;
 
-import android.bluetooth.BluetoothCsipSetCoordinator;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothProfile;
 import android.content.Context;
@@ -89,7 +88,7 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
         mManager = manager;
         mProfileManager = mManager.getProfileManager();
         mCachedDevice = device;
-        mAllOfCachedDevices = getAllOfCachedBluetoothDevices();
+        mAllOfCachedDevices = Utils.getAllOfCachedBluetoothDevices(mContext, mCachedDevice);
         lifecycle.addObserver(this);
     }
 
@@ -319,22 +318,8 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
         return result;
     }
 
-    private List<CachedBluetoothDevice> getAllOfCachedBluetoothDevices() {
-        List<CachedBluetoothDevice> cachedBluetoothDevices = new ArrayList<>();
-        if (mCachedDevice == null) {
-            return cachedBluetoothDevices;
-        }
-        cachedBluetoothDevices.add(mCachedDevice);
-        if (mCachedDevice.getGroupId() != BluetoothCsipSetCoordinator.GROUP_ID_INVALID) {
-            for (CachedBluetoothDevice member : mCachedDevice.getMemberDevice()) {
-                cachedBluetoothDevices.add(member);
-            }
-        }
-        return cachedBluetoothDevices;
-    }
-
     /**
-     * Disable the Le Audio profile, VCP, and CSIP for each of the Le Audio devices.
+     * Disable the Le Audio profile for each of the Le Audio devices.
      *
      * @param profile the LeAudio profile
      */
@@ -343,20 +328,12 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
             Log.e(TAG, "There is no the LE profile or no device in mProfileDeviceMap. Do nothing.");
             return;
         }
-        LocalBluetoothProfile vcp = mProfileManager.getVolumeControlProfile();
-        LocalBluetoothProfile csip = mProfileManager.getCsipSetCoordinatorProfile();
 
         for (CachedBluetoothDevice leAudioDevice : mProfileDeviceMap.get(profile.toString())) {
             Log.d(TAG,
                     "device:" + leAudioDevice.getDevice().getAnonymizedAddress()
                             + "disable LE profile");
             profile.setEnabled(leAudioDevice.getDevice(), false);
-            if (vcp != null) {
-                vcp.setEnabled(leAudioDevice.getDevice(), false);
-            }
-            if (csip != null) {
-                csip.setEnabled(leAudioDevice.getDevice(), false);
-            }
         }
 
         if (!SystemProperties.getBoolean(ENABLE_DUAL_MODE_AUDIO, false)) {
@@ -367,7 +344,7 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
     }
 
     /**
-     * Enable the Le Audio profile, VCP, and CSIP for each of the Le Audio devices.
+     * Enable the Le Audio profile for each of the Le Audio devices.
      *
      * @param profile the LeAudio profile
      */
@@ -383,19 +360,11 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
             disableProfileBeforeUserEnablesLeAudio(mProfileManager.getHeadsetProfile());
         }
 
-        LocalBluetoothProfile vcp = mProfileManager.getVolumeControlProfile();
-        LocalBluetoothProfile csip = mProfileManager.getCsipSetCoordinatorProfile();
         for (CachedBluetoothDevice leAudioDevice : mProfileDeviceMap.get(profile.toString())) {
             Log.d(TAG,
                     "device:" + leAudioDevice.getDevice().getAnonymizedAddress()
                             + "enable LE profile");
             profile.setEnabled(leAudioDevice.getDevice(), true);
-            if (vcp != null) {
-                vcp.setEnabled(leAudioDevice.getDevice(), true);
-            }
-            if (csip != null) {
-                csip.setEnabled(leAudioDevice.getDevice(), true);
-            }
         }
     }
 
@@ -480,7 +449,7 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
         for (CachedBluetoothDevice item : mAllOfCachedDevices) {
             item.unregisterCallback(this);
         }
-        mAllOfCachedDevices = getAllOfCachedBluetoothDevices();
+        mAllOfCachedDevices = Utils.getAllOfCachedBluetoothDevices(mContext, mCachedDevice);
         for (CachedBluetoothDevice item : mAllOfCachedDevices) {
             item.registerCallback(this);
         }
