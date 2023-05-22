@@ -207,7 +207,7 @@ public class BluetoothDeviceDetailsFragment extends RestrictedDashboardFragment 
                 ? featureProvider.getBluetoothDeviceSettingsUri(mCachedDevice.getDevice())
                 : null);
 
-        use(BADeviceVolumeController.class).init(this, mManager, mCachedDevice);
+
     }
 
     private void updateExtraControlUri(int viewWidth) {
