@@ -2537,8 +2537,17 @@
 
         <activity android:name=".biometrics2.ui.view.FingerprintEnrollmentActivity"
             android:exported="true"
+            android:theme="@style/GlifTheme.Light" />
+
+        <activity android:name=".biometrics2.ui.view.FingerprintEnrollmentActivity$InternalActivity"
+            android:exported="false"
+            android:theme="@style/GlifTheme.Light"
+            android:taskAffinity="com.android.settings.root" />
+
+        <activity android:name=".biometrics2.ui.view.FingerprintEnrollmentActivity$SetupActivity"
+            android:exported="true"
             android:permission="android.permission.MANAGE_FINGERPRINT"
-            android:theme="@style/GlifTheme.Light"/>
+            android:theme="@style/GlifTheme.Light" />
 
         <activity android:name=".biometrics.fingerprint.FingerprintEnrollIntroductionInternal"
                   android:exported="false"
@@ -3728,7 +3737,7 @@
         <!-- Show channel-level notification settings (channel passed in as extras) -->
         <activity android:name=".notification.app.ChannelPanelActivity"
                   android:label="@string/notification_channel_title"
-                  android:theme="@style/Theme.Panel.Material"
+                  android:theme="@style/Theme.Panel"
                   android:excludeFromRecents="true"
                   android:configChanges="keyboardHidden|screenSize"
                   android:exported="true">
