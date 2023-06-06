@@ -14,30 +14,21 @@
  * limitations under the License.
  */
 
-package com.android.settings.inputmethod;
+package com.android.settings.network.telephony;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-
-import androidx.preference.PreferenceScreen;
 
 /**
- * Provider implementation for keyboard settings related features.
+ * {@link TelephonyBasePreferenceController} used to add vendor preference controllers in {@link
+ * MobileNetworkSettings}.
  */
-public class KeyboardSettingsFeatureProviderImpl implements KeyboardSettingsFeatureProvider {
-
-    @Override
-    public boolean supportsFirmwareUpdate() {
-        return false;
+public abstract class AbstractSubscriptionPreferenceController
+        extends TelephonyBasePreferenceController {
+    public AbstractSubscriptionPreferenceController(Context context, String key) {
+        super(context, key);
     }
 
-    @Override
-    public boolean addFirmwareUpdateCategory(Context context, PreferenceScreen screen) {
-        return false;
+    public void init(int subId) {
+        mSubId = subId;
     }
-
-    @Override
-    public Drawable getActionKeyIcon(Context context) {
-        return null;
-    };
 }
