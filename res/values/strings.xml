@@ -586,8 +586,8 @@
     <string name="location_settings_summary_location_off">Off</string>
     <!-- Summary for Location settings when location is on, explaining how many apps have location permission [CHAR LIMIT=NONE]-->
     <string name="location_settings_summary_location_on">{count, plural,
-      =1      {On - # app has access to location}
-      other   {On - # apps have access to location}
+      =1      {On / # app has access to location}
+      other   {On / # apps have access to location}
     }</string>
     <!-- Location settings, loading the number of apps which have location permission [CHAR LIMIT=30] -->
     <string name="location_settings_loading_app_permission_stats">Loading\u2026</string>
@@ -10546,8 +10546,6 @@
     <string name="platform_compat_default_disabled_title">Default disabled changes</string>
     <!-- Title for target SDK gated app compat changes category (do not translate 'targetSdkVersion') [CHAR LIMIT=50] -->
     <string name="platform_compat_target_sdk_title">Enabled for targetSdkVersion &gt;= <xliff:g id="number" example="29">%d</xliff:g></string>
-    <!-- Title for the dialog shown when no debuggable apps are available [CHAR LIMIT=30] -->
-    <string name="platform_compat_dialog_title_no_apps">No apps available</string>
     <!-- Explanatory text shown when no debuggable apps are available [CHAR LIMIT=NONE] -->
     <string name="platform_compat_dialog_text_no_apps">App compatibility changes can only be modified for debuggable apps. Install a debuggable app and try again.</string>
 
