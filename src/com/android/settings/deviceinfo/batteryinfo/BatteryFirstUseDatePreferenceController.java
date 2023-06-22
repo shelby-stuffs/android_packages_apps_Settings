@@ -45,7 +45,7 @@ public class BatteryFirstUseDatePreferenceController extends BasePreferenceContr
 
     @Override
     public int getAvailabilityStatus() {
-        return mBatterySettingsFeatureProvider.isFirstUseDateAvailable(mContext, getFirstUseDate())
+        return mBatterySettingsFeatureProvider.isFirstUseDateAvailable(getFirstUseDate())
                 ? AVAILABLE : CONDITIONALLY_UNAVAILABLE;
     }
 

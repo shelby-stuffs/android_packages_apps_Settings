@@ -45,8 +45,7 @@ public class BatteryManufactureDatePreferenceController extends BasePreferenceCo
 
     @Override
     public int getAvailabilityStatus() {
-        return mBatterySettingsFeatureProvider.isManufactureDateAvailable(mContext,
-                getManufactureDate())
+        return mBatterySettingsFeatureProvider.isManufactureDateAvailable(getManufactureDate())
                 ? AVAILABLE : CONDITIONALLY_UNAVAILABLE;
     }
 
