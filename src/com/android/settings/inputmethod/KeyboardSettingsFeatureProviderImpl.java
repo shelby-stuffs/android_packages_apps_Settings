@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,23 +14,24 @@
  * limitations under the License.
  */
 
-
-package com.android.settings.applications.specialaccess;
+package com.android.settings.inputmethod;
 
 import android.content.Context;
 
-import com.android.settings.R;
-import com.android.settings.core.BasePreferenceController;
+import androidx.preference.PreferenceScreen;
 
-public class DataSaverController extends BasePreferenceController {
+/**
+ * Provider implementation for keyboard settings related features.
+ */
+public class KeyboardSettingsFeatureProviderImpl implements KeyboardSettingsFeatureProvider {
 
-    public DataSaverController(Context context, String key) {
-        super(context, key);
+    @Override
+    public boolean supportsFirmwareUpdate() {
+        return false;
     }
 
-    @AvailabilityStatus
-    public int getAvailabilityStatus() {
-        return mContext.getResources().getBoolean(R.bool.config_show_data_saver)
-                ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
+    @Override
+    public boolean addFirmwareUpdateCategory(Context context, PreferenceScreen screen) {
+        return false;
     }
 }

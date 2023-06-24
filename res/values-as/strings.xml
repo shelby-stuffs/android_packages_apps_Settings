@@ -120,7 +120,8 @@
     <string name="connected_device_bluetooth_turned_on_toast" msgid="144664089794199928">"ব্লুটুথ অন কৰা হ’ল"</string>
     <string name="previous_connected_see_all" msgid="7759413145713251328">"আটাইবোৰ চাওক"</string>
     <string name="stylus_device_details_title" msgid="7618295136015480864">"ষ্টাইলাছ"</string>
-    <string name="stylus_default_notes_app" msgid="3896158797687806941">"ডিফ’ল্ট টোকা লোৱা এপ্‌"</string>
+    <string name="stylus_default_notes_app" msgid="4165657465911764628">"টেইল বুটাম টিপা"</string>
+    <string name="stylus_default_notes_summary_work" msgid="4554643411627934223">"<xliff:g id="APP_NAME">%s</xliff:g> (কৰ্মস্থানৰ প্ৰ’ফাইল)"</string>
     <string name="stylus_textfield_handwriting" msgid="2363579035338976327">"পাঠৰ ক্ষেত্ৰসমূহত লিখক"</string>
     <string name="stylus_ignore_button" msgid="7734540973145241391">"ষ্টাইলাছ বুটামত দিয়া আটাইবোৰ টিপা উপেক্ষা কৰক"</string>
     <string name="stylus_connected_devices_title" msgid="2823967577941359812">"ষ্টাইলাছ"</string>
@@ -167,6 +168,8 @@
     <string name="desc_notice_of_language_picker" msgid="3449290526457925447">"প্ৰতিটো এপৰ বাবে এটা ভাষা বাছনি কৰিবলৈ এপৰ ভাষাৰ ছেটিঙলৈ যাওক।"</string>
     <string name="desc_locale_helper_footer_general" msgid="6112153921151780303">"এপৰ ভাষাসমূহৰ বিষয়ে অধিক জানক"</string>
     <string name="title_change_system_locale" msgid="8589844586256566951">"ছিষ্টেমৰ ভাষা %sলৈ সলনি কৰিবনে?"</string>
+    <string name="title_system_locale_addition" msgid="8218683660751479466">"অগ্ৰাধিকাৰপ্ৰাপ্ত ভাষাসমূহত %s যোগ দিবনে?"</string>
+    <string name="desc_system_locale_addition" msgid="3409917362651596070">"এইটোৱে এপ্‌ আৰু ৱেবছাইটসমূক জানিবলৈ দিয়ে যে আপুনিও এই ভাষাটোক অগ্ৰাধিকাৰ দিয়ে।"</string>
     <string name="desc_notice_device_locale_settings_change" msgid="8311132485850714160">"আপোনাৰ ডিভাইচৰ ছেটিং আৰু আঞ্চলিক অগ্ৰাধিকাৰসমূহ সলনি হ’ব।"</string>
     <string name="button_label_confirmation_of_system_locale_change" msgid="5593798559604894733">"সলনি কৰক"</string>
     <string name="title_unavailable_locale" msgid="2628898110416542386">"%s উপলব্ধ নহয়"</string>
@@ -1124,6 +1127,7 @@
     <string name="kernel_version" msgid="3513538109381366881">"কাৰ্ণেলৰ সংস্কৰণ"</string>
     <string name="build_number" msgid="9009733242117579826">"বিল্ড নম্বৰ"</string>
     <string name="module_version" msgid="1787518340082046658">"Google Play ছিষ্টেম আপডে’ট"</string>
+    <string name="battery_info" msgid="7873528123969546728">"বেটাৰীৰ তথ্য"</string>
     <string name="device_info_not_available" msgid="4804474466616712326">"উপলব্ধ নহয়"</string>
     <string name="storage_settings" msgid="7472188817781592677">"ষ্ট’ৰেজ"</string>
     <string name="storage_settings_for_app" msgid="229425418984637483">"ষ্ট’ৰেজ আৰু কেশ্ব"</string>
@@ -1156,6 +1160,11 @@
     <string name="status_bt_address" msgid="6919660304578476547">"ব্লুটুথৰ ঠিকনা"</string>
     <string name="status_serial_number" msgid="9060064164331466789">"ক্ৰমিক নম্বৰ"</string>
     <string name="status_up_time" msgid="1274778533719495438">"চলি থকা সময়"</string>
+    <string name="battery_manufacture_date" msgid="7139426520156833987">"নিৰ্মাণ কৰাৰ তাৰিখ"</string>
+    <string name="battery_first_use_date" msgid="3157207331722711317">"প্ৰথম ব্যৱহাৰ কৰাৰ তাৰিখ"</string>
+    <string name="battery_cycle_count" msgid="2912949283386571900">"চক্ৰৰ গণনা"</string>
+    <!-- no translation found for battery_cycle_count_not_available (2426584515665184664) -->
+    <skip />
     <string name="memory_calculating_size" msgid="3898240439798661242">"গণনা কৰি থকা হৈছে…"</string>
     <string name="storage_menu_rename" msgid="8549835371429159336">"নতুন নাম দিয়ক"</string>
     <string name="storage_menu_mount" msgid="4760531872302820569">"সংলগ্ন কৰক"</string>
@@ -1826,7 +1835,6 @@
     <string name="accessibility_magnification_triple_tap_warning_positive_button" msgid="8712304035901450010">"যি হ’লেও অব্যাহত ৰাখক"</string>
     <string name="accessibility_magnification_triple_tap_warning_negative_button" msgid="2028849736366584733">"বাতিল কৰক"</string>
     <string name="accessibility_magnification_service_settings_title" msgid="3531350704632316017">"বিবৰ্ধন কৰাৰ ছেটিং"</string>
-    <string name="accessibility_screen_magnification_gestures_title" msgid="3121714118381882167">"তিনিবাৰ টুকুৰিয়াই বিবৰ্ধন কৰক"</string>
     <string name="accessibility_screen_magnification_navbar_title" msgid="480853328665484528">"শ্বৰ্টকাটৰ দ্বাৰা বিৱৰ্ধিত কৰক"</string>
     <string name="accessibility_screen_magnification_state_navbar_gesture" msgid="8067042663897802231">"শ্বৰ্টকাটৰ দ্বাৰা আৰু তিনিবাৰ টিপি বিৱৰ্ধিত কৰক"</string>
     <string name="accessibility_introduction_title" msgid="8834950581512452348">"<xliff:g id="SERVICE">%1$s</xliff:g>ৰ বিষয়ে"</string>
@@ -1863,7 +1871,8 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"কোনো এটা সাধ্য-সুবিধা ব্যৱহাৰ কৰিবলৈ, স্ক্রীনখনৰ একেবাৰে তলৰ পৰা ওপৰলৈ ২ টা আঙুলিৰে ছোৱাইপ কৰক।\n\nসুবিধাসমূহ সালসলনিকৈ ব্যৱহাৰ কৰিবলৈ ২ টা আঙুলিৰে ওপৰলৈ ছোৱাইপ কৰি ধৰি ৰাখক।"</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"কোনো এটা সাধ্য-সুবিধা ব্যৱহাৰ কৰিবলৈ, স্ক্রীনখনৰ একেবাৰে তলৰ পৰা ওপৰলৈ ৩ টা আঙুলিৰে ছোৱাইপ কৰক।\n\nসুবিধাসমূহ সালসলনিকৈ ব্যৱহাৰ কৰিবলৈ ৩ টা আঙুলিৰে ওপৰলৈ ছোৱাইপ কৰি ধৰি ৰাখক।"</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"বুজি পালোঁ"</string>
-    <string name="accessibility_tutorial_dialog_link_button" msgid="1624189347106713695">"সাধ্য-সুবিধা বুটামৰ ছেটিং"</string>
+    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
+    <skip />
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"<xliff:g id="SERVICE">%1$s</xliff:g>ৰ শ্বৰ্টকাট"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"সাধ্য-সুবিধাৰ বুটাম"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"সাধ্য-সুবিধাৰ নিৰ্দেশ"</string>
@@ -2326,6 +2335,8 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"এপ্‌ অনুসৰি চাওক"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"ছিষ্টেম অনুসৰি চাওক"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
+    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
+    <skip />
     <string name="process_stats_summary_title" msgid="502683176231281732">"প্ৰক্ৰিয়া-বিষয়ক পৰিসংখ্যা"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"চলি থকা প্ৰক্ৰিয়াসমূহৰ বিষয়ে কাৰিকৰী পৰিসংখ্যা"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"মেম\'ৰিৰ ব্যৱহাৰ"</string>
@@ -2929,6 +2940,7 @@
     <string name="keywords_sim_status_iccid_esim" msgid="4634015619840979184">"নেটৱৰ্ক, ম’বাইল নেটৱৰ্কৰ স্থিতি, সেৱাৰ স্থিতি, ছিগনেলৰ ক্ষমতা, ম’বাইল নেটৱৰ্কৰ প্ৰকাৰ, ৰ’মিং, ICCID, EID"</string>
     <string name="keywords_esim_eid" msgid="8128175058237372457">"EID"</string>
     <string name="keywords_model_and_hardware" msgid="4723665865709965044">"ক্ৰমিক নম্বৰ, হাৰ্ডৱেৰৰ সংস্কৰণ"</string>
+    <string name="keywords_battery_info" msgid="3319796850366687033">"বেটাৰীৰ তথ্য, নিৰ্মাণ কৰাৰ তাৰিখ, চক্ৰৰ গণনা, প্ৰথম ব্যৱহাৰ"</string>
     <string name="keywords_android_version" msgid="1629882125290323070">"androidৰ সুৰক্ষা পেটচ্চ স্তৰ, বেইছবেণ্ড সংস্কৰণ, কাৰ্ণেল সংস্কৰণ"</string>
     <string name="keywords_dark_ui_mode" msgid="6373999418195344014">"থীম, পাতল, গাঢ়, ম’ড, পোহৰৰ প্ৰতি সংবেদনশীলতা, ফট’ফ’বিয়া, গাঢ় কৰক, গাঢ় কৰা, গাঢ় ম’ড, মাই-গ্ৰেইন"</string>
     <string name="keywords_systemui_theme" msgid="6341194275296707801">"গাঢ় ৰঙৰ থীম"</string>
@@ -3854,10 +3866,6 @@
     <string name="overlay_option_device_default" msgid="7986355499809313848">"ডিভাইচৰ ডিফ’ল্ট ছেটিং"</string>
     <string name="overlay_toast_failed_to_apply" msgid="4839587811338164960">"অ’ভাৰলে’ প্ৰয়োগ কৰিব পৰা নগ’ল"</string>
     <string name="special_access" msgid="1767980727423395147">"বিশেষ এপ্ এক্সেছ"</string>
-    <plurals name="special_access_summary" formatted="false" msgid="4995506406763570815">
-      <item quantity="one"><xliff:g id="COUNT">%d</xliff:g>টা এপে সীমাহীন ডেটা ব্যৱহাৰ কৰিব পাৰে</item>
-      <item quantity="other"><xliff:g id="COUNT">%d</xliff:g>টা এপে সীমাহীন ডেটা ব্যৱহাৰ কৰিব পাৰে</item>
-    </plurals>
     <string name="special_access_more" msgid="132919514147475846">"অধিক চাওক"</string>
     <string name="long_background_tasks_label" msgid="3169590134850226687">"নেপথ্যৰ দীঘলীয়া কাৰ্য"</string>
     <string name="long_background_tasks_switch_title" msgid="2491623894899492543">"দীৰ্ঘ সময় ধৰি চলি থকা নেপথ্যৰ কাৰ্যসমূহক অনুমতি দিয়ক"</string>
@@ -4723,4 +4731,36 @@
     <string name="contrast_medium" msgid="384414510709285811">"মধ্যমীয়া"</string>
     <string name="contrast_high" msgid="3988567609694797696">"উচ্চ"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"এই এপ্‌টো কেৱল ১ খন ৱিণ্ড’ত খুলিব পাৰি"</string>
+    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
+    <skip />
+    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
+    <skip />
+    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
+    <skip />
+    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
+    <skip />
+    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
+    <skip />
+    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
+    <skip />
+    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
+    <skip />
+    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
+    <skip />
+    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
+    <skip />
+    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
+    <skip />
+    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
+    <skip />
+    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
+    <skip />
+    <!-- no translation found for show_captions_disabled (690650956523818755) -->
+    <skip />
+    <!-- no translation found for show_captions_enabled (7089043007924626) -->
+    <skip />
+    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
+    <skip />
+    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
+    <skip />
 </resources>

@@ -16,15 +16,12 @@
 
 package com.android.settings.biometrics2.ui.viewmodel;
 
-import static android.hardware.fingerprint.FingerprintSensorProperties.TYPE_REAR;
 import static android.hardware.fingerprint.FingerprintSensorProperties.TYPE_UDFPS_OPTICAL;
-import static android.hardware.fingerprint.FingerprintSensorProperties.TYPE_UDFPS_ULTRASONIC;
 
 import static com.android.settings.biometrics2.ui.viewmodel.FingerprintEnrollEnrollingViewModel.ErrorDialogData;
 import static com.android.settings.biometrics2.ui.viewmodel.FingerprintEnrollEnrollingViewModel.FINGERPRINT_ENROLL_ENROLLING_ACTION_SHOW_ICON_TOUCH_DIALOG;
 import static com.android.settings.biometrics2.ui.viewmodel.FingerprintEnrollEnrollingViewModel.FINGERPRINT_ENROLL_ENROLLING_CANCELED_BECAUSE_BACK_PRESSED;
 import static com.android.settings.biometrics2.ui.viewmodel.FingerprintEnrollEnrollingViewModel.FINGERPRINT_ENROLL_ENROLLING_CANCELED_BECAUSE_USER_SKIP;
-import static com.android.settings.biometrics2.ui.viewmodel.FingerprintEnrollEnrollingViewModel.FINGERPRINT_ERROR_DIALOG_ACTION_RESTART;
 import static com.android.settings.biometrics2.ui.viewmodel.FingerprintEnrollEnrollingViewModel.FINGERPRINT_ERROR_DIALOG_ACTION_SET_RESULT_FINISH;
 import static com.android.settings.biometrics2.ui.viewmodel.FingerprintEnrollEnrollingViewModel.FINGERPRINT_ERROR_DIALOG_ACTION_SET_RESULT_TIMEOUT;
 import static com.android.settings.biometrics2.ui.viewmodel.FingerprintEnrollEnrollingViewModel.FingerprintErrorDialogAction;
@@ -108,11 +105,8 @@ public class FingerprintEnrollEnrollingViewModelTest {
     public void testErrorDialogActionLiveData() {
         assertThat(mViewModel.getErrorDialogActionLiveData().getValue()).isEqualTo(null);
 
-        @FingerprintErrorDialogAction int action = FINGERPRINT_ERROR_DIALOG_ACTION_RESTART;
-        mViewModel.onErrorDialogAction(action);
-        assertThat(mViewModel.getErrorDialogActionLiveData().getValue()).isEqualTo(action);
-
-        action = FINGERPRINT_ERROR_DIALOG_ACTION_SET_RESULT_TIMEOUT;
+        @FingerprintErrorDialogAction int action =
+                FINGERPRINT_ERROR_DIALOG_ACTION_SET_RESULT_TIMEOUT;
         mViewModel.onErrorDialogAction(action);
         assertThat(mViewModel.getErrorDialogActionLiveData().getValue()).isEqualTo(action);
 
@@ -149,26 +143,6 @@ public class FingerprintEnrollEnrollingViewModelTest {
         assertThat(mViewModel.getOnSkipPressed()).isEqualTo(false);
         assertThat(actionLiveData.getValue()).isEqualTo(
                 FINGERPRINT_ENROLL_ENROLLING_CANCELED_BECAUSE_USER_SKIP);
-    }
-
-    @Test
-    public void testCanAssumeUdfps_forUdfpsUltrasonicSensor() {
-        mViewModel = new FingerprintEnrollEnrollingViewModel(
-                mApplication,
-                TEST_USER_ID,
-                newFingerprintRepository(mFingerprintManager, TYPE_UDFPS_ULTRASONIC, 5)
-        );
-        assertThat(mViewModel.canAssumeUdfps()).isEqualTo(true);
-    }
-
-    @Test
-    public void testCanAssumeUdfps_forRearSensor() {
-        mViewModel = new FingerprintEnrollEnrollingViewModel(
-                mApplication,
-                TEST_USER_ID,
-                newFingerprintRepository(mFingerprintManager,  TYPE_REAR, 5)
-        );
-        assertThat(mViewModel.canAssumeUdfps()).isEqualTo(false);
     }
 
     @Test

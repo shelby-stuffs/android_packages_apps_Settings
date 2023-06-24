@@ -61,6 +61,8 @@ import com.android.settings.gestures.AssistGestureFeatureProvider;
 import com.android.settings.gestures.AssistGestureFeatureProviderImpl;
 import com.android.settings.homepage.contextualcards.ContextualCardFeatureProvider;
 import com.android.settings.homepage.contextualcards.ContextualCardFeatureProviderImpl;
+import com.android.settings.inputmethod.KeyboardSettingsFeatureProvider;
+import com.android.settings.inputmethod.KeyboardSettingsFeatureProviderImpl;
 import com.android.settings.localepicker.LocaleFeatureProvider;
 import com.android.settings.localepicker.LocaleFeatureProviderImpl;
 import com.android.settings.panel.PanelFeatureProvider;
@@ -116,6 +118,7 @@ public class FeatureFactoryImpl extends FeatureFactory {
     private AccessibilityMetricsFeatureProvider mAccessibilityMetricsFeatureProvider;
     private AdvancedVpnFeatureProvider mAdvancedVpnFeatureProvider;
     private WifiFeatureProvider mWifiFeatureProvider;
+    private KeyboardSettingsFeatureProvider mKeyboardSettingsFeatureProvider;
 
     @Override
     public HardwareInfoFeatureProvider getHardwareInfoFeatureProvider() {
@@ -371,5 +374,13 @@ public class FeatureFactoryImpl extends FeatureFactory {
             mWifiFeatureProvider = new WifiFeatureProvider(getAppContext());
         }
         return mWifiFeatureProvider;
+    }
+
+    @Override
+    public KeyboardSettingsFeatureProvider getKeyboardSettingsFeatureProvider() {
+        if (mKeyboardSettingsFeatureProvider == null) {
+            mKeyboardSettingsFeatureProvider = new KeyboardSettingsFeatureProviderImpl();
+        }
+        return mKeyboardSettingsFeatureProvider;
     }
 }

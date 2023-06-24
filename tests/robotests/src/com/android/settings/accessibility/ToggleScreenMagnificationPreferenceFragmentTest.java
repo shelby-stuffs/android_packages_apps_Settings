@@ -63,7 +63,6 @@ import com.android.settings.testutils.shadow.ShadowSettingsPreferenceFragment;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -121,7 +120,6 @@ public class ToggleScreenMagnificationPreferenceFragmentTest {
         when(mActivity.getContentResolver()).thenReturn(mContentResolver);
     }
 
-    @Ignore("Ignore it since a NPE is happened in ShadowWindowManagerGlobal. (Ref. b/214161063)")
     @Test
     @Config(shadows = ShadowFragment.class)
     public void onResume_defaultStateForFollowingTyping_switchPreferenceShouldReturnTrue() {
@@ -137,7 +135,6 @@ public class ToggleScreenMagnificationPreferenceFragmentTest {
         assertThat(switchPreference.isChecked()).isTrue();
     }
 
-    @Ignore("Ignore it since a NPE is happened in ShadowWindowManagerGlobal. (Ref. b/214161063)")
     @Test
     @Config(shadows = ShadowFragment.class)
     public void onResume_disableFollowingTyping_switchPreferenceShouldReturnFalse() {
@@ -343,7 +340,6 @@ public class ToggleScreenMagnificationPreferenceFragmentTest {
         assertThat(expectedType).isEqualTo(UserShortcutType.HARDWARE | UserShortcutType.TRIPLETAP);
     }
 
-    @Ignore("Ignore it since a NPE is happened in ShadowWindowManagerGlobal. (Ref. b/214161063)")
     @Test
     public void onCreateView_magnificationAreaNotSupported_settingsPreferenceIsNull() {
         when(mResources.getBoolean(
@@ -357,7 +353,6 @@ public class ToggleScreenMagnificationPreferenceFragmentTest {
         assertThat(mFragment.mSettingsPreference).isNull();
     }
 
-    @Ignore("Ignore it since a NPE is happened in ShadowWindowManagerGlobal. (Ref. b/214161063)")
     @Test
     public void onCreateView_windowMagnificationNotSupported_settingsPreferenceIsNull() {
         when(mResources.getBoolean(
@@ -371,7 +366,6 @@ public class ToggleScreenMagnificationPreferenceFragmentTest {
         assertThat(mFragment.mSettingsPreference).isNull();
     }
 
-    @Ignore("Ignore it since a NPE is happened in ShadowWindowManagerGlobal. (Ref. b/214161063)")
     @Test
     public void onCreateView_setDialogDelegateAndAddTheControllerToLifeCycleObserver() {
         Lifecycle lifecycle = mock(Lifecycle.class);
@@ -415,6 +409,31 @@ public class ToggleScreenMagnificationPreferenceFragmentTest {
         assertTrue(arguments.containsKey(AccessibilitySettings.EXTRA_PREFERENCE_KEY));
         assertTrue(arguments.containsKey(AccessibilitySettings.EXTRA_INTRO));
         assertTrue(arguments.containsKey(AccessibilitySettings.EXTRA_HTML_DESCRIPTION));
+    }
+
+    @Test
+    public void getSummary_magnificationEnabled_returnShortcutOnWithSummary() {
+        setMagnificationTripleTapEnabled(true);
+
+        assertThat(
+                ToggleScreenMagnificationPreferenceFragment.getServiceSummary(mContext).toString())
+                .isEqualTo(
+                        mContext.getString(R.string.preference_summary_default_combination,
+                                mContext.getString(R.string.accessibility_summary_shortcut_enabled),
+                                mContext.getText(R.string.magnification_feature_summary)));
+    }
+
+    @Test
+    public void getSummary_magnificationDisabled_returnShortcutOffWithSummary() {
+        setMagnificationTripleTapEnabled(false);
+
+        assertThat(
+                ToggleScreenMagnificationPreferenceFragment.getServiceSummary(mContext).toString())
+                .isEqualTo(
+                        mContext.getString(R.string.preference_summary_default_combination,
+                                mContext.getString(
+                                        R.string.generic_accessibility_feature_shortcut_off),
+                                mContext.getText(R.string.magnification_feature_summary)));
     }
 
     private void putStringIntoSettings(String key, String componentName) {

@@ -18,6 +18,7 @@ package com.android.settings.spa
 
 import android.content.Context
 import android.util.FeatureFlagUtils
+import com.android.settings.spa.about.AboutPhonePageProvider
 import com.android.settings.spa.app.AllAppListPageProvider
 import com.android.settings.spa.app.AppsMainPageProvider
 import com.android.settings.spa.app.appinfo.AppInfoSettingsProvider
@@ -29,6 +30,7 @@ import com.android.settings.spa.app.specialaccess.DisplayOverOtherAppsAppListPro
 import com.android.settings.spa.app.specialaccess.InstallUnknownAppsListProvider
 import com.android.settings.spa.app.specialaccess.MediaManagementAppsAppListProvider
 import com.android.settings.spa.app.specialaccess.ModifySystemSettingsAppListProvider
+import com.android.settings.spa.app.specialaccess.NfcTagAppsSettingsProvider
 import com.android.settings.spa.app.specialaccess.PictureInPictureListProvider
 import com.android.settings.spa.app.specialaccess.SpecialAppAccessPageProvider
 import com.android.settings.spa.app.specialaccess.WifiControlAppListProvider
@@ -61,6 +63,7 @@ open class SettingsSpaEnvironment(context: Context) : SpaEnvironment(context) {
             InstallUnknownAppsListProvider,
             AlarmsAndRemindersAppListProvider,
             WifiControlAppListProvider,
+            NfcTagAppsSettingsProvider,
         )
     }
 
@@ -84,6 +87,7 @@ open class SettingsSpaEnvironment(context: Context) : SpaEnvironment(context) {
                 BackgroundInstalledAppsPageProvider,
                 CloneAppInfoSettingsProvider,
                 NetworkAndInternetPageProvider,
+                AboutPhonePageProvider,
                 ) + togglePermissionAppListTemplate.createPageProviders(),
             rootPages = listOf(
                 HomePageProvider.createSettingsPage()

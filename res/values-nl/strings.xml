@@ -120,7 +120,8 @@
     <string name="connected_device_bluetooth_turned_on_toast" msgid="144664089794199928">"Bluetooth staat aan"</string>
     <string name="previous_connected_see_all" msgid="7759413145713251328">"Alles tonen"</string>
     <string name="stylus_device_details_title" msgid="7618295136015480864">"Stylus"</string>
-    <string name="stylus_default_notes_app" msgid="3896158797687806941">"Standaard notitie-app"</string>
+    <string name="stylus_default_notes_app" msgid="4165657465911764628">"Knop bovenop indrukken"</string>
+    <string name="stylus_default_notes_summary_work" msgid="4554643411627934223">"<xliff:g id="APP_NAME">%s</xliff:g> (werkprofiel)"</string>
     <string name="stylus_textfield_handwriting" msgid="2363579035338976327">"Schrijven in tekstvelden"</string>
     <string name="stylus_ignore_button" msgid="7734540973145241391">"Alle drukken op knoppen met stylus negeren"</string>
     <string name="stylus_connected_devices_title" msgid="2823967577941359812">"Stylus"</string>
@@ -167,6 +168,8 @@
     <string name="desc_notice_of_language_picker" msgid="3449290526457925447">"Ga naar de taalinstellingen van een app als je een taal voor elke app wilt selecteren."</string>
     <string name="desc_locale_helper_footer_general" msgid="6112153921151780303">"Meer informatie over app-talen"</string>
     <string name="title_change_system_locale" msgid="8589844586256566951">"Systeemtaal wijzigen in %s?"</string>
+    <string name="title_system_locale_addition" msgid="8218683660751479466">"%s toevoegen aan voorkeurstalen?"</string>
+    <string name="desc_system_locale_addition" msgid="3409917362651596070">"Zo laat je apps en websites ook weten dat je de voorkeur geeft aan deze taal."</string>
     <string name="desc_notice_device_locale_settings_change" msgid="8311132485850714160">"Je apparaatinstellingen en regionale voorkeuren worden gewijzigd."</string>
     <string name="button_label_confirmation_of_system_locale_change" msgid="5593798559604894733">"Wijzigen"</string>
     <string name="title_unavailable_locale" msgid="2628898110416542386">"%s niet beschikbaar"</string>
@@ -1124,6 +1127,7 @@
     <string name="kernel_version" msgid="3513538109381366881">"Kernel-versie"</string>
     <string name="build_number" msgid="9009733242117579826">"Buildnummer"</string>
     <string name="module_version" msgid="1787518340082046658">"Google Play-systeemupdate"</string>
+    <string name="battery_info" msgid="7873528123969546728">"Batterij-informatie"</string>
     <string name="device_info_not_available" msgid="4804474466616712326">"Niet beschikbaar"</string>
     <string name="storage_settings" msgid="7472188817781592677">"Opslagruimte"</string>
     <string name="storage_settings_for_app" msgid="229425418984637483">"Opslag en cache"</string>
@@ -1156,6 +1160,11 @@
     <string name="status_bt_address" msgid="6919660304578476547">"Bluetooth-adres"</string>
     <string name="status_serial_number" msgid="9060064164331466789">"Serienummer"</string>
     <string name="status_up_time" msgid="1274778533719495438">"Bedrijfstijd"</string>
+    <string name="battery_manufacture_date" msgid="7139426520156833987">"Productiedatum"</string>
+    <string name="battery_first_use_date" msgid="3157207331722711317">"Datum van eerste gebruik"</string>
+    <string name="battery_cycle_count" msgid="2912949283386571900">"Aantal cyclussen"</string>
+    <!-- no translation found for battery_cycle_count_not_available (2426584515665184664) -->
+    <skip />
     <string name="memory_calculating_size" msgid="3898240439798661242">"Berekenen…"</string>
     <string name="storage_menu_rename" msgid="8549835371429159336">"Naam wijzigen"</string>
     <string name="storage_menu_mount" msgid="4760531872302820569">"Koppelen"</string>
@@ -1826,7 +1835,6 @@
     <string name="accessibility_magnification_triple_tap_warning_positive_button" msgid="8712304035901450010">"Toch doorgaan"</string>
     <string name="accessibility_magnification_triple_tap_warning_negative_button" msgid="2028849736366584733">"Annuleren"</string>
     <string name="accessibility_magnification_service_settings_title" msgid="3531350704632316017">"Instellingen voor vergroting"</string>
-    <string name="accessibility_screen_magnification_gestures_title" msgid="3121714118381882167">"Vergroten door 3 keer te tikken"</string>
     <string name="accessibility_screen_magnification_navbar_title" msgid="480853328665484528">"Vergroten met sneltoets"</string>
     <string name="accessibility_screen_magnification_state_navbar_gesture" msgid="8067042663897802231">"Vergroten met sneltoets en drie keer tikken"</string>
     <string name="accessibility_introduction_title" msgid="8834950581512452348">"Over <xliff:g id="SERVICE">%1$s</xliff:g>"</string>
@@ -1863,7 +1871,8 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"Als je een toegankelijkheidsfunctie wilt gebruiken, swipe je met twee vingers omhoog vanaf de onderkant van het scherm.\n\nSwipe met twee vingers omhoog en houd vast om tussen functies te schakelen."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"Als je een toegankelijkheidsfunctie wilt gebruiken, swipe je met 3 vingers omhoog vanaf de onderkant van het scherm.\n\nSwipe met 3 vingers omhoog en houd vast om tussen functies te schakelen."</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"OK"</string>
-    <string name="accessibility_tutorial_dialog_link_button" msgid="1624189347106713695">"Instellingen voor knop Toegankelijkheid"</string>
+    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
+    <skip />
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"Snelkoppeling voor <xliff:g id="SERVICE">%1$s</xliff:g>"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"Knop Toegankelijkheid"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"Toegankelijkheidsgebaar"</string>
@@ -2326,6 +2335,8 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"Bekijken per app"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"Bekijken per systeem"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&amp;lt, <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
+    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
+    <skip />
     <string name="process_stats_summary_title" msgid="502683176231281732">"Processtatistieken"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"Statistieken voor nerds over actieve processen"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"Geheugengebruik"</string>
@@ -2929,6 +2940,7 @@
     <string name="keywords_sim_status_iccid_esim" msgid="4634015619840979184">"netwerk, status mobiel netwerk, servicestatus, signaalsterkte, type mobiel netwerk, roaming, iccid, eid"</string>
     <string name="keywords_esim_eid" msgid="8128175058237372457">"eid"</string>
     <string name="keywords_model_and_hardware" msgid="4723665865709965044">"serienummer, hardwareversie"</string>
+    <string name="keywords_battery_info" msgid="3319796850366687033">"batterij-informatie, productiedatum, aantal cyclussen, eerste gebruik"</string>
     <string name="keywords_android_version" msgid="1629882125290323070">"niveau van android-beveiligingspatch, smalbandversie, kernel-versie"</string>
     <string name="keywords_dark_ui_mode" msgid="6373999418195344014">"thema, licht, donker, modus, lichtgevoeligheid, fotofobie, donkerder maken, donkerder, donkere modus, migraine"</string>
     <string name="keywords_systemui_theme" msgid="6341194275296707801">"donker thema"</string>
@@ -3854,10 +3866,6 @@
     <string name="overlay_option_device_default" msgid="7986355499809313848">"Apparaatstandaard"</string>
     <string name="overlay_toast_failed_to_apply" msgid="4839587811338164960">"Toepassen van overlay mislukt"</string>
     <string name="special_access" msgid="1767980727423395147">"Speciale app-toegang"</string>
-    <plurals name="special_access_summary" formatted="false" msgid="4995506406763570815">
-      <item quantity="other"><xliff:g id="COUNT">%d</xliff:g> apps kunnen onbeperkt data gebruiken</item>
-      <item quantity="one">1 app kan onbeperkt data gebruiken</item>
-    </plurals>
     <string name="special_access_more" msgid="132919514147475846">"Meer tonen"</string>
     <string name="long_background_tasks_label" msgid="3169590134850226687">"Lange achtergrondtaken"</string>
     <string name="long_background_tasks_switch_title" msgid="2491623894899492543">"Uitvoeren van lange achtergrondtaken toestaan"</string>
@@ -4722,4 +4730,36 @@
     <string name="contrast_medium" msgid="384414510709285811">"Gemiddeld"</string>
     <string name="contrast_high" msgid="3988567609694797696">"Hoog"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"Deze app kan maar in 1 venster worden geopend"</string>
+    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
+    <skip />
+    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
+    <skip />
+    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
+    <skip />
+    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
+    <skip />
+    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
+    <skip />
+    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
+    <skip />
+    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
+    <skip />
+    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
+    <skip />
+    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
+    <skip />
+    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
+    <skip />
+    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
+    <skip />
+    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
+    <skip />
+    <!-- no translation found for show_captions_disabled (690650956523818755) -->
+    <skip />
+    <!-- no translation found for show_captions_enabled (7089043007924626) -->
+    <skip />
+    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
+    <skip />
+    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
+    <skip />
 </resources>

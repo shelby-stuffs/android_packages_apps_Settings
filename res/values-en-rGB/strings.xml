@@ -120,7 +120,8 @@
     <string name="connected_device_bluetooth_turned_on_toast" msgid="144664089794199928">"Bluetooth turned on"</string>
     <string name="previous_connected_see_all" msgid="7759413145713251328">"See all"</string>
     <string name="stylus_device_details_title" msgid="7618295136015480864">"Stylus"</string>
-    <string name="stylus_default_notes_app" msgid="3896158797687806941">"Default notes app"</string>
+    <string name="stylus_default_notes_app" msgid="4165657465911764628">"Tail button press"</string>
+    <string name="stylus_default_notes_summary_work" msgid="4554643411627934223">"<xliff:g id="APP_NAME">%s</xliff:g> (Work profile)"</string>
     <string name="stylus_textfield_handwriting" msgid="2363579035338976327">"Write in text fields"</string>
     <string name="stylus_ignore_button" msgid="7734540973145241391">"Ignore all stylus button presses"</string>
     <string name="stylus_connected_devices_title" msgid="2823967577941359812">"Stylus"</string>
@@ -167,6 +168,8 @@
     <string name="desc_notice_of_language_picker" msgid="3449290526457925447">"To select a language for each app, go to app language settings."</string>
     <string name="desc_locale_helper_footer_general" msgid="6112153921151780303">"Learn more about app languages"</string>
     <string name="title_change_system_locale" msgid="8589844586256566951">"Change system language to %s ?"</string>
+    <string name="title_system_locale_addition" msgid="8218683660751479466">"Add %s to preferred languages?"</string>
+    <string name="desc_system_locale_addition" msgid="3409917362651596070">"This lets apps and websites know that you also prefer this language."</string>
     <string name="desc_notice_device_locale_settings_change" msgid="8311132485850714160">"Your device settings and regional preferences will change."</string>
     <string name="button_label_confirmation_of_system_locale_change" msgid="5593798559604894733">"Change"</string>
     <string name="title_unavailable_locale" msgid="2628898110416542386">"%s not available"</string>
@@ -1124,6 +1127,7 @@
     <string name="kernel_version" msgid="3513538109381366881">"Kernel version"</string>
     <string name="build_number" msgid="9009733242117579826">"Build number"</string>
     <string name="module_version" msgid="1787518340082046658">"Google Play system update"</string>
+    <string name="battery_info" msgid="7873528123969546728">"Battery information"</string>
     <string name="device_info_not_available" msgid="4804474466616712326">"Not available"</string>
     <string name="storage_settings" msgid="7472188817781592677">"Storage"</string>
     <string name="storage_settings_for_app" msgid="229425418984637483">"Storage and cache"</string>
@@ -1156,6 +1160,10 @@
     <string name="status_bt_address" msgid="6919660304578476547">"Bluetooth address"</string>
     <string name="status_serial_number" msgid="9060064164331466789">"Serial number"</string>
     <string name="status_up_time" msgid="1274778533719495438">"Uptime"</string>
+    <string name="battery_manufacture_date" msgid="7139426520156833987">"Manufacture date"</string>
+    <string name="battery_first_use_date" msgid="3157207331722711317">"Date of first use"</string>
+    <string name="battery_cycle_count" msgid="2912949283386571900">"Cycle count"</string>
+    <string name="battery_cycle_count_not_available" msgid="2426584515665184664">"Unavailable"</string>
     <string name="memory_calculating_size" msgid="3898240439798661242">"Calculating..."</string>
     <string name="storage_menu_rename" msgid="8549835371429159336">"Rename"</string>
     <string name="storage_menu_mount" msgid="4760531872302820569">"Mount"</string>
@@ -1826,7 +1834,6 @@
     <string name="accessibility_magnification_triple_tap_warning_positive_button" msgid="8712304035901450010">"Continue anyway"</string>
     <string name="accessibility_magnification_triple_tap_warning_negative_button" msgid="2028849736366584733">"Cancel"</string>
     <string name="accessibility_magnification_service_settings_title" msgid="3531350704632316017">"Magnification settings"</string>
-    <string name="accessibility_screen_magnification_gestures_title" msgid="3121714118381882167">"Magnify with triple-tap"</string>
     <string name="accessibility_screen_magnification_navbar_title" msgid="480853328665484528">"Magnify with shortcut"</string>
     <string name="accessibility_screen_magnification_state_navbar_gesture" msgid="8067042663897802231">"Magnify with shortcut &amp; triple-tap"</string>
     <string name="accessibility_introduction_title" msgid="8834950581512452348">"About <xliff:g id="SERVICE">%1$s</xliff:g>"</string>
@@ -1863,7 +1870,8 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"To use an accessibility feature, swipe up from the bottom of the screen with two fingers.\n\nTo switch between features, swipe up with two fingers and hold."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"To use an accessibility feature, swipe up from the bottom of the screen with three fingers.\n\nTo switch between features, swipe up with three fingers and hold."</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"OK"</string>
-    <string name="accessibility_tutorial_dialog_link_button" msgid="1624189347106713695">"Accessibility button settings"</string>
+    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
+    <skip />
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"<xliff:g id="SERVICE">%1$s</xliff:g> shortcut"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"Accessibility button"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"Accessibility gesture"</string>
@@ -2326,6 +2334,8 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"View by apps"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"View by systems"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
+    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
+    <skip />
     <string name="process_stats_summary_title" msgid="502683176231281732">"Process Stats"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"Geeky stats about running processes"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"Memory use"</string>
@@ -2929,6 +2939,7 @@
     <string name="keywords_sim_status_iccid_esim" msgid="4634015619840979184">"network, mobile network state, service state, signal strength, mobile network type, roaming, iccid, eid"</string>
     <string name="keywords_esim_eid" msgid="8128175058237372457">"eid"</string>
     <string name="keywords_model_and_hardware" msgid="4723665865709965044">"serial number, hardware version"</string>
+    <string name="keywords_battery_info" msgid="3319796850366687033">"battery info, manufacture date, cycle count, first use"</string>
     <string name="keywords_android_version" msgid="1629882125290323070">"android security patch level, baseband version, kernel version"</string>
     <string name="keywords_dark_ui_mode" msgid="6373999418195344014">"theme, light, dark, mode, light sensitivity, photophobia, make darker, darken, dark mode, migraine"</string>
     <string name="keywords_systemui_theme" msgid="6341194275296707801">"dark theme"</string>
@@ -3854,10 +3865,6 @@
     <string name="overlay_option_device_default" msgid="7986355499809313848">"Device default"</string>
     <string name="overlay_toast_failed_to_apply" msgid="4839587811338164960">"Failed to apply overlay"</string>
     <string name="special_access" msgid="1767980727423395147">"Special app access"</string>
-    <plurals name="special_access_summary" formatted="false" msgid="4995506406763570815">
-      <item quantity="other"><xliff:g id="COUNT">%d</xliff:g> apps can use unrestricted data</item>
-      <item quantity="one">1 app can use unrestricted data</item>
-    </plurals>
     <string name="special_access_more" msgid="132919514147475846">"See more"</string>
     <string name="long_background_tasks_label" msgid="3169590134850226687">"Long background tasks"</string>
     <string name="long_background_tasks_switch_title" msgid="2491623894899492543">"Allow long-running background tasks"</string>
@@ -4723,4 +4730,36 @@
     <string name="contrast_medium" msgid="384414510709285811">"Medium"</string>
     <string name="contrast_high" msgid="3988567609694797696">"High"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"This app can only be opened in one window"</string>
+    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
+    <skip />
+    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
+    <skip />
+    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
+    <skip />
+    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
+    <skip />
+    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
+    <skip />
+    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
+    <skip />
+    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
+    <skip />
+    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
+    <skip />
+    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
+    <skip />
+    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
+    <skip />
+    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
+    <skip />
+    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
+    <skip />
+    <!-- no translation found for show_captions_disabled (690650956523818755) -->
+    <skip />
+    <!-- no translation found for show_captions_enabled (7089043007924626) -->
+    <skip />
+    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
+    <skip />
+    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
+    <skip />
 </resources>
