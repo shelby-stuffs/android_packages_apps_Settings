@@ -79,7 +79,6 @@ public class AccessibilitySettings extends DashboardFragment {
     static final String EXTRA_PREFERENCE_KEY = "preference_key";
     static final String EXTRA_CHECKED = "checked";
     static final String EXTRA_TITLE = "title";
-    static final String EXTRA_TITLE_RES = "title_res";
     static final String EXTRA_RESOLVE_INFO = "resolve_info";
     static final String EXTRA_SUMMARY = "summary";
     static final String EXTRA_INTRO = "intro";
@@ -87,7 +86,6 @@ public class AccessibilitySettings extends DashboardFragment {
     static final String EXTRA_COMPONENT_NAME = "component_name";
     static final String EXTRA_SETTINGS_COMPONENT_NAME = "settings_component_name";
     static final String EXTRA_TILE_SERVICE_COMPONENT_NAME = "tile_service_component_name";
-    static final String EXTRA_VIDEO_RAW_RESOURCE_ID = "video_resource";
     static final String EXTRA_LAUNCHED_FROM_SUW = "from_suw";
     static final String EXTRA_ANIMATED_IMAGE_RES = "animated_image_res";
     static final String EXTRA_HTML_DESCRIPTION = "html_description";
@@ -248,34 +246,74 @@ public class AccessibilitySettings extends DashboardFragment {
      * @return The service summary
      */
     public static CharSequence getServiceSummary(Context context, AccessibilityServiceInfo info,
-            boolean serviceEnabled) {
+                                                 boolean serviceEnabled) {
         if (serviceEnabled && info.crashed) {
             return context.getText(R.string.accessibility_summary_state_stopped);
         }
 
-        final CharSequence serviceState;
         final int fragmentType = AccessibilityUtil.getAccessibilityServiceFragmentType(info);
-        if (fragmentType == AccessibilityServiceFragmentType.INVISIBLE_TOGGLE) {
-            final ComponentName componentName = new ComponentName(
-                    info.getResolveInfo().serviceInfo.packageName,
-                    info.getResolveInfo().serviceInfo.name);
-            final boolean shortcutEnabled = AccessibilityUtil.getUserShortcutTypesFromSettings(
-                    context, componentName) != AccessibilityUtil.UserShortcutType.EMPTY;
-            serviceState = shortcutEnabled
-                    ? context.getText(R.string.accessibility_summary_shortcut_enabled)
-                    : context.getText(R.string.accessibility_summary_shortcut_disabled);
-        } else {
-            serviceState = serviceEnabled
-                    ? context.getText(R.string.accessibility_summary_state_enabled)
-                    : context.getText(R.string.accessibility_summary_state_disabled);
-        }
+        final ComponentName componentName = new ComponentName(
+                info.getResolveInfo().serviceInfo.packageName,
+                info.getResolveInfo().serviceInfo.name);
+        final boolean shortcutEnabled = AccessibilityUtil.getUserShortcutTypesFromSettings(
+                context, componentName) != AccessibilityUtil.UserShortcutType.EMPTY;
 
+        // Example shortcutState: "Shortcut on"
+        CharSequence shortcutState = shortcutEnabled
+                ? context.getText(R.string.accessibility_summary_shortcut_enabled)
+                : context.getText(R.string.generic_accessibility_feature_shortcut_off);
+
+        // Example serviceSummary: "Control device via large menu"
         final CharSequence serviceSummary = info.loadSummary(context.getPackageManager());
-        final String stateSummaryCombo = context.getString(
-                R.string.preference_summary_default_combination,
-                serviceState, serviceSummary);
 
-        return TextUtils.isEmpty(serviceSummary) ? serviceState : stateSummaryCombo;
+        if (fragmentType == AccessibilityServiceFragmentType.INVISIBLE_TOGGLE) {
+            // Example result: "Shortcut on / Control device via large menu"
+            return TextUtils.isEmpty(serviceSummary)
+                    ? shortcutState
+                    : context.getString(
+                            R.string.preference_summary_default_combination, shortcutState,
+                            serviceSummary);
+        } else {
+            // Example serviceState: "Service on"
+            CharSequence serviceState = serviceEnabled
+                    ? context.getText(R.string.generic_accessibility_service_on)
+                    : context.getText(R.string.generic_accessibility_service_off);
+
+            // Example result: "Service on / Shortcut on / Speak items on screen"
+            return TextUtils.isEmpty(serviceSummary)
+                    ? context.getString(
+                            R.string.preference_summary_default_combination,
+                            serviceState, shortcutState)
+                    : context.getString(
+                            R.string.accessibility_feature_full_state_summary, serviceState,
+                            shortcutState, serviceSummary);
+        }
+    }
+
+    /**
+     * Returns the summary for the current shortcut state of the accessibility app
+     * captured in the {@link AccessibilityShortcutInfo}
+     */
+    public static CharSequence getA11yShortcutInfoPreferenceSummary(
+            Context context, AccessibilityShortcutInfo info) {
+
+        boolean shortcutEnabled = AccessibilityUtil.getUserShortcutTypesFromSettings(
+                context, info.getComponentName()) != AccessibilityUtil.UserShortcutType.EMPTY;
+
+        // Example shortcutState: "Shortcut on"
+        CharSequence shortcutState = shortcutEnabled
+                ? context.getText(R.string.accessibility_summary_shortcut_enabled)
+                : context.getText(R.string.generic_accessibility_feature_shortcut_off);
+
+        // Example serviceSummary: "Convert speech to text"
+        CharSequence serviceSummary = info.loadSummary(context.getPackageManager());
+
+        // Example result: "Shortcut on / Convert speech to text"
+        return TextUtils.isEmpty(serviceSummary)
+                ? shortcutState
+                : context.getString(
+                R.string.preference_summary_default_combination,
+                shortcutState, serviceSummary);
     }
 
     /**

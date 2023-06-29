@@ -120,7 +120,8 @@
     <string name="connected_device_bluetooth_turned_on_toast" msgid="144664089794199928">"Bluetooth е вклучен"</string>
     <string name="previous_connected_see_all" msgid="7759413145713251328">"Прикажи ги сите"</string>
     <string name="stylus_device_details_title" msgid="7618295136015480864">"Пенкало"</string>
-    <string name="stylus_default_notes_app" msgid="3896158797687806941">"Стандардна апликација за белешки"</string>
+    <string name="stylus_default_notes_app" msgid="4165657465911764628">"Притискање на копчето со пенкало"</string>
+    <string name="stylus_default_notes_summary_work" msgid="4554643411627934223">"<xliff:g id="APP_NAME">%s</xliff:g> (работен профил)"</string>
     <string name="stylus_textfield_handwriting" msgid="2363579035338976327">"Пишувајте во текстуалните полиња"</string>
     <string name="stylus_ignore_button" msgid="7734540973145241391">"Игнорирајте ги сите притискања на копчето на пенкалото"</string>
     <string name="stylus_connected_devices_title" msgid="2823967577941359812">"Пенкало"</string>
@@ -167,6 +168,8 @@
     <string name="desc_notice_of_language_picker" msgid="3449290526457925447">"За да изберете јазик за секоја апликација, одете во поставките за јазик на апликацијата."</string>
     <string name="desc_locale_helper_footer_general" msgid="6112153921151780303">"Дознајте повеќе за јазиците за апликации"</string>
     <string name="title_change_system_locale" msgid="8589844586256566951">"Да се промени системскиот јазик во %s ?"</string>
+    <string name="title_system_locale_addition" msgid="8218683660751479466">"Да се додаде %s во претпочитаните јазици?"</string>
+    <string name="desc_system_locale_addition" msgid="3409917362651596070">"Ова им дава до знаење на апликациите и веб-сајтовите дека и вие го претпочитате овој јазик."</string>
     <string name="desc_notice_device_locale_settings_change" msgid="8311132485850714160">"Поставките на вашиот уред и регионалните поставки ќе се променат."</string>
     <string name="button_label_confirmation_of_system_locale_change" msgid="5593798559604894733">"Промени"</string>
     <string name="title_unavailable_locale" msgid="2628898110416542386">"%s не е достапен"</string>
@@ -1124,6 +1127,7 @@
     <string name="kernel_version" msgid="3513538109381366881">"Верзија на кернел"</string>
     <string name="build_number" msgid="9009733242117579826">"Број на верзија"</string>
     <string name="module_version" msgid="1787518340082046658">"Системско ажурирање од Google Play"</string>
+    <string name="battery_info" msgid="7873528123969546728">"Информации за батеријата"</string>
     <string name="device_info_not_available" msgid="4804474466616712326">"Не е достапна"</string>
     <string name="storage_settings" msgid="7472188817781592677">"Капацитет"</string>
     <string name="storage_settings_for_app" msgid="229425418984637483">"Капацитет и кеш"</string>
@@ -1156,6 +1160,11 @@
     <string name="status_bt_address" msgid="6919660304578476547">"Адреса на Bluetooth"</string>
     <string name="status_serial_number" msgid="9060064164331466789">"Сериски број"</string>
     <string name="status_up_time" msgid="1274778533719495438">"Време од последно рестартирање"</string>
+    <string name="battery_manufacture_date" msgid="7139426520156833987">"Датум на производство"</string>
+    <string name="battery_first_use_date" msgid="3157207331722711317">"Датум на прво користење"</string>
+    <string name="battery_cycle_count" msgid="2912949283386571900">"Број на циклуси"</string>
+    <!-- no translation found for battery_cycle_count_not_available (2426584515665184664) -->
+    <skip />
     <string name="memory_calculating_size" msgid="3898240439798661242">"Пресметување..."</string>
     <string name="storage_menu_rename" msgid="8549835371429159336">"Преименувај"</string>
     <string name="storage_menu_mount" msgid="4760531872302820569">"Монтирај"</string>
@@ -1826,7 +1835,6 @@
     <string name="accessibility_magnification_triple_tap_warning_positive_button" msgid="8712304035901450010">"Сепак продолжи"</string>
     <string name="accessibility_magnification_triple_tap_warning_negative_button" msgid="2028849736366584733">"Откажи"</string>
     <string name="accessibility_magnification_service_settings_title" msgid="3531350704632316017">"Поставки за зголемување"</string>
-    <string name="accessibility_screen_magnification_gestures_title" msgid="3121714118381882167">"Зголеми со троен допир"</string>
     <string name="accessibility_screen_magnification_navbar_title" msgid="480853328665484528">"Зголемување со кратенка"</string>
     <string name="accessibility_screen_magnification_state_navbar_gesture" msgid="8067042663897802231">"Зголемете со кратенка и троен допир"</string>
     <string name="accessibility_introduction_title" msgid="8834950581512452348">"За <xliff:g id="SERVICE">%1$s</xliff:g>"</string>
@@ -1863,7 +1871,8 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"За да користите функција за пристапност, повлечете нагоре од дното на екранот со два прста.\n\nЗа да се префрлите на друга функција, повлечете нагоре со два прста и задржете."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"За да користите функција за пристапност, повлечете нагоре од дното на екранот со три прста.\n\nЗа префрлање помеѓу функциите, повлечете нагоре со три прста и задржете."</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"Сфатив"</string>
-    <string name="accessibility_tutorial_dialog_link_button" msgid="1624189347106713695">"Поставки за копчето за пристапност"</string>
+    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
+    <skip />
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"Кратенка за: <xliff:g id="SERVICE">%1$s</xliff:g>"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"Копче за пристапност"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"Движење за пристапност"</string>
@@ -2326,6 +2335,8 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"Прикажи по апликации"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"Прикажи по системи"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
+    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
+    <skip />
     <string name="process_stats_summary_title" msgid="502683176231281732">"Статистика на процес"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"Паметна статистика за процеси кои се извршуваат"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"Употреба на меморија"</string>
@@ -2929,6 +2940,7 @@
     <string name="keywords_sim_status_iccid_esim" msgid="4634015619840979184">"мрежа, состојба на мобилна мрежа, состојба на услуга, јачина на сигнал, тип мобилна мрежа, роаминг, iccid, eid"</string>
     <string name="keywords_esim_eid" msgid="8128175058237372457">"eid"</string>
     <string name="keywords_model_and_hardware" msgid="4723665865709965044">"сериски број, верзија на хардвер"</string>
+    <string name="keywords_battery_info" msgid="3319796850366687033">"информации за батеријата, датум на производство, број на циклуси, прво користење"</string>
     <string name="keywords_android_version" msgid="1629882125290323070">"ниво на безбедносна лепенка на Android, верзија на радиомодул, верзија на кернел"</string>
     <string name="keywords_dark_ui_mode" msgid="6373999418195344014">"тема, светла, темна, режим, чувствителност на светлина, фотофобија, затемнување, потемно, темен режим, мигрена"</string>
     <string name="keywords_systemui_theme" msgid="6341194275296707801">"темна тема"</string>
@@ -3854,10 +3866,6 @@
     <string name="overlay_option_device_default" msgid="7986355499809313848">"Стандардни поставки за уредот"</string>
     <string name="overlay_toast_failed_to_apply" msgid="4839587811338164960">"Не успеа да се примени прекривка"</string>
     <string name="special_access" msgid="1767980727423395147">"Посебен пристап"</string>
-    <plurals name="special_access_summary" formatted="false" msgid="4995506406763570815">
-      <item quantity="one"><xliff:g id="COUNT">%d</xliff:g> апликација може да користи неограничен мобилен интернет</item>
-      <item quantity="other"><xliff:g id="COUNT">%d</xliff:g> апликации може да користат неограничен мобилен интернет</item>
-    </plurals>
     <string name="special_access_more" msgid="132919514147475846">"Видете повеќе"</string>
     <string name="long_background_tasks_label" msgid="3169590134850226687">"Долги задачи во заднина"</string>
     <string name="long_background_tasks_switch_title" msgid="2491623894899492543">"Дозволи извршување долги задачи во заднина"</string>
@@ -4723,4 +4731,36 @@
     <string name="contrast_medium" msgid="384414510709285811">"Среден"</string>
     <string name="contrast_high" msgid="3988567609694797696">"Висок"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"Апликацијава може да се отвори само во еден прозорец"</string>
+    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
+    <skip />
+    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
+    <skip />
+    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
+    <skip />
+    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
+    <skip />
+    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
+    <skip />
+    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
+    <skip />
+    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
+    <skip />
+    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
+    <skip />
+    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
+    <skip />
+    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
+    <skip />
+    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
+    <skip />
+    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
+    <skip />
+    <!-- no translation found for show_captions_disabled (690650956523818755) -->
+    <skip />
+    <!-- no translation found for show_captions_enabled (7089043007924626) -->
+    <skip />
+    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
+    <skip />
+    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
+    <skip />
 </resources>

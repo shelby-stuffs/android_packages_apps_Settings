@@ -548,7 +548,6 @@ public class ChooseLockGenericTest {
         final Intent intent = new Intent().putExtra(EXTRA_KEY_FOR_BIOMETRICS, true);
         initActivity(intent);
 
-
         final String supportFingerprint = capitalize(mActivity.getResources().getString(
                 R.string.security_settings_fingerprint));
         final String supportFace = capitalize(mActivity.getResources().getString(
