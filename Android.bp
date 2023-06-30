@@ -69,6 +69,7 @@ android_library {
         "androidx.appcompat_appcompat",
         "androidx.cardview_cardview",
         "androidx.compose.runtime_runtime-livedata",
+        "androidx.activity_activity-ktx",
         "androidx.preference_preference",
         "androidx.recyclerview_recyclerview",
         "androidx.window_window",
@@ -106,7 +107,6 @@ android_library {
     plugins: ["androidx.room_room-compiler-plugin"],
 
     libs: [
-        "keepanno-annotations",
         "telephony-common",
         "ims-common",
     ],
