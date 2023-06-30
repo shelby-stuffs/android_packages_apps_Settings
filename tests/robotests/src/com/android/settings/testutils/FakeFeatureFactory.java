@@ -15,9 +15,7 @@
  */
 package com.android.settings.testutils;
 
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 import android.content.Context;
 
@@ -25,7 +23,6 @@ import com.android.settings.accessibility.AccessibilityMetricsFeatureProvider;
 import com.android.settings.accessibility.AccessibilitySearchFeatureProvider;
 import com.android.settings.accounts.AccountFeatureProvider;
 import com.android.settings.applications.ApplicationFeatureProvider;
-import com.android.settings.aware.AwareFeatureProvider;
 import com.android.settings.biometrics.face.FaceFeatureProvider;
 import com.android.settings.biometrics2.factory.BiometricsRepositoryProvider;
 import com.android.settings.bluetooth.BluetoothFeatureProvider;
@@ -56,8 +53,6 @@ import com.android.settings.wifi.WifiTrackerLibProvider;
 import com.android.settings.wifi.factory.WifiFeatureProvider;
 import com.android.settingslib.core.instrumentation.MetricsFeatureProvider;
 
-import org.mockito.Answers;
-
 /**
  * Test util to provide fake FeatureFactory. To use this factory, call {@code setupForTest} in
  * {@code @Before} method of the test class.
@@ -81,7 +76,6 @@ public class FakeFeatureFactory extends FeatureFactory {
     public final AssistGestureFeatureProvider assistGestureFeatureProvider;
     public final AccountFeatureProvider mAccountFeatureProvider;
     public final BluetoothFeatureProvider mBluetoothFeatureProvider;
-    public final AwareFeatureProvider mAwareFeatureProvider;
     public final FaceFeatureProvider mFaceFeatureProvider;
     public final BiometricsRepositoryProvider mBiometricsRepositoryProvider;
 
@@ -102,17 +96,9 @@ public class FakeFeatureFactory extends FeatureFactory {
      * Call this in {@code @Before} method of the test class to use fake factory.
      */
     public static FakeFeatureFactory setupForTest() {
-        final Context context = mock(Context.class, Answers.RETURNS_DEEP_STUBS);
-        sFactory = null;
-        when(context.getString(com.android.settings.R.string.config_featureFactory))
-                .thenReturn(FakeFeatureFactory.class.getName());
-        try {
-            Class c = FakeFeatureFactory.class;
-            when(context.getClassLoader().loadClass(anyString())).thenReturn(c);
-        } catch (ClassNotFoundException e) {
-            // Ignore.
-        }
-        return (FakeFeatureFactory) FakeFeatureFactory.getFactory(context);
+        FakeFeatureFactory factory = new FakeFeatureFactory();
+        setFactory(getAppContext(), factory);
+        return factory;
     }
 
     /**
@@ -140,7 +126,6 @@ public class FakeFeatureFactory extends FeatureFactory {
         mContextualCardFeatureProvider = mock(ContextualCardFeatureProvider.class);
         panelFeatureProvider = mock(PanelFeatureProvider.class);
         mBluetoothFeatureProvider = mock(BluetoothFeatureProvider.class);
-        mAwareFeatureProvider = mock(AwareFeatureProvider.class);
         mFaceFeatureProvider = mock(FaceFeatureProvider.class);
         mBiometricsRepositoryProvider = mock(BiometricsRepositoryProvider.class);
         wifiTrackerLibProvider = mock(WifiTrackerLibProvider.class);
@@ -255,11 +240,6 @@ public class FakeFeatureFactory extends FeatureFactory {
     @Override
     public BluetoothFeatureProvider getBluetoothFeatureProvider() {
         return mBluetoothFeatureProvider;
-    }
-
-    @Override
-    public AwareFeatureProvider getAwareFeatureProvider() {
-        return mAwareFeatureProvider;
     }
 
     @Override
