@@ -445,6 +445,21 @@
     <!-- Support link for the regional preference page. [CHAR LIMIT=NONE]-->
     <string name="regional_pref_footer_learn_more_link" translatable="false">https://support.google.com/android?p=regional_preferences</string>
 
+    <!-- Category for the terms of address. [CHAR LIMIT=NONE]-->
+    <string name="category_title_terms_of_address">Additional preferences</string>
+    <!-- Preference title for the terms of address. [CHAR LIMIT=NONE]-->
+    <string name="terms_of_address_title">Terms of address</string>
+    <!-- Preference summary for the terms of address. [CHAR LIMIT=NONE]-->
+    <string name="terms_of_address_summary">Set how you want to be addressed</string>
+    <!-- The subtitle of terms of address. [CHAR LIMIT=NONE] -->
+    <string name="terms_of_address_intro_title">Apps can use your terms of address to personalize how they address you.</string>
+    <!-- The title of not specified of terms of address. [CHAR LIMIT=NONE] -->
+    <string name="terms_of_address_not_specified">Not specified</string>
+    <!-- The title of feminine of terms of address. [CHAR LIMIT=NONE] -->
+    <string name="terms_of_address_feminine">Feminine</string>
+    <!-- The title of masculine of terms of address. [CHAR LIMIT=NONE] -->
+    <string name="terms_of_address_masculine">Masculine</string>
+
     <!-- The title of the confirmation dialog shown when the user selects one / several languages and tries to remove them [CHAR LIMIT=60] -->
     <string name="dlg_remove_locales_title">{count, plural,
       =1      {Remove selected language?}
@@ -3499,18 +3514,18 @@
     <!-- Checkbox label to set password as new screen lock if remote device credential validation succeeds. [CHAR LIMIT=43] -->
     <string name="lockpassword_remote_validation_set_password_as_screenlock">Also use password to unlock this device</string>
 
-    <!-- Header shown when pattern needs to be solved before the device exits repair mode. [CHAR LIMIT=100] [DO NOT TRANSLATE] TODO(b/275677027): update with finalized UX string -->
+    <!-- Header shown when pattern needs to be solved before the device exits repair mode. [CHAR LIMIT=40] -->
     <string name="lockpassword_confirm_repair_mode_pattern_header">Verify pattern</string>
-    <!-- Header shown when the pin needs to be solved before the device exits repair mode. [CHAR LIMIT=100] [DO NOT TRANSLATE] TODO(b/275677027): update with finalized UX string -->
+    <!-- Header shown when the pin needs to be solved before the device exits repair mode. [CHAR LIMIT=40] -->
     <string name="lockpassword_confirm_repair_mode_pin_header">Verify PIN</string>
-    <!-- Header shown when the password needs to be solved before the device exits repair mode. [CHAR LIMIT=100] [DO NOT TRANSLATE] TODO(b/275677027): update with finalized UX string -->
+    <!-- Header shown when the password needs to be solved before the device exits repair mode. [CHAR LIMIT=40] -->
     <string name="lockpassword_confirm_repair_mode_password_header">Verify password</string>
-    <!-- An explanation text that the pattern needs to be solved before the device exits repair mode. [CHAR LIMIT=100] [DO NOT TRANSLATE] TODO(b/275677027): update with finalized UX string -->
-    <string name="lockpassword_confirm_repair_mode_pattern_details" translatable="false">Enter your device pattern enrolled in normal mode to continue</string>
-    <!-- An explanation text that the PIN needs to be solved before the device exits repair mode. [CHAR LIMIT=100] [DO NOT TRANSLATE] TODO(b/275677027): update with finalized UX string -->
-    <string name="lockpassword_confirm_repair_mode_pin_details" translatable="false">Enter your device PIN enrolled in normal mode to continue</string>
-    <!-- An explanation text that the password needs to be solved before the device exits repair mode. [CHAR LIMIT=100] [DO NOT TRANSLATE] TODO(b/275677027): update with finalized UX string -->
-    <string name="lockpassword_confirm_repair_mode_password_details" translatable="false">Enter your device password enrolled in normal mode to continue</string>
+    <!-- An explanation text that the pattern needs to be solved before the device exits repair mode. [CHAR LIMIT=100] -->
+    <string name="lockpassword_confirm_repair_mode_pattern_details">Use your device pattern to continue</string>
+    <!-- An explanation text that the PIN needs to be solved before the device exits repair mode. [CHAR LIMIT=100] -->
+    <string name="lockpassword_confirm_repair_mode_pin_details">Enter your device PIN to continue</string>
+    <!-- An explanation text that the password needs to be solved before the device exits repair mode. [CHAR LIMIT=100] -->
+    <string name="lockpassword_confirm_repair_mode_password_details">Enter your device password to continue</string>
 
     <!-- Security & location settings screen, change security method screen instruction if user
          enters incorrect PIN [CHAR LIMIT=30] -->
@@ -4495,10 +4510,24 @@
     <string name="accessibility_button_intro">Using the accessibility button. The gesture isn\u2019t available with 3-button navigation.</string>
     <!-- Summary text for the accessibility button preference. [CHAR LIMIT=50] -->
     <string name="accessibility_button_summary">Quickly access accessibility features</string>
-    <!-- Description for the accessibility button in gesture navigation. Explain how this page works. [CHAR LIMIT=NONE] -->
-    <string name="accessibility_button_gesture_description"><b>To get started</b>\n1. Go to accessibility settings\n2. Select a feature and tap the shortcut\n3. Choose whether you want to use a button or gesture to access the feature</string>
-    <!-- Description for the accessibility button page. Explain how this page works. [CHAR LIMIT=NONE] -->
-    <string name="accessibility_button_description"><b>To get started</b>\n1. Go to accessibility settings\n2. Select a feature and tap the shortcut\n3. Choose the button to access the feature</string>
+    <!-- Description for the accessibility button in gesture navigation. Explain how this page works in numbered ordered list. [CHAR LIMIT=NONE] -->
+    <string name="accessibility_button_gesture_description">
+        <![CDATA[
+        <b>To get started</b><br/>
+        {0,number,integer}. Go to accessibility settings<br/>
+        {1,number,integer}. Select a feature and tap the shortcut<br/>
+        {2,number,integer}. Choose whether you want to use a button or gesture to access the feature<br/>
+        ]]>
+    </string>
+    <!-- Description for the accessibility button page. Explain how this page works in numbered ordered list. [CHAR LIMIT=NONE] -->
+    <string name="accessibility_button_description">
+        <![CDATA[
+        <b>To get started</b><br/>
+        {0,number,integer}. Go to accessibility settings<br/>
+        {1,number,integer}. Select a feature and tap the shortcut<br/>
+        {2,number,integer}. Choose the button to access the feature<br/>
+        ]]>
+    </string>
     <!-- Title for the button or gesture of the accessibility button. [CHAR LIMIT=35] -->
     <string name="accessibility_button_or_gesture_title">Use button or gesture</string>
     <!-- Title for the location of the accessibility button. [CHAR LIMIT=35] -->
@@ -7040,7 +7069,6 @@
     <string name="keywords_wallet">wallet</string>
     <string name="keywords_payment_settings">pay, tap, payments</string>
     <string name="keywords_backup">backup, back up</string>
-    <string name="keywords_assist_gesture_launch">gesture</string>
     <string name="keywords_face_unlock">face, unlock, auth, sign in</string>
     <string name="keywords_biometric_unlock">face, unlock, auth, sign in, fingerprint, biometric</string>
     <string name="keywords_imei_info">imei, meid, min, prl version, imei sv</string>
@@ -8626,20 +8654,24 @@
     <string name="app_pinning_intro">App pinning allows you to keep the current app in view until you unpin it. This feature can be used, for example, to let a trusted friend play a specific game.</string>
     <!-- [CHAR LIMIT=none] Screen pinning description -->
     <string name="screen_pinning_description">
+        <![CDATA[
         When an app is pinned, the pinned app may open other apps and personal data may be accessible.
         \n\nTo use app pinning:
-        \t\n1. Turn on app pinning
-        \t\n2. Open Overview
-        \t\n3. Tap the app icon at the top of the screen, then tap Pin
+        \t\n{0,number,integer}. Turn on app pinning
+        \t\n{1,number,integer}. Open Overview
+        \t\n{2,number,integer}. Tap the app icon at the top of the screen, then tap Pin
+        ]]>
     </string>
     <!-- [CHAR LIMIT=none] Screen pinning description -->
     <string name="screen_pinning_guest_user_description">
+        <![CDATA[
         When an app is pinned, the pinned app may open other apps and personal data may be accessible.
         \n\nIf you want to securely share your device with someone, try using a guest user instead.
         \n\nTo use app pinning:
-        \t\n1. Turn on app pinning
-        \t\n2. Open Overview
-        \t\n3. Tap the app icon at the top of the screen, then tap Pin
+        \t\n{0,number,integer}. Turn on app pinning
+        \t\n{1,number,integer}. Open Overview
+        \t\n{2,number,integer}. Tap the app icon at the top of the screen, then tap Pin
+        ]]>
     </string>
     <!-- [CHAR LIMIT=300] Screen pinning title -->
     <string name="screen_pinning_dialog_message">
@@ -10021,9 +10053,6 @@
 
     <!-- Title for settings suggestion for fingerprint swipe for notifications [CHAR LIMIT=60] -->
     <string name="fingerprint_swipe_for_notifications_suggestion_title">See notifications quickly</string>
-
-    <!-- Title text for the assist gesture [CHAR LIMIT=60] DO NOT TRANSLATE -->
-    <string name="assist_gesture_title" translatable="false">Assist gesture</string>
 
     <!-- Switch text for each gesture setting state -->
     <string name="gesture_setting_on">On</string>
