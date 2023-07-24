@@ -52,7 +52,7 @@
     <string name="security_settings_face_enroll_introduction_message" product="default" msgid="847716059867943459">"Odemykejte telefon, autorizujte nákupy a přihlašujte se do aplikací."</string>
     <string name="security_settings_face_enroll_introduction_message" product="tablet" msgid="3976493376026067375">"Odemykejte tablet, autorizujte nákupy a přihlašujte se do aplikací obličejem."</string>
     <string name="security_settings_face_enroll_introduction_message" product="device" msgid="6432265830098806034">"Odemykejte zařízení, autorizujte nákupy a přihlašujte se do aplikací obličejem."</string>
-    <string name="security_settings_face_enroll_introduction_message_class3" product="default" msgid="6769683806920355534">"Odemykejte telefon pomocí obličeje a ověřujte s ním svoji totožnost v aplikacích, například při přihlašování nebo schvalování nákupů."</string>
+    <string name="security_settings_face_enroll_introduction_message_class3" product="default" msgid="6769683806920355534">"Odemykejte telefon pomocí obličeje a ověřujte s ním totožnost v aplikacích, například při přihlašování nebo schvalování nákupů."</string>
     <string name="security_settings_face_enroll_introduction_message_class3" product="tablet" msgid="5417577899153380426">"Pomocí obličeje odemykejte tablet a ověřujte svou totožnost v aplikacích, např. při přihlašování nebo schvalování nákupů."</string>
     <string name="security_settings_face_enroll_introduction_message_class3" product="device" msgid="3308243169735270987">"Pomocí obličeje odemykejte zařízení a ověřujte svou totožnost v aplikacích, např. při přihlašování nebo schvalování nákupů."</string>
     <string name="security_settings_face_enroll_introduction_consent_message_0" product="default" msgid="9086377203303858619">"Povolte dítěti používat obličej k odemykání telefonu"</string>
@@ -354,8 +354,6 @@
     <string name="lockscreen_trivial_controls_summary" product="tablet" msgid="9052068482124729345">"Bez odemknutí tabletu"</string>
     <string name="auto_rotate_summary_a11y" product="default" msgid="2813368383309985185">"Když telefon otočíte z režimu na výšku do režimu na šířku nebo naopak"</string>
     <string name="auto_rotate_summary_a11y" product="tabled" msgid="4708833814245913981">"Když tablet otočíte z režimu na výšku do režimu na šířku nebo naopak"</string>
-    <!-- no translation found for daltonizer_feature_summary (3940653889277283702) -->
-    <skip />
-    <!-- no translation found for daltonizer_feature_summary (4006596881671077623) -->
-    <skip />
+    <string name="daltonizer_feature_summary" product="default" msgid="3940653889277283702">"Upravte si zobrazování barev v telefonu"</string>
+    <string name="daltonizer_feature_summary" product="tablet" msgid="4006596881671077623">"Upravte si zobrazování barev v tabletu"</string>
 </resources>

@@ -65,7 +65,8 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"配對左耳"</string>
     <string name="bluetooth_device_controls_general" msgid="1399214835599665488">"所有適用的助聽器"</string>
     <string name="bluetooth_device_controls_title" msgid="1895676556354697234">"助聽器設定"</string>
-    <string name="bluetooth_device_controls_summary" msgid="8115767735418425663">"快速鍵、助聽器兼容性"</string>
+    <!-- no translation found for bluetooth_device_controls_summary (8115767735418425663) -->
+    <skip />
     <string name="bluetooth_device_controls_specific" msgid="7706863288754077107">"僅限此裝置"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"音訊輸出裝置"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"關於音訊輸出"</string>
@@ -180,7 +181,7 @@
     <string name="temperature_preferences_title" msgid="5009881556503629058">"溫度"</string>
     <string name="first_day_of_week_preferences_title" msgid="1971850087589599553">"每週的第一天"</string>
     <string name="numbers_preferences_title" msgid="8197418984391195446">"數字偏好設定"</string>
-    <string name="default_string_of_regional_preference" msgid="7662581547334113719">"使用應用程式預設值"</string>
+    <string name="default_string_of_regional_preference" msgid="3428899072914884203">"使用預設值"</string>
     <string name="celsius_temperature_unit" msgid="8896459071273084507">"攝氏 (°C)"</string>
     <string name="fahrenheit_temperature_unit" msgid="1118677820614569801">"華氏 (°F)"</string>
     <string name="sunday_first_day_of_week" msgid="7644548348295686051">"星期日"</string>
@@ -326,6 +327,10 @@
     <string name="security_settings_face_settings_remove_dialog_title" msgid="2899669764446232715">"要刪除面部模型嗎？"</string>
     <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"系統會將你的面部模型安全地永久刪除。\n\n刪除後，你需要使用 PIN、圖案或密碼解鎖手機，或在應用程式內驗證身分。"</string>
     <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"系統會妥善地將你的面部模型永久刪除。面部模型刪除後，你便需要使用\n\n面部模型刪除後，你便需要使用 PIN、圖案或密碼來解鎖手機。"</string>
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint (7609582230650860974) -->
+    <skip />
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint_conv (2627374706274503259) -->
+    <skip />
     <string name="security_settings_face_settings_context_subtitle" msgid="8284262560781442403">"使用「面孔解鎖」解鎖手機"</string>
     <string name="security_settings_fingerprint" msgid="6387775386189204201">"指紋"</string>
     <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"指紋"</string>
@@ -469,7 +474,7 @@
     <string name="security_settings_fingerprint_enroll_error_dialog_title" msgid="8582267776559099046">"指紋設定逾時"</string>
     <string name="security_settings_fingerprint_enroll_error_timeout_dialog_message_setup" msgid="8521566666541069383">"你可稍後前往「設定」設定指紋。"</string>
     <string name="security_settings_fingerprint_enroll_error_generic_dialog_message_setup" msgid="8140162986046783546">"系統發生問題，你可稍後前往「設定」設定指紋。"</string>
-    <string name="security_settings_fingerprint_enroll_error_timeout_dialog_message" msgid="3534341971920335247">"你可稍後再設定指紋。"</string>
+    <string name="security_settings_fingerprint_enroll_error_timeout_dialog_message" msgid="3534341971920335247">"你可稍後設定指紋。"</string>
     <string name="security_settings_fingerprint_enroll_error_generic_dialog_message" msgid="4344665784935791640">"系統發生問題，你可稍後設定指紋。"</string>
     <string name="fingerprint_enroll_button_add" msgid="6652490687672815760">"新增其他指紋"</string>
     <string name="fingerprint_enroll_button_next" msgid="1034110123277869532">"下一步"</string>
@@ -1119,7 +1124,6 @@
     <string name="security_patch" msgid="4071756145347865382">"Android 安全性更新"</string>
     <string name="model_info" msgid="8997566254717810904">"型號"</string>
     <string name="hardware_revision" msgid="3454709180861965025">"硬件版本"</string>
-    <string name="manufactured_year" msgid="3401517138700926475">"製造年份"</string>
     <string name="fcc_equipment_id" msgid="6596668314025646129">"設備編號"</string>
     <string name="baseband_version" msgid="2600182227599835857">"基帶版本"</string>
     <string name="kernel_version" msgid="3513538109381366881">"核心版本"</string>
@@ -1161,8 +1165,7 @@
     <string name="battery_manufacture_date" msgid="7139426520156833987">"製造日期"</string>
     <string name="battery_first_use_date" msgid="3157207331722711317">"首次使用日期"</string>
     <string name="battery_cycle_count" msgid="2912949283386571900">"週期數"</string>
-    <!-- no translation found for battery_cycle_count_not_available (2426584515665184664) -->
-    <skip />
+    <string name="battery_cycle_count_not_available" msgid="2426584515665184664">"未有提供"</string>
     <string name="memory_calculating_size" msgid="3898240439798661242">"正在計算..."</string>
     <string name="storage_menu_rename" msgid="8549835371429159336">"重新命名"</string>
     <string name="storage_menu_mount" msgid="4760531872302820569">"安裝"</string>
@@ -1276,7 +1279,6 @@
     <string name="reset_bluetooth_wifi_desc" msgid="4030295669083059711">"此操作將重設所有 Wi‑Fi 和藍牙設定，且無法復原。"</string>
     <string name="reset_bluetooth_wifi_button_text" msgid="3974098137045963639">"重設"</string>
     <string name="reset_bluetooth_wifi_complete_toast" msgid="5893439291030574365">"已重設藍牙和 Wi‑Fi"</string>
-    <string name="erase_euicc_data_button" msgid="728078969563311737">"清除"</string>
     <string name="reset_esim_title" msgid="4194570573425902754">"清除 eSIM 卡"</string>
     <string name="reset_esim_desc" msgid="3662444090563399131">"此操作不會取消任何流動服務計劃。如要下載替換用的 SIM 卡，請聯絡流動網絡供應商。"</string>
     <string name="reset_network_button_text" msgid="2281476496459610071">"重設設定"</string>
@@ -1869,8 +1871,7 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"如果要使用無障礙功能，請用 2 隻手指由螢幕底部向上掃。\n\n用 2 隻手指向上掃然後㩒住，就可以切換唔同功能。"</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"如果要使用無障礙功能，請用 3 隻手指由螢幕底部向上掃。\n\n用 3 隻手指向上掃然後㩒住，就可以切換唔同功能。"</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"知道了"</string>
-    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
-    <skip />
+    <string name="accessibility_tutorial_dialog_link_button" msgid="6797349445794031781">"按鈕設定"</string>
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"「<xliff:g id="SERVICE">%1$s</xliff:g>」捷徑"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"無障礙功能按鈕"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"無障礙手勢"</string>
@@ -2333,8 +2334,7 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"按應用程式查看"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"按系統查看"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
-    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
-    <skip />
+    <string name="battery_cycle_count_footer" msgid="3642121059800373545">"由於出貨前需要進行質量檢查，因此你首次使用時的週期數未必是零"</string>
     <string name="process_stats_summary_title" msgid="502683176231281732">"程序統計資料"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"執行中程序的技術統計資料"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"記憶體用量"</string>
@@ -4165,7 +4165,8 @@
     <string name="change_wifi_state_app_detail_summary" msgid="8230854855584217111">"允許這個應用程式開啟或關閉 Wi-Fi，掃瞄和連線至 Wi-Fi 網絡、新增或移除網絡，或啟動僅限本機的熱點"</string>
     <string name="change_nfc_tag_apps_title" msgid="91514009058149617">"透過 NFC 啟動"</string>
     <string name="change_nfc_tag_apps_detail_switch" msgid="240286205725043561">"允許在掃瞄 NFC 後啟動"</string>
-    <string name="change_nfc_tag_apps_detail_summary" msgid="3338220223868942195">"允許系統掃瞄到 NFC 標籤時啟用此應用程式。\n如開啟此權限，系統會在偵測到標籤時，將此應用程式列為選項。"</string>
+    <!-- no translation found for change_nfc_tag_apps_detail_summary (3338220223868942195) -->
+    <skip />
     <string name="media_output_title" msgid="8283629315159510680">"播放媒體的裝置"</string>
     <string name="media_output_label_title" msgid="4139048973886819148">"使用以下裝置播放「<xliff:g id="LABEL">%s</xliff:g>」的內容"</string>
     <string name="media_output_default_summary" msgid="4200343059396412376">"此裝置"</string>
@@ -4728,36 +4729,20 @@
     <string name="contrast_medium" msgid="384414510709285811">"中"</string>
     <string name="contrast_high" msgid="3988567609694797696">"高"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"此應用程式只可在 1 個視窗中開啟"</string>
-    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
-    <skip />
-    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
-    <skip />
-    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
-    <skip />
-    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
-    <skip />
-    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
-    <skip />
-    <!-- no translation found for show_captions_disabled (690650956523818755) -->
-    <skip />
-    <!-- no translation found for show_captions_enabled (7089043007924626) -->
-    <skip />
-    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
-    <skip />
-    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
-    <skip />
+    <string name="accessibility_feature_full_state_summary" msgid="8747170258807179670">"<xliff:g id="STATE_0">%1$s</xliff:g>/<xliff:g id="SHORTCUT_STATE">%2$s</xliff:g>/<xliff:g id="SERVICE_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="generic_accessibility_service_on" msgid="2465820044606775562">"服務已啟用"</string>
+    <string name="generic_accessibility_service_off" msgid="1752061696695346360">"服務已停用"</string>
+    <string name="generic_accessibility_feature_shortcut_off" msgid="3669343136122187913">"快速鍵已關閉"</string>
+    <string name="accessibility_shortcut_state_off" msgid="8158137799007601475">"已停用"</string>
+    <string name="daltonizer_state_on" msgid="131013270022603983">"已啟用"</string>
+    <string name="daltonizer_state_off" msgid="1162285688069856179">"已停用"</string>
+    <string name="color_inversion_state_on" msgid="1160969033636440368">"已啟用"</string>
+    <string name="color_inversion_state_off" msgid="6925638668080451724">"已停用"</string>
+    <string name="color_inversion_feature_summary" msgid="1199876648549627647">"將明亮的畫面調暗或將深色畫面轉為淺色"</string>
+    <string name="magnification_feature_summary" msgid="641825267460247848">"快速放大畫面中的內容"</string>
+    <string name="autoclick_disabled" msgid="3213396804955002120">"已停用"</string>
+    <string name="show_captions_disabled" msgid="690650956523818755">"已停用"</string>
+    <string name="show_captions_enabled" msgid="7089043007924626">"已啟用"</string>
+    <string name="live_caption_disabled" msgid="3562035026547887366">"已停用"</string>
+    <string name="live_caption_enabled" msgid="5269360946200718949">"已啟用"</string>
 </resources>

@@ -65,7 +65,8 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"Bind linkeroor saam"</string>
     <string name="bluetooth_device_controls_general" msgid="1399214835599665488">"Vir alle beskikbare gehoortoestelle"</string>
     <string name="bluetooth_device_controls_title" msgid="1895676556354697234">"Gehoortoestelinstellings"</string>
-    <string name="bluetooth_device_controls_summary" msgid="8115767735418425663">"Kortpad, gehoortoestel-versoenbaarheid"</string>
+    <!-- no translation found for bluetooth_device_controls_summary (8115767735418425663) -->
+    <skip />
     <string name="bluetooth_device_controls_specific" msgid="7706863288754077107">"Vir hierdie toestel"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"Oudio-uitvoer"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"Meer oor oudio-uitvoer"</string>
@@ -180,7 +181,7 @@
     <string name="temperature_preferences_title" msgid="5009881556503629058">"Temperatuur"</string>
     <string name="first_day_of_week_preferences_title" msgid="1971850087589599553">"Eerste dag van die week"</string>
     <string name="numbers_preferences_title" msgid="8197418984391195446">"Nommervoorkeure"</string>
-    <string name="default_string_of_regional_preference" msgid="7662581547334113719">"Gebruik appverstek"</string>
+    <string name="default_string_of_regional_preference" msgid="3428899072914884203">"Gebruik verstek"</string>
     <string name="celsius_temperature_unit" msgid="8896459071273084507">"Celsius (°C)"</string>
     <string name="fahrenheit_temperature_unit" msgid="1118677820614569801">"Fahrenheit (°F)"</string>
     <string name="sunday_first_day_of_week" msgid="7644548348295686051">"Sondag"</string>
@@ -326,6 +327,10 @@
     <string name="security_settings_face_settings_remove_dialog_title" msgid="2899669764446232715">"Vee gesigmodel uit?"</string>
     <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"Jou gesigmodel sal permanent en veilig uitgevee word. \n\nNadat dit uitgevee is, sal jy jou PIN, patroon of wagwoord nodig hê om jou foon te ontsluit of vir stawing in apps."</string>
     <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"Jou gesigmodel sal permanent en veilig uitgevee word. \n\nNadat dit uitgevee is, sal jy jou PIN, patroon of wagwoord nodig hê om jou foon te ontsluit."</string>
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint (7609582230650860974) -->
+    <skip />
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint_conv (2627374706274503259) -->
+    <skip />
     <string name="security_settings_face_settings_context_subtitle" msgid="8284262560781442403">"Gebruik Gesigslot om jou foon te ontsluit"</string>
     <string name="security_settings_fingerprint" msgid="6387775386189204201">"Vingerafdruk"</string>
     <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"Vingerafdruk"</string>
@@ -1119,7 +1124,6 @@
     <string name="security_patch" msgid="4071756145347865382">"Android-sekuriteitopdatering"</string>
     <string name="model_info" msgid="8997566254717810904">"Model"</string>
     <string name="hardware_revision" msgid="3454709180861965025">"Hardewareweergawe"</string>
-    <string name="manufactured_year" msgid="3401517138700926475">"Jaar van vervaardiging"</string>
     <string name="fcc_equipment_id" msgid="6596668314025646129">"Toerusting-ID"</string>
     <string name="baseband_version" msgid="2600182227599835857">"Basisbandweergawe"</string>
     <string name="kernel_version" msgid="3513538109381366881">"Kernweergawe"</string>
@@ -1161,8 +1165,7 @@
     <string name="battery_manufacture_date" msgid="7139426520156833987">"Vervaardigingdatum"</string>
     <string name="battery_first_use_date" msgid="3157207331722711317">"Datum van eerste gebruik"</string>
     <string name="battery_cycle_count" msgid="2912949283386571900">"Siklustelling"</string>
-    <!-- no translation found for battery_cycle_count_not_available (2426584515665184664) -->
-    <skip />
+    <string name="battery_cycle_count_not_available" msgid="2426584515665184664">"Onbeskikbaar"</string>
     <string name="memory_calculating_size" msgid="3898240439798661242">"Bereken tans…"</string>
     <string name="storage_menu_rename" msgid="8549835371429159336">"Hernoem"</string>
     <string name="storage_menu_mount" msgid="4760531872302820569">"Monteer"</string>
@@ -1276,7 +1279,6 @@
     <string name="reset_bluetooth_wifi_desc" msgid="4030295669083059711">"Dit sal alle wi‑fi- en Bluetooth-instellings terugstel. Jy kan nie hierdie handeling ontdoen nie."</string>
     <string name="reset_bluetooth_wifi_button_text" msgid="3974098137045963639">"Stel terug"</string>
     <string name="reset_bluetooth_wifi_complete_toast" msgid="5893439291030574365">"Bluetooth en wi‑fi is teruggestel"</string>
-    <string name="erase_euicc_data_button" msgid="728078969563311737">"Vee uit"</string>
     <string name="reset_esim_title" msgid="4194570573425902754">"Vee e-SIM-kaarte uit"</string>
     <string name="reset_esim_desc" msgid="3662444090563399131">"Dit sal geen mobielediensplanne kanselleer nie. Kontak jou diensverskaffer om vervanging-SIM\'s af te laai."</string>
     <string name="reset_network_button_text" msgid="2281476496459610071">"Stel instellings terug"</string>
@@ -1869,8 +1871,7 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"Swiep met 2 vingers van die onderkant van die skerm af op om \'n toeganklikheidkenmerk te gebruik.\n\nSwiep met 2 vingers op en hou om tussen kenmerke te wissel."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"Swiep met 3 vingers van die onderkant van die skerm af op om \'n toeganklikheidkenmerk te gebruik.\n\nSwiep met 3 vingers op en hou om tussen kenmerke te wissel."</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"Het dit"</string>
-    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
-    <skip />
+    <string name="accessibility_tutorial_dialog_link_button" msgid="6797349445794031781">"Knoppie-instellings"</string>
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"<xliff:g id="SERVICE">%1$s</xliff:g>-kortpad"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"Toeganklikheidknoppie"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"Toeganklikheidsgebaar"</string>
@@ -2333,8 +2334,7 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"Bekyk volgens apps"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"Bekyk volgens stelsels"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
-    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
-    <skip />
+    <string name="battery_cycle_count_footer" msgid="3642121059800373545">"Die siklustelling sal weens gehalte-inspeksies voor versending dalk nie nul wees wanneer dit vir die eerste keer gebruik word nie"</string>
     <string name="process_stats_summary_title" msgid="502683176231281732">"Proses-statistieke"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"Bleeksiel-statistieke vir lopende prosesse"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"Berginggebruik"</string>
@@ -3917,9 +3917,9 @@
     <string name="emergency_settings_preference_title" msgid="6183455153241187148">"Veiligheid en noodgeval"</string>
     <string name="emergency_dashboard_summary" msgid="401033951074039302">"Nood-SOS, mediese inligting, waarskuwings"</string>
     <string name="edge_to_edge_navigation_title" msgid="714427081306043819">"Gebaarnavigasie"</string>
-    <string name="edge_to_edge_navigation_summary" msgid="8497033810637690561">"Swiep op van die onderkant van die skerm af om na die tuisskerm toe te gaan. Swiep op van die onderkant af, hou, en los dan om apps te wissel. Swiep van óf die linker- óf die regterrand af om terug te gaan."</string>
+    <string name="edge_to_edge_navigation_summary" msgid="8497033810637690561">"Swiep op van die onderkant van die skerm af om na die tuisskerm toe te gaan. Swiep op van die onderkant af, hou, en los dan om programme te wissel. Swiep van óf die linker- óf die regterrand af om terug te gaan."</string>
     <string name="legacy_navigation_title" msgid="7877402855994423727">"3-knoppienavigasie"</string>
-    <string name="legacy_navigation_summary" msgid="5905301067778326433">"Gaan terug, Tuis, en wissel apps met knoppies onderaan jou skerm."</string>
+    <string name="legacy_navigation_summary" msgid="5905301067778326433">"Gaan terug, Tuis, en wissel programme met knoppies onderaan jou skerm."</string>
     <string name="keywords_system_navigation" msgid="3131782378486554934">"stelselnavigasie, 2-knoppienavigasie, 3-knoppienavigasie, gebaarnavigasie, swiep"</string>
     <string name="assistant_gesture_category_title" msgid="2478251256585807920">"Digitale assistent"</string>
     <string name="assistant_corner_gesture_title" msgid="1895061522687002106">"Swiep om assistent op te roep"</string>
@@ -4165,7 +4165,8 @@
     <string name="change_wifi_state_app_detail_summary" msgid="8230854855584217111">"Laat hierdie program toe om Wi-Fi aan of af te skakel, Wi-Fi-netwerke te soek en aan hulle te koppel, netwerke by te voeg en te verwyder, en om \'n slegsplaaslike warmkol te begin"</string>
     <string name="change_nfc_tag_apps_title" msgid="91514009058149617">"Begin via NFC"</string>
     <string name="change_nfc_tag_apps_detail_switch" msgid="240286205725043561">"Laat toe dat dit met NFC-skandering begin"</string>
-    <string name="change_nfc_tag_apps_detail_summary" msgid="3338220223868942195">"Laat hierdie app toe om te begin wanneer ’n NFC-merker geskandeer word.\nAs hierdie toestemming aan is, sal die app as ’n opsie beskikbaar wees elke keer wanneer ’n merker bespeur word."</string>
+    <!-- no translation found for change_nfc_tag_apps_detail_summary (3338220223868942195) -->
+    <skip />
     <string name="media_output_title" msgid="8283629315159510680">"Speel media na"</string>
     <string name="media_output_label_title" msgid="4139048973886819148">"Speel <xliff:g id="LABEL">%s</xliff:g> op"</string>
     <string name="media_output_default_summary" msgid="4200343059396412376">"Hierdie toestel"</string>
@@ -4573,7 +4574,7 @@
     <string name="require_cellular_encryption_summary" msgid="4813823321032908641">"Enkripsie is veiliger, maar jy sal dalk nie in sommige liggings kan koppel nie. Enkripsie word nooit vereis vir noodoproepe nie"</string>
     <string name="app_info_all_services_label" msgid="1487070364839071105">"Alle dienste"</string>
     <string name="show_clip_access_notification" msgid="7782300987639778542">"Wys knipbordtoegang"</string>
-    <string name="show_clip_access_notification_summary" msgid="474090757777203207">"Wys \'n boodskap wanneer apps toegang het tot teks, prente of ander inhoud wat jy gekopieer het"</string>
+    <string name="show_clip_access_notification_summary" msgid="474090757777203207">"Wys \'n boodskap wanneer programme toegang het tot teks, prente of ander inhoud wat jy gekopieer het"</string>
     <string name="all_apps" msgid="3054120149509114789">"Alle programme"</string>
     <string name="request_manage_bluetooth_permission_dont_allow" msgid="8798061333407581300">"Moenie toelaat nie"</string>
     <string name="uwb_settings_title" msgid="8578498712312002231">"Ultrawye band (UWB)"</string>
@@ -4728,36 +4729,20 @@
     <string name="contrast_medium" msgid="384414510709285811">"Medium"</string>
     <string name="contrast_high" msgid="3988567609694797696">"Hoog"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"Hierdie app kan net in 1 venster oopgemaak word"</string>
-    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
-    <skip />
-    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
-    <skip />
-    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
-    <skip />
-    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
-    <skip />
-    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
-    <skip />
-    <!-- no translation found for show_captions_disabled (690650956523818755) -->
-    <skip />
-    <!-- no translation found for show_captions_enabled (7089043007924626) -->
-    <skip />
-    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
-    <skip />
-    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
-    <skip />
+    <string name="accessibility_feature_full_state_summary" msgid="8747170258807179670">"<xliff:g id="STATE_0">%1$s</xliff:g> / <xliff:g id="SHORTCUT_STATE">%2$s</xliff:g> / <xliff:g id="SERVICE_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="generic_accessibility_service_on" msgid="2465820044606775562">"Diens aan"</string>
+    <string name="generic_accessibility_service_off" msgid="1752061696695346360">"Diens af"</string>
+    <string name="generic_accessibility_feature_shortcut_off" msgid="3669343136122187913">"Kortpad af"</string>
+    <string name="accessibility_shortcut_state_off" msgid="8158137799007601475">"Af"</string>
+    <string name="daltonizer_state_on" msgid="131013270022603983">"Aan"</string>
+    <string name="daltonizer_state_off" msgid="1162285688069856179">"Af"</string>
+    <string name="color_inversion_state_on" msgid="1160969033636440368">"Aan"</string>
+    <string name="color_inversion_state_off" msgid="6925638668080451724">"Af"</string>
+    <string name="color_inversion_feature_summary" msgid="1199876648549627647">"Maak ligte skerms donker en donker skerms lig"</string>
+    <string name="magnification_feature_summary" msgid="641825267460247848">"Zoem vinnig op die skerm in om inhoud groter te maak"</string>
+    <string name="autoclick_disabled" msgid="3213396804955002120">"Af"</string>
+    <string name="show_captions_disabled" msgid="690650956523818755">"Af"</string>
+    <string name="show_captions_enabled" msgid="7089043007924626">"Aan"</string>
+    <string name="live_caption_disabled" msgid="3562035026547887366">"Af"</string>
+    <string name="live_caption_enabled" msgid="5269360946200718949">"Aan"</string>
 </resources>

@@ -65,7 +65,8 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"Savienot pārī kreiso"</string>
     <string name="bluetooth_device_controls_general" msgid="1399214835599665488">"Visiem pieejamajiem dzirdes aparātiem"</string>
     <string name="bluetooth_device_controls_title" msgid="1895676556354697234">"Dzirdes aparāta iestatījumi"</string>
-    <string name="bluetooth_device_controls_summary" msgid="8115767735418425663">"Saīsne, saderība ar dzirdes aparātiem"</string>
+    <!-- no translation found for bluetooth_device_controls_summary (8115767735418425663) -->
+    <skip />
     <string name="bluetooth_device_controls_specific" msgid="7706863288754077107">"Šai ierīcei"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"Audio izeja"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"Par audio izvadi"</string>
@@ -180,7 +181,8 @@
     <string name="temperature_preferences_title" msgid="5009881556503629058">"Temperatūra"</string>
     <string name="first_day_of_week_preferences_title" msgid="1971850087589599553">"Pirmā nedēļas diena"</string>
     <string name="numbers_preferences_title" msgid="8197418984391195446">"Skaitļu preferences"</string>
-    <string name="default_string_of_regional_preference" msgid="7662581547334113719">"Izmantot lietotnes noklusējuma iestatījumus"</string>
+    <!-- no translation found for default_string_of_regional_preference (3428899072914884203) -->
+    <skip />
     <string name="celsius_temperature_unit" msgid="8896459071273084507">"Celsija skala (°C)"</string>
     <string name="fahrenheit_temperature_unit" msgid="1118677820614569801">"Fārenheita skala (°F)"</string>
     <string name="sunday_first_day_of_week" msgid="7644548348295686051">"Svētdiena"</string>
@@ -326,6 +328,10 @@
     <string name="security_settings_face_settings_remove_dialog_title" msgid="2899669764446232715">"Vai dzēst sejas modeli?"</string>
     <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"Jūsu sejas modelis tiks neatgriezeniski un droši izdzēsts.\n\nPēc tā dzēšanas jums būs jāizmanto PIN, kombinācija vai parole, lai atbloķētu savu tālruni vai veiktu autentifikāciju lietotnēs."</string>
     <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"Jūsu sejas modelis tiks neatgriezeniski un droši izdzēsts.\n\nPēc tā dzēšanas jums būs jāizmanto PIN, kombinācija vai parole, lai atbloķētu savu tālruni."</string>
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint (7609582230650860974) -->
+    <skip />
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint_conv (2627374706274503259) -->
+    <skip />
     <string name="security_settings_face_settings_context_subtitle" msgid="8284262560781442403">"Izmantot tālruņa atbloķēšanai autorizāciju pēc sejas"</string>
     <string name="security_settings_fingerprint" msgid="6387775386189204201">"Pirksta nospiedums"</string>
     <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"Pirkstu nospiedumi"</string>
@@ -387,7 +393,7 @@
     <string name="biometric_settings_intro" msgid="4263069383955676756">"Ja iestatīsiet autorizāciju pēc sejas un autorizāciju ar pirksta nospiedumu, tālrunī tiks pieprasīts pirksta nospiedums, kad valkāsiet masku vai atradīsieties tumšā vietā."</string>
     <string name="biometric_settings_category_ways_to_unlock" msgid="3384767901580915266">"Atbloķēšanas iespējas"</string>
     <string name="biometric_settings_category_use_face_fingerprint" msgid="4377659744376863913">"Izmantojot seju vai pirksta nospiedumu"</string>
-    <string name="biometric_settings_use_biometric_unlock_phone" msgid="8180914579885804358">"Atbloķēt tālruni"</string>
+    <string name="biometric_settings_use_biometric_unlock_phone" msgid="8180914579885804358">"Tālruņa atbloķēšana"</string>
     <string name="biometric_settings_use_biometric_for_apps" msgid="6201168728906364189">"Lietotnēs verificēt jūsu identitāti"</string>
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"Izmantojot autorizāciju pēc sejas"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"Izmantojot autorizāciju ar pirksta nospiedumu"</string>
@@ -1119,7 +1125,6 @@
     <string name="security_patch" msgid="4071756145347865382">"Android drošības atjauninājums"</string>
     <string name="model_info" msgid="8997566254717810904">"Modelis"</string>
     <string name="hardware_revision" msgid="3454709180861965025">"Aparatūras versija"</string>
-    <string name="manufactured_year" msgid="3401517138700926475">"Ražošanas gads"</string>
     <string name="fcc_equipment_id" msgid="6596668314025646129">"Iekārtas ID"</string>
     <string name="baseband_version" msgid="2600182227599835857">"Pamatjoslas versija"</string>
     <string name="kernel_version" msgid="3513538109381366881">"Kernel versija"</string>
@@ -1161,8 +1166,7 @@
     <string name="battery_manufacture_date" msgid="7139426520156833987">"Izgatavošanas datums"</string>
     <string name="battery_first_use_date" msgid="3157207331722711317">"Pirmās lietošanas reizes datums"</string>
     <string name="battery_cycle_count" msgid="2912949283386571900">"Ciklu skaits"</string>
-    <!-- no translation found for battery_cycle_count_not_available (2426584515665184664) -->
-    <skip />
+    <string name="battery_cycle_count_not_available" msgid="2426584515665184664">"Nav pieejams"</string>
     <string name="memory_calculating_size" msgid="3898240439798661242">"Notiek aprēķināšana..."</string>
     <string name="storage_menu_rename" msgid="8549835371429159336">"Pārdēvēt"</string>
     <string name="storage_menu_mount" msgid="4760531872302820569">"Pievienot"</string>
@@ -1276,7 +1280,6 @@
     <string name="reset_bluetooth_wifi_desc" msgid="4030295669083059711">"Tādējādi tiks atiestatīti visi Wi‑Fi un Bluetooth iestatījumi. Šo darbību nevar atsaukt."</string>
     <string name="reset_bluetooth_wifi_button_text" msgid="3974098137045963639">"Atiestatīt"</string>
     <string name="reset_bluetooth_wifi_complete_toast" msgid="5893439291030574365">"Bluetooth un Wi‑Fi iestatījumi ir atiestatīti"</string>
-    <string name="erase_euicc_data_button" msgid="728078969563311737">"Dzēst"</string>
     <string name="reset_esim_title" msgid="4194570573425902754">"Dzēst eSIM kartes"</string>
     <string name="reset_esim_desc" msgid="3662444090563399131">"Ar šo darbību netiks anulēti mobilo sakaru pakalpojumu plāni. Lai lejupielādētu nomaiņas SIM kartes, sazinieties ar mobilo sakaru operatoru."</string>
     <string name="reset_network_button_text" msgid="2281476496459610071">"Atiestatīt iestatījumus"</string>
@@ -1412,7 +1415,7 @@
     <string name="lockpassword_choose_your_profile_password_header" msgid="7038997227611893312">"Darba paroles iestatīšana"</string>
     <string name="lockpassword_choose_your_pin_header" msgid="7754265746504679473">"PIN iestatīšana"</string>
     <string name="lockpassword_choose_your_profile_pin_header" msgid="4581749963670819048">"Darba PIN iestatīšana"</string>
-    <string name="lockpassword_choose_your_pattern_header" msgid="5674909390779586252">"Iestatiet kombināciju"</string>
+    <string name="lockpassword_choose_your_pattern_header" msgid="5674909390779586252">"Kombinācijas iestatīšana"</string>
     <string name="lockpassword_choose_your_pattern_description" msgid="6808109256008481046">"Papildu drošībai iestatiet kombināciju šīs ierīces atbloķēšanai"</string>
     <string name="lockpassword_choose_your_profile_pattern_header" msgid="3101811498330756641">"Darba kombinācijas iestatīšana"</string>
     <string name="lockpassword_choose_your_password_header_for_fingerprint" msgid="3167261267229254090">"Parole pirksta nosp. lietošanai"</string>
@@ -1869,8 +1872,7 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"Lai izmantotu pieejamības funkciju, ar diviem pirkstiem velciet augšup no ekrāna apakšdaļas.\n\nLai pārslēgtu funkcijas, velciet augšup ar diviem pirkstiem un turiet."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"Lai izmantotu pieejamības funkciju, ar trīs pirkstiem velciet augšup no ekrāna apakšdaļas.\n\nLai pārslēgtu funkcijas, velciet augšup ar trīs pirkstiem un turiet."</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"Labi"</string>
-    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
-    <skip />
+    <string name="accessibility_tutorial_dialog_link_button" msgid="6797349445794031781">"Pogas iestatījumi"</string>
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"Pakalpojuma <xliff:g id="SERVICE">%1$s</xliff:g> saīsne"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"Pieejamības poga"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"Pieejamības žests"</string>
@@ -2333,8 +2335,7 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"Skatīt pēc lietotnes"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"Skatīt pēc sistēmas"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
-    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
-    <skip />
+    <string name="battery_cycle_count_footer" msgid="3642121059800373545">"Pirmajā lietošanas reizē ciklu skaits var nebūt nulle, jo pirms piegādes tiek veiktas kvalitātes pārbaudes"</string>
     <string name="process_stats_summary_title" msgid="502683176231281732">"Procesu statistika"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"Statistika par darbības procesiem"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"Atmiņas lietojums"</string>
@@ -4165,7 +4166,8 @@
     <string name="change_wifi_state_app_detail_summary" msgid="8230854855584217111">"Atļaut šai lietotnei ieslēgt vai izslēgt savienojumu ar Wi-Fi, meklēt un izveidot savienojumu ar Wi-Fi tīkliem, pievienot vai noņemt tīklus vai izveidot vietējo tīklāju."</string>
     <string name="change_nfc_tag_apps_title" msgid="91514009058149617">"Palaist, izmantojot NFC"</string>
     <string name="change_nfc_tag_apps_detail_switch" msgid="240286205725043561">"Atļaut palaišanu pēc NFC atzīmes skenēšanas"</string>
-    <string name="change_nfc_tag_apps_detail_summary" msgid="3338220223868942195">"Atļaujiet palaist šo lietotni ikreiz, kad tiek skenēta NFC atzīme.\nJa piešķirsiet šo atļauju, lietotne būs pieejama kā iespēja katru reizi, kad tiks noteikta atzīme."</string>
+    <!-- no translation found for change_nfc_tag_apps_detail_summary (3338220223868942195) -->
+    <skip />
     <string name="media_output_title" msgid="8283629315159510680">"Atskaņot multivides saturu šeit:"</string>
     <string name="media_output_label_title" msgid="4139048973886819148">"Atskaņot <xliff:g id="LABEL">%s</xliff:g> šeit:"</string>
     <string name="media_output_default_summary" msgid="4200343059396412376">"Šī ierīce"</string>
@@ -4729,36 +4731,20 @@
     <string name="contrast_medium" msgid="384414510709285811">"Vidējs"</string>
     <string name="contrast_high" msgid="3988567609694797696">"Augsts"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"Šo lietotni var atvērt tikai vienā logā"</string>
-    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
-    <skip />
-    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
-    <skip />
-    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
-    <skip />
-    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
-    <skip />
-    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
-    <skip />
-    <!-- no translation found for show_captions_disabled (690650956523818755) -->
-    <skip />
-    <!-- no translation found for show_captions_enabled (7089043007924626) -->
-    <skip />
-    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
-    <skip />
-    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
-    <skip />
+    <string name="accessibility_feature_full_state_summary" msgid="8747170258807179670">"<xliff:g id="STATE_0">%1$s</xliff:g> / <xliff:g id="SHORTCUT_STATE">%2$s</xliff:g> / <xliff:g id="SERVICE_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="generic_accessibility_service_on" msgid="2465820044606775562">"Pakalpojums ieslēgts"</string>
+    <string name="generic_accessibility_service_off" msgid="1752061696695346360">"Pakalpojums izslēgts"</string>
+    <string name="generic_accessibility_feature_shortcut_off" msgid="3669343136122187913">"Saīsne izslēgta"</string>
+    <string name="accessibility_shortcut_state_off" msgid="8158137799007601475">"Izslēgta"</string>
+    <string name="daltonizer_state_on" msgid="131013270022603983">"Ieslēgts"</string>
+    <string name="daltonizer_state_off" msgid="1162285688069856179">"Izslēgts"</string>
+    <string name="color_inversion_state_on" msgid="1160969033636440368">"Ieslēgta"</string>
+    <string name="color_inversion_state_off" msgid="6925638668080451724">"Izslēgta"</string>
+    <string name="color_inversion_feature_summary" msgid="1199876648549627647">"Tā padara gaišus ekrānus tumšus, bet tumšus ekrānus — gaišus."</string>
+    <string name="magnification_feature_summary" msgid="641825267460247848">"Ātri tuviniet ekrānu, lai palielinātu saturu"</string>
+    <string name="autoclick_disabled" msgid="3213396804955002120">"Izslēgta"</string>
+    <string name="show_captions_disabled" msgid="690650956523818755">"Izslēgta"</string>
+    <string name="show_captions_enabled" msgid="7089043007924626">"Ieslēgta"</string>
+    <string name="live_caption_disabled" msgid="3562035026547887366">"Izslēgti"</string>
+    <string name="live_caption_enabled" msgid="5269360946200718949">"Ieslēgti"</string>
 </resources>

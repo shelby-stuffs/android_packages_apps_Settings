@@ -2429,6 +2429,8 @@
             <intent-filter android:priority="1">
                 <action android:name="android.app.action.CONFIRM_DEVICE_CREDENTIAL" />
                 <action android:name="android.app.action.CONFIRM_FRP_CREDENTIAL" />
+                <action android:name="android.app.action.PREPARE_REPAIR_MODE_DEVICE_CREDENTIAL" />
+                <action android:name="android.app.action.CONFIRM_REPAIR_MODE_DEVICE_CREDENTIAL" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -4957,6 +4959,7 @@
         <activity
             android:name=".spa.SpaActivity"
             android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize"
+            android:knownActivityEmbeddingCerts="@array/config_known_host_certs"
             android:exported="false" />
         <activity android:name=".spa.SpaBridgeActivity" android:exported="false"/>
         <activity android:name=".spa.SpaAppBridgeActivity" android:exported="false"/>

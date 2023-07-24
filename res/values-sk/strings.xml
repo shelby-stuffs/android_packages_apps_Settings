@@ -65,7 +65,8 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"Spárovať ľavé ucho"</string>
     <string name="bluetooth_device_controls_general" msgid="1399214835599665488">"Pre všetky dostupné načúvadlá"</string>
     <string name="bluetooth_device_controls_title" msgid="1895676556354697234">"Nastavenia načúvacieho zariadenia"</string>
-    <string name="bluetooth_device_controls_summary" msgid="8115767735418425663">"Skratka, kompatibilita s načúvadlami"</string>
+    <!-- no translation found for bluetooth_device_controls_summary (8115767735418425663) -->
+    <skip />
     <string name="bluetooth_device_controls_specific" msgid="7706863288754077107">"Pre toto zariadenie"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"Zvukový výstup"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"Zvukový výstup"</string>
@@ -180,7 +181,8 @@
     <string name="temperature_preferences_title" msgid="5009881556503629058">"Teplota"</string>
     <string name="first_day_of_week_preferences_title" msgid="1971850087589599553">"Prvý deň v týždni"</string>
     <string name="numbers_preferences_title" msgid="8197418984391195446">"Predvoľby čísiel"</string>
-    <string name="default_string_of_regional_preference" msgid="7662581547334113719">"Použiť predvolené nastavenie aplikácie"</string>
+    <!-- no translation found for default_string_of_regional_preference (3428899072914884203) -->
+    <skip />
     <string name="celsius_temperature_unit" msgid="8896459071273084507">"Celzius (°C)"</string>
     <string name="fahrenheit_temperature_unit" msgid="1118677820614569801">"Fahrenheit (°F)"</string>
     <string name="sunday_first_day_of_week" msgid="7644548348295686051">"Nedeľa"</string>
@@ -326,6 +328,10 @@
     <string name="security_settings_face_settings_remove_dialog_title" msgid="2899669764446232715">"Chcete model tváre odstrániť?"</string>
     <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"Model tváre bude bezpečným spôsobom natrvalo odstránený.\n\nPo odstránení budete pri odomykaní telefónu alebo overovaní v aplikáciách potrebovať PIN, vzor alebo heslo."</string>
     <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"Model tváre bude bezpečným spôsobom natrvalo odstránený.\n\nPo odstránení budete pri odomykaní telefónu potrebovať PIN, vzor alebo heslo."</string>
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint (7609582230650860974) -->
+    <skip />
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint_conv (2627374706274503259) -->
+    <skip />
     <string name="security_settings_face_settings_context_subtitle" msgid="8284262560781442403">"Odomykajte telefón tvárou"</string>
     <string name="security_settings_fingerprint" msgid="6387775386189204201">"Odtlačok prsta"</string>
     <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"Odtlačok prsta"</string>
@@ -606,7 +612,7 @@
     <string name="lockpassword_password_too_short" msgid="1938086368137797700">"{count,plural, =1{Musí mať aspoň # znak}few{Musí mať aspoň # znaky}many{Must be at least # characters}other{Musí mať aspoň # znakov}}"</string>
     <string name="lockpassword_password_too_short_all_numeric" msgid="4301294924022401502">"{count,plural, =1{Ak používate iba čísla, heslo musí mať aspoň jednu číslicu}few{Ak používate iba čísla, heslo musí mať aspoň # číslice}many{If using only numbers, must be at least # digits}other{Ak používate iba čísla, heslo musí mať aspoň # číslic}}"</string>
     <string name="lockpassword_pin_too_short" msgid="8910105226463085689">"{count,plural, =1{PIN musí mať aspoň # číslicu}few{PIN musí mať aspoň # číslice}many{PIN must be at least # digits}other{PIN musí mať aspoň # číslic}}"</string>
-    <string name="lockpassword_pin_too_short_autoConfirm_extra_message" msgid="3271351502900762571">"{count,plural, =1{PIN musí obsahovať aspoň # číslicu, pre lepšie zabezpečenie sa však odporúča {minAutoConfirmLen}‑ciferný kód PIN}few{PIN musí obsahovať aspoň # číslice, pre lepšie zabezpečenie sa však odporúča {minAutoConfirmLen}‑ciferný kód PIN}many{PIN must be at least # digits, but a {minAutoConfirmLen}-digit PIN is recommended for added security}other{PIN musí obsahovať aspoň # číslic, pre lepšie zabezpečenie sa však odporúča {minAutoConfirmLen}‑ciferný kód PIN}}"</string>
+    <string name="lockpassword_pin_too_short_autoConfirm_extra_message" msgid="3271351502900762571">"{count,plural, =1{PIN musí obsahovať aspoň # číslicu, avšak pre lepšie zabezpečenie sa odporúča {minAutoConfirmLen}‑ciferný kód PIN}few{PIN musí obsahovať aspoň # číslice, avšak pre lepšie zabezpečenie sa odporúča {minAutoConfirmLen}‑ciferný kód PIN}many{PIN must be at least # digits, but a {minAutoConfirmLen}-digit PIN is recommended for added security}other{PIN musí obsahovať aspoň # číslic, avšak pre lepšie zabezpečenie sa odporúča {minAutoConfirmLen}‑ciferný kód PIN}}"</string>
     <string name="lockpassword_password_too_long" msgid="1940345313260498308">"{count,plural, =1{Musí mať menej ako # znak}few{Musí mať menej ako # znaky}many{Must be fewer than # characters}other{Musí mať menej ako # znakov}}"</string>
     <string name="lockpassword_pin_too_long" msgid="1678212054564388576">"{count,plural, =1{Musí mať menej ako # číslicu}few{Musí mať menej ako # číslice}many{Must be fewer than # digits}other{Musí mať menej ako # číslic}}"</string>
     <string name="lockpassword_pin_recently_used" msgid="6650277060998923465">"Správca zariadenia neumožňuje používať nedávny kód PIN"</string>
@@ -1119,7 +1125,6 @@
     <string name="security_patch" msgid="4071756145347865382">"Aktualizácia zabezpečenia Androidu"</string>
     <string name="model_info" msgid="8997566254717810904">"Model"</string>
     <string name="hardware_revision" msgid="3454709180861965025">"Hardvérová verzia"</string>
-    <string name="manufactured_year" msgid="3401517138700926475">"Rok výroby"</string>
     <string name="fcc_equipment_id" msgid="6596668314025646129">"ID zariadenia"</string>
     <string name="baseband_version" msgid="2600182227599835857">"Verzia základného pásma"</string>
     <string name="kernel_version" msgid="3513538109381366881">"Verzia jadra"</string>
@@ -1275,7 +1280,6 @@
     <string name="reset_bluetooth_wifi_desc" msgid="4030295669083059711">"Týmto sa resetujú všetky nastavenia rozhrania Bluetooth a pripojenia Wi‑Fi. Túto akciu nemôžete vrátiť späť."</string>
     <string name="reset_bluetooth_wifi_button_text" msgid="3974098137045963639">"Resetovať"</string>
     <string name="reset_bluetooth_wifi_complete_toast" msgid="5893439291030574365">"Bluetooth a Wi‑Fi boli resetované"</string>
-    <string name="erase_euicc_data_button" msgid="728078969563311737">"Vymazať"</string>
     <string name="reset_esim_title" msgid="4194570573425902754">"Vymazať eSIM karty"</string>
     <string name="reset_esim_desc" msgid="3662444090563399131">"Nezrušíte tým žiadne tarify mobilných služieb. Ak si chcete stiahnuť náhradné SIM karty, kontaktujte operátora."</string>
     <string name="reset_network_button_text" msgid="2281476496459610071">"Resetovať nastavenia"</string>
@@ -1689,7 +1693,7 @@
     <string name="trackpad_bottom_right_tap_summary" msgid="8734094086900680674">"Viac zobrazíte klepnutím do pravého dolného rohu touchpadu"</string>
     <string name="trackpad_pointer_speed" msgid="7786579408631352625">"Rýchlosť kurzora"</string>
     <string name="trackpad_touch_gesture" msgid="8641725062131922497">"Naučiť sa gestá touchpadu"</string>
-    <string name="gesture_title_go_home" msgid="3682238648647225933">"Prechod na plochu"</string>
+    <string name="gesture_title_go_home" msgid="3682238648647225933">"Prejdenie na plochu"</string>
     <string name="gesture_summary_go_home" msgid="6409031586904205741">"Kdekoľvek na touchpade potiahnite troma prstami nahor"</string>
     <string name="gesture_title_go_back" msgid="6619462058488419802">"Prejdenie späť"</string>
     <string name="gesture_summary_go_back" msgid="4981604277892236888">"Potiahnite troma prstami zľava alebo sprava"</string>
@@ -1868,8 +1872,7 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"Ak chcete použiť funkciu dostupnosti, potiahnite dvoma prstami z dolnej časti obrazovky nahor.\n\nFunkcie prepnete potiahnutím dvoma prstami smerom nahor a pridržaním."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"Ak chcete použiť funkciu dostupnosti, potiahnite troma prstami z dolnej časti obrazovky nahor.\n\nFunkcie prepnete potiahnutím troma prstami smerom nahor a pridržaním."</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"Dobre"</string>
-    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
-    <skip />
+    <string name="accessibility_tutorial_dialog_link_button" msgid="6797349445794031781">"Nastavenia tlačidla"</string>
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"<xliff:g id="SERVICE">%1$s</xliff:g> – skratka"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"Tlačidlo dostupnosti"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"Gesto dostupnosti"</string>
@@ -2332,8 +2335,7 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"Zobraziť podľa aplikácií"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"Zobraziť podľa systémov"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
-    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
-    <skip />
+    <string name="battery_cycle_count_footer" msgid="3642121059800373545">"Pred odoslaním sa vykonáva kontrola kvality, preto nemusí byť pri prvom použití počet cyklov nulový"</string>
     <string name="process_stats_summary_title" msgid="502683176231281732">"Štatistiky procesov"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"Podrobné štatistiky spustených procesov"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"Využitie pamäte"</string>
@@ -4164,7 +4166,8 @@
     <string name="change_wifi_state_app_detail_summary" msgid="8230854855584217111">"Toto povolenie umožňuje tejto aplikácii zapínať a vypínať Wi-Fi, hľadať siete Wi-Fi a pripájať sa k nim, pridávať a odstraňovať siete alebo vytvárať miestny hotspot"</string>
     <string name="change_nfc_tag_apps_title" msgid="91514009058149617">"Spustenie cez NFC"</string>
     <string name="change_nfc_tag_apps_detail_switch" msgid="240286205725043561">"Povoliť spustenie po naskenovaní štítka NFC"</string>
-    <string name="change_nfc_tag_apps_detail_summary" msgid="3338220223868942195">"Povoľte spúšťanie tejto aplikácie po naskenovaní štítka NFC.\nKeď je toto povolenie zapnuté, aplikácia bude k dispozícii ako možnosť pri každom rozpoznaní štítka."</string>
+    <!-- no translation found for change_nfc_tag_apps_detail_summary (3338220223868942195) -->
+    <skip />
     <string name="media_output_title" msgid="8283629315159510680">"Prehrať média v zariadení"</string>
     <string name="media_output_label_title" msgid="4139048973886819148">"Pustiť <xliff:g id="LABEL">%s</xliff:g> cez"</string>
     <string name="media_output_default_summary" msgid="4200343059396412376">"Toto zariadenie"</string>
@@ -4729,36 +4732,20 @@
     <string name="contrast_medium" msgid="384414510709285811">"Stredný"</string>
     <string name="contrast_high" msgid="3988567609694797696">"Vysoký"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"Táto aplikácia môže byť otvorená iba v jednom okne"</string>
-    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
-    <skip />
-    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
-    <skip />
-    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
-    <skip />
-    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
-    <skip />
-    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
-    <skip />
-    <!-- no translation found for show_captions_disabled (690650956523818755) -->
-    <skip />
-    <!-- no translation found for show_captions_enabled (7089043007924626) -->
-    <skip />
-    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
-    <skip />
-    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
-    <skip />
+    <string name="accessibility_feature_full_state_summary" msgid="8747170258807179670">"<xliff:g id="STATE_0">%1$s</xliff:g> / <xliff:g id="SHORTCUT_STATE">%2$s</xliff:g> / <xliff:g id="SERVICE_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="generic_accessibility_service_on" msgid="2465820044606775562">"Služba je zapnutá"</string>
+    <string name="generic_accessibility_service_off" msgid="1752061696695346360">"Služba je vypnutá"</string>
+    <string name="generic_accessibility_feature_shortcut_off" msgid="3669343136122187913">"Skratka je vypnutá"</string>
+    <string name="accessibility_shortcut_state_off" msgid="8158137799007601475">"Vypnuté"</string>
+    <string name="daltonizer_state_on" msgid="131013270022603983">"Zapnuté"</string>
+    <string name="daltonizer_state_off" msgid="1162285688069856179">"Vypnuté"</string>
+    <string name="color_inversion_state_on" msgid="1160969033636440368">"Zapnuté"</string>
+    <string name="color_inversion_state_off" msgid="6925638668080451724">"Vypnuté"</string>
+    <string name="color_inversion_feature_summary" msgid="1199876648549627647">"Prepne svetlú obrazovku na tmavú a naopak"</string>
+    <string name="magnification_feature_summary" msgid="641825267460247848">"Ak chcete zväčšiť obsah, použite na obrazovke rýchle priblíženie"</string>
+    <string name="autoclick_disabled" msgid="3213396804955002120">"Vypnuté"</string>
+    <string name="show_captions_disabled" msgid="690650956523818755">"Vypnuté"</string>
+    <string name="show_captions_enabled" msgid="7089043007924626">"Zapnuté"</string>
+    <string name="live_caption_disabled" msgid="3562035026547887366">"Vypnuté"</string>
+    <string name="live_caption_enabled" msgid="5269360946200718949">"Zapnuté"</string>
 </resources>

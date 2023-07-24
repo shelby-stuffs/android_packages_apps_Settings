@@ -85,9 +85,7 @@ class FakeFeatureFactory : FeatureFactory() {
         TODO("Not yet implemented")
     }
 
-    override fun getBatterySettingsFeatureProvider(
-        context: Context?,
-    ): BatterySettingsFeatureProvider {
+    override fun getBatterySettingsFeatureProvider(): BatterySettingsFeatureProvider {
         TODO("Not yet implemented")
     }
 

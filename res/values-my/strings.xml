@@ -65,7 +65,8 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"ဘယ်ဘက် ချိတ်ဆက်ရန်"</string>
     <string name="bluetooth_device_controls_general" msgid="1399214835599665488">"ရနိုင်သော နားကြားကိရိယာအားလုံးအတွက်"</string>
     <string name="bluetooth_device_controls_title" msgid="1895676556354697234">"နားကြားကိရိယာ ဆက်တင်များ"</string>
-    <string name="bluetooth_device_controls_summary" msgid="8115767735418425663">"ဖြတ်လမ်းလင့်ခ်၊ နားကြားကိရိယာ တွဲဖက်အသုံးပြုနိုင်မှု"</string>
+    <!-- no translation found for bluetooth_device_controls_summary (8115767735418425663) -->
+    <skip />
     <string name="bluetooth_device_controls_specific" msgid="7706863288754077107">"ဤစက်ပစ္စည်းအတွက်"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"အသံထွက်မည့် ကိရိယာ"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"အသံထွက်မည့် ကိရိယာအကြောင်း"</string>
@@ -180,7 +181,7 @@
     <string name="temperature_preferences_title" msgid="5009881556503629058">"အပူချိန်"</string>
     <string name="first_day_of_week_preferences_title" msgid="1971850087589599553">"ရက်သတ္တပတ်၏ ပထမဆုံးနေ့"</string>
     <string name="numbers_preferences_title" msgid="8197418984391195446">"နံပါတ် သတ်မှတ်ချက်များ"</string>
-    <string name="default_string_of_regional_preference" msgid="7662581547334113719">"အက်ပ်၏မူရင်းအတိုင်း သုံးရန်"</string>
+    <string name="default_string_of_regional_preference" msgid="3428899072914884203">"မူရင်းသတ်မှတ်ချက် သုံးရန်"</string>
     <string name="celsius_temperature_unit" msgid="8896459071273084507">"စင်တီဂရိတ် (°C)"</string>
     <string name="fahrenheit_temperature_unit" msgid="1118677820614569801">"ဖာရင်ဟိုက် (°F)"</string>
     <string name="sunday_first_day_of_week" msgid="7644548348295686051">"တနင်္ဂနွေ"</string>
@@ -326,6 +327,8 @@
     <string name="security_settings_face_settings_remove_dialog_title" msgid="2899669764446232715">"မျက်နှာနမူနာကို ဖျက်မလား။"</string>
     <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"သင်၏မျက်နှာနမူနာကို လုံခြုံစွာ အပြီးဖျက်လိုက်ပါမည်။ \n\nဖျက်ပြီးသည့်အခါ သင့်ဖုန်းကို လော့ခ်ဖွင့်ရန် (သို့) အက်ပ်များတွင် အထောက်အထားစိစစ်ခြင်းအတွက် ပင်နံပါတ်၊ ပုံစံ (သို့) စကားဝှက် လိုအပ်ပါမည်။"</string>
     <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"သင်၏မျက်နှာနမူနာကို လုံခြုံစွာ အပြီးဖျက်လိုက်ပါမည်။\n\nဖျက်ပြီးသည့်အခါ သင်၏ဖုန်းကိုဖွင့်ရန် ပင်နံပါတ်၊ ပုံစံ (သို့) စကားဝှက် လိုအပ်ပါမည်။"</string>
+    <string name="security_settings_face_remove_dialog_details_fingerprint" msgid="7609582230650860974">"သင်၏မျက်နှာနမူနာကို လုံခြုံစွာ အပြီးဖျက်လိုက်ပါမည်။\n\nဖျက်ပြီးသည့်အခါ သင့်ဖုန်းကိုဖွင့်ရန် (သို့) အက်ပ်များတွင် အထောက်အထားစိစစ်ခြင်းအတွက် လက်ဗွေ၊ ပင်နံပါတ်၊ ပုံဖော်ခြင်း (သို့) စကားဝှက် လိုအပ်ပါမည်။"</string>
+    <string name="security_settings_face_remove_dialog_details_fingerprint_conv" msgid="2627374706274503259">"သင်၏မျက်နှာနမူနာကို လုံခြုံစွာ အပြီးဖျက်လိုက်ပါမည်။\n\nဖျက်ပြီးသည့်အခါ သင့်ဖုန်းကိုဖွင့်ရန် လက်ဗွေ၊ ပင်နံပါတ်၊ ပုံဖော်ခြင်း (သို့) စကားဝှက် လိုအပ်ပါမည်။"</string>
     <string name="security_settings_face_settings_context_subtitle" msgid="8284262560781442403">"သင့်ဖုန်းကို လော့ခ်ဖွင့်ရန် မျက်နှာပြ လော့ခ်ဖွင့်ခြင်း အသုံးပြုပါ"</string>
     <string name="security_settings_fingerprint" msgid="6387775386189204201">"လက်ဗွေ"</string>
     <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"လက်ဗွေ"</string>
@@ -407,7 +410,7 @@
     <string name="security_settings_sfps_enroll_find_sensor_title" msgid="8327884364635804363">"ဖွင့်ပိတ်ခလုတ်ကို မနှိပ်ဘဲ ထိရုံထိပါ"</string>
     <string name="security_settings_udfps_enroll_find_sensor_title" msgid="8077484429913330179">"သင့်လက်ဗွေ စနစ်ထည့်သွင်းနည်း"</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_message" msgid="6160543980992596286">"၎င်းသည် သင့်ဖုန်း၏ ကျောဘက်တွင်ရှိပါသည်။ လက်ညှိုးကို အသုံးပြုပါ။"</string>
-    <string name="security_settings_udfps_enroll_find_sensor_message" msgid="8383106460819519961">"လက်ဗွေ အာရုံခံကိရိယာသည် သင့်စခရင်ပေါ်တွင်ရှိသည်။ နောက်စခရင်တွင် သင့်လက်ဗွေကို ရိုက်ကူးပါ။"</string>
+    <string name="security_settings_udfps_enroll_find_sensor_message" msgid="8383106460819519961">"လက်ဗွေ အာရုံခံကိရိယာသည် စခရင်ပေါ်တွင်ရှိသည်။ နောက်စခရင်တွင် လက်ဗွေကို သိမ်းယူပါမည်။"</string>
     <string name="security_settings_udfps_enroll_find_sensor_start_button" msgid="3172268783620336357">"စတင်ရန်"</string>
     <string name="security_settings_udfps_enroll_a11y" msgid="1899453114050362235">"အာရုံခံကိရိယာကို ရှာရန် သင့်လက်ချောင်းကို စခရင်ပေါ်တွင် ရွှေ့ပါ။ လက်ဗွေ အာရုံခံကိရိယာကို တို့ထိ၍ ဖိထားပါ။"</string>
     <string name="security_settings_fingerprint_enroll_find_sensor_content_description" msgid="3065850549419750523">"စက်နှင့် လက်ဗွေအာရုံခံကိရိယာကို တည်နေရာနှင့်အတူ သရုပ်ဖော်ပုံ"</string>
@@ -438,11 +441,11 @@
     <string name="security_settings_sfps_animation_a11y_label" msgid="8808819903730940446">"စာရင်းသွင်းပြီး <xliff:g id="PERCENTAGE">%d</xliff:g> ရာခိုင်နှုန်း"</string>
     <string name="security_settings_udfps_enroll_progress_a11y_message" msgid="6183535114682369699">"လက်ဗွေ စာရင်းသွင်းခြင်း <xliff:g id="PERCENTAGE">%d</xliff:g> ရာခိုင်နှုန်း"</string>
     <string name="security_settings_fingerprint_enroll_finish_title" msgid="3606325177406951457">"လက်ဗွေထည့်ပြီးပြီ"</string>
-    <string name="security_settings_require_screen_on_to_auth_title" msgid="1641621458536715518">"အချိန်မရွေးထိ၍ ဖွင့်နိုင်သည်"</string>
+    <string name="security_settings_require_screen_on_to_auth_title" msgid="1641621458536715518">"အချိန်မရွေးဖွင့်ရန် ထိပါ"</string>
     <string name="security_settings_require_screen_on_to_auth_description" msgid="4158414711168345398">"စခရင်ပိတ်ထားလျှင်ပင် ဖွင့်ရန် အာရုံခံကိရိယာကို ထိပါ။ ၎င်းက မတော်တဆဖွင့်မိခြင်းမျိုး ပိုဖြစ်နိုင်ခြေများသည်။"</string>
     <string name="security_settings_require_screen_on_to_auth_keywords" msgid="5557869560397089603">"ဖန်သားပြင်၊ လော့ခ်ဖွင့်ရန်"</string>
     <string name="security_settings_fingerprint_enroll_enrolling_skip" msgid="3004786457919122854">"နောက်မှလုပ်ရန်"</string>
-    <string name="security_settings_udfps_tip_fingerprint_help" msgid="7580784640741217494">"မြှောက်ပါ၊ ထို့နောက် ပြန်ထိပါ"</string>
+    <string name="security_settings_udfps_tip_fingerprint_help" msgid="7580784640741217494">"မြှောက်ပါ၊ ထို့နောက် ပြန်ထိပါ။"</string>
     <string name="security_settings_udfps_side_fingerprint_help" msgid="2567232481013195191">"အာရုံခံကိရိယာပေါ်တွင် သင့်လက်ဗွေ၏ဘေးခြမ်းကို တင်ပြီးဖိထားပါ။ ထို့နောက် အခြားတစ်ဘက်သို့ ပြောင်းပါ"</string>
     <string name="setup_fingerprint_enroll_enrolling_skip_title" msgid="352947044008973812">"လက်ဗွေ သတ်မှတ်မှုကို ကျော်မလား။"</string>
     <string name="setup_fingerprint_enroll_enrolling_skip_message" msgid="4876965433600560365">"သင့်လက်ဗွေဖြင့် သင့်ဖုန်းကို သော့ဖွင့်ရန် နည်းလမ်းတစ်ခုအဖြစ် ရွေးချယ်ခဲ့သည်။ အကယ်၍ယခုကျော်သွားလျှင်၊ ၎င်းကိုနောက်နှောင်တွင် သတ်မှတ်ရပါလိမ့်မည်။ သတ်မှတ်ခြင်းသည် မိနစ်အနည်းငယ်သာ ကြာပါသည်။"</string>
@@ -1119,7 +1122,6 @@
     <string name="security_patch" msgid="4071756145347865382">"Android လုံခြုံရေးအပ်ဒိတ်"</string>
     <string name="model_info" msgid="8997566254717810904">"မော်ဒယ်"</string>
     <string name="hardware_revision" msgid="3454709180861965025">"စက်ပစ္စည်းဗားရှင်း"</string>
-    <string name="manufactured_year" msgid="3401517138700926475">"ထုတ်လုပ်သည့်နှစ်"</string>
     <string name="fcc_equipment_id" msgid="6596668314025646129">"စက်ပစ္စည်း အမှတ်"</string>
     <string name="baseband_version" msgid="2600182227599835857">"Baseband ဗားရှင်း"</string>
     <string name="kernel_version" msgid="3513538109381366881">"Kernel ဗားရှင်း"</string>
@@ -1161,8 +1163,7 @@
     <string name="battery_manufacture_date" msgid="7139426520156833987">"ထုတ်လုပ်သည့်ရက်စွဲ"</string>
     <string name="battery_first_use_date" msgid="3157207331722711317">"ပထမဆုံးအကြိမ် အသုံးပြုခဲ့သည့်ရက်"</string>
     <string name="battery_cycle_count" msgid="2912949283386571900">"သုံးစွဲမှု အကြိမ်ရေ"</string>
-    <!-- no translation found for battery_cycle_count_not_available (2426584515665184664) -->
-    <skip />
+    <string name="battery_cycle_count_not_available" msgid="2426584515665184664">"မရနိုင်ပါ"</string>
     <string name="memory_calculating_size" msgid="3898240439798661242">"တွက်ချက်နေသည်"</string>
     <string name="storage_menu_rename" msgid="8549835371429159336">"အမည်ပြောင်းရန်"</string>
     <string name="storage_menu_mount" msgid="4760531872302820569">"တပ်ဆင်ရန်"</string>
@@ -1276,7 +1277,6 @@
     <string name="reset_bluetooth_wifi_desc" msgid="4030295669083059711">"၎င်းက Wi‑Fi နှင့် ဘလူးတုသ်ဆက်တင် အားလုံးကို ပြင်ဆင်သတ်မှတ်ပါမည်။ ဤလုပ်ဆောင်ချက်ကို ပြန်ပြင်၍ မရပါ။"</string>
     <string name="reset_bluetooth_wifi_button_text" msgid="3974098137045963639">"ပြင်ဆင်သတ်မှတ်ရန်"</string>
     <string name="reset_bluetooth_wifi_complete_toast" msgid="5893439291030574365">"ဘလူးတုသ်နှင့် Wi‑Fi ပြင်ဆင်သတ်မှတ်လိုက်ပြီ"</string>
-    <string name="erase_euicc_data_button" msgid="728078969563311737">"ဖျက်ရန်"</string>
     <string name="reset_esim_title" msgid="4194570573425902754">"eSIM များဖျက်ရန်"</string>
     <string name="reset_esim_desc" msgid="3662444090563399131">"၎င်းက မိုဘိုင်းဝန်ဆောင်မှု အစီအစဉ်များကို ပယ်ဖျက်မည်မဟုတ်ပါ။ အစားထိုး ဆင်းမ်ကတ်များ ဒေါင်းလုဒ်လုပ်ရန် သင့်ဝန်ဆောင်မှုပေးသူကို ဆက်သွယ်ပါ။"</string>
     <string name="reset_network_button_text" msgid="2281476496459610071">"ဆက်တင်များ ပြင်ဆင်သတ်မှတ်ရန်"</string>
@@ -1413,7 +1413,7 @@
     <string name="lockpassword_choose_your_pin_header" msgid="7754265746504679473">"ပင်နံပါတ် သတ်မှတ်ပါ"</string>
     <string name="lockpassword_choose_your_profile_pin_header" msgid="4581749963670819048">"အလုပ်သုံးပင်နံပါတ် သတ်မှတ်ပါ"</string>
     <string name="lockpassword_choose_your_pattern_header" msgid="5674909390779586252">"ပုံစံ သတ်မှတ်ပါ"</string>
-    <string name="lockpassword_choose_your_pattern_description" msgid="6808109256008481046">"လုံခြုံရေး တိုးမြှင့်ရန်အတွက် စက်လော့ခ်ဖွင့်ပုံစံ သတ်မှတ်ပါ"</string>
+    <string name="lockpassword_choose_your_pattern_description" msgid="6808109256008481046">"လုံခြုံရေး တိုးမြှင့်ရန်အတွက် စက်ကို လော့ခ်ဖွင့်ရန် ပုံစံ သတ်မှတ်ပါ"</string>
     <string name="lockpassword_choose_your_profile_pattern_header" msgid="3101811498330756641">"အလုပ်သုံးပုံစံ သတ်မှတ်ပါ"</string>
     <string name="lockpassword_choose_your_password_header_for_fingerprint" msgid="3167261267229254090">"လက်ဗွေသုံးရန် စကားဝှက်သတ်မှတ်ပါ"</string>
     <string name="lockpassword_choose_your_pattern_header_for_fingerprint" msgid="4707788269512303400">"လက်ဗွေသုံးရန် ပုံစံသတ်မှတ်ပါ"</string>
@@ -1869,8 +1869,7 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"အများသုံးနိုင်သည့် ဝန်ဆောင်မှုတစ်ခု အသုံးပြုရန် လက် ၂ ချောင်းဖြင့် ဖန်သားပြင်အောက်ခြေမှ အပေါ်သို့ပွတ်ဆွဲပါ။\n\nဝန်ဆောင်မှုများအကြား ပြောင်းရန် လက် ၂ ချောင်းဖြင့် အပေါ်သို့ပွတ်ဆွဲပြီး ဖိထားပါ။"</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"အများသုံးနိုင်သည့် ဝန်ဆောင်မှုတစ်ခု အသုံးပြုရန် လက် ၃ ချောင်းဖြင့် ဖန်သားပြင်အောက်ခြေမှ အပေါ်သို့ပွတ်ဆွဲပါ။\n\nဝန်ဆောင်မှုများအကြား ပြောင်းရန် လက် ၃ ချောင်းဖြင့် အပေါ်သို့ပွတ်ဆွဲပြီး ဖိထားပါ။"</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"ရပါပြီ"</string>
-    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
-    <skip />
+    <string name="accessibility_tutorial_dialog_link_button" msgid="6797349445794031781">"ခလုတ်ဆက်တင်များ"</string>
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"<xliff:g id="SERVICE">%1$s</xliff:g> ဖြတ်လမ်းလင့်ခ်"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"အများသုံးနိုင်မှု ခလုတ်"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"အများသုံးနိုင်မှု လက်ဟန်"</string>
@@ -2333,8 +2332,7 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"အက်ပ်အလိုက်ကြည့်ရန်"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"စနစ်အလိုက်ကြည့်ရန်"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
-    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
-    <skip />
+    <string name="battery_cycle_count_footer" msgid="3642121059800373545">"ပစ္စည်းမပို့မီ အရည်အသွေး စစ်ဆေးမှုများကြောင့် ပထမဆုံး သုံးရာတွင် သုံးစွဲမှု အကြိမ်ရေသည် သုည ဖြစ်မည်မဟုတ်ပါ"</string>
     <string name="process_stats_summary_title" msgid="502683176231281732">"လုပ်ငန်းစဉ်ကိန်းဂဏန်းများ"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"အလုပ်လုပ်ခြင်းလုပ်ငန်းစဉ်များအကြောင်း ပညာရှင်အဆင့်စာရင်း"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"မှတ်ဉာဏ်သုံးခြင်း"</string>
@@ -3598,7 +3596,7 @@
     <string name="sharing_remote_bugreport_dialog_message" msgid="3523877008096439251">"ဤချွတ်ယွင်းမှု အစီရင်ခံစာကို သင့်အိုင်တီစီမံခန့်ခွဲသူအား မျှဝေထားပါသည်။ နောက်ထပ်အသေးစိတ်များအတွက် ၎င်းတို့ကိုဆက်သွယ်ပါ။"</string>
     <string name="share_remote_bugreport_action" msgid="7173093464692893276">"မျှဝေပါ"</string>
     <string name="decline_remote_bugreport_action" msgid="1276509879613158895">"ငြင်းပယ်ပါ"</string>
-    <string name="usb_use_charging_only" msgid="1743303747327057947">"ဒေတာလွှဲပြောင်းခြင်း မပြုရန်"</string>
+    <string name="usb_use_charging_only" msgid="1743303747327057947">"ဒေတာလွှဲပြောင်းခြင်း မရှိပါ"</string>
     <string name="usb_use_power_only" msgid="3408055485802114621">"ချိတ်ဆက်ထားသည့် စက်ပစ္စည်းကို အားသွင်းရန်"</string>
     <string name="usb_use_file_transfers" msgid="483915710802018503">"ဖိုင်လွှဲပြောင်းခြင်း"</string>
     <string name="usb_use_photo_transfers" msgid="4641181628966036093">"PTP"</string>
@@ -4728,36 +4726,20 @@
     <string name="contrast_medium" msgid="384414510709285811">"အသင့်အတင့်"</string>
     <string name="contrast_high" msgid="3988567609694797696">"များ"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"ဤအက်ပ်ကို ဝင်းဒိုး ၁ ခုတွင်သာ ဖွင့်နိုင်သည်"</string>
-    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
-    <skip />
-    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
-    <skip />
-    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
-    <skip />
-    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
-    <skip />
-    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
-    <skip />
-    <!-- no translation found for show_captions_disabled (690650956523818755) -->
-    <skip />
-    <!-- no translation found for show_captions_enabled (7089043007924626) -->
-    <skip />
-    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
-    <skip />
-    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
-    <skip />
+    <string name="accessibility_feature_full_state_summary" msgid="8747170258807179670">"<xliff:g id="STATE_0">%1$s</xliff:g> / <xliff:g id="SHORTCUT_STATE">%2$s</xliff:g> / <xliff:g id="SERVICE_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="generic_accessibility_service_on" msgid="2465820044606775562">"ဝန်ဆောင်မှု ဖွင့်ထားသည်"</string>
+    <string name="generic_accessibility_service_off" msgid="1752061696695346360">"ဝန်ဆောင်မှု ပိတ်ထားသည်"</string>
+    <string name="generic_accessibility_feature_shortcut_off" msgid="3669343136122187913">"ဖြတ်လမ်းလင့်ခ် ပိတ်ထားသည်"</string>
+    <string name="accessibility_shortcut_state_off" msgid="8158137799007601475">"ပိတ်"</string>
+    <string name="daltonizer_state_on" msgid="131013270022603983">"ဖွင့်"</string>
+    <string name="daltonizer_state_off" msgid="1162285688069856179">"ပိတ်"</string>
+    <string name="color_inversion_state_on" msgid="1160969033636440368">"ဖွင့်"</string>
+    <string name="color_inversion_state_off" msgid="6925638668080451724">"ပိတ်"</string>
+    <string name="color_inversion_feature_summary" msgid="1199876648549627647">"ဖန်သားပြင်ကို အလင်းမှ အမှောင်နှင့် အမှောင်မှ အလင်း ပြောင်းနိုင်သည်"</string>
+    <string name="magnification_feature_summary" msgid="641825267460247848">"အကြောင်းအရာပိုကြီးလာစေရန် ဖန်သားပြင်တွင် အမြန်ဇူးမ်ဆွဲနိုင်သည်"</string>
+    <string name="autoclick_disabled" msgid="3213396804955002120">"ပိတ်"</string>
+    <string name="show_captions_disabled" msgid="690650956523818755">"ပိတ်"</string>
+    <string name="show_captions_enabled" msgid="7089043007924626">"ဖွင့်"</string>
+    <string name="live_caption_disabled" msgid="3562035026547887366">"ပိတ်"</string>
+    <string name="live_caption_enabled" msgid="5269360946200718949">"ဖွင့်"</string>
 </resources>

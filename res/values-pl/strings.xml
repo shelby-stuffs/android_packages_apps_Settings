@@ -65,7 +65,8 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"Sparuj lewe ucho"</string>
     <string name="bluetooth_device_controls_general" msgid="1399214835599665488">"Dla wszystkich dostępnych urządzeń słuchowych"</string>
     <string name="bluetooth_device_controls_title" msgid="1895676556354697234">"Ustawienia urządzenia słuchowego"</string>
-    <string name="bluetooth_device_controls_summary" msgid="8115767735418425663">"Skrót, zgodność z aparatem słuchowym"</string>
+    <!-- no translation found for bluetooth_device_controls_summary (8115767735418425663) -->
+    <skip />
     <string name="bluetooth_device_controls_specific" msgid="7706863288754077107">"Dla tego urządzenia"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"Wyjście audio"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"O wyjściu audio"</string>
@@ -180,7 +181,8 @@
     <string name="temperature_preferences_title" msgid="5009881556503629058">"Temperatura"</string>
     <string name="first_day_of_week_preferences_title" msgid="1971850087589599553">"Pierwszy dzień tygodnia"</string>
     <string name="numbers_preferences_title" msgid="8197418984391195446">"Preferencje dotyczące liczb"</string>
-    <string name="default_string_of_regional_preference" msgid="7662581547334113719">"Użyj domyślnych ustawień aplikacji"</string>
+    <!-- no translation found for default_string_of_regional_preference (3428899072914884203) -->
+    <skip />
     <string name="celsius_temperature_unit" msgid="8896459071273084507">"Stopnie Celsjusza (°C)"</string>
     <string name="fahrenheit_temperature_unit" msgid="1118677820614569801">"Stopnie Fahrenheita (°F)"</string>
     <string name="sunday_first_day_of_week" msgid="7644548348295686051">"Niedziela"</string>
@@ -324,8 +326,12 @@
     <string name="security_settings_face_settings_remove_face_model" msgid="812920481303980846">"Usuń model twarzy"</string>
     <string name="security_settings_face_settings_enroll" msgid="3726313826693825029">"Skonfiguruj rozpoznawanie twarzy"</string>
     <string name="security_settings_face_settings_remove_dialog_title" msgid="2899669764446232715">"Usunąć model twarzy?"</string>
-    <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"Model twarzy zostanie trwale i bezpiecznie usunięty.\n\nPo usunięciu tych danych do odblokowywania telefonu i uwierzytelniania się w aplikacjach trzeba będzie używać kodu PIN, wzoru lub hasła."</string>
-    <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"Model twarzy zostanie trwale i bezpiecznie usunięty.\n\nPo usunięciu tych danych do odblokowywania telefonu trzeba będzie używać kodu PIN, wzoru lub hasła."</string>
+    <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"Model twarzy zostanie trwale i w bezpieczny sposób usunięty.\n\nPo usunięciu tych danych do odblokowywania telefonu i uwierzytelniania się w aplikacjach trzeba będzie używać kodu PIN, wzoru lub hasła."</string>
+    <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"Model twarzy zostanie trwale i bezpiecznie usunięty.\n\nPo usunięciu tych danych będziesz potrzebować kodu PIN, wzoru lub hasła do odblokowywania telefonu."</string>
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint (7609582230650860974) -->
+    <skip />
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint_conv (2627374706274503259) -->
+    <skip />
     <string name="security_settings_face_settings_context_subtitle" msgid="8284262560781442403">"Używaj rozpoznawania twarzy do odblokowywania telefonu"</string>
     <string name="security_settings_fingerprint" msgid="6387775386189204201">"Odcisk palca"</string>
     <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"Odcisk palca"</string>
@@ -1119,7 +1125,6 @@
     <string name="security_patch" msgid="4071756145347865382">"Aktualizacja zabezpieczeń Androida"</string>
     <string name="model_info" msgid="8997566254717810904">"Model"</string>
     <string name="hardware_revision" msgid="3454709180861965025">"Wersja sprzętu"</string>
-    <string name="manufactured_year" msgid="3401517138700926475">"Rok produkcji"</string>
     <string name="fcc_equipment_id" msgid="6596668314025646129">"Identyfikator sprzętu"</string>
     <string name="baseband_version" msgid="2600182227599835857">"Wersja pasma podstawowego"</string>
     <string name="kernel_version" msgid="3513538109381366881">"Wersja jądra"</string>
@@ -1161,8 +1166,7 @@
     <string name="battery_manufacture_date" msgid="7139426520156833987">"Data produkcji"</string>
     <string name="battery_first_use_date" msgid="3157207331722711317">"Data pierwszego użycia"</string>
     <string name="battery_cycle_count" msgid="2912949283386571900">"Liczba cykli"</string>
-    <!-- no translation found for battery_cycle_count_not_available (2426584515665184664) -->
-    <skip />
+    <string name="battery_cycle_count_not_available" msgid="2426584515665184664">"Niedostępna"</string>
     <string name="memory_calculating_size" msgid="3898240439798661242">"Obliczanie..."</string>
     <string name="storage_menu_rename" msgid="8549835371429159336">"Zmień nazwę"</string>
     <string name="storage_menu_mount" msgid="4760531872302820569">"Podłącz"</string>
@@ -1276,7 +1280,6 @@
     <string name="reset_bluetooth_wifi_desc" msgid="4030295669083059711">"Wszystkie ustawienia Wi‑Fi i Bluetooth zostaną zresetowane. Tej czynności nie można cofnąć."</string>
     <string name="reset_bluetooth_wifi_button_text" msgid="3974098137045963639">"Resetuj"</string>
     <string name="reset_bluetooth_wifi_complete_toast" msgid="5893439291030574365">"Bluetooth i Wi‑Fi zostały zresetowane"</string>
-    <string name="erase_euicc_data_button" msgid="728078969563311737">"Usuń"</string>
     <string name="reset_esim_title" msgid="4194570573425902754">"Wykasuj karty eSIM"</string>
     <string name="reset_esim_desc" msgid="3662444090563399131">"Nie spowoduje to anulowania Twoich abonamentów. Aby pobrać zastępcze karty SIM, skontaktuj się z operatorem."</string>
     <string name="reset_network_button_text" msgid="2281476496459610071">"Zresetuj ustawienia"</string>
@@ -1437,7 +1440,7 @@
     <string name="lockpassword_choose_your_password_header_for_face" msgid="622276003801157839">"Aby używać rozpoznawania twarzy, ustaw hasło"</string>
     <string name="lockpassword_choose_your_pattern_header_for_face" msgid="7333603579958317102">"Aby używać rozpoznawania twarzy, ustaw wzór"</string>
     <string name="lockpassword_choose_your_pin_header_for_face" msgid="704061826984851309">"Aby używać rozpoznawania twarzy, ustaw kod PIN"</string>
-    <string name="lockpassword_choose_your_password_header_for_biometrics" msgid="2053366309272487015">"Ustaw hasło do rozpoznawania twarzy lub odcisku palca"</string>
+    <string name="lockpassword_choose_your_password_header_for_biometrics" msgid="2053366309272487015">"Ustaw hasło, aby używać rozpoznawania twarzy lub odcisku palca"</string>
     <string name="lockpassword_choose_your_pattern_header_for_biometrics" msgid="4038476475293734905">"Ustaw wzór, aby używać rozpoznawania twarzy lub odcisku palca"</string>
     <string name="lockpassword_choose_your_pin_header_for_biometrics" msgid="9086039918921009380">"Ustaw PIN do rozpoznawania twarzy lub odcisku palca"</string>
     <string name="lockpassword_forgot_password" msgid="5730587692489737223">"Nie pamiętasz hasła?"</string>
@@ -1869,7 +1872,7 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"Aby użyć ułatwień dostępu, przesuń 2 palcami z dołu ekranu w górę.\n\nAby przełączać się między funkcjami, przesuń 2 palcami w górę i przytrzymaj."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"Aby użyć ułatwień dostępu, przesuń 3 palcami z dołu ekranu w górę.\n\nAby przełączać się między funkcjami, przesuń 3 palcami w górę i przytrzymaj."</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"OK"</string>
-    <string name="accessibility_tutorial_dialog_link_button" msgid="1624189347106713695">"Ustawienia przycisku ułatwień dostępu"</string>
+    <string name="accessibility_tutorial_dialog_link_button" msgid="6797349445794031781">"Ustawienia przycisku"</string>
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"Skrót do funkcji <xliff:g id="SERVICE">%1$s</xliff:g>"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"Przycisk ułatwień dostępu"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"Gest ułatwień dostępu"</string>
@@ -2332,8 +2335,7 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"Wyświetl według aplikacji"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"Wyświetl według systemów"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
-    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
-    <skip />
+    <string name="battery_cycle_count_footer" msgid="3642121059800373545">"Ze względu na kontrolę jakości przed wysyłką liczba cykli przy pierwszym użyciu może być różna od zera"</string>
     <string name="process_stats_summary_title" msgid="502683176231281732">"Statystyki procesów"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"Rozbudowane statystyki uruchomionych procesów"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"Użycie pamięci"</string>
@@ -4164,7 +4166,8 @@
     <string name="change_wifi_state_app_detail_summary" msgid="8230854855584217111">"Zezwól tej aplikacji na włączanie i wyłączanie Wi-Fi, wyszukiwanie sieci Wi-Fi i łączenie się z nimi, dodawanie oraz usuwanie sieci i uruchamianie lokalnego hotspota."</string>
     <string name="change_nfc_tag_apps_title" msgid="91514009058149617">"Uruchamianie przez NFC"</string>
     <string name="change_nfc_tag_apps_detail_switch" msgid="240286205725043561">"Zezwalaj na uruchomienie przez odczytanie NFC"</string>
-    <string name="change_nfc_tag_apps_detail_summary" msgid="3338220223868942195">"Zezwól na uruchamianie tej aplikacji w przypadku skanowania tagów NFC.\nJeśli te uprawnienia będą włączone, aplikacja będzie dostępna jako opcja za każdym razem, gdy zostanie wykryty tag."</string>
+    <!-- no translation found for change_nfc_tag_apps_detail_summary (3338220223868942195) -->
+    <skip />
     <string name="media_output_title" msgid="8283629315159510680">"Odtwarzaj multimedia na"</string>
     <string name="media_output_label_title" msgid="4139048973886819148">"Odtwarzaj <xliff:g id="LABEL">%s</xliff:g> na:"</string>
     <string name="media_output_default_summary" msgid="4200343059396412376">"To urządzenie"</string>
@@ -4583,8 +4586,8 @@
     <string name="uwb_settings_summary_no_uwb_regulatory" msgid="3465456428217979428">"Technologia UWB nie jest dostępna w tym miejscu"</string>
     <string name="camera_toggle_title" msgid="8952668677727244992">"Dostęp do aparatu"</string>
     <string name="mic_toggle_title" msgid="265145278323852547">"Dostęp do mikrofonu"</string>
-    <string name="perm_toggle_description" msgid="5754629581767319022">"Dotyczy aplikacji i usług"</string>
-    <string name="mic_toggle_description" msgid="484139688645092237">"Dotyczy aplikacji i usług. Jeśli wyłączysz to ustawienie, dane mikrofonu wciąż mogą być udostępniane podczas połączenia z numerem alarmowym."</string>
+    <string name="perm_toggle_description" msgid="5754629581767319022">"Aplikacje i usługi"</string>
+    <string name="mic_toggle_description" msgid="484139688645092237">"Aplikacje i usługi. Jeśli wyłączysz to ustawienie, dane mikrofonu wciąż mogą być udostępniane podczas połączenia z numerem alarmowym."</string>
     <string name="previous_page_content_description" msgid="6438292457923282991">"Wstecz"</string>
     <string name="next_page_content_description" msgid="1641835099813416294">"Dalej"</string>
     <string name="colors_viewpager_content_description" msgid="2591751086138259565">"Podgląd koloru"</string>
@@ -4729,36 +4732,20 @@
     <string name="contrast_medium" msgid="384414510709285811">"Średni"</string>
     <string name="contrast_high" msgid="3988567609694797696">"Wysoki"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"Ta aplikacja może być otwarta tylko w 1 oknie."</string>
-    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
-    <skip />
-    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
-    <skip />
-    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
-    <skip />
-    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
-    <skip />
-    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
-    <skip />
-    <!-- no translation found for show_captions_disabled (690650956523818755) -->
-    <skip />
-    <!-- no translation found for show_captions_enabled (7089043007924626) -->
-    <skip />
-    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
-    <skip />
-    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
-    <skip />
+    <string name="accessibility_feature_full_state_summary" msgid="8747170258807179670">"<xliff:g id="STATE_0">%1$s</xliff:g> / <xliff:g id="SHORTCUT_STATE">%2$s</xliff:g> / <xliff:g id="SERVICE_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="generic_accessibility_service_on" msgid="2465820044606775562">"Usługa włączona"</string>
+    <string name="generic_accessibility_service_off" msgid="1752061696695346360">"Usługa wyłączona"</string>
+    <string name="generic_accessibility_feature_shortcut_off" msgid="3669343136122187913">"Skrót wyłączony"</string>
+    <string name="accessibility_shortcut_state_off" msgid="8158137799007601475">"Wyłączono"</string>
+    <string name="daltonizer_state_on" msgid="131013270022603983">"Włączono"</string>
+    <string name="daltonizer_state_off" msgid="1162285688069856179">"Wyłączono"</string>
+    <string name="color_inversion_state_on" msgid="1160969033636440368">"Włączono"</string>
+    <string name="color_inversion_state_off" msgid="6925638668080451724">"Wyłączono"</string>
+    <string name="color_inversion_feature_summary" msgid="1199876648549627647">"Zmienia jasne fragmenty ekranu na ciemne, a ciemne na jasne"</string>
+    <string name="magnification_feature_summary" msgid="641825267460247848">"Szybko powiększaj ekran, aby dokładniej widzieć zawartość wyświetlacza"</string>
+    <string name="autoclick_disabled" msgid="3213396804955002120">"Wyłączono"</string>
+    <string name="show_captions_disabled" msgid="690650956523818755">"Wyłączono"</string>
+    <string name="show_captions_enabled" msgid="7089043007924626">"Włączono"</string>
+    <string name="live_caption_disabled" msgid="3562035026547887366">"Wyłączono"</string>
+    <string name="live_caption_enabled" msgid="5269360946200718949">"Włączono"</string>
 </resources>

@@ -435,7 +435,7 @@
     <!-- The title of the menu entry of Numbers system preference. [CHAR LIMIT=50]  -->
     <string name="numbers_preferences_title">Numbers preferences</string>
     <!-- The summary of default string for each regional preference. [CHAR LIMIT=50] -->
-    <string name="default_string_of_regional_preference">Use app default</string>
+    <string name="default_string_of_regional_preference">Use default</string>
     <!-- The title of Celsius for preference of temperature unit. [CHAR LIMIT=50] -->
     <string name="celsius_temperature_unit">Celsius (\u00B0C)</string>
     <!-- The title of Fahrenheit for preference of temperature unit. [CHAR LIMIT=50] -->
@@ -602,8 +602,8 @@
     <string name="location_settings_summary_location_off">Off</string>
     <!-- Summary for Location settings when location is on, explaining how many apps have location permission [CHAR LIMIT=NONE]-->
     <string name="location_settings_summary_location_on">{count, plural,
-      =1      {On - # app has access to location}
-      other   {On - # apps have access to location}
+      =1      {On / # app has access to location}
+      other   {On / # apps have access to location}
     }</string>
     <!-- Location settings, loading the number of apps which have location permission [CHAR LIMIT=30] -->
     <string name="location_settings_loading_app_permission_stats">Loading\u2026</string>
@@ -768,6 +768,10 @@
     <string name="security_settings_face_settings_remove_dialog_details">Your face model will be permanently and securely deleted.\n\nAfter deletion, you will need your PIN, pattern, or password to unlock your phone or for authentication in apps.</string>
     <!-- Dialog contents shown when the user removes an enrollment when configured as a convenience [CHAR LIMIT=NONE] -->
     <string name="security_settings_face_settings_remove_dialog_details_convenience">Your face model will be permanently and securely deleted.\n\nAfter deletion, you will need your PIN, pattern, or password to unlock your phone.</string>
+    <!-- Dialog contents shown when the user removes an enrollment [CHAR LIMIT=NONE] -->
+    <string name="security_settings_face_remove_dialog_details_fingerprint">Your face model will be permanently and securely deleted.\n\nAfter deletion, you will need your fingerprint, PIN, pattern, or password to unlock your phone or for authentication in apps.</string>
+    <!-- Dialog contents shown when the user removes an enrollment when configured as a convenience [CHAR LIMIT=NONE] -->
+    <string name="security_settings_face_remove_dialog_details_fingerprint_conv">Your face model will be permanently and securely deleted.\n\nAfter deletion, you will need your fingerprint, PIN, pattern, or password to unlock your phone.</string>
     <!-- Subtitle shown for contextual setting face enrollment [CHAR LIMIT=NONE] -->
     <string name="security_settings_face_settings_context_subtitle">Use Face Unlock to unlock your phone</string>
 
@@ -3086,8 +3090,6 @@
     <string name="reset_bluetooth_wifi_complete_toast">Bluetooth &amp; Wi\u2011Fi have been reset</string>
 
     <!-- Erase Euicc -->
-    <!-- Confirmation button of dialog to confirm resetting user's app preferences [CHAR LIMIT=NONE] -->
-    <string name="erase_euicc_data_button">Erase</string>
     <!-- Erase Euicc dialog and SD card & phone storage settings screen, title for the menu option and checkbox to let user decide whether erase eSIM data together [CHAR LIMIT=50] -->
     <string name="reset_esim_title">Erase eSIMs</string>
     <!-- Erase Euicc dialog and SD card & phone storage settings screen, message for the checkbox to let user decide whether erase eSIM data together [CHAR LIMIT=NONE] -->
@@ -3564,6 +3566,18 @@
     <!-- Checkbox label to set password as new screen lock if remote device credential validation succeeds. [CHAR LIMIT=43] -->
     <string name="lockpassword_remote_validation_set_password_as_screenlock">Also use password to unlock this device</string>
 
+    <!-- Header shown when pattern needs to be solved before the device exits repair mode. [CHAR LIMIT=100] [DO NOT TRANSLATE] TODO(b/275677027): update with finalized UX string -->
+    <string name="lockpassword_confirm_repair_mode_pattern_header">Verify pattern</string>
+    <!-- Header shown when the pin needs to be solved before the device exits repair mode. [CHAR LIMIT=100] [DO NOT TRANSLATE] TODO(b/275677027): update with finalized UX string -->
+    <string name="lockpassword_confirm_repair_mode_pin_header">Verify PIN</string>
+    <!-- Header shown when the password needs to be solved before the device exits repair mode. [CHAR LIMIT=100] [DO NOT TRANSLATE] TODO(b/275677027): update with finalized UX string -->
+    <string name="lockpassword_confirm_repair_mode_password_header">Verify password</string>
+    <!-- An explanation text that the pattern needs to be solved before the device exits repair mode. [CHAR LIMIT=100] [DO NOT TRANSLATE] TODO(b/275677027): update with finalized UX string -->
+    <string name="lockpassword_confirm_repair_mode_pattern_details" translatable="false">Enter your device pattern enrolled in normal mode to continue</string>
+    <!-- An explanation text that the PIN needs to be solved before the device exits repair mode. [CHAR LIMIT=100] [DO NOT TRANSLATE] TODO(b/275677027): update with finalized UX string -->
+    <string name="lockpassword_confirm_repair_mode_pin_details" translatable="false">Enter your device PIN enrolled in normal mode to continue</string>
+    <!-- An explanation text that the password needs to be solved before the device exits repair mode. [CHAR LIMIT=100] [DO NOT TRANSLATE] TODO(b/275677027): update with finalized UX string -->
+    <string name="lockpassword_confirm_repair_mode_password_details" translatable="false">Enter your device password enrolled in normal mode to continue</string>
 
     <!-- Security & location settings screen, change security method screen instruction if user
          enters incorrect PIN [CHAR LIMIT=30] -->
@@ -10643,8 +10657,6 @@
     <string name="platform_compat_default_disabled_title">Default disabled changes</string>
     <!-- Title for target SDK gated app compat changes category (do not translate 'targetSdkVersion') [CHAR LIMIT=50] -->
     <string name="platform_compat_target_sdk_title">Enabled for targetSdkVersion &gt;= <xliff:g id="number" example="29">%d</xliff:g></string>
-    <!-- Title for the dialog shown when no debuggable apps are available [CHAR LIMIT=30] -->
-    <string name="platform_compat_dialog_title_no_apps">No apps available</string>
     <!-- Explanatory text shown when no debuggable apps are available [CHAR LIMIT=NONE] -->
     <string name="platform_compat_dialog_text_no_apps">App compatibility changes can only be modified for debuggable apps. Install a debuggable app and try again.</string>
 

@@ -65,7 +65,8 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"Pair left ear"</string>
     <string name="bluetooth_device_controls_general" msgid="1399214835599665488">"For all available hearing devices"</string>
     <string name="bluetooth_device_controls_title" msgid="1895676556354697234">"Hearing device settings"</string>
-    <string name="bluetooth_device_controls_summary" msgid="8115767735418425663">"Shortcut, hearing aid compatibility"</string>
+    <!-- no translation found for bluetooth_device_controls_summary (8115767735418425663) -->
+    <skip />
     <string name="bluetooth_device_controls_specific" msgid="7706863288754077107">"For this device"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"Audio output"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"About audio output"</string>
@@ -180,7 +181,7 @@
     <string name="temperature_preferences_title" msgid="5009881556503629058">"Temperature"</string>
     <string name="first_day_of_week_preferences_title" msgid="1971850087589599553">"First day of week"</string>
     <string name="numbers_preferences_title" msgid="8197418984391195446">"Numbers preferences"</string>
-    <string name="default_string_of_regional_preference" msgid="7662581547334113719">"Use app default"</string>
+    <string name="default_string_of_regional_preference" msgid="3428899072914884203">"Use default"</string>
     <string name="celsius_temperature_unit" msgid="8896459071273084507">"Celsius (°C)"</string>
     <string name="fahrenheit_temperature_unit" msgid="1118677820614569801">"Fahrenheit (°F)"</string>
     <string name="sunday_first_day_of_week" msgid="7644548348295686051">"Sunday"</string>
@@ -326,6 +327,10 @@
     <string name="security_settings_face_settings_remove_dialog_title" msgid="2899669764446232715">"Delete face model?"</string>
     <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"Your face model will be permanently and securely deleted.\n\nAfter deletion, you will need your PIN, pattern or password to unlock your phone or for authentication in apps."</string>
     <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"Your face model will be permanently and securely deleted.\n\nAfter deletion, you will need your PIN, pattern or password to unlock your phone."</string>
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint (7609582230650860974) -->
+    <skip />
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint_conv (2627374706274503259) -->
+    <skip />
     <string name="security_settings_face_settings_context_subtitle" msgid="8284262560781442403">"Use Face Unlock to unlock your phone"</string>
     <string name="security_settings_fingerprint" msgid="6387775386189204201">"Fingerprint"</string>
     <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"Fingerprint"</string>
@@ -1119,7 +1124,6 @@
     <string name="security_patch" msgid="4071756145347865382">"Android security update"</string>
     <string name="model_info" msgid="8997566254717810904">"Model"</string>
     <string name="hardware_revision" msgid="3454709180861965025">"Hardware version"</string>
-    <string name="manufactured_year" msgid="3401517138700926475">"Manufactured year"</string>
     <string name="fcc_equipment_id" msgid="6596668314025646129">"Equipment ID"</string>
     <string name="baseband_version" msgid="2600182227599835857">"Baseband version"</string>
     <string name="kernel_version" msgid="3513538109381366881">"Kernel version"</string>
@@ -1275,7 +1279,6 @@
     <string name="reset_bluetooth_wifi_desc" msgid="4030295669083059711">"This will reset all Wi‑Fi &amp; Bluetooth settings. You can’t undo this action."</string>
     <string name="reset_bluetooth_wifi_button_text" msgid="3974098137045963639">"Reset"</string>
     <string name="reset_bluetooth_wifi_complete_toast" msgid="5893439291030574365">"Bluetooth &amp; Wi‑Fi have been reset"</string>
-    <string name="erase_euicc_data_button" msgid="728078969563311737">"Erase"</string>
     <string name="reset_esim_title" msgid="4194570573425902754">"Erase eSIMs"</string>
     <string name="reset_esim_desc" msgid="3662444090563399131">"This won’t cancel any mobile service plans. To download replacement SIMs, contact your operator."</string>
     <string name="reset_network_button_text" msgid="2281476496459610071">"Reset settings"</string>
@@ -1868,8 +1871,7 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"To use an accessibility feature, swipe up from the bottom of the screen with two fingers.\n\nTo switch between features, swipe up with two fingers and hold."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"To use an accessibility feature, swipe up from the bottom of the screen with three fingers.\n\nTo switch between features, swipe up with three fingers and hold."</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"OK"</string>
-    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
-    <skip />
+    <string name="accessibility_tutorial_dialog_link_button" msgid="6797349445794031781">"Button settings"</string>
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"<xliff:g id="SERVICE">%1$s</xliff:g> shortcut"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"Accessibility button"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"Accessibility gesture"</string>
@@ -2332,8 +2334,7 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"View by apps"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"View by systems"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
-    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
-    <skip />
+    <string name="battery_cycle_count_footer" msgid="3642121059800373545">"Due to quality inspections before delivery, the cycle count may not be zero on first use"</string>
     <string name="process_stats_summary_title" msgid="502683176231281732">"Process Stats"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"Geeky stats about running processes"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"Memory use"</string>
@@ -2860,7 +2861,7 @@
     <string name="app_and_notification_dashboard_summary" msgid="8047683010984186106">"Recent apps, default apps"</string>
     <string name="notification_settings_work_profile" msgid="6076211850526353975">"Notification access is not available for apps in the work profile."</string>
     <string name="account_dashboard_title" msgid="8228773251948253914">"Passwords and accounts"</string>
-    <string name="account_dashboard_default_summary" msgid="1730719656099599488">"Saved passwords, autofill, synced accounts"</string>
+    <string name="account_dashboard_default_summary" msgid="1730719656099599488">"Saved passwords, auto-fill, synced accounts"</string>
     <string name="app_default_dashboard_title" msgid="4071015747629103216">"Default apps"</string>
     <string name="cloned_apps_dashboard_title" msgid="5542076801222950921">"Cloned apps"</string>
     <string name="desc_cloned_apps_intro_text" msgid="1369621522882622476">"Create a second instance of an app so that you can use two accounts at the same time."</string>
@@ -3916,9 +3917,9 @@
     <string name="emergency_settings_preference_title" msgid="6183455153241187148">"Safety and emergency"</string>
     <string name="emergency_dashboard_summary" msgid="401033951074039302">"Emergency SOS, medical info, alerts"</string>
     <string name="edge_to_edge_navigation_title" msgid="714427081306043819">"Gesture navigation"</string>
-    <string name="edge_to_edge_navigation_summary" msgid="8497033810637690561">"To go home, swipe up from the bottom of the screen. To switch apps, swipe up from the bottom, hold, then release. To go back, swipe from either the left or right edge."</string>
+    <string name="edge_to_edge_navigation_summary" msgid="8497033810637690561">"To go Home, swipe up from the bottom of the screen. To switch apps, swipe up from the bottom, hold, then release. To go back, swipe from either the left or right edge."</string>
     <string name="legacy_navigation_title" msgid="7877402855994423727">"3-button navigation"</string>
-    <string name="legacy_navigation_summary" msgid="5905301067778326433">"Go back, home and switch apps with buttons at the bottom of your screen."</string>
+    <string name="legacy_navigation_summary" msgid="5905301067778326433">"Go back, Home and switch apps with buttons at the bottom of your screen."</string>
     <string name="keywords_system_navigation" msgid="3131782378486554934">"system navigation, 2-button navigation, 3-button navigation, gesture navigation, swipe"</string>
     <string name="assistant_gesture_category_title" msgid="2478251256585807920">"Digital assistant"</string>
     <string name="assistant_corner_gesture_title" msgid="1895061522687002106">"Swipe to invoke the assistant"</string>
@@ -4164,7 +4165,8 @@
     <string name="change_wifi_state_app_detail_summary" msgid="8230854855584217111">"Allow this app to turn Wi-Fi on or off, scan and connect to Wi-Fi networks, add or remove networks, or start a local-only hotspot"</string>
     <string name="change_nfc_tag_apps_title" msgid="91514009058149617">"Launch via NFC"</string>
     <string name="change_nfc_tag_apps_detail_switch" msgid="240286205725043561">"Allow launch on NFC scan"</string>
-    <string name="change_nfc_tag_apps_detail_summary" msgid="3338220223868942195">"Allow this app to launch when an NFC tag is scanned.\nIf this permission is on, the app will be available as an option whenever a tag is detected."</string>
+    <!-- no translation found for change_nfc_tag_apps_detail_summary (3338220223868942195) -->
+    <skip />
     <string name="media_output_title" msgid="8283629315159510680">"Play media to"</string>
     <string name="media_output_label_title" msgid="4139048973886819148">"Play <xliff:g id="LABEL">%s</xliff:g> on"</string>
     <string name="media_output_default_summary" msgid="4200343059396412376">"This device"</string>
@@ -4727,36 +4729,20 @@
     <string name="contrast_medium" msgid="384414510709285811">"Medium"</string>
     <string name="contrast_high" msgid="3988567609694797696">"High"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"This app can only be opened in one window"</string>
-    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
-    <skip />
-    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
-    <skip />
-    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
-    <skip />
-    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
-    <skip />
-    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
-    <skip />
-    <!-- no translation found for show_captions_disabled (690650956523818755) -->
-    <skip />
-    <!-- no translation found for show_captions_enabled (7089043007924626) -->
-    <skip />
-    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
-    <skip />
-    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
-    <skip />
+    <string name="accessibility_feature_full_state_summary" msgid="8747170258807179670">"<xliff:g id="STATE_0">%1$s</xliff:g>/<xliff:g id="SHORTCUT_STATE">%2$s</xliff:g>/<xliff:g id="SERVICE_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="generic_accessibility_service_on" msgid="2465820044606775562">"Service on"</string>
+    <string name="generic_accessibility_service_off" msgid="1752061696695346360">"Service off"</string>
+    <string name="generic_accessibility_feature_shortcut_off" msgid="3669343136122187913">"Shortcut off"</string>
+    <string name="accessibility_shortcut_state_off" msgid="8158137799007601475">"Off"</string>
+    <string name="daltonizer_state_on" msgid="131013270022603983">"On"</string>
+    <string name="daltonizer_state_off" msgid="1162285688069856179">"Off"</string>
+    <string name="color_inversion_state_on" msgid="1160969033636440368">"On"</string>
+    <string name="color_inversion_state_off" msgid="6925638668080451724">"Off"</string>
+    <string name="color_inversion_feature_summary" msgid="1199876648549627647">"Turns light screens dark and dark screens light"</string>
+    <string name="magnification_feature_summary" msgid="641825267460247848">"Quickly zoom in on the screen to make content larger"</string>
+    <string name="autoclick_disabled" msgid="3213396804955002120">"Off"</string>
+    <string name="show_captions_disabled" msgid="690650956523818755">"Off"</string>
+    <string name="show_captions_enabled" msgid="7089043007924626">"On"</string>
+    <string name="live_caption_disabled" msgid="3562035026547887366">"Off"</string>
+    <string name="live_caption_enabled" msgid="5269360946200718949">"On"</string>
 </resources>

@@ -78,7 +78,6 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.android.controller.ActivityController;
-import org.robolectric.shadows.ShadowToast;
 import org.robolectric.util.ReflectionHelpers;
 
 import java.util.ArrayList;
@@ -117,16 +116,6 @@ public class FingerprintEnrollEnrollingTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         FakeFeatureFactory.setupForTest();
-    }
-
-    @Test
-    public void fingerprintMultiWindowMode() {
-        initializeActivityWithoutCreate(TYPE_UDFPS_OPTICAL);
-        when(mActivity.isInMultiWindowMode()).thenReturn(true);
-        createActivity();
-
-        assertThat(ShadowToast.getTextOfLatestToast()).isEqualTo(
-                mContext.getString(R.string.dock_multi_instances_not_supported_text));
     }
 
     @Test
@@ -353,6 +342,19 @@ public class FingerprintEnrollEnrollingTest {
     }
 
     @Test
+    public void fingerprintUdfpsOverlayEnrollment_udfpsAnimationViewVisibility() {
+        initializeActivityWithoutCreate(TYPE_UDFPS_OPTICAL);
+        when(mMockDisplay.getRotation()).thenReturn(Surface.ROTATION_0);
+        createActivity();
+
+        final UdfpsEnrollView enrollView = mActivity.findViewById(R.id.udfps_animation_view);
+        assertThat(enrollView.getVisibility()).isEqualTo(View.GONE);
+
+        mActivity.onUdfpsOverlayShown();
+        assertThat(enrollView.getVisibility()).isEqualTo(View.VISIBLE);
+    }
+
+    @Test
     public void forwardEnrollProgressEvents() {
         initializeActivityFor(TYPE_UDFPS_OPTICAL);
 
@@ -393,11 +395,11 @@ public class FingerprintEnrollEnrollingTest {
     }
 
     @Test
-    public void forwardEnrollPointerDownEvents() {
+    public void forwardUdfpsEnrollPointerDownEvents() {
         initializeActivityFor(TYPE_UDFPS_OPTICAL);
 
         EnrollListener listener = new EnrollListener(mActivity);
-        mActivity.onPointerDown(0);
+        mActivity.onUdfpsPointerDown(0);
         assertThat(listener.mProgress).isFalse();
         assertThat(listener.mHelp).isFalse();
         assertThat(listener.mAcquired).isFalse();
@@ -406,11 +408,11 @@ public class FingerprintEnrollEnrollingTest {
     }
 
     @Test
-    public void forwardEnrollPointerUpEvents() {
+    public void forwardUdfpsEnrollPointerUpEvents() {
         initializeActivityFor(TYPE_UDFPS_OPTICAL);
 
         EnrollListener listener = new EnrollListener(mActivity);
-        mActivity.onPointerUp(0);
+        mActivity.onUdfpsPointerUp(0);
         assertThat(listener.mProgress).isFalse();
         assertThat(listener.mHelp).isFalse();
         assertThat(listener.mAcquired).isFalse();

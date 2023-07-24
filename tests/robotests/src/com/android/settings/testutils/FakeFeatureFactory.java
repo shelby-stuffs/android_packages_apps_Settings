@@ -173,7 +173,7 @@ public class FakeFeatureFactory extends FeatureFactory {
     }
 
     @Override
-    public BatterySettingsFeatureProvider getBatterySettingsFeatureProvider(Context context) {
+    public BatterySettingsFeatureProvider getBatterySettingsFeatureProvider() {
         return batterySettingsFeatureProvider;
     }
 
