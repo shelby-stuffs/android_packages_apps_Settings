@@ -19,6 +19,7 @@ package com.android.settings.wifi.tether;
 import android.content.Context;
 import android.net.wifi.SoftApConfiguration;
 import android.net.wifi.WifiManager;
+import android.util.Log;
 
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
@@ -34,6 +35,8 @@ public class WifiTetherAutoOffPreferenceController extends BasePreferenceControl
 
     private final WifiManager mWifiManager;
     private boolean mSettingsOn;
+    private String TAG = "WifiTetherAutoOffPreferenceController";
+    private SwitchPreference mPreference = null;
     @VisibleForTesting
     boolean mNeedShutdownSecondarySap;
 

@@ -93,6 +93,7 @@ public class WifiTetherSettings extends RestrictedDashboardFragment
     @VisibleForTesting
     WifiTetherAutoOffPreferenceController mWifiTetherAutoOffPreferenceController;
 
+    private WifiManager mWifiManager;
     @VisibleForTesting
     boolean mUnavailable;
     private WifiRestriction mWifiRestriction;

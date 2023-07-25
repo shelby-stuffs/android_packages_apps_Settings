@@ -137,6 +137,8 @@ public final class BluetoothDevicePreference extends GearPreference {
         mCallback = new BluetoothDevicePreferenceCallback();
         mId = sNextId.getAndIncrement();
         mType = type;
+        onPreferenceAttributesChanged();
+        mHideSummary = false;
         setVisible(false);
     }
 
@@ -257,40 +259,51 @@ public final class BluetoothDevicePreference extends GearPreference {
 
     @SuppressWarnings("FutureReturnValueIgnored")
     void onPreferenceAttributesChanged() {
-        try {
-            ThreadUtils.postOnBackgroundThread(() -> {
-                @Nullable String name = mCachedDevice.getName();
-                // Null check is done at the framework
-                @Nullable String connectionSummary = getConnectionSummary();
-                @NonNull Pair<Drawable, String> pair = mCachedDevice.getDrawableWithDescription();
-                boolean isBusy = mCachedDevice.isBusy();
-                // Device is only visible in the UI if it has a valid name besides MAC address or
-                // when user allows showing devices without user-friendly name in developer settings
-                boolean isVisible =
-                        mShowDevicesWithoutNames || mCachedDevice.hasHumanReadableName();
+Pair<Drawable, String> pair = mCachedDevice.getDrawableWithDescription();
+        setIcon(pair.first);
+        contentDescription = pair.second;
 
-                ThreadUtils.postOnMainThread(() -> {
-                    /*
-                     * The preference framework takes care of making sure the value has
-                     * changed before proceeding. It will also call notifyChanged() if
-                     * any preference info has changed from the previous value.
-                     */
-                    setTitle(name);
-                    setSummary(connectionSummary);
-                    setIcon(pair.first);
-                    contentDescription = pair.second;
-                    // Used to gray out the item
-                    setEnabled(!isBusy);
-                    setVisible(isVisible);
-
-                    // This could affect ordering, so notify that
-                    if (mNeedNotifyHierarchyChanged) {
-                        notifyHierarchyChanged();
-                    }
+        /*
+         * The preference framework takes care of making sure the value has
+         * changed before proceeding. It will also call notifyChanged() if
+         * any preference info has changed from the previous value.
+         */
+        BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+        if (adapter != null &&
+                mCachedDevice.getAddress().equals(adapter.getAddress())) {
+            //for ba related things, using the same preference
+            //for showing the local device
+            setTitle(adapter.getName()+"(self)");
+        } else {
+            setTitle(mCachedDevice.getName());
+        }
+        // Null check is done at the framework
+        if (!mHideSummary) {
+            try {
+                ThreadUtils.postOnBackgroundThread(() -> {
+                    String summary = mCachedDevice.getConnectionSummary();
+                    // Null check is done at the framework
+                    ThreadUtils.postOnMainThread(() -> setSummary(summary));
                 });
-            });
-        } catch (RejectedExecutionException e) {
-            Log.w(TAG, "Handler thread unavailable, skipping getConnectionSummary!");
+            } catch (RejectedExecutionException e) {
+                Log.w(TAG, "Handler thread unavailable, skipping getConnectionSummary!");
+            }
+        }
+
+        // Used to gray out the item
+        if (mHideSummary) {
+            setEnabled(true);
+        } else {
+            setEnabled(!mCachedDevice.isBusy());
+        }
+
+        // Device is only visible in the UI if it has a valid name besides MAC address or when user
+        // allows showing devices without user-friendly name in developer settings
+        setVisible(mShowDevicesWithoutNames || mCachedDevice.hasHumanReadableName());
+
+        // This could affect ordering, so notify that
+        if (mNeedNotifyHierarchyChanged) {
+            notifyHierarchyChanged();
         }
     }
 
