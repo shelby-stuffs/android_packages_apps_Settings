@@ -166,11 +166,18 @@ public class ConfirmDeviceCredentialActivity extends FragmentActivity {
         mDetails = intent.getCharSequenceExtra(KeyguardManager.EXTRA_DESCRIPTION);
         String alternateButton = intent.getStringExtra(
                 KeyguardManager.EXTRA_ALTERNATE_BUTTON_LABEL);
-        boolean frp = KeyguardManager.ACTION_CONFIRM_FRP_CREDENTIAL.equals(intent.getAction());
-        boolean remoteValidation =
+        final boolean frp =
+                KeyguardManager.ACTION_CONFIRM_FRP_CREDENTIAL.equals(intent.getAction());
+        final boolean repairMode =
+                KeyguardManager.ACTION_CONFIRM_REPAIR_MODE_DEVICE_CREDENTIAL
+                        .equals(intent.getAction());
+        final boolean remoteValidation =
                 KeyguardManager.ACTION_CONFIRM_REMOTE_DEVICE_CREDENTIAL.equals(intent.getAction());
         mTaskOverlay = isInternalActivity()
                 && intent.getBooleanExtra(KeyguardManager.EXTRA_FORCE_TASK_OVERLAY, false);
+        final boolean prepareRepairMode =
+                KeyguardManager.ACTION_PREPARE_REPAIR_MODE_DEVICE_CREDENTIAL.equals(
+                        intent.getAction());
 
         mUserId = UserHandle.myUserId();
         if (isInternalActivity()) {
@@ -219,6 +226,14 @@ public class ConfirmDeviceCredentialActivity extends FragmentActivity {
                     .setExternal(true)
                     .setUserId(LockPatternUtils.USER_FRP)
                     .show();
+        } else if (repairMode) {
+            final ChooseLockSettingsHelper.Builder builder =
+                    new ChooseLockSettingsHelper.Builder(this);
+            launchedCDC = builder.setHeader(mTitle)
+                    .setDescription(mDetails)
+                    .setExternal(true)
+                    .setUserId(LockPatternUtils.USER_REPAIR_MODE)
+                    .show();
         } else if (remoteValidation) {
             RemoteLockscreenValidationSession remoteLockscreenValidationSession =
                     intent.getParcelableExtra(
@@ -244,6 +259,17 @@ public class ConfirmDeviceCredentialActivity extends FragmentActivity {
                     .setExternal(true)
                     .show();
             return;
+        } else if (prepareRepairMode) {
+            final ChooseLockSettingsHelper.Builder builder =
+                    new ChooseLockSettingsHelper.Builder(this);
+            launchedCDC = builder.setHeader(mTitle)
+                    .setDescription(mDetails)
+                    .setExternal(true)
+                    .setUserId(mUserId)
+                    .setTaskOverlay(mTaskOverlay)
+                    .setRequestWriteRepairModePassword(true)
+                    .setForceVerifyPath(true)
+                    .show();
         } else if (isEffectiveUserManagedProfile && isInternalActivity()) {
             mCredentialMode = CREDENTIAL_MANAGED;
             if (isBiometricAllowed(effectiveUserId, mUserId)) {

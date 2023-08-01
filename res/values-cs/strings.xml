@@ -65,7 +65,8 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"Spárovat levé ucho"</string>
     <string name="bluetooth_device_controls_general" msgid="1399214835599665488">"Pro všechna dostupná naslouchátka"</string>
     <string name="bluetooth_device_controls_title" msgid="1895676556354697234">"Nastavení naslouchátek"</string>
-    <string name="bluetooth_device_controls_summary" msgid="8115767735418425663">"Zkratka, kompatibilita s naslouchátky"</string>
+    <!-- no translation found for bluetooth_device_controls_summary (8115767735418425663) -->
+    <skip />
     <string name="bluetooth_device_controls_specific" msgid="7706863288754077107">"Pro toto zařízení"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"Výstup zvuku"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"Informace o zvukovém výstupu"</string>
@@ -180,7 +181,8 @@
     <string name="temperature_preferences_title" msgid="5009881556503629058">"Teplota"</string>
     <string name="first_day_of_week_preferences_title" msgid="1971850087589599553">"První den týdne"</string>
     <string name="numbers_preferences_title" msgid="8197418984391195446">"Předvolby číslic"</string>
-    <string name="default_string_of_regional_preference" msgid="7662581547334113719">"Použít výchozí nastavení aplikace"</string>
+    <!-- no translation found for default_string_of_regional_preference (3428899072914884203) -->
+    <skip />
     <string name="celsius_temperature_unit" msgid="8896459071273084507">"Stupně Celsia (°C)"</string>
     <string name="fahrenheit_temperature_unit" msgid="1118677820614569801">"Stupně Fahrenheita (°F)"</string>
     <string name="sunday_first_day_of_week" msgid="7644548348295686051">"neděle"</string>
@@ -326,6 +328,10 @@
     <string name="security_settings_face_settings_remove_dialog_title" msgid="2899669764446232715">"Smazat model obličeje?"</string>
     <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"Model obličeje bude trvale a bezpečně smazán.\n\nPo smazání budete k odemykání telefonu a ověřování v aplikacích používat PIN, gesto nebo heslo."</string>
     <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"Model obličeje bude trvale a bezpečně smazán.\n\nPo smazání budete k odemknutí telefonu potřebovat PIN, gesto nebo heslo."</string>
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint (7609582230650860974) -->
+    <skip />
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint_conv (2627374706274503259) -->
+    <skip />
     <string name="security_settings_face_settings_context_subtitle" msgid="8284262560781442403">"Odemykejte telefon pomocí obličeje"</string>
     <string name="security_settings_fingerprint" msgid="6387775386189204201">"Otisk prstu"</string>
     <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"Otisk prstu"</string>
@@ -506,7 +512,7 @@
     <string name="lock_settings_picker_update_lock_title" msgid="536853138943415927">"Zvolte nový zámek obrazovky"</string>
     <string name="lock_settings_picker_new_profile_lock_title" msgid="2270462215256413800">"Vyberte zámek pro pracovní aplikace"</string>
     <string name="lock_settings_picker_update_profile_lock_title" msgid="5929068163516308927">"Vyberte nový pracovní zámek"</string>
-    <string name="lock_settings_picker_biometrics_added_security_message" msgid="1105247657304421299">"Pro ještě lepší zabezpečení si nastavte záložní zámek obrazovky"</string>
+    <string name="lock_settings_picker_biometrics_added_security_message" msgid="1105247657304421299">"Pro ještě lepší zabezpečení nastavte záložní zámek obrazovky"</string>
     <string name="lock_settings_picker_biometric_message" msgid="2609666443527262781">"Zvolte záložní metodu zámku obrazovky"</string>
     <string name="lock_settings_picker_admin_restricted_personal_message" msgid="3532653662159888328">"Pokud zapomenete zámek obrazovky, administrátor IT ho nemůže resetovat."</string>
     <string name="lock_settings_picker_admin_restricted_personal_message_action" msgid="5956615234246626264">"Nastavit samostatný pracovní zámek"</string>
@@ -1119,7 +1125,6 @@
     <string name="security_patch" msgid="4071756145347865382">"Aktualizace zabezpečení Androidu"</string>
     <string name="model_info" msgid="8997566254717810904">"Model"</string>
     <string name="hardware_revision" msgid="3454709180861965025">"Verze hardwaru"</string>
-    <string name="manufactured_year" msgid="3401517138700926475">"Rok výroby"</string>
     <string name="fcc_equipment_id" msgid="6596668314025646129">"ID zařízení"</string>
     <string name="baseband_version" msgid="2600182227599835857">"Verze základního pásma"</string>
     <string name="kernel_version" msgid="3513538109381366881">"Verze jádra"</string>
@@ -1161,8 +1166,7 @@
     <string name="battery_manufacture_date" msgid="7139426520156833987">"Datum výroby"</string>
     <string name="battery_first_use_date" msgid="3157207331722711317">"Datum prvního použití"</string>
     <string name="battery_cycle_count" msgid="2912949283386571900">"Počet cyklů"</string>
-    <!-- no translation found for battery_cycle_count_not_available (2426584515665184664) -->
-    <skip />
+    <string name="battery_cycle_count_not_available" msgid="2426584515665184664">"Nedostupné"</string>
     <string name="memory_calculating_size" msgid="3898240439798661242">"Výpočet…"</string>
     <string name="storage_menu_rename" msgid="8549835371429159336">"Přejmenovat"</string>
     <string name="storage_menu_mount" msgid="4760531872302820569">"Připojit"</string>
@@ -1276,7 +1280,6 @@
     <string name="reset_bluetooth_wifi_desc" msgid="4030295669083059711">"Tímto se resetuje veškeré nastavení sítí Wi-Fi a rozhraní Bluetooth. Tuto akci nebude možné vrátit."</string>
     <string name="reset_bluetooth_wifi_button_text" msgid="3974098137045963639">"Resetovat"</string>
     <string name="reset_bluetooth_wifi_complete_toast" msgid="5893439291030574365">"Bluetooth a Wi-Fi byly resetovány"</string>
-    <string name="erase_euicc_data_button" msgid="728078969563311737">"Vymazat"</string>
     <string name="reset_esim_title" msgid="4194570573425902754">"Vymazat eSIM karty"</string>
     <string name="reset_esim_desc" msgid="3662444090563399131">"Tímto krokem nezrušíte mobilní tarif. Pokud chcete stáhnout náhradní SIM karty, obraťte se na svého operátora."</string>
     <string name="reset_network_button_text" msgid="2281476496459610071">"Resetovat nastavení"</string>
@@ -1413,7 +1416,7 @@
     <string name="lockpassword_choose_your_pin_header" msgid="7754265746504679473">"Nastavte kód PIN"</string>
     <string name="lockpassword_choose_your_profile_pin_header" msgid="4581749963670819048">"Nastavte pracovní PIN"</string>
     <string name="lockpassword_choose_your_pattern_header" msgid="5674909390779586252">"Nastavte gesto"</string>
-    <string name="lockpassword_choose_your_pattern_description" msgid="6808109256008481046">"Pro ještě lepší zabezpečení si k odemykání zařízení nastavte gesto"</string>
+    <string name="lockpassword_choose_your_pattern_description" msgid="6808109256008481046">"Pro ještě lepší zabezpečení nastavte gesto k odemknutí zařízení"</string>
     <string name="lockpassword_choose_your_profile_pattern_header" msgid="3101811498330756641">"Nastavte pracovní gesto"</string>
     <string name="lockpassword_choose_your_password_header_for_fingerprint" msgid="3167261267229254090">"Otisk vyžaduje nastavení hesla"</string>
     <string name="lockpassword_choose_your_pattern_header_for_fingerprint" msgid="4707788269512303400">"Otisk vyžaduje nastavení gesta"</string>
@@ -1439,7 +1442,7 @@
     <string name="lockpassword_choose_your_pin_header_for_face" msgid="704061826984851309">"Nastavte PIN pro odemknutí obličejem"</string>
     <string name="lockpassword_choose_your_password_header_for_biometrics" msgid="2053366309272487015">"Chcete-li používat obličej nebo otisk prstu, nastavte heslo"</string>
     <string name="lockpassword_choose_your_pattern_header_for_biometrics" msgid="4038476475293734905">"Chcete-li používat obličej nebo otisk prstu, nastavte gesto"</string>
-    <string name="lockpassword_choose_your_pin_header_for_biometrics" msgid="9086039918921009380">"Před použitím obličeje nebo otisku nastavte PIN"</string>
+    <string name="lockpassword_choose_your_pin_header_for_biometrics" msgid="9086039918921009380">"Nastavte PIN, ať můžete používat obličej nebo otisk prstu"</string>
     <string name="lockpassword_forgot_password" msgid="5730587692489737223">"Zapomněli jste heslo?"</string>
     <string name="lockpassword_forgot_pattern" msgid="1196116549051927516">"Zapomněli jste gesto?"</string>
     <string name="lockpassword_forgot_pin" msgid="7164232234705747672">"Zapomněli jste PIN?"</string>
@@ -1869,8 +1872,7 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"Funkce pro usnadnění přístupu použijete tak, že přejedete dvěma prsty z dolního okraje obrazovky nahoru.\n\nPokud chcete přepnout mezi funkcemi, přejeďte dvěma prsty nahoru a podržte je."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"Funkce pro usnadnění přístupu použijete tak, že přejedete třemi prsty z dolního okraje obrazovky nahoru.\n\nChcete-li přepnout mezi funkcemi, přejeďte třemi prsty nahoru a podržte je."</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"OK"</string>
-    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
-    <skip />
+    <string name="accessibility_tutorial_dialog_link_button" msgid="6797349445794031781">"Nastavení tlačítka"</string>
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"<xliff:g id="SERVICE">%1$s</xliff:g> – zkratka"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"Tlačítko přístupnosti"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"Gesto přístupnosti"</string>
@@ -2333,8 +2335,7 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"Zobrazit podle aplikací"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"Zobrazit podle systémů"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
-    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
-    <skip />
+    <string name="battery_cycle_count_footer" msgid="3642121059800373545">"Vzhledem ke kontrolám kvality před odesláním nemusí být při prvním použití počet cyklů nula"</string>
     <string name="process_stats_summary_title" msgid="502683176231281732">"Statistiky procesů"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"Podrobné statistiky běžících procesů"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"Využití paměti"</string>
@@ -2520,7 +2521,7 @@
     <string name="header_data_and_synchronization" msgid="453920312552838939">"Data a synchronizace"</string>
     <string name="preference_change_password_title" msgid="5465821666939825972">"Změnit heslo"</string>
     <string name="header_account_settings" msgid="1189339410278750008">"Nastavení účtu"</string>
-    <string name="remove_account_label" msgid="4169490568375358010">"Odstranit účet"</string>
+    <string name="remove_account_label" msgid="4169490568375358010">"Odebrat účet"</string>
     <string name="header_add_an_account" msgid="3919151542338822661">"Přidat účet"</string>
     <string name="really_remove_account_title" msgid="253097435885652310">"Chcete odebrat účet?"</string>
     <string name="remove_account_failed" msgid="3709502163548900644">"Administrátor tuto změnu zakázal"</string>
@@ -3864,12 +3865,6 @@
     <string name="overlay_option_device_default" msgid="7986355499809313848">"Výchozí nastavení zařízení"</string>
     <string name="overlay_toast_failed_to_apply" msgid="4839587811338164960">"Překrytí se nepodařilo použít"</string>
     <string name="special_access" msgid="1767980727423395147">"Speciální přístup aplikací"</string>
-    <plurals name="special_access_summary" formatted="false" msgid="4995506406763570815">
-      <item quantity="few"><xliff:g id="COUNT">%d</xliff:g> aplikace mohou využívat neomezená data</item>
-      <item quantity="many"><xliff:g id="COUNT">%d</xliff:g> aplikace může využívat neomezená data</item>
-      <item quantity="other"><xliff:g id="COUNT">%d</xliff:g> aplikací může využívat neomezená data</item>
-      <item quantity="one">1 aplikace může využívat neomezená data</item>
-    </plurals>
     <string name="special_access_more" msgid="132919514147475846">"Zobrazit více"</string>
     <string name="long_background_tasks_label" msgid="3169590134850226687">"Dlouhé úkoly na pozadí"</string>
     <string name="long_background_tasks_switch_title" msgid="2491623894899492543">"Povolte dlouhé úkoly na pozadí"</string>
@@ -4171,7 +4166,8 @@
     <string name="change_wifi_state_app_detail_summary" msgid="8230854855584217111">"Jestliže tuto možnost povolíte, aplikace bude moci zapínat a vypínat Wi-Fi, vyhledávat sítě Wi-Fi a připojovat se k nim, přidávat nebo odstraňovat sítě nebo nastavit místní hotspot."</string>
     <string name="change_nfc_tag_apps_title" msgid="91514009058149617">"Spouštění přes NFC"</string>
     <string name="change_nfc_tag_apps_detail_switch" msgid="240286205725043561">"Povolit spuštění při naskenování NFC"</string>
-    <string name="change_nfc_tag_apps_detail_summary" msgid="3338220223868942195">"Povolit spuštění této aplikace při naskenování štítku NFC.\nPokud je toto oprávnění zapnuté, aplikace bude dostupná jako možnost při každém rozpoznání štítku."</string>
+    <!-- no translation found for change_nfc_tag_apps_detail_summary (3338220223868942195) -->
+    <skip />
     <string name="media_output_title" msgid="8283629315159510680">"Kde přehrávat média"</string>
     <string name="media_output_label_title" msgid="4139048973886819148">"Pustit <xliff:g id="LABEL">%s</xliff:g> přes"</string>
     <string name="media_output_default_summary" msgid="4200343059396412376">"Toto zařízení"</string>
@@ -4736,36 +4732,20 @@
     <string name="contrast_medium" msgid="384414510709285811">"Střední"</string>
     <string name="contrast_high" msgid="3988567609694797696">"Vysoká"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"Tuto aplikaci lze otevřít jen v jednom okně"</string>
-    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
-    <skip />
-    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
-    <skip />
-    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
-    <skip />
-    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
-    <skip />
-    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
-    <skip />
-    <!-- no translation found for show_captions_disabled (690650956523818755) -->
-    <skip />
-    <!-- no translation found for show_captions_enabled (7089043007924626) -->
-    <skip />
-    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
-    <skip />
-    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
-    <skip />
+    <string name="accessibility_feature_full_state_summary" msgid="8747170258807179670">"<xliff:g id="STATE_0">%1$s</xliff:g> / <xliff:g id="SHORTCUT_STATE">%2$s</xliff:g> / <xliff:g id="SERVICE_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="generic_accessibility_service_on" msgid="2465820044606775562">"Služba zapnuta"</string>
+    <string name="generic_accessibility_service_off" msgid="1752061696695346360">"Služba vypnuta"</string>
+    <string name="generic_accessibility_feature_shortcut_off" msgid="3669343136122187913">"Zkratka vypnuta"</string>
+    <string name="accessibility_shortcut_state_off" msgid="8158137799007601475">"Vypnuto"</string>
+    <string name="daltonizer_state_on" msgid="131013270022603983">"Zapnuto"</string>
+    <string name="daltonizer_state_off" msgid="1162285688069856179">"Vypnuto"</string>
+    <string name="color_inversion_state_on" msgid="1160969033636440368">"Zapnuto"</string>
+    <string name="color_inversion_state_off" msgid="6925638668080451724">"Vypnuto"</string>
+    <string name="color_inversion_feature_summary" msgid="1199876648549627647">"Světlou obrazovku změní na tmavou a tmavou na světlou"</string>
+    <string name="magnification_feature_summary" msgid="641825267460247848">"Obrazovku si můžete rychle přiblížit, aby byl obsah větší"</string>
+    <string name="autoclick_disabled" msgid="3213396804955002120">"Vypnuto"</string>
+    <string name="show_captions_disabled" msgid="690650956523818755">"Vypnuto"</string>
+    <string name="show_captions_enabled" msgid="7089043007924626">"Zapnuto"</string>
+    <string name="live_caption_disabled" msgid="3562035026547887366">"Vypnuto"</string>
+    <string name="live_caption_enabled" msgid="5269360946200718949">"Zapnuto"</string>
 </resources>

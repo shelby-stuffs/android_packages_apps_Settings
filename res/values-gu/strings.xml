@@ -65,7 +65,8 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"ડાબા કાનનું જોડો"</string>
     <string name="bluetooth_device_controls_general" msgid="1399214835599665488">"બધા ઉપલબ્ધ શ્રવણ ડિવાઇસ માટે"</string>
     <string name="bluetooth_device_controls_title" msgid="1895676556354697234">"સાંભળવામાં મદદ આપતા ડિવાઇસ સંબંધી સેટિંગ"</string>
-    <string name="bluetooth_device_controls_summary" msgid="8115767735418425663">"શૉર્ટકટ, શ્રવણ યંત્રની સુસંગતતા"</string>
+    <!-- no translation found for bluetooth_device_controls_summary (8115767735418425663) -->
+    <skip />
     <string name="bluetooth_device_controls_specific" msgid="7706863288754077107">"આ ડિવાઇસ માટે"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"ઑડિયો આઉટપુટ"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"ઑડિયો આઉટપુટ વિશે"</string>
@@ -180,7 +181,7 @@
     <string name="temperature_preferences_title" msgid="5009881556503629058">"તાપમાન"</string>
     <string name="first_day_of_week_preferences_title" msgid="1971850087589599553">"અઠવાડિયાનો પહેલો દિવસ"</string>
     <string name="numbers_preferences_title" msgid="8197418984391195446">"નંબરની પસંદગીઓ"</string>
-    <string name="default_string_of_regional_preference" msgid="7662581547334113719">"ઍપ ડિફૉલ્ટનો ઉપયોગ કરો"</string>
+    <string name="default_string_of_regional_preference" msgid="3428899072914884203">"ડિફૉલ્ટનો ઉપયોગ કરો"</string>
     <string name="celsius_temperature_unit" msgid="8896459071273084507">"સેલ્સિયસ (°C)"</string>
     <string name="fahrenheit_temperature_unit" msgid="1118677820614569801">"ફૅરન્હાઇટ (°F)"</string>
     <string name="sunday_first_day_of_week" msgid="7644548348295686051">"રવિવાર"</string>
@@ -326,6 +327,8 @@
     <string name="security_settings_face_settings_remove_dialog_title" msgid="2899669764446232715">"શું ચહેરાનું મૉડલ ડિલીટ કરીએ?"</string>
     <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"તમારા ચહેરાનું મૉડલ કાયમ માટે અને સુરક્ષિત રીતે ડિલીટ કરવામાં આવશે.\n\nડિલીટ કર્યા પછી, તમારો ફોન અનલૉક કરવા કે ઍપમાં પ્રમાણીકરણ માટે, તમને તમારા પિન, પૅટર્ન કે પાસવર્ડની જરૂર રહેશે."</string>
     <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"તમારા ચહેરાનું મૉડલ કાયમ માટે અને સુરક્ષિત રીતે ડિલીટ કરવામાં આવશે.\n\nડિલીટ કર્યા પછી, તમારો ફોન અનલૉક કરવા માટે, તમને તમારા પિન, પૅટર્ન કે પાસવર્ડની જરૂર રહેશે."</string>
+    <string name="security_settings_face_remove_dialog_details_fingerprint" msgid="7609582230650860974">"તમારા ચહેરાનું મૉડલ કાયમ માટે અને સુરક્ષિત રીતે ડિલીટ કરવામાં આવશે.\n\nડિલીટ કર્યા પછી, તમારો ફોન અનલૉક કરવા કે ઍપમાં પ્રમાણીકરણ માટે, તમને તમારી ફિંગરપ્રિન્ટ, પિન, પૅટર્ન કે પાસવર્ડની જરૂર પડશે."</string>
+    <string name="security_settings_face_remove_dialog_details_fingerprint_conv" msgid="2627374706274503259">"તમારા ચહેરાનું મૉડલ કાયમ માટે અને સુરક્ષિત રીતે ડિલીટ કરવામાં આવશે.\n\nડિલીટ કર્યા પછી, તમારો ફોન અનલૉક કરવા માટે, તમને તમારી ફિંગરપ્રિન્ટ, પિન, પૅટર્ન કે પાસવર્ડની જરૂર પડશે."</string>
     <string name="security_settings_face_settings_context_subtitle" msgid="8284262560781442403">"તમારા ફોનને અનલૉક કરવા માટે ફેસ અનલૉક સુવિધાનો ઉપયોગ કરો"</string>
     <string name="security_settings_fingerprint" msgid="6387775386189204201">"ફિંગરપ્રિન્ટ"</string>
     <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"ફિંગરપ્રિન્ટ"</string>
@@ -606,7 +609,7 @@
     <string name="lockpassword_password_too_short" msgid="1938086368137797700">"{count,plural, =1{ઓછામાં ઓછો # અક્ષર હોવો જરૂરી છે}one{ઓછામાં ઓછો # અક્ષર હોવો જરૂરી છે}other{ઓછામાં ઓછા # અક્ષર હોવા જરૂરી છે}}"</string>
     <string name="lockpassword_password_too_short_all_numeric" msgid="4301294924022401502">"{count,plural, =1{જો ફક્ત આંકડાનો ઉપયોગ કરી રહ્યા હો, તો તે ઓછામાં ઓછા 1 અંકની હોવી જોઈએ}one{જો ફક્ત આંકડાનો ઉપયોગ કરી રહ્યા હો, તો તે ઓછામાં ઓછા # અંકની હોવી જોઈએ}other{જો ફક્ત આંકડાનો ઉપયોગ કરી રહ્યા હો, તો તે ઓછામાં ઓછા # અંકની હોવી જોઈએ}}"</string>
     <string name="lockpassword_pin_too_short" msgid="8910105226463085689">"{count,plural, =1{પિનમાં ઓછામાં ઓછો # અંક હોવો જરૂરી છે}one{પિનમાં ઓછામાં ઓછો # અંક હોવો જરૂરી છે}other{પિનમાં ઓછામાં ઓછા # અંક હોવા જરૂરી છે}}"</string>
-    <string name="lockpassword_pin_too_short_autoConfirm_extra_message" msgid="3271351502900762571">"{count,plural, =1{પિનમાં ઓછામાં ઓછો # અક્ષર હોવો જરૂરી છે, પરંતુ વધારાની સુરક્ષા માટે {minAutoConfirmLen} અક્ષરના પિનનો સુઝાવ આપવામાં આવે છે}one{પિનમાં ઓછામાં ઓછો # અક્ષર હોવો જરૂરી છે, પરંતુ વધારાની સુરક્ષા માટે {minAutoConfirmLen} અક્ષરના પિનનો સુઝાવ આપવામાં આવે છે}other{પિનમાં ઓછામાં ઓછા # અક્ષર હોવા જરૂરી છે, પરંતુ વધારાની સુરક્ષા માટે {minAutoConfirmLen} અક્ષરના પિનનો સુઝાવ આપવામાં આવે છે}}"</string>
+    <string name="lockpassword_pin_too_short_autoConfirm_extra_message" msgid="3271351502900762571">"{count,plural, =1{પિનમાં ઓછામાં ઓછો # અંક હોવો જરૂરી છે, પરંતુ વધારાની સુરક્ષા માટે {minAutoConfirmLen} અંકના પિનનો સુઝાવ આપવામાં આવે છે}one{પિનમાં ઓછામાં ઓછો # અંક હોવો જરૂરી છે, પરંતુ વધારાની સુરક્ષા માટે {minAutoConfirmLen} અંકના પિનનો સુઝાવ આપવામાં આવે છે}other{પિનમાં ઓછામાં ઓછા # અંક હોવા જરૂરી છે, પરંતુ વધારાની સુરક્ષા માટે {minAutoConfirmLen} અંકના પિનનો સુઝાવ આપવામાં આવે છે}}"</string>
     <string name="lockpassword_password_too_long" msgid="1940345313260498308">"{count,plural, =1{# કરતાં ઓછા અક્ષર હોવા જરૂરી છે}one{# કરતાં ઓછા અક્ષર હોવા જરૂરી છે}other{# કરતાં ઓછા અક્ષર હોવા જરૂરી છે}}"</string>
     <string name="lockpassword_pin_too_long" msgid="1678212054564388576">"{count,plural, =1{# કરતાં ઓછા અંક હોવા જરૂરી છે}one{# કરતાં ઓછા અંક હોવા જરૂરી છે}other{# કરતાં ઓછા અંક હોવા જરૂરી છે}}"</string>
     <string name="lockpassword_pin_recently_used" msgid="6650277060998923465">"ઉપકરણ વ્યવસ્થાપક તાજેતરનાં પિનનો ઉપયોગ કરવાની મંજૂરી આપતા નથી"</string>
@@ -1119,7 +1122,6 @@
     <string name="security_patch" msgid="4071756145347865382">"Android માટે સુરક્ષા અપડેટ"</string>
     <string name="model_info" msgid="8997566254717810904">"મૉડલ"</string>
     <string name="hardware_revision" msgid="3454709180861965025">"હાર્ડવેર વર્ઝન"</string>
-    <string name="manufactured_year" msgid="3401517138700926475">"ઉત્પાદન વર્ષ"</string>
     <string name="fcc_equipment_id" msgid="6596668314025646129">"સાધન ID"</string>
     <string name="baseband_version" msgid="2600182227599835857">"બેઝબૅન્ડ વર્ઝન"</string>
     <string name="kernel_version" msgid="3513538109381366881">"કર્નલ વર્ઝન"</string>
@@ -1161,8 +1163,7 @@
     <string name="battery_manufacture_date" msgid="7139426520156833987">"નિર્માણની તારીખ"</string>
     <string name="battery_first_use_date" msgid="3157207331722711317">"પહેલી વાર ઉપયોગ કર્યાની તારીખ"</string>
     <string name="battery_cycle_count" msgid="2912949283386571900">"ચક્રની સંખ્યા"</string>
-    <!-- no translation found for battery_cycle_count_not_available (2426584515665184664) -->
-    <skip />
+    <string name="battery_cycle_count_not_available" msgid="2426584515665184664">"ઉપલબ્ધ નથી"</string>
     <string name="memory_calculating_size" msgid="3898240439798661242">"ગણતરી કરી રહ્યું છે..."</string>
     <string name="storage_menu_rename" msgid="8549835371429159336">"નામ બદલો"</string>
     <string name="storage_menu_mount" msgid="4760531872302820569">"માઉન્ટ કરો"</string>
@@ -1276,7 +1277,6 @@
     <string name="reset_bluetooth_wifi_desc" msgid="4030295669083059711">"આનાથી વાઇ-ફાઇ અને બ્લૂટૂથના બધા સેટિગ રીસેટ થશે. તમે આ ક્રિયા માટે કરેલો છેલ્લો ફેરફાર રદ કરી શકશો નહીં."</string>
     <string name="reset_bluetooth_wifi_button_text" msgid="3974098137045963639">"રીસેટ કરો"</string>
     <string name="reset_bluetooth_wifi_complete_toast" msgid="5893439291030574365">"બ્લૂટૂથ અને વાઇ-ફાઇ રીસેટ કર્યું છે"</string>
-    <string name="erase_euicc_data_button" msgid="728078969563311737">"કાઢી નાખો"</string>
     <string name="reset_esim_title" msgid="4194570573425902754">"eSIM કાઢી નાખો"</string>
     <string name="reset_esim_desc" msgid="3662444090563399131">"આનાથી કોઈપણ મોબાઇલ સેવા પ્લાન રદ થશે નહીં. બદલીના સિમ કાર્ડ ડાઉનલોડ કરવા માટે, તમારા મોબાઇલ ઑપરેટરનો સંપર્ક કરો."</string>
     <string name="reset_network_button_text" msgid="2281476496459610071">"સેટિંગ રીસેટ કરો"</string>
@@ -1869,8 +1869,7 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"કોઈ ઍક્સેસિબિલિટી સુવિધાનો ઉપયોગ કરવા માટે, 2 આંગળી વડે સ્ક્રીનની નીચેના ભાગથી ઉપરની તરફ સ્વાઇપ કરો.\n\nકોઈ એક સુવિધાથી બીજી સુવિધા પર સ્વિચ કરવા માટે, 2 આંગળી વડે ઉપરની તરફ સ્વાઇપ કરીને દબાવી રાખો."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"કોઈ ઍક્સેસિબિલિટી સુવિધાનો ઉપયોગ કરવા માટે, 3 આંગળી વડે સ્ક્રીનની નીચેના ભાગથી ઉપરની તરફ સ્વાઇપ કરો.\n\nકોઈ એક સુવિધાથી બીજી સુવિધા પર સ્વિચ કરવા માટે, 3 આંગળી વડે ઉપરની તરફ સ્વાઇપ કરીને દબાવી રાખો."</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"સમજાઈ ગયું"</string>
-    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
-    <skip />
+    <string name="accessibility_tutorial_dialog_link_button" msgid="6797349445794031781">"બટનના સેટિંગ"</string>
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"<xliff:g id="SERVICE">%1$s</xliff:g> શૉર્ટકટ"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"ઍક્સેસિબિલિટી બટન"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"ઍક્સેસિબિલિટી સંકેત"</string>
@@ -2333,8 +2332,7 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"ઍપ દ્વારા જુઓ"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"સિસ્ટમ દ્વારા જુઓ"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
-    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
-    <skip />
+    <string name="battery_cycle_count_footer" msgid="3642121059800373545">"રવાના કરતા પહેલાં કરેલી ક્વૉલિટી માટેની તપાસના કારણે પહેલી વાર ઉપયોગ વખતે ચક્રની સંખ્યા શૂન્ય ન હોય એમ બને"</string>
     <string name="process_stats_summary_title" msgid="502683176231281732">"પ્રક્રિયા આંકડા"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"ચાલુ પ્રક્રિયાઓ વિશેનાં અવ્યવસ્થિત આંકડાઓ"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"મેમરીનો ઉપયોગ"</string>
@@ -3605,7 +3603,7 @@
     <string name="usb_use_uvc_webcam" msgid="6595429508472038732">"વેબકૅમ"</string>
     <string name="usb_transcode_files" msgid="2441954752105119109">"વીડિયોને AVCમાં બદલો"</string>
     <string name="usb_transcode_files_summary" msgid="307102635711961513">"વીડિયો વધુ મીડિયા પ્લેયર પર ચલાવવામાં આવશે, પણ ક્વૉલિટીમાં ઘટાડો થઈ શકે છે"</string>
-    <string name="usb_use_tethering" msgid="2897063414491670531">"USB ટિથરિંગ"</string>
+    <string name="usb_use_tethering" msgid="2897063414491670531">"USBથી ઇન્ટરનેટ શેર કરવાની સુવિધા"</string>
     <string name="usb_use_MIDI" msgid="8621338227628859789">"MIDI"</string>
     <string name="usb_use" msgid="6783183432648438528">"આ માટે USB નો ઉપયોગ કરો"</string>
     <string name="usb_default_label" msgid="3372838450371060750">"USBની ડિફૉલ્ટ ગોઠવણી"</string>
@@ -3622,7 +3620,7 @@
     <string name="usb_summary_charging_only" msgid="678095599403565146">"આ ડિવાઇસને ચાર્જ કરવું"</string>
     <string name="usb_summary_power_only" msgid="4901734938857822887">"કનેક્ટેડ ઉપકરણ ચાર્જ કરી રહ્યાં છીએ"</string>
     <string name="usb_summary_file_transfers" msgid="5498487271972556431">"ફાઇલ ટ્રાન્સફર"</string>
-    <string name="usb_summary_tether" msgid="2554569836525075702">"USB ટિથરિંગ"</string>
+    <string name="usb_summary_tether" msgid="2554569836525075702">"USBથી ઇન્ટરનેટ શેર કરવાની સુવિધા"</string>
     <string name="usb_summary_photo_transfers" msgid="7331503733435780492">"PTP"</string>
     <string name="usb_summary_MIDI" msgid="2372443732675899571">"MIDI"</string>
     <string name="usb_summary_UVC" msgid="8733131110899174299">"વેબકૅમ"</string>
@@ -4728,36 +4726,20 @@
     <string name="contrast_medium" msgid="384414510709285811">"મધ્યમ"</string>
     <string name="contrast_high" msgid="3988567609694797696">"વધુ"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"આ ઍપ માત્ર 1 વિન્ડોમાં ખોલી શકાય છે"</string>
-    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
-    <skip />
-    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
-    <skip />
-    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
-    <skip />
-    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
-    <skip />
-    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
-    <skip />
-    <!-- no translation found for show_captions_disabled (690650956523818755) -->
-    <skip />
-    <!-- no translation found for show_captions_enabled (7089043007924626) -->
-    <skip />
-    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
-    <skip />
-    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
-    <skip />
+    <string name="accessibility_feature_full_state_summary" msgid="8747170258807179670">"<xliff:g id="STATE_0">%1$s</xliff:g> / <xliff:g id="SHORTCUT_STATE">%2$s</xliff:g> / <xliff:g id="SERVICE_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="generic_accessibility_service_on" msgid="2465820044606775562">"સેવા ચાલુ છે"</string>
+    <string name="generic_accessibility_service_off" msgid="1752061696695346360">"સેવા બંધ છે"</string>
+    <string name="generic_accessibility_feature_shortcut_off" msgid="3669343136122187913">"શૉર્ટકટ બંધ છે"</string>
+    <string name="accessibility_shortcut_state_off" msgid="8158137799007601475">"બંધ"</string>
+    <string name="daltonizer_state_on" msgid="131013270022603983">"ચાલુ"</string>
+    <string name="daltonizer_state_off" msgid="1162285688069856179">"બંધ"</string>
+    <string name="color_inversion_state_on" msgid="1160969033636440368">"ચાલુ"</string>
+    <string name="color_inversion_state_off" msgid="6925638668080451724">"બંધ"</string>
+    <string name="color_inversion_feature_summary" msgid="1199876648549627647">"લાઇટ સ્ક્રીનને ઘેરી અને ઘેરી સ્ક્રીનને લાઇટ કરે છે"</string>
+    <string name="magnification_feature_summary" msgid="641825267460247848">"કન્ટેન્ટને મોટું કરવા માટે સ્ક્રીનને ઝડપથી મોટી કરો"</string>
+    <string name="autoclick_disabled" msgid="3213396804955002120">"બંધ"</string>
+    <string name="show_captions_disabled" msgid="690650956523818755">"બંધ"</string>
+    <string name="show_captions_enabled" msgid="7089043007924626">"ચાલુ"</string>
+    <string name="live_caption_disabled" msgid="3562035026547887366">"બંધ"</string>
+    <string name="live_caption_enabled" msgid="5269360946200718949">"ચાલુ"</string>
 </resources>

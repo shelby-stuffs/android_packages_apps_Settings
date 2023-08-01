@@ -65,7 +65,8 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"Спари го левото уво"</string>
     <string name="bluetooth_device_controls_general" msgid="1399214835599665488">"За сите достапни слушни апарати"</string>
     <string name="bluetooth_device_controls_title" msgid="1895676556354697234">"Поставки за слушни помагала"</string>
-    <string name="bluetooth_device_controls_summary" msgid="8115767735418425663">"Кратенка, компатибилност со слушни помагала"</string>
+    <!-- no translation found for bluetooth_device_controls_summary (8115767735418425663) -->
+    <skip />
     <string name="bluetooth_device_controls_specific" msgid="7706863288754077107">"За овој уред"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"Аудиоизлез"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"За аудио-излезот"</string>
@@ -180,7 +181,8 @@
     <string name="temperature_preferences_title" msgid="5009881556503629058">"Температура"</string>
     <string name="first_day_of_week_preferences_title" msgid="1971850087589599553">"Прв ден од седмицата"</string>
     <string name="numbers_preferences_title" msgid="8197418984391195446">"Поставки за бројки"</string>
-    <string name="default_string_of_regional_preference" msgid="7662581547334113719">"Користи ги стандардните поставки на апликацијата"</string>
+    <!-- no translation found for default_string_of_regional_preference (3428899072914884203) -->
+    <skip />
     <string name="celsius_temperature_unit" msgid="8896459071273084507">"Целзиус (°C)"</string>
     <string name="fahrenheit_temperature_unit" msgid="1118677820614569801">"Фаренхајт (°F)"</string>
     <string name="sunday_first_day_of_week" msgid="7644548348295686051">"Недела"</string>
@@ -326,6 +328,10 @@
     <string name="security_settings_face_settings_remove_dialog_title" msgid="2899669764446232715">"Да се избрише моделот на лик?"</string>
     <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"Вашиот модел на лик ќе биде трајно и безбедно избришан.\n\nПо бришењето, ќе ви треба PIN, шема или лозинка за да го отклучите телефонот или за автентикација во апликации."</string>
     <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"Вашиот модел на лик ќе биде трајно и безбедно избришан.\n\nПо бришењето, ќе ви треба PIN, шема или лозинка за да го отклучите телефонот."</string>
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint (7609582230650860974) -->
+    <skip />
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint_conv (2627374706274503259) -->
+    <skip />
     <string name="security_settings_face_settings_context_subtitle" msgid="8284262560781442403">"Користете „Отклучување со лик“ за отклучување на телефонот"</string>
     <string name="security_settings_fingerprint" msgid="6387775386189204201">"Отпечаток"</string>
     <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"Отпечаток"</string>
@@ -350,7 +356,7 @@
     <string name="security_settings_fingerprint_v2_enroll_introduction_message_setup" msgid="6255210343107484206">"Кога ќе ја видите иконава, употребете го отпечатокот за проверка, како кога се најавувате на апликации или одобрувате купување"</string>
     <string name="security_settings_fingerprint_v2_enroll_introduction_footer_title_1" msgid="4360262371633254407">"Имајте предвид"</string>
     <string name="security_settings_fingerprint_v2_enroll_introduction_footer_title_2" msgid="2580899232734177771">"Како функционира"</string>
-    <string name="security_settings_fingerprint_v2_enroll_introduction_footer_message_2" msgid="5909924864816776516">"„Отклучувањето со отпечаток“ создава единствен модел од вашиот отпечаток за да потврди дека сте вие. За да го создадете моделов на отпечаток при поставувањето, ќе снимите слики од отпечатокот од различни положби."</string>
+    <string name="security_settings_fingerprint_v2_enroll_introduction_footer_message_2" msgid="5909924864816776516">"„Отклучувањето со отпечаток“ создава единствен модел од вашиот отпечаток за да потврди дека сте вие. За да го создадете моделов на отпечаток при поставувањето, ќе направите слики од отпечатокот од различни положби."</string>
     <string name="security_settings_fingerprint_v2_enroll_introduction_footer_message_consent_2" msgid="3493356605815124807">"„Отклучувањето со отпечаток“ создава единствен модел од отпечатокот на вашето дете за да потврди дека е тоа. За да го создаде моделот на отпечаток за време на поставувањето, детето ќе направи неколку слики од отпечатокот од различни положби."</string>
     <string name="security_settings_fingerprint_v2_enroll_introduction_footer_message_6" msgid="5314031490467481499">"За најдобри резултати, користете заштитник на екранот што е сертифициран со „Создадено за Google“. Со другите заштитници на екрани, отпечатоците може да не функционираат."</string>
     <string name="security_settings_fingerprint_v2_enroll_introduction_footer_message_consent_6" msgid="3563942520716110478">"За најдобри резултати, користете заштитник на екранот што е сертифициран со „Создадено за Google“. Со другите заштитници на екрани, отпечатоците на вашето дете може да не функционираат."</string>
@@ -425,13 +431,13 @@
     <string name="security_settings_udfps_enroll_repeat_title_touch_icon" msgid="4096344864386190335">"Следете ја иконата за отпечаток"</string>
     <string name="security_settings_fingerprint_enroll_repeat_message" msgid="5382958363770893577">"Подигнувајте го прстот за да ги додадете различните делови од отпечатокот"</string>
     <string name="security_settings_udfps_enroll_repeat_message" msgid="2213106975297867798">"Допрете и задржете секој пат кога иконата за отпечаток ќе се премести. Ова помага за да се сними повеќе од отпечатокот."</string>
-    <string name="security_settings_udfps_enroll_fingertip_title" msgid="4123142574168831116">"Поставете го врвот од прстот на сензорот"</string>
+    <string name="security_settings_udfps_enroll_fingertip_title" msgid="4123142574168831116">"Поставете го врвот на прстот на сензорот"</string>
     <string name="security_settings_udfps_enroll_left_edge_title" msgid="1944076382202470458">"Поставете го левиот раб од прстот"</string>
     <string name="security_settings_udfps_enroll_right_edge_title" msgid="9036744264606447490">"Поставете го десниот раб од прстот"</string>
-    <string name="security_settings_sfps_enroll_finger_center_title" msgid="1320688855767675739">"Поставете го средниот дел од прстот на сензорот"</string>
-    <string name="security_settings_sfps_enroll_fingertip_title" msgid="2737520837684516446">"Поставете го врвот од прстот на сензорот"</string>
+    <string name="security_settings_sfps_enroll_finger_center_title" msgid="1320688855767675739">"Поставете го централниот дел на прстот на сензорот"</string>
+    <string name="security_settings_sfps_enroll_fingertip_title" msgid="2737520837684516446">"Поставете го врвот на прстот на сензорот"</string>
     <string name="security_settings_sfps_enroll_left_edge_title" msgid="9022963735924413343">"Поставете го левиот раб од прстот на сензорот"</string>
-    <string name="security_settings_sfps_enroll_right_edge_title" msgid="823106857743394392">"За крај, поставете го десниот раб од прстот на сензорот"</string>
+    <string name="security_settings_sfps_enroll_right_edge_title" msgid="823106857743394392">"На крајот, поставете го десниот раб на прстот на сензорот"</string>
     <string name="security_settings_udfps_enroll_edge_message" msgid="4455253923746607702">"Поставете го отпечатокот странично на сензорот и задржете, а потоа направете исто со другата страна"</string>
     <string name="security_settings_udfps_enroll_repeat_a11y_message" msgid="2785464357615568197">"Ова помага за да се сними повеќе од отпечатокот"</string>
     <string name="security_settings_sfps_enroll_progress_a11y_message" msgid="6450772721691523736">"Регистрирање на отпечатокот: <xliff:g id="PERCENTAGE">%d</xliff:g> %%"</string>
@@ -1119,7 +1125,6 @@
     <string name="security_patch" msgid="4071756145347865382">"Безбедносно ажурирање на Android"</string>
     <string name="model_info" msgid="8997566254717810904">"Модел"</string>
     <string name="hardware_revision" msgid="3454709180861965025">"Верзија на хардвер"</string>
-    <string name="manufactured_year" msgid="3401517138700926475">"Година на производство"</string>
     <string name="fcc_equipment_id" msgid="6596668314025646129">"ID на опрема"</string>
     <string name="baseband_version" msgid="2600182227599835857">"Верзија на немодулиран опсег"</string>
     <string name="kernel_version" msgid="3513538109381366881">"Верзија на кернел"</string>
@@ -1161,8 +1166,7 @@
     <string name="battery_manufacture_date" msgid="7139426520156833987">"Датум на производство"</string>
     <string name="battery_first_use_date" msgid="3157207331722711317">"Датум на прво користење"</string>
     <string name="battery_cycle_count" msgid="2912949283386571900">"Број на циклуси"</string>
-    <!-- no translation found for battery_cycle_count_not_available (2426584515665184664) -->
-    <skip />
+    <string name="battery_cycle_count_not_available" msgid="2426584515665184664">"Недостапно"</string>
     <string name="memory_calculating_size" msgid="3898240439798661242">"Пресметување..."</string>
     <string name="storage_menu_rename" msgid="8549835371429159336">"Преименувај"</string>
     <string name="storage_menu_mount" msgid="4760531872302820569">"Монтирај"</string>
@@ -1276,7 +1280,6 @@
     <string name="reset_bluetooth_wifi_desc" msgid="4030295669083059711">"Ова ќе ги ресетира сите поставки за Wi‑Fi и Bluetooth. Ова дејство не може да се врати."</string>
     <string name="reset_bluetooth_wifi_button_text" msgid="3974098137045963639">"Ресетирај"</string>
     <string name="reset_bluetooth_wifi_complete_toast" msgid="5893439291030574365">"Bluetooth и Wi‑Fi се ресетирани"</string>
-    <string name="erase_euicc_data_button" msgid="728078969563311737">"Избриши"</string>
     <string name="reset_esim_title" msgid="4194570573425902754">"Избриши ги eSIM-картичките"</string>
     <string name="reset_esim_desc" msgid="3662444090563399131">"Ова нема да ги откаже пакетите за мобилни услуги. За да преземете SIM-картички за замена, контактирајте со операторот."</string>
     <string name="reset_network_button_text" msgid="2281476496459610071">"Ресетирај поставки"</string>
@@ -1869,8 +1872,7 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"За да користите функција за пристапност, повлечете нагоре од дното на екранот со два прста.\n\nЗа да се префрлите на друга функција, повлечете нагоре со два прста и задржете."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"За да користите функција за пристапност, повлечете нагоре од дното на екранот со три прста.\n\nЗа префрлање помеѓу функциите, повлечете нагоре со три прста и задржете."</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"Сфатив"</string>
-    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
-    <skip />
+    <string name="accessibility_tutorial_dialog_link_button" msgid="6797349445794031781">"Поставки за копчиња"</string>
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"Кратенка за: <xliff:g id="SERVICE">%1$s</xliff:g>"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"Копче за пристапност"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"Движење за пристапност"</string>
@@ -2333,8 +2335,7 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"Прикажи по апликации"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"Прикажи по системи"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
-    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
-    <skip />
+    <string name="battery_cycle_count_footer" msgid="3642121059800373545">"Поради контроли на квалитетот пред испораката, бројот на циклуси при првото користење може да не биде нула"</string>
     <string name="process_stats_summary_title" msgid="502683176231281732">"Статистика на процес"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"Паметна статистика за процеси кои се извршуваат"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"Употреба на меморија"</string>
@@ -4165,7 +4166,8 @@
     <string name="change_wifi_state_app_detail_summary" msgid="8230854855584217111">"Дозволете апликацијава да вклучува или исклучува Wi-Fi, да скенира и да се поврзува на Wi-Fi мрежи, да додава или отстранува мрежи или да стартува локална точка на пристап"</string>
     <string name="change_nfc_tag_apps_title" msgid="91514009058149617">"Стартување преку NFC"</string>
     <string name="change_nfc_tag_apps_detail_switch" msgid="240286205725043561">"Дозволи стартување при скенирање NFC-ознака"</string>
-    <string name="change_nfc_tag_apps_detail_summary" msgid="3338220223868942195">"Дозволете ѝ на апликацијава да се стартува кога ќе се скенира NFC-ознака.\nАко оваа дозвола е вклучена, апликацијата ќе биде достапна како опција секогаш кога ќе се открие ознака."</string>
+    <!-- no translation found for change_nfc_tag_apps_detail_summary (3338220223868942195) -->
+    <skip />
     <string name="media_output_title" msgid="8283629315159510680">"Пуштај содржини на"</string>
     <string name="media_output_label_title" msgid="4139048973886819148">"Пуштај <xliff:g id="LABEL">%s</xliff:g> на"</string>
     <string name="media_output_default_summary" msgid="4200343059396412376">"Овој уред"</string>
@@ -4728,36 +4730,20 @@
     <string name="contrast_medium" msgid="384414510709285811">"Среден"</string>
     <string name="contrast_high" msgid="3988567609694797696">"Висок"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"Апликацијава може да се отвори само во еден прозорец"</string>
-    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
-    <skip />
-    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
-    <skip />
-    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
-    <skip />
-    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
-    <skip />
-    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
-    <skip />
-    <!-- no translation found for show_captions_disabled (690650956523818755) -->
-    <skip />
-    <!-- no translation found for show_captions_enabled (7089043007924626) -->
-    <skip />
-    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
-    <skip />
-    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
-    <skip />
+    <string name="accessibility_feature_full_state_summary" msgid="8747170258807179670">"<xliff:g id="STATE_0">%1$s</xliff:g> / <xliff:g id="SHORTCUT_STATE">%2$s</xliff:g> / <xliff:g id="SERVICE_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="generic_accessibility_service_on" msgid="2465820044606775562">"Услугата е вклучена"</string>
+    <string name="generic_accessibility_service_off" msgid="1752061696695346360">"Услугата е исклучена"</string>
+    <string name="generic_accessibility_feature_shortcut_off" msgid="3669343136122187913">"Кратенката е исклучена"</string>
+    <string name="accessibility_shortcut_state_off" msgid="8158137799007601475">"Исклучено"</string>
+    <string name="daltonizer_state_on" msgid="131013270022603983">"Вклучено"</string>
+    <string name="daltonizer_state_off" msgid="1162285688069856179">"Исклучено"</string>
+    <string name="color_inversion_state_on" msgid="1160969033636440368">"Вклучено"</string>
+    <string name="color_inversion_state_off" msgid="6925638668080451724">"Исклучено"</string>
+    <string name="color_inversion_feature_summary" msgid="1199876648549627647">"Ги претвора светлите прикази во темни, а темните во светли"</string>
+    <string name="magnification_feature_summary" msgid="641825267460247848">"Брзо зумирајте на екранот за да ги направите содржините поголеми"</string>
+    <string name="autoclick_disabled" msgid="3213396804955002120">"Исклучено"</string>
+    <string name="show_captions_disabled" msgid="690650956523818755">"Исклучено"</string>
+    <string name="show_captions_enabled" msgid="7089043007924626">"Вклучено"</string>
+    <string name="live_caption_disabled" msgid="3562035026547887366">"Исклучено"</string>
+    <string name="live_caption_enabled" msgid="5269360946200718949">"Вклучено"</string>
 </resources>

@@ -65,7 +65,8 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"بائیں کان کا جوڑا بنائیں"</string>
     <string name="bluetooth_device_controls_general" msgid="1399214835599665488">"تمام دستیاب سماعتی آلات کے لئے"</string>
     <string name="bluetooth_device_controls_title" msgid="1895676556354697234">"سماعت کے آلے کی ترتیبات"</string>
-    <string name="bluetooth_device_controls_summary" msgid="8115767735418425663">"شارٹ کٹ، سماعتی آلہ کی موافقت"</string>
+    <!-- no translation found for bluetooth_device_controls_summary (8115767735418425663) -->
+    <skip />
     <string name="bluetooth_device_controls_specific" msgid="7706863288754077107">"اس آلے کیلئے"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"آڈیو کا آؤٹ پُٹ"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"آڈیو آؤٹ پٹ کے بارے میں"</string>
@@ -180,7 +181,8 @@
     <string name="temperature_preferences_title" msgid="5009881556503629058">"درجہ حرارت"</string>
     <string name="first_day_of_week_preferences_title" msgid="1971850087589599553">"ہفتے کا پہلا دن"</string>
     <string name="numbers_preferences_title" msgid="8197418984391195446">"نمبرز کی ترجیحات"</string>
-    <string name="default_string_of_regional_preference" msgid="7662581547334113719">"ایپ کا ڈیفالٹ استعمال کریں"</string>
+    <!-- no translation found for default_string_of_regional_preference (3428899072914884203) -->
+    <skip />
     <string name="celsius_temperature_unit" msgid="8896459071273084507">"‏سیلسیئس(‎°C)"</string>
     <string name="fahrenheit_temperature_unit" msgid="1118677820614569801">"‏فارن ہائیٹ(‎°F)"</string>
     <string name="sunday_first_day_of_week" msgid="7644548348295686051">"اتوار"</string>
@@ -326,6 +328,10 @@
     <string name="security_settings_face_settings_remove_dialog_title" msgid="2899669764446232715">"چہرے کا ماڈل حذف کریں؟"</string>
     <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"‏آپ کے چہرے کے ماڈل کو مستقل اور محفوظ طریقے سے حذف کر دیا جائے گا۔\n\nحذف کیے جانے کے بعد، آپ کو اپنے فون کو غیر مقفل کرنے یا ایپس میں تصدیق کے لیے اپنا PIN، پیٹرن یا پاس ورڈ درکار ہوگا۔"</string>
     <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"‏آپ کے چہرے کے ماڈل کو مستقل اور محفوظ طریقے سے حذف کر دیا جائے گا۔\n\nحذف کرنے کے بعد، آپ کو اپنے فون کو غیر مقفل کرنے کے لیے آپ کو اپنا PIN، پیٹرن یا پاس ورڈ درکار ہوگا۔"</string>
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint (7609582230650860974) -->
+    <skip />
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint_conv (2627374706274503259) -->
+    <skip />
     <string name="security_settings_face_settings_context_subtitle" msgid="8284262560781442403">"اپنے فون کو غیر مقفل کرنے کے لیے فیس اَنلاک کا استعمال کریں"</string>
     <string name="security_settings_fingerprint" msgid="6387775386189204201">"فنگر پرنٹ"</string>
     <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"فنگر پرنٹ"</string>
@@ -346,7 +352,7 @@
     <string name="security_settings_fingerprint_enroll_introduction_no_thanks" msgid="6104718999323591180">"نہیں شکریہ"</string>
     <string name="security_settings_fingerprint_enroll_introduction_agree" msgid="4068276083536421828">"میں متفق ہوں"</string>
     <string name="setup_fingerprint_enroll_skip_title" msgid="2473807887676247264">"فنگر پرنٹ کو نظر انداز کریں؟"</string>
-    <string name="setup_fingerprint_enroll_skip_after_adding_lock_text" msgid="2412645723804450304">"فنگر پرنٹ سیٹ اپ میں صرف ایک یا دو منٹ لگتے ہیں۔ اگر آپ اسے نظر انداز کرتے ہیں، تو آپ بعد میں ترتیبات میں اپنا فنگر پرنٹ شامل کرسکتے ہیں۔"</string>
+    <string name="setup_fingerprint_enroll_skip_after_adding_lock_text" msgid="2412645723804450304">"فنگر پرنٹ سیٹ اپ میں صرف ایک یا دو منٹ لگتے ہیں۔ اگر آپ اسے نظر انداز کرتے ہیں، تو آپ بعد میں ترتیبات میں اپنی فنگر پرنٹ شامل کرسکتے ہیں۔"</string>
     <string name="security_settings_fingerprint_v2_enroll_introduction_message_setup" msgid="6255210343107484206">"یہ آئیکن دیکھنے پر ایپس میں سائن ان کرنے یا خریداری کو منظوری دینے کی خاطر تصدیق کیلئے فنگر پرنٹ کا استعمال کریں"</string>
     <string name="security_settings_fingerprint_v2_enroll_introduction_footer_title_1" msgid="4360262371633254407">"یاد رکھیں"</string>
     <string name="security_settings_fingerprint_v2_enroll_introduction_footer_title_2" msgid="2580899232734177771">"اس کے کام کرنے کا طریقہ"</string>
@@ -1119,7 +1125,6 @@
     <string name="security_patch" msgid="4071756145347865382">"‏Android سیکیورٹی اپ ڈیٹ"</string>
     <string name="model_info" msgid="8997566254717810904">"ماڈل"</string>
     <string name="hardware_revision" msgid="3454709180861965025">"ہارڈ ویئر کا ورژن"</string>
-    <string name="manufactured_year" msgid="3401517138700926475">"مینوفیکچرر کئے جانے کا سال"</string>
     <string name="fcc_equipment_id" msgid="6596668314025646129">"‏آلہ ID"</string>
     <string name="baseband_version" msgid="2600182227599835857">"بیس بینڈ ورژن"</string>
     <string name="kernel_version" msgid="3513538109381366881">"کرنل ورژن"</string>
@@ -1161,8 +1166,7 @@
     <string name="battery_manufacture_date" msgid="7139426520156833987">"مینوفیکچر کی تاریخ"</string>
     <string name="battery_first_use_date" msgid="3157207331722711317">"پہلے استعمال کی تاریخ"</string>
     <string name="battery_cycle_count" msgid="2912949283386571900">"چارج سائیکل کی تعداد"</string>
-    <!-- no translation found for battery_cycle_count_not_available (2426584515665184664) -->
-    <skip />
+    <string name="battery_cycle_count_not_available" msgid="2426584515665184664">"دستیاب نہیں ہیں"</string>
     <string name="memory_calculating_size" msgid="3898240439798661242">"حساب لگایا جا رہا ہے…"</string>
     <string name="storage_menu_rename" msgid="8549835371429159336">"نام تبدیل کریں"</string>
     <string name="storage_menu_mount" msgid="4760531872302820569">"ماؤنٹ کریں"</string>
@@ -1276,7 +1280,6 @@
     <string name="reset_bluetooth_wifi_desc" msgid="4030295669083059711">"‏اس سے Wi-Fi اور بلوٹوتھ کی تمام ترتیبات ری سیٹ ہو جائیں گی۔ آپ اس کاروائی کو کالعدم نہیں کر سکتے ہیں۔"</string>
     <string name="reset_bluetooth_wifi_button_text" msgid="3974098137045963639">"ری سیٹ کریں"</string>
     <string name="reset_bluetooth_wifi_complete_toast" msgid="5893439291030574365">"‏بلوٹوتھ اور Wi‑Fi کو ری سیٹ کر دیا گیا ہے"</string>
-    <string name="erase_euicc_data_button" msgid="728078969563311737">"مٹائیں"</string>
     <string name="reset_esim_title" msgid="4194570573425902754">"‏eSIMs مٹائیں"</string>
     <string name="reset_esim_desc" msgid="3662444090563399131">"‏اس سے موبائل سروس کا کوئی بھی پلان منسوخ نہیں ہوگا۔ متبادل SIMs کو ڈاؤن لوڈ کرنے کے لیے، اپنے کیریئر سے رابطہ کریں۔"</string>
     <string name="reset_network_button_text" msgid="2281476496459610071">"ترتیبات ری سیٹ کریں"</string>
@@ -1869,8 +1872,7 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"ایکسیسبیلٹی خصوصیت استعمال کرنے کیلئے، 2 انگلیوں سے اسکرین کے نیچے سے اوپر کی طرف سوائپ کریں۔\n\nخصوصیات کے درمیان سوئچ کرنے کے لیے، 2 انگلیوں سے اوپر کی طرف سوائپ کریں اور دبائے رکھیں۔"</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"ایکسیسبیلٹی خصوصیت استعمال کرنے کیلئے، 3 انگلیوں سے اسکرین کے نیچے سے اوپر کی طرف سوائپ کریں۔\n\nخصوصیات کے درمیان سوئچ کرنے کے لیے، 3 انگلیوں سے اوپر کی طرف سوائپ کریں اور دبائے رکھیں۔"</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"سمجھ آ گئی"</string>
-    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
-    <skip />
+    <string name="accessibility_tutorial_dialog_link_button" msgid="6797349445794031781">"بٹن کی ترتیبات"</string>
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"<xliff:g id="SERVICE">%1$s</xliff:g> شارٹ کٹ"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"ایکسیسبیلٹی بٹن"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"ایکسیسبیلٹی کا اشارہ"</string>
@@ -2333,8 +2335,7 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"ایپس کے لحاظ سے دیکھیں"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"سسٹمز کے لحاظ سے دیکھیں"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
-    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
-    <skip />
+    <string name="battery_cycle_count_footer" msgid="3642121059800373545">"شپنگ سے پہلے معیار کے معائنوں کی وجہ سے، سائیکل کی تعداد پہلے استعمال پر صفر نہیں ہوسکتی ہے"</string>
     <string name="process_stats_summary_title" msgid="502683176231281732">"پروسیس اعداد و شمار"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"جاری پروسیسز کے بارے میں مفید اعداد و شمار"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"میموری کا استعمال"</string>
@@ -4165,7 +4166,8 @@
     <string name="change_wifi_state_app_detail_summary" msgid="8230854855584217111">"‏اس ایپ کو Wi-Fi آن یا آف کرنے، Wi-Fi نیٹ ورکس اسکین کرنے اور ان سے منسلک کرنے، نیٹ ورکس شامل کرنے یا ہٹانے یا صرف مقامی ہاٹ اسپاٹ شروع کرنے کی اجازت دیں"</string>
     <string name="change_nfc_tag_apps_title" msgid="91514009058149617">"‏NFC کے ذریعے شروع کریں"</string>
     <string name="change_nfc_tag_apps_detail_switch" msgid="240286205725043561">"‏NFC اسکین پر شروع ہونے کی اجازت دیں"</string>
-    <string name="change_nfc_tag_apps_detail_summary" msgid="3338220223868942195">"‏NFC ٹیگ اسکین ہونے پر اس ایپ کو شروع ہونے کی اجازت دیں۔\nاگر یہ اجازت آن ہوتی ہے تو ٹیگ کا پتا چلنے پر ایپ ایک اختیار کے طور پر دستیاب ہوگی۔"</string>
+    <!-- no translation found for change_nfc_tag_apps_detail_summary (3338220223868942195) -->
+    <skip />
     <string name="media_output_title" msgid="8283629315159510680">"اس پر میڈیا چلائیں"</string>
     <string name="media_output_label_title" msgid="4139048973886819148">"‫<xliff:g id="LABEL">%s</xliff:g> اس پر چلائیں"</string>
     <string name="media_output_default_summary" msgid="4200343059396412376">"یہ آلہ"</string>
@@ -4728,36 +4730,20 @@
     <string name="contrast_medium" msgid="384414510709285811">"متوسط"</string>
     <string name="contrast_high" msgid="3988567609694797696">"زیادہ"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"یہ ایپ صرف 1 ونڈو میں کھولی جا سکتی ہے"</string>
-    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
-    <skip />
-    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
-    <skip />
-    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
-    <skip />
-    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
-    <skip />
-    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
-    <skip />
-    <!-- no translation found for show_captions_disabled (690650956523818755) -->
-    <skip />
-    <!-- no translation found for show_captions_enabled (7089043007924626) -->
-    <skip />
-    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
-    <skip />
-    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
-    <skip />
+    <string name="accessibility_feature_full_state_summary" msgid="8747170258807179670">"<xliff:g id="STATE_0">%1$s</xliff:g> / <xliff:g id="SHORTCUT_STATE">%2$s</xliff:g> / <xliff:g id="SERVICE_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="generic_accessibility_service_on" msgid="2465820044606775562">"سروس آن ہے"</string>
+    <string name="generic_accessibility_service_off" msgid="1752061696695346360">"سروس آف ہے"</string>
+    <string name="generic_accessibility_feature_shortcut_off" msgid="3669343136122187913">"شارٹ کٹ آف ہے"</string>
+    <string name="accessibility_shortcut_state_off" msgid="8158137799007601475">"آف ہے"</string>
+    <string name="daltonizer_state_on" msgid="131013270022603983">"آن ہے"</string>
+    <string name="daltonizer_state_off" msgid="1162285688069856179">"آف ہے"</string>
+    <string name="color_inversion_state_on" msgid="1160969033636440368">"آن ہے"</string>
+    <string name="color_inversion_state_off" msgid="6925638668080451724">"آف ہے"</string>
+    <string name="color_inversion_feature_summary" msgid="1199876648549627647">"روشنی کی اسکرینز کو سیاہ اور گہری اسکرینز کو روشنی میں بدل دیتا ہے"</string>
+    <string name="magnification_feature_summary" msgid="641825267460247848">"مواد کو بڑا کرنے کے لیے اسکرین پر فوری طور پر زوم ان کریں"</string>
+    <string name="autoclick_disabled" msgid="3213396804955002120">"آف ہے"</string>
+    <string name="show_captions_disabled" msgid="690650956523818755">"آف ہے"</string>
+    <string name="show_captions_enabled" msgid="7089043007924626">"آن ہے"</string>
+    <string name="live_caption_disabled" msgid="3562035026547887366">"آف ہے"</string>
+    <string name="live_caption_enabled" msgid="5269360946200718949">"آن ہے"</string>
 </resources>

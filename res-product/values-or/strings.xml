@@ -63,7 +63,7 @@
     <string name="security_settings_face_enroll_introduction_consent_message_0_class3" product="device" msgid="8943878265098867810">"ଆପଣଙ୍କ ପିଲାକୁ ତା\'ର ଡିଭାଇସକୁ ଅନଲକ କରିବା କିମ୍ବା ଏହା ସେ ଅଟେ ବୋଲି ଯାଞ୍ଚ କରିବା ପାଇଁ ତା\'ର ଫେସ ବ୍ୟବହାର କରିବାକୁ ଅନୁମତି ଦିଅନ୍ତୁ। ସେ ଆପ୍ସରେ ସାଇନ ଇନ କରିବା, ଏକ କ୍ରୟକୁ ଅନୁମୋଦନ ଦେବା ଏବଂ ଆହୁରି ଅନେକ କିଛି କରିବା ସମୟରେ ଏହା ଆବଶ୍ୟକ ହୋଇଥାଏ।"</string>
     <string name="security_settings_face_enroll_introduction_consent_message" product="default" msgid="3698558920963989416">"ଏକ ଦୃଢ଼ ପାଟର୍ନ କିମ୍ବା PIN ଅପେକ୍ଷା ଆପଣଙ୍କ ପିଲାର ଫେସ ବ୍ୟବହାର କରି ତା\'ର ଫୋନକୁ ଅନଲକ କରିବା କମ୍ ସୁରକ୍ଷିତ ହୋଇପାରେ।"</string>
     <string name="security_settings_face_enroll_introduction_consent_message" product="tablet" msgid="2689983368730833505">"ଏକ ଦୃଢ଼ ପାଟର୍ନ କିମ୍ବା PIN ଅପେକ୍ଷା ଆପଣଙ୍କ ପିଲାର ଫେସ ବ୍ୟବହାର କରି ତା\'ର ଟାବଲେଟକୁ ଅନଲକ କରିବା କମ୍ ସୁରକ୍ଷିତ ହୋଇପାରେ।"</string>
-    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="5768077532130409820">"ଏକ ଜଟିଳ ପାଟର୍ନ କିମ୍ବା PIN ଅପେକ୍ଷା ଆପଣଙ୍କ ପିଲାର ଫେସ ବ୍ୟବହାର କରି ତା\'ର ଡିଭାଇସକୁ ଅନଲକ କରିବା କମ ସୁରକ୍ଷିତ ହୋଇପାରେ।"</string>
+    <string name="security_settings_face_enroll_introduction_consent_message" product="device" msgid="5768077532130409820">"ଏକ ଦୃଢ଼ ପାଟର୍ନ କିମ୍ବା PIN ଅପେକ୍ଷା ଆପଣଙ୍କ ପିଲାର ଫେସ ବ୍ୟବହାର କରି ତା\'ର ଡିଭାଇସକୁ ଅନଲକ କରିବା କମ୍ ସୁରକ୍ଷିତ ହୋଇପାରେ।"</string>
     <string name="security_settings_face_enroll_introduction_info_looking" product="default" msgid="6532489273492650716"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" product="tablet" msgid="6532489273492650716"></string>
     <string name="security_settings_face_enroll_introduction_info_looking" product="device" msgid="6532489273492650716"></string>
@@ -354,8 +354,6 @@
     <string name="lockscreen_trivial_controls_summary" product="tablet" msgid="9052068482124729345">"ଆପଣଙ୍କ ଟାବଲେଟକୁ ଅନଲକ ନକରି"</string>
     <string name="auto_rotate_summary_a11y" product="default" msgid="2813368383309985185">"ଆପଣ ଆପଣଙ୍କ ଫୋନକୁ ପୋର୍ଟ୍ରେଟ ଓ ଲାଣ୍ଡସ୍କେପ ମଧ୍ୟରେ ମୁଭ କଲେ"</string>
     <string name="auto_rotate_summary_a11y" product="tabled" msgid="4708833814245913981">"ଆପଣ ଆପଣଙ୍କ ଟାବଲେଟକୁ ପୋର୍ଟ୍ରେଟ ଓ ଲାଣ୍ଡସ୍କେପ ମଧ୍ୟରେ ମୁଭ କଲେ"</string>
-    <!-- no translation found for daltonizer_feature_summary (3940653889277283702) -->
-    <skip />
-    <!-- no translation found for daltonizer_feature_summary (4006596881671077623) -->
-    <skip />
+    <string name="daltonizer_feature_summary" product="default" msgid="3940653889277283702">"ଆପଣଙ୍କ ଫୋନରେ ରଙ୍ଗଗୁଡ଼ିକ କିପରି ଡିସପ୍ଲେ ହୁଏ ତାହା ଆଡଜଷ୍ଟ କରନ୍ତୁ"</string>
+    <string name="daltonizer_feature_summary" product="tablet" msgid="4006596881671077623">"ଆପଣଙ୍କ ଟାବଲେଟରେ ରଙ୍ଗଗୁଡ଼ିକ କିପରି ଡିସପ୍ଲେ ହୁଏ ତାହା ଆଡଜଷ୍ଟ କରନ୍ତୁ"</string>
 </resources>

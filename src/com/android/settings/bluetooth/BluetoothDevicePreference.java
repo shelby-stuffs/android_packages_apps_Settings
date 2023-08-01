@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The Android Open Source Project
+ * Copyright (C) 2023 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,6 +36,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.Preference;
@@ -53,6 +55,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * BluetoothDevicePreference is the preference type used to display each remote
@@ -80,7 +83,9 @@ public final class BluetoothDevicePreference extends GearPreference {
     @VisibleForTesting
     BluetoothAdapter mBluetoothAdapter;
     private final boolean mShowDevicesWithoutNames;
-    private final long mCurrentTime;
+    @NonNull
+    private static final AtomicInteger sNextId = new AtomicInteger();
+    private final int mId;
     private final int mType;
 
     private AlertDialog mDisconnectDialog;
@@ -130,10 +135,11 @@ public final class BluetoothDevicePreference extends GearPreference {
 
         mCachedDevice = cachedDevice;
         mCallback = new BluetoothDevicePreferenceCallback();
-        mCurrentTime = System.currentTimeMillis();
+        mId = sNextId.getAndIncrement();
         mType = type;
         onPreferenceAttributesChanged();
         mHideSummary = false;
+        setVisible(false);
     }
 
     public BluetoothDevicePreference(Context context, CachedBluetoothDevice cachedDevice,
@@ -151,7 +157,7 @@ public final class BluetoothDevicePreference extends GearPreference {
         mCachedDevice = cachedDevice;
         mCallback = new BluetoothDevicePreferenceCallback();
         mCachedDevice.registerCallback(mCallback);
-        mCurrentTime = System.currentTimeMillis();
+        mId = sNextId.getAndIncrement();
         mType = type;
         mHideSummary = hideSummary;
         onPreferenceAttributesChanged();
@@ -253,7 +259,7 @@ public final class BluetoothDevicePreference extends GearPreference {
 
     @SuppressWarnings("FutureReturnValueIgnored")
     void onPreferenceAttributesChanged() {
-        Pair<Drawable, String> pair = mCachedDevice.getDrawableWithDescription();
+Pair<Drawable, String> pair = mCachedDevice.getDrawableWithDescription();
         setIcon(pair.first);
         contentDescription = pair.second;
 
@@ -352,7 +358,7 @@ public final class BluetoothDevicePreference extends GearPreference {
                 return mCachedDevice
                         .compareTo(((BluetoothDevicePreference) another).mCachedDevice);
             case SortType.TYPE_FIFO:
-                return mCurrentTime > ((BluetoothDevicePreference) another).mCurrentTime ? 1 : -1;
+                return mId > ((BluetoothDevicePreference) another).mId ? 1 : -1;
             default:
                 return super.compareTo(another);
         }

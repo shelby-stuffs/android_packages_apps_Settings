@@ -157,9 +157,9 @@ public class FeatureFactoryImpl extends FeatureFactory {
     }
 
     @Override
-    public BatterySettingsFeatureProvider getBatterySettingsFeatureProvider(Context context) {
+    public BatterySettingsFeatureProvider getBatterySettingsFeatureProvider() {
         if (mBatterySettingsFeatureProvider == null) {
-            mBatterySettingsFeatureProvider = new BatterySettingsFeatureProviderImpl(context);
+            mBatterySettingsFeatureProvider = new BatterySettingsFeatureProviderImpl();
         }
         return mBatterySettingsFeatureProvider;
     }

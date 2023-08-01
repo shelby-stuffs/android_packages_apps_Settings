@@ -65,7 +65,8 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"התאמה באוזן שמאל"</string>
     <string name="bluetooth_device_controls_general" msgid="1399214835599665488">"לכל מכשירי השמיעה הזמינים"</string>
     <string name="bluetooth_device_controls_title" msgid="1895676556354697234">"הגדרות של מכשיר שמיעה"</string>
-    <string name="bluetooth_device_controls_summary" msgid="8115767735418425663">"קיצור דרך, תאימות למכשירי שמיעה"</string>
+    <!-- no translation found for bluetooth_device_controls_summary (8115767735418425663) -->
+    <skip />
     <string name="bluetooth_device_controls_specific" msgid="7706863288754077107">"למכשיר הזה"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"פלט אודיו"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"מידע על פלט האודיו"</string>
@@ -180,7 +181,7 @@
     <string name="temperature_preferences_title" msgid="5009881556503629058">"טמפרטורה"</string>
     <string name="first_day_of_week_preferences_title" msgid="1971850087589599553">"היום הראשון של השבוע"</string>
     <string name="numbers_preferences_title" msgid="8197418984391195446">"העדפות שקשורות למספרים"</string>
-    <string name="default_string_of_regional_preference" msgid="7662581547334113719">"שימוש בברירת המחדל של האפליקציה"</string>
+    <string name="default_string_of_regional_preference" msgid="3428899072914884203">"שימוש בברירת המחדל"</string>
     <string name="celsius_temperature_unit" msgid="8896459071273084507">"‏צלזיוס (‎°C)"</string>
     <string name="fahrenheit_temperature_unit" msgid="1118677820614569801">"‏פרנהייט (‎°F)"</string>
     <string name="sunday_first_day_of_week" msgid="7644548348295686051">"ראשון"</string>
@@ -326,10 +327,12 @@
     <string name="security_settings_face_settings_remove_dialog_title" msgid="2899669764446232715">"למחוק את התבנית לזיהוי הפנים?"</string>
     <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"התבנית לזיהוי הפנים תימחק באופן סופי ומאובטח.\n\nלאחר המחיקה, יהיה צורך בקוד האימות, בקו ביטול הנעילה או בסיסמה שלך כדי לבטל את נעילת הטלפון או כדי לבצע אימות באפליקציות."</string>
     <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"התבנית לזיהוי הפנים שלך תימחק באופן סופי ומאובטח.\n\nלאחר המחיקה, יהיה צורך בקוד האימות, בקו ביטול הנעילה או בסיסמה שלך כדי לבטל את נעילת הטלפון."</string>
+    <string name="security_settings_face_remove_dialog_details_fingerprint" msgid="7609582230650860974">"התבנית לזיהוי הפנים תימחק באופן סופי ומאובטח.\n\nלאחר המחיקה, יהיה צורך בטביעת האצבע, בקוד האימות, בקו ביטול הנעילה או בסיסמה שלך כדי לבטל את נעילת הטלפון או כדי לבצע אימות באפליקציות."</string>
+    <string name="security_settings_face_remove_dialog_details_fingerprint_conv" msgid="2627374706274503259">"התבנית לזיהוי הפנים תימחק באופן סופי ומאובטח.\n\nלאחר המחיקה, יהיה צורך בטביעת האצבע, בקוד האימות, בקו ביטול הנעילה או בסיסמה שלך כדי לבטל את נעילת הטלפון."</string>
     <string name="security_settings_face_settings_context_subtitle" msgid="8284262560781442403">"שימוש בפתיחה ע\"י זיהוי הפנים לצורך ביטול הנעילה של הטלפון"</string>
     <string name="security_settings_fingerprint" msgid="6387775386189204201">"טביעת אצבע"</string>
     <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"טביעת אצבע"</string>
-    <string name="security_settings_fingerprint_settings_preferences_category" msgid="8975029409126780752">"כשמשתמשים בתכונה \'ביטול הנעילה בטביעת אצבע\'"</string>
+    <string name="security_settings_fingerprint_settings_preferences_category" msgid="8975029409126780752">"בעת שימוש בתכונה \'ביטול הנעילה בטביעת אצבע\'"</string>
     <string name="security_settings_work_fingerprint_preference_title" msgid="2076006873519745979">"טביעת אצבע לעבודה"</string>
     <string name="fingerprint_add_title" msgid="1837610443487902050">"הוספת טביעת אצבע"</string>
     <string name="security_settings_fingerprint_preference_summary" msgid="8486134175759676037">"{count,plural, =1{נוספה טביעת אצבע}one{נוספו # טביעות אצבע}two{נוספו # טביעות אצבע}other{נוספו # טביעות אצבע}}"</string>
@@ -428,10 +431,10 @@
     <string name="security_settings_udfps_enroll_fingertip_title" msgid="4123142574168831116">"צריך להניח את קצה האצבע על החיישן"</string>
     <string name="security_settings_udfps_enroll_left_edge_title" msgid="1944076382202470458">"יש להניח את הקצה השמאלי של האצבע"</string>
     <string name="security_settings_udfps_enroll_right_edge_title" msgid="9036744264606447490">"יש להניח את הקצה הימני של האצבע"</string>
-    <string name="security_settings_sfps_enroll_finger_center_title" msgid="1320688855767675739">"צריך להניח את מרכז האצבע על החיישן"</string>
+    <string name="security_settings_sfps_enroll_finger_center_title" msgid="1320688855767675739">"מניחים את מרכז האצבע על החיישן"</string>
     <string name="security_settings_sfps_enroll_fingertip_title" msgid="2737520837684516446">"צריך להניח את קצה האצבע על החיישן"</string>
-    <string name="security_settings_sfps_enroll_left_edge_title" msgid="9022963735924413343">"צריך להניח את הקצה השמאלי של האצבע על החיישן"</string>
-    <string name="security_settings_sfps_enroll_right_edge_title" msgid="823106857743394392">"לבסוף, צריך להניח את הקצה הימני של האצבע על החיישן"</string>
+    <string name="security_settings_sfps_enroll_left_edge_title" msgid="9022963735924413343">"מניחים את הקצה השמאלי של האצבע על החיישן"</string>
+    <string name="security_settings_sfps_enroll_right_edge_title" msgid="823106857743394392">"לבסוף, מניחים את הקצה הימני של האצבע על החיישן"</string>
     <string name="security_settings_udfps_enroll_edge_message" msgid="4455253923746607702">"מניחים צד אחד של האצבע על החיישן ומחזיקים. אחר כך עוברים לצד השני"</string>
     <string name="security_settings_udfps_enroll_repeat_a11y_message" msgid="2785464357615568197">"כך יתועד חלק גדול יותר מהאצבע"</string>
     <string name="security_settings_sfps_enroll_progress_a11y_message" msgid="6450772721691523736">"הושלמו %%‏<xliff:g id="PERCENTAGE">%d</xliff:g> מתהליך הרישום של טביעת האצבע"</string>
@@ -1119,7 +1122,6 @@
     <string name="security_patch" msgid="4071756145347865382">"‏עדכון אבטחה ל-‏Android"</string>
     <string name="model_info" msgid="8997566254717810904">"דגם"</string>
     <string name="hardware_revision" msgid="3454709180861965025">"גרסת חומרה"</string>
-    <string name="manufactured_year" msgid="3401517138700926475">"שנת ייצור"</string>
     <string name="fcc_equipment_id" msgid="6596668314025646129">"זיהוי ציוד"</string>
     <string name="baseband_version" msgid="2600182227599835857">"גרסת פס בסיס"</string>
     <string name="kernel_version" msgid="3513538109381366881">"גרסת ליבה"</string>
@@ -1161,8 +1163,7 @@
     <string name="battery_manufacture_date" msgid="7139426520156833987">"תאריך הייצור"</string>
     <string name="battery_first_use_date" msgid="3157207331722711317">"תאריך השימוש הראשון"</string>
     <string name="battery_cycle_count" msgid="2912949283386571900">"מספר מחזורי הטעינה"</string>
-    <!-- no translation found for battery_cycle_count_not_available (2426584515665184664) -->
-    <skip />
+    <string name="battery_cycle_count_not_available" msgid="2426584515665184664">"לא זמין"</string>
     <string name="memory_calculating_size" msgid="3898240439798661242">"החישוב מתבצע…"</string>
     <string name="storage_menu_rename" msgid="8549835371429159336">"שינוי שם"</string>
     <string name="storage_menu_mount" msgid="4760531872302820569">"טעינה"</string>
@@ -1276,7 +1277,6 @@
     <string name="reset_bluetooth_wifi_desc" msgid="4030295669083059711">"‏הפעולה הזו תאפס את כל ההגדרות של חיבורי Wi‑Fi ו-Bluetooth. לא ניתן לבטל את הפעולה הזו."</string>
     <string name="reset_bluetooth_wifi_button_text" msgid="3974098137045963639">"איפוס"</string>
     <string name="reset_bluetooth_wifi_complete_toast" msgid="5893439291030574365">"‏חיבורי Bluetooth ו-Wi‑Fi אופסו"</string>
-    <string name="erase_euicc_data_button" msgid="728078969563311737">"מחיקה"</string>
     <string name="reset_esim_title" msgid="4194570573425902754">"‏מחיקה של כרטיסי ה-eSIM"</string>
     <string name="reset_esim_desc" msgid="3662444090563399131">"‏הפעולה הזו לא תבטל אף חבילת גלישה. כדי להוריד כרטיסי SIM חלופיים, יש לפנות לספק חבילת הסלולר."</string>
     <string name="reset_network_button_text" msgid="2281476496459610071">"איפוס הגדרות"</string>
@@ -1869,8 +1869,7 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"כדי להשתמש בתכונת הנגישות, יש להחליק כלפי מעלה מתחתית המסך באמצעות שתי אצבעות.\n\nכדי לעבור בין התכונות השונות, יש להחליק כלפי מעלה באמצעות שתי אצבעות ולהחזיק."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"כדי להשתמש בתכונת הנגישות, יש להחליק כלפי מעלה מתחתית המסך באמצעות שלוש אצבעות.\n\nכדי לעבור בין התכונות השונות, יש להחליק כלפי מעלה באמצעות שלוש אצבעות ולהחזיק."</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"הבנתי"</string>
-    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
-    <skip />
+    <string name="accessibility_tutorial_dialog_link_button" msgid="6797349445794031781">"הגדרות הלחצן"</string>
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"קיצור הדרך של \'<xliff:g id="SERVICE">%1$s</xliff:g>\'"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"לחצן הנגישות"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"תנועת נגישות"</string>
@@ -2333,8 +2332,7 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"הצגה לפי אפליקציות"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"הצגה לפי מערכות"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
-    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
-    <skip />
+    <string name="battery_cycle_count_footer" msgid="3642121059800373545">"בגלל בדיקות איכות שנערכות לפני המשלוח, מספר מחזורי הטעינה עשוי שלא להיות אפס בשימוש הראשון"</string>
     <string name="process_stats_summary_title" msgid="502683176231281732">"סטטיסטיקה של תהליך"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"סטטיסטיקה של מומחי מחשבים על התהליכים הפועלים"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"זיכרון בשימוש"</string>
@@ -3917,7 +3915,7 @@
     <string name="emergency_settings_preference_title" msgid="6183455153241187148">"בטיחות ומקרי חירום"</string>
     <string name="emergency_dashboard_summary" msgid="401033951074039302">"מצב חירום, מידע רפואי, התרעות"</string>
     <string name="edge_to_edge_navigation_title" msgid="714427081306043819">"ניווט באמצעות תנועות"</string>
-    <string name="edge_to_edge_navigation_summary" msgid="8497033810637690561">"כדי לעבור למסך הבית, מחליקים מעלה מהחלק התחתון של המסך. כדי לעבור בין אפליקציות, מחליקים מעלה מהחלק התחתון של המסך, מחזיקים ואז משחררים. כדי לחזור למסך הקודם, מחליקים מהקצה הימני או השמאלי של המסך."</string>
+    <string name="edge_to_edge_navigation_summary" msgid="8497033810637690561">"כדי לעבור למסך הבית, יש להחליק מעלה מהחלק התחתון של המסך. כדי לעבור בין אפליקציות, יש להחליק מעלה מהחלק התחתון של המסך, להחזיק ולאחר מכן לשחרר. כדי לחזור למסך הקודם, יש להחליק מהקצה הימני או השמאלי של המסך."</string>
     <string name="legacy_navigation_title" msgid="7877402855994423727">"ניווט ב-3 לחצנים"</string>
     <string name="legacy_navigation_summary" msgid="5905301067778326433">"ביצוע פעולות כמו חזרה למסך הקודם, מעבר למסך הבית ומעבר בין אפליקציות באמצעות לחצנים בחלק התחתון של המסך."</string>
     <string name="keywords_system_navigation" msgid="3131782378486554934">"ניווט במערכת, ניווט ב-2 לחצנים, ניווט ב-3 לחצנים, ניווט באמצעות תנועות, החלקה"</string>
@@ -4729,36 +4727,20 @@
     <string name="contrast_medium" msgid="384414510709285811">"בינונית"</string>
     <string name="contrast_high" msgid="3988567609694797696">"גבוהה"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"ניתן לפתוח את האפליקציה הזו רק בחלון אחד"</string>
-    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
-    <skip />
-    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
-    <skip />
-    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
-    <skip />
-    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
-    <skip />
-    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
-    <skip />
-    <!-- no translation found for show_captions_disabled (690650956523818755) -->
-    <skip />
-    <!-- no translation found for show_captions_enabled (7089043007924626) -->
-    <skip />
-    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
-    <skip />
-    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
-    <skip />
+    <string name="accessibility_feature_full_state_summary" msgid="8747170258807179670">"<xliff:g id="STATE_0">%1$s</xliff:g> / <xliff:g id="SHORTCUT_STATE">%2$s</xliff:g> / <xliff:g id="SERVICE_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="generic_accessibility_service_on" msgid="2465820044606775562">"השירות מופעל"</string>
+    <string name="generic_accessibility_service_off" msgid="1752061696695346360">"השירות מושבת"</string>
+    <string name="generic_accessibility_feature_shortcut_off" msgid="3669343136122187913">"הקיצור מושבת"</string>
+    <string name="accessibility_shortcut_state_off" msgid="8158137799007601475">"מושבת"</string>
+    <string name="daltonizer_state_on" msgid="131013270022603983">"מופעלת"</string>
+    <string name="daltonizer_state_off" msgid="1162285688069856179">"מושבתת"</string>
+    <string name="color_inversion_state_on" msgid="1160969033636440368">"מופעלת"</string>
+    <string name="color_inversion_state_off" msgid="6925638668080451724">"מושבתת"</string>
+    <string name="color_inversion_feature_summary" msgid="1199876648549627647">"התכונה משנה את הצבעים של מסכים בהירים לצבעים כהים ולהפך"</string>
+    <string name="magnification_feature_summary" msgid="641825267460247848">"כדי לראות טוב יותר את התוכן, אפשר להגדיל במהירות את התצוגה"</string>
+    <string name="autoclick_disabled" msgid="3213396804955002120">"מושבתת"</string>
+    <string name="show_captions_disabled" msgid="690650956523818755">"מושבתת"</string>
+    <string name="show_captions_enabled" msgid="7089043007924626">"מופעלת"</string>
+    <string name="live_caption_disabled" msgid="3562035026547887366">"מושבתות"</string>
+    <string name="live_caption_enabled" msgid="5269360946200718949">"מופעלות"</string>
 </resources>

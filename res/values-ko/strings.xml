@@ -65,7 +65,8 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"왼쪽 보청기 페어링"</string>
     <string name="bluetooth_device_controls_general" msgid="1399214835599665488">"사용 가능한 모든 보청기"</string>
     <string name="bluetooth_device_controls_title" msgid="1895676556354697234">"청각 보조 기기 설정"</string>
-    <string name="bluetooth_device_controls_summary" msgid="8115767735418425663">"단축키, 보청기 호환성"</string>
+    <!-- no translation found for bluetooth_device_controls_summary (8115767735418425663) -->
+    <skip />
     <string name="bluetooth_device_controls_specific" msgid="7706863288754077107">"이 기기에 적용"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"오디오 출력"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"오디오 출력 정보"</string>
@@ -180,7 +181,8 @@
     <string name="temperature_preferences_title" msgid="5009881556503629058">"온도"</string>
     <string name="first_day_of_week_preferences_title" msgid="1971850087589599553">"일주일 중 첫날"</string>
     <string name="numbers_preferences_title" msgid="8197418984391195446">"숫자 환경설정"</string>
-    <string name="default_string_of_regional_preference" msgid="7662581547334113719">"앱 기본값 사용"</string>
+    <!-- no translation found for default_string_of_regional_preference (3428899072914884203) -->
+    <skip />
     <string name="celsius_temperature_unit" msgid="8896459071273084507">"섭씨(°C)"</string>
     <string name="fahrenheit_temperature_unit" msgid="1118677820614569801">"화씨(°F)"</string>
     <string name="sunday_first_day_of_week" msgid="7644548348295686051">"일요일"</string>
@@ -326,6 +328,8 @@
     <string name="security_settings_face_settings_remove_dialog_title" msgid="2899669764446232715">"얼굴 모델을 삭제하시겠습니까?"</string>
     <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"얼굴 모델이 영구적으로 안전하게 삭제됩니다.\n\n삭제 후 휴대전화를 잠금 해제하거나 앱에서 인증하려면 PIN, 패턴 또는 비밀번호가 필요합니다."</string>
     <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"얼굴 모델이 영구적으로 안전하게 삭제됩니다.\n\n삭제 후 휴대전화를 잠금 해제하려면 PIN, 패턴 또는 비밀번호가 필요합니다."</string>
+    <string name="security_settings_face_remove_dialog_details_fingerprint" msgid="7609582230650860974">"얼굴 모델이 영구적으로 안전하게 삭제됩니다.\n\n삭제한 후 휴대전화를 잠금 해제하거나 앱 내에서 인증하려면 지문, PIN, 패턴 또는 비밀번호가 필요합니다."</string>
+    <string name="security_settings_face_remove_dialog_details_fingerprint_conv" msgid="2627374706274503259">"얼굴 모델이 영구적으로 안전하게 삭제됩니다.\n\n삭제 후 휴대전화를 잠금 해제하려면 지문, PIN, 패턴 또는 비밀번호가 필요합니다."</string>
     <string name="security_settings_face_settings_context_subtitle" msgid="8284262560781442403">"얼굴 인식 잠금 해제로 휴대전화를 잠금 해제하세요"</string>
     <string name="security_settings_fingerprint" msgid="6387775386189204201">"지문"</string>
     <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"지문"</string>
@@ -506,8 +510,8 @@
     <string name="lock_settings_picker_update_lock_title" msgid="536853138943415927">"새 화면 잠금 선택"</string>
     <string name="lock_settings_picker_new_profile_lock_title" msgid="2270462215256413800">"직장 앱용 화면 잠금 선택"</string>
     <string name="lock_settings_picker_update_profile_lock_title" msgid="5929068163516308927">"새 직장 화면 잠금 선택"</string>
-    <string name="lock_settings_picker_biometrics_added_security_message" msgid="1105247657304421299">"보안을 강화하려면 예비로 사용할 화면 잠금을 설정하세요."</string>
-    <string name="lock_settings_picker_biometric_message" msgid="2609666443527262781">"예비로 사용할 화면 잠금 방식을 선택하세요"</string>
+    <string name="lock_settings_picker_biometrics_added_security_message" msgid="1105247657304421299">"보안을 강화하려면 추가 화면 잠금을 설정하세요."</string>
+    <string name="lock_settings_picker_biometric_message" msgid="2609666443527262781">"추가 화면 잠금 방식 선택"</string>
     <string name="lock_settings_picker_admin_restricted_personal_message" msgid="3532653662159888328">"화면 잠금을 잊어버린 경우 IT 관리자가 초기화할 수 없습니다."</string>
     <string name="lock_settings_picker_admin_restricted_personal_message_action" msgid="5956615234246626264">"별도의 직장 프로필 잠금을 설정하세요."</string>
     <string name="lock_settings_picker_profile_message" msgid="9142379549980873478">"이 화면 잠금을 잊은 경우 IT 관리자에게 재설정을 요청하세요."</string>
@@ -1119,7 +1123,6 @@
     <string name="security_patch" msgid="4071756145347865382">"Android 보안 업데이트"</string>
     <string name="model_info" msgid="8997566254717810904">"모델"</string>
     <string name="hardware_revision" msgid="3454709180861965025">"하드웨어 버전"</string>
-    <string name="manufactured_year" msgid="3401517138700926475">"제조 연도"</string>
     <string name="fcc_equipment_id" msgid="6596668314025646129">"장비 ID"</string>
     <string name="baseband_version" msgid="2600182227599835857">"베이스밴드 버전"</string>
     <string name="kernel_version" msgid="3513538109381366881">"커널 버전"</string>
@@ -1161,8 +1164,7 @@
     <string name="battery_manufacture_date" msgid="7139426520156833987">"제조일자"</string>
     <string name="battery_first_use_date" msgid="3157207331722711317">"최초 사용일"</string>
     <string name="battery_cycle_count" msgid="2912949283386571900">"사이클 수"</string>
-    <!-- no translation found for battery_cycle_count_not_available (2426584515665184664) -->
-    <skip />
+    <string name="battery_cycle_count_not_available" msgid="2426584515665184664">"사용 불가"</string>
     <string name="memory_calculating_size" msgid="3898240439798661242">"계산 중..."</string>
     <string name="storage_menu_rename" msgid="8549835371429159336">"이름 바꾸기"</string>
     <string name="storage_menu_mount" msgid="4760531872302820569">"마운트"</string>
@@ -1276,7 +1278,6 @@
     <string name="reset_bluetooth_wifi_desc" msgid="4030295669083059711">"Wi-Fi 및 블루투스 설정이 초기화됩니다. 이 작업은 실행취소할 수 없습니다."</string>
     <string name="reset_bluetooth_wifi_button_text" msgid="3974098137045963639">"초기화"</string>
     <string name="reset_bluetooth_wifi_complete_toast" msgid="5893439291030574365">"블루투스 및 Wi-Fi가 초기화됨"</string>
-    <string name="erase_euicc_data_button" msgid="728078969563311737">"삭제"</string>
     <string name="reset_esim_title" msgid="4194570573425902754">"e-SIM 삭제"</string>
     <string name="reset_esim_desc" msgid="3662444090563399131">"SIM을 삭제해도 모바일 서비스 요금제는 취소되지 않습니다. 교체 SIM을 다운로드하려면 이동통신사에 문의하세요."</string>
     <string name="reset_network_button_text" msgid="2281476496459610071">"설정 초기화"</string>
@@ -1439,7 +1440,7 @@
     <string name="lockpassword_choose_your_pin_header_for_face" msgid="704061826984851309">"얼굴 인식 잠금 해제를 사용하려면 PIN을 설정하세요"</string>
     <string name="lockpassword_choose_your_password_header_for_biometrics" msgid="2053366309272487015">"얼굴 인식 또는 지문 잠금 해제용 백업 비밀번호 설정"</string>
     <string name="lockpassword_choose_your_pattern_header_for_biometrics" msgid="4038476475293734905">"얼굴 인식 또는 지문 잠금 해제용 백업 패턴 설정"</string>
-    <string name="lockpassword_choose_your_pin_header_for_biometrics" msgid="9086039918921009380">"얼굴 인식 또는 지문 잠금 해제 시 사용할 예비 PIN 설정"</string>
+    <string name="lockpassword_choose_your_pin_header_for_biometrics" msgid="9086039918921009380">"얼굴 인식 또는 지문 잠금 해제용 백업 PIN 설정"</string>
     <string name="lockpassword_forgot_password" msgid="5730587692489737223">"비밀번호를 잊으셨나요?"</string>
     <string name="lockpassword_forgot_pattern" msgid="1196116549051927516">"패턴을 잊으셨나요?"</string>
     <string name="lockpassword_forgot_pin" msgid="7164232234705747672">"PIN을 잊으셨나요?"</string>
@@ -1869,8 +1870,7 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"접근성 기능을 사용하려면 두 손가락을 사용하여 화면 하단에서 위로 스와이프하세요.\n\n기능 간에 전환하려면 두 손가락을 사용하여 위로 스와이프한 후 잠시 기다립니다."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"접근성 기능을 사용하려면 세 손가락을 사용하여 화면 하단에서 위로 스와이프하세요.\n\n기능 간에 전환하려면 세 손가락을 사용하여 위로 스와이프한 후 잠시 기다립니다."</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"확인"</string>
-    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
-    <skip />
+    <string name="accessibility_tutorial_dialog_link_button" msgid="6797349445794031781">"버튼 설정"</string>
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"<xliff:g id="SERVICE">%1$s</xliff:g> 바로가기"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"접근성 버튼"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"접근성 동작"</string>
@@ -2333,8 +2333,7 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"앱별로 보기"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"시스템별로 보기"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
-    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
-    <skip />
+    <string name="battery_cycle_count_footer" msgid="3642121059800373545">"발송 전 품질 검사로 인해 처음 사용 시 사이클 수가 0이 아닐 수 있습니다."</string>
     <string name="process_stats_summary_title" msgid="502683176231281732">"프로세스 통계"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"프로세스 실행에 관한 통계"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"메모리 사용량"</string>
@@ -2866,13 +2865,13 @@
     <string name="cloned_apps_dashboard_title" msgid="5542076801222950921">"복제 앱"</string>
     <string name="desc_cloned_apps_intro_text" msgid="1369621522882622476">"두 계정을 동시에 사용할 수 있도록 앱의 추가 인스턴스를 만드세요."</string>
     <string name="desc_cloneable_app_list_text" msgid="3354586725814708688">"복제할 수 있는 앱입니다."</string>
-    <string name="cloned_apps_summary" msgid="8805362440770795709">"<xliff:g id="CLONED_APPS_COUNT">%1$s</xliff:g>개 복제됨, <xliff:g id="ALLOWED_APPS_COUNT">%2$d</xliff:g>개 복제 가능"</string>
+    <string name="cloned_apps_summary" msgid="8805362440770795709">"<xliff:g id="CLONED_APPS_COUNT">%1$s</xliff:g>개 클론됨, <xliff:g id="ALLOWED_APPS_COUNT">%2$d</xliff:g>개 클론 가능"</string>
     <string name="delete_all_app_clones" msgid="3489053361980624999">"모든 앱 사본을 삭제합니다."</string>
     <string name="delete_all_app_clones_failure" msgid="6821033414547132335">"일부 앱 사본을 삭제할 수 없습니다."</string>
     <string name="cloned_app_creation_summary" msgid="4642627294993918502">"생성 중…"</string>
-    <string name="cloned_app_created_summary" msgid="7277912971544890710">"복제됨"</string>
-    <string name="cloned_app_creation_toast_summary" msgid="3854494347144867870">"<xliff:g id="PACKAGE_LABEL">%1$s</xliff:g> 복제 만드는 중"</string>
-    <string name="cloned_app_created_toast_summary" msgid="755225403495544163">"<xliff:g id="PACKAGE_LABEL">%1$s</xliff:g> 복제 생성됨"</string>
+    <string name="cloned_app_created_summary" msgid="7277912971544890710">"클론됨"</string>
+    <string name="cloned_app_creation_toast_summary" msgid="3854494347144867870">"<xliff:g id="PACKAGE_LABEL">%1$s</xliff:g> 클론 만드는 중"</string>
+    <string name="cloned_app_created_toast_summary" msgid="755225403495544163">"<xliff:g id="PACKAGE_LABEL">%1$s</xliff:g> 클론 생성됨"</string>
     <string name="system_dashboard_summary" msgid="7400745270362833832">"언어, 동작, 시간, 백업"</string>
     <string name="languages_setting_summary" msgid="7963053736715746726">"시스템 언어, 앱 언어, 음성"</string>
     <string name="keywords_wifi" msgid="8156528242318351490">"wifi, Wi-Fi, 네트워크 연결, 인터넷, 무선, 데이터, WiFi"</string>
@@ -3193,7 +3192,7 @@
     <string name="lock_screen_notifs_redact_work" msgid="3833920196569208430">"민감한 직장 프로필 알림"</string>
     <string name="lock_screen_notifs_redact_work_summary" msgid="3238238380405430156">"잠금 상태일 때 민감한 직장 프로필 콘텐츠 표시"</string>
     <string name="lock_screen_notifications_summary_show" msgid="6540443483088311328">"모든 알림 내용 표시"</string>
-    <string name="lock_screen_notifications_summary_hide" msgid="7837303171531166789">"민감한 콘텐츠는 잠금이 해제되었을 때만 표시"</string>
+    <string name="lock_screen_notifications_summary_hide" msgid="7837303171531166789">"잠금이 해제되었을 때만 민감한 콘텐츠 표시"</string>
     <string name="lock_screen_notifications_summary_disable" msgid="3388290397947365744">"알림 표시 안함"</string>
     <string name="lock_screen_notifications_interstitial_message" msgid="4688399629301178487">"잠금 화면이 어떻게 표시되길 원하시나요?"</string>
     <string name="lock_screen_notifications_interstitial_title" msgid="1360388192096354315">"잠금 화면"</string>
@@ -4728,36 +4727,20 @@
     <string name="contrast_medium" msgid="384414510709285811">"보통"</string>
     <string name="contrast_high" msgid="3988567609694797696">"높음"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"이 앱은 창 1개에서만 열 수 있습니다."</string>
-    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
-    <skip />
-    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
-    <skip />
-    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
-    <skip />
-    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
-    <skip />
-    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
-    <skip />
-    <!-- no translation found for show_captions_disabled (690650956523818755) -->
-    <skip />
-    <!-- no translation found for show_captions_enabled (7089043007924626) -->
-    <skip />
-    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
-    <skip />
-    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
-    <skip />
+    <string name="accessibility_feature_full_state_summary" msgid="8747170258807179670">"<xliff:g id="STATE_0">%1$s</xliff:g>/<xliff:g id="SHORTCUT_STATE">%2$s</xliff:g>/<xliff:g id="SERVICE_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="generic_accessibility_service_on" msgid="2465820044606775562">"서비스 사용"</string>
+    <string name="generic_accessibility_service_off" msgid="1752061696695346360">"서비스 사용 안함"</string>
+    <string name="generic_accessibility_feature_shortcut_off" msgid="3669343136122187913">"단축키 사용 안함"</string>
+    <string name="accessibility_shortcut_state_off" msgid="8158137799007601475">"사용 안함"</string>
+    <string name="daltonizer_state_on" msgid="131013270022603983">"사용"</string>
+    <string name="daltonizer_state_off" msgid="1162285688069856179">"사용 안함"</string>
+    <string name="color_inversion_state_on" msgid="1160969033636440368">"사용"</string>
+    <string name="color_inversion_state_off" msgid="6925638668080451724">"사용 안함"</string>
+    <string name="color_inversion_feature_summary" msgid="1199876648549627647">"밝은 화면은 어둡게, 어두운 화면은 밝게 바꿉니다."</string>
+    <string name="magnification_feature_summary" msgid="641825267460247848">"화면을 빠르게 확대하여 콘텐츠를 더 크게 표시합니다."</string>
+    <string name="autoclick_disabled" msgid="3213396804955002120">"사용 안함"</string>
+    <string name="show_captions_disabled" msgid="690650956523818755">"사용 안함"</string>
+    <string name="show_captions_enabled" msgid="7089043007924626">"사용"</string>
+    <string name="live_caption_disabled" msgid="3562035026547887366">"사용 안함"</string>
+    <string name="live_caption_enabled" msgid="5269360946200718949">"사용"</string>
 </resources>

@@ -65,7 +65,8 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"Vincular esquerdo"</string>
     <string name="bluetooth_device_controls_general" msgid="1399214835599665488">"Para todos os dispositivos auditivos dispoñibles"</string>
     <string name="bluetooth_device_controls_title" msgid="1895676556354697234">"Configuración dos dispositivos auditivos"</string>
-    <string name="bluetooth_device_controls_summary" msgid="8115767735418425663">"Atallo, compatibilidade con audiófonos"</string>
+    <!-- no translation found for bluetooth_device_controls_summary (8115767735418425663) -->
+    <skip />
     <string name="bluetooth_device_controls_specific" msgid="7706863288754077107">"Para este dispositivo"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"Saída de audio"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"Acerca da saída de audio"</string>
@@ -180,7 +181,8 @@
     <string name="temperature_preferences_title" msgid="5009881556503629058">"Temperatura"</string>
     <string name="first_day_of_week_preferences_title" msgid="1971850087589599553">"Primeiro día da semana"</string>
     <string name="numbers_preferences_title" msgid="8197418984391195446">"Preferencias de números"</string>
-    <string name="default_string_of_regional_preference" msgid="7662581547334113719">"Usar configuración predeterminada da aplicación"</string>
+    <!-- no translation found for default_string_of_regional_preference (3428899072914884203) -->
+    <skip />
     <string name="celsius_temperature_unit" msgid="8896459071273084507">"Celsius (°C)"</string>
     <string name="fahrenheit_temperature_unit" msgid="1118677820614569801">"Fahrenheit (°F)"</string>
     <string name="sunday_first_day_of_week" msgid="7644548348295686051">"Domingo"</string>
@@ -326,6 +328,10 @@
     <string name="security_settings_face_settings_remove_dialog_title" msgid="2899669764446232715">"Queres eliminar o modelo facial?"</string>
     <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"O teu modelo facial eliminarase de xeito seguro e permanente.\n\nUnha vez eliminado, terás que usar o PIN, o padrón ou o contrasinal para desbloquear o teléfono ou para autenticarte nas aplicacións."</string>
     <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"O teu modelo facial eliminarase de xeito seguro e permanente.\n\nUnha vez eliminado, terás que usar o PIN, o padrón ou o contrasinal para desbloquear o teléfono."</string>
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint (7609582230650860974) -->
+    <skip />
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint_conv (2627374706274503259) -->
+    <skip />
     <string name="security_settings_face_settings_context_subtitle" msgid="8284262560781442403">"Usa o desbloqueo facial para desbloquear o teléfono"</string>
     <string name="security_settings_fingerprint" msgid="6387775386189204201">"Impresión dixital"</string>
     <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"Impresión dixital"</string>
@@ -1119,7 +1125,6 @@
     <string name="security_patch" msgid="4071756145347865382">"Actualización de seguranza de Android"</string>
     <string name="model_info" msgid="8997566254717810904">"Modelo"</string>
     <string name="hardware_revision" msgid="3454709180861965025">"Versión do hardware"</string>
-    <string name="manufactured_year" msgid="3401517138700926475">"Ano de fabricación"</string>
     <string name="fcc_equipment_id" msgid="6596668314025646129">"ID de equipamento"</string>
     <string name="baseband_version" msgid="2600182227599835857">"Versión de banda base"</string>
     <string name="kernel_version" msgid="3513538109381366881">"Versión de kernel"</string>
@@ -1161,8 +1166,7 @@
     <string name="battery_manufacture_date" msgid="7139426520156833987">"Data de fabricación"</string>
     <string name="battery_first_use_date" msgid="3157207331722711317">"Data do primeiro uso"</string>
     <string name="battery_cycle_count" msgid="2912949283386571900">"Número de ciclos"</string>
-    <!-- no translation found for battery_cycle_count_not_available (2426584515665184664) -->
-    <skip />
+    <string name="battery_cycle_count_not_available" msgid="2426584515665184664">"Non dispoñible"</string>
     <string name="memory_calculating_size" msgid="3898240439798661242">"Calculando..."</string>
     <string name="storage_menu_rename" msgid="8549835371429159336">"Cambiar nome"</string>
     <string name="storage_menu_mount" msgid="4760531872302820569">"Inserir"</string>
@@ -1276,7 +1280,6 @@
     <string name="reset_bluetooth_wifi_desc" msgid="4030295669083059711">"Restableceranse todas as opcións de configuración da wifi e do Bluetooth. Non se poderá desfacer esta acción."</string>
     <string name="reset_bluetooth_wifi_button_text" msgid="3974098137045963639">"Restablecer"</string>
     <string name="reset_bluetooth_wifi_complete_toast" msgid="5893439291030574365">"Restablecéronse o Bluetooth e a wifi"</string>
-    <string name="erase_euicc_data_button" msgid="728078969563311737">"Borrar"</string>
     <string name="reset_esim_title" msgid="4194570573425902754">"Borrar eSIM"</string>
     <string name="reset_esim_desc" msgid="3662444090563399131">"Non se cancelará ningún dos plans de servizos móbiles que teñas. Para descargar tarxetas SIM de substitución, ponte en contacto co teu operador."</string>
     <string name="reset_network_button_text" msgid="2281476496459610071">"Restablecer configuración"</string>
@@ -1869,8 +1872,7 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"Pasa 2 dedos cara arriba desde a parte inferior da pantalla para utilizar unha función de accesibilidade.\n\nPara cambiar de función, pasa 2 dedos cara arriba e mantén premida a pantalla."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"Pasa 3 dedos cara arriba desde a parte inferior da pantalla para utilizar unha función de accesibilidade.\n\nPara cambiar de función, pasa 3 dedos cara arriba e mantén premida a pantalla."</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"Entendido"</string>
-    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
-    <skip />
+    <string name="accessibility_tutorial_dialog_link_button" msgid="6797349445794031781">"Configuración do botón"</string>
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"Atallo de <xliff:g id="SERVICE">%1$s</xliff:g>"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"Botón Accesibilidade"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"Xesto de accesibilidade"</string>
@@ -2333,8 +2335,7 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"Ver por aplicacións"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"Ver por sistemas"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
-    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
-    <skip />
+    <string name="battery_cycle_count_footer" msgid="3642121059800373545">"Pode que, cando vaias usar a batería por primeira vez, o reconto de ciclos non sexa cero, o cal se debe ás inspeccións de calidade previas ao envío"</string>
     <string name="process_stats_summary_title" msgid="502683176231281732">"Estatísticas de procesos"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"Estatísticas frikis sobre procesos en execución"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"Uso da memoria"</string>
@@ -3570,7 +3571,7 @@
     <string name="default_phone_title" msgid="7616730756650803827">"Aplicación de teléfono"</string>
     <string name="system_app" msgid="1863291702508355041">"(Sistema)"</string>
     <string name="apps_storage" msgid="643866814746927111">"Almacenamento de aplicacións"</string>
-    <string name="usage_access" msgid="5487993885373893282">"Acceso aos datos de uso"</string>
+    <string name="usage_access" msgid="5487993885373893282">"Acceso a datos de uso"</string>
     <string name="permit_usage_access" msgid="179630895262172674">"Permitir acceso aos datos de uso"</string>
     <string name="time_spent_in_app_pref_title" msgid="25327097913383330">"Tempo diante da pantalla"</string>
     <string name="usage_access_description" msgid="8547716253713890707">"O acceso aos datos de uso permite que unha aplicación realice un seguimento das demais aplicacións que usas e de con que frecuencia as utilizas, así como do teu operador, da configuración do idioma e doutros detalles."</string>
@@ -4162,7 +4163,8 @@
     <string name="change_wifi_state_app_detail_summary" msgid="8230854855584217111">"Permite que esta aplicación active ou desactive a wifi, busque redes wifi e se conecte a elas, engada ou quite redes, ou ben inicie unha zona wifi local."</string>
     <string name="change_nfc_tag_apps_title" msgid="91514009058149617">"Iniciar con NFC"</string>
     <string name="change_nfc_tag_apps_detail_switch" msgid="240286205725043561">"Permitir iniciar ao escanear etiquetas NFC"</string>
-    <string name="change_nfc_tag_apps_detail_summary" msgid="3338220223868942195">"Permite que esta aplicación se inicie cando se escanee unha etiqueta NFC.\nSe este permiso está activado, a aplicación aparecerá como opción dispoñible cando se detecte unha etiqueta."</string>
+    <!-- no translation found for change_nfc_tag_apps_detail_summary (3338220223868942195) -->
+    <skip />
     <string name="media_output_title" msgid="8283629315159510680">"Reproducir contido multimedia en:"</string>
     <string name="media_output_label_title" msgid="4139048973886819148">"Reproducir <xliff:g id="LABEL">%s</xliff:g> en"</string>
     <string name="media_output_default_summary" msgid="4200343059396412376">"Este dispositivo"</string>
@@ -4725,36 +4727,20 @@
     <string name="contrast_medium" msgid="384414510709285811">"Nivel medio"</string>
     <string name="contrast_high" msgid="3988567609694797696">"Nivel alto"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"Esta aplicación só se pode abrir en 1 ventá"</string>
-    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
-    <skip />
-    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
-    <skip />
-    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
-    <skip />
-    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
-    <skip />
-    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
-    <skip />
-    <!-- no translation found for show_captions_disabled (690650956523818755) -->
-    <skip />
-    <!-- no translation found for show_captions_enabled (7089043007924626) -->
-    <skip />
-    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
-    <skip />
-    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
-    <skip />
+    <string name="accessibility_feature_full_state_summary" msgid="8747170258807179670">"<xliff:g id="STATE_0">%1$s</xliff:g>/<xliff:g id="SHORTCUT_STATE">%2$s</xliff:g>/<xliff:g id="SERVICE_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="generic_accessibility_service_on" msgid="2465820044606775562">"Servizo activado"</string>
+    <string name="generic_accessibility_service_off" msgid="1752061696695346360">"Servizo desactivado"</string>
+    <string name="generic_accessibility_feature_shortcut_off" msgid="3669343136122187913">"Atallo desactivado"</string>
+    <string name="accessibility_shortcut_state_off" msgid="8158137799007601475">"Opción desactivada"</string>
+    <string name="daltonizer_state_on" msgid="131013270022603983">"Opción activada"</string>
+    <string name="daltonizer_state_off" msgid="1162285688069856179">"Opción desactivada"</string>
+    <string name="color_inversion_state_on" msgid="1160969033636440368">"Opción activada"</string>
+    <string name="color_inversion_state_off" msgid="6925638668080451724">"Opción desactivada"</string>
+    <string name="color_inversion_feature_summary" msgid="1199876648549627647">"Escurece as pantallas claras e clarea as escuras"</string>
+    <string name="magnification_feature_summary" msgid="641825267460247848">"Se queres ampliar o contido, achégao rapidamente na pantalla usando o zoom"</string>
+    <string name="autoclick_disabled" msgid="3213396804955002120">"Opción desactivada"</string>
+    <string name="show_captions_disabled" msgid="690650956523818755">"Opción desactivada"</string>
+    <string name="show_captions_enabled" msgid="7089043007924626">"Opción activada"</string>
+    <string name="live_caption_disabled" msgid="3562035026547887366">"Opción desactivada"</string>
+    <string name="live_caption_enabled" msgid="5269360946200718949">"Opción activada"</string>
 </resources>

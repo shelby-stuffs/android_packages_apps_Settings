@@ -192,8 +192,8 @@
     <string name="fingerprint_v2_delete_message" product="tablet" msgid="527375244730792698">"Ovim se brišu slike i model otiska prsta u vezi sa otiskom <xliff:g id="FINGERPRINT_ID">%1$s</xliff:g> koji su sačuvani na tabletu"</string>
     <string name="fingerprint_v2_delete_message" product="device" msgid="4549780655045100171">"Ovim se brišu slike i model otiska prsta u vezi sa otiskom <xliff:g id="FINGERPRINT_ID">%1$s</xliff:g> koji su sačuvani na uređaju"</string>
     <string name="fingerprint_last_delete_message" product="default" msgid="3187410175262625294">"Nećete moći da koristite otisak prsta da biste otključavali telefon ni verifikovali identitet u aplikacijama."</string>
-    <string name="fingerprint_last_delete_message" product="tablet" msgid="8618307419148004587">"Nećete moći da koristite otisak prsta da biste otključavali tablet ni verifikovali identitet u aplikacijama."</string>
-    <string name="fingerprint_last_delete_message" product="device" msgid="3910012280858587242">"Nećete moći da koristite otisak prsta da biste otključavali uređaj ni verifikovali identitet u aplikacijama."</string>
+    <string name="fingerprint_last_delete_message" product="tablet" msgid="8618307419148004587">"Nećete moći da koristite otisak prsta da biste otključavali tablet ili verifikovali identitet u aplikacijama."</string>
+    <string name="fingerprint_last_delete_message" product="device" msgid="3910012280858587242">"Nećete moći da koristite otisak prsta da biste otključavali uređaj ili verifikovali identitet u aplikacijama."</string>
     <string name="fingerprint_unlock_title" product="default" msgid="3224008661274975980">"Možete da otključate telefon pomoću otiska prsta. Ova opcija zahteva rezervni način za otključavanje ekrana iz bezbednosnih razloga."</string>
     <string name="fingerprint_unlock_title" product="tablet" msgid="6920040586231644124">"Možete da otključate tablet pomoću otiska prsta. Ova opcija zahteva rezervni metod zaključavanja ekrana iz bezbednosnih razloga."</string>
     <string name="fingerprint_unlock_title" product="device" msgid="1469790269368691678">"Možete da otključate uređaj pomoću otiska prsta. Ova opcija zahteva rezervni način za otključavanje ekrana iz bezbednosnih razloga."</string>
@@ -354,8 +354,6 @@
     <string name="lockscreen_trivial_controls_summary" product="tablet" msgid="9052068482124729345">"Bez otključavanja tableta"</string>
     <string name="auto_rotate_summary_a11y" product="default" msgid="2813368383309985185">"Kada okrećete telefon u uspravni ili vodoravni režim"</string>
     <string name="auto_rotate_summary_a11y" product="tabled" msgid="4708833814245913981">"Kada okrećete tablet u uspravni ili vodoravni režim"</string>
-    <!-- no translation found for daltonizer_feature_summary (3940653889277283702) -->
-    <skip />
-    <!-- no translation found for daltonizer_feature_summary (4006596881671077623) -->
-    <skip />
+    <string name="daltonizer_feature_summary" product="default" msgid="3940653889277283702">"Prilagodite način na koji se boje prikazuju na telefonu"</string>
+    <string name="daltonizer_feature_summary" product="tablet" msgid="4006596881671077623">"Prilagodite način na koji se boje prikazuju na tabletu"</string>
 </resources>

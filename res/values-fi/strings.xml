@@ -65,7 +65,8 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"Liitä vasen korva"</string>
     <string name="bluetooth_device_controls_general" msgid="1399214835599665488">"Kaikille saatavilla oleville kuulolaitteille"</string>
     <string name="bluetooth_device_controls_title" msgid="1895676556354697234">"Kuulolaiteasetukset"</string>
-    <string name="bluetooth_device_controls_summary" msgid="8115767735418425663">"Pikanäppäin, kuulolaiteyhteensopivuus"</string>
+    <!-- no translation found for bluetooth_device_controls_summary (8115767735418425663) -->
+    <skip />
     <string name="bluetooth_device_controls_specific" msgid="7706863288754077107">"Tälle laitteelle"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"Audion toistotapa"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"Tietoa audion toistotavasta"</string>
@@ -180,7 +181,8 @@
     <string name="temperature_preferences_title" msgid="5009881556503629058">"Lämpötila"</string>
     <string name="first_day_of_week_preferences_title" msgid="1971850087589599553">"Viikon ensimmäinen päivä"</string>
     <string name="numbers_preferences_title" msgid="8197418984391195446">"Numeroasetukset"</string>
-    <string name="default_string_of_regional_preference" msgid="7662581547334113719">"Käytä sovelluksen oletusvaihtoehtoa"</string>
+    <!-- no translation found for default_string_of_regional_preference (3428899072914884203) -->
+    <skip />
     <string name="celsius_temperature_unit" msgid="8896459071273084507">"Celsius (°C)"</string>
     <string name="fahrenheit_temperature_unit" msgid="1118677820614569801">"Fahrenheit (°F)"</string>
     <string name="sunday_first_day_of_week" msgid="7644548348295686051">"Sunnuntai"</string>
@@ -270,7 +272,7 @@
     <string name="safety_center_summary" msgid="3554867379951053869">"Sovellusten turvallisuus, laitteen lukitus, luvat"</string>
     <string name="security_settings_face_preference_summary" msgid="6675126437396914838">"Kasvot lisätty"</string>
     <string name="security_settings_face_preference_summary_none" msgid="523320857738436024">"Edellyttää käyttöönottoa"</string>
-    <string name="security_settings_face_preference_title" msgid="2126625155005348417">"Kasvojentunnistus- avaus"</string>
+    <string name="security_settings_face_preference_title" msgid="2126625155005348417">"Kasvojentunnistusavaus"</string>
     <string name="security_settings_face_profile_preference_title" msgid="7519527436266375005">"Kasvojentunnistusavaus työkäyttöön"</string>
     <string name="security_settings_face_enroll_education_title" msgid="6448806884597691208">"Kasvojentunnistusavauksen käyttöönotto"</string>
     <string name="security_settings_face_enroll_education_title_accessibility" msgid="3701874093226957891">"Ota kasvojentunnistusavaus käyttöön"</string>
@@ -326,6 +328,10 @@
     <string name="security_settings_face_settings_remove_dialog_title" msgid="2899669764446232715">"Poistetaanko kasvomalli?"</string>
     <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"Kasvomalli poistetaan pysyvästi ja turvallisesti.\n\nPoistamisen jälkeen tarvitset sormenjälkeä, PIN-koodia, kuviota tai salasanaa puhelimen lukituksen avaamiseen tai sovelluksissa todentamiseen."</string>
     <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"Kasvomalli poistetaan pysyvästi ja turvallisesti.\n\nPoistamisen jälkeen tarvitset PIN-koodia, kuviota tai salasanaa puhelimen lukituksen avaamiseen."</string>
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint (7609582230650860974) -->
+    <skip />
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint_conv (2627374706274503259) -->
+    <skip />
     <string name="security_settings_face_settings_context_subtitle" msgid="8284262560781442403">"Avaa puhelimen lukitus kasvojentunnistusavauksella"</string>
     <string name="security_settings_fingerprint" msgid="6387775386189204201">"Sormenjälki"</string>
     <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"Sormenjälki"</string>
@@ -386,7 +392,7 @@
     <string name="security_settings_biometric_preference_summary_both_fp_single" msgid="684409535278676426">"Kasvot ja sormenjälki lisättiin"</string>
     <string name="biometric_settings_intro" msgid="4263069383955676756">"Otettuasi kasvojentunnistus- ja sormenjälkiavauksen käyttöön puhelimesi pyytää sormenjälkeäsi, kun käytät maskia tai olet pimeässä ympäristössä"</string>
     <string name="biometric_settings_category_ways_to_unlock" msgid="3384767901580915266">"Lukituksen avaustavat"</string>
-    <string name="biometric_settings_category_use_face_fingerprint" msgid="4377659744376863913">"Käytä kasvoja tai sormenjälkeä seuraaviin:"</string>
+    <string name="biometric_settings_category_use_face_fingerprint" msgid="4377659744376863913">"Kasvojen tai sormenjäljen käyttö"</string>
     <string name="biometric_settings_use_biometric_unlock_phone" msgid="8180914579885804358">"Puhelimen lukituksen avaaminen"</string>
     <string name="biometric_settings_use_biometric_for_apps" msgid="6201168728906364189">"Henkilöllisyyden todentaminen sovelluksissa"</string>
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"Käytä kasvoja"</string>
@@ -1119,7 +1125,6 @@
     <string name="security_patch" msgid="4071756145347865382">"Androidin tietoturvapäivitys"</string>
     <string name="model_info" msgid="8997566254717810904">"Malli"</string>
     <string name="hardware_revision" msgid="3454709180861965025">"Laitteistoversio"</string>
-    <string name="manufactured_year" msgid="3401517138700926475">"Valmistusvuosi"</string>
     <string name="fcc_equipment_id" msgid="6596668314025646129">"Varustetunnus"</string>
     <string name="baseband_version" msgid="2600182227599835857">"Baseband-versio"</string>
     <string name="kernel_version" msgid="3513538109381366881">"Kernel-versio"</string>
@@ -1161,8 +1166,7 @@
     <string name="battery_manufacture_date" msgid="7139426520156833987">"Valmistuspäivä"</string>
     <string name="battery_first_use_date" msgid="3157207331722711317">"Ensimmäinen käyttöpäivä"</string>
     <string name="battery_cycle_count" msgid="2912949283386571900">"Syklien määrä"</string>
-    <!-- no translation found for battery_cycle_count_not_available (2426584515665184664) -->
-    <skip />
+    <string name="battery_cycle_count_not_available" msgid="2426584515665184664">"Ei saatavilla"</string>
     <string name="memory_calculating_size" msgid="3898240439798661242">"Lasketaan…"</string>
     <string name="storage_menu_rename" msgid="8549835371429159336">"Nimeä uudelleen"</string>
     <string name="storage_menu_mount" msgid="4760531872302820569">"Ota käyttöön"</string>
@@ -1276,7 +1280,6 @@
     <string name="reset_bluetooth_wifi_desc" msgid="4030295669083059711">"Tämä nollaa kaikki Wi-Fi- ja Bluetooth-asetukset. Toimintoa ei voi kumota."</string>
     <string name="reset_bluetooth_wifi_button_text" msgid="3974098137045963639">"Nollaa"</string>
     <string name="reset_bluetooth_wifi_complete_toast" msgid="5893439291030574365">"Bluetooth ja Wi-Fi on nollattu"</string>
-    <string name="erase_euicc_data_button" msgid="728078969563311737">"Tyhjennä"</string>
     <string name="reset_esim_title" msgid="4194570573425902754">"eSIMien poistaminen"</string>
     <string name="reset_esim_desc" msgid="3662444090563399131">"Tämä ei peru liittymäsopimustasi. Jos haluat ladata korvaavia SIM-kortteja, ota yhteyttä operaattoriin."</string>
     <string name="reset_network_button_text" msgid="2281476496459610071">"Nollaa asetukset"</string>
@@ -1869,8 +1872,7 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"Laita esteettömyysominaisuus päälle pyyhkäisemällä näytön alalaidasta ylös kahdella sormella.\n\nVaihda ominaisuudesta toiseen pyyhkäisemällä ylös kahdella sormella ja koskettamalla pitkään."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"Laita esteettömyysominaisuus päälle pyyhkäisemällä näytön alalaidasta ylös kolmella sormella.\n\nVaihda ominaisuudesta toiseen pyyhkäisemällä ylös kolmella sormella ja koskettamalla pitkään."</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"OK"</string>
-    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
-    <skip />
+    <string name="accessibility_tutorial_dialog_link_button" msgid="6797349445794031781">"Painikkeen asetukset"</string>
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"Pikanäppäin: <xliff:g id="SERVICE">%1$s</xliff:g>"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"Saavutettavuuspainike"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"Esteettömyysele"</string>
@@ -2333,8 +2335,7 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"Näytä sovellusten mukaan"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"Näytä järjestelmien mukaan"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
-    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
-    <skip />
+    <string name="battery_cycle_count_footer" msgid="3642121059800373545">"Ennen lähetystä tehtyjen laaduntarkastusten vuoksi kierrosluku ei välttämättä ole nolla ensimmäisellä käyttökerralla."</string>
     <string name="process_stats_summary_title" msgid="502683176231281732">"Käsittelytiedot"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"Käsittelyn tarkat tiedot"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"Muistin käyttö"</string>
@@ -4165,7 +4166,8 @@
     <string name="change_wifi_state_app_detail_summary" msgid="8230854855584217111">"Anna sovelluksen asettaa Wi-Fi päälle ja pois päältä, hakea Wi-Fi-verkkoja ja yhdistää niihin, lisätä ja poistaa verkkoja ja käynnistää paikallisen hotspotin."</string>
     <string name="change_nfc_tag_apps_title" msgid="91514009058149617">"Käynnistä NFC:llä"</string>
     <string name="change_nfc_tag_apps_detail_switch" msgid="240286205725043561">"Salli käynnistäminen, kun NFC skannataan"</string>
-    <string name="change_nfc_tag_apps_detail_summary" msgid="3338220223868942195">"Salli tämän sovelluksen käynnistyä, kun NFC-tagi skannataan.\nJos tämä lupa myönnetään, sovellus on saatavilla vaihtoehtona aina, kun tagi havaitaan."</string>
+    <!-- no translation found for change_nfc_tag_apps_detail_summary (3338220223868942195) -->
+    <skip />
     <string name="media_output_title" msgid="8283629315159510680">"Toista mediasisältöä:"</string>
     <string name="media_output_label_title" msgid="4139048973886819148">"Mistä <xliff:g id="LABEL">%s</xliff:g> kuuluu:"</string>
     <string name="media_output_default_summary" msgid="4200343059396412376">"Tämä laite"</string>
@@ -4728,36 +4730,20 @@
     <string name="contrast_medium" msgid="384414510709285811">"Keskitaso"</string>
     <string name="contrast_high" msgid="3988567609694797696">"Suuri"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"Tämän sovelluksen voi avata vain yhdessä ikkunassa"</string>
-    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
-    <skip />
-    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
-    <skip />
-    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
-    <skip />
-    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
-    <skip />
-    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
-    <skip />
-    <!-- no translation found for show_captions_disabled (690650956523818755) -->
-    <skip />
-    <!-- no translation found for show_captions_enabled (7089043007924626) -->
-    <skip />
-    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
-    <skip />
-    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
-    <skip />
+    <string name="accessibility_feature_full_state_summary" msgid="8747170258807179670">"<xliff:g id="STATE_0">%1$s</xliff:g> / <xliff:g id="SHORTCUT_STATE">%2$s</xliff:g> / <xliff:g id="SERVICE_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="generic_accessibility_service_on" msgid="2465820044606775562">"Palvelu päällä"</string>
+    <string name="generic_accessibility_service_off" msgid="1752061696695346360">"Palvelu pois päältä"</string>
+    <string name="generic_accessibility_feature_shortcut_off" msgid="3669343136122187913">"Pikanäppäin pois päältä"</string>
+    <string name="accessibility_shortcut_state_off" msgid="8158137799007601475">"Pois päältä"</string>
+    <string name="daltonizer_state_on" msgid="131013270022603983">"Päällä"</string>
+    <string name="daltonizer_state_off" msgid="1162285688069856179">"Pois päältä"</string>
+    <string name="color_inversion_state_on" msgid="1160969033636440368">"Päällä"</string>
+    <string name="color_inversion_state_off" msgid="6925638668080451724">"Pois päältä"</string>
+    <string name="color_inversion_feature_summary" msgid="1199876648549627647">"Muuttaa vaaleat näytöt tummiksi ja tummat vaaleiksi"</string>
+    <string name="magnification_feature_summary" msgid="641825267460247848">"Lähennä näyttöä nopeasti, niin näet sisällön suurempana"</string>
+    <string name="autoclick_disabled" msgid="3213396804955002120">"Pois päältä"</string>
+    <string name="show_captions_disabled" msgid="690650956523818755">"Pois päältä"</string>
+    <string name="show_captions_enabled" msgid="7089043007924626">"Päällä"</string>
+    <string name="live_caption_disabled" msgid="3562035026547887366">"Pois päältä"</string>
+    <string name="live_caption_enabled" msgid="5269360946200718949">"Päällä"</string>
 </resources>

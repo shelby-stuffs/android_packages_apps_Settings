@@ -65,7 +65,8 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"Parkoppla vänster"</string>
     <string name="bluetooth_device_controls_general" msgid="1399214835599665488">"För alla tillgängliga hörapparater"</string>
     <string name="bluetooth_device_controls_title" msgid="1895676556354697234">"Inställningar för hörapparat"</string>
-    <string name="bluetooth_device_controls_summary" msgid="8115767735418425663">"Genväg, kompatibilitet med hörapparat"</string>
+    <!-- no translation found for bluetooth_device_controls_summary (8115767735418425663) -->
+    <skip />
     <string name="bluetooth_device_controls_specific" msgid="7706863288754077107">"För den här enheten"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"Ljudutgång"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"Om ljudutgång"</string>
@@ -180,7 +181,8 @@
     <string name="temperature_preferences_title" msgid="5009881556503629058">"Temperatur"</string>
     <string name="first_day_of_week_preferences_title" msgid="1971850087589599553">"Första dagen i veckan"</string>
     <string name="numbers_preferences_title" msgid="8197418984391195446">"Sifferinställningar"</string>
-    <string name="default_string_of_regional_preference" msgid="7662581547334113719">"Använd appstandard"</string>
+    <!-- no translation found for default_string_of_regional_preference (3428899072914884203) -->
+    <skip />
     <string name="celsius_temperature_unit" msgid="8896459071273084507">"Celsius (°C)"</string>
     <string name="fahrenheit_temperature_unit" msgid="1118677820614569801">"Fahrenheit (°F)"</string>
     <string name="sunday_first_day_of_week" msgid="7644548348295686051">"söndag"</string>
@@ -326,6 +328,10 @@
     <string name="security_settings_face_settings_remove_dialog_title" msgid="2899669764446232715">"Vill du radera ansiktsmodellen?"</string>
     <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"Ansiktsmodellen raderas permanent på ett säkert sätt.\n\nEfter borttagningen behöver du pinkod, lösenord eller mönster för att låsa upp telefonen och för autentisering i appar."</string>
     <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"Ansiktsmodellen raderas permanent på ett säkert sätt.\n\nEfter borttagningen behöver du pinkod, lösenord eller mönster för att låsa upp telefonen."</string>
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint (7609582230650860974) -->
+    <skip />
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint_conv (2627374706274503259) -->
+    <skip />
     <string name="security_settings_face_settings_context_subtitle" msgid="8284262560781442403">"Lås upp telefonen med ansiktslås"</string>
     <string name="security_settings_fingerprint" msgid="6387775386189204201">"Fingeravtryck"</string>
     <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"Fingeravtryck"</string>
@@ -387,7 +393,7 @@
     <string name="biometric_settings_intro" msgid="4263069383955676756">"Om du konfigurerar ansiktslås och fingeravtryckslås frågar telefonen om fingeravtryck när du använder munskydd eller om det är mörkt"</string>
     <string name="biometric_settings_category_ways_to_unlock" msgid="3384767901580915266">"Olika sätt att låsa upp"</string>
     <string name="biometric_settings_category_use_face_fingerprint" msgid="4377659744376863913">"Använd ansikte eller fingeravtryck för att"</string>
-    <string name="biometric_settings_use_biometric_unlock_phone" msgid="8180914579885804358">"Lås upp telefonen"</string>
+    <string name="biometric_settings_use_biometric_unlock_phone" msgid="8180914579885804358">"Låsa upp telefonen"</string>
     <string name="biometric_settings_use_biometric_for_apps" msgid="6201168728906364189">"Verifiera din identitet i appar"</string>
     <string name="biometric_settings_use_face_preference_summary" msgid="1821648836899408477">"Med ansikte"</string>
     <string name="biometric_settings_use_fingerprint_preference_summary" msgid="6077762097826050165">"Med fingeravtryck"</string>
@@ -466,7 +472,7 @@
     <string name="security_settings_fingerprint_enroll_error_unable_to_process_dialog_title" msgid="6305457126747942642">"Det gick inte att ställa in fingeravtryck"</string>
     <string name="security_settings_fingerprint_enroll_error_unable_to_process_message_setup" msgid="2735739618722623980">"Försök igen direkt eller ställ in ditt fingeravtryck senare i inställningarna."</string>
     <string name="security_settings_fingerprint_enroll_error_unable_to_process_message" msgid="5858386244898601003">"Försök igen direkt eller ställ in ditt fingeravtryck senare."</string>
-    <string name="security_settings_fingerprint_enroll_error_dialog_title" msgid="8582267776559099046">"Tiden för fingeravtrycksinställning gick ut"</string>
+    <string name="security_settings_fingerprint_enroll_error_dialog_title" msgid="8582267776559099046">"Fingeravtryckskonfigurering nådde tidsgränsen"</string>
     <string name="security_settings_fingerprint_enroll_error_timeout_dialog_message_setup" msgid="8521566666541069383">"Du kan ställa in ditt fingeravtryck senare i inställningarna."</string>
     <string name="security_settings_fingerprint_enroll_error_generic_dialog_message_setup" msgid="8140162986046783546">"Något gick fel. Du kan ställa in ditt fingeravtryck senare i inställningarna."</string>
     <string name="security_settings_fingerprint_enroll_error_timeout_dialog_message" msgid="3534341971920335247">"Du kan ställa in ditt fingeravtryck senare."</string>
@@ -543,7 +549,7 @@
     <string name="unlock_set_unlock_mode_off" msgid="4632139864722236359">"Inget"</string>
     <string name="unlock_set_unlock_mode_none" msgid="5596049938457028214">"Svep"</string>
     <string name="unlock_set_unlock_mode_pattern" msgid="1926480143883094896">"Mönster"</string>
-    <string name="unlock_set_unlock_mode_pin" msgid="9028659554829888373">"Pinkod"</string>
+    <string name="unlock_set_unlock_mode_pin" msgid="9028659554829888373">"PIN-kod"</string>
     <string name="unlock_set_unlock_mode_password" msgid="8810609692771987513">"Lösenord"</string>
     <string name="unlock_disable_frp_warning_title" msgid="3606280046362811229">"Vill du ta bort skärmlåset?"</string>
     <string name="unlock_disable_frp_warning_title_profile" msgid="1005284289723910461">"Vill du ta bort profilens säkerhetsfunktioner?"</string>
@@ -1119,7 +1125,6 @@
     <string name="security_patch" msgid="4071756145347865382">"Säkerhetsuppdatering för Android"</string>
     <string name="model_info" msgid="8997566254717810904">"Modell"</string>
     <string name="hardware_revision" msgid="3454709180861965025">"Maskinvaruversion"</string>
-    <string name="manufactured_year" msgid="3401517138700926475">"Tillverkningsår"</string>
     <string name="fcc_equipment_id" msgid="6596668314025646129">"Utrustnings-ID"</string>
     <string name="baseband_version" msgid="2600182227599835857">"Basbandsversion"</string>
     <string name="kernel_version" msgid="3513538109381366881">"Kernel-version"</string>
@@ -1161,8 +1166,7 @@
     <string name="battery_manufacture_date" msgid="7139426520156833987">"Tillverkningsdatum"</string>
     <string name="battery_first_use_date" msgid="3157207331722711317">"Datum för första användning"</string>
     <string name="battery_cycle_count" msgid="2912949283386571900">"Antal cykler"</string>
-    <!-- no translation found for battery_cycle_count_not_available (2426584515665184664) -->
-    <skip />
+    <string name="battery_cycle_count_not_available" msgid="2426584515665184664">"Inte tillgängligt"</string>
     <string name="memory_calculating_size" msgid="3898240439798661242">"Beräknas..."</string>
     <string name="storage_menu_rename" msgid="8549835371429159336">"Byt namn"</string>
     <string name="storage_menu_mount" msgid="4760531872302820569">"Montera"</string>
@@ -1276,7 +1280,6 @@
     <string name="reset_bluetooth_wifi_desc" msgid="4030295669083059711">"Detta återställer alla wifi- och Bluetooth-inställningar. Det går inte att ångra den här åtgärden."</string>
     <string name="reset_bluetooth_wifi_button_text" msgid="3974098137045963639">"Återställ"</string>
     <string name="reset_bluetooth_wifi_complete_toast" msgid="5893439291030574365">"Bluetooth och wifi har återställts"</string>
-    <string name="erase_euicc_data_button" msgid="728078969563311737">"Rensa"</string>
     <string name="reset_esim_title" msgid="4194570573425902754">"Rensa eSIM-kort"</string>
     <string name="reset_esim_desc" msgid="3662444090563399131">"Det här avbryter inte något serviceavtal för telefonen. Om du vill ladda ned SIM-kort som ersätter de gamla kontaktar du operatören."</string>
     <string name="reset_network_button_text" msgid="2281476496459610071">"Återställ inställningar"</string>
@@ -1439,7 +1442,7 @@
     <string name="lockpassword_choose_your_pin_header_for_face" msgid="704061826984851309">"Ange pinkod för ansiktslås"</string>
     <string name="lockpassword_choose_your_password_header_for_biometrics" msgid="2053366309272487015">"Skapa ett lösenord för ansiktslås eller fingeravtryckslås"</string>
     <string name="lockpassword_choose_your_pattern_header_for_biometrics" msgid="4038476475293734905">"Skapa ett mönster för fingeravtrycks- eller ansiktslås"</string>
-    <string name="lockpassword_choose_your_pin_header_for_biometrics" msgid="9086039918921009380">"Skapa en pinkod för att använda ansikte eller fingeravtryck"</string>
+    <string name="lockpassword_choose_your_pin_header_for_biometrics" msgid="9086039918921009380">"Skapa en pinkod för ansiktslås eller fingeravtryckslås"</string>
     <string name="lockpassword_forgot_password" msgid="5730587692489737223">"Har du glömt lösenordet?"</string>
     <string name="lockpassword_forgot_pattern" msgid="1196116549051927516">"Har du glömt mönstret?"</string>
     <string name="lockpassword_forgot_pin" msgid="7164232234705747672">"Har du glömt pinkoden?"</string>
@@ -1477,8 +1480,8 @@
     <string name="lockpattern_recording_inprogress" msgid="7268008332694009191">"Lyft fingret när du är klar"</string>
     <string name="lockpattern_recording_incorrect_too_short" msgid="3351522018450593723">"Anslut minst <xliff:g id="NUMBER">%d</xliff:g> punkter. Försök igen."</string>
     <string name="lockpattern_pattern_entered_header" msgid="7709618312713127249">"Mönstret har registrerats"</string>
-    <string name="lockpattern_need_to_confirm" msgid="6489499109451714360">"Rita mönstret igen för att bekräfta"</string>
-    <string name="lockpattern_pattern_confirmed_header" msgid="2969990617475456153">"Ditt nya mönster"</string>
+    <string name="lockpattern_need_to_confirm" msgid="6489499109451714360">"Rita ditt grafiska lösenord igen för att bekräfta"</string>
+    <string name="lockpattern_pattern_confirmed_header" msgid="2969990617475456153">"Ditt nya grafiska lösenord"</string>
     <string name="lockpattern_confirm_button_text" msgid="6122815520373044089">"Bekräfta"</string>
     <string name="lockpattern_restart_button_text" msgid="255339375151895998">"Rita igen"</string>
     <string name="lockpattern_retry_button_text" msgid="4229668933251849760">"Rensa"</string>
@@ -1869,8 +1872,7 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"Svep uppåt med två fingrar från skärmens nederkant om du vill använda en tillgänglighetsfunktion.\n\nByt funktion genom att svepa uppåt med två fingrar och hålla kvar dem."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"Svep uppåt med tre fingrar från skärmens nederkant om du vill använda en tillgänglighetsfunktion.\n\nByt funktion genom att svepa uppåt med tre fingrar och hålla kvar dem."</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"OK"</string>
-    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
-    <skip />
+    <string name="accessibility_tutorial_dialog_link_button" msgid="6797349445794031781">"Knappinställningar"</string>
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"Genväg till <xliff:g id="SERVICE">%1$s</xliff:g>"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"Tillgänglighetsknapp"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"Tillgänglighetsrörelse"</string>
@@ -2333,8 +2335,7 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"Visa efter appar"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"Visa efter system"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
-    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
-    <skip />
+    <string name="battery_cycle_count_footer" msgid="3642121059800373545">"Antalet cykler kanske inte är noll före första användningen på grund av kvalitetsinspektioner"</string>
     <string name="process_stats_summary_title" msgid="502683176231281732">"Processtatistik"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"Nördig statistik om processer som körs"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"Minnesanvändning"</string>
@@ -4165,7 +4166,8 @@
     <string name="change_wifi_state_app_detail_summary" msgid="8230854855584217111">"Ge den här appen behörighet att aktivera och inaktivera wifi, söka efter och ansluta till wifi-nätverk, lägga till och ta bort nätverk samt starta en lokal surfzon"</string>
     <string name="change_nfc_tag_apps_title" msgid="91514009058149617">"Starta via NFC"</string>
     <string name="change_nfc_tag_apps_detail_switch" msgid="240286205725043561">"Tillåt start vid NFC-skanning"</string>
-    <string name="change_nfc_tag_apps_detail_summary" msgid="3338220223868942195">"Tillåt att appen startas när en NFC-etikett skannas.\nOm den här behörigheten är aktiverad blir appen tillgänglig som alternativ när en etikett identifieras."</string>
+    <!-- no translation found for change_nfc_tag_apps_detail_summary (3338220223868942195) -->
+    <skip />
     <string name="media_output_title" msgid="8283629315159510680">"Spela upp media på"</string>
     <string name="media_output_label_title" msgid="4139048973886819148">"Spela upp <xliff:g id="LABEL">%s</xliff:g> på"</string>
     <string name="media_output_default_summary" msgid="4200343059396412376">"Den här enheten"</string>
@@ -4728,36 +4730,20 @@
     <string name="contrast_medium" msgid="384414510709285811">"Medelhög"</string>
     <string name="contrast_high" msgid="3988567609694797696">"Hög"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"Denna app kan bara vara öppen i ett fönster"</string>
-    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
-    <skip />
-    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
-    <skip />
-    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
-    <skip />
-    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
-    <skip />
-    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
-    <skip />
-    <!-- no translation found for show_captions_disabled (690650956523818755) -->
-    <skip />
-    <!-- no translation found for show_captions_enabled (7089043007924626) -->
-    <skip />
-    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
-    <skip />
-    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
-    <skip />
+    <string name="accessibility_feature_full_state_summary" msgid="8747170258807179670">"<xliff:g id="STATE_0">%1$s</xliff:g>/<xliff:g id="SHORTCUT_STATE">%2$s</xliff:g>/<xliff:g id="SERVICE_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="generic_accessibility_service_on" msgid="2465820044606775562">"Tjänsten är på"</string>
+    <string name="generic_accessibility_service_off" msgid="1752061696695346360">"Tjänsten är av"</string>
+    <string name="generic_accessibility_feature_shortcut_off" msgid="3669343136122187913">"Genvägen är av"</string>
+    <string name="accessibility_shortcut_state_off" msgid="8158137799007601475">"Av"</string>
+    <string name="daltonizer_state_on" msgid="131013270022603983">"På"</string>
+    <string name="daltonizer_state_off" msgid="1162285688069856179">"Av"</string>
+    <string name="color_inversion_state_on" msgid="1160969033636440368">"På"</string>
+    <string name="color_inversion_state_off" msgid="6925638668080451724">"Av"</string>
+    <string name="color_inversion_feature_summary" msgid="1199876648549627647">"Ändrar ljusa skärmar till mörka och tvärtom"</string>
+    <string name="magnification_feature_summary" msgid="641825267460247848">"Zooma in snabbt så att innehåll på skärmen förstoras"</string>
+    <string name="autoclick_disabled" msgid="3213396804955002120">"Av"</string>
+    <string name="show_captions_disabled" msgid="690650956523818755">"Av"</string>
+    <string name="show_captions_enabled" msgid="7089043007924626">"På"</string>
+    <string name="live_caption_disabled" msgid="3562035026547887366">"Av"</string>
+    <string name="live_caption_enabled" msgid="5269360946200718949">"På"</string>
 </resources>

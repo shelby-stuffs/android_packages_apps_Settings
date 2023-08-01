@@ -65,7 +65,8 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"Упари лево уво"</string>
     <string name="bluetooth_device_controls_general" msgid="1399214835599665488">"За све доступне слушне апарате"</string>
     <string name="bluetooth_device_controls_title" msgid="1895676556354697234">"Подешавања слушног апарата"</string>
-    <string name="bluetooth_device_controls_summary" msgid="8115767735418425663">"пречица, компатибилност са слушним апаратима"</string>
+    <!-- no translation found for bluetooth_device_controls_summary (8115767735418425663) -->
+    <skip />
     <string name="bluetooth_device_controls_specific" msgid="7706863288754077107">"За овај уређај"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"Аудио излаз"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"О аудио излазу"</string>
@@ -180,7 +181,7 @@
     <string name="temperature_preferences_title" msgid="5009881556503629058">"Температура"</string>
     <string name="first_day_of_week_preferences_title" msgid="1971850087589599553">"Први дан недеље"</string>
     <string name="numbers_preferences_title" msgid="8197418984391195446">"Подешавања бројева"</string>
-    <string name="default_string_of_regional_preference" msgid="7662581547334113719">"Користи подразумевано у апликацији"</string>
+    <string name="default_string_of_regional_preference" msgid="3428899072914884203">"Користи подразумевано"</string>
     <string name="celsius_temperature_unit" msgid="8896459071273084507">"Целзијус (°C)"</string>
     <string name="fahrenheit_temperature_unit" msgid="1118677820614569801">"Фаренхајт (°F)"</string>
     <string name="sunday_first_day_of_week" msgid="7644548348295686051">"недеља"</string>
@@ -326,6 +327,10 @@
     <string name="security_settings_face_settings_remove_dialog_title" msgid="2899669764446232715">"Желите да избришете модел лица?"</string>
     <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"Модел лица ће се трајно и безбедно избрисати.\n\nПосле брисања вам треба PIN, шаблон или лозинка да бисте откључали телефон или за потврду идентитета у апликацијама."</string>
     <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"Модел лица ће бити трајно и безбедно избрисан.\n\nПосле брисања вам треба PIN, шаблон или лозинка да бисте откључали телефон."</string>
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint (7609582230650860974) -->
+    <skip />
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint_conv (2627374706274503259) -->
+    <skip />
     <string name="security_settings_face_settings_context_subtitle" msgid="8284262560781442403">"Откључајте телефон лицем"</string>
     <string name="security_settings_fingerprint" msgid="6387775386189204201">"Отисак прста"</string>
     <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"Отисак прста"</string>
@@ -487,11 +492,11 @@
     <string name="security_header" msgid="961514795852103424">"Безбедност"</string>
     <string name="privacy_header" msgid="5526002421324257007">"Приватност"</string>
     <string name="work_profile_category_header" msgid="85707750968948517">"Пословни профил"</string>
-    <string name="fingerprint_add_max" msgid="8639321019299347447">"Можете да их додате до <xliff:g id="COUNT">%d</xliff:g>"</string>
+    <string name="fingerprint_add_max" msgid="8639321019299347447">"Максималан број отисака прстију који можете да додате је <xliff:g id="COUNT">%d</xliff:g>"</string>
     <string name="fingerprint_intro_error_max" msgid="4431784409732135610">"Додали сте максималан број отисака прстију"</string>
     <string name="fingerprint_intro_error_unknown" msgid="877005321503793963">"Не можете да додате још отисака прстију"</string>
     <string name="fingerprint_delete_title" msgid="5412123164503407098">"Избришите <xliff:g id="FINGERPRINT_ID">%1$s</xliff:g>"</string>
-    <string name="fingerprint_last_delete_message_profile_challenge" msgid="4104208067277655068">"Нећете моћи да користите отисак прста за откључавање пословног профила, овлашћивање куповина ни пријављивање у пословне апликације."</string>
+    <string name="fingerprint_last_delete_message_profile_challenge" msgid="4104208067277655068">"Нећете моћи да користите отисак прста за откључавање пословног профила, овлашћивање куповина или пријављивање у пословне апликације."</string>
     <string name="encryption_settings_title" msgid="2848716008695618360">"Шифровање"</string>
     <string name="encrypted_summary" msgid="545623487587251207">"Шифровано"</string>
     <string name="no_screen_lock_issue_title" msgid="1814109590692792891">"Подесите откључавање екрана"</string>
@@ -527,7 +532,7 @@
     <string name="unlock_set_unlock_pin_title" msgid="5283636759362880407">"PIN"</string>
     <string name="unlock_set_unlock_password_title" msgid="2559842616268607041">"Лозинка"</string>
     <string name="unlock_set_do_later_title" msgid="6565575303676064364">"Не сада"</string>
-    <string name="current_screen_lock" msgid="1367883977261098017">"Актуелно откључавање екрана"</string>
+    <string name="current_screen_lock" msgid="1367883977261098017">"Актуелно закључавање екрана"</string>
     <string name="fingerprint_unlock_set_unlock_pattern" msgid="2229689425933043901">"Шаблон • Отисак прста"</string>
     <string name="fingerprint_unlock_set_unlock_pin" msgid="7979848492740627674">"PIN • Отисак прста"</string>
     <string name="fingerprint_unlock_set_unlock_password" msgid="6207676267295036963">"Лозинка • Отисак прста"</string>
@@ -1119,7 +1124,6 @@
     <string name="security_patch" msgid="4071756145347865382">"Безбедносно ажурирање за Android"</string>
     <string name="model_info" msgid="8997566254717810904">"Модел"</string>
     <string name="hardware_revision" msgid="3454709180861965025">"Верзија хардвера"</string>
-    <string name="manufactured_year" msgid="3401517138700926475">"Година производње"</string>
     <string name="fcc_equipment_id" msgid="6596668314025646129">"ИД опреме"</string>
     <string name="baseband_version" msgid="2600182227599835857">"Верзија основног пропусног опсега"</string>
     <string name="kernel_version" msgid="3513538109381366881">"Верзија језгра"</string>
@@ -1275,7 +1279,6 @@
     <string name="reset_bluetooth_wifi_desc" msgid="4030295669083059711">"Овим ресетујете сва WiFi и Bluetooth подешавања. Не можете да опозовете ову радњу."</string>
     <string name="reset_bluetooth_wifi_button_text" msgid="3974098137045963639">"Ресетуј"</string>
     <string name="reset_bluetooth_wifi_complete_toast" msgid="5893439291030574365">"Bluetooth и WiFi су ресетовани"</string>
-    <string name="erase_euicc_data_button" msgid="728078969563311737">"Обриши"</string>
     <string name="reset_esim_title" msgid="4194570573425902754">"Обриши eSIM-ове"</string>
     <string name="reset_esim_desc" msgid="3662444090563399131">"Овим не отказујете ниједан тарифни пакет. Да бисте преузели нове SIM картице, обратите се мобилном оператеру."</string>
     <string name="reset_network_button_text" msgid="2281476496459610071">"Ресетуј подешавања"</string>
@@ -1868,8 +1871,7 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"Да бисте користили функцију приступачности, превуците нагоре од дна екрана помоћу 2 прста.\n\nДа бисте прелазили са једне функције на другу, превуците нагоре помоћу 2 прста и задржите."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"Да бисте користили функцију приступачности, превуците нагоре од дна екрана помоћу 3 прста.\n\nДа бисте прелазили са једне функције на другу, превуците нагоре помоћу 3 прста и задржите."</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"Важи"</string>
-    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
-    <skip />
+    <string name="accessibility_tutorial_dialog_link_button" msgid="6797349445794031781">"Подешавања дугмета"</string>
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"Пречица за: <xliff:g id="SERVICE">%1$s</xliff:g>"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"Дугме Приступачност"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"Покрет за приступачност"</string>
@@ -2332,8 +2334,7 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"Прикажи према апликацијама"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"Прикажи према системима"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
-    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
-    <skip />
+    <string name="battery_cycle_count_footer" msgid="3642121059800373545">"Због провере пре слања број циклуса можда неће бити нула при првом коришћењу"</string>
     <string name="process_stats_summary_title" msgid="502683176231281732">"Статистика процеса"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"Штреберска статистика о активним процесима"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"Искоришћеност меморије"</string>
@@ -3597,7 +3598,7 @@
     <string name="sharing_remote_bugreport_dialog_message" msgid="3523877008096439251">"Овај извештај о грешци се дели са ИТ администратором. Контактирајте га за више детаља."</string>
     <string name="share_remote_bugreport_action" msgid="7173093464692893276">"Дели"</string>
     <string name="decline_remote_bugreport_action" msgid="1276509879613158895">"Одбиј"</string>
-    <string name="usb_use_charging_only" msgid="1743303747327057947">"Без преноса података"</string>
+    <string name="usb_use_charging_only" msgid="1743303747327057947">"Нема преноса података"</string>
     <string name="usb_use_power_only" msgid="3408055485802114621">"Напуни повезани уређај"</string>
     <string name="usb_use_file_transfers" msgid="483915710802018503">"Пренос датотека"</string>
     <string name="usb_use_photo_transfers" msgid="4641181628966036093">"PTP"</string>
@@ -4164,7 +4165,8 @@
     <string name="change_wifi_state_app_detail_summary" msgid="8230854855584217111">"Омогућите да ова апликација укључи или искључи WiFi, тражи и повезује се на WiFi мреже, додаје и уклања мреже или покреће само локални хотспот"</string>
     <string name="change_nfc_tag_apps_title" msgid="91514009058149617">"Покрени преко NFC-а"</string>
     <string name="change_nfc_tag_apps_detail_switch" msgid="240286205725043561">"Дозволи покретање при скенирању NFC ознаке"</string>
-    <string name="change_nfc_tag_apps_detail_summary" msgid="3338220223868942195">"Дозволите да се ова апликација покреће када се скенира NFC ознака.\nАко је ова дозвола укључена, апликација ће бити доступна као опција сваки пут када се ознака открије."</string>
+    <!-- no translation found for change_nfc_tag_apps_detail_summary (3338220223868942195) -->
+    <skip />
     <string name="media_output_title" msgid="8283629315159510680">"Пуштај медијски садржај на"</string>
     <string name="media_output_label_title" msgid="4139048973886819148">"Пусти <xliff:g id="LABEL">%s</xliff:g> на"</string>
     <string name="media_output_default_summary" msgid="4200343059396412376">"Овај уређај"</string>
@@ -4728,36 +4730,20 @@
     <string name="contrast_medium" msgid="384414510709285811">"Средње"</string>
     <string name="contrast_high" msgid="3988567609694797696">"Високо"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"Ова апликација може да се отвори само у једном прозору"</string>
-    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
-    <skip />
-    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
-    <skip />
-    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
-    <skip />
-    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
-    <skip />
-    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
-    <skip />
-    <!-- no translation found for show_captions_disabled (690650956523818755) -->
-    <skip />
-    <!-- no translation found for show_captions_enabled (7089043007924626) -->
-    <skip />
-    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
-    <skip />
-    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
-    <skip />
+    <string name="accessibility_feature_full_state_summary" msgid="8747170258807179670">"<xliff:g id="STATE_0">%1$s</xliff:g>/<xliff:g id="SHORTCUT_STATE">%2$s</xliff:g>/<xliff:g id="SERVICE_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="generic_accessibility_service_on" msgid="2465820044606775562">"Услуга је укључена"</string>
+    <string name="generic_accessibility_service_off" msgid="1752061696695346360">"Услуга је искључена"</string>
+    <string name="generic_accessibility_feature_shortcut_off" msgid="3669343136122187913">"Пречица је искључена"</string>
+    <string name="accessibility_shortcut_state_off" msgid="8158137799007601475">"Искључено"</string>
+    <string name="daltonizer_state_on" msgid="131013270022603983">"Укључено"</string>
+    <string name="daltonizer_state_off" msgid="1162285688069856179">"Искључено"</string>
+    <string name="color_inversion_state_on" msgid="1160969033636440368">"Укључено"</string>
+    <string name="color_inversion_state_off" msgid="6925638668080451724">"Искључено"</string>
+    <string name="color_inversion_feature_summary" msgid="1199876648549627647">"Светли екрани постају тамни, а тамни екрани светли"</string>
+    <string name="magnification_feature_summary" msgid="641825267460247848">"Брзо увећајте екран да би садржај био већи"</string>
+    <string name="autoclick_disabled" msgid="3213396804955002120">"Искључено"</string>
+    <string name="show_captions_disabled" msgid="690650956523818755">"Искључено"</string>
+    <string name="show_captions_enabled" msgid="7089043007924626">"Укључено"</string>
+    <string name="live_caption_disabled" msgid="3562035026547887366">"Искључено"</string>
+    <string name="live_caption_enabled" msgid="5269360946200718949">"Укључено"</string>
 </resources>

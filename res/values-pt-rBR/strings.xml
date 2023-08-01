@@ -65,7 +65,8 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"Parear lado esquerdo"</string>
     <string name="bluetooth_device_controls_general" msgid="1399214835599665488">"Para todos os aparelhos auditivos disponíveis"</string>
     <string name="bluetooth_device_controls_title" msgid="1895676556354697234">"Configurações do aparelho auditivo"</string>
-    <string name="bluetooth_device_controls_summary" msgid="8115767735418425663">"Atalho, compatibilidade com aparelhos auditivos"</string>
+    <!-- no translation found for bluetooth_device_controls_summary (8115767735418425663) -->
+    <skip />
     <string name="bluetooth_device_controls_specific" msgid="7706863288754077107">"Para este aparelho"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"Saída de áudio"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"Sobre a saída de áudio"</string>
@@ -180,7 +181,8 @@
     <string name="temperature_preferences_title" msgid="5009881556503629058">"Temperatura"</string>
     <string name="first_day_of_week_preferences_title" msgid="1971850087589599553">"Primeiro dia da semana"</string>
     <string name="numbers_preferences_title" msgid="8197418984391195446">"Preferências de números"</string>
-    <string name="default_string_of_regional_preference" msgid="7662581547334113719">"Usar o padrão do app"</string>
+    <!-- no translation found for default_string_of_regional_preference (3428899072914884203) -->
+    <skip />
     <string name="celsius_temperature_unit" msgid="8896459071273084507">"Celsius (°C)"</string>
     <string name="fahrenheit_temperature_unit" msgid="1118677820614569801">"Fahrenheit (°F)"</string>
     <string name="sunday_first_day_of_week" msgid="7644548348295686051">"Domingo"</string>
@@ -324,8 +326,10 @@
     <string name="security_settings_face_settings_remove_face_model" msgid="812920481303980846">"Excluir modelo de rosto"</string>
     <string name="security_settings_face_settings_enroll" msgid="3726313826693825029">"Configurar o Desbloqueio facial"</string>
     <string name="security_settings_face_settings_remove_dialog_title" msgid="2899669764446232715">"Excluir modelo de rosto?"</string>
-    <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"Seu modelo de rosto será excluído de maneira permanente e segura.\n\nApós a exclusão, você precisará usar a impressão digital, o PIN, o padrão ou a senha para desbloquear o smartphone ou fazer a autenticação em apps."</string>
-    <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"Seu modelo de rosto será excluído de maneira permanente e segura.\n\nApós a exclusão, você precisará usar a impressão digital, o PIN, o padrão ou a senha para desbloquear o smartphone."</string>
+    <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"Seu modelo de rosto será excluído de maneira permanente e segura.\n\nApós a exclusão, seu PIN, padrão ou senha serão necessários para desbloquear o smartphone ou fazer a autenticação em apps."</string>
+    <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"Seu modelo de rosto será excluído de maneira permanente e segura.\n\nApós a exclusão, seu PIN, padrão ou senha serão necessários para desbloquear o smartphone."</string>
+    <string name="security_settings_face_remove_dialog_details_fingerprint" msgid="7609582230650860974">"Seu modelo de rosto será excluído de maneira permanente e segura.\n\nApós a exclusão, você precisará usar a impressão digital, o PIN, o padrão ou a senha para desbloquear o smartphone ou fazer a autenticação em apps."</string>
+    <string name="security_settings_face_remove_dialog_details_fingerprint_conv" msgid="2627374706274503259">"Seu modelo de rosto será excluído de maneira permanente e segura.\n\nApós a exclusão, sua impressão digital, PIN, padrão ou senha serão necessários para desbloquear o smartphone."</string>
     <string name="security_settings_face_settings_context_subtitle" msgid="8284262560781442403">"Usar o Desbloqueio facial para acessar o smartphone"</string>
     <string name="security_settings_fingerprint" msgid="6387775386189204201">"Impressão digital"</string>
     <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"Impressão digital"</string>
@@ -383,7 +387,7 @@
     <string name="security_settings_work_biometric_preference_title" msgid="3121755615533533585">"Desbloqueio facial e por impressão digital para o trabalho"</string>
     <string name="security_settings_biometric_preference_summary_none_enrolled" msgid="213377753727694575">"Configuração necessária"</string>
     <string name="security_settings_biometric_preference_summary_both_fp_multiple" msgid="4821859306609955966">"Rosto e impressões digitais adicionados"</string>
-    <string name="security_settings_biometric_preference_summary_both_fp_single" msgid="684409535278676426">"Rosto e impressão digital registrados"</string>
+    <string name="security_settings_biometric_preference_summary_both_fp_single" msgid="684409535278676426">"Rosto e impressão digital adicionados"</string>
     <string name="biometric_settings_intro" msgid="4263069383955676756">"Se os métodos de desbloqueio facial e por impressão digital estiverem ativos, a impressão digital será usada para desbloquear o smartphone quando você estiver em um ambiente escuro ou usando uma máscara"</string>
     <string name="biometric_settings_category_ways_to_unlock" msgid="3384767901580915266">"Formas de desbloquear a tela"</string>
     <string name="biometric_settings_category_use_face_fingerprint" msgid="4377659744376863913">"Usar o rosto ou a impressão digital para"</string>
@@ -487,7 +491,7 @@
     <string name="security_header" msgid="961514795852103424">"Segurança"</string>
     <string name="privacy_header" msgid="5526002421324257007">"Privacidade"</string>
     <string name="work_profile_category_header" msgid="85707750968948517">"Perfil de trabalho"</string>
-    <string name="fingerprint_add_max" msgid="8639321019299347447">"É possível adicionar até <xliff:g id="COUNT">%d</xliff:g> digitais"</string>
+    <string name="fingerprint_add_max" msgid="8639321019299347447">"É possível adicionar até <xliff:g id="COUNT">%d</xliff:g> impressões digitais"</string>
     <string name="fingerprint_intro_error_max" msgid="4431784409732135610">"Você adicionou o número máximo de impressões digitais"</string>
     <string name="fingerprint_intro_error_unknown" msgid="877005321503793963">"Não é possível adicionar mais impressões digitais"</string>
     <string name="fingerprint_delete_title" msgid="5412123164503407098">"Excluir \"<xliff:g id="FINGERPRINT_ID">%1$s</xliff:g>\""</string>
@@ -1119,7 +1123,6 @@
     <string name="security_patch" msgid="4071756145347865382">"Atualização de segurança do Android"</string>
     <string name="model_info" msgid="8997566254717810904">"Modelo"</string>
     <string name="hardware_revision" msgid="3454709180861965025">"Versão do hardware"</string>
-    <string name="manufactured_year" msgid="3401517138700926475">"Ano da fabricação"</string>
     <string name="fcc_equipment_id" msgid="6596668314025646129">"ID do equipamento"</string>
     <string name="baseband_version" msgid="2600182227599835857">"Versão da banda de base"</string>
     <string name="kernel_version" msgid="3513538109381366881">"Versão do kernel"</string>
@@ -1161,8 +1164,7 @@
     <string name="battery_manufacture_date" msgid="7139426520156833987">"Data de fabricação"</string>
     <string name="battery_first_use_date" msgid="3157207331722711317">"Data do primeiro uso"</string>
     <string name="battery_cycle_count" msgid="2912949283386571900">"Contagem de ciclos"</string>
-    <!-- no translation found for battery_cycle_count_not_available (2426584515665184664) -->
-    <skip />
+    <string name="battery_cycle_count_not_available" msgid="2426584515665184664">"Indisponível"</string>
     <string name="memory_calculating_size" msgid="3898240439798661242">"Calculando..."</string>
     <string name="storage_menu_rename" msgid="8549835371429159336">"Renomear"</string>
     <string name="storage_menu_mount" msgid="4760531872302820569">"Montar"</string>
@@ -1276,7 +1278,6 @@
     <string name="reset_bluetooth_wifi_desc" msgid="4030295669083059711">"Todas as configurações de Wi-Fi e Bluetooth serão redefinidas. Não é possível desfazer essa ação."</string>
     <string name="reset_bluetooth_wifi_button_text" msgid="3974098137045963639">"Reiniciar"</string>
     <string name="reset_bluetooth_wifi_complete_toast" msgid="5893439291030574365">"O Bluetooth e o Wi-Fi foram redefinidos"</string>
-    <string name="erase_euicc_data_button" msgid="728078969563311737">"Limpar"</string>
     <string name="reset_esim_title" msgid="4194570573425902754">"Limpar eSIMs"</string>
     <string name="reset_esim_desc" msgid="3662444090563399131">"Isso não cancelará nenhum plano de serviços móveis. Para fazer o download de chips substitutos, entre em contato com a operadora."</string>
     <string name="reset_network_button_text" msgid="2281476496459610071">"Redefinir configurações"</string>
@@ -1869,8 +1870,7 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"Para usar um recurso de acessibilidade, deslize de baixo para cima na tela com dois dedos.\n\nPara alternar entre recursos, deslize de baixo para cima com dois dedos, sem soltar."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"Para usar um recurso de acessibilidade, deslize de baixo para cima na tela com três dedos.\n\nPara alternar entre recursos, deslize de baixo para cima com três dedos, sem soltar."</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"Ok"</string>
-    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
-    <skip />
+    <string name="accessibility_tutorial_dialog_link_button" msgid="6797349445794031781">"Configurações do botão"</string>
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"Atalho para <xliff:g id="SERVICE">%1$s</xliff:g>"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"Botão de acessibilidade"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"Gesto de acessibilidade"</string>
@@ -2333,8 +2333,7 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"Visualizar por apps"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"Visualizar por sistemas"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"Menos de <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
-    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
-    <skip />
+    <string name="battery_cycle_count_footer" msgid="3642121059800373545">"Devido a inspeções de qualidade realizadas antes do envio, a contagem de ciclos pode não estar zerada no primeiro uso"</string>
     <string name="process_stats_summary_title" msgid="502683176231281732">"Estatísticas de processo"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"Estatísticas detalhadas sobre os processos em execução"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"Uso da memória"</string>
@@ -4725,36 +4724,20 @@
     <string name="contrast_medium" msgid="384414510709285811">"Médio"</string>
     <string name="contrast_high" msgid="3988567609694797696">"Alto"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"Esse app só pode ser aberto em uma única janela"</string>
-    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
-    <skip />
-    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
-    <skip />
-    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
-    <skip />
-    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
-    <skip />
-    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
-    <skip />
-    <!-- no translation found for show_captions_disabled (690650956523818755) -->
-    <skip />
-    <!-- no translation found for show_captions_enabled (7089043007924626) -->
-    <skip />
-    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
-    <skip />
-    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
-    <skip />
+    <string name="accessibility_feature_full_state_summary" msgid="8747170258807179670">"<xliff:g id="STATE_0">%1$s</xliff:g> / <xliff:g id="SHORTCUT_STATE">%2$s</xliff:g> / <xliff:g id="SERVICE_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="generic_accessibility_service_on" msgid="2465820044606775562">"Serviço ativado"</string>
+    <string name="generic_accessibility_service_off" msgid="1752061696695346360">"Serviço desativado"</string>
+    <string name="generic_accessibility_feature_shortcut_off" msgid="3669343136122187913">"Atalho desativado"</string>
+    <string name="accessibility_shortcut_state_off" msgid="8158137799007601475">"Desativado"</string>
+    <string name="daltonizer_state_on" msgid="131013270022603983">"Ativado"</string>
+    <string name="daltonizer_state_off" msgid="1162285688069856179">"Desativado"</string>
+    <string name="color_inversion_state_on" msgid="1160969033636440368">"Ativado"</string>
+    <string name="color_inversion_state_off" msgid="6925638668080451724">"Desativado"</string>
+    <string name="color_inversion_feature_summary" msgid="1199876648549627647">"Transforma as telas claras em escuras e vice-versa"</string>
+    <string name="magnification_feature_summary" msgid="641825267460247848">"Aplique zoom rapidamente na tela para aumentar o conteúdo"</string>
+    <string name="autoclick_disabled" msgid="3213396804955002120">"Desativado"</string>
+    <string name="show_captions_disabled" msgid="690650956523818755">"Desativada"</string>
+    <string name="show_captions_enabled" msgid="7089043007924626">"Ativada"</string>
+    <string name="live_caption_disabled" msgid="3562035026547887366">"Desativada"</string>
+    <string name="live_caption_enabled" msgid="5269360946200718949">"Ativada"</string>
 </resources>

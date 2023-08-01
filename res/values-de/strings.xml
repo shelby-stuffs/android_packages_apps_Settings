@@ -65,7 +65,8 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"Linkes Ohr koppeln"</string>
     <string name="bluetooth_device_controls_general" msgid="1399214835599665488">"Für alle verfügbaren Hörgeräte"</string>
     <string name="bluetooth_device_controls_title" msgid="1895676556354697234">"Hörgeräteeinstellungen"</string>
-    <string name="bluetooth_device_controls_summary" msgid="8115767735418425663">"Verknüpfung, Kompatibilität mit Hörgeräten"</string>
+    <!-- no translation found for bluetooth_device_controls_summary (8115767735418425663) -->
+    <skip />
     <string name="bluetooth_device_controls_specific" msgid="7706863288754077107">"Für dieses Gerät"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"Audioausgabe"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"Informationen zur Audioausgabe"</string>
@@ -180,7 +181,8 @@
     <string name="temperature_preferences_title" msgid="5009881556503629058">"Temperatur"</string>
     <string name="first_day_of_week_preferences_title" msgid="1971850087589599553">"Erster Tag der Woche"</string>
     <string name="numbers_preferences_title" msgid="8197418984391195446">"Einstellungen für Zahlen"</string>
-    <string name="default_string_of_regional_preference" msgid="7662581547334113719">"Standard-App-Einstellungen verwenden"</string>
+    <!-- no translation found for default_string_of_regional_preference (3428899072914884203) -->
+    <skip />
     <string name="celsius_temperature_unit" msgid="8896459071273084507">"Celsius (°C)"</string>
     <string name="fahrenheit_temperature_unit" msgid="1118677820614569801">"Fahrenheit (°F)"</string>
     <string name="sunday_first_day_of_week" msgid="7644548348295686051">"Sonntag"</string>
@@ -326,6 +328,10 @@
     <string name="security_settings_face_settings_remove_dialog_title" msgid="2899669764446232715">"Gesichtsmodell löschen?"</string>
     <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"Dein Gesichtsmodell wird dauerhaft und sicher gelöscht.\n\nNach dem Löschen benötigst du deine PIN, dein Muster oder dein Passwort, um dein Smartphone zu entsperren und dich in Apps zu authentifizieren."</string>
     <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"Dein Gesichtsmodell wird dauerhaft und sicher gelöscht.\n\nNach dem Löschen benötigst du deine PIN, dein Muster oder dein Passwort, um dein Smartphone zu entsperren."</string>
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint (7609582230650860974) -->
+    <skip />
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint_conv (2627374706274503259) -->
+    <skip />
     <string name="security_settings_face_settings_context_subtitle" msgid="8284262560781442403">"Verwende die Entsperrung per Gesichtserkennung, um dein Smartphone zu entsperren"</string>
     <string name="security_settings_fingerprint" msgid="6387775386189204201">"Fingerabdruck"</string>
     <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"Fingerabdruck"</string>
@@ -667,9 +673,9 @@
     <string name="bluetooth_companion_app_remove_association_confirm_button" msgid="76323555527926915">"App-Verknüpfung aufheben"</string>
     <string name="bluetooth_max_connected_audio_devices_string" msgid="3114156958598821615">"Maximale Zahl verbundener Bluetooth-Audiogeräte"</string>
     <string name="bluetooth_max_connected_audio_devices_dialog_title" msgid="4056811727247312473">"Maximale Zahl verbundener Bluetooth-Audiogeräte auswählen"</string>
-    <string name="nfc_stack_debuglog_title" msgid="2926748386805740609">"NFC-Stack-Debugging-Log"</string>
+    <string name="nfc_stack_debuglog_title" msgid="2926748386805740609">"NFC-Stack-Debuggingprotokoll"</string>
     <string name="nfc_stack_debuglog_summary" msgid="7333205107551132121">"NFC-Stack-Protokollierungsebene erhöhen"</string>
-    <string name="nfc_verbose_vendor_log_title" msgid="5554505631122964628">"Ausführliches NFC-Debugging-Log"</string>
+    <string name="nfc_verbose_vendor_log_title" msgid="5554505631122964628">"Ausführliches NFC-Debugging-Protokoll"</string>
     <string name="nfc_verbose_vendor_log_summary" msgid="3049128322855928507">"Zusätzliche gerätespezifische Anbieterprotokolle in Fehlerberichte einschließen, die private Informationen enthalten können"</string>
     <string name="nfc_snoop_log_title" msgid="1576197495976952388">"Ungefiltertes NFC-NCI-Protokoll"</string>
     <string name="nfc_snoop_log_summary" msgid="3988383328800163180">"Detaillierte NFC-Pakete erfassen, die private Informationen enthalten können"</string>
@@ -1119,7 +1125,6 @@
     <string name="security_patch" msgid="4071756145347865382">"Android-Sicherheitsupdate"</string>
     <string name="model_info" msgid="8997566254717810904">"Modell"</string>
     <string name="hardware_revision" msgid="3454709180861965025">"Hardwareversion"</string>
-    <string name="manufactured_year" msgid="3401517138700926475">"Herstellungsjahr"</string>
     <string name="fcc_equipment_id" msgid="6596668314025646129">"Geräte-ID"</string>
     <string name="baseband_version" msgid="2600182227599835857">"Baseband-Version"</string>
     <string name="kernel_version" msgid="3513538109381366881">"Kernel-Version"</string>
@@ -1161,8 +1166,7 @@
     <string name="battery_manufacture_date" msgid="7139426520156833987">"Herstellungsdatum"</string>
     <string name="battery_first_use_date" msgid="3157207331722711317">"Datum der ersten Verwendung"</string>
     <string name="battery_cycle_count" msgid="2912949283386571900">"Anzahl der Ladezyklen"</string>
-    <!-- no translation found for battery_cycle_count_not_available (2426584515665184664) -->
-    <skip />
+    <string name="battery_cycle_count_not_available" msgid="2426584515665184664">"Nicht verfügbar"</string>
     <string name="memory_calculating_size" msgid="3898240439798661242">"Wird berechnet..."</string>
     <string name="storage_menu_rename" msgid="8549835371429159336">"Umbenennen"</string>
     <string name="storage_menu_mount" msgid="4760531872302820569">"Bereitstellen"</string>
@@ -1276,7 +1280,6 @@
     <string name="reset_bluetooth_wifi_desc" msgid="4030295669083059711">"Dadurch werden alle WLAN- und Bluetooth-Einstellungen zurückgesetzt. Diese Aktion lässt sich nicht rückgängig machen."</string>
     <string name="reset_bluetooth_wifi_button_text" msgid="3974098137045963639">"Zurücksetzen"</string>
     <string name="reset_bluetooth_wifi_complete_toast" msgid="5893439291030574365">"Bluetooth und WLAN wurden zurückgesetzt"</string>
-    <string name="erase_euicc_data_button" msgid="728078969563311737">"Löschen"</string>
     <string name="reset_esim_title" msgid="4194570573425902754">"eSIMs löschen"</string>
     <string name="reset_esim_desc" msgid="3662444090563399131">"Dein Mobilfunkvertrag wird dadurch nicht gekündigt. Wende dich an deinen Mobilfunkanbieter, um Ersatz-SIMs herunterzuladen."</string>
     <string name="reset_network_button_text" msgid="2281476496459610071">"Einstellungen zurücksetzen"</string>
@@ -1869,8 +1872,7 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"Wenn du eine Bedienungshilfe verwenden möchtest, wische vom unteren Displayrand mit zwei Fingern nach oben.\n\nWenn du zwischen den Funktionen wechseln möchtest, wische mit zwei Fingern über das Display nach oben und halte."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"Wenn du eine Bedienungshilfe verwenden möchtest, wische vom unteren Displayrand mit drei Fingern nach oben.\n\nWenn du zwischen den Funktionen wechseln möchtest, wische mit drei Fingern über das Display nach oben und halte."</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"OK"</string>
-    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
-    <skip />
+    <string name="accessibility_tutorial_dialog_link_button" msgid="6797349445794031781">"Schaltflächeneinstellungen"</string>
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"Kurzbefehl für „<xliff:g id="SERVICE">%1$s</xliff:g>“"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"Schaltfläche „Bedienungshilfen“"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"Touch-Geste für Bedienungshilfen"</string>
@@ -2333,8 +2335,7 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"Nach Apps filtern"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"Nach Systemen filtern"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
-    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
-    <skip />
+    <string name="battery_cycle_count_footer" msgid="3642121059800373545">"Aufgrund von Qualitätsprüfungen vor dem Versand ist die Anzahl der Ladezyklen bei der ersten Verwendung möglicherweise nicht null"</string>
     <string name="process_stats_summary_title" msgid="502683176231281732">"Prozessstatistiken"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"Statistiken zu laufenden Prozessen"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"Arbeitsspeichernutzung"</string>
@@ -4165,7 +4166,8 @@
     <string name="change_wifi_state_app_detail_summary" msgid="8230854855584217111">"Erlaubt der App, das WLAN zu aktivieren oder zu deaktivieren, nach WLANs zu scannen und eine Verbindung zu ihnen herstellen, Netzwerke hinzuzufügen oder zu entfernen oder einen lokal beschränkten Hotspot zu starten"</string>
     <string name="change_nfc_tag_apps_title" msgid="91514009058149617">"Über NFC starten"</string>
     <string name="change_nfc_tag_apps_detail_switch" msgid="240286205725043561">"Start bei NFC-Scan erlauben"</string>
-    <string name="change_nfc_tag_apps_detail_summary" msgid="3338220223868942195">"Erlauben, dass diese App gestartet wird, wenn ein NFC-Tag gescannt wird.\nWenn Apps diese Berechtigung haben, stehen sie als Option zur Verfügung, wenn ein Tag erkannt wird."</string>
+    <!-- no translation found for change_nfc_tag_apps_detail_summary (3338220223868942195) -->
+    <skip />
     <string name="media_output_title" msgid="8283629315159510680">"Medien hier abspielen:"</string>
     <string name="media_output_label_title" msgid="4139048973886819148">"<xliff:g id="LABEL">%s</xliff:g> abspielen über"</string>
     <string name="media_output_default_summary" msgid="4200343059396412376">"Dieses Gerät"</string>
@@ -4728,36 +4730,20 @@
     <string name="contrast_medium" msgid="384414510709285811">"Mittel"</string>
     <string name="contrast_high" msgid="3988567609694797696">"Hoch"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"Diese App kann nur in einem einzigen Fenster geöffnet werden"</string>
-    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
-    <skip />
-    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
-    <skip />
-    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
-    <skip />
-    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
-    <skip />
-    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
-    <skip />
-    <!-- no translation found for show_captions_disabled (690650956523818755) -->
-    <skip />
-    <!-- no translation found for show_captions_enabled (7089043007924626) -->
-    <skip />
-    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
-    <skip />
-    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
-    <skip />
+    <string name="accessibility_feature_full_state_summary" msgid="8747170258807179670">"<xliff:g id="STATE_0">%1$s</xliff:g>/<xliff:g id="SHORTCUT_STATE">%2$s</xliff:g>/<xliff:g id="SERVICE_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="generic_accessibility_service_on" msgid="2465820044606775562">"Dienst aktiviert"</string>
+    <string name="generic_accessibility_service_off" msgid="1752061696695346360">"Dienst deaktiviert"</string>
+    <string name="generic_accessibility_feature_shortcut_off" msgid="3669343136122187913">"Verknüpfung deaktiviert"</string>
+    <string name="accessibility_shortcut_state_off" msgid="8158137799007601475">"Aus"</string>
+    <string name="daltonizer_state_on" msgid="131013270022603983">"An"</string>
+    <string name="daltonizer_state_off" msgid="1162285688069856179">"Aus"</string>
+    <string name="color_inversion_state_on" msgid="1160969033636440368">"An"</string>
+    <string name="color_inversion_state_off" msgid="6925638668080451724">"Aus"</string>
+    <string name="color_inversion_feature_summary" msgid="1199876648549627647">"Helle Displays werden dunkel und dunkle Displays hell angezeigt"</string>
+    <string name="magnification_feature_summary" msgid="641825267460247848">"Du kannst auf dem Display schnell heranzoomen, um Inhalte zu vergrößern"</string>
+    <string name="autoclick_disabled" msgid="3213396804955002120">"Aus"</string>
+    <string name="show_captions_disabled" msgid="690650956523818755">"Aus"</string>
+    <string name="show_captions_enabled" msgid="7089043007924626">"An"</string>
+    <string name="live_caption_disabled" msgid="3562035026547887366">"Aus"</string>
+    <string name="live_caption_enabled" msgid="5269360946200718949">"An"</string>
 </resources>

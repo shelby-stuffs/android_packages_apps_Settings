@@ -65,7 +65,8 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"Vincula l\'esquerra"</string>
     <string name="bluetooth_device_controls_general" msgid="1399214835599665488">"Per a tots els audiòfons disponibles"</string>
     <string name="bluetooth_device_controls_title" msgid="1895676556354697234">"Configuració de l\'audiòfon"</string>
-    <string name="bluetooth_device_controls_summary" msgid="8115767735418425663">"Drecera, compatibilitat amb audiòfons"</string>
+    <!-- no translation found for bluetooth_device_controls_summary (8115767735418425663) -->
+    <skip />
     <string name="bluetooth_device_controls_specific" msgid="7706863288754077107">"Per a aquest dispositiu"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"Sortida d\'àudio"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"Sobre la sortida d\'àudio"</string>
@@ -180,7 +181,8 @@
     <string name="temperature_preferences_title" msgid="5009881556503629058">"Temperatura"</string>
     <string name="first_day_of_week_preferences_title" msgid="1971850087589599553">"Primer dia de la setmana"</string>
     <string name="numbers_preferences_title" msgid="8197418984391195446">"Preferències de números"</string>
-    <string name="default_string_of_regional_preference" msgid="7662581547334113719">"Utilitza la configuració predeterminada de l\'app"</string>
+    <!-- no translation found for default_string_of_regional_preference (3428899072914884203) -->
+    <skip />
     <string name="celsius_temperature_unit" msgid="8896459071273084507">"Celsius (°C)"</string>
     <string name="fahrenheit_temperature_unit" msgid="1118677820614569801">"Fahrenheit (°F)"</string>
     <string name="sunday_first_day_of_week" msgid="7644548348295686051">"Diumenge"</string>
@@ -326,6 +328,10 @@
     <string name="security_settings_face_settings_remove_dialog_title" msgid="2899669764446232715">"Vols suprimir el model facial?"</string>
     <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"Se suprimirà el teu model facial de manera permanent i segura.\n\nDesprés de suprimir-lo, necessitaràs un PIN, un patró o una contrasenya per desbloquejar el teu telèfon o per a l\'autenticació en aplicacions."</string>
     <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"Se suprimirà el teu model facial de manera permanent i segura.\n\nDesprés de suprimir-lo, necessitaràs un PIN, un patró o una contrasenya per desbloquejar el teu telèfon."</string>
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint (7609582230650860974) -->
+    <skip />
+    <!-- no translation found for security_settings_face_remove_dialog_details_fingerprint_conv (2627374706274503259) -->
+    <skip />
     <string name="security_settings_face_settings_context_subtitle" msgid="8284262560781442403">"Utilitza Desbloqueig facial per desbloquejar el telèfon"</string>
     <string name="security_settings_fingerprint" msgid="6387775386189204201">"Empremta digital"</string>
     <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"Empremta digital"</string>
@@ -426,7 +432,7 @@
     <string name="security_settings_fingerprint_enroll_repeat_message" msgid="5382958363770893577">"Continua aixecant el dit per afegir les diferents parts de l\'empremta digital"</string>
     <string name="security_settings_udfps_enroll_repeat_message" msgid="2213106975297867798">"Mantén premuda la icona d\'empremta digital cada vegada que es mogui. Això ajuda a capturar millor l\'empremta digital."</string>
     <string name="security_settings_udfps_enroll_fingertip_title" msgid="4123142574168831116">"Col·loca la punta del dit al sensor"</string>
-    <string name="security_settings_udfps_enroll_left_edge_title" msgid="1944076382202470458">"Col·loca la vora esquerra del dit"</string>
+    <string name="security_settings_udfps_enroll_left_edge_title" msgid="1944076382202470458">"Col·loca la part esquerra del dit"</string>
     <string name="security_settings_udfps_enroll_right_edge_title" msgid="9036744264606447490">"Col·loca la part dreta del dit"</string>
     <string name="security_settings_sfps_enroll_finger_center_title" msgid="1320688855767675739">"Col·loca la part central del dit al sensor"</string>
     <string name="security_settings_sfps_enroll_fingertip_title" msgid="2737520837684516446">"Col·loca la punta del dit al sensor"</string>
@@ -466,7 +472,7 @@
     <string name="security_settings_fingerprint_enroll_error_unable_to_process_dialog_title" msgid="6305457126747942642">"No es pot configurar l\'empremta digital"</string>
     <string name="security_settings_fingerprint_enroll_error_unable_to_process_message_setup" msgid="2735739618722623980">"Pots tornar a intentar-ho o configurar l\'empremta digital més endavant a Configuració."</string>
     <string name="security_settings_fingerprint_enroll_error_unable_to_process_message" msgid="5858386244898601003">"Pots tornar a intentar-ho o configurar l\'empremta digital més endavant."</string>
-    <string name="security_settings_fingerprint_enroll_error_dialog_title" msgid="8582267776559099046">"Temps esgotat per configurar l\'empremta"</string>
+    <string name="security_settings_fingerprint_enroll_error_dialog_title" msgid="8582267776559099046">"Temps esgotat per configurar l\'empremta digital"</string>
     <string name="security_settings_fingerprint_enroll_error_timeout_dialog_message_setup" msgid="8521566666541069383">"Pots configurar l\'empremta digital més endavant a Configuració."</string>
     <string name="security_settings_fingerprint_enroll_error_generic_dialog_message_setup" msgid="8140162986046783546">"S\'ha produït un error. Pots configurar l\'empremta digital més endavant a Configuració."</string>
     <string name="security_settings_fingerprint_enroll_error_timeout_dialog_message" msgid="3534341971920335247">"Pots configurar l\'empremta digital més endavant."</string>
@@ -1119,7 +1125,6 @@
     <string name="security_patch" msgid="4071756145347865382">"Actualització de seguretat d\'Android"</string>
     <string name="model_info" msgid="8997566254717810904">"Model"</string>
     <string name="hardware_revision" msgid="3454709180861965025">"Versió del maquinari"</string>
-    <string name="manufactured_year" msgid="3401517138700926475">"Any de fabricació"</string>
     <string name="fcc_equipment_id" msgid="6596668314025646129">"Id. de l\'equip"</string>
     <string name="baseband_version" msgid="2600182227599835857">"Versió de banda base"</string>
     <string name="kernel_version" msgid="3513538109381366881">"Versió de kernel"</string>
@@ -1161,8 +1166,7 @@
     <string name="battery_manufacture_date" msgid="7139426520156833987">"Data de fabricació"</string>
     <string name="battery_first_use_date" msgid="3157207331722711317">"Data del primer ús"</string>
     <string name="battery_cycle_count" msgid="2912949283386571900">"Nombre de cicles"</string>
-    <!-- no translation found for battery_cycle_count_not_available (2426584515665184664) -->
-    <skip />
+    <string name="battery_cycle_count_not_available" msgid="2426584515665184664">"No disponible"</string>
     <string name="memory_calculating_size" msgid="3898240439798661242">"S\'està calculant..."</string>
     <string name="storage_menu_rename" msgid="8549835371429159336">"Canvia el nom"</string>
     <string name="storage_menu_mount" msgid="4760531872302820569">"Activa"</string>
@@ -1276,7 +1280,6 @@
     <string name="reset_bluetooth_wifi_desc" msgid="4030295669083059711">"Es restabliran totes les opcions de configuració del Bluetooth i de la Wi‑Fi. Aquesta acció no es pot desfer."</string>
     <string name="reset_bluetooth_wifi_button_text" msgid="3974098137045963639">"Restableix"</string>
     <string name="reset_bluetooth_wifi_complete_toast" msgid="5893439291030574365">"S\'han restablert el Bluetooth i la Wi‑Fi"</string>
-    <string name="erase_euicc_data_button" msgid="728078969563311737">"Esborra"</string>
     <string name="reset_esim_title" msgid="4194570573425902754">"Esborra les eSIM"</string>
     <string name="reset_esim_desc" msgid="3662444090563399131">"Aquesta acció no cancel·larà cap dels plans de serveis mòbils. Per baixar targetes SIM de substitució, contacta amb el teu operador."</string>
     <string name="reset_network_button_text" msgid="2281476496459610071">"Restableix la configuració"</string>
@@ -1869,8 +1872,7 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"Per utilitzar una funció d\'accessibilitat, llisca cap amunt amb 2 dits des de la part inferior de la pantalla.\n\nPer canviar entre funcions, llisca cap amunt amb 2 dits i mantén premut."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"Per utilitzar una funció d\'accessibilitat, llisca cap amunt amb 3 dits des de la part inferior de la pantalla.\n\nPer canviar entre funcions, llisca cap amunt amb 3 dits i mantén premut."</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"Entesos"</string>
-    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
-    <skip />
+    <string name="accessibility_tutorial_dialog_link_button" msgid="6797349445794031781">"Configuració del botó"</string>
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"Drecera a <xliff:g id="SERVICE">%1$s</xliff:g>"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"Botó d\'accessibilitat"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"Gest d\'accessibilitat"</string>
@@ -2333,8 +2335,7 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"Mostra per aplicacions"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"Mostra per sistemes"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
-    <!-- no translation found for battery_cycle_count_footer (3642121059800373545) -->
-    <skip />
+    <string name="battery_cycle_count_footer" msgid="3642121059800373545">"A causa d\'inspeccions de qualitat prèvies a l\'enviament, és possible que el nombre de cicles no sigui zero en el primer ús"</string>
     <string name="process_stats_summary_title" msgid="502683176231281732">"Estadístiques sobre processos"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"Estadístiques sobre els processos en execució"</string>
     <string name="app_memory_use" msgid="7559666138324410666">"Ús de la memòria"</string>
@@ -3178,7 +3179,7 @@
     <string name="notification_pulse_title" msgid="8013178454646671529">"Llum intermitent"</string>
     <string name="lock_screen_notifications_title" msgid="2876323153692406203">"Privadesa"</string>
     <string name="lockscreen_bypass_title" msgid="6519964196744088573">"Omet la pantalla de bloqueig"</string>
-    <string name="lockscreen_bypass_summary" msgid="4578154430436224161">"En desbloquejar, aniràs a la darrera pantalla utilitzada. Les notificacions no es mostraran a la pantalla de bloqueig. Llisca des de dalt per veure-les."</string>
+    <string name="lockscreen_bypass_summary" msgid="4578154430436224161">"En desbloquejar, ves a la darrera pantalla utilitzada. Les notificacions no es mostraran a la pantalla de bloqueig. Llisca des de dalt per veure-les."</string>
     <string name="keywords_lockscreen_bypass" msgid="41035425468915498">"pantalla de bloqueig, bloqueig, ometre, saltar"</string>
     <string name="locked_work_profile_notification_title" msgid="279367321791301499">"Amb el perfil de treball bloquejat"</string>
     <string name="unseen_notifs_lock_screen" msgid="6910701117021324612">"Mostra només notificacions noves a la pantalla de bloqueig"</string>
@@ -4165,7 +4166,8 @@
     <string name="change_wifi_state_app_detail_summary" msgid="8230854855584217111">"Permet que aquesta aplicació activi o desactivi la Wi-Fi, cerqui xarxes Wi-Fi, s\'hi connecti, n\'afegeixi o en suprimeixi, o que iniciï un punt d\'accés Wi-Fi només local."</string>
     <string name="change_nfc_tag_apps_title" msgid="91514009058149617">"Inicia a través d\'NFC"</string>
     <string name="change_nfc_tag_apps_detail_switch" msgid="240286205725043561">"Permet l\'inici en escanejar NFC"</string>
-    <string name="change_nfc_tag_apps_detail_summary" msgid="3338220223868942195">"Permet que aquesta aplicació s\'iniciï en escanejar una etiqueta NFC.\nSi aquest permís està activat, l\'aplicació estarà disponible com una opció quan es detecti una etiqueta."</string>
+    <!-- no translation found for change_nfc_tag_apps_detail_summary (3338220223868942195) -->
+    <skip />
     <string name="media_output_title" msgid="8283629315159510680">"Reprodueix contingut multimèdia a"</string>
     <string name="media_output_label_title" msgid="4139048973886819148">"Reprodueix <xliff:g id="LABEL">%s</xliff:g> a"</string>
     <string name="media_output_default_summary" msgid="4200343059396412376">"Aquest dispositiu"</string>
@@ -4728,36 +4730,20 @@
     <string name="contrast_medium" msgid="384414510709285811">"Mitjà"</string>
     <string name="contrast_high" msgid="3988567609694797696">"Alt"</string>
     <string name="dock_multi_instances_not_supported_text" msgid="3513493664467667084">"Aquesta aplicació només pot obrir-se en 1 finestra"</string>
-    <!-- no translation found for accessibility_feature_full_state_summary (8747170258807179670) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_on (2465820044606775562) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_service_off (1752061696695346360) -->
-    <skip />
-    <!-- no translation found for generic_accessibility_feature_shortcut_off (3669343136122187913) -->
-    <skip />
-    <!-- no translation found for accessibility_shortcut_state_off (8158137799007601475) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_on (131013270022603983) -->
-    <skip />
-    <!-- no translation found for daltonizer_state_off (1162285688069856179) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_on (1160969033636440368) -->
-    <skip />
-    <!-- no translation found for color_inversion_state_off (6925638668080451724) -->
-    <skip />
-    <!-- no translation found for color_inversion_feature_summary (1199876648549627647) -->
-    <skip />
-    <!-- no translation found for magnification_feature_summary (641825267460247848) -->
-    <skip />
-    <!-- no translation found for autoclick_disabled (3213396804955002120) -->
-    <skip />
-    <!-- no translation found for show_captions_disabled (690650956523818755) -->
-    <skip />
-    <!-- no translation found for show_captions_enabled (7089043007924626) -->
-    <skip />
-    <!-- no translation found for live_caption_disabled (3562035026547887366) -->
-    <skip />
-    <!-- no translation found for live_caption_enabled (5269360946200718949) -->
-    <skip />
+    <string name="accessibility_feature_full_state_summary" msgid="8747170258807179670">"<xliff:g id="STATE_0">%1$s</xliff:g> / <xliff:g id="SHORTCUT_STATE">%2$s</xliff:g> / <xliff:g id="SERVICE_SUMMARY">%3$s</xliff:g>"</string>
+    <string name="generic_accessibility_service_on" msgid="2465820044606775562">"Servei activat"</string>
+    <string name="generic_accessibility_service_off" msgid="1752061696695346360">"Servei desactivat"</string>
+    <string name="generic_accessibility_feature_shortcut_off" msgid="3669343136122187913">"Drecera desactivada"</string>
+    <string name="accessibility_shortcut_state_off" msgid="8158137799007601475">"Desactivada"</string>
+    <string name="daltonizer_state_on" msgid="131013270022603983">"Activat"</string>
+    <string name="daltonizer_state_off" msgid="1162285688069856179">"Desactivat"</string>
+    <string name="color_inversion_state_on" msgid="1160969033636440368">"Activada"</string>
+    <string name="color_inversion_state_off" msgid="6925638668080451724">"Desactivada"</string>
+    <string name="color_inversion_feature_summary" msgid="1199876648549627647">"Enfosqueix les pantalles clares i aclareix les fosques"</string>
+    <string name="magnification_feature_summary" msgid="641825267460247848">"Amplia la pantalla ràpidament per engrandir el contingut"</string>
+    <string name="autoclick_disabled" msgid="3213396804955002120">"Desactivat"</string>
+    <string name="show_captions_disabled" msgid="690650956523818755">"Desactivat"</string>
+    <string name="show_captions_enabled" msgid="7089043007924626">"Activat"</string>
+    <string name="live_caption_disabled" msgid="3562035026547887366">"Desactivat"</string>
+    <string name="live_caption_enabled" msgid="5269360946200718949">"Activat"</string>
 </resources>

@@ -65,7 +65,8 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"მარცხენა დინამიკის დაკავშირება"</string>
     <string name="bluetooth_device_controls_general" msgid="1399214835599665488">"სმენის ყველა ხელმისაწვდომი აპარატისთვის"</string>
     <string name="bluetooth_device_controls_title" msgid="1895676556354697234">"სმენის აპარატის პარამეტრები"</string>
-    <string name="bluetooth_device_controls_summary" msgid="8115767735418425663">"მალსახმობი, სმენის აპარატებთან თავსებადობა"</string>
+    <!-- no translation found for bluetooth_device_controls_summary (8115767735418425663) -->
+    <skip />
     <string name="bluetooth_device_controls_specific" msgid="7706863288754077107">"ამ მოწყობილობისთვის"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"გამომავალი აუდიო"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"აუდიოს გამოსატანის შესახებ"</string>
@@ -180,7 +181,7 @@
     <string name="temperature_preferences_title" msgid="5009881556503629058">"ტემპერატურა"</string>
     <string name="first_day_of_week_preferences_title" msgid="1971850087589599553">"კვირის პირველი დღე"</string>
     <string name="numbers_preferences_title" msgid="8197418984391195446">"ნომრების უპირატესობები"</string>
-    <string name="default_string_of_regional_preference" msgid="7662581547334113719">"გამოიყენე აპის ნაგულისხმევი პარამეტრები"</string>
+    <string name="default_string_of_regional_preference" msgid="3428899072914884203">"ნაგულისხმევის გამოყენება"</string>
     <string name="celsius_temperature_unit" msgid="8896459071273084507">"ცელსიუსი (°C)"</string>
     <string name="fahrenheit_temperature_unit" msgid="1118677820614569801">"ფარენჰაიტი (°F)"</string>
     <string name="sunday_first_day_of_week" msgid="7644548348295686051">"კვირა"</string>
@@ -326,6 +327,8 @@
     <string name="security_settings_face_settings_remove_dialog_title" msgid="2899669764446232715">"გსურთ სახის მოდელის წაშლა?"</string>
     <string name="security_settings_face_settings_remove_dialog_details" msgid="916131485988121592">"თქვენი სახის მოდელი სამუდამოდ და უსაფრთხოდ წაიშლება.\n\nწაშლის შემდეგ ტელეფონის განბლოკვის ან აპებში ავტორიზაციისთვის თქვენი PIN-კოდი, ნიმუში ან პაროლი დაგჭირდებათ."</string>
     <string name="security_settings_face_settings_remove_dialog_details_convenience" msgid="475568135197468990">"თქვენი სახის მოდელი სამუდამოდ და უსაფრთხოდ წაიშლება.\n\nწაშლის შემდეგ ტელეფონის განბლოკვისთვის თქვენი PIN-კოდი, ნიმუში ან პაროლი დაგჭირდებათ."</string>
+    <string name="security_settings_face_remove_dialog_details_fingerprint" msgid="7609582230650860974">"თქვენი სახის მოდელი სამუდამოდ და უსაფრთხოდ წაიშლება.\n\nწაშლის შემდეგ ტელეფონის განბლოკვისთვის თქვენი თითის ანაბეჭდი, PIN-კოდი, ნიმუში ან პაროლი დაგჭირდებათ."</string>
+    <string name="security_settings_face_remove_dialog_details_fingerprint_conv" msgid="2627374706274503259">"თქვენი სახის მოდელი სამუდამოდ და უსაფრთხოდ წაიშლება.\n\nწაშლის შემდეგ ტელეფონის განბლოკვისთვის თქვენი PIN-კოდი, ნიმუში ან პაროლი დაგჭირდებათ."</string>
     <string name="security_settings_face_settings_context_subtitle" msgid="8284262560781442403">"ტელეფონის განსაბლოკად გამოიყენეთ სახით განბლოკვა"</string>
     <string name="security_settings_fingerprint" msgid="6387775386189204201">"თითის ანაბეჭდი"</string>
     <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"თითის ანაბეჭდი"</string>
@@ -1119,7 +1122,6 @@
     <string name="security_patch" msgid="4071756145347865382">"Android-ის უსაფრთხოების განახლება"</string>
     <string name="model_info" msgid="8997566254717810904">"მოდელი"</string>
     <string name="hardware_revision" msgid="3454709180861965025">"აპარატურის ვერსია"</string>
-    <string name="manufactured_year" msgid="3401517138700926475">"წარმოების წელი"</string>
     <string name="fcc_equipment_id" msgid="6596668314025646129">"მოწყობილობის ID"</string>
     <string name="baseband_version" msgid="2600182227599835857">"Baseband-ის ვერსია"</string>
     <string name="kernel_version" msgid="3513538109381366881">"kernel-ის ვერსია"</string>
@@ -1275,7 +1277,6 @@
     <string name="reset_bluetooth_wifi_desc" msgid="4030295669083059711">"ამის შედეგად გადაიტვირთება Wi‑Fi-ისა და Bluetooth-ის ყველა პარამეტრი. ამ მოქმედებას ვერ გააუქმებთ."</string>
     <string name="reset_bluetooth_wifi_button_text" msgid="3974098137045963639">"გადაყენება"</string>
     <string name="reset_bluetooth_wifi_complete_toast" msgid="5893439291030574365">"Bluetooth და Wi‑Fi გადატვირთულია"</string>
-    <string name="erase_euicc_data_button" msgid="728078969563311737">"ამოშლა"</string>
     <string name="reset_esim_title" msgid="4194570573425902754">"eSIM-ების ამოშლა"</string>
     <string name="reset_esim_desc" msgid="3662444090563399131">"ეს არ გააუქმებს მობილური სერვისის მოქმედ გეგმებს. ჩამნაცვლებელი SIM-ების ჩამოსატვირთად დაუკავშირდით თქვენს ოპერატორს."</string>
     <string name="reset_network_button_text" msgid="2281476496459610071">"პარამეტრების ჩამოყრა"</string>
@@ -1436,9 +1437,9 @@
     <string name="lockpassword_choose_your_password_header_for_face" msgid="622276003801157839">"სახით განბლოკვისთვის დააყენეთ პაროლი"</string>
     <string name="lockpassword_choose_your_pattern_header_for_face" msgid="7333603579958317102">"სახით განბლოკვისთვის დააყენეთ ნიმუში"</string>
     <string name="lockpassword_choose_your_pin_header_for_face" msgid="704061826984851309">"სახით განბლოკვისთვის დააყენეთ PIN-კოდი"</string>
-    <string name="lockpassword_choose_your_password_header_for_biometrics" msgid="2053366309272487015">"დააყენეთ პაროლი სახისთვის/თითის ანაბეჭდისთვის"</string>
+    <string name="lockpassword_choose_your_password_header_for_biometrics" msgid="2053366309272487015">"დააყენეთ პაროლი სახის ან თითის ანაბეჭდის გამოსაყენებლად"</string>
     <string name="lockpassword_choose_your_pattern_header_for_biometrics" msgid="4038476475293734905">"დააყენეთ ნიმუში სახის ან თითის ანაბეჭდის გამოსაყენებლად"</string>
-    <string name="lockpassword_choose_your_pin_header_for_biometrics" msgid="9086039918921009380">"დააყენეთ PIN სახისთვის/თითის ანაბეჭდისთვის"</string>
+    <string name="lockpassword_choose_your_pin_header_for_biometrics" msgid="9086039918921009380">"დააყენეთ PIN-კოდი სახის ან თითის ანაბეჭდის გამოსაყენებლად"</string>
     <string name="lockpassword_forgot_password" msgid="5730587692489737223">"პაროლი დაგავიწყდათ?"</string>
     <string name="lockpassword_forgot_pattern" msgid="1196116549051927516">"დაგავიწყდათ ნიმუში?"</string>
     <string name="lockpassword_forgot_pin" msgid="7164232234705747672">"დაგავიწყდათ PIN-კოდი?"</string>
@@ -1868,8 +1869,7 @@
     <string name="accessibility_tutorial_dialog_message_gesture_settings" msgid="40769674586981429">"მარტივი წვდომის ფუნქციით სარგებლობისთვის 2 თითით გადაფურცლეთ ეკრანის ქვედა კიდიდან ზემოთ.\n\nფუნქციების გადასართავად 2 თითით გადაფურცლეთ ზემოთ და დააყოვნეთ."</string>
     <string name="accessibility_tutorial_dialog_message_gesture_settings_talkback" msgid="7292969929578621958">"მარტივი წვდომის ფუნქციით სარგებლობისთვის 3 თითით გადაფურცლეთ ეკრანის ქვედა კიდიდან ზემოთ.\n\nფუნქციების გადასართავად 3 თითით გადაფურცლეთ ზემოთ და დააყოვნეთ."</string>
     <string name="accessibility_tutorial_dialog_button" msgid="2031773187678948436">"გასაგებია"</string>
-    <!-- no translation found for accessibility_tutorial_dialog_link_button (6797349445794031781) -->
-    <skip />
+    <string name="accessibility_tutorial_dialog_link_button" msgid="6797349445794031781">"ღილაკის პარამეტრები"</string>
     <string name="accessibility_shortcut_title" msgid="8125867833704517463">"<xliff:g id="SERVICE">%1$s</xliff:g> - მალსახმობი"</string>
     <string name="accessibility_shortcut_edit_summary_software" msgid="6405629977940618205">"მარტივი წვდომის ღილაკი"</string>
     <string name="accessibility_shortcut_edit_summary_software_gesture" msgid="5489284264414421286">"მარტივი წვდომის ჟესტი"</string>
