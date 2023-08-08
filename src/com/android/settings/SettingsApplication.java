@@ -27,10 +27,14 @@ import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.FeatureFlagUtils;
 
+import androidx.annotation.NonNull;
+
 import com.android.settings.activityembedding.ActivityEmbeddingRulesController;
 import com.android.settings.activityembedding.ActivityEmbeddingUtils;
 import com.android.settings.core.instrumentation.ElapsedTimeUtils;
 import com.android.settings.homepage.SettingsHomepageActivity;
+import com.android.settings.overlay.FeatureFactory;
+import com.android.settings.overlay.FeatureFactoryImpl;
 import com.android.settings.spa.SettingsSpaEnvironment;
 import com.android.settingslib.applications.AppIconCacheManager;
 import com.android.settingslib.spa.framework.common.SpaEnvironmentFactory;
@@ -52,6 +56,12 @@ public class SettingsApplication extends Application {
             }
         }
     };
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        FeatureFactory.setFactory(this, getFeatureFactory());
+    }
 
     @Override
     public void onCreate() {
@@ -77,6 +87,11 @@ public class SettingsApplication extends Application {
 
         registerReceiver(mBroadcastReceiver,
                 new IntentFilter(TelephonyManager.ACTION_MULTI_SIM_CONFIG_CHANGED));
+    }
+
+    @NonNull
+    protected FeatureFactory getFeatureFactory() {
+        return new FeatureFactoryImpl();
     }
 
     /**

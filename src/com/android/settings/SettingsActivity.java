@@ -332,14 +332,6 @@ public class SettingsActivity extends SettingsBaseActivity
             launchSettingFragment(initialFragmentName, intent);
         }
 
-        final boolean isActionBarButtonEnabled = isActionBarButtonEnabled(intent);
-
-        final ActionBar actionBar = getActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(isActionBarButtonEnabled);
-            actionBar.setHomeButtonEnabled(isActionBarButtonEnabled);
-            actionBar.setDisplayShowTitleEnabled(true);
-        }
         mMainSwitch = findViewById(R.id.switch_bar);
         if (mMainSwitch != null) {
             mMainSwitch.setMetricsCategory(lookupMetricsCategory());
@@ -394,6 +386,17 @@ public class SettingsActivity extends SettingsBaseActivity
 
         if (DEBUG_TIMING) {
             Log.d(LOG_TAG, "onCreate took " + (System.currentTimeMillis() - startTime) + " ms");
+        }
+    }
+
+    private void setActionBarStatus() {
+        final boolean isActionBarButtonEnabled = isActionBarButtonEnabled(getIntent());
+
+        final ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(isActionBarButtonEnabled);
+            actionBar.setHomeButtonEnabled(isActionBarButtonEnabled);
+            actionBar.setDisplayShowTitleEnabled(true);
         }
     }
 
@@ -682,6 +685,7 @@ public class SettingsActivity extends SettingsBaseActivity
     @Override
     protected void onResume() {
         super.onResume();
+        setActionBarStatus();
 
         mDevelopmentSettingsListener = new BroadcastReceiver() {
             @Override

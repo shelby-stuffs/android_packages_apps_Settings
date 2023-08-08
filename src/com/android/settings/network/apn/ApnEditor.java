@@ -1520,8 +1520,7 @@ public class ApnEditor extends SettingsPreferenceFragment
                 null /* selection */,
                 null /* selectionArgs */,
                 null /* sortOrder */)) {
-            if (cursor != null) {
-                cursor.moveToFirst();
+            if (cursor != null && cursor.moveToFirst()) {
                 apnData = new ApnData(uri, cursor);
             }
         }
