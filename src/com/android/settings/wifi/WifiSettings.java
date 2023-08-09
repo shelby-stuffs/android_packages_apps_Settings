@@ -224,8 +224,10 @@ public class WifiSettings extends RestrictedSettingsFragment
         super.onViewCreated(view, savedInstanceState);
         final Activity activity = getActivity();
         if (activity != null) {
-            mProgressHeader = setPinnedHeaderView(R.layout.progress_header)
-                    .findViewById(R.id.progress_bar_animation);
+            mProgressHeader =
+                    setPinnedHeaderView(com.android.settingslib.widget.R.layout.progress_header)
+                            .findViewById(
+                                    com.android.settingslib.widget.R.id.progress_bar_animation);
             setProgressBarVisible(false);
         }
         ((SettingsActivity) activity).getSwitchBar().setTitle(
@@ -292,7 +294,7 @@ public class WifiSettings extends RestrictedSettingsFragment
 
         mMainHandler = new Handler(Looper.getMainLooper());
         mWorkerHandler = mWorkerThread.getThreadHandler();
-        mWifiPickerTracker = FeatureFactory.getFactory(context)
+        mWifiPickerTracker = FeatureFactory.getFeatureFactory()
                 .getWifiTrackerLibProvider()
                 .createWifiPickerTracker(getSettingsLifecycle(), context,
                         mMainHandler, mWorkerHandler,

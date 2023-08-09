@@ -243,7 +243,8 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
             mIsAvailable = false;
             // Show error message
             if (!isUiRestrictedByOnlyAdmin()) {
-                getEmptyTextView().setText(R.string.development_settings_not_available);
+                getEmptyTextView().setText(
+                        com.android.settingslib.R.string.development_settings_not_available);
             }
             getPreferenceScreen().removeAll();
             return;
@@ -371,8 +372,8 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
                     DisableDevSettingsDialogFragment.show(this /* host */);
                 }
             }
-            FeatureFactory.getFactory(
-                    getContext()).getSearchFeatureProvider().sendPreIndexIntent(getContext());
+            FeatureFactory.getFeatureFactory().getSearchFeatureProvider()
+                    .sendPreIndexIntent(getContext());
         }
     }
 

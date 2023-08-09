@@ -334,7 +334,7 @@ public final class BluetoothDevicePreference extends GearPreference {
         int bondState = mCachedDevice.getBondState();
 
         final MetricsFeatureProvider metricsFeatureProvider =
-                FeatureFactory.getFactory(context).getMetricsFeatureProvider();
+                FeatureFactory.getFeatureFactory().getMetricsFeatureProvider();
 
         if (mCachedDevice.isConnected()) {
             metricsFeatureProvider.action(context,
@@ -378,7 +378,7 @@ public final class BluetoothDevicePreference extends GearPreference {
     private void pair() {
         if (!mCachedDevice.startPairing()) {
             Utils.showError(getContext(), mCachedDevice.getName(),
-                    R.string.bluetooth_pairing_error_message);
+                    com.android.settingslib.R.string.bluetooth_pairing_error_message);
         }
     }
 

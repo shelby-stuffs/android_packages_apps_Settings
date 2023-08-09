@@ -144,7 +144,7 @@ public class WifiTetherSettings extends RestrictedDashboardFragment
             return;
         }
 
-        mWifiTetherViewModel = FeatureFactory.getFactory(getContext()).getWifiFeatureProvider()
+        mWifiTetherViewModel = FeatureFactory.getFeatureFactory().getWifiFeatureProvider()
                 .getWifiTetherViewModel(this);
         if (mWifiTetherViewModel != null) {
             setupSpeedFeature(mWifiTetherViewModel.isSpeedFeatureAvailable());
@@ -206,7 +206,8 @@ public class WifiTetherSettings extends RestrictedDashboardFragment
         }
         if (mUnavailable) {
             if (!isUiRestrictedByOnlyAdmin()) {
-                getEmptyTextView().setText(R.string.tethering_settings_not_available);
+                getEmptyTextView()
+                        .setText(com.android.settingslib.R.string.tethering_settings_not_available);
             }
             getPreferenceScreen().removeAll();
             return;
