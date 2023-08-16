@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.remoteauth.finish
+package com.android.settings.remoteauth.settings
 
 import android.os.Bundle
 import androidx.fragment.app.testing.launchFragmentInContainer
@@ -28,16 +28,15 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 
 @RunWith(RobolectricTestRunner::class)
-class RemoteAuthEnrollFinishTest {
-
+class RemoteAuthSettingsTest {
     @Before
-    fun setup() {
-        launchFragmentInContainer<RemoteAuthEnrollFinish>(Bundle(), R.style.SudThemeGlif)
+    fun setUp() {
+        launchFragmentInContainer<RemoteAuthSettings>(Bundle(), R.style.SudThemeGlif)
     }
 
     @Test
-    fun testRemoteAuthenticatorEnrollFinish_hasHeader() {
-        onView(withText(R.string.security_settings_remoteauth_enroll_finish_title)).check(
+    fun testRemoteAuthenticatorSettings_hasHeader() {
+        onView(withText(R.string.security_settings_remoteauth_settings_title)).check(
             matches(
                 isDisplayed()
             )
@@ -45,8 +44,8 @@ class RemoteAuthEnrollFinishTest {
     }
 
     @Test
-    fun testRemoteAuthenticatorEnrollFinish_hasDescription() {
-        onView(withText(R.string.security_settings_remoteauth_enroll_finish_description)).check(
+    fun testRemoteAuthenticatorSettings_hasDescription() {
+        onView(withText(R.string.security_settings_remoteauth_settings_description)).check(
             matches(
                 isDisplayed()
             )

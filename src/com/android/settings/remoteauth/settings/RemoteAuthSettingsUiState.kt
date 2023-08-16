@@ -14,25 +14,10 @@
  * limitations under the License.
  */
 
-package com.android.settings.connecteddevice.stylus;
+package com.android.settings.remoteauth.settings
 
-import android.content.Context;
-import android.hardware.usb.UsbDevice;
-
-import androidx.preference.Preference;
-
-import java.util.List;
-
-
-/** Default implementation for StylusFeatureProvider **/
-public class StylusFeatureProviderImpl implements StylusFeatureProvider {
-    @Override
-    public boolean isUsbFirmwareUpdateEnabled(UsbDevice usbDevice) {
-        return false;
-    }
-
-    @Override
-    public List<Preference> getUsbFirmwareUpdatePreferences(Context context, UsbDevice usbDevice) {
-        return null;
-    }
-}
+data class RemoteAuthSettingsUiState(
+    val registeredAuthenticatorUiStates: List<RemoteAuthAuthenticatorItemUiState> = listOf(),
+    // TODO(b/295524962): Change to error code in teamfood and add errors to strings.xml
+    val errorMsg: String? = null,
+)
