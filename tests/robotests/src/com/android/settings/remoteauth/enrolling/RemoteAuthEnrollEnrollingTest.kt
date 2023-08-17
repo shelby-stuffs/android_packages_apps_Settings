@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.remoteauth.finish
+package com.android.settings.remoteauth.enrolling
 
 import android.os.Bundle
 import androidx.fragment.app.testing.launchFragmentInContainer
@@ -28,16 +28,15 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 
 @RunWith(RobolectricTestRunner::class)
-class RemoteAuthEnrollFinishTest {
-
+class RemoteAuthEnrollEnrollingTest {
     @Before
     fun setup() {
-        launchFragmentInContainer<RemoteAuthEnrollFinish>(Bundle(), R.style.SudThemeGlif)
+        launchFragmentInContainer<RemoteAuthEnrollEnrolling>(Bundle(), R.style.SudThemeGlif)
     }
 
     @Test
-    fun testRemoteAuthenticatorEnrollFinish_headerVisible() {
-        onView(withText(R.string.security_settings_remoteauth_enroll_finish_title)).check(
+    fun testRemoteAuthenticatorEnrollEnrolling_headerVisible() {
+        onView(withText(R.string.security_settings_remoteauth_enroll_enrolling_title)).check(
             matches(
                 withEffectiveVisibility(Visibility.VISIBLE)
             )
@@ -45,11 +44,27 @@ class RemoteAuthEnrollFinishTest {
     }
 
     @Test
-    fun testRemoteAuthenticatorEnrollFinish_descriptionVisible() {
-        onView(withText(R.string.security_settings_remoteauth_enroll_finish_description)).check(
+    fun testRemoteAuthenticatorEnrollEnrolling_primaryButtonDisabled() {
+        onView(withText(R.string.security_settings_remoteauth_enroll_enrolling_agree)).check(
             matches(
-                withEffectiveVisibility(Visibility.VISIBLE)
+                isNotEnabled()
             )
         )
+    }
+
+    @Test
+    fun testRemoteAuthenticatorEnrollEnrolling_progressBarNotVisible() {
+        onView(withId(R.id.enrolling_list_progress_bar)).check(
+            matches(
+                withEffectiveVisibility(
+                    Visibility.INVISIBLE
+                )
+            )
+        )
+    }
+
+    @Test
+    fun testRemoteAuthenticatorEnrollEnrolling_errorTextNotVisible() {
+        onView(withId(R.id.error_text)).check(matches(withEffectiveVisibility(Visibility.INVISIBLE)))
     }
 }
