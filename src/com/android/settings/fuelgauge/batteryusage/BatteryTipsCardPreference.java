@@ -18,6 +18,7 @@ package com.android.settings.fuelgauge.batteryusage;
 
 import android.app.settings.SettingsEnums;
 import android.content.Context;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
@@ -30,6 +31,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
 import com.android.settings.R;
+import com.android.settings.SettingsActivity;
 import com.android.settings.core.SubSettingLauncher;
 import com.android.settings.fuelgauge.PowerUsageFeatureProvider;
 import com.android.settings.overlay.FeatureFactory;
@@ -48,6 +50,7 @@ public class BatteryTipsCardPreference extends Preference implements View.OnClic
     private final MetricsFeatureProvider mMetricsFeatureProvider;
 
     private String mAnomalyEventId;
+    private PowerAnomalyKey mPowerAnomalyKey;
 
     @VisibleForTesting
     CharSequence mMainButtonLabel;
@@ -55,6 +58,8 @@ public class BatteryTipsCardPreference extends Preference implements View.OnClic
     CharSequence mDismissButtonLabel;
     @VisibleForTesting
     String mDestinationComponentName;
+    @VisibleForTesting
+    String mPreferenceHighlightKey;
     @VisibleForTesting
     Integer mSourceMetricsCategory;
 
@@ -65,6 +70,7 @@ public class BatteryTipsCardPreference extends Preference implements View.OnClic
         final FeatureFactory featureFactory = FeatureFactory.getFeatureFactory();
         mPowerUsageFeatureProvider =  featureFactory.getPowerUsageFeatureProvider();
         mMetricsFeatureProvider = featureFactory.getMetricsFeatureProvider();
+        mPowerAnomalyKey = null;
     }
 
     /**
@@ -95,12 +101,20 @@ public class BatteryTipsCardPreference extends Preference implements View.OnClic
     }
 
     /**
+     * Sets the power anomaly key of battery tips card.
+     */
+    public void setPowerAnomalyKey(final PowerAnomalyKey powerAnomalyKey) {
+        mPowerAnomalyKey = powerAnomalyKey;
+    }
+
+    /**
      * Sets the info of target fragment launched by main button.
      */
     public void setMainButtonLauncherInfo(final String destinationClassName,
-            final Integer sourceMetricsCategory) {
+            final Integer sourceMetricsCategory, final String highlightKey) {
         mDestinationComponentName = destinationClassName;
         mSourceMetricsCategory = sourceMetricsCategory;
+        mPreferenceHighlightKey = highlightKey;
     }
 
     @Override
@@ -110,9 +124,16 @@ public class BatteryTipsCardPreference extends Preference implements View.OnClic
             if (TextUtils.isEmpty(mDestinationComponentName)) {
                 return;
             }
+            Bundle arguments = Bundle.EMPTY;
+            if (!TextUtils.isEmpty(mPreferenceHighlightKey)) {
+                arguments = new Bundle(1);
+                arguments.putString(SettingsActivity.EXTRA_FRAGMENT_ARG_KEY,
+                        mPreferenceHighlightKey);
+            }
             new SubSettingLauncher(getContext())
                     .setDestination(mDestinationComponentName)
                     .setSourceMetricsCategory(mSourceMetricsCategory)
+                    .setArguments(arguments)
                     .launch();
             setVisible(false);
             mMetricsFeatureProvider.action(
@@ -121,6 +142,9 @@ public class BatteryTipsCardPreference extends Preference implements View.OnClic
             setVisible(false);
             mMetricsFeatureProvider.action(
                     getContext(), SettingsEnums.ACTION_BATTERY_TIPS_CARD_DISMISS, mAnomalyEventId);
+            if (mPowerAnomalyKey != null) {
+                DatabaseUtils.setDismissedPowerAnomalyKeys(getContext(), mPowerAnomalyKey.name());
+            }
         }
     }
 
