@@ -461,6 +461,21 @@
     <!-- Support link for the regional preference page. [CHAR LIMIT=NONE]-->
     <string name="regional_pref_footer_learn_more_link" translatable="false">https://support.google.com/android?p=regional_preferences</string>
 
+    <!-- Category for the terms of address. [CHAR LIMIT=NONE]-->
+    <string name="category_title_terms_of_address">Additional preferences</string>
+    <!-- Preference title for the terms of address. [CHAR LIMIT=NONE]-->
+    <string name="terms_of_address_title">Terms of address</string>
+    <!-- Preference summary for the terms of address. [CHAR LIMIT=NONE]-->
+    <string name="terms_of_address_summary">Set how you want to be addressed</string>
+    <!-- The subtitle of terms of address. [CHAR LIMIT=NONE] -->
+    <string name="terms_of_address_intro_title">Apps can use your terms of address to personalize how they address you.</string>
+    <!-- The title of not specified of terms of address. [CHAR LIMIT=NONE] -->
+    <string name="terms_of_address_not_specified">Not specified</string>
+    <!-- The title of feminine of terms of address. [CHAR LIMIT=NONE] -->
+    <string name="terms_of_address_feminine">Feminine</string>
+    <!-- The title of masculine of terms of address. [CHAR LIMIT=NONE] -->
+    <string name="terms_of_address_masculine">Masculine</string>
+
     <!-- The title of the confirmation dialog shown when the user selects one / several languages and tries to remove them [CHAR LIMIT=60] -->
     <string name="dlg_remove_locales_title">{count, plural,
       =1      {Remove selected language?}
@@ -887,7 +902,7 @@
 
     <!-- Biometric settings --><skip />
     <!-- Title shown for menu item that launches biometric settings. [CHAR LIMIT=66] -->
-    <string name="security_settings_biometric_preference_title">Face &amp; Fingerprint Unlock</string>
+    <string name="security_settings_biometric_preference_title">Fingerprint &amp; Face Unlock</string>
     <!-- Title shown for work menu item that launches biometric settings. [CHAR LIMIT=66] -->
     <string name="security_settings_work_biometric_preference_title">Face &amp; Fingerprint Unlock for work</string>
     <!-- Message shown in summary field of biometric settings. [CHAR LIMIT=66] -->
@@ -1239,14 +1254,8 @@
     <!-- Title for preference that guides the user to skip Face Unlock setup [CHAR LIMIT=60]-->
     <string name="face_unlock_skip_face">Continue without Face Unlock</string>
 
-    <!-- Title for preference that guides the user through creating a backup unlock pattern for biometrics unlock [CHAR LIMIT=45]-->
-    <string name="biometrics_unlock_set_unlock_pattern">Pattern \u2022 Face \u2022 Fingerprint</string>
-    <!-- Title for preference that guides the user through creating a backup unlock PIN for biometrics unlock [CHAR LIMIT=45]-->
-    <string name="biometrics_unlock_set_unlock_pin">PIN \u2022 Face \u2022 Fingerprint</string>
-    <!-- Title for preference that guides the user through creating a backup unlock password for biometrics unlock [CHAR LIMIT=45]-->
-    <string name="biometrics_unlock_set_unlock_password">Password \u2022 Face \u2022 Fingerprint</string>
     <!-- Title for preference that guides the user to skip face unlock setup [CHAR LIMIT=60]-->
-    <string name="biometrics_unlock_skip_biometrics">Continue without face or fingerprint</string>
+    <string name="biometrics_unlock_skip_biometrics">Continue without fingerprint or face</string>
 
     <!-- Summary for "Configure lockscreen" when lock screen is off [CHAR LIMIT=45] -->
     <string name="unlock_set_unlock_mode_off">None</string>
@@ -1548,6 +1557,8 @@
     <string name="bluetooth_companion_app_remove_association_dialog_title">Disconnect App?</string>
     <!-- Bluetooth device details companion apps. The body of confirmation dialog for remove association. [CHAR LIMIT=60] -->
     <string name="bluetooth_companion_app_body"><xliff:g id="app_name" example="App Name">%1$s</xliff:g> app will no longer connect to your <xliff:g id="device_name" example="Device Name">%2$s</xliff:g></string>
+    <!-- Summary of Bluetooth LE Audio toggle in Device Details. [CHAR LIMIT=40] -->
+    <string name="device_details_leaudio_toggle_summary">Experimental. Improves audio quality.</string>
 
     <!--  Bluetooth device details. In the confirmation dialog for unpairing a paired device, this is the label on the button that will complete the unpairing action. -->
     <string name="bluetooth_unpair_dialog_forget_confirm_button">Forget device</string>
@@ -2425,6 +2436,10 @@
     <string name="display_white_balance_title">Display white balance</string>
     <!-- Display settings screen, display white balance settings summary [CHAR LIMIT=NONE] -->
     <string name="display_white_balance_summary"></string>
+    <!-- Display settings screen, setting name to enable staying awake on fold [CHAR LIMIT=30] -->
+    <string name="stay_awake_on_fold_title">Stay unlocked on fold</string>
+    <!-- Display settings screen, setting summary to enable staying awake on fold [CHAR LIMIT=NONE] -->
+    <string name="stay_awake_on_fold_summary">Keep front display unlocked when folded until screen timeout</string>
     <!-- Display settings screen, peak refresh rate settings title [CHAR LIMIT=30] -->
     <string name="peak_refresh_rate_title">Smooth Display</string>
     <!-- Display settings screen, peak refresh rate settings summary [CHAR LIMIT=NONE] -->
@@ -3564,18 +3579,18 @@
     <!-- Checkbox label to set password as new screen lock if remote device credential validation succeeds. [CHAR LIMIT=43] -->
     <string name="lockpassword_remote_validation_set_password_as_screenlock">Also use password to unlock this device</string>
 
-    <!-- Header shown when pattern needs to be solved before the device exits repair mode. [CHAR LIMIT=100] [DO NOT TRANSLATE] TODO(b/275677027): update with finalized UX string -->
+    <!-- Header shown when pattern needs to be solved before the device exits repair mode. [CHAR LIMIT=40] -->
     <string name="lockpassword_confirm_repair_mode_pattern_header">Verify pattern</string>
-    <!-- Header shown when the pin needs to be solved before the device exits repair mode. [CHAR LIMIT=100] [DO NOT TRANSLATE] TODO(b/275677027): update with finalized UX string -->
+    <!-- Header shown when the pin needs to be solved before the device exits repair mode. [CHAR LIMIT=40] -->
     <string name="lockpassword_confirm_repair_mode_pin_header">Verify PIN</string>
-    <!-- Header shown when the password needs to be solved before the device exits repair mode. [CHAR LIMIT=100] [DO NOT TRANSLATE] TODO(b/275677027): update with finalized UX string -->
+    <!-- Header shown when the password needs to be solved before the device exits repair mode. [CHAR LIMIT=40] -->
     <string name="lockpassword_confirm_repair_mode_password_header">Verify password</string>
-    <!-- An explanation text that the pattern needs to be solved before the device exits repair mode. [CHAR LIMIT=100] [DO NOT TRANSLATE] TODO(b/275677027): update with finalized UX string -->
-    <string name="lockpassword_confirm_repair_mode_pattern_details" translatable="false">Enter your device pattern enrolled in normal mode to continue</string>
-    <!-- An explanation text that the PIN needs to be solved before the device exits repair mode. [CHAR LIMIT=100] [DO NOT TRANSLATE] TODO(b/275677027): update with finalized UX string -->
-    <string name="lockpassword_confirm_repair_mode_pin_details" translatable="false">Enter your device PIN enrolled in normal mode to continue</string>
-    <!-- An explanation text that the password needs to be solved before the device exits repair mode. [CHAR LIMIT=100] [DO NOT TRANSLATE] TODO(b/275677027): update with finalized UX string -->
-    <string name="lockpassword_confirm_repair_mode_password_details" translatable="false">Enter your device password enrolled in normal mode to continue</string>
+    <!-- An explanation text that the pattern needs to be solved before the device exits repair mode. [CHAR LIMIT=100] -->
+    <string name="lockpassword_confirm_repair_mode_pattern_details">Use your device pattern to continue</string>
+    <!-- An explanation text that the PIN needs to be solved before the device exits repair mode. [CHAR LIMIT=100] -->
+    <string name="lockpassword_confirm_repair_mode_pin_details">Enter your device PIN to continue</string>
+    <!-- An explanation text that the password needs to be solved before the device exits repair mode. [CHAR LIMIT=100] -->
+    <string name="lockpassword_confirm_repair_mode_password_details">Enter your device password to continue</string>
 
     <!-- Security & location settings screen, change security method screen instruction if user
          enters incorrect PIN [CHAR LIMIT=30] -->
@@ -4560,10 +4575,24 @@
     <string name="accessibility_button_intro">Using the accessibility button. The gesture isn\u2019t available with 3-button navigation.</string>
     <!-- Summary text for the accessibility button preference. [CHAR LIMIT=50] -->
     <string name="accessibility_button_summary">Quickly access accessibility features</string>
-    <!-- Description for the accessibility button in gesture navigation. Explain how this page works. [CHAR LIMIT=NONE] -->
-    <string name="accessibility_button_gesture_description"><b>To get started</b>\n1. Go to accessibility settings\n2. Select a feature and tap the shortcut\n3. Choose whether you want to use a button or gesture to access the feature</string>
-    <!-- Description for the accessibility button page. Explain how this page works. [CHAR LIMIT=NONE] -->
-    <string name="accessibility_button_description"><b>To get started</b>\n1. Go to accessibility settings\n2. Select a feature and tap the shortcut\n3. Choose the button to access the feature</string>
+    <!-- Description for the accessibility button in gesture navigation. Explain how this page works in numbered ordered list. [CHAR LIMIT=NONE] -->
+    <string name="accessibility_button_gesture_description">
+        <![CDATA[
+        <b>To get started</b><br/>
+        {0,number,integer}. Go to accessibility settings<br/>
+        {1,number,integer}. Select a feature and tap the shortcut<br/>
+        {2,number,integer}. Choose whether you want to use a button or gesture to access the feature<br/>
+        ]]>
+    </string>
+    <!-- Description for the accessibility button page. Explain how this page works in numbered ordered list. [CHAR LIMIT=NONE] -->
+    <string name="accessibility_button_description">
+        <![CDATA[
+        <b>To get started</b><br/>
+        {0,number,integer}. Go to accessibility settings<br/>
+        {1,number,integer}. Select a feature and tap the shortcut<br/>
+        {2,number,integer}. Choose the button to access the feature<br/>
+        ]]>
+    </string>
     <!-- Title for the button or gesture of the accessibility button. [CHAR LIMIT=35] -->
     <string name="accessibility_button_or_gesture_title">Use button or gesture</string>
     <!-- Title for the location of the accessibility button. [CHAR LIMIT=35] -->
@@ -7113,11 +7142,13 @@
     <string name="keywords_app_pinning">screen pinning</string>
     <string name="keywords_profile_challenge">work challenge, work, profile</string>
     <string name="keywords_unification">work profile, managed profile, unify, unification, work, profile</string>
+    <string name="keywords_stay_awake_on_lock">
+        awake, sleep, do not lock, stay unlocked on fold, folding, closing, fold, close, screen off
+    </string>
     <string name="keywords_gesture">gestures</string>
     <string name="keywords_wallet">wallet</string>
     <string name="keywords_payment_settings">pay, tap, payments</string>
     <string name="keywords_backup">backup, back up</string>
-    <string name="keywords_assist_gesture_launch">gesture</string>
     <string name="keywords_face_unlock">face, unlock, auth, sign in</string>
     <string name="keywords_biometric_unlock">face, unlock, auth, sign in, fingerprint, biometric</string>
     <string name="keywords_imei_info">imei, meid, min, prl version, imei sv</string>
@@ -8717,20 +8748,24 @@
     <string name="app_pinning_intro">App pinning allows you to keep the current app in view until you unpin it. This feature can be used, for example, to let a trusted friend play a specific game.</string>
     <!-- [CHAR LIMIT=none] Screen pinning description -->
     <string name="screen_pinning_description">
+        <![CDATA[
         When an app is pinned, the pinned app may open other apps and personal data may be accessible.
         \n\nTo use app pinning:
-        \t\n1. Turn on app pinning
-        \t\n2. Open Overview
-        \t\n3. Tap the app icon at the top of the screen, then tap Pin
+        \t\n{0,number,integer}. Turn on app pinning
+        \t\n{1,number,integer}. Open Overview
+        \t\n{2,number,integer}. Tap the app icon at the top of the screen, then tap Pin
+        ]]>
     </string>
     <!-- [CHAR LIMIT=none] Screen pinning description -->
     <string name="screen_pinning_guest_user_description">
+        <![CDATA[
         When an app is pinned, the pinned app may open other apps and personal data may be accessible.
         \n\nIf you want to securely share your device with someone, try using a guest user instead.
         \n\nTo use app pinning:
-        \t\n1. Turn on app pinning
-        \t\n2. Open Overview
-        \t\n3. Tap the app icon at the top of the screen, then tap Pin
+        \t\n{0,number,integer}. Turn on app pinning
+        \t\n{1,number,integer}. Open Overview
+        \t\n{2,number,integer}. Tap the app icon at the top of the screen, then tap Pin
+        ]]>
     </string>
     <!-- [CHAR LIMIT=300] Screen pinning title -->
     <string name="screen_pinning_dialog_message">
@@ -9742,6 +9777,24 @@
     <!-- Preference summary for battery usage list page[CHAR_LIMIT=50]-->
     <string name="app_battery_usage_summary">Set battery usage for apps</string>
 
+    <!-- Label of action button in battery tips card [CHAR LIMIT=NONE] -->
+    <string name="battery_tips_card_action_button" translatable="false">Optimize</string>
+
+    <!-- Feedback card message in battery tips card [CHAR LIMIT=NONE] -->
+    <string name="battery_tips_card_feedback_info" translatable="false">Is this message helpful?</string>
+
+    <!-- Title of battery tips: adaptive brightness [CHAR LIMIT=NONE] -->
+    <string name="battery_tips_adaptive_brightness_title" translatable="false">Turn on adaptive brightness to extend battery life</string>
+
+    <!-- Summary of battery tips: adaptive brightness [CHAR LIMIT=NONE] -->
+    <string name="battery_tips_adaptive_brightness_summary" translatable="false">It will help reduce your daily battery drain by 10%</string>
+
+    <!-- Title of battery tips: reduce screen timeout [CHAR LIMIT=NONE] -->
+    <string name="battery_tips_screen_timeout_title" translatable="false">Reduce screen timeout to extend battery life</string>
+
+    <!-- Summary of battery tips: reduce screen timeout [CHAR LIMIT=NONE] -->
+    <string name="battery_tips_screen_timeout_summary" translatable="false">It will help reduce your daily battery drain by 10%</string>
+
     <!-- Filter title for battery unrestricted[CHAR_LIMIT=50]-->
     <string name="filter_battery_unrestricted_title">Unrestricted</string>
 
@@ -10112,9 +10165,6 @@
 
     <!-- Title for settings suggestion for fingerprint swipe for notifications [CHAR LIMIT=60] -->
     <string name="fingerprint_swipe_for_notifications_suggestion_title">See notifications quickly</string>
-
-    <!-- Title text for the assist gesture [CHAR LIMIT=60] DO NOT TRANSLATE -->
-    <string name="assist_gesture_title" translatable="false">Assist gesture</string>
 
     <!-- Switch text for each gesture setting state -->
     <string name="gesture_setting_on">On</string>
@@ -10639,7 +10689,7 @@
     <!-- Debugging developer settings: enable angle as system driver? [CHAR LIMIT=50] -->
     <string name="enable_angle_as_system_driver">Enable ANGLE</string>
     <!-- Debugging developer settings: enable angle as system driver summary [CHAR LIMIT=NONE] -->
-    <string name="enable_angle_as_system_driver_summary">Enable ANGLE as system OpenGL ES driver</string>
+    <string name="enable_angle_as_system_driver_summary">Enable ANGLE as default OpenGL ES driver. Enabling it on incompatible devices may break some applications.</string>
     <!--Dialog body text used to explain a reboot is required after changing ANGLE as system GLES driver setting-->
     <string name="reboot_dialog_enable_angle_as_system_driver">A reboot is required to change the system OpenGL ES driver</string>
 
@@ -11144,6 +11194,8 @@
     <string name="sim_action_cancel">Cancel</string>
     <!-- Button which will disconnect the user from one mobile network and immediately connect to another. [CHAR LIMIT=30] -->
     <string name="sim_switch_button">Switch</string>
+    <!-- Button text to turn off the sim. [CHAR LIMIT=30] -->
+    <string name="sim_action_turn_off">Turn off</string>
     <!-- Title of DSDS activation failure dialog [CHAR LIMIT=40] -->
     <string name="dsds_activation_failure_title">Can\u2019t activate SIM</string>
     <!-- Body text of DSDS activation failure dialog. Users could toggle the selected SIM again or reboot to recover. [CHAR LIMIT=NONE] -->
@@ -12255,6 +12307,33 @@
     other {Apps installed more than # months ago}
     }</string>
 
+    <!-- App Aspect Ratio (User Aspect Ratio Override) -->
+    <!-- [CHAR LIMIT=60] Aspect ratio title setting to choose app aspect ratio -->
+    <string name="aspect_ratio_title">Aspect ratio</string>
+    <!-- [CHAR LIMIT=NONE] Aspect ratio setting summary to choose aspect ratio for apps unoptimized for device -->
+    <string name="aspect_ratio_summary">Choose an aspect ratio to view this app if it hasn\'t been designed to fit your <xliff:g id="device_name">%1$s</xliff:g></string>
+    <!-- [CHAR LIMIT=NONE] Aspect ratio suggested apps filter label -->
+    <string name="user_aspect_ratio_suggested_apps_label">Suggested apps</string>
+    <!-- [CHAR LIMIT=NONE] Filter label for apps that have user aspect ratio override applied -->
+    <string name="user_aspect_ratio_overridden_apps_label">Apps you have overridden</string>
+    <!-- [CHAR LIMIT=NONE] App default aspect ratio entry -->
+    <string name="user_aspect_ratio_app_default">App default</string>
+    <!-- [CHAR LIMIT=NONE] Fullscreen aspect ratio entry -->
+    <string name="user_aspect_ratio_fullscreen">Full screen</string>
+    <!-- [CHAR LIMIT=NONE] Half screen aspect ratio entry -->
+    <string name="user_aspect_ratio_half_screen">Half screen</string>
+    <!-- [CHAR LIMIT=NONE] Device display size aspect ratio entry -->
+    <string name="user_aspect_ratio_device_size">Device aspect ratio</string>
+    <!-- [CHAR LIMIT=NONE] 16:9 aspect ratio entry -->
+    <string name="user_aspect_ratio_16_9">16:9</string>
+    <!-- [CHAR LIMIT=NONE] 3:2 aspect ratio entry -->
+    <string name="user_aspect_ratio_3_2">3:2</string>
+    <!-- [CHAR LIMIT=NONE] 4:3 aspect ratio entry -->
+    <string name="user_aspect_ratio_4_3">4:3</string>
+    <!-- [CHAR LIMIT=NONE] Warning description for app info aspect ratio page -->
+    <string name="app_aspect_ratio_footer">The app will restart when you change aspect ratio. You may lose unsaved changes.</string>
+
+
     <!-- Accessibility label for fingerprint sensor [CHAR LIMIT=NONE] -->
     <string name="accessibility_fingerprint_label">Fingerprint sensor</string>
 
@@ -12362,4 +12441,11 @@
     <!-- Summary of the Live Caption enabled state. -->
     <string name="live_caption_enabled">On</string>
 
+    <!--  Warning text about the visibility of device name. [CHAR LIMIT=NONE] -->
+    <string name="about_phone_device_name_warning">Your device name is visible to apps you installed. It may also be seen by other people when you connect to Bluetooth devices, connect to a Wi-Fi network or set up a Wi-Fi hotspot.</string>
+
+    <!-- Developer settings: grammatical gender title [CHAR LIMIT=50]-->
+    <string name="grammatical_gender_title">Grammatical gender</string>
+    <!-- Developer settings: select Grammatical gender dialog title [CHAR LIMIT=50]-->
+    <string name="grammatical_gender_dialog_title">Select Grammatical gender</string>
 </resources>

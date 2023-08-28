@@ -28,7 +28,6 @@ import android.text.BidiFormatter
 import android.util.Log
 import android.view.View
 import androidx.annotation.VisibleForTesting
-import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
@@ -41,6 +40,7 @@ import com.android.settingslib.bluetooth.CachedBluetoothDevice
 import com.android.settingslib.bluetooth.CachedBluetoothDeviceManager
 import com.android.settingslib.bluetooth.LocalBluetoothManager
 import java.util.concurrent.ConcurrentHashMap
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -55,7 +55,12 @@ import kotlinx.coroutines.withContext
 abstract class DeviceListPreferenceFragment(restrictedKey: String?) :
     RestrictedDashboardFragment(restrictedKey), BluetoothCallback {
 
-    private var filter: BluetoothDeviceFilter.Filter? = BluetoothDeviceFilter.ALL_FILTER
+    enum class ScanType {
+        CLASSIC, LE
+    }
+
+    private var scanType = ScanType.CLASSIC
+    private var filter: BluetoothDeviceFilter.Filter = BluetoothDeviceFilter.ALL_FILTER
     private var leScanFilters: List<ScanFilter>? = null
 
     @JvmField
@@ -85,14 +90,14 @@ abstract class DeviceListPreferenceFragment(restrictedKey: String?) :
     @JvmField
     val mSelectedList: MutableList<BluetoothDevice> = ArrayList()
 
+    @VisibleForTesting
+    var lifecycleScope: CoroutineScope? = null
+
     private var showDevicesWithoutNames = false
 
-    protected fun setFilter(filter: BluetoothDeviceFilter.Filter?) {
-        this.filter = filter
-    }
-
     protected fun setFilter(filterType: Int) {
-        filter = BluetoothDeviceFilter.getFilter(filterType)
+        this.scanType = ScanType.CLASSIC
+        this.filter = BluetoothDeviceFilter.getFilter(filterType)
     }
 
     /**
@@ -102,7 +107,7 @@ abstract class DeviceListPreferenceFragment(restrictedKey: String?) :
      * @param leScanFilters list of settings to filter scan result
      */
     fun setFilter(leScanFilters: List<ScanFilter>?) {
-        filter = null
+        this.scanType = ScanType.LE
         this.leScanFilters = leScanFilters
     }
 
@@ -124,8 +129,6 @@ abstract class DeviceListPreferenceFragment(restrictedKey: String?) :
 
     /** find and update preference that already existed in preference screen  */
     protected abstract fun initPreferencesFromPreferenceScreen()
-
-    private var lifecycleScope: LifecycleCoroutineScope? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -154,13 +157,15 @@ abstract class DeviceListPreferenceFragment(restrictedKey: String?) :
         mDeviceListGroup!!.removeAll()
     }
 
-    fun addCachedDevices() {
+    @JvmOverloads
+    fun addCachedDevices(filterForCachedDevices: BluetoothDeviceFilter.Filter? = null) {
         lifecycleScope?.launch {
             withContext(Dispatchers.Default) {
-                val cachedDevices = mCachedDeviceManager!!.cachedDevicesCopy
-                for (cachedDevice in cachedDevices) {
-                    onDeviceAdded(cachedDevice)
-                }
+                mCachedDeviceManager!!.cachedDevicesCopy
+                    .filter {
+                        filterForCachedDevices == null || filterForCachedDevices.matches(it.device)
+                    }
+                    .forEach(::onDeviceAdded)
             }
         }
     }
@@ -192,10 +197,14 @@ abstract class DeviceListPreferenceFragment(restrictedKey: String?) :
 
     private suspend fun addDevice(cachedDevice: CachedBluetoothDevice) =
         withContext(Dispatchers.Default) {
-            // Prevent updates while the list shows one of the state messages
-            if (mBluetoothAdapter!!.state == BluetoothAdapter.STATE_ON &&
-                filter?.matches(cachedDevice.device) == true
-            ) {
+            if (mBluetoothAdapter!!.state != BluetoothAdapter.STATE_ON) {
+                // Prevent updates while the list shows one of the state messages
+                return@withContext
+            }
+            // LE filters was already applied at scan time. We just need to check if the classic
+            // filter matches
+            if (scanType == ScanType.LE
+                || (scanType == ScanType.CLASSIC && filter.matches(cachedDevice.device) == true)) {
                 createDevicePreference(cachedDevice)
             }
         }
@@ -277,19 +286,19 @@ abstract class DeviceListPreferenceFragment(restrictedKey: String?) :
 
     @VisibleForTesting
     open fun startScanning() {
-        if (filter != null) {
-            startClassicScanning()
-        } else if (leScanFilters != null) {
+        if (scanType == ScanType.LE) {
             startLeScanning()
+        } else {
+            startClassicScanning()
         }
     }
 
     @VisibleForTesting
     open fun stopScanning() {
-        if (filter != null) {
-            stopClassicScanning()
-        } else if (leScanFilters != null) {
+        if (scanType == ScanType.LE) {
             stopLeScanning()
+        } else {
+            stopClassicScanning()
         }
     }
 
@@ -305,17 +314,14 @@ abstract class DeviceListPreferenceFragment(restrictedKey: String?) :
         }
     }
 
-    private val scanCallback = object : ScanCallback() {
+    private val leScanCallback = object : ScanCallback() {
         override fun onScanResult(callbackType: Int, result: ScanResult) {
-            lifecycleScope?.launch {
-                withContext(Dispatchers.Default) {
-                    if (mBluetoothAdapter!!.state == BluetoothAdapter.STATE_ON) {
-                        val device = result.device
-                        val cachedDevice = mCachedDeviceManager!!.findDevice(device)
-                            ?: mCachedDeviceManager!!.addDevice(device)
-                        createDevicePreference(cachedDevice)
-                    }
-                }
+            handleLeScanResult(result)
+        }
+
+        override fun onBatchScanResults(results: MutableList<ScanResult>?) {
+            for (result in results.orEmpty()) {
+                handleLeScanResult(result)
             }
         }
 
@@ -329,12 +335,23 @@ abstract class DeviceListPreferenceFragment(restrictedKey: String?) :
         val settings = ScanSettings.Builder()
             .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)
             .build()
-        scanner.startScan(leScanFilters, settings, scanCallback)
+        scanner.startScan(leScanFilters, settings, leScanCallback)
     }
 
     private fun stopLeScanning() {
         val scanner = mBluetoothAdapter!!.bluetoothLeScanner
-        scanner?.stopScan(scanCallback)
+        scanner?.stopScan(leScanCallback)
+    }
+
+    private fun handleLeScanResult(result: ScanResult) {
+        lifecycleScope?.launch {
+            withContext(Dispatchers.Default) {
+                val device = result.device
+                val cachedDevice = mCachedDeviceManager!!.findDevice(device)
+                    ?: mCachedDeviceManager!!.addDevice(device, leScanFilters)
+                addDevice(cachedDevice)
+            }
+        }
     }
 
     companion object {

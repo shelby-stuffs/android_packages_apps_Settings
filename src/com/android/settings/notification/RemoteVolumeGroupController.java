@@ -54,7 +54,7 @@ public class RemoteVolumeGroupController extends BasePreferenceController implem
     static final String SWITCHER_PREFIX = "OUTPUT_SWITCHER";
 
     private PreferenceCategory mPreferenceCategory;
-    private List<RoutingSessionInfo> mRoutingSessionInfos = new ArrayList<>();
+    private final List<RoutingSessionInfo> mRoutingSessionInfos = new ArrayList<>();
 
     @VisibleForTesting
     LocalMediaManager mLocalMediaManager;
@@ -89,11 +89,7 @@ public class RemoteVolumeGroupController extends BasePreferenceController implem
 
     private void initRemoteMediaSession() {
         mRoutingSessionInfos.clear();
-        for (RoutingSessionInfo info : mLocalMediaManager.getActiveMediaSession()) {
-            if (!info.isSystemSession()) {
-                mRoutingSessionInfos.add(info);
-            }
-        }
+        mRoutingSessionInfos.addAll(mLocalMediaManager.getRemoteRoutingSessions());
     }
 
     @Override
@@ -136,8 +132,11 @@ public class RemoteVolumeGroupController extends BasePreferenceController implem
 
             Preference switcherPreference = mPreferenceCategory.findPreference(
                     SWITCHER_PREFIX + info.getId());
-            final boolean isMediaOutputDisabled = mLocalMediaManager.shouldDisableMediaOutput(
-                    info.getClientPackageName());
+
+            // TODO: b/291277292 - Remove references to MediaRouter2Manager and implement long-term
+            //  solution in SettingsLib.
+            final boolean isMediaOutputDisabled =
+                    mRouterManager.getTransferableRoutes(info.getClientPackageName()).isEmpty();
             final CharSequence outputTitle = mContext.getString(R.string.media_output_label_title,
                     appName);
             if (switcherPreference != null) {

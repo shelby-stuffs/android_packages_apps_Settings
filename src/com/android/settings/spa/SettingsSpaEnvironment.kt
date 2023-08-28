@@ -21,6 +21,7 @@ import android.util.FeatureFlagUtils
 import com.android.settings.spa.about.AboutPhonePageProvider
 import com.android.settings.spa.app.AllAppListPageProvider
 import com.android.settings.spa.app.AppsMainPageProvider
+import com.android.settings.spa.app.appcompat.UserAspectRatioAppsPageProvider
 import com.android.settings.spa.app.appinfo.AppInfoSettingsProvider
 import com.android.settings.spa.app.appinfo.CloneAppInfoSettingsProvider
 import com.android.settings.spa.app.backgroundinstall.BackgroundInstalledAppsPageProvider
@@ -35,6 +36,7 @@ import com.android.settings.spa.app.specialaccess.PictureInPictureListProvider
 import com.android.settings.spa.app.specialaccess.SpecialAppAccessPageProvider
 import com.android.settings.spa.app.specialaccess.WifiControlAppListProvider
 import com.android.settings.spa.app.specialaccess.UseFullScreenIntentAppListProvider
+import com.android.settings.spa.app.storage.StorageAppListPageProvider
 import com.android.settings.spa.core.instrumentation.SpaLogProvider
 import com.android.settings.spa.development.UsageStatsPageProvider
 import com.android.settings.spa.development.compat.PlatformCompatAppListPageProvider
@@ -87,9 +89,12 @@ open class SettingsSpaEnvironment(context: Context) : SpaEnvironment(context) {
                 UsageStatsPageProvider,
                 PlatformCompatAppListPageProvider,
                 BackgroundInstalledAppsPageProvider,
+                UserAspectRatioAppsPageProvider,
                 CloneAppInfoSettingsProvider,
                 NetworkAndInternetPageProvider,
                 AboutPhonePageProvider,
+                StorageAppListPageProvider.Apps,
+                StorageAppListPageProvider.Games,
                 ) + togglePermissionAppListTemplate.createPageProviders(),
             rootPages = listOf(
                 HomePageProvider.createSettingsPage()

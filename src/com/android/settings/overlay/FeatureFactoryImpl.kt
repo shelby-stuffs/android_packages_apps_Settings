@@ -33,6 +33,8 @@ import com.android.settings.biometrics2.factory.BiometricsRepositoryProviderImpl
 import com.android.settings.bluetooth.BluetoothFeatureProvider
 import com.android.settings.bluetooth.BluetoothFeatureProviderImpl
 import com.android.settings.connecteddevice.dock.DockUpdaterFeatureProviderImpl
+import com.android.settings.connecteddevice.stylus.StylusFeatureProvider
+import com.android.settings.connecteddevice.stylus.StylusFeatureProviderImpl
 import com.android.settings.core.instrumentation.SettingsMetricsFeatureProvider
 import com.android.settings.dashboard.DashboardFeatureProviderImpl
 import com.android.settings.dashboard.suggestions.SuggestionFeatureProvider
@@ -43,7 +45,6 @@ import com.android.settings.enterprise.EnterprisePrivacyFeatureProviderImpl
 import com.android.settings.fuelgauge.BatterySettingsFeatureProviderImpl
 import com.android.settings.fuelgauge.BatteryStatusFeatureProviderImpl
 import com.android.settings.fuelgauge.PowerUsageFeatureProviderImpl
-import com.android.settings.gestures.AssistGestureFeatureProviderImpl
 import com.android.settings.homepage.contextualcards.ContextualCardFeatureProviderImpl
 import com.android.settings.inputmethod.KeyboardSettingsFeatureProvider
 import com.android.settings.inputmethod.KeyboardSettingsFeatureProviderImpl
@@ -66,8 +67,6 @@ import com.android.settingslib.spaprivileged.framework.common.devicePolicyManage
  * [FeatureFactory] implementation for AOSP Settings.
  */
 open class FeatureFactoryImpl : FeatureFactory() {
-    private val dashboardFeatureProvider by lazy { DashboardFeatureProviderImpl(appContext) }
-
     private val enterprisePrivacyFeatureProvider by lazy {
         EnterprisePrivacyFeatureProviderImpl(
             appContext,
@@ -80,14 +79,6 @@ open class FeatureFactoryImpl : FeatureFactory() {
         )
     }
 
-    private val powerUsageFeatureProvider by lazy { PowerUsageFeatureProviderImpl(appContext) }
-
-    private val batteryStatusFeatureProvider by lazy {
-        BatteryStatusFeatureProviderImpl(appContext)
-    }
-
-    private val userFeatureProvider by lazy { UserFeatureProviderImpl(appContext) }
-
     private val contextualCardFeatureProvider by lazy {
         ContextualCardFeatureProviderImpl(appContext)
     }
@@ -97,13 +88,15 @@ open class FeatureFactoryImpl : FeatureFactory() {
 
     override val metricsFeatureProvider by lazy { SettingsMetricsFeatureProvider() }
 
-    override fun getPowerUsageFeatureProvider(context: Context) = powerUsageFeatureProvider
+    override val powerUsageFeatureProvider by lazy { PowerUsageFeatureProviderImpl(appContext) }
 
-    override fun getBatteryStatusFeatureProvider(context: Context) = batteryStatusFeatureProvider
+    override val batteryStatusFeatureProvider by lazy {
+        BatteryStatusFeatureProviderImpl(appContext)
+    }
 
     override val batterySettingsFeatureProvider by lazy { BatterySettingsFeatureProviderImpl() }
 
-    override fun getDashboardFeatureProvider(context: Context) = dashboardFeatureProvider
+    override val dashboardFeatureProvider by lazy { DashboardFeatureProviderImpl(appContext) }
 
     override val dockUpdaterFeatureProvider: DockUpdaterFeatureProvider by lazy {
         DockUpdaterFeatureProviderImpl()
@@ -135,9 +128,7 @@ open class FeatureFactoryImpl : FeatureFactory() {
         SuggestionFeatureProviderImpl()
     }
 
-    override fun getUserFeatureProvider(context: Context) = userFeatureProvider
-
-    override val assistGestureFeatureProvider by lazy { AssistGestureFeatureProviderImpl() }
+    override val userFeatureProvider by lazy { UserFeatureProviderImpl(appContext) }
 
     override val slicesFeatureProvider by lazy { SlicesFeatureProviderImpl() }
 
@@ -150,7 +141,7 @@ open class FeatureFactoryImpl : FeatureFactory() {
     override fun getContextualCardFeatureProvider(context: Context) = contextualCardFeatureProvider
 
     override val bluetoothFeatureProvider: BluetoothFeatureProvider by lazy {
-        BluetoothFeatureProviderImpl(appContext)
+        BluetoothFeatureProviderImpl()
     }
 
     override val faceFeatureProvider: FaceFeatureProvider by lazy { FaceFeatureProviderImpl() }
@@ -179,5 +170,9 @@ open class FeatureFactoryImpl : FeatureFactory() {
 
     override val keyboardSettingsFeatureProvider: KeyboardSettingsFeatureProvider by lazy {
         KeyboardSettingsFeatureProviderImpl()
+    }
+
+    override val stylusFeatureProvider: StylusFeatureProvider by lazy {
+        StylusFeatureProviderImpl()
     }
 }

@@ -18,6 +18,7 @@ package com.android.settings.fuelgauge;
 
 import android.content.ComponentName;
 import android.content.Context;
+import android.os.BatteryManager;
 import android.util.Log;
 
 import androidx.annotation.VisibleForTesting;
@@ -27,10 +28,10 @@ import androidx.preference.PreferenceScreen;
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 import com.android.settings.overlay.FeatureFactory;
+import com.android.settingslib.Utils;
 import com.android.settingslib.core.lifecycle.LifecycleObserver;
 import com.android.settingslib.core.lifecycle.events.OnStart;
 import com.android.settingslib.core.lifecycle.events.OnStop;
-import com.android.settingslib.Utils;
 import com.android.settingslib.utils.ThreadUtils;
 
 public class TopLevelBatteryPreferenceController extends BasePreferenceController implements
@@ -66,8 +67,8 @@ public class TopLevelBatteryPreferenceController extends BasePreferenceControlle
             }, true /* shortString */);
         });
 
-        mBatteryStatusFeatureProvider = FeatureFactory.getFactory(context)
-                .getBatteryStatusFeatureProvider(context);
+        mBatteryStatusFeatureProvider = FeatureFactory.getFeatureFactory()
+                .getBatteryStatusFeatureProvider();
     }
 
     @Override
@@ -139,7 +140,10 @@ public class TopLevelBatteryPreferenceController extends BasePreferenceControlle
         if (Utils.containsIncompatibleChargers(mContext, TAG)) {
             return mContext.getString(R.string.battery_info_status_not_charging);
         }
-        if (!info.discharging && info.chargeLabel != null) {
+        if (info.batteryStatus == BatteryManager.BATTERY_STATUS_NOT_CHARGING) {
+            // Present status only if no remaining time or status anomalous
+            return info.statusLabel;
+        } else if (!info.discharging && info.chargeLabel != null) {
             return info.chargeLabel;
         } else if (info.remainingLabel == null) {
             return info.batteryPercentString;

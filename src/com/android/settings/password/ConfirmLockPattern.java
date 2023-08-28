@@ -93,7 +93,7 @@ public class ConfirmLockPattern extends ConfirmDeviceCredentialBaseActivity {
 
     public static class ConfirmLockPatternFragment extends ConfirmDeviceCredentialBaseFragment
             implements AppearAnimationCreator<Object>, CredentialCheckResultTracker.Listener,
-            SaveChosenLockWorkerBase.Listener, RemoteLockscreenValidationFragment.Listener {
+            SaveAndFinishWorker.Listener, RemoteLockscreenValidationFragment.Listener {
 
         private static final String FRAGMENT_TAG_CHECK_LOCK_RESULT = "check_lock_result";
 
@@ -316,12 +316,9 @@ public class ConfirmLockPattern extends ConfirmDeviceCredentialBaseActivity {
                         R.string.lockpassword_remote_validation_pattern_details);
             }
             final boolean isStrongAuthRequired = isStrongAuthRequired();
-            if (!mIsManagedProfile) {
-                return isStrongAuthRequired
-                        ? getString(R.string.lockpassword_strong_auth_required_device_pattern)
-                        : getString(R.string.lockpassword_confirm_your_pattern_generic);
-            }
-            return null;
+            return isStrongAuthRequired
+                    ? getString(R.string.lockpassword_strong_auth_required_device_pattern)
+                    : getString(R.string.lockpassword_confirm_your_pattern_generic);
         }
 
         private Object[][] getActiveViews() {
@@ -371,7 +368,10 @@ public class ConfirmLockPattern extends ConfirmDeviceCredentialBaseActivity {
 
                     CharSequence detailsText =
                             mDetailsText == null ? getDefaultDetails() : mDetailsText;
-                    if (detailsText != null) {
+
+                    if (mIsManagedProfile) {
+                        mGlifLayout.getDescriptionTextView().setVisibility(View.GONE);
+                    } else {
                         mGlifLayout.setDescriptionText(detailsText);
                     }
 
@@ -630,15 +630,15 @@ public class ConfirmLockPattern extends ConfirmDeviceCredentialBaseActivity {
                     if (mCheckBox.isChecked() && mRemoteLockscreenValidationFragment
                             .getLockscreenCredential() != null) {
                         Log.i(TAG, "Setting device screen lock to the other device's screen lock.");
-                        ChooseLockPattern.SaveAndFinishWorker saveAndFinishWorker =
-                                new ChooseLockPattern.SaveAndFinishWorker();
+                        SaveAndFinishWorker saveAndFinishWorker = new SaveAndFinishWorker();
                         getFragmentManager().beginTransaction().add(saveAndFinishWorker, null)
                                 .commit();
                         getFragmentManager().executePendingTransactions();
-                        saveAndFinishWorker.setListener(this);
+                        saveAndFinishWorker
+                                .setListener(this)
+                                .setRequestGatekeeperPasswordHandle(true);
                         saveAndFinishWorker.start(
                                 mLockPatternUtils,
-                                /* requestGatekeeperPassword= */ true,
                                 mRemoteLockscreenValidationFragment.getLockscreenCredential(),
                                 /* currentCredential= */ null,
                                 mEffectiveUserId);
