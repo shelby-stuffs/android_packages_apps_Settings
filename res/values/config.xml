@@ -342,6 +342,9 @@
     <bool name="config_show_manual">false</bool>
     <!-- Whether to show a preference item for regulatory information in About phone -->
     <bool name="config_show_regulatory_info">false</bool>
+    <!-- Package name of regulatory information overlay which provides mapping and contents.
+         Fetch resource from overlay package directly if this is set. -->
+    <string name="config_regulatory_info_overlay_package_name" translatable="false" />
 
     <!-- Whether to show a preference item for mobile plan -->
     <bool name="config_show_mobile_plan">true</bool>
@@ -548,6 +551,9 @@
     <!-- Whether to show Smooth Display feature in Settings Options -->
     <bool name="config_show_smooth_display">false</bool>
 
+    <!-- Whether to show Stay awake on fold feature in Settings Options -->
+    <bool name="config_stay_awake_on_fold">false</bool>
+
     <!-- Whether to show emergency settings in top-level Settings -->
     <bool name="config_show_emergency_settings">true</bool>
 
@@ -606,6 +612,31 @@
         <item>1</item>
         <item>2</item>
         <item>3</item>
+    </integer-array>
+
+    <!-- App aspect ratio settings screen, user aspect ratio override options. Must be the same
+         length and order as config_userAspectRatioOverrideValues below. -->
+    <string-array name="config_userAspectRatioOverrideEntries" translatable="false">
+        <item>@string/user_aspect_ratio_app_default</item>
+        <item>@string/user_aspect_ratio_fullscreen</item>
+        <item>@string/user_aspect_ratio_half_screen</item>
+        <item>@string/user_aspect_ratio_device_size</item>
+        <item>@string/user_aspect_ratio_16_9</item>
+        <item>@string/user_aspect_ratio_4_3</item>
+        <item>@string/user_aspect_ratio_3_2</item>
+    </string-array>
+
+    <!-- App aspect ratio settings screen, user aspect ratio override options. Must be the same
+         length and order as config_userAspectRatioOverrideEntries above. The values must
+         correspond to PackageManager.UserMinAspectRatio -->
+    <integer-array name="config_userAspectRatioOverrideValues" translatable="false">
+        <item>0</item> <!-- USER_MIN_ASPECT_RATIO_UNSET -->
+        <item>6</item> <!-- USER_MIN_ASPECT_RATIO_FULLSCREEN -->
+        <item>1</item> <!-- USER_MIN_ASPECT_RATIO_SPLIT_SCREEN -->
+        <item>2</item> <!-- USER_MIN_ASPECT_RATIO_DISPLAY_SIZE -->
+        <item>4</item> <!-- USER_MIN_ASPECT_RATIO_16_9 -->
+        <item>3</item> <!-- USER_MIN_ASPECT_RATIO_4_3 -->
+        <item>5</item> <!-- USER_MIN_ASPECT_RATIO_3_2 -->
     </integer-array>
 
     <!-- The settings/preference description for each settable device state defined in the array
@@ -667,6 +698,9 @@
 
     <!-- Whether to enable the advanced vpn feature. The default is not to. -->
     <bool name="config_advanced_vpn_enabled">false</bool>
+
+    <!-- Whether to show the VPN options menu. The default is to show it. -->
+    <bool name="config_show_vpn_options">true</bool>
 
     <!-- An array of uid name for which packages exempt from Wi-Fi permission check. -->
     <string-array name="config_exempt_wifi_permission_uid_name" translatable="false">

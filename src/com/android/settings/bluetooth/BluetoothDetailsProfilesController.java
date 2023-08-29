@@ -77,6 +77,7 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
     private static final String ENABLE_DUAL_MODE_AUDIO =
             "persist.bluetooth.enable_dual_mode_audio";
     private static final String CONFIG_LE_AUDIO_ENABLED_BY_DEFAULT = "le_audio_enabled_by_default";
+    private static final boolean LE_AUDIO_DEVICE_DETAIL_DEFAULT_VALUE = true;
 
     private LocalBluetoothManager mManager;
     private LocalBluetoothProfileManager mProfileManager;
@@ -105,7 +106,7 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
         mManager = manager;
         mProfileManager = mManager.getProfileManager();
         mCachedDevice = device;
-        mAllOfCachedDevices = Utils.getAllOfCachedBluetoothDevices(mContext, mCachedDevice);
+        mAllOfCachedDevices = Utils.getAllOfCachedBluetoothDevices(mManager, mCachedDevice);
         lifecycle.addObserver(this);
         mFragment = fragment;
         mGroupUtils = new GroupUtils(context);
@@ -141,6 +142,10 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
         pref.setTitle(profile.getNameResource(mCachedDevice.getDevice()));
         pref.setOnPreferenceClickListener(this);
         pref.setOrder(profile.getOrdinal());
+
+        if (profile instanceof LeAudioProfile) {
+            pref.setSummary(R.string.device_details_leaudio_toggle_summary);
+        }
         return pref;
     }
 
@@ -508,7 +513,8 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
                 SettingsUIDeviceConfig.BT_LE_AUDIO_CONTACT_SHARING_ENABLED, true);
         boolean isLeDeviceDetailEnabled = DeviceConfig.getBoolean(
                 DeviceConfig.NAMESPACE_SETTINGS_UI,
-                SettingsUIDeviceConfig.BT_LE_AUDIO_DEVICE_DETAIL_ENABLED, true);
+                SettingsUIDeviceConfig.BT_LE_AUDIO_DEVICE_DETAIL_ENABLED,
+                LE_AUDIO_DEVICE_DETAIL_DEFAULT_VALUE);
         boolean isLeEnabledByDefault = DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_BLUETOOTH,
                 CONFIG_LE_AUDIO_ENABLED_BY_DEFAULT, false);
         mIsLeAudioToggleEnabled = isLeDeviceDetailEnabled || isLeEnabledByDefault;
@@ -522,7 +528,7 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
         for (CachedBluetoothDevice item : mAllOfCachedDevices) {
             item.unregisterCallback(this);
         }
-        mAllOfCachedDevices = Utils.getAllOfCachedBluetoothDevices(mContext, mCachedDevice);
+        mAllOfCachedDevices = Utils.getAllOfCachedBluetoothDevices(mManager, mCachedDevice);
         for (CachedBluetoothDevice item : mAllOfCachedDevices) {
             item.registerCallback(this);
         }

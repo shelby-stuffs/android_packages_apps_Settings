@@ -26,6 +26,7 @@ import com.android.settings.applications.ApplicationFeatureProvider;
 import com.android.settings.biometrics.face.FaceFeatureProvider;
 import com.android.settings.biometrics2.factory.BiometricsRepositoryProvider;
 import com.android.settings.bluetooth.BluetoothFeatureProvider;
+import com.android.settings.connecteddevice.stylus.StylusFeatureProvider;
 import com.android.settings.dashboard.DashboardFeatureProvider;
 import com.android.settings.dashboard.suggestions.SuggestionFeatureProvider;
 import com.android.settings.deviceinfo.hardwareinfo.HardwareInfoFeatureProvider;
@@ -34,7 +35,6 @@ import com.android.settings.enterprise.EnterprisePrivacyFeatureProvider;
 import com.android.settings.fuelgauge.BatterySettingsFeatureProvider;
 import com.android.settings.fuelgauge.BatteryStatusFeatureProvider;
 import com.android.settings.fuelgauge.PowerUsageFeatureProvider;
-import com.android.settings.gestures.AssistGestureFeatureProvider;
 import com.android.settings.homepage.contextualcards.ContextualCardFeatureProvider;
 import com.android.settings.inputmethod.KeyboardSettingsFeatureProvider;
 import com.android.settings.localepicker.LocaleFeatureProvider;
@@ -75,7 +75,6 @@ public class FakeFeatureFactory extends FeatureFactory {
     public final SecurityFeatureProvider securityFeatureProvider;
     public final SuggestionFeatureProvider suggestionsFeatureProvider;
     public final UserFeatureProvider userFeatureProvider;
-    public final AssistGestureFeatureProvider assistGestureFeatureProvider;
     public final AccountFeatureProvider mAccountFeatureProvider;
     public final BluetoothFeatureProvider mBluetoothFeatureProvider;
     public final FaceFeatureProvider mFaceFeatureProvider;
@@ -93,6 +92,7 @@ public class FakeFeatureFactory extends FeatureFactory {
     public AdvancedVpnFeatureProvider mAdvancedVpnFeatureProvider;
     public WifiFeatureProvider mWifiFeatureProvider;
     public KeyboardSettingsFeatureProvider mKeyboardSettingsFeatureProvider;
+    public StylusFeatureProvider mStylusFeatureProvider;
 
     /**
      * Call this in {@code @Before} method of the test class to use fake factory.
@@ -122,7 +122,6 @@ public class FakeFeatureFactory extends FeatureFactory {
         securityFeatureProvider = mock(SecurityFeatureProvider.class);
         suggestionsFeatureProvider = mock(SuggestionFeatureProvider.class);
         userFeatureProvider = mock(UserFeatureProvider.class);
-        assistGestureFeatureProvider = mock(AssistGestureFeatureProvider.class);
         slicesFeatureProvider = mock(SlicesFeatureProvider.class);
         mAccountFeatureProvider = mock(AccountFeatureProvider.class);
         mContextualCardFeatureProvider = mock(ContextualCardFeatureProvider.class);
@@ -137,6 +136,7 @@ public class FakeFeatureFactory extends FeatureFactory {
         mAdvancedVpnFeatureProvider = mock(AdvancedVpnFeatureProvider.class);
         mWifiFeatureProvider = mock(WifiFeatureProvider.class);
         mKeyboardSettingsFeatureProvider = mock(KeyboardSettingsFeatureProvider.class);
+        mStylusFeatureProvider = mock(StylusFeatureProvider.class);
     }
 
     @Override
@@ -154,8 +154,9 @@ public class FakeFeatureFactory extends FeatureFactory {
         return metricsFeatureProvider;
     }
 
+    @NotNull
     @Override
-    public BatteryStatusFeatureProvider getBatteryStatusFeatureProvider(Context context) {
+    public BatteryStatusFeatureProvider getBatteryStatusFeatureProvider() {
         return batteryStatusFeatureProvider;
     }
 
@@ -164,13 +165,15 @@ public class FakeFeatureFactory extends FeatureFactory {
         return batterySettingsFeatureProvider;
     }
 
+    @NotNull
     @Override
-    public PowerUsageFeatureProvider getPowerUsageFeatureProvider(Context context) {
+    public PowerUsageFeatureProvider getPowerUsageFeatureProvider() {
         return powerUsageFeatureProvider;
     }
 
+    @NotNull
     @Override
-    public DashboardFeatureProvider getDashboardFeatureProvider(Context context) {
+    public DashboardFeatureProvider getDashboardFeatureProvider() {
         return dashboardFeatureProvider;
     }
 
@@ -210,14 +213,10 @@ public class FakeFeatureFactory extends FeatureFactory {
         return securityFeatureProvider;
     }
 
+    @NotNull
     @Override
-    public UserFeatureProvider getUserFeatureProvider(Context context) {
+    public UserFeatureProvider getUserFeatureProvider() {
         return userFeatureProvider;
-    }
-
-    @Override
-    public AssistGestureFeatureProvider getAssistGestureFeatureProvider() {
-        return assistGestureFeatureProvider;
     }
 
     @Override
@@ -293,5 +292,10 @@ public class FakeFeatureFactory extends FeatureFactory {
     @Override
     public KeyboardSettingsFeatureProvider getKeyboardSettingsFeatureProvider() {
         return mKeyboardSettingsFeatureProvider;
+    }
+
+    @Override
+    public StylusFeatureProvider getStylusFeatureProvider() {
+        return mStylusFeatureProvider;
     }
 }

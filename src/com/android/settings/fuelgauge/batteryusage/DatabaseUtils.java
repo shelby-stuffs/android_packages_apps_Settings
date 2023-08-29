@@ -15,6 +15,8 @@
  */
 
 package com.android.settings.fuelgauge.batteryusage;
+import android.app.usage.IUsageStatsManager;
+import android.app.usage.UsageStatsManager;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
@@ -28,13 +30,17 @@ import android.os.BatteryManager;
 import android.os.BatteryUsageStats;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.os.SystemClock;
 import android.os.UserManager;
 import android.util.Log;
 
 import androidx.annotation.VisibleForTesting;
 
+import com.android.settings.fuelgauge.BatteryUsageHistoricalLogEntry.Action;
 import com.android.settings.fuelgauge.BatteryUtils;
+import com.android.settings.fuelgauge.batteryusage.bugreport.BatteryUsageLogUtils;
 import com.android.settings.fuelgauge.batteryusage.db.BatteryStateDatabase;
 import com.android.settingslib.fuelgauge.BatteryStatus;
 
@@ -61,6 +67,7 @@ public final class DatabaseUtils {
     static final int DATA_RETENTION_INTERVAL_DAY = 9;
     static final String KEY_LAST_LOAD_FULL_CHARGE_TIME = "last_load_full_charge_time";
     static final String KEY_LAST_UPLOAD_FULL_CHARGE_TIME = "last_upload_full_charge_time";
+    static final String KEY_LAST_USAGE_SOURCE = "last_usage_source";
 
     /** An authority name of the battery content provider. */
     public static final String AUTHORITY = "com.android.settings.battery.usage.provider";
@@ -72,8 +79,6 @@ public final class DatabaseUtils {
     public static final String BATTERY_STATE_TABLE = "BatteryState";
     /** A path name for app usage latest timestamp query. */
     public static final String APP_USAGE_LATEST_TIMESTAMP_PATH = "appUsageLatestTimestamp";
-    /** A class name for battery usage data provider. */
-    public static final String SETTINGS_PACKAGE_PATH = "com.android.settings";
     /** Key for query parameter timestamp used in BATTERY_CONTENT_URI **/
     public static final String QUERY_KEY_TIMESTAMP = "timestamp";
     /** Key for query parameter userid used in APP_USAGE_EVENT_URI **/
@@ -111,6 +116,11 @@ public final class DatabaseUtils {
     // For testing only.
     @VisibleForTesting
     static Supplier<Cursor> sFakeSupplier;
+
+    @VisibleForTesting
+    static IUsageStatsManager sUsageStatsManager =
+            IUsageStatsManager.Stub.asInterface(
+                    ServiceManager.getService(Context.USAGE_STATS_SERVICE));
 
     private DatabaseUtils() {
     }
@@ -395,6 +405,7 @@ public final class DatabaseUtils {
 
         int size = 1;
         final ContentResolver resolver = context.getContentResolver();
+        String errorMessage = "";
         // Inserts all ContentValues into battery provider.
         if (!valuesList.isEmpty()) {
             final ContentValues[] valuesArray = new ContentValues[valuesList.size()];
@@ -404,7 +415,8 @@ public final class DatabaseUtils {
                 Log.d(TAG, "insert() battery states data into database with isFullChargeStart:"
                         + isFullChargeStart);
             } catch (Exception e) {
-                Log.e(TAG, "bulkInsert() battery states data into database error:\n" + e);
+                errorMessage = e.toString();
+                Log.e(TAG, "bulkInsert() data into database error:\n" + errorMessage);
             }
         } else {
             // Inserts one fake data into battery provider.
@@ -424,11 +436,16 @@ public final class DatabaseUtils {
                         + isFullChargeStart);
 
             } catch (Exception e) {
-                Log.e(TAG, "insert() data into database error:\n" + e);
+                errorMessage = e.toString();
+                Log.e(TAG, "insert() data into database error:\n" + errorMessage);
             }
             valuesList.add(contentValues);
         }
         resolver.notifyChange(BATTERY_CONTENT_URI, /*observer=*/ null);
+        BatteryUsageLogUtils.writeLog(
+                context,
+                Action.INSERT_USAGE_DATA,
+                "size=" + size + " " + errorMessage);
         Log.d(TAG, String.format("sendBatteryEntryData() size=%d in %d/ms",
                 size, (System.currentTimeMillis() - startTime)));
         if (isFullChargeStart) {
@@ -457,6 +474,37 @@ public final class DatabaseUtils {
     static SharedPreferences getSharedPreferences(Context context) {
         return context.getApplicationContext().getSharedPreferences(
                 SHARED_PREFS_FILE, Context.MODE_PRIVATE);
+    }
+
+    static void removeUsageSource(Context context) {
+        final SharedPreferences sharedPreferences = getSharedPreferences(context);
+        if (sharedPreferences != null && sharedPreferences.contains(KEY_LAST_USAGE_SOURCE)) {
+            sharedPreferences.edit().remove(KEY_LAST_USAGE_SOURCE).apply();
+        }
+    }
+
+    /**
+     * Returns what App Usage Observers will consider the source of usage for an activity.
+     *
+     * @see UsageStatsManager#getUsageSource()
+     */
+    static int getUsageSource(Context context) {
+        final SharedPreferences sharedPreferences = getSharedPreferences(context);
+        if (sharedPreferences != null && sharedPreferences.contains(KEY_LAST_USAGE_SOURCE)) {
+            return sharedPreferences
+                    .getInt(KEY_LAST_USAGE_SOURCE, ConvertUtils.DEFAULT_USAGE_SOURCE);
+        }
+        int usageSource = ConvertUtils.DEFAULT_USAGE_SOURCE;
+
+        try {
+            usageSource = sUsageStatsManager.getUsageSource();
+        } catch (RemoteException e) {
+            Log.e(TAG, "Failed to getUsageSource", e);
+        }
+        if (sharedPreferences != null) {
+            sharedPreferences.edit().putInt(KEY_LAST_USAGE_SOURCE, usageSource).apply();
+        }
+        return usageSource;
     }
 
     static void recordDateTime(Context context, String preferenceKey) {
@@ -555,7 +603,7 @@ public final class DatabaseUtils {
 
     private static Map<Long, Map<String, BatteryHistEntry>> loadHistoryMapFromContentProvider(
             Context context, Uri batteryStateUri) {
-        context = DatabaseUtils.getParentContext(context);
+        context = getParentContext(context);
         if (context == null) {
             return null;
         }

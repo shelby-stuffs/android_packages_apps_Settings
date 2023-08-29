@@ -15,11 +15,14 @@
  */
 package com.android.settings.security;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.app.admin.DevicePolicyManager;
 import android.app.settings.SettingsEnums;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.icu.text.MessageFormat;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.os.UserManager;
@@ -166,7 +169,7 @@ public class ScreenPinningSettings extends SettingsPreferenceFragment
             setScreenLockUsed(validPassQuality);
             // Make sure the screen updates.
             mUseScreenLock.setChecked(validPassQuality);
-        } else if (requestCode == CONFIRM_REQUEST) {
+        } else if (requestCode == CONFIRM_REQUEST && resultCode == RESULT_OK) {
             setScreenLockUsedSetting(false);
         }
     }
@@ -242,9 +245,10 @@ public class ScreenPinningSettings extends SettingsPreferenceFragment
     }
 
     private CharSequence getAppPinningContent() {
-        return isGuestModeSupported()
-                ? getActivity().getText(R.string.screen_pinning_guest_user_description)
-                : getActivity().getText(R.string.screen_pinning_description);
+        final int stringResource = isGuestModeSupported()
+                ? R.string.screen_pinning_guest_user_description
+                : R.string.screen_pinning_description;
+        return MessageFormat.format(getActivity().getString(stringResource), 1, 2, 3);
     }
 
     /**

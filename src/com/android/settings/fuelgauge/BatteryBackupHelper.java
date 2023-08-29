@@ -111,8 +111,8 @@ public final class BatteryBackupHelper implements BackupHelper {
         writeBackupData(data, KEY_BUILD_MANUFACTURER, Build.MANUFACTURER);
         writeBackupData(data, KEY_BUILD_FINGERPRINT, Build.FINGERPRINT);
         // Add customized device build metadata fields.
-        final PowerUsageFeatureProvider provider = FeatureFactory.getFactory(mContext)
-                .getPowerUsageFeatureProvider(mContext);
+        final PowerUsageFeatureProvider provider =
+                FeatureFactory.getFeatureFactory().getPowerUsageFeatureProvider();
         writeBackupData(data, KEY_BUILD_METADATA_1, provider.getBuildMetadata1(mContext));
         writeBackupData(data, KEY_BUILD_METADATA_2, provider.getBuildMetadata2(mContext));
 
@@ -199,7 +199,7 @@ public final class BatteryBackupHelper implements BackupHelper {
                     info.packageName + DELIMITER_MODE + optimizationMode;
             builder.append(packageOptimizeMode + DELIMITER);
             Log.d(TAG, "backupOptimizationMode: " + packageOptimizeMode);
-            BatteryHistoricalLogUtil.writeLog(
+            BatteryOptimizeLogUtils.writeLog(
                     sharedPreferences, Action.BACKUP, info.packageName,
                     /* actionDescription */ "mode: " + optimizationMode);
             backupCount++;
@@ -260,8 +260,8 @@ public final class BatteryBackupHelper implements BackupHelper {
         if (mOptimizationModeBytes == null || mOptimizationModeBytes.length == 0) {
             return;
         }
-        final PowerUsageFeatureProvider provider = FeatureFactory.getFactory(mContext)
-                .getPowerUsageFeatureProvider(mContext);
+        final PowerUsageFeatureProvider provider =
+                FeatureFactory.getFeatureFactory().getPowerUsageFeatureProvider();
         if (!provider.isValidToRestoreOptimizationMode(mDeviceBuildInfoMap)) {
             return;
         }
@@ -275,7 +275,7 @@ public final class BatteryBackupHelper implements BackupHelper {
 
     /** Dump the app optimization mode backup history data. */
     public static void dumpHistoricalData(Context context, PrintWriter writer) {
-        BatteryHistoricalLogUtil.printBatteryOptimizeHistoricalLog(
+        BatteryOptimizeLogUtils.printBatteryOptimizeHistoricalLog(
                 getSharedPreferences(context), writer);
     }
 

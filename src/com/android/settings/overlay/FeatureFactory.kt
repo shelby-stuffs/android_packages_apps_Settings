@@ -23,6 +23,7 @@ import com.android.settings.applications.ApplicationFeatureProvider
 import com.android.settings.biometrics.face.FaceFeatureProvider
 import com.android.settings.biometrics2.factory.BiometricsRepositoryProvider
 import com.android.settings.bluetooth.BluetoothFeatureProvider
+import com.android.settings.connecteddevice.stylus.StylusFeatureProvider
 import com.android.settings.dashboard.DashboardFeatureProvider
 import com.android.settings.dashboard.suggestions.SuggestionFeatureProvider
 import com.android.settings.deviceinfo.hardwareinfo.HardwareInfoFeatureProvider
@@ -30,7 +31,6 @@ import com.android.settings.enterprise.EnterprisePrivacyFeatureProvider
 import com.android.settings.fuelgauge.BatterySettingsFeatureProvider
 import com.android.settings.fuelgauge.BatteryStatusFeatureProvider
 import com.android.settings.fuelgauge.PowerUsageFeatureProvider
-import com.android.settings.gestures.AssistGestureFeatureProvider
 import com.android.settings.homepage.contextualcards.ContextualCardFeatureProvider
 import com.android.settings.inputmethod.KeyboardSettingsFeatureProvider
 import com.android.settings.localepicker.LocaleFeatureProvider
@@ -54,8 +54,6 @@ import com.android.settingslib.core.instrumentation.MetricsFeatureProvider
  * To provide a factory implementation, implementors should call [setFactory] in their Application.
  */
 abstract class FeatureFactory {
-    abstract val assistGestureFeatureProvider: AssistGestureFeatureProvider
-
     /**
      * Gets implementation for the Suggestion Feature provider.
      */
@@ -71,21 +69,19 @@ abstract class FeatureFactory {
 
     abstract val metricsFeatureProvider: MetricsFeatureProvider
 
-    abstract fun getPowerUsageFeatureProvider(context: Context): PowerUsageFeatureProvider
+    abstract val powerUsageFeatureProvider: PowerUsageFeatureProvider
 
     /**
      * Retrieves implementation for Battery Status feature.
      */
-    abstract fun getBatteryStatusFeatureProvider(
-        context: Context
-    ): BatteryStatusFeatureProvider
+    abstract val batteryStatusFeatureProvider: BatteryStatusFeatureProvider
 
     /**
      * Gets implementation for Battery Settings provider.
      */
     abstract val batterySettingsFeatureProvider: BatterySettingsFeatureProvider
 
-    abstract fun getDashboardFeatureProvider(context: Context): DashboardFeatureProvider
+    abstract val dashboardFeatureProvider: DashboardFeatureProvider
     abstract val dockUpdaterFeatureProvider: DockUpdaterFeatureProvider
     abstract val applicationFeatureProvider: ApplicationFeatureProvider
     abstract val localeFeatureProvider: LocaleFeatureProvider
@@ -97,7 +93,7 @@ abstract class FeatureFactory {
     abstract val searchFeatureProvider: SearchFeatureProvider
     abstract fun getSurveyFeatureProvider(context: Context): SurveyFeatureProvider?
     abstract val securityFeatureProvider: SecurityFeatureProvider
-    abstract fun getUserFeatureProvider(context: Context): UserFeatureProvider
+    abstract val userFeatureProvider: UserFeatureProvider
     abstract val slicesFeatureProvider: SlicesFeatureProvider
     abstract val accountFeatureProvider: AccountFeatureProvider
     abstract val panelFeatureProvider: PanelFeatureProvider
@@ -149,6 +145,11 @@ abstract class FeatureFactory {
      * Retrieves implementation for keyboard settings feature.
      */
     abstract val keyboardSettingsFeatureProvider: KeyboardSettingsFeatureProvider
+
+    /**
+     * Retrieves implementation for stylus feature.
+     */
+    abstract val stylusFeatureProvider: StylusFeatureProvider
 
     companion object {
         private var _factory: FeatureFactory? = null

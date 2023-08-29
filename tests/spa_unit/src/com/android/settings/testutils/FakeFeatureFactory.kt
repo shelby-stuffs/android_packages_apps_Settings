@@ -24,6 +24,7 @@ import com.android.settings.applications.ApplicationFeatureProvider
 import com.android.settings.biometrics.face.FaceFeatureProvider
 import com.android.settings.biometrics2.factory.BiometricsRepositoryProvider
 import com.android.settings.bluetooth.BluetoothFeatureProvider
+import com.android.settings.connecteddevice.stylus.StylusFeatureProvider
 import com.android.settings.dashboard.DashboardFeatureProvider
 import com.android.settings.dashboard.suggestions.SuggestionFeatureProvider
 import com.android.settings.deviceinfo.hardwareinfo.HardwareInfoFeatureProvider
@@ -31,13 +32,11 @@ import com.android.settings.enterprise.EnterprisePrivacyFeatureProvider
 import com.android.settings.fuelgauge.BatterySettingsFeatureProvider
 import com.android.settings.fuelgauge.BatteryStatusFeatureProvider
 import com.android.settings.fuelgauge.PowerUsageFeatureProvider
-import com.android.settings.gestures.AssistGestureFeatureProvider
 import com.android.settings.homepage.contextualcards.ContextualCardFeatureProvider
 import com.android.settings.inputmethod.KeyboardSettingsFeatureProvider
 import com.android.settings.localepicker.LocaleFeatureProvider
 import com.android.settings.overlay.DockUpdaterFeatureProvider
 import com.android.settings.overlay.FeatureFactory
-import com.android.settings.overlay.SupportFeatureProvider
 import com.android.settings.overlay.SurveyFeatureProvider
 import com.android.settings.panel.PanelFeatureProvider
 import com.android.settings.search.SearchFeatureProvider
@@ -62,8 +61,6 @@ class FakeFeatureFactory : FeatureFactory() {
         setFactory(appContext, this)
     }
 
-    override val assistGestureFeatureProvider: AssistGestureFeatureProvider
-        get() = TODO("Not yet implemented")
     override val suggestionFeatureProvider: SuggestionFeatureProvider
         get() = TODO("Not yet implemented")
     override val hardwareInfoFeatureProvider: HardwareInfoFeatureProvider
@@ -71,20 +68,17 @@ class FakeFeatureFactory : FeatureFactory() {
 
     override val metricsFeatureProvider = mockMetricsFeatureProvider
 
-    override fun getPowerUsageFeatureProvider(context: Context): PowerUsageFeatureProvider {
-        TODO("Not yet implemented")
-    }
+    override val powerUsageFeatureProvider: PowerUsageFeatureProvider
+        get() = TODO("Not yet implemented")
 
-    override fun getBatteryStatusFeatureProvider(context: Context): BatteryStatusFeatureProvider {
-        TODO("Not yet implemented")
-    }
+    override val batteryStatusFeatureProvider: BatteryStatusFeatureProvider
+        get() = TODO("Not yet implemented")
 
     override val batterySettingsFeatureProvider: BatterySettingsFeatureProvider
         get() = TODO("Not yet implemented")
 
-    override fun getDashboardFeatureProvider(context: Context): DashboardFeatureProvider {
-        TODO("Not yet implemented")
-    }
+    override val dashboardFeatureProvider: DashboardFeatureProvider
+        get() = TODO("Not yet implemented")
 
     override val dockUpdaterFeatureProvider: DockUpdaterFeatureProvider
         get() = TODO("Not yet implemented")
@@ -110,9 +104,8 @@ class FakeFeatureFactory : FeatureFactory() {
     override val securityFeatureProvider: SecurityFeatureProvider
         get() = TODO("Not yet implemented")
 
-    override fun getUserFeatureProvider(context: Context): UserFeatureProvider {
-        TODO("Not yet implemented")
-    }
+    override val userFeatureProvider: UserFeatureProvider
+        get() = TODO("Not yet implemented")
 
     override val slicesFeatureProvider: SlicesFeatureProvider
         get() = TODO("Not yet implemented")
@@ -144,5 +137,7 @@ class FakeFeatureFactory : FeatureFactory() {
     override val wifiFeatureProvider: WifiFeatureProvider
         get() = TODO("Not yet implemented")
     override val keyboardSettingsFeatureProvider: KeyboardSettingsFeatureProvider
+        get() = TODO("Not yet implemented")
+    override val stylusFeatureProvider: StylusFeatureProvider
         get() = TODO("Not yet implemented")
 }
