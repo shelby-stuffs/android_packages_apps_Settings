@@ -113,7 +113,7 @@ public class WifiConnectionPreferenceController extends AbstractPreferenceContro
                 return SystemClock.elapsedRealtime();
             }
         };
-        mWifiPickerTracker = FeatureFactory.getFactory(context)
+        mWifiPickerTracker = FeatureFactory.getFeatureFactory()
                 .getWifiTrackerLibProvider()
                 .createWifiPickerTracker(lifecycle, context,
                         new Handler(Looper.getMainLooper()),

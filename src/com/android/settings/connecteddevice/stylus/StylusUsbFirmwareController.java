@@ -85,10 +85,10 @@ public class StylusUsbFirmwareController extends BasePreferenceController
             mPreferenceScreen.removePreference(mPreference);
         }
         if (hasUsbStylusFirmwareUpdateFeature(mStylusUsbDevice)) {
-            StylusFeatureProvider featureProvider = FeatureFactory.getFactory(
-                    mContext).getStylusFeatureProvider();
+            StylusFeatureProvider featureProvider =
+                    FeatureFactory.getFeatureFactory().getStylusFeatureProvider();
             List<Preference> preferences =
-                    featureProvider.getUsbFirmwareUpdatePreferences(mContext);
+                    featureProvider.getUsbFirmwareUpdatePreferences(mContext, mStylusUsbDevice);
 
             if (preferences != null) {
                 mPreference = new PreferenceCategory(mContext);
@@ -134,8 +134,8 @@ public class StylusUsbFirmwareController extends BasePreferenceController
     static boolean hasUsbStylusFirmwareUpdateFeature(UsbDevice usbDevice) {
         if (usbDevice == null) return false;
 
-        StylusFeatureProvider featureProvider = FeatureFactory.getFactory(
-                FeatureFactory.getAppContext()).getStylusFeatureProvider();
+        StylusFeatureProvider featureProvider =
+                FeatureFactory.getFeatureFactory().getStylusFeatureProvider();
 
         return featureProvider.isUsbFirmwareUpdateEnabled(usbDevice);
     }

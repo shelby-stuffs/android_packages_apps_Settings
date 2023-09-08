@@ -364,6 +364,7 @@ public class LocaleListEditor extends RestrictedSettingsFragment implements View
                                 }
                             });
             mSuggestionDialog = dialogBuilder.create();
+            mSuggestionDialog.setCanceledOnTouchOutside(false);
             mSuggestionDialog.show();
         } else {
             Log.d(TAG, "Invalid parameter, dialogType:" + dialogType);
@@ -513,7 +514,7 @@ public class LocaleListEditor extends RestrictedSettingsFragment implements View
         mAddLanguage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FeatureFactory.getFactory(getContext()).getMetricsFeatureProvider()
+                FeatureFactory.getFeatureFactory().getMetricsFeatureProvider()
                         .logSettingsTileClick(INDEX_KEY_ADD_LANGUAGE, getMetricsCategory());
 
                 final Intent intent = new Intent(getActivity(),

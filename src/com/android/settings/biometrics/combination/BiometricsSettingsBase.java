@@ -21,6 +21,7 @@ import static android.hardware.biometrics.BiometricAuthenticator.TYPE_FINGERPRIN
 
 import static com.android.settings.password.ChooseLockPattern.RESULT_FINISHED;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.hardware.biometrics.SensorProperties;
@@ -179,6 +180,12 @@ public abstract class BiometricsSettingsBase extends DashboardFragment {
             }
 
             mFaceManager.generateChallenge(mUserId, (sensorId, userId, challenge) -> {
+                final Activity activity = getActivity();
+                if (activity == null || activity.isFinishing()) {
+                    Log.e(getLogTag(), "Stop during generating face unlock challenge"
+                            + " because activity is null or finishing");
+                    return;
+                }
                 try {
                     final byte[] token = requestGatekeeperHat(context, mGkPwHandle, mUserId,
                             challenge);
@@ -215,6 +222,12 @@ public abstract class BiometricsSettingsBase extends DashboardFragment {
             }
 
             mFingerprintManager.generateChallenge(mUserId, (sensorId, userId, challenge) -> {
+                final Activity activity = getActivity();
+                if (activity == null || activity.isFinishing()) {
+                    Log.e(getLogTag(), "Stop during generating fingerprint challenge"
+                            + " because activity is null or finishing");
+                    return;
+                }
                 try {
                     final byte[] token = requestGatekeeperHat(context, mGkPwHandle, mUserId,
                             challenge);
@@ -315,8 +328,9 @@ public abstract class BiometricsSettingsBase extends DashboardFragment {
                 if (BiometricUtils.containsGatekeeperPasswordHandle(data)) {
                     mGkPwHandle = BiometricUtils.getGatekeeperPasswordHandle(data);
                     if (!TextUtils.isEmpty(mRetryPreferenceKey)) {
-                        getActivity().overridePendingTransition(R.anim.sud_slide_next_in,
-                                R.anim.sud_slide_next_out);
+                        getActivity().overridePendingTransition(
+                                com.google.android.setupdesign.R.anim.sud_slide_next_in,
+                                com.google.android.setupdesign.R.anim.sud_slide_next_out);
                         retryPreferenceKey(mRetryPreferenceKey, mRetryPreferenceExtra);
                     }
                 } else {

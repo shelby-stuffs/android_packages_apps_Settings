@@ -72,7 +72,7 @@ public class GroupPreviouslyConnectedDevicePreferenceController extends BasePref
     public GroupPreviouslyConnectedDevicePreferenceController(Context context,
         String preferenceKey) {
         super(context, preferenceKey);
-        mSavedDockUpdater = FeatureFactory.getFactory(context).
+        mSavedDockUpdater = FeatureFactory.getFeatureFactory().
             getDockUpdaterFeatureProvider().getSavedDockUpdater(context, this);
         manager = Utils.getLocalBtManager(context);
         if ( manager != null) {

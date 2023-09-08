@@ -27,7 +27,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
@@ -115,12 +114,11 @@ object AppInfoSettingsProvider : SettingsPageProvider {
     }
 }
 
-@OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
 private fun AppInfoSettings(packageInfoPresenter: PackageInfoPresenter) {
     LifecycleEffect(onStart = { packageInfoPresenter.reloadPackageInfo() })
     val packageInfo = packageInfoPresenter.flow.collectAsStateWithLifecycle().value ?: return
-    val app = packageInfo.applicationInfo
+    val app = checkNotNull(packageInfo.applicationInfo)
     RegularScaffold(
         title = stringResource(R.string.application_info_label),
         actions = {

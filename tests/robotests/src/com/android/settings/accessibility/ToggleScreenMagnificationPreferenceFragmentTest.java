@@ -494,28 +494,23 @@ public class ToggleScreenMagnificationPreferenceFragmentTest {
     }
 
     @Test
-    public void getSummary_magnificationEnabled_returnShortcutOnWithSummary() {
+    public void getSummary_magnificationEnabled_returnShortcutOn() {
         setMagnificationTripleTapEnabled(true);
 
         assertThat(
                 ToggleScreenMagnificationPreferenceFragment.getServiceSummary(mContext).toString())
                 .isEqualTo(
-                        mContext.getString(R.string.preference_summary_default_combination,
-                                mContext.getString(R.string.accessibility_summary_shortcut_enabled),
-                                mContext.getText(R.string.magnification_feature_summary)));
+                        mContext.getString(R.string.accessibility_summary_shortcut_enabled));
     }
 
     @Test
-    public void getSummary_magnificationDisabled_returnShortcutOffWithSummary() {
+    public void getSummary_magnificationDisabled_returnShortcutOff() {
         setMagnificationTripleTapEnabled(false);
 
         assertThat(
                 ToggleScreenMagnificationPreferenceFragment.getServiceSummary(mContext).toString())
                 .isEqualTo(
-                        mContext.getString(R.string.preference_summary_default_combination,
-                                mContext.getString(
-                                        R.string.generic_accessibility_feature_shortcut_off),
-                                mContext.getText(R.string.magnification_feature_summary)));
+                        mContext.getString(R.string.generic_accessibility_feature_shortcut_off));
     }
 
     private void putStringIntoSettings(String key, String componentName) {
@@ -559,7 +554,7 @@ public class ToggleScreenMagnificationPreferenceFragmentTest {
     }
 
     private AlertDialog createEditShortcutDialog(Context context) {
-        context.setTheme(R.style.Theme_AppCompat);
+        context.setTheme(androidx.appcompat.R.style.Theme_AppCompat);
         return AccessibilityDialogUtils.showEditShortcutDialog(
                 context,
                 DialogType.EDIT_SHORTCUT_MAGNIFICATION, PLACEHOLDER_DIALOG_TITLE,

@@ -42,7 +42,6 @@ import com.android.internal.annotations.VisibleForTesting;
 import com.android.settings.R;
 import com.android.settings.applications.AppInfoWithHeader;
 import com.android.settingslib.widget.ActionButtonsPreference;
-import com.android.settingslib.widget.SelectorWithWidgetPreference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +50,7 @@ import java.util.List;
  * App specific activity to show aspect ratio overrides
  */
 public class UserAspectRatioDetails extends AppInfoWithHeader implements
-        SelectorWithWidgetPreference.OnClickListener {
+        RadioWithImagePreference.OnClickListener {
     private static final String TAG = UserAspectRatioDetails.class.getSimpleName();
 
     private static final String KEY_HEADER_BUTTONS = "header_view";
@@ -65,7 +64,7 @@ public class UserAspectRatioDetails extends AppInfoWithHeader implements
     @VisibleForTesting
     static final String KEY_PREF_3_2 = "3_2_pref";
 
-    private final List<SelectorWithWidgetPreference> mAspectRatioPreferences = new ArrayList<>();
+    private final List<RadioWithImagePreference> mAspectRatioPreferences = new ArrayList<>();
 
     @NonNull private UserAspectRatioManager mUserAspectRatioManager;
     @NonNull private String mSelectedKey = KEY_PREF_DEFAULT;
@@ -87,7 +86,7 @@ public class UserAspectRatioDetails extends AppInfoWithHeader implements
     }
 
     @Override
-    public void onRadioButtonClicked(@NonNull SelectorWithWidgetPreference selected) {
+    public void onRadioButtonClicked(@NonNull RadioWithImagePreference selected) {
         final String selectedKey = selected.getKey();
         if (mSelectedKey.equals(selectedKey)) {
             return;
@@ -198,21 +197,22 @@ public class UserAspectRatioDetails extends AppInfoWithHeader implements
 
     private void addPreference(@NonNull String key,
             @PackageManager.UserMinAspectRatio int aspectRatio) {
-        final SelectorWithWidgetPreference pref = findPreference(key);
+        final RadioWithImagePreference pref = findPreference(key);
         if (pref == null) {
             return;
         }
-        if (!mUserAspectRatioManager.containsAspectRatioOption(aspectRatio)) {
+        if (!mUserAspectRatioManager.hasAspectRatioOption(aspectRatio, mPackageName)) {
             pref.setVisible(false);
             return;
         }
-        pref.setTitle(mUserAspectRatioManager.getUserMinAspectRatioEntry(aspectRatio));
+        pref.setTitle(mUserAspectRatioManager.getUserMinAspectRatioEntry(aspectRatio,
+                mPackageName));
         pref.setOnClickListener(this);
         mAspectRatioPreferences.add(pref);
     }
 
     private void updateAllPreferences(@NonNull String selectedKey) {
-        for (SelectorWithWidgetPreference pref : mAspectRatioPreferences) {
+        for (RadioWithImagePreference pref : mAspectRatioPreferences) {
             pref.setChecked(selectedKey.equals(pref.getKey()));
         }
     }

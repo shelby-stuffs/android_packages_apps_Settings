@@ -33,6 +33,7 @@
     <uses-permission android:name="android.permission.HARDWARE_TEST" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS_PRIVILEGED" />
     <uses-permission android:name="android.permission.QUERY_AUDIO_STATE" />
     <uses-permission android:name="android.permission.MASTER_CLEAR" />
     <uses-permission android:name="com.google.android.googleapps.permission.GOOGLE_AUTH" />
@@ -1595,6 +1596,19 @@
                        android:value="@string/menu_key_apps"/>
         </activity-alias>
 
+        <activity android:name="Settings$UserAspectRatioAppListActivity"
+            android:exported="true"
+            android:label="@string/aspect_ratio_title">
+            <intent-filter android:priority="1">
+                <action android:name="android.settings.MANAGE_USER_ASPECT_RATIO_SETTINGS"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.applications.manageapplications.ManageApplications" />
+            <meta-data android:name="com.android.settings.HIGHLIGHT_MENU_KEY"
+                android:value="@string/menu_key_apps"/>
+        </activity>
+
         <activity
             android:name="Settings$ManageDomainUrlsActivity"
             android:exported="true"
@@ -2576,6 +2590,16 @@
         <activity android:name=".biometrics.fingerprint.SetupFingerprintEnrollEnrolling" android:exported="false"/>
         <activity android:name=".biometrics.fingerprint.SetupFingerprintEnrollFinish" android:exported="false"/>
         <activity android:name=".biometrics.fingerprint.SetupFingerprintEnrollIntroduction"
+            android:exported="true"
+            android:permission="android.permission.MANAGE_FINGERPRINT"
+            android:theme="@style/GlifTheme.Light">
+            <intent-filter>
+                <action android:name="android.settings.FINGERPRINT_SETUP" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".biometrics.fingerprint2.enrollment.ui.activity.FingerprintEnrollmentV2Activity"
             android:exported="true"
             android:permission="android.permission.MANAGE_FINGERPRINT"
             android:theme="@style/GlifTheme.Light">
@@ -4696,6 +4720,16 @@
                 <action android:name="android.settings.PROCESS_WIFI_EASY_CONNECT_URI"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <data android:scheme="DPP"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".wifi.dpp.WifiDppConfiguratorAuthActivity"
+            android:theme="@style/Transparent"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.settings.WIFI_DPP_CONFIGURATOR_AUTH_QR_CODE_GENERATOR"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
 

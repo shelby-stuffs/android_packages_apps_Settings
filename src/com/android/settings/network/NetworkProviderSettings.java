@@ -74,7 +74,6 @@ import com.android.settings.wifi.ConfigureWifiEntryFragment;
 import com.android.settings.wifi.ConnectedWifiEntryPreference;
 import com.android.settings.wifi.LongPressWifiEntryPreference;
 import com.android.settings.wifi.WifiConfigUiBase2;
-import com.android.settings.wifi.WifiConnectListener;
 import com.android.settings.wifi.WifiDialog2;
 import com.android.settings.wifi.WifiPickerTrackerHelper;
 import com.android.settings.wifi.WifiUtils;
@@ -138,6 +137,8 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
     @VisibleForTesting
     static final String PREF_KEY_FIRST_ACCESS_POINTS = "first_access_points";
     private static final String PREF_KEY_ACCESS_POINTS = "access_points";
+    @VisibleForTesting
+    static final String PREF_KEY_ADD_WIFI_NETWORK = "add_wifi_network";
     private static final String PREF_KEY_CONFIGURE_NETWORK_SETTINGS = "configure_network_settings";
     private static final String PREF_KEY_SAVED_NETWORKS = "saved_networks";
     @VisibleForTesting
@@ -199,9 +200,7 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
     };
 
     protected WifiManager mWifiManager;
-    private WifiManager.ActionListener mConnectListener;
     private WifiManager.ActionListener mSaveListener;
-    private WifiManager.ActionListener mForgetListener;
 
     protected InternetResetHelper mInternetResetHelper;
 
@@ -274,7 +273,7 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
             return;
         }
 
-        setPinnedHeaderView(R.layout.progress_header);
+        setPinnedHeaderView(com.android.settingslib.widget.R.layout.progress_header);
         setProgressBarVisible(false);
 
         if (hasWifiManager()) {
@@ -325,7 +324,10 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
         mWifiEntryPreferenceCategory = findPreference(PREF_KEY_ACCESS_POINTS);
         mConfigureWifiSettingsPreference = findPreference(PREF_KEY_CONFIGURE_NETWORK_SETTINGS);
         mSavedNetworksPreference = findPreference(PREF_KEY_SAVED_NETWORKS);
-        mAddWifiNetworkPreference = new AddWifiNetworkPreference(getPrefContext());
+        mAddWifiNetworkPreference = findPreference(PREF_KEY_ADD_WIFI_NETWORK);
+        // Hide mAddWifiNetworkPreference by default. updateWifiEntryPreferences() will add it back
+        // later when appropriate.
+        mWifiEntryPreferenceCategory.removePreference(mAddWifiNetworkPreference);
         mDataUsagePreference = findPreference(PREF_KEY_DATA_USAGE);
         mDataUsagePreference.setVisible(DataUsageUtils.hasWifiRadio(getContext()));
         mDataUsagePreference.setTemplate(new NetworkTemplate.Builder(NetworkTemplate.MATCH_WIFI)
@@ -407,8 +409,6 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
         }
         mInternetUpdater = new InternetUpdater(getContext(), getSettingsLifecycle(), this);
 
-        mConnectListener = new WifiConnectListener(getActivity());
-
         mSaveListener = new WifiManager.ActionListener() {
             @Override
             public void onSuccess() {
@@ -420,22 +420,6 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
                 if (activity != null) {
                     Toast.makeText(activity,
                             R.string.wifi_failed_save_message,
-                            Toast.LENGTH_SHORT).show();
-                }
-            }
-        };
-
-        mForgetListener = new WifiManager.ActionListener() {
-            @Override
-            public void onSuccess() {
-            }
-
-            @Override
-            public void onFailure(int reason) {
-                Activity activity = getActivity();
-                if (activity != null) {
-                    Toast.makeText(activity,
-                            R.string.wifi_failed_forget_message,
                             Toast.LENGTH_SHORT).show();
                 }
             }
@@ -1311,6 +1295,9 @@ public class NetworkProviderSettings extends RestrictedSettingsFragment
 
             if (WifiSavedConfigUtils.getAllConfigsCount(context, wifiManager) == 0) {
                 keys.add(PREF_KEY_SAVED_NETWORKS);
+            }
+            if (wifiManager.getWifiState() != WifiManager.WIFI_STATE_ENABLED) {
+                keys.add(PREF_KEY_ADD_WIFI_NETWORK);
             }
 
             if (!DataUsageUtils.hasWifiRadio(context)) {

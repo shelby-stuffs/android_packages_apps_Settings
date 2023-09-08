@@ -62,10 +62,12 @@ public class BluetoothSnoopLogPreferenceController extends DeveloperOptionsPrefe
     public BluetoothSnoopLogPreferenceController(
             Context context, DevelopmentSettingsDashboardFragment fragment) {
         super(context);
-        mListValues = context.getResources().getStringArray(R.array.bt_hci_snoop_log_values);
-        mListEntries = context.getResources().getStringArray(R.array.bt_hci_snoop_log_entries);
+        mListValues = context.getResources()
+                .getStringArray(com.android.settingslib.R.array.bt_hci_snoop_log_values);
+        mListEntries = context.getResources()
+                .getStringArray(com.android.settingslib.R.array.bt_hci_snoop_log_entries);
         mListEnhancedValues = Arrays.asList(context.getResources().getStringArray(
-                R.array.bt_hci_snoop_log_values_enhanced));
+                com.android.settingslib.R.array.bt_hci_snoop_log_values_enhanced));
         mFragment = fragment;
     }
 

@@ -198,8 +198,8 @@ public class BluetoothDeviceDetailsFragment extends RestrictedDashboardFragment 
         use(LeAudioBluetoothDetailsHeaderController.class).init(mCachedDevice, mManager);
         use(KeyboardSettingsPreferenceController.class).init(mCachedDevice);
 
-        final BluetoothFeatureProvider featureProvider = FeatureFactory.getFactory(
-                context).getBluetoothFeatureProvider();
+        final BluetoothFeatureProvider featureProvider =
+                FeatureFactory.getFeatureFactory().getBluetoothFeatureProvider();
         final boolean sliceEnabled = DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_SETTINGS_UI,
                 SettingsUIDeviceConfig.BT_SLICE_SETTINGS_ENABLED, true);
 
@@ -211,8 +211,8 @@ public class BluetoothDeviceDetailsFragment extends RestrictedDashboardFragment 
     }
 
     private void updateExtraControlUri(int viewWidth) {
-        BluetoothFeatureProvider featureProvider = FeatureFactory.getFactory(
-                getContext()).getBluetoothFeatureProvider();
+        BluetoothFeatureProvider featureProvider =
+                FeatureFactory.getFeatureFactory().getBluetoothFeatureProvider();
         boolean sliceEnabled = DeviceConfig.getBoolean(DeviceConfig.NAMESPACE_SETTINGS_UI,
                 SettingsUIDeviceConfig.BT_SLICE_SETTINGS_ENABLED, true);
         Uri controlUri = null;
@@ -336,6 +336,8 @@ public class BluetoothDeviceDetailsFragment extends RestrictedDashboardFragment 
           controllers.add(new BluetoothDetailsButtonsController(context, this, mCachedDevice,
                   lifecycle));
           controllers.add(new BluetoothDetailsCompanionAppsController(context, this,
+                  mCachedDevice, lifecycle));
+          controllers.add(new BluetoothDetailsAudioDeviceTypeController(context, this, mManager,
                   mCachedDevice, lifecycle));
           controllers.add(new BluetoothDetailsSpatialAudioController(context, this, mCachedDevice,
                   lifecycle));

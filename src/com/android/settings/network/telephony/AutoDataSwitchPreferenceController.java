@@ -88,7 +88,7 @@ public class AutoDataSwitchPreferenceController extends TelephonyTogglePreferenc
     public AutoDataSwitchPreferenceController(Context context,
             String preferenceKey) {
         super(context, preferenceKey);
-        mMetricsFeatureProvider = FeatureFactory.getFactory(context).getMetricsFeatureProvider();
+        mMetricsFeatureProvider = FeatureFactory.getFeatureFactory().getMetricsFeatureProvider();
     }
 
     void init(int subId) {

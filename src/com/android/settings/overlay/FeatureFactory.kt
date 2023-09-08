@@ -24,6 +24,7 @@ import com.android.settings.biometrics.face.FaceFeatureProvider
 import com.android.settings.biometrics2.factory.BiometricsRepositoryProvider
 import com.android.settings.bluetooth.BluetoothFeatureProvider
 import com.android.settings.connecteddevice.stylus.StylusFeatureProvider
+import com.android.settings.onboarding.OnboardingFeatureProvider
 import com.android.settings.dashboard.DashboardFeatureProvider
 import com.android.settings.dashboard.suggestions.SuggestionFeatureProvider
 import com.android.settings.deviceinfo.hardwareinfo.HardwareInfoFeatureProvider
@@ -86,9 +87,7 @@ abstract class FeatureFactory {
     abstract val applicationFeatureProvider: ApplicationFeatureProvider
     abstract val localeFeatureProvider: LocaleFeatureProvider
 
-    abstract fun getEnterprisePrivacyFeatureProvider(
-        context: Context,
-    ): EnterprisePrivacyFeatureProvider
+    abstract val enterprisePrivacyFeatureProvider: EnterprisePrivacyFeatureProvider
 
     abstract val searchFeatureProvider: SearchFeatureProvider
     abstract fun getSurveyFeatureProvider(context: Context): SurveyFeatureProvider?
@@ -151,6 +150,11 @@ abstract class FeatureFactory {
      */
     abstract val stylusFeatureProvider: StylusFeatureProvider
 
+    /**
+     * Retrieves implementation for TogglePreference feature.
+     */
+    open val onboardingFeatureProvider: OnboardingFeatureProvider? = null
+
     companion object {
         private var _factory: FeatureFactory? = null
 
@@ -172,16 +176,5 @@ abstract class FeatureFactory {
             _appContext = appContext
             _factory = factory
         }
-
-        /** Returns a factory for creating feature controllers. */
-        @Deprecated(
-            "Replace with featureFactory without Context",
-            ReplaceWith(
-                "featureFactory",
-                "com.android.settings.overlay.FeatureFactory.Companion.featureFactory",
-            )
-        )
-        @JvmStatic
-        fun getFactory(context: Context?): FeatureFactory = featureFactory
     }
 }

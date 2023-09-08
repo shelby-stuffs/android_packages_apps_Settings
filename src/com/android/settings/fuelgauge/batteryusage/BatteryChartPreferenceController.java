@@ -36,6 +36,7 @@ import androidx.preference.PreferenceScreen;
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
 import com.android.settings.core.PreferenceControllerMixin;
+import com.android.settings.fuelgauge.PowerUsageFeatureProvider;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.instrumentation.MetricsFeatureProvider;
@@ -52,6 +53,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /** Controls the update for chart graph and the list items. */
 public class BatteryChartPreferenceController extends AbstractPreferenceController
@@ -105,10 +108,9 @@ public class BatteryChartPreferenceController extends AbstractPreferenceControll
     public interface OnBatteryTipsUpdatedListener {
         /**
          * The callback function for the battery tips card is updated.
-         * @param title the title of the battery tip card
-         * @param summary the summary of the battery tip card
+         * @param powerAnomalyEvent the power anomaly event with highest score
          */
-        void onBatteryTipsUpdated(String title, String summary);
+        void onBatteryTipsUpdated(PowerAnomalyEvent powerAnomalyEvent);
     }
 
 
@@ -137,11 +139,13 @@ public class BatteryChartPreferenceController extends AbstractPreferenceControll
 
     private final SettingsActivity mActivity;
     private final MetricsFeatureProvider mMetricsFeatureProvider;
+    private final PowerUsageFeatureProvider mPowerUsageFeatureProvider;
     private final Handler mHandler = new Handler(Looper.getMainLooper());
     private final AnimatorListenerAdapter mHourlyChartFadeInAdapter =
             createHourlyChartAnimatorListenerAdapter(/*visible=*/ true);
     private final AnimatorListenerAdapter mHourlyChartFadeOutAdapter =
             createHourlyChartAnimatorListenerAdapter(/*visible=*/ false);
+    private final ExecutorService mExecutor = Executors.newSingleThreadExecutor();
 
     @VisibleForTesting
     final DailyChartLabelTextGenerator mDailyChartLabelTextGenerator =
@@ -156,7 +160,9 @@ public class BatteryChartPreferenceController extends AbstractPreferenceControll
         mActivity = activity;
         mIs24HourFormat = DateFormat.is24HourFormat(context);
         mMetricsFeatureProvider =
-                FeatureFactory.getFactory(mContext).getMetricsFeatureProvider();
+                FeatureFactory.getFeatureFactory().getMetricsFeatureProvider();
+        mPowerUsageFeatureProvider =
+                FeatureFactory.getFeatureFactory().getPowerUsageFeatureProvider();
         if (lifecycle != null) {
             lifecycle.addObserver(this);
         }
@@ -365,10 +371,30 @@ public class BatteryChartPreferenceController extends AbstractPreferenceControll
                     slotUsageData, getSlotInformation(), isBatteryUsageMapNullOrEmpty());
 
             if (mOnBatteryTipsUpdatedListener != null) {
-                mOnBatteryTipsUpdatedListener.onBatteryTipsUpdated(null, null);
+                mExecutor.execute(() -> {
+                    final PowerAnomalyEventList anomalyEventList = mPowerUsageFeatureProvider
+                            .detectSettingsAnomaly(mContext, /* displayDrain= */ 0);
+                    final PowerAnomalyEvent displayEvent =
+                            getHighestScoreAnomalyEvent(anomalyEventList);
+                    mHandler.post(()
+                            -> mOnBatteryTipsUpdatedListener.onBatteryTipsUpdated(displayEvent));
+                });
             }
         }
         return true;
+    }
+
+    private PowerAnomalyEvent getHighestScoreAnomalyEvent(PowerAnomalyEventList anomalyEventList) {
+        if (anomalyEventList == null || anomalyEventList.getPowerAnomalyEventsCount() == 0) {
+            return null;
+        }
+        PowerAnomalyEvent highestScoreEvent = null;
+        for (PowerAnomalyEvent event : anomalyEventList.getPowerAnomalyEventsList()) {
+            if (highestScoreEvent == null || event.getScore() > highestScoreEvent.getScore()) {
+                highestScoreEvent = event;
+            }
+        }
+        return highestScoreEvent;
     }
 
     private boolean refreshUiWithNoLevelDataCase() {

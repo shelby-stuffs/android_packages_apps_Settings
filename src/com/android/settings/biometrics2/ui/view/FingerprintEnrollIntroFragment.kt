@@ -28,12 +28,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ScrollView
 import android.widget.TextView
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.android.settings.R
 import com.android.settings.biometrics2.ui.model.FingerprintEnrollIntroStatus
 import com.android.settings.biometrics2.ui.model.FingerprintEnrollable.FINGERPRINT_ENROLLABLE_ERROR_REACH_MAX
@@ -48,6 +51,8 @@ import com.google.android.setupdesign.util.DeviceHelper
 import com.google.android.setupdesign.util.DynamicColorPalette
 import com.google.android.setupdesign.util.DynamicColorPalette.ColorType.ACCENT
 import java.util.function.Supplier
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 /**
  * Fingerprint intro onboarding page fragment implementation
@@ -59,12 +64,7 @@ class FingerprintEnrollIntroFragment : Fragment() {
 
     private var _viewModel: FingerprintEnrollIntroViewModel? = null
     private val viewModel: FingerprintEnrollIntroViewModel
-        get() {
-            if (_viewModel == null) {
-                _viewModel = viewModelProvider[FingerprintEnrollIntroViewModel::class.java]
-            }
-            return _viewModel!!
-        }
+        get() = _viewModel!!
 
     private var introView: GlifLayout? = null
 
@@ -73,10 +73,18 @@ class FingerprintEnrollIntroFragment : Fragment() {
     private var secondaryFooterButton: FooterButton? = null
 
     private val onNextClickListener =
-        View.OnClickListener { _: View? -> viewModel.onNextButtonClick() }
+        View.OnClickListener { _: View? ->
+            activity?.lifecycleScope?.let {
+                viewModel.onNextButtonClick(it)
+            }
+        }
 
     private val onSkipOrCancelClickListener =
-        View.OnClickListener { _: View? -> viewModel.onSkipOrCancelButtonClick() }
+        View.OnClickListener { _: View? ->
+            activity?.lifecycleScope?.let {
+                viewModel.onSkipOrCancelButtonClick(it)
+            }
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -95,7 +103,7 @@ class FingerprintEnrollIntroFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         requireActivity().bindFingerprintEnrollIntroView(
             view = introView!!,
-            canAssumeUdfps = viewModel.canAssumeUdfps(),
+            canAssumeUdfps = viewModel.canAssumeUdfps,
             isBiometricUnlockDisabledByAdmin = viewModel.isBiometricUnlockDisabledByAdmin,
             isParentalConsentRequired = viewModel.isParentalConsentRequired,
             descriptionDisabledByAdminSupplier = { getDescriptionDisabledByAdmin(view.context) }
@@ -105,9 +113,10 @@ class FingerprintEnrollIntroFragment : Fragment() {
     override fun onStart() {
         val context: Context = requireContext()
         val footerBarMixin: FooterBarMixin = footerBarMixin
+        viewModel.updateEnrollableStatus(lifecycleScope)
         initPrimaryFooterButton(context, footerBarMixin)
         initSecondaryFooterButton(context, footerBarMixin)
-        observePageStatusLiveDataIfNeed()
+        collectPageStatusFlowIfNeed()
         super.onStart()
     }
 
@@ -121,7 +130,7 @@ class FingerprintEnrollIntroFragment : Fragment() {
         primaryFooterButton = FooterButton.Builder(context)
             .setText(R.string.security_settings_fingerprint_enroll_introduction_agree)
             .setButtonType(FooterButton.ButtonType.OPT_IN)
-            .setTheme(R.style.SudGlifButton_Primary)
+            .setTheme(com.google.android.setupdesign.R.style.SudGlifButton_Primary)
             .build()
             .also {
                 it.setOnClickListener(onNextClickListener)
@@ -144,7 +153,7 @@ class FingerprintEnrollIntroFragment : Fragment() {
                     R.string.security_settings_fingerprint_enroll_introduction_no_thanks
             )
             .setButtonType(FooterButton.ButtonType.NEXT)
-            .setTheme(R.style.SudGlifButton_Primary)
+            .setTheme(com.google.android.setupdesign.R.style.SudGlifButton_Primary)
             .build()
             .also {
                 it.setOnClickListener(onSkipOrCancelClickListener)
@@ -152,46 +161,41 @@ class FingerprintEnrollIntroFragment : Fragment() {
             }
     }
 
-    private fun observePageStatusLiveDataIfNeed() {
-        val statusLiveData: LiveData<FingerprintEnrollIntroStatus> =
-            viewModel.pageStatusLiveData
-        val status: FingerprintEnrollIntroStatus? = statusLiveData.value
-
-        if (DEBUG) {
-            Log.e(
-                TAG, "observePageStatusLiveDataIfNeed() requireScrollWithButton, status:"
-                        + status
-            )
-        }
-
-        if (status != null && (status.hasScrollToBottom()
-                    || status.enrollableStatus === FINGERPRINT_ENROLLABLE_ERROR_REACH_MAX)
-        ) {
-            // Update once and do not requireScrollWithButton() again when page has scrolled to
-            // bottom or User has enrolled at least a fingerprint, because if we
-            // requireScrollWithButton() again, primary button will become "More" after scrolling.
-            updateFooterButtons(status)
-            return
-        }
-
-        introView!!.getMixin(RequireScrollMixin::class.java).let {
-            it.requireScrollWithButton(
-                requireActivity(),
-                primaryFooterButton!!,
-                moreButtonTextRes,
-                onNextClickListener
-            )
-            it.setOnRequireScrollStateChangedListener { scrollNeeded: Boolean ->
-                viewModel.setHasScrolledToBottom(!scrollNeeded)
+    private fun collectPageStatusFlowIfNeed() {
+        lifecycleScope.launch {
+            val status = viewModel.pageStatusFlow.first()
+            Log.d(TAG, "collectPageStatusFlowIfNeed status:$status")
+            if (status.hasScrollToBottom()
+                || status.enrollableStatus === FINGERPRINT_ENROLLABLE_ERROR_REACH_MAX
+            ) {
+                // Update once and do not requireScrollWithButton() again when page has
+                // scrolled to bottom or User has enrolled at least a fingerprint, because if
+                // we requireScrollWithButton() again, primary button will become "More" after
+                // scrolling.
+                updateFooterButtons(status)
+            } else {
+                introView!!.getMixin(RequireScrollMixin::class.java).let {
+                    it.requireScrollWithButton(
+                        requireActivity(),
+                        primaryFooterButton!!,
+                        moreButtonTextRes,
+                        onNextClickListener
+                    )
+                    it.setOnRequireScrollStateChangedListener { scrollNeeded: Boolean ->
+                        viewModel.setHasScrolledToBottom(!scrollNeeded, lifecycleScope)
+                    }
+                }
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    viewModel.pageStatusFlow.collect(
+                        this@FingerprintEnrollIntroFragment::updateFooterButtons
+                    )
+                }
             }
-        }
-        statusLiveData.observe(this) { newStatus: FingerprintEnrollIntroStatus ->
-            updateFooterButtons(newStatus)
         }
     }
 
     override fun onAttach(context: Context) {
-        _viewModel = null
+        _viewModel = viewModelProvider[FingerprintEnrollIntroViewModel::class.java]
         super.onAttach(context)
     }
 
@@ -201,8 +205,8 @@ class FingerprintEnrollIntroFragment : Fragment() {
     private fun getDescriptionDisabledByAdmin(context: Context): String? {
         val defaultStrId: Int =
             R.string.security_settings_fingerprint_enroll_introduction_message_unlock_disabled
-        val devicePolicyManager: DevicePolicyManager = requireActivity()
-            .getSystemService(DevicePolicyManager::class.java)
+        val devicePolicyManager: DevicePolicyManager =
+            checkNotNull(requireActivity().getSystemService(DevicePolicyManager::class.java))
 
         return devicePolicyManager.resources.getString(FINGERPRINT_UNLOCK_DISABLED) {
             context.getString(defaultStrId)
@@ -230,7 +234,7 @@ class FingerprintEnrollIntroFragment : Fragment() {
             else
                 View.INVISIBLE
 
-        view!!.findViewById<TextView>(R.id.error_text).let {
+        view!!.requireViewById<TextView>(R.id.error_text).let {
             when (status.enrollableStatus) {
                 FINGERPRINT_ENROLLABLE_OK -> {
                     it.text = null
@@ -319,4 +323,7 @@ fun FragmentActivity.bindFingerprintEnrollIntroView(
             )
         )
     }
+
+    view.findViewById<ScrollView>(com.google.android.setupdesign.R.id.sud_scroll_view)
+        ?.importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_YES
 }

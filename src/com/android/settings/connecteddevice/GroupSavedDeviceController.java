@@ -91,7 +91,7 @@ public class GroupSavedDeviceController extends BasePreferenceController
     public GroupSavedDeviceController(Context context) {
         super(context, KEY);
         DockUpdaterFeatureProvider dockUpdaterFeatureProvider =
-        FeatureFactory.getFactory(context).getDockUpdaterFeatureProvider();
+        FeatureFactory.getFeatureFactory().getDockUpdaterFeatureProvider();
     }
 
     @Override
