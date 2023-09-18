@@ -48,8 +48,6 @@
  */
 package com.android.settings.connecteddevice;
 
-import static com.android.settings.Utils.SETTINGS_PACKAGE_NAME;
-
 import android.app.settings.SettingsEnums;
 import android.content.Context;
 import android.net.Uri;
@@ -64,8 +62,11 @@ import com.android.settings.SettingsActivity;
 import com.android.settings.Utils;
 import com.android.settings.core.SettingsUIDeviceConfig;
 import com.android.settings.dashboard.DashboardFragment;
+import com.android.settings.overlay.FeatureFactory;
+import com.android.settings.overlay.SurveyFeatureProvider;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.slices.SlicePreferenceController;
+import com.android.settingslib.bluetooth.HearingAidStatsLogUtils;
 import com.android.settingslib.search.SearchIndexable;
 
 import android.util.Log;
@@ -128,6 +129,16 @@ public class ConnectedDeviceDashboardFragment extends DashboardFragment {
                 : null);
         use(DiscoverableFooterPreferenceController.class)
                 .setAlwaysDiscoverable(isAlwaysDiscoverable(callingAppPackageName, action));
+
+        // Show hearing devices survey if user is categorized as one of interested category
+        final String category = HearingAidStatsLogUtils.getUserCategory(context);
+        if (category != null && !category.isEmpty()) {
+            SurveyFeatureProvider provider =
+                    FeatureFactory.getFeatureFactory().getSurveyFeatureProvider(context);
+            if (provider != null) {
+                provider.sendActivityIfAvailable(category);
+            }
+        }
     }
 
     @VisibleForTesting

@@ -40,16 +40,11 @@ import android.telephony.TelephonyManager;
 import android.util.RecurrenceRule;
 
 import androidx.fragment.app.FragmentActivity;
-import androidx.preference.PreferenceFragmentCompat;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.internal.logging.nano.MetricsProto;
-import com.android.settings.R;
 import com.android.settings.testutils.FakeFeatureFactory;
 import com.android.settings.testutils.shadow.ShadowEntityHeaderController;
 import com.android.settings.widget.EntityHeaderController;
-import com.android.settingslib.NetworkPolicyEditor;
-import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.net.DataUsageController;
 
 import org.junit.After;
@@ -88,19 +83,13 @@ public class DataUsageSummaryPreferenceControllerTest {
     @Mock
     private DataUsageSummaryPreference mSummaryPreference;
     @Mock
-    private NetworkPolicyEditor mPolicyEditor;
-    @Mock
     private NetworkTemplate mNetworkTemplate;
     @Mock
     private SubscriptionInfo mSubscriptionInfo;
     @Mock
     private SubscriptionPlan mSubscriptionPlan;
-    @Mock
-    private Lifecycle mLifecycle;
     @Mock(answer = Answers.RETURNS_DEEP_STUBS)
     private EntityHeaderController mHeaderController;
-    @Mock
-    private PreferenceFragmentCompat mPreferenceFragment;
     @Mock
     private TelephonyManager mTelephonyManager;
     @Mock
@@ -146,9 +135,7 @@ public class DataUsageSummaryPreferenceControllerTest {
                 mDataUsageController,
                 mDataInfoController,
                 mNetworkTemplate,
-                mPolicyEditor,
-                R.string.cell_data_template,
-                mActivity, null, null, null, mDefaultSubscriptionId));
+                mActivity, mDefaultSubscriptionId));
         doReturn(null).when(mController).getSubscriptionInfo(
                 SubscriptionManager.INVALID_SUBSCRIPTION_ID);
         doReturn(null).when(mController).getSubscriptionPlans(
@@ -364,27 +351,6 @@ public class DataUsageSummaryPreferenceControllerTest {
         mController.mDataUsageController = mDataUsageController;
         doReturn(true).when(mPm).hasSystemFeature(eq(FEATURE_WIFI));
         assertThat(mController.getAvailabilityStatus()).isEqualTo(AVAILABLE);
-    }
-
-    @Test
-    public void testMobileData_entityHeaderSet() {
-        final RecyclerView recyclerView = new RecyclerView(mActivity);
-
-        mController = spy(new DataUsageSummaryPreferenceController(
-                mDataUsageController,
-                mDataInfoController,
-                mNetworkTemplate,
-                mPolicyEditor,
-                R.string.cell_data_template,
-                mActivity, mLifecycle, mHeaderController, mPreferenceFragment,
-                mDefaultSubscriptionId));
-
-        when(mPreferenceFragment.getListView()).thenReturn(recyclerView);
-
-        mController.onStart();
-
-        verify(mHeaderController)
-                .setRecyclerView(any(RecyclerView.class), any(Lifecycle.class));
     }
 
     private DataUsageController.DataUsageInfo createTestDataUsageInfo(long now) {

@@ -248,7 +248,6 @@ public class MyDeviceInfoFragment extends DashboardFragment
         final Bundle bundle = getArguments();
         final EntityHeaderController controller = EntityHeaderController
                 .newInstance(context, this, headerView)
-                .setRecyclerView(getListView(), getSettingsLifecycle())
                 .setButtonActions(EntityHeaderController.ActionType.ACTION_NONE,
                         EntityHeaderController.ActionType.ACTION_NONE);
 
@@ -264,7 +263,7 @@ public class MyDeviceInfoFragment extends DashboardFragment
                     com.android.settingslib.Utils.getUserIcon(getActivity(), userManager, info));
         }
 
-        controller.done(context, true /* rebindActions */);
+        controller.done(true /* rebindActions */);
     }
 
     @Override
