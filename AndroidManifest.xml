@@ -36,7 +36,7 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS_PRIVILEGED" />
     <uses-permission android:name="android.permission.QUERY_AUDIO_STATE" />
     <uses-permission android:name="android.permission.MASTER_CLEAR" />
-    <uses-permission android:name="com.google.android.googleapps.permission.GOOGLE_AUTH" />
+    <uses-permission android:name="com.google.android.googleapps.permission.GOOGLE_AUTH" android:maxSdkVersion="34"/>
     <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
@@ -2642,6 +2642,18 @@
 
         <activity android:name=".biometrics.activeunlock.ActiveUnlockRequireBiometricSetup" android:exported="false"/>
 
+        <activity android:name=".remoteauth.RemoteAuthActivity"
+                  android:exported="true">
+            <intent-filter>
+                <action android:name="android.settings.REMOTE_AUTHENTICATOR_ENROLL" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".remoteauth.RemoteAuthActivityInternal"
+                  android:exported="false"
+                  android:taskAffinity="com.android.settings.root" />
+
         <!-- Note this must not be exported since it returns the password in the intent -->
         <activity android:name=".password.ConfirmLockPattern$InternalActivity"
             android:exported="false"
@@ -2827,6 +2839,8 @@
         <receiver android:name=".deviceinfo.StorageUnmountReceiver"
                 android:exported="true"
                 android:permission="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
+        <receiver android:name=".localepicker.NotificationCancelReceiver" />
 
         <activity android:name="Settings$ApnEditorActivity"
                 android:configChanges="orientation|keyboardHidden|screenSize"
@@ -3317,6 +3331,7 @@
             android:name="Settings$DataUsageSummaryActivity"
             android:label="@string/data_usage_summary_title"
             android:exported="true"
+            android:enabled="@bool/config_show_sim_info"
             android:icon="@drawable/ic_homepage_data_usage">
             <intent-filter android:priority="1">
                 <action android:name="android.settings.DATA_USAGE_SETTINGS" />
@@ -4422,20 +4437,6 @@
         </service>
 
         <service
-            android:name=".development.qstile.DevelopmentTiles$WinscopeTrace"
-            android:label="@string/winscope_trace_quick_settings_title"
-            android:icon="@drawable/tile_icon_winscope_trace"
-            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-            android:exported="true"
-            android:enabled="false">
-            <intent-filter>
-                <action android:name="android.service.quicksettings.action.QS_TILE" />
-            </intent-filter>
-            <meta-data android:name="android.service.quicksettings.TOGGLEABLE_TILE"
-                       android:value="true"/>
-        </service>
-
-        <service
             android:name=".development.qstile.DevelopmentTiles$SensorsOff"
             android:label="@string/sensors_off_quick_settings_title"
             android:icon="@drawable/tile_icon_sensors_off"
@@ -4475,22 +4476,6 @@
             </intent-filter>
             <meta-data android:name="android.service.quicksettings.TOGGLEABLE_TILE"
                        android:value="true"/>
-        </service>
-
-        <service
-            android:name=".development.qstile.DevelopmentTiles$DesktopMode"
-            android:label="@string/desktop_mode"
-            android:icon="@drawable/tile_icon_desktop_mode"
-            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-            android:exported="true"
-            android:enabled="false">
-            <intent-filter>
-                <action android:name="android.service.quicksettings.action.QS_TILE" />
-            </intent-filter>
-            <meta-data android:name="android.service.quicksettings.TOGGLEABLE_TILE"
-                android:value="true"/>
-            <meta-data android:name="com.android.settings.development.qstile.REQUIRES_SYSTEM_PROPERTY"
-                       android:value="persist.wm.debug.desktop_mode" />
         </service>
 
         <activity
