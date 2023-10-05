@@ -109,7 +109,7 @@ fun UserAspectRatioAppList(
         appList = appList,
         header = {
             Box(Modifier.padding(SettingsDimension.itemPadding)) {
-                SettingsBody(UserAspectRatioAppsPageProvider.getSummary())
+                SettingsBody(stringResource(R.string.aspect_ratio_main_summary, Build.MODEL))
             }
             Illustration(object : IllustrationModel {
                 override val resId = R.raw.user_aspect_ratio_education
@@ -215,5 +215,5 @@ class UserAspectRatioAppListModel(private val context: Context)
 private enum class SpinnerItem(val stringResId: Int) {
     Suggested(R.string.user_aspect_ratio_suggested_apps_label),
     All(R.string.filter_all_apps),
-    Overridden(R.string.user_aspect_ratio_overridden_apps_label)
+    Overridden(R.string.user_aspect_ratio_changed_apps_label)
 }

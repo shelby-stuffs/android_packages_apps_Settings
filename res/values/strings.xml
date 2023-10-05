@@ -85,6 +85,19 @@
     <!-- Description for the button that makes interface elements larger. [CHAR_LIMIT=NONE] -->
     <string name="font_size_make_larger_desc">Make larger</string>
 
+    <!-- Title for stay awake on fold radio button. [CHAR_LIMIT=NONE] -->
+    <string name="stay_awake_on_fold_title">Always</string>
+    <!-- Summary for stay awake on fold radio button. [CHAR_LIMIT=NONE] -->
+    <string name="stay_awake_on_fold_summary">Front display turns on when you fold your device</string>
+    <!-- Title for selective stay awake radio button. [CHAR_LIMIT=NONE] -->
+    <string name="selective_stay_awake_title">Only games, videos, and more</string>
+    <!-- Summary for selective stay awake radio button. [CHAR_LIMIT=NONE] -->
+    <string name="selective_stay_awake_summary">Front display turns on for apps that stop your screen going idle</string>
+    <!-- Title for sleep on fold radio button. [CHAR_LIMIT=NONE] -->
+    <string name="sleep_on_fold_title">Never</string>
+    <!-- Summary for sleep on fold radio button. [CHAR_LIMIT=NONE] -->
+    <string name="sleep_on_fold_summary">Front display locks when you fold your device</string>
+
     <!-- Auto rotate switchbar title. [CHAR_LIMIT=NONE] -->
     <string name="auto_rotate_settings_primary_switch_title">Use auto-rotate</string>
 
@@ -258,6 +271,8 @@
     <string name="connected_device_other_device_title">Other devices</string>
     <!-- Title for connected device group [CHAR LIMIT=none]-->
     <string name="connected_device_saved_title">Saved devices</string>
+    <!-- Title for fast pair device group [CHAR LIMIT=none]-->
+    <string name="connected_device_fast_pair_device_title">Associated with account</string>
     <!-- Title for connected TWS device group [CHAR LIMIT=none]-->
     <string name="connected_tws_device_saved_title">Saved Earbuds</string>
     <!-- Summary for preference to add a device [CHAR LIMIT=none]-->
@@ -1178,12 +1193,37 @@
 
     <!-- Title for the subpage in the "Security & privacy". This page consists of the more security and privacy settings. Can be navigated by Settings -> Security & privacy -> More security & privacy [CHAR LIMIT=NONE] -->
     <string name="more_security_privacy_settings">More security &amp; privacy</string>
-    <!-- Title for the section that has security entries in the More security & privacy page. [CHAR LIMIT=60] -->
+    <!-- Title for the section that has security entries in the More security & privacy page. Also used for Private Space security category. [CHAR LIMIT=60] -->
     <string name="security_header">Security</string>
     <!-- Title for the section that has privacy entries in the More security & privacy page. [CHAR LIMIT=60] -->
     <string name="privacy_header">Privacy</string>
     <!-- Title for the section that has work profile entries in the More security & privacy page. [CHAR LIMIT=60] -->
     <string name="work_profile_category_header">Work profile</string>
+
+    <!-- Title for the Private Space page. [CHAR LIMIT=60] -->
+    <string name="private_space_title">Private Space</string>
+    <!-- Summary for the Private Space page. [CHAR LIMIT=NONE] -->
+    <string name="private_space_summary">Hide apps in a private folder</string>
+    <!-- Title for the Private Space one lock preference. [CHAR LIMIT=60] -->
+    <string name="private_space_one_lock_title">Unlock using screen lock</string>
+    <!-- Title for the preference to hide Private Space. [CHAR LIMIT=60] -->
+    <string name="private_space_hide_title">Show Private Space</string>
+    <!-- System category for the Private Space page. [CHAR LIMIT=30] -->
+    <string name="private_space_category_system">System</string>
+    <!-- Title for the preference to create Private Space. [CHAR LIMIT=60] -->
+    <string name="private_space_create_title">Create Private Space</string>
+    <!-- Title for the preference to delete Private Space. [CHAR LIMIT=60] -->
+    <string name="private_space_delete_title">Delete Private Space</string>
+    <!-- Toast to show when the private space was created. [CHAR LIMIT=NONE] -->
+    <string name="private_space_created">Private Space successfully created</string>
+    <!-- Toast to show when the private space already exists. [CHAR LIMIT=NONE] -->
+    <string name="private_space_already_exists">Private Space already exists</string>
+    <!-- Toast to show when the private space could not be created. [CHAR LIMIT=NONE] -->
+    <string name="private_space_create_failed">Private Space could not be created</string>
+    <!-- Toast to show when the private space was deleted. [CHAR LIMIT=NONE] -->
+    <string name="private_space_deleted">Private Space successfully deleted</string>
+    <!-- Toast to show when the private space could not be deleted. [CHAR LIMIT=NONE] -->
+    <string name="private_space_delete_failed">Private Space could not be deleted</string>
 
     <!-- Text shown when "Add fingerprint" button is disabled -->
     <string name="fingerprint_add_max">You can add up to <xliff:g id="count" example="5">%d</xliff:g> fingerprints</string>
@@ -2532,10 +2572,8 @@
     <string name="display_white_balance_title">Display white balance</string>
     <!-- Display settings screen, display white balance settings summary [CHAR LIMIT=NONE] -->
     <string name="display_white_balance_summary"></string>
-    <!-- Display settings screen, setting name to enable staying awake on fold [CHAR LIMIT=30] -->
-    <string name="stay_awake_on_fold_title">Stay unlocked on fold</string>
-    <!-- Display settings screen, setting summary to enable staying awake on fold [CHAR LIMIT=NONE] -->
-    <string name="stay_awake_on_fold_summary">Keep front display unlocked when folded until screen timeout</string>
+    <!-- Display settings screen, setting option name to change Fold setting -->
+    <string name="fold_lock_behavior_title">Continue using apps on fold</string>
     <!-- Display settings screen, peak refresh rate settings title [CHAR LIMIT=30] -->
     <string name="peak_refresh_rate_title">Smooth Display</string>
     <!-- Display settings screen, peak refresh rate settings summary [CHAR LIMIT=NONE] -->
@@ -7248,7 +7286,7 @@
     <string name="keywords_app_pinning">screen pinning</string>
     <string name="keywords_profile_challenge">work challenge, work, profile</string>
     <string name="keywords_unification">work profile, managed profile, unify, unification, work, profile</string>
-    <string name="keywords_stay_awake_on_lock">
+    <string name="keywords_fold_lock_behavior">
         awake, sleep, do not lock, stay unlocked on fold, folding, closing, fold, close, screen off
     </string>
     <string name="keywords_gesture">gestures</string>
@@ -9826,9 +9864,6 @@
     <!-- Informational text about recent update time only, without carrier [CHAR LIMIT=30] -->
     <string name="no_carrier_update_now_text">Updated just now</string>
 
-    <!-- Button to launch external data plan app [CHAR LIMIT=30] -->
-    <string name="launch_mdp_app_text">View plan</string>
-
     <!-- Alternate launch button text for Wi-Fi only mode [CHAR LIMIT=30] -->
     <string name="launch_wifi_text">View details</string>
 
@@ -10126,7 +10161,7 @@
     <!-- Title text for edge to edge navigation [CHAR LIMIT=60] -->
     <string name="edge_to_edge_navigation_title">Gesture navigation</string>
     <!-- Summary text for edge to edge navigation [CHAR LIMIT=NONE] -->
-    <string name="edge_to_edge_navigation_summary">To go Home, swipe up from the bottom of the screen. To switch apps, swipe up from the bottom, hold, then release. To go back, swipe from either the left or right edge.</string>
+    <string name="edge_to_edge_navigation_summary">To go home, swipe up from the bottom of the screen. To switch apps, swipe up from the bottom, hold, then release. To go back, swipe from either the left or right edge.</string>
 
     <!-- Title text for 3-button navigation [CHAR LIMIT=60] -->
     <string name="legacy_navigation_title">3-button navigation</string>
@@ -10815,6 +10850,8 @@
 
     <!-- Title for preference showing the primary account on the device [CHAR LIMIT=60]-->
     <string name="my_device_info_account_preference_title">Account</string>
+    <!-- Summary for preference showing the number of the accounts. [CHAR LIMIT=NONE]-->
+    <string name="my_device_info_account_preference_summary">%d accounts</string>
     <!-- Title for preference showing the name of the device. [CHAR LIMIT=60]-->
     <string name="my_device_info_device_name_preference_title">Device name</string>
 
@@ -12417,11 +12454,13 @@
     <!-- [CHAR LIMIT=60] Aspect ratio title setting to choose app aspect ratio -->
     <string name="aspect_ratio_title">Aspect ratio</string>
     <!-- [CHAR LIMIT=NONE] Aspect ratio setting summary to choose aspect ratio for apps unoptimized for device -->
-    <string name="aspect_ratio_summary">Choose an aspect ratio to view this app if it hasn\'t been designed to fit your <xliff:g id="device_name">%1$s</xliff:g></string>
+    <string name="aspect_ratio_summary">Try a new aspect ratio to view this app if it hasn\'t been designed to fit your <xliff:g id="device_name">%1$s</xliff:g></string>
+    <!-- [CHAR LIMIT=NONE] Aspect ratio setting main summary on page to choose aspect ratio for apps unoptimized for device -->
+    <string name="aspect_ratio_main_summary">Try a new aspect ratio to view this app if it hasn\'t been designed to fit your <xliff:g id="device_name">%1$s</xliff:g>. Some apps may not be optimized for certain aspect ratios.</string>
     <!-- [CHAR LIMIT=NONE] Aspect ratio suggested apps filter label -->
     <string name="user_aspect_ratio_suggested_apps_label">Suggested apps</string>
-    <!-- [CHAR LIMIT=NONE] Filter label for apps that have user aspect ratio override applied -->
-    <string name="user_aspect_ratio_overridden_apps_label">Apps you have overridden</string>
+    <!-- [CHAR LIMIT=14] Filter label for apps that have user aspect ratio changed -->
+    <string name="user_aspect_ratio_changed_apps_label">Changed apps</string>
     <!-- [CHAR LIMIT=NONE] App default aspect ratio entry -->
     <string name="user_aspect_ratio_app_default">App default</string>
     <!-- [CHAR LIMIT=NONE] Fullscreen aspect ratio entry -->
@@ -12436,9 +12475,24 @@
     <string name="user_aspect_ratio_3_2">3:2</string>
     <!-- [CHAR LIMIT=NONE] 4:3 aspect ratio entry -->
     <string name="user_aspect_ratio_4_3">4:3</string>
+    <!-- [CHAR LIMIT=NONE] Aspect ratio a11y message announced to replace colon in aspect ratio entry e.g. 3 by 2 -->
+    <string name="user_aspect_ratio_option_a11y"><xliff:g id="numerator">%1$s</xliff:g> by <xliff:g id="denominator">%2$s</xliff:g></string>
     <!-- [CHAR LIMIT=NONE] Warning description for app info aspect ratio page -->
-    <string name="app_aspect_ratio_footer">The app will restart when you change aspect ratio. You may lose unsaved changes.</string>
+    <string name="app_aspect_ratio_footer">The app will restart when you change aspect ratio. You may lose unsaved changes. Some apps may not be optimized for certain aspect ratios.</string>
 
+    <!-- TODO(b/300219974): Change aspect ratio title and clean up unused titles -->
+    <!-- [CHAR LIMIT=60] Aspect ratio experimental title settings to choose app aspect ratio -->
+    <string name="aspect_ratio_experimental_title">Aspect ratio (experimental)</string>
+    <!-- [CHAR LIMIT=60] Aspect ratio experiment title settings to choose app aspect ratio -->
+    <string name="aspect_ratio_experiment_title">Aspect ratio (experiment)</string>
+    <!-- [CHAR LIMIT=60] Aspect ratio labs title settings to choose app aspect ratio -->
+    <string name="aspect_ratio_labs_title">Aspect ratio (labs)</string>
+    <!-- [CHAR LIMIT=60] Aspect ratio experimental title label -->
+    <string name="aspect_ratio_experimental_label">Experimental</string>
+    <!-- [CHAR LIMIT=60] Aspect ratio experiment title label -->
+    <string name="aspect_ratio_experiment_label">Experiment</string>
+    <!-- [CHAR LIMIT=60] Aspect ratio labs title label -->
+    <string name="aspect_ratio_labs_label">Labs</string>
 
     <!-- Accessibility label for fingerprint sensor [CHAR LIMIT=NONE] -->
     <string name="accessibility_fingerprint_label">Fingerprint sensor</string>
