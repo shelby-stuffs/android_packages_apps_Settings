@@ -42,19 +42,4 @@ public class SettingsUIDeviceConfig {
      * {@code true} whether or not event_log for generic actions is enabled. Default is true.
      */
     public static final String GENERIC_EVENT_LOGGING_ENABLED = "event_logging_enabled";
-    /**
-     * {@code true} whether to show LE Audio toggle in device detail page. Default is false.
-     */
-    public static final String BT_LE_AUDIO_DEVICE_DETAIL_ENABLED =
-            "bt_le_audio_device_detail_enabled";
-    /**
-     * {@code true} if press and hold nav handle to search is enabled.
-     */
-    public static final String PRESS_HOLD_NAV_HANDLE_TO_SEARCH =
-            "press_hold_nav_handle_to_search";
-    /**
-     * {@code true} if long press home button to search is enabled.
-     */
-    public static final String LONG_PRESS_HOME_BUTTON_TO_SEARCH =
-            "long_press_home_button_to_search";
 }

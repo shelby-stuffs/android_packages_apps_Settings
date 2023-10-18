@@ -664,6 +664,7 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
         <activity android:name="Settings$FaceSettingsActivity"
             android:label="@string/security_settings_face_preference_title"
             android:exported="true"
+            android:theme="@style/Theme.Settings.NoActionBar"
             android:icon="@drawable/ic_face_header">
             <intent-filter>
                 <action android:name="android.settings.FACE_SETTINGS" />
@@ -678,6 +679,7 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
         <activity android:name="Settings$FaceSettingsInternalActivity"
                   android:label="@string/security_settings_face_preference_title"
                   android:exported="false"
+                  android:theme="@style/Theme.Settings.NoActionBar"
                   android:icon="@drawable/ic_face_header"
                   android:taskAffinity="com.android.settings.root">
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
@@ -1616,7 +1618,7 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
 
         <activity android:name="Settings$UserAspectRatioAppListActivity"
             android:exported="true"
-            android:label="@string/aspect_ratio_title">
+            android:label="@string/aspect_ratio_experimental_title">
             <intent-filter android:priority="1">
                 <action android:name="android.settings.MANAGE_USER_ASPECT_RATIO_SETTINGS"/>
                 <category android:name="android.intent.category.DEFAULT" />
@@ -1625,6 +1627,20 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
                 android:value="com.android.settings.applications.manageapplications.ManageApplications" />
             <meta-data android:name="com.android.settings.HIGHLIGHT_MENU_KEY"
                 android:value="@string/menu_key_apps"/>
+        </activity>
+
+        <activity android:name="Settings$UserAspectRatioAppActivity"
+                  android:exported="true"
+                  android:label="@string/aspect_ratio_experimental_title">
+            <intent-filter>
+                <action android:name="android.settings.MANAGE_USER_ASPECT_RATIO_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                       android:value="com.android.settings.applications.appcompat.UserAspectRatioDetails" />
+            <meta-data android:name="com.android.settings.HIGHLIGHT_MENU_KEY"
+                       android:value="@string/menu_key_apps"/>
         </activity>
 
         <activity
@@ -4597,6 +4613,22 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.bluetooth.BluetoothFindBroadcastsFragment" />
+            <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
+                android:value="true" />
+        </activity>
+
+        <activity
+            android:name=".Settings$PreviouslyConnectedDeviceActivity"
+            android:label="@string/connected_device_saved_title"
+            android:exported="true"
+            android:permission="android.permission.BLUETOOTH_CONNECT"
+            android:icon="@drawable/ic_homepage_connected_device">
+            <intent-filter android:priority="1">
+                <action android:name="com.android.settings.PREVIOUSLY_CONNECTED_DEVICE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.connecteddevice.PreviouslyConnectedDeviceDashboardFragment"/>
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                 android:value="true" />
         </activity>

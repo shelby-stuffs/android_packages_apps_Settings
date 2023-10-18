@@ -56,8 +56,6 @@ public class ChartDataUsagePreference extends Preference {
     private long mStart;
     private long mEnd;
     private NetworkCycleChartData mNetworkCycleChartData;
-    private int mSecondaryColor;
-    private int mSeriesColor;
 
     public ChartDataUsagePreference(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -296,24 +294,10 @@ public class ChartDataUsagePreference extends Preference {
         notifyChanged();
     }
 
-    public long getInspectStart() {
-        return mStart;
-    }
-
-    public long getInspectEnd() {
-        return mEnd;
-    }
-
     public void setNetworkCycleData(NetworkCycleChartData data) {
         mNetworkCycleChartData = data;
         mStart = data.getStartTime();
         mEnd = data.getEndTime();
-        notifyChanged();
-    }
-
-    public void setColors(int seriesColor, int secondaryColor) {
-        mSeriesColor = seriesColor;
-        mSecondaryColor = secondaryColor;
         notifyChanged();
     }
 }

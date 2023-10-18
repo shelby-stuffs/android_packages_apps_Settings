@@ -82,7 +82,7 @@ object UserAspectRatioAppsPageProvider : SettingsPageProvider {
     @VisibleForTesting
     fun EntryItem() =
         Preference(object : PreferenceModel {
-            override val title = stringResource(R.string.aspect_ratio_title)
+            override val title = stringResource(R.string.aspect_ratio_experimental_title)
             override val summary = getSummary().toState()
             override val onClick = navigator(name)
         })
@@ -104,7 +104,7 @@ fun UserAspectRatioAppList(
     = { AppList() },
 ) {
     AppListPage(
-        title = stringResource(R.string.aspect_ratio_title),
+        title = stringResource(R.string.aspect_ratio_experimental_title),
         listModel = rememberContext(::UserAspectRatioAppListModel),
         appList = appList,
         header = {
@@ -115,7 +115,8 @@ fun UserAspectRatioAppList(
                 override val resId = R.raw.user_aspect_ratio_education
                 override val resourceType = ResourceType.LOTTIE
             })
-        }
+        },
+        noMoreOptions = true,
     )
 }
 
