@@ -362,6 +362,8 @@ public class Settings extends SettingsActivity {
     public static class ClonedAppsListActivity extends SettingsActivity { /* empty */ }
     /** Activity to manage Aspect Ratio app list page */
     public static class UserAspectRatioAppListActivity extends SettingsActivity { /* empty */ }
+    /** Activity to manage Aspect Ratio app page */
+    public static class UserAspectRatioAppActivity extends SettingsActivity { /* empty */ }
     public static class NotificationReviewPermissionsActivity extends SettingsActivity { /* empty */ }
     public static class AppNotificationSettingsActivity extends SettingsActivity { /* empty */ }
     public static class ChannelNotificationSettingsActivity extends SettingsActivity { /* empty */ }
@@ -514,4 +516,6 @@ public class Settings extends SettingsActivity {
      * Activity for OneHandedSettings
      */
     public static class OneHandedSettingsActivity extends SettingsActivity { /* empty */ }
+
+    public static class PreviouslyConnectedDeviceActivity extends SettingsActivity { /* empty */ }
 }

@@ -15,29 +15,18 @@
 package com.android.settings.datausage;
 
 import android.app.Activity;
-import android.app.ActivityManager;
 import android.app.settings.SettingsEnums;
-import android.app.usage.NetworkStats;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.net.ConnectivityManager;
 import android.net.NetworkPolicy;
 import android.net.NetworkTemplate;
 import android.os.Bundle;
 import android.os.UserManager;
 import android.provider.Settings;
-import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.util.EventLog;
 import android.util.Log;
 import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityEvent;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ImageView;
-import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -46,28 +35,22 @@ import androidx.lifecycle.Lifecycle;
 import androidx.loader.app.LoaderManager.LoaderCallbacks;
 import androidx.loader.content.Loader;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceGroup;
 
 import com.android.settings.R;
-import com.android.settings.core.SubSettingLauncher;
-import com.android.settings.datausage.CycleAdapter.SpinnerInterface;
-import com.android.settings.datausage.lib.AppDataUsageRepository;
+import com.android.settings.datausage.lib.BillingCycleRepository;
 import com.android.settings.network.MobileDataEnabledListener;
 import com.android.settings.network.MobileNetworkRepository;
-import com.android.settings.network.ProxySubscriptionManager;
 import com.android.settings.widget.LoadingViewController;
-import com.android.settingslib.AppItem;
 import com.android.settingslib.mobile.dataservice.SubscriptionInfoEntity;
 import com.android.settingslib.net.NetworkCycleChartData;
 import com.android.settingslib.net.NetworkCycleChartDataLoader;
-import com.android.settingslib.net.NetworkStatsSummaryLoader;
-import com.android.settingslib.net.UidDetailProvider;
 import com.android.settingslib.utils.ThreadUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+
+import kotlin.Unit;
 
 /**
  * Panel showing data usage history across various networks, including options
@@ -78,21 +61,17 @@ public class DataUsageList extends DataUsageBaseFragment
 
     static final String EXTRA_SUB_ID = "sub_id";
     static final String EXTRA_NETWORK_TEMPLATE = "network_template";
-    static final String EXTRA_NETWORK_TYPE = "network_type";
 
     private static final String TAG = "DataUsageList";
     private static final boolean LOGD = false;
 
     private static final String KEY_USAGE_AMOUNT = "usage_amount";
     private static final String KEY_CHART_DATA = "chart_data";
-    private static final String KEY_APPS_GROUP = "apps_group";
     private static final String KEY_TEMPLATE = "template";
     private static final String KEY_APP = "app";
 
     @VisibleForTesting
     static final int LOADER_CHART_DATA = 2;
-    @VisibleForTesting
-    static final int LOADER_SUMMARY = 3;
 
     @VisibleForTesting
     MobileDataEnabledListener mDataStateListener;
@@ -102,10 +81,6 @@ public class DataUsageList extends DataUsageBaseFragment
     @VisibleForTesting
     int mSubId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
     @VisibleForTesting
-    int mNetworkType;
-    @VisibleForTesting
-    Spinner mCycleSpinner;
-    @VisibleForTesting
     LoadingViewController mLoadingViewController;
 
     private ChartDataUsagePreference mChart;
@@ -113,18 +88,18 @@ public class DataUsageList extends DataUsageBaseFragment
     @Nullable
     private List<NetworkCycleChartData> mCycleData;
 
-    // Caches the cycles for startAppDataUsage usage, which need be cleared when resumed.
-    private ArrayList<Long> mCycles;
     // Spinner will keep the selected cycle even after paused, this only keeps the displayed cycle,
     // which need be cleared when resumed.
     private CycleAdapter.CycleItem mLastDisplayedCycle;
-    private UidDetailProvider mUidDetailProvider;
-    private CycleAdapter mCycleAdapter;
     private Preference mUsageAmount;
-    private PreferenceGroup mApps;
-    private View mHeader;
     private MobileNetworkRepository mMobileNetworkRepository;
     private SubscriptionInfoEntity mSubscriptionInfoEntity;
+    private DataUsageListAppsController mDataUsageListAppsController;
+    private BillingCycleRepository mBillingCycleRepository;
+    @VisibleForTesting
+    DataUsageListHeaderController mDataUsageListHeaderController;
+
+    private boolean mIsBillingCycleModifiable = false;
 
     @Override
     public int getMetricsCategory() {
@@ -142,70 +117,47 @@ public class DataUsageList extends DataUsageBaseFragment
         }
 
         final Activity activity = getActivity();
-        if (!isBandwidthControlEnabled()) {
+        mBillingCycleRepository = createBillingCycleRepository();
+        if (!mBillingCycleRepository.isBandwidthControlEnabled()) {
             Log.w(TAG, "No bandwidth control; leaving");
             activity.finish();
             return;
         }
 
-        mUidDetailProvider = new UidDetailProvider(activity);
         mUsageAmount = findPreference(KEY_USAGE_AMOUNT);
         mChart = findPreference(KEY_CHART_DATA);
-        mApps = findPreference(KEY_APPS_GROUP);
 
         processArgument();
+        if (mTemplate == null) {
+            Log.e(TAG, "No template; leaving");
+            finish();
+            return;
+        }
         updateSubscriptionInfoEntity();
         mDataStateListener = new MobileDataEnabledListener(activity, this);
+        mDataUsageListAppsController = use(DataUsageListAppsController.class);
+        mDataUsageListAppsController.init(mTemplate);
+    }
+
+    @VisibleForTesting
+    @NonNull
+    BillingCycleRepository createBillingCycleRepository() {
+        return new BillingCycleRepository(requireContext());
     }
 
     @Override
     public void onViewCreated(@NonNull View v, Bundle savedInstanceState) {
         super.onViewCreated(v, savedInstanceState);
 
-        mHeader = setPinnedHeaderView(R.layout.apps_filter_spinner);
-        mHeader.findViewById(R.id.filter_settings).setOnClickListener(btn -> {
-            final Bundle args = new Bundle();
-            args.putParcelable(DataUsageList.EXTRA_NETWORK_TEMPLATE, mTemplate);
-            new SubSettingLauncher(getContext())
-                    .setDestination(BillingCycleSettings.class.getName())
-                    .setTitleRes(R.string.billing_cycle)
-                    .setSourceMetricsCategory(getMetricsCategory())
-                    .setArguments(args)
-                    .launch();
-        });
-        mCycleSpinner = mHeader.findViewById(R.id.filter_spinner);
-        mCycleSpinner.setVisibility(View.GONE);
-        mCycleAdapter = new CycleAdapter(mCycleSpinner.getContext(), new SpinnerInterface() {
-            @Override
-            public void setAdapter(CycleAdapter cycleAdapter) {
-                mCycleSpinner.setAdapter(cycleAdapter);
-            }
-
-            @Override
-            public void setOnItemSelectedListener(OnItemSelectedListener listener) {
-                mCycleSpinner.setOnItemSelectedListener(listener);
-            }
-
-            @Override
-            public Object getSelectedItem() {
-                return mCycleSpinner.getSelectedItem();
-            }
-
-            @Override
-            public void setSelection(int position) {
-                mCycleSpinner.setSelection(position);
-            }
-        }, mCycleListener);
-        mCycleSpinner.setAccessibilityDelegate(new AccessibilityDelegate() {
-            @Override
-            public void sendAccessibilityEvent(View host, int eventType) {
-                if (eventType == AccessibilityEvent.TYPE_VIEW_SELECTED) {
-                    // Ignore TYPE_VIEW_SELECTED or TalkBack will speak for it at onResume.
-                    return;
+        mDataUsageListHeaderController = new DataUsageListHeaderController(
+                setPinnedHeaderView(R.layout.apps_filter_spinner),
+                mTemplate,
+                getMetricsCategory(),
+                (cycle, position) -> {
+                    updateSelectedCycle(cycle, position);
+                    return Unit.INSTANCE;
                 }
-                super.sendAccessibilityEvent(host, eventType);
-            }
-        });
+        );
 
         mLoadingViewController = new LoadingViewController(
                 getView().findViewById(R.id.loading_container), getListView());
@@ -216,16 +168,14 @@ public class DataUsageList extends DataUsageBaseFragment
         super.onResume();
         mLoadingViewController.showLoadingViewDelayed();
         mDataStateListener.start(mSubId);
-        mCycles = null;
         mLastDisplayedCycle = null;
+        updatePolicy();
 
         // kick off loader for network history
         // TODO: consider chaining two loaders together instead of reloading
         // network history when showing app detail.
         getLoaderManager().restartLoader(LOADER_CHART_DATA,
                 buildArgs(mTemplate), mNetworkCycleDataCallbacks);
-
-        updateBody();
     }
 
     @Override
@@ -234,16 +184,6 @@ public class DataUsageList extends DataUsageBaseFragment
         mDataStateListener.stop();
 
         getLoaderManager().destroyLoader(LOADER_CHART_DATA);
-        getLoaderManager().destroyLoader(LOADER_SUMMARY);
-    }
-
-    @Override
-    public void onDestroy() {
-        if (mUidDetailProvider != null) {
-            mUidDetailProvider.clearCache();
-            mUidDetailProvider = null;
-        }
-        super.onDestroy();
     }
 
     @Override
@@ -261,7 +201,6 @@ public class DataUsageList extends DataUsageBaseFragment
         if (args != null) {
             mSubId = args.getInt(EXTRA_SUB_ID, SubscriptionManager.INVALID_SUBSCRIPTION_ID);
             mTemplate = args.getParcelable(EXTRA_NETWORK_TEMPLATE);
-            mNetworkType = args.getInt(EXTRA_NETWORK_TYPE, ConnectivityManager.TYPE_MOBILE);
         }
         if (mTemplate == null && mSubId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
             final Intent intent = getIntent();
@@ -295,33 +234,6 @@ public class DataUsageList extends DataUsageBaseFragment
         updatePolicy();
     }
 
-    /**
-     * Update body content based on current tab. Loads network cycle data from system, and
-     * binds them to visible controls.
-     */
-    private void updateBody() {
-        if (!isAdded()) return;
-
-        final Context context = getActivity();
-
-        // detail mode can change visible menus, invalidate
-        getActivity().invalidateOptionsMenu();
-
-        int seriesColor = context.getColor(R.color.sim_noitification);
-        if (mSubId != SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
-            final SubscriptionInfo sir = ProxySubscriptionManager.getInstance(context)
-                    .getActiveSubscriptionInfo(mSubId);
-
-            if (sir != null) {
-                seriesColor = sir.getIconTint();
-            }
-        }
-
-        final int secondaryColor = Color.argb(127, Color.red(seriesColor), Color.green(seriesColor),
-                Color.blue(seriesColor));
-        mChart.setColors(seriesColor, secondaryColor);
-    }
-
     private Bundle buildArgs(NetworkTemplate template) {
         final Bundle args = new Bundle();
         args.putParcelable(KEY_TEMPLATE, template);
@@ -335,30 +247,31 @@ public class DataUsageList extends DataUsageBaseFragment
      */
     @VisibleForTesting
     void updatePolicy() {
-        final NetworkPolicy policy = services.mPolicyEditor.getPolicy(mTemplate);
-        final View configureButton = mHeader.findViewById(R.id.filter_settings);
-        //SUB SELECT
-        if (isNetworkPolicyModifiable(policy, mSubId) && isMobileDataAvailable(mSubId)) {
-            mChart.setNetworkPolicy(policy);
-            configureButton.setVisibility(View.VISIBLE);
-            ((ImageView) configureButton).setColorFilter(android.R.color.white);
+        mIsBillingCycleModifiable = isBillingCycleModifiable();
+        if (mIsBillingCycleModifiable) {
+            mChart.setNetworkPolicy(services.mPolicyEditor.getPolicy(mTemplate));
         } else {
-            // controls are disabled; don't bind warning/limit sweeps
-            mChart.setNetworkPolicy(null);
-            configureButton.setVisibility(View.GONE);
+            mChart.setNetworkPolicy(null);  // don't bind warning / limit sweeps
         }
+        updateConfigButtonVisibility();
+    }
 
-        // generate cycle list based on policy and available history
-        if (mCycleData != null) {
-            mCycleAdapter.updateCycleList(mCycleData);
-        }
-        updateSelectedCycle();
+    @VisibleForTesting
+    boolean isBillingCycleModifiable() {
+        return mBillingCycleRepository.isModifiable(mSubId)
+                && SubscriptionManager.from(requireContext())
+                .getActiveSubscriptionInfo(mSubId) != null;
+    }
+
+    private void updateConfigButtonVisibility() {
+        mDataUsageListHeaderController.setConfigButtonVisible(
+                mIsBillingCycleModifiable && mCycleData != null);
     }
 
     /**
      * Updates the chart and detail data when initial loaded or selected cycle changed.
      */
-    private void updateSelectedCycle() {
+    private void updateSelectedCycle(CycleAdapter.CycleItem cycle, int position) {
         // Avoid from updating UI after #onStop.
         if (!getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.STARTED)) {
             return;
@@ -370,11 +283,6 @@ public class DataUsageList extends DataUsageBaseFragment
             return;
         }
 
-        final int position = mCycleSpinner.getSelectedItemPosition();
-        if (mCycleAdapter.getCount() == 0 || position < 0) {
-            return;
-        }
-        final CycleAdapter.CycleItem cycle = mCycleAdapter.getItem(position);
         if (Objects.equals(cycle, mLastDisplayedCycle)) {
             // Avoid duplicate update to avoid page flash.
             return;
@@ -388,9 +296,10 @@ public class DataUsageList extends DataUsageBaseFragment
 
         // update chart to show selected cycle, and update detail data
         // to match updated sweep bounds.
-        mChart.setNetworkCycleData(mCycleData.get(position));
+        NetworkCycleChartData cycleChartData = mCycleData.get(position);
+        mChart.setNetworkCycleData(cycleChartData);
 
-        updateDetailData();
+        updateDetailData(cycleChartData);
     }
 
     /**
@@ -398,82 +307,20 @@ public class DataUsageList extends DataUsageBaseFragment
      * current mode. Updates {@link #mAdapter} with sorted list
      * of applications data usage.
      */
-    private void updateDetailData() {
+    private void updateDetailData(NetworkCycleChartData cycleChartData) {
         if (LOGD) Log.d(TAG, "updateDetailData()");
 
         // kick off loader for detailed stats
-        getLoaderManager().restartLoader(LOADER_SUMMARY, null /* args */,
-                mNetworkStatsDetailCallbacks);
+        mDataUsageListAppsController.update(
+                mSubscriptionInfoEntity == null ? null : mSubscriptionInfoEntity.carrierId,
+                cycleChartData.getStartTime(),
+                cycleChartData.getEndTime()
+        );
 
-        final long totalBytes = mCycleData != null && !mCycleData.isEmpty()
-            ? mCycleData.get(mCycleSpinner.getSelectedItemPosition()).getTotalUsage() : 0;
+        final long totalBytes = cycleChartData.getTotalUsage();
         final CharSequence totalPhrase = DataUsageUtils.formatDataUsage(getActivity(), totalBytes);
         mUsageAmount.setTitle(getString(R.string.data_used_template, totalPhrase));
     }
-
-    /**
-     * Bind the given buckets.
-     */
-    private void bindStats(List<AppDataUsageRepository.Bucket> buckets) {
-        mApps.removeAll();
-        AppDataUsageRepository repository = new AppDataUsageRepository(
-                requireContext(),
-                ActivityManager.getCurrentUser(),
-                mSubscriptionInfoEntity == null ? null : mSubscriptionInfoEntity.carrierId,
-                appItem -> mUidDetailProvider.getUidDetail(appItem.key, true).packageName
-        );
-        for (var itemPercentPair : repository.getAppPercent(buckets)) {
-            final AppDataUsagePreference preference = new AppDataUsagePreference(getContext(),
-                    itemPercentPair.getFirst(), itemPercentPair.getSecond(), mUidDetailProvider);
-            preference.setOnPreferenceClickListener(p -> {
-                AppDataUsagePreference pref = (AppDataUsagePreference) p;
-                startAppDataUsage(pref.getItem());
-                return true;
-            });
-            mApps.addPreference(preference);
-        }
-    }
-
-    @VisibleForTesting
-    void startAppDataUsage(AppItem item) {
-        if (mCycleData == null) {
-            return;
-        }
-        final Bundle args = new Bundle();
-        args.putParcelable(AppDataUsage.ARG_APP_ITEM, item);
-        args.putParcelable(AppDataUsage.ARG_NETWORK_TEMPLATE, mTemplate);
-        if (mCycles == null) {
-            mCycles = new ArrayList<>();
-            for (NetworkCycleChartData data : mCycleData) {
-                if (mCycles.isEmpty()) {
-                    mCycles.add(data.getEndTime());
-                }
-                mCycles.add(data.getStartTime());
-            }
-        }
-        args.putSerializable(AppDataUsage.ARG_NETWORK_CYCLES, mCycles);
-        args.putLong(AppDataUsage.ARG_SELECTED_CYCLE,
-            mCycleData.get(mCycleSpinner.getSelectedItemPosition()).getEndTime());
-
-        new SubSettingLauncher(getContext())
-                .setDestination(AppDataUsage.class.getName())
-                .setTitleRes(R.string.data_usage_app_summary_title)
-                .setArguments(args)
-                .setSourceMetricsCategory(getMetricsCategory())
-                .launch();
-    }
-
-    private final OnItemSelectedListener mCycleListener = new OnItemSelectedListener() {
-        @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            updateSelectedCycle();
-        }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {
-            // ignored
-        }
-    };
 
     @VisibleForTesting
     final LoaderCallbacks<List<NetworkCycleChartData>> mNetworkCycleDataCallbacks =
@@ -491,52 +338,14 @@ public class DataUsageList extends DataUsageBaseFragment
                         List<NetworkCycleChartData> data) {
                     mLoadingViewController.showContent(false /* animate */);
                     mCycleData = data;
-                    // calculate policy cycles based on available data
-                    updatePolicy();
-                    mCycleSpinner.setVisibility(View.VISIBLE);
+                    mDataUsageListHeaderController.updateCycleData(mCycleData);
+                    updateConfigButtonVisibility();
+                    mDataUsageListAppsController.setCycleData(mCycleData);
                 }
 
                 @Override
                 public void onLoaderReset(@NonNull Loader<List<NetworkCycleChartData>> loader) {
                     mCycleData = null;
-                }
-            };
-
-    private final LoaderCallbacks<NetworkStats> mNetworkStatsDetailCallbacks =
-            new LoaderCallbacks<>() {
-                @Override
-                @NonNull
-                public Loader<NetworkStats> onCreateLoader(int id, Bundle args) {
-                    return new NetworkStatsSummaryLoader.Builder(getContext())
-                            .setStartTime(mChart.getInspectStart())
-                            .setEndTime(mChart.getInspectEnd())
-                            .setNetworkTemplate(mTemplate)
-                            .build();
-                }
-
-                @Override
-                public void onLoadFinished(
-                        @NonNull Loader<NetworkStats> loader, NetworkStats data) {
-                    bindStats(AppDataUsageRepository.Companion.convertToBuckets(data));
-                    updateEmptyVisible();
-                }
-
-                @Override
-                public void onLoaderReset(@NonNull Loader<NetworkStats> loader) {
-                    mApps.removeAll();
-                    updateEmptyVisible();
-                }
-
-                private void updateEmptyVisible() {
-                    if ((mApps.getPreferenceCount() != 0)
-                            != (getPreferenceScreen().getPreferenceCount() != 0)) {
-                        if (mApps.getPreferenceCount() != 0) {
-                            getPreferenceScreen().addPreference(mUsageAmount);
-                            getPreferenceScreen().addPreference(mApps);
-                        } else {
-                            getPreferenceScreen().removeAll();
-                        }
-                    }
                 }
             };
 

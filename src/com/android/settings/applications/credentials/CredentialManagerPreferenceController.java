@@ -159,6 +159,16 @@ public class CredentialManagerPreferenceController extends BasePreferenceControl
             return CONDITIONALLY_UNAVAILABLE;
         }
 
+        // If we are in work profile mode and there is no user then we
+        // should hide for now. We use CONDITIONALLY_UNAVAILABLE
+        // because it is possible for the user to be set later.
+        if (mIsWorkProfile) {
+            UserHandle workProfile = getWorkProfileUserHandle();
+            if (workProfile == null) {
+                return CONDITIONALLY_UNAVAILABLE;
+            }
+        }
+
         return AVAILABLE;
     }
 
@@ -186,12 +196,17 @@ public class CredentialManagerPreferenceController extends BasePreferenceControl
         fragment.getSettingsLifecycle().addObserver(this);
         mFragmentManager = fragmentManager;
         mIsWorkProfile = isWorkProfile;
+
         setDelegate(delegate);
         verifyReceivedIntent(launchIntent);
 
         // Recreate the content observers because the user might have changed.
         mSettingsContentObserver.unregister();
         mSettingsContentObserver.register();
+
+        // When we set the mIsWorkProfile above we should try and force a refresh
+        // so we can get the correct data.
+        delegate.forceDelegateRefresh();
     }
 
     /**
@@ -302,10 +317,15 @@ public class CredentialManagerPreferenceController extends BasePreferenceControl
                 null);
     }
 
-    private Set<ComponentName> buildComponentNameSet(List<CredentialProviderInfo> providers) {
+    private Set<ComponentName> buildComponentNameSet(
+            List<CredentialProviderInfo> providers, boolean removeNonPrimary) {
         Set<ComponentName> output = new HashSet<>();
 
         for (CredentialProviderInfo cpi : providers) {
+            if (removeNonPrimary && !cpi.isPrimary()) {
+                continue;
+            }
+
             output.add(cpi.getComponentName());
         }
 
@@ -321,13 +341,16 @@ public class CredentialManagerPreferenceController extends BasePreferenceControl
         List<CredentialProviderInfo> newProviders =
                 mCredentialManager.getCredentialProviderServices(
                         getUser(), CredentialManager.PROVIDER_FILTER_USER_PROVIDERS_ONLY);
-        Set<ComponentName> newComponents = buildComponentNameSet(newProviders);
+        Set<ComponentName> newComponents = buildComponentNameSet(newProviders, false);
+        Set<ComponentName> newPrimaryComponents = buildComponentNameSet(newProviders, true);
 
         // Get the list of old components
-        Set<ComponentName> oldComponents = buildComponentNameSet(mServices);
+        Set<ComponentName> oldComponents = buildComponentNameSet(mServices, false);
+        Set<ComponentName> oldPrimaryComponents = buildComponentNameSet(mServices, true);
 
         // If the sets are equal then don't update the UI.
-        if (oldComponents.equals(newComponents)) {
+        if (oldComponents.equals(newComponents)
+                && oldPrimaryComponents.equals(newPrimaryComponents)) {
             return;
         }
 
@@ -698,10 +721,20 @@ public class CredentialManagerPreferenceController extends BasePreferenceControl
 
     protected int getUser() {
         if (mIsWorkProfile) {
-            UserHandle workProfile = Utils.getManagedProfile(UserManager.get(mContext));
-            return workProfile.getIdentifier();
+            UserHandle workProfile = getWorkProfileUserHandle();
+            if (workProfile != null) {
+                return workProfile.getIdentifier();
+            }
         }
         return UserHandle.myUserId();
+    }
+
+    private @Nullable UserHandle getWorkProfileUserHandle() {
+        if (mIsWorkProfile) {
+            return Utils.getManagedProfile(UserManager.get(mContext));
+        }
+
+        return null;
     }
 
     /** Called when the dialog button is clicked. */

@@ -2148,6 +2148,8 @@
     <string name="internet_source_mobile_data">Mobile data</string>
     <!-- Ethernet summary in Internet source preference [CHAR LIMIT=NONE]-->
     <string name="internet_source_ethernet">Ethernet</string>
+    <!-- Hotspot device details battery charging summary [CHAR LIMIT=NONE]-->
+    <string name="hotspot_battery_charging_summary"><xliff:g id="battery_percentage" example="80%">%1$s</xliff:g> \u2011 Charging</string>
     <!-- Hotspot device details preference category title in Network details [CHAR LIMIT=NONE]-->
     <string name="hotspot_connection_category">Hotspot connection</string>
     <!-- Connection strength preference in Hotspot connection preference category [CHAR LIMIT=NONE]-->
@@ -6979,14 +6981,6 @@
          For example, they may have alerts just once or every 2 or 15 minutes.  [CHAR LIMIT=30] -->
     <string name="repeat_title">Repeat</string>
 
-    <!-- Call Manager enable settings title.  [CHAR LIMIT=50] -->
-    <string name="call_manager_enable_title">Enable Call Manager</string>
-    <!-- Call Manager enable settings summary.  [CHAR LIMIT=80] -->
-    <string name="call_manager_enable_summary">Allow this service to manage how your calls are made.</string>
-    <!-- Call Manager settings title.  [CHAR LIMIT=50] -->
-    <string name="call_manager_title">Call Manager</string>
-    <!-- Call Manager settings summary.  [CHAR LIMIT=50] -->
-    <string name="call_manager_summary"><xliff:g id="app">%1$s</xliff:g></string>
     <!-- Cell Broadcast settings title.  [CHAR LIMIT=50] -->
     <string name="cell_broadcast_settings">Wireless emergency alerts</string>
     <!-- Network operators settings title.  [CHAR LIMIT=50] -->
@@ -7470,7 +7464,7 @@
     <string name="vibrate_when_ringing_option_ramping_ringer">Vibrate first then ring gradually</string>
 
     <!-- Sound: Title for the option enabling spatializer effect. [CHAR LIMIT=30] -->
-    <string name="spatial_audio_title">Spatial audio</string>
+    <string name="spatial_audio_title">Spatial Audio</string>
 
     <!-- Sound: Other sounds: Title for the option enabling touch sounds for dial pad tones. [CHAR LIMIT=30] -->
     <string name="dial_pad_tones_title">Dial pad tones</string>
@@ -7519,9 +7513,6 @@
 
     <!-- Setting summary for controlling how caption text display in real time [CHAR LIMIT=NONE]-->
     <string name="live_caption_summary">Automatically caption media</string>
-
-    <!-- Output device type for the phone speaker that is available for spatializer effect. [CHAR LIMIT=NONE]-->
-    <string name="spatial_audio_speaker">Phone speaker</string>
 
     <!-- Output device type for the wired headphones that is available for spatializer effect. [CHAR LIMIT=NONE]-->
     <string name="spatial_audio_wired_headphones">Wired headphones</string>
@@ -9918,11 +9909,50 @@
     <!-- Label of action button in battery tips card [CHAR LIMIT=50] -->
     <string name="battery_tips_card_action_button">View Settings</string>
 
+    <!-- Label of action button in battery tips card [CHAR LIMIT=50] -->
+    <string name="battery_tips_card_action_button_check">Check</string>
+
     <!-- Label of dismiss button in battery tips card [CHAR LIMIT=50] -->
     <string name="battery_tips_card_dismiss_button">Got it</string>
 
     <!-- Feedback card message in battery tips card [CHAR LIMIT=NONE] -->
     <string name="battery_tips_card_feedback_info">Is this message helpful?</string>
+
+    <!-- Content description for battery hints warning icon of app anomaly [CHAR LIMIT=NONE] -->
+    <string name="battery_hints_warning_icon_a11y">Battery tips warning icon</string>
+
+    <!-- Summary of settings anomaly for adaptive brightness [CHAR LIMIT=NONE] -->
+    <string name="battery_tips_settings_summary_brightness">Turn on adaptive brightness to extend battery life</string>
+
+    <!-- Summary of settings anomaly for screen timeout [CHAR LIMIT=NONE] -->
+    <string name="battery_tips_settings_summary_screen_timeout">Reduce screen timeout to extend battery life</string>
+
+    <!-- Summary of apps anomaly for always high [CHAR LIMIT=NONE] -->
+    <string name="battery_tips_apps_summary_always_high"><xliff:g id="app_label" example="Pokemon Go">%1$s</xliff:g> used more battery</string>
+
+    <!-- Summary of apps anomaly for higher than usual [CHAR LIMIT=NONE] -->
+    <string name="battery_tips_apps_summary_higher_than_usual"><xliff:g id="app_label" example="Pokemon Go">%1$s</xliff:g> used more battery than usual</string>
+
+    <!-- Summary of apps anomaly for always high in background [CHAR LIMIT=NONE] -->
+    <string name="battery_tips_apps_summary_always_high_in_background"><xliff:g id="app_label" example="Pokemon Go">%1$s</xliff:g> used more battery while in the background</string>
+
+    <!-- Summary of apps anomaly for higher than usual in background [CHAR LIMIT=NONE] -->
+    <string name="battery_tips_apps_summary_higher_than_usual_in_background"><xliff:g id="app_label" example="Pokemon Go">%1$s</xliff:g> used more battery than usual while in the background</string>
+
+    <!-- Summary of apps anomaly for always high in foreground [CHAR LIMIT=NONE] -->
+    <string name="battery_tips_apps_summary_always_high_in_foreground"><xliff:g id="app_label" example="Pokemon Go">%1$s</xliff:g> used more battery while in the foreground</string>
+
+    <!-- Summary of apps anomaly for higher than usual in foreground [CHAR LIMIT=NONE] -->
+    <string name="battery_tips_apps_summary_higher_than_usual_in_foreground"><xliff:g id="app_label" example="Pokemon Go">%1$s</xliff:g> used more battery than usual while in the foreground</string>
+
+    <!-- Label of hint for apps anomaly in battery usage [CHAR LIMIT=NONE] -->
+    <string name="battery_app_item_hint">High battery usage</string>
+
+    <!-- Label of hint for apps background anomaly in battery usage [CHAR LIMIT=NONE] -->
+    <string name="battery_app_item_hint_in_bg">High battery usage in the background</string>
+
+    <!-- Label of hint for apps foreground anomaly in battery usage [CHAR LIMIT=NONE] -->
+    <string name="battery_app_item_hint_in_fg">High battery usage in the foreground</string>
 
     <!-- Filter title for battery unrestricted[CHAR_LIMIT=50]-->
     <string name="filter_battery_unrestricted_title">Unrestricted</string>
@@ -11554,12 +11584,6 @@
     <!-- Summary for Wi-Fi calling to explain this feature [CHAR LIMIT=NONE] -->
     <string name="wifi_calling_summary">Use Wi\u2011Fi for calls to improve quality</string>
 
-    <!-- Mobile network settings screen, title of Backup calling setting.  [CHAR LIMIT=NONE] -->
-    <string name="backup_calling_settings_title">Backup calling</string>
-
-    <!-- Backup calling summary.  [CHAR LIMIT=100] -->
-    <string name="backup_calling_setting_summary">If <xliff:g id="backup_calling_operator_text" example="Google Fi">%1$s</xliff:g> is unavailable or roaming, use your mobile data SIM for <xliff:g id="backup_calling_carrier_text" example="Google Fi">%1$s</xliff:g> calls.</string>
-
     <!-- Title of dialog shown to request confirmation that disabling certain toggles, like mobile data, roaming, and backup calling, will cause a call drop while IMS is registered on C_IWLAN-only and device is in a call [CHAR LIMIT=120] -->
     <string name="toggle_disable_ciwlan_call_dialog_title">Disable %s?</string>
     <!-- Body of dialog shown to request confirmation that disabling certain toggles, like mobile data, roaming, and backup calling, will cause a call drop while IMS is registered on C_IWLAN-only and device is in a call [CHAR LIMIT=NONE] -->
@@ -11567,9 +11591,6 @@
     <string name="toggle_disable_ciwlan_call_might_drop_dialog_body">Disabling %s might cause ongoing call drop.</string>
     <!-- Body of dialog shown to warn when an incompatible preferred network type is currently selected and user tries to turn on C_IWLAN [CHAR LIMIT=NONE] -->
     <string name="backup_calling_enable_dialog_incompatible_nw_type">To turn on Voice Over Cellular Internet, please set the preferred network type to one including LTE, NR, or Global.</string>
-
-    <!-- List of synonyms for the cross SIM calling titles, used to match in settings search [CHAR LIMIT=NONE] -->
-    <string name="keywords_backup_calling">backup calling</string>
 
     <!-- Title for enable MMS notification when trying to receive MMS.  [CHAR LIMIT=40] -->
     <string name="enable_receiving_mms_notification_title">Incoming MMS message</string>
@@ -12344,6 +12365,11 @@
     <!-- The summary of the head tracking [CHAR LIMIT=none] -->
     <string name="bluetooth_details_head_tracking_summary">Audio changes as you move your head to sound more natural</string>
 
+    <!-- The title of CDM Permissions Sync -->
+    <string name="bluetooth_details_permissions_sync_title">Sync permissions from phone</string>
+    <!-- The summary of CDM Permissions Sync -->
+    <string name="bluetooth_details_permissions_sync_summary">Give your watch the same app permissions that you’ve allowed on this phone</string>
+
     <!-- The title of the bluetooth audio device type selection [CHAR LIMIT=none] -->
     <string name="bluetooth_details_audio_device_types_title">Audio Device Type</string>
     <!-- The audio device type corresponding to unknown device type [CHAR LIMIT=none] -->
@@ -12611,4 +12637,7 @@
     <string name="grammatical_gender_title">Grammatical gender</string>
     <!-- Developer settings: select Grammatical gender dialog title [CHAR LIMIT=50]-->
     <string name="grammatical_gender_dialog_title">Select Grammatical gender</string>
+
+    <!-- Developer settings: Title for the screen allowing user to control Quarantined apps [CHAR LIMIT=50] -->
+    <string name="quarantined_apps_title">Quarantined Apps</string>
 </resources>
