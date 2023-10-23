@@ -21,11 +21,10 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.android.settings.biometrics.fingerprint2.domain.interactor.FingerprintManagerInteractor
+import com.android.settings.biometrics.fingerprint2.shared.domain.interactor.FingerprintManagerInteractor
 import com.android.settings.biometrics.fingerprint2.shared.model.FingerprintAuthAttemptViewModel
 import com.android.settings.biometrics.fingerprint2.shared.model.FingerprintViewModel
 import com.android.systemui.biometrics.shared.model.FingerprintSensorType
-import com.android.systemui.biometrics.shared.model.toSensorType
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -91,9 +90,7 @@ class FingerprintSettingsViewModel(
   private val _consumerShouldAuthenticate: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
   private val _fingerprintSensorType: Flow<FingerprintSensorType> =
-    fingerprintManagerInteractor.sensorPropertiesInternal.filterNotNull().map {
-      it.sensorType.toSensorType()
-    }
+    fingerprintManagerInteractor.sensorPropertiesInternal.filterNotNull().map { it.sensorType }
 
   private val _sensorNullOrEmpty: Flow<Boolean> =
     fingerprintManagerInteractor.sensorPropertiesInternal.map { it == null }

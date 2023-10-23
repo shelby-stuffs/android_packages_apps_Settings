@@ -20,6 +20,8 @@ import android.hardware.fingerprint.FingerprintManager
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.android.settings.biometrics.fingerprint2.shared.model.EnrollReason
+import com.android.settings.biometrics.fingerprint2.shared.model.FingerEnrollStateViewModel
 import com.android.systemui.biometrics.shared.model.FingerprintSensorType
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow

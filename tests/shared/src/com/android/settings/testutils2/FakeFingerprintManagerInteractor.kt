@@ -14,18 +14,19 @@
  * limitations under the License.
  */
 
-package com.android.settings.fingerprint2.domain.interactor
+package com.android.settings.testutils2
 
-import android.hardware.biometrics.SensorProperties
-import android.hardware.fingerprint.FingerprintSensorProperties.TYPE_POWER_BUTTON
-import android.hardware.fingerprint.FingerprintSensorPropertiesInternal
-import com.android.settings.biometrics.fingerprint2.domain.interactor.FingerprintManagerInteractor
+import com.android.settings.biometrics.fingerprint2.shared.domain.interactor.FingerprintManagerInteractor
+import com.android.settings.biometrics.fingerprint2.shared.model.EnrollReason
+import com.android.settings.biometrics.fingerprint2.shared.model.FingerEnrollStateViewModel
 import com.android.settings.biometrics.fingerprint2.shared.model.FingerprintAuthAttemptViewModel
 import com.android.settings.biometrics.fingerprint2.shared.model.FingerprintViewModel
-import com.android.settings.biometrics.fingerprint2.ui.enrollment.viewmodel.EnrollReason
-import com.android.settings.biometrics.fingerprint2.ui.enrollment.viewmodel.FingerEnrollStateViewModel
+import com.android.systemui.biometrics.shared.model.FingerprintSensor
+import com.android.systemui.biometrics.shared.model.FingerprintSensorType
+import com.android.systemui.biometrics.shared.model.SensorStrength
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
 
 /** Fake to be used by other classes to easily fake the FingerprintManager implementation. */
 class FakeFingerprintManagerInteractor : FingerprintManagerInteractor {
@@ -37,16 +38,12 @@ class FakeFingerprintManagerInteractor : FingerprintManagerInteractor {
   val enrollStateViewModel = FingerEnrollStateViewModel.EnrollProgress(1)
   var pressToAuthEnabled = true
 
-  var sensorProps =
-    listOf(
-      FingerprintSensorPropertiesInternal(
-        0 /* sensorId */,
-        SensorProperties.STRENGTH_STRONG,
-        5 /* maxEnrollmentsPerUser */,
-        emptyList() /* ComponentInfoInternal */,
-        TYPE_POWER_BUTTON,
-        true /* resetLockoutRequiresHardwareAuthToken */
-      )
+  var sensorProp =
+    FingerprintSensor(
+      0 /* sensorId */,
+      SensorStrength.STRONG,
+      5,
+      FingerprintSensorType.POWER_BUTTON
     )
 
   override suspend fun authenticate(): FingerprintAuthAttemptViewModel {
@@ -65,8 +62,8 @@ class FakeFingerprintManagerInteractor : FingerprintManagerInteractor {
     emit(enrolledFingerprintsInternal.size < enrollableFingerprints)
   }
 
-  override val sensorPropertiesInternal: Flow<FingerprintSensorPropertiesInternal?> = flow {
-    emit(sensorProps.first())
+  override val sensorPropertiesInternal: Flow<FingerprintSensor?> = flow {
+    emit(sensorProp)
   }
 
   override val maxEnrollableFingerprints: Flow<Int> = flow { emit(enrollableFingerprints) }
@@ -74,7 +71,7 @@ class FakeFingerprintManagerInteractor : FingerprintManagerInteractor {
   override suspend fun enroll(
     hardwareAuthToken: ByteArray?,
     enrollReason: EnrollReason
-  ): Flow<FingerEnrollStateViewModel> = flow { emit(enrollStateViewModel) }
+  ): Flow<FingerEnrollStateViewModel> = flowOf(enrollStateViewModel)
 
   override suspend fun removeFingerprint(fp: FingerprintViewModel): Boolean {
     return enrolledFingerprintsInternal.remove(fp)
@@ -87,7 +84,7 @@ class FakeFingerprintManagerInteractor : FingerprintManagerInteractor {
   }
 
   override suspend fun hasSideFps(): Boolean {
-    return sensorProps.any { it.isAnySidefpsType }
+    return sensorProp.sensorType == FingerprintSensorType.POWER_BUTTON
   }
 
   override suspend fun pressToAuthEnabled(): Boolean {
