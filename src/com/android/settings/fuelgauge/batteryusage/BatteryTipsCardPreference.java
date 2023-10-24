@@ -16,12 +16,11 @@
 
 package com.android.settings.fuelgauge.batteryusage;
 
-import android.app.settings.SettingsEnums;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -30,8 +29,6 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
 import com.android.settings.R;
-import com.android.settings.core.SubSettingLauncher;
-import com.android.settings.fuelgauge.PowerUsageFeatureProvider;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settingslib.core.instrumentation.MetricsFeatureProvider;
 
@@ -44,34 +41,59 @@ public class BatteryTipsCardPreference extends Preference implements View.OnClic
 
     private static final String TAG = "BatteryTipsCardPreference";
 
-    private final PowerUsageFeatureProvider mPowerUsageFeatureProvider;
-    private final MetricsFeatureProvider mMetricsFeatureProvider;
+    interface OnConfirmListener {
+        void onConfirm();
+    }
 
-    private String mAnomalyEventId;
+    interface OnRejectListener {
+        void onReject();
+    }
+
+    private final MetricsFeatureProvider mMetricsFeatureProvider;
+    private OnConfirmListener mOnConfirmListener;
+    private OnRejectListener mOnRejectListener;
+    private int mIconResourceId = 0;
+    private int mMainButtonStrokeColorResourceId = 0;
 
     @VisibleForTesting
     CharSequence mMainButtonLabel;
     @VisibleForTesting
     CharSequence mDismissButtonLabel;
-    @VisibleForTesting
-    String mDestinationComponentName;
-    @VisibleForTesting
-    Integer mSourceMetricsCategory;
 
     public BatteryTipsCardPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         setLayoutResource(R.layout.battery_tips_card);
         setSelectable(false);
         final FeatureFactory featureFactory = FeatureFactory.getFeatureFactory();
-        mPowerUsageFeatureProvider =  featureFactory.getPowerUsageFeatureProvider();
         mMetricsFeatureProvider = featureFactory.getMetricsFeatureProvider();
     }
 
+    public void setOnConfirmListener(OnConfirmListener listener) {
+        mOnConfirmListener = listener;
+    }
+
+    public void setOnRejectListener(OnRejectListener listener) {
+        mOnRejectListener = listener;
+    }
+
     /**
-     * Sets the anomaly event id which is used in metrics.
+     * Sets the icon in tips card.
      */
-    public void setAnomalyEventId(final String anomalyEventId) {
-        mAnomalyEventId = anomalyEventId;
+    public void setIconResourceId(int resourceId) {
+        if (mIconResourceId != resourceId) {
+            mIconResourceId = resourceId;
+            notifyChanged();
+        }
+    }
+
+    /**
+     * Sets the stroke color of main button in tips card.
+     */
+    public void setMainButtonStrokeColorResourceId(int resourceId) {
+        if (mMainButtonStrokeColorResourceId != resourceId) {
+            mMainButtonStrokeColorResourceId = resourceId;
+            notifyChanged();
+        }
     }
 
     /**
@@ -94,33 +116,17 @@ public class BatteryTipsCardPreference extends Preference implements View.OnClic
         }
     }
 
-    /**
-     * Sets the info of target fragment launched by main button.
-     */
-    public void setMainButtonLauncherInfo(final String destinationClassName,
-            final Integer sourceMetricsCategory) {
-        mDestinationComponentName = destinationClassName;
-        mSourceMetricsCategory = sourceMetricsCategory;
-    }
-
     @Override
     public void onClick(View view) {
         final int viewId = view.getId();
         if (viewId == R.id.main_button || viewId == R.id.tips_card) {
-            if (TextUtils.isEmpty(mDestinationComponentName)) {
-                return;
+            if (mOnConfirmListener != null) {
+                mOnConfirmListener.onConfirm();
             }
-            new SubSettingLauncher(getContext())
-                    .setDestination(mDestinationComponentName)
-                    .setSourceMetricsCategory(mSourceMetricsCategory)
-                    .launch();
-            setVisible(false);
-            mMetricsFeatureProvider.action(
-                    getContext(), SettingsEnums.ACTION_BATTERY_TIPS_CARD_ACCEPT, mAnomalyEventId);
         } else if (viewId == R.id.dismiss_button) {
-            setVisible(false);
-            mMetricsFeatureProvider.action(
-                    getContext(), SettingsEnums.ACTION_BATTERY_TIPS_CARD_DISMISS, mAnomalyEventId);
+            if (mOnRejectListener != null) {
+                mOnRejectListener.onReject();
+            }
         }
     }
 
@@ -135,20 +141,14 @@ public class BatteryTipsCardPreference extends Preference implements View.OnClic
         MaterialButton mainButton = (MaterialButton) view.findViewById(R.id.main_button);
         mainButton.setOnClickListener(this);
         mainButton.setText(mMainButtonLabel);
+        if (mMainButtonStrokeColorResourceId != 0) {
+            mainButton.setStrokeColorResource(mMainButtonStrokeColorResourceId);
+        }
         MaterialButton dismissButton = (MaterialButton) view.findViewById(R.id.dismiss_button);
         dismissButton.setOnClickListener(this);
         dismissButton.setText(mDismissButtonLabel);
-
-        if (!mPowerUsageFeatureProvider.isBatteryTipsFeedbackEnabled()) {
-            return;
+        if (mIconResourceId != 0) {
+            ((ImageView) view.findViewById(R.id.icon)).setImageResource(mIconResourceId);
         }
-        view.findViewById(R.id.tips_card)
-                .setBackgroundResource(R.drawable.battery_tips_half_rounded_top_bg);
-        view.findViewById(R.id.feedback_card).setVisibility(View.VISIBLE);
-
-        ImageButton thumbUpButton = (ImageButton) view.findViewById(R.id.thumb_up);
-        thumbUpButton.setOnClickListener(this);
-        ImageButton thumbDownButton = (ImageButton) view.findViewById(R.id.thumb_down);
-        thumbDownButton.setOnClickListener(this);
     }
 }

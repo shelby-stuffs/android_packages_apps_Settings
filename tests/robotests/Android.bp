@@ -58,6 +58,10 @@ android_robolectric_test {
         "androidx.test.ext.junit",
         "androidx.test.rules",
         "androidx.test.runner",
+        "flag-junit",
+        "aconfig_settings_flags_lib",
+        "platform-test-annotations",
+        "Settings-testutils2",
     ],
 
     libs: [

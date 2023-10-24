@@ -45,7 +45,6 @@ import com.android.settings.password.ChooseLockPattern.IntentBuilder;
 import com.android.settings.testutils.shadow.ShadowAlertDialogCompat;
 import com.android.settings.testutils.shadow.ShadowLockPatternUtils;
 import com.android.settings.testutils.shadow.ShadowUtils;
-import com.android.settings.utils.ActivityControllerWrapper;
 
 import com.google.android.setupcompat.PartnerCustomizationLayout;
 import com.google.android.setupcompat.template.FooterBarMixin;
@@ -55,9 +54,9 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.Shadows;
+import org.robolectric.android.controller.ActivityController;
 import org.robolectric.annotation.Config;
 import org.robolectric.annotation.LooperMode;
 import org.robolectric.shadows.ShadowPackageManager;
@@ -86,9 +85,7 @@ public class SetupChooseLockPatternTest {
                         new IntentBuilder(application)
                                 .setUserId(UserHandle.myUserId())
                                 .build());
-
-        mActivity = (SetupChooseLockPattern) ActivityControllerWrapper.setup(
-                Robolectric.buildActivity(SetupChooseLockPattern.class, intent)).get();
+        mActivity = ActivityController.of(new SetupChooseLockPattern(), intent).setup().get();
     }
 
     @Test
@@ -102,8 +99,8 @@ public class SetupChooseLockPatternTest {
         assertThat(componentEnabled).isEqualTo(PackageManager.COMPONENT_ENABLED_STATE_ENABLED);
     }
 
-    @Ignore
     @Test
+    @Ignore("b/295325503")
     public void optionsButton_whenPatternSelected_shouldBeVisible() {
         final Button button = mActivity.findViewById(R.id.screen_lock_options);
         assertThat(button).isNotNull();
@@ -128,16 +125,16 @@ public class SetupChooseLockPatternTest {
         assertWithMessage("List items shown").that(count).isEqualTo(3);
     }
 
-    @Ignore
     @Config(qualifiers = "sw400dp")
     @Test
+    @Ignore("b/295325503")
     public void sw400dp_shouldShowScreenLockOptions() {
         verifyScreenLockOptionsShown();
     }
 
-    @Ignore
     @Config(qualifiers = "sw400dp-land")
     @Test
+    @Ignore("b/295325503")
     public void sw400dpLandscape_shouldShowScreenLockOptions() {
         verifyScreenLockOptionsShown();
     }
@@ -150,18 +147,20 @@ public class SetupChooseLockPatternTest {
 
     @Config(qualifiers = "sw300dp")
     @Test
+    @Ignore("b/295325503")
     public void smallScreens_shouldHideScreenLockOptions() {
         verifyScreenLockOptionsHidden();
     }
 
     @Config(qualifiers = "sw300dp-land")
     @Test
+    @Ignore("b/295325503")
     public void smallScreensLandscape_shouldHideScreenLockOptions() {
         verifyScreenLockOptionsHidden();
     }
 
-    @Ignore
     @Test
+    @Ignore("b/295325503")
     public void skipButton_shouldBeVisible_duringNonFingerprintFlow() {
         final PartnerCustomizationLayout layout = mActivity.findViewById(R.id.setup_wizard_layout);
         final Button skipOrClearButton =

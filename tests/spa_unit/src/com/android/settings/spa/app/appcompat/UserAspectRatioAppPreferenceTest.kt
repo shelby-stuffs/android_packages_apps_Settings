@@ -17,10 +17,10 @@
 package com.android.settings.spa.app.appcompat
 
 import android.content.Context
-import android.content.pm.ActivityInfo
 import android.content.pm.ApplicationInfo
+import android.content.pm.LauncherActivityInfo
+import android.content.pm.LauncherApps
 import android.content.pm.PackageManager
-import android.content.pm.ResolveInfo
 import android.provider.DeviceConfig.NAMESPACE_WINDOW_MANAGER
 import android.view.WindowManager.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_OVERRIDE
 import androidx.compose.runtime.CompositionLocalProvider
@@ -37,7 +37,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.android.dx.mockito.inline.extended.ExtendedMockito
 import com.android.settings.R
 import com.android.settings.applications.appcompat.UserAspectRatioDetails
-import com.android.settings.applications.appcompat.UserAspectRatioManager
 import com.android.settings.applications.appinfo.AppInfoDashboardFragment
 import com.android.settings.spa.app.appinfo.AppInfoSettingsProvider
 import com.android.settings.testutils.TestDeviceConfig
@@ -47,9 +46,9 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.ArgumentMatchers.anyString
 import org.mockito.Mock
 import org.mockito.Mockito.any
-import org.mockito.Mockito.anyInt
 import org.mockito.MockitoSession
 import org.mockito.Spy
 import org.mockito.quality.Strictness
@@ -72,10 +71,16 @@ class UserAspectRatioAppPreferenceTest {
     private val resources = context.resources
 
     private val aspectRatioEnabledConfig =
-        TestDeviceConfig(NAMESPACE_WINDOW_MANAGER, "enable_app_compat_user_aspect_ratio_settings")
+        TestDeviceConfig(NAMESPACE_WINDOW_MANAGER, "enable_app_compat_aspect_ratio_user_settings")
 
     @Mock
     private lateinit var packageManager: PackageManager
+
+    @Mock
+    private lateinit var launcherApps: LauncherApps
+
+    @Mock
+    private lateinit var launcherActivities: List<LauncherActivityInfo>
 
     @Before
     fun setUp() {
@@ -87,6 +92,10 @@ class UserAspectRatioAppPreferenceTest {
             .startMocking()
         whenever(context.resources).thenReturn(resources)
         whenever(context.packageManager).thenReturn(packageManager)
+        whenever(context.getSystemService(Context.LAUNCHER_APPS_SERVICE)).thenReturn(launcherApps)
+        whenever(launcherApps.getActivityList(anyString(), any())).thenReturn(launcherActivities)
+        // True is ignored but need this here or getBoolean will complain null object
+        mockProperty(PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_OVERRIDE, true)
     }
 
     @After
@@ -106,6 +115,8 @@ class UserAspectRatioAppPreferenceTest {
 
     @Test
     fun whenCannotDisplayAspectRatioUi_notDisplayed() {
+        whenever(launcherActivities.isEmpty()).thenReturn(true)
+
         setContent()
 
         composeTestRule.onRoot().assertIsNotDisplayed()
@@ -114,8 +125,7 @@ class UserAspectRatioAppPreferenceTest {
     @Test
     fun whenCanDisplayAspectRatioUiAndConfigFalse_notDisplayed() {
         setConfig(false)
-        whenever(packageManager.queryIntentActivities(any(), anyInt()))
-            .thenReturn(listOf(RESOLVE_INFO))
+        whenever(launcherActivities.isEmpty()).thenReturn(false)
 
         setContent()
 
@@ -124,9 +134,9 @@ class UserAspectRatioAppPreferenceTest {
 
     @Test
     fun whenCannotDisplayAspectRatioUiAndConfigTrue_notDisplayed() {
-        // True is ignored but need this here or getBoolean will complain null object
-        mockProperty(PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_OVERRIDE, true)
         setConfig(true)
+
+        whenever(launcherActivities.isEmpty()).thenReturn(true)
 
         setContent()
 
@@ -135,17 +145,13 @@ class UserAspectRatioAppPreferenceTest {
 
     @Test
     fun whenCanDisplayAspectRatioUiAndConfigTrue_Displayed() {
-        // True is ignored but need this here or getBoolean will complain null object
-        mockProperty(PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_OVERRIDE, true)
         setConfig(true)
-        whenever(packageManager.queryIntentActivities(any(), anyInt()))
-            .thenReturn(listOf(RESOLVE_INFO))
-
+        whenever(launcherActivities.isEmpty()).thenReturn(false)
         setContent()
 
         composeTestRule.onNode(
             hasTextExactly(
-                context.getString(R.string.aspect_ratio_title),
+                context.getString(R.string.aspect_ratio_experimental_title),
                 context.getString(R.string.user_aspect_ratio_app_default)
             ),
         ).assertIsDisplayed().assertIsEnabled()
@@ -153,11 +159,8 @@ class UserAspectRatioAppPreferenceTest {
 
     @Test
     fun onClick_startActivity() {
-        // True is ignored but need this here or getBoolean will complain null object
-        mockProperty(PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_OVERRIDE, true)
         setConfig(true)
-        whenever(packageManager.queryIntentActivities(any(), anyInt()))
-            .thenReturn(listOf(RESOLVE_INFO))
+        whenever(launcherActivities.isEmpty()).thenReturn(false)
 
         setContent()
         composeTestRule.onRoot().performClick()
@@ -200,11 +203,6 @@ class UserAspectRatioAppPreferenceTest {
         val APP = ApplicationInfo().apply {
             packageName = PACKAGE_NAME
             uid = UID
-        }
-        private val RESOLVE_INFO = ResolveInfo().apply {
-            activityInfo = ActivityInfo().apply {
-                packageName = PACKAGE_NAME
-            }
         }
     }
 }

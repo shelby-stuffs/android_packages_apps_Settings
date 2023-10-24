@@ -225,9 +225,9 @@ public class WifiSettings extends RestrictedSettingsFragment
         final Activity activity = getActivity();
         if (activity != null) {
             mProgressHeader =
-                    setPinnedHeaderView(com.android.settingslib.widget.R.layout.progress_header)
+                    setPinnedHeaderView(com.android.settingslib.R.layout.progress_header)
                             .findViewById(
-                                    com.android.settingslib.widget.R.id.progress_bar_animation);
+                                    com.android.settingslib.R.id.progress_bar_animation);
             setProgressBarVisible(false);
         }
         ((SettingsActivity) activity).getSwitchBar().setTitle(
@@ -273,7 +273,7 @@ public class WifiSettings extends RestrictedSettingsFragment
         mDataUsagePreference = findPreference(PREF_KEY_DATA_USAGE);
         mDataUsagePreference.setVisible(DataUsageUtils.hasWifiRadio(getContext()));
         mDataUsagePreference.setTemplate(new NetworkTemplate.Builder(
-                NetworkTemplate.MATCH_WIFI).build(), 0 /*subId*/, null /*service*/);
+                NetworkTemplate.MATCH_WIFI).build(), 0 /*subId*/);
     }
 
     @Override
@@ -602,15 +602,11 @@ public class WifiSettings extends RestrictedSettingsFragment
 
     @Override
     public Dialog onCreateDialog(int dialogId) {
-        switch (dialogId) {
-            case WIFI_DIALOG_ID:
-                // modify network
-                mDialog = WifiDialog2
-                        .createModal(getActivity(), this, mDialogWifiEntry, mDialogMode);
-                return mDialog;
-            default:
-                return super.onCreateDialog(dialogId);
+        if (dialogId == WIFI_DIALOG_ID) {  // modify network
+            mDialog = new WifiDialog2(requireContext(), this, mDialogWifiEntry, mDialogMode);
+            return mDialog;
         }
+        return super.onCreateDialog(dialogId);
     }
 
     @Override

@@ -23,6 +23,7 @@
 
 package com.android.settings.network.telephony.gsm;
 
+import static androidx.lifecycle.Lifecycle.Event.ON_RESUME;
 import static androidx.lifecycle.Lifecycle.Event.ON_START;
 import static androidx.lifecycle.Lifecycle.Event.ON_STOP;
 
@@ -40,13 +41,15 @@ import android.provider.Settings;
 import android.telephony.CarrierConfigManager;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyCallback;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.LifecycleObserver;
-import androidx.lifecycle.OnLifecycleEvent;
+import androidx.lifecycle.LifecycleEventObserver;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
@@ -81,7 +84,7 @@ import com.qti.extphone.Token;
  * Preference controller for "Auto Select Network"
  */
 public class AutoSelectPreferenceController extends TelephonyTogglePreferenceController
-        implements LifecycleObserver,
+        implements LifecycleEventObserver,
         Enhanced4gBasePreferenceController.On4gLteUpdateListener,
         SubscriptionsChangeListener.SubscriptionsChangeListenerClient,
         SelectNetworkPreferenceController.OnNetworkScanTypeListener {
@@ -89,6 +92,7 @@ public class AutoSelectPreferenceController extends TelephonyTogglePreferenceCon
     private static final long MINIMUM_DIALOG_TIME_MILLIS = TimeUnit.SECONDS.toMillis(1);
     private static final String LOG_TAG = "AutoSelectPreferenceController";
     private static final String INTERNAL_LOG_TAG_INIT = "Init";
+    private static final String INTERNAL_LOG_TAG_ONRESUME = "OnResume";
     private static final String INTERNAL_LOG_TAG_AFTERSET = "AfterSet";
 
     private final Handler mUiHandler;
@@ -112,6 +116,7 @@ public class AutoSelectPreferenceController extends TelephonyTogglePreferenceCon
     private AtomicLong mRecursiveUpdate;
     private Object mLock = new Object();
     ServiceStateStatus mServiceStateStatus;
+    TelephonyCallbackListener mTelephonyCallbackListener;
 
     public AutoSelectPreferenceController(Context context, String key) {
         super(context, key);
@@ -128,6 +133,7 @@ public class AutoSelectPreferenceController extends TelephonyTogglePreferenceCon
         mAllowedNetworkTypesListener.setAllowedNetworkTypesListener(
                 () -> updatePreference());
         mSubscriptionsListener = new SubscriptionsChangeListener(context, this);
+        mTelephonyCallbackListener = new TelephonyCallbackListener();
     }
 
     @Override
@@ -146,16 +152,42 @@ public class AutoSelectPreferenceController extends TelephonyTogglePreferenceCon
         }
     }
 
-    @OnLifecycleEvent(ON_START)
-    public void onStart() {
-        mAllowedNetworkTypesListener.register(mContext, mSubId);
-        mSubscriptionsListener.start();
-    }
-
-    @OnLifecycleEvent(ON_STOP)
-    public void onStop() {
-        mAllowedNetworkTypesListener.unregister(mContext, mSubId);
-        mSubscriptionsListener.stop();
+    /**
+     * Implementation of LifecycleEventObserver.
+     */
+    @SuppressWarnings("FutureReturnValueIgnored")
+    public void onStateChanged(@NonNull LifecycleOwner lifecycleOwner,
+            @NonNull Lifecycle.Event event) {
+        switch (event) {
+            case ON_START:
+                mAllowedNetworkTypesListener.register(mContext, mSubId);
+                mTelephonyManager.registerTelephonyCallback(new HandlerExecutor(mUiHandler),
+                        mTelephonyCallbackListener);
+                mSubscriptionsListener.start();
+                break;
+            case ON_RESUME:
+                ThreadUtils.postOnBackgroundThread(() -> {
+                    queryNetworkSelectionMode(INTERNAL_LOG_TAG_ONRESUME);
+                    //Update UI in UI thread
+                    mUiHandler.post(() -> {
+                        if (mSwitchPreference != null) {
+                            mRecursiveUpdate.getAndIncrement();
+                            mSwitchPreference.setChecked(isChecked());
+                            mRecursiveUpdate.decrementAndGet();
+                            updateListenerValue();
+                        }
+                    });
+                });
+                break;
+            case ON_STOP:
+                mAllowedNetworkTypesListener.unregister(mContext, mSubId);
+                mTelephonyManager.unregisterTelephonyCallback(mTelephonyCallbackListener);
+                mSubscriptionsListener.stop();
+                break;
+            default:
+                // Do nothing
+                break;
+        }
     }
 
     @Override
@@ -179,11 +211,6 @@ public class AutoSelectPreferenceController extends TelephonyTogglePreferenceCon
                 synchronized (mLock) {
                     getNetworkSelectionMode();
                 }
-            } else {
-                mCacheOfModeStatus = mTelephonyManager.getNetworkSelectionMode();
-            }
-            for (OnNetworkSelectModeListener lsn : mListeners) {
-                lsn.onNetworkSelectModeUpdated(mCacheOfModeStatus);
             }
         }
         return mCacheOfModeStatus == TelephonyManager.NETWORK_SELECTION_MODE_AUTO;
@@ -329,6 +356,7 @@ public class AutoSelectPreferenceController extends TelephonyTogglePreferenceCon
 
         ThreadUtils.postOnBackgroundThread(() -> {
             queryNetworkSelectionMode(INTERNAL_LOG_TAG_INIT);
+
             //Update UI in UI thread
             mUiHandler.post(() -> {
                 if (mSwitchPreference != null) {
@@ -467,5 +495,14 @@ public class AutoSelectPreferenceController extends TelephonyTogglePreferenceCon
      */
     public interface OnNetworkSelectModeListener {
         void onNetworkSelectModeUpdated(int mode);
+    }
+
+    private class TelephonyCallbackListener extends TelephonyCallback
+            implements TelephonyCallback.ServiceStateListener {
+
+        @Override
+        public void onServiceStateChanged(ServiceState serviceState) {
+            updateUiAutoSelectValue(serviceState);
+        }
     }
 }

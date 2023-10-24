@@ -28,6 +28,7 @@ import androidx.annotation.VisibleForTesting;
 
 import com.android.settings.fuelgauge.BatteryUsageHistoricalLogEntry.Action;
 import com.android.settings.fuelgauge.batteryusage.bugreport.BatteryUsageLogUtils;
+import com.android.settings.overlay.FeatureFactory;
 
 import java.util.List;
 import java.util.Map;
@@ -74,6 +75,7 @@ public final class BatteryUsageDataLoader {
                     context, DatabaseUtils.KEY_LAST_LOAD_FULL_CHARGE_TIME);
             DatabaseUtils.sendBatteryEventData(context, ConvertUtils.convertToBatteryEvent(
                     currentTime, BatteryEventType.FULL_CHARGED, 100));
+            DatabaseUtils.removeDismissedPowerAnomalyKeys(context);
         }
 
         // Uploads the BatteryEntry data into database.
@@ -114,8 +116,16 @@ public final class BatteryUsageDataLoader {
         final Handler handler = new Handler(Looper.getMainLooper());
         final BatteryLevelData batteryLevelData = DataProcessManager.getBatteryLevelData(
                 context, handler, /*isFromPeriodJob=*/ true,
-                batteryDiffDataMap -> DatabaseUtils.sendBatteryUsageSlotData(context,
-                        ConvertUtils.convertToBatteryUsageSlotList(batteryDiffDataMap)));
+                batteryDiffDataMap -> {
+                    DatabaseUtils.sendBatteryUsageSlotData(context,
+                            ConvertUtils.convertToBatteryUsageSlotList(batteryDiffDataMap));
+                    if (batteryDiffDataMap.values().stream().anyMatch(data ->
+                            data != null && (!data.getAppDiffEntryList().isEmpty()
+                                    || !data.getSystemDiffEntryList().isEmpty()))) {
+                        FeatureFactory.getFeatureFactory().getPowerUsageFeatureProvider()
+                                .detectSettingsAnomaly(context, /* displayDrain= */ 0);
+                    }
+                });
         if (batteryLevelData == null) {
             Log.d(TAG, "preprocessBatteryUsageSlots() no new battery usage data.");
             return;

@@ -57,7 +57,6 @@ import com.android.settings.biometrics.BiometricEnrollBase;
 import com.android.settings.password.ChooseLockSettingsHelper;
 import com.android.settings.testutils.FakeFeatureFactory;
 import com.android.settings.testutils.shadow.ShadowUtils;
-import com.android.settings.utils.ActivityControllerWrapper;
 
 import com.google.android.setupcompat.PartnerCustomizationLayout;
 import com.google.android.setupcompat.template.FooterBarMixin;
@@ -66,6 +65,7 @@ import com.google.android.setupdesign.GlifLayout;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -120,7 +120,7 @@ public class FingerprintEnrollFindSensorTest {
         props.add(newFingerprintSensorPropertiesInternal(TYPE_REAR));
         doReturn(props).when(mFingerprintManager).getSensorPropertiesInternal();
 
-        ActivityControllerWrapper.setup(mActivityController);
+        mActivityController.setup();
     }
 
     private void setupActivity_onUdfpsDevice() {
@@ -128,7 +128,7 @@ public class FingerprintEnrollFindSensorTest {
         props.add(newFingerprintSensorPropertiesInternal(TYPE_UDFPS_OPTICAL));
         doReturn(props).when(mFingerprintManager).getSensorPropertiesInternal();
 
-        ActivityControllerWrapper.setup(mActivityController);
+        mActivityController.setup();
     }
 
     private void setupActivity_onSfpsDevice() {
@@ -136,7 +136,7 @@ public class FingerprintEnrollFindSensorTest {
         props.add(newFingerprintSensorPropertiesInternal(TYPE_POWER_BUTTON));
         doReturn(props).when(mFingerprintManager).getSensorPropertiesInternal();
 
-        ActivityControllerWrapper.setup(mActivityController);
+        mActivityController.setup();
     }
 
     private FingerprintSensorPropertiesInternal newFingerprintSensorPropertiesInternal(
@@ -557,6 +557,7 @@ public class FingerprintEnrollFindSensorTest {
     }
 
     @Test
+    @Ignore("b/295325503")
     public void fingerprintEnrollFindSensor_activityApplyDarkLightStyle() {
         setupActivity_onSfpsDevice();
         verifySidecar_onRearOrSfpsDevice();
@@ -592,7 +593,7 @@ public class FingerprintEnrollFindSensorTest {
     private void gotEnrollingResult_resumeActivityAndVerifyResultThenForward(
             int testActivityResult) {
         // resume activity
-        mActivityController.start().resume();
+        mActivityController.start().resume().visible();
         verifyNoSidecar();
 
         // onActivityResult from Enrolling activity shall be forward back
@@ -612,8 +613,7 @@ public class FingerprintEnrollFindSensorTest {
             int testActivityResult, @NonNull Bundle savedInstance) {
         // Rebuild activity and use savedInstance to restore.
         buildActivity();
-        ActivityControllerWrapper.setup(mActivityController, savedInstance);
-        //mActivityController.setup(savedInstance);
+        mActivityController.setup(savedInstance);
         verifyNoSidecar();
 
         // onActivityResult from Enrolling activity shall be forward back

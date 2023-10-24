@@ -63,7 +63,6 @@ import com.android.settingslib.core.instrumentation.MetricsFeatureProvider;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -81,7 +80,8 @@ import java.util.List;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(shadows = {
-        // ShadowUserManager.class,
+        ShadowUserManager.class,
+        com.android.settings.testutils.shadow.ShadowFragment.class,
         ShadowDevicePolicyManager.class
 })
 public class UserDetailsSettingsTest {
@@ -662,7 +662,6 @@ public class UserDetailsSettingsTest {
         assertThat(result).isTrue();
     }
 
-    @Ignore
     @Test
     public void canDeleteUser_adminSelectsUser_hasRemoveRestriction_shouldReturnFalse() {
         setupSelectedUser();

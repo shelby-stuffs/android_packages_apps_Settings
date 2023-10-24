@@ -20,7 +20,6 @@ import android.hardware.fingerprint.FingerprintManager
 import android.util.Log
 import androidx.lifecycle.LifecycleCoroutineScope
 import com.android.settings.biometrics.fingerprint2.shared.model.FingerprintAuthAttemptViewModel
-import com.android.settings.biometrics.fingerprint2.shared.model.FingerprintStateViewModel
 import com.android.settings.biometrics.fingerprint2.shared.model.FingerprintViewModel
 import com.android.settings.biometrics.fingerprint2.ui.settings.binder.FingerprintSettingsViewBinder.FingerprintView
 import com.android.settings.biometrics.fingerprint2.ui.settings.viewmodel.EnrollAdditionalFingerprint
@@ -55,7 +54,6 @@ object FingerprintSettingsViewBinder {
       challenge: Long?,
       challengeToken: ByteArray?
     )
-
     /** Helper to launch an add fingerprint request */
     fun launchAddFingerprint(userId: Int, challengeToken: ByteArray?)
     /**
@@ -63,14 +61,16 @@ object FingerprintSettingsViewBinder {
      * choose a PIN/PATTERN/PASS.
      */
     fun launchConfirmOrChooseLock(userId: Int)
-
     /** Used to indicate that FingerprintSettings is finished. */
     fun finish()
-
     /** Indicates what result should be set for the returning callee */
     fun setResultExternal(resultCode: Int)
     /** Indicates the settings UI should be shown */
-    fun showSettings(state: FingerprintStateViewModel)
+    fun showSettings(enrolledFingerprints: List<FingerprintViewModel>)
+    /** Updates the add fingerprints preference */
+    fun updateAddFingerprintsPreference(canEnroll: Boolean, maxFingerprints: Int)
+    /** Updates the sfps fingerprints preference */
+    fun updateSfpsPreference(isSfpsPrefVisible: Boolean)
     /** Indicates that a user has been locked out */
     fun userLockout(authAttemptViewModel: FingerprintAuthAttemptViewModel.Error)
     /** Indicates a fingerprint preference should be highlighted */
@@ -93,9 +93,13 @@ object FingerprintSettingsViewBinder {
     /** Result listener for launching enrollments **after** a user has reached the settings page. */
 
     // Settings display flow
+    lifecycleScope.launch { viewModel.enrolledFingerprints.collect { view.showSettings(it) } }
     lifecycleScope.launch {
-      viewModel.fingerprintState.filterNotNull().collect { view.showSettings(it) }
+      viewModel.addFingerprintPrefInfo.collect { (enablePref, maxFingerprints) ->
+        view.updateAddFingerprintsPreference(enablePref, maxFingerprints)
+      }
     }
+    lifecycleScope.launch { viewModel.isSfpsPrefVisible.collect { view.updateSfpsPreference(it) } }
 
     // Dialog flow
     lifecycleScope.launch {

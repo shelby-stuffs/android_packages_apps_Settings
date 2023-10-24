@@ -45,7 +45,6 @@ import com.android.settings.R;
 import com.android.settingslib.widget.LayoutPreference;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Answers;
@@ -53,8 +52,12 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
+import org.robolectric.annotation.Config;
 
 @RunWith(RobolectricTestRunner.class)
+@Config(shadows = {
+        com.android.settings.testutils.shadow.ShadowFragment.class,
+})
 public class EntityHeaderControllerTest {
 
     @Mock(answer = Answers.RETURNS_DEEP_STUBS)
@@ -101,7 +104,7 @@ public class EntityHeaderControllerTest {
     @Test
     public void testBuildView_constructedWithView_shouldReturnSameView() {
         View inputView = mLayoutInflater.inflate(
-                com.android.settingslib.widget.R.layout.settings_entity_header, null /* root */);
+                com.android.settingslib.widget.preference.layout.R.layout.settings_entity_header, null /* root */);
         mController = EntityHeaderController.newInstance(mActivity, mFragment, inputView);
         View view = mController.done();
 
@@ -112,11 +115,11 @@ public class EntityHeaderControllerTest {
     public void bindViews_shouldBindAllData() {
         final String testString = "test";
         final View header = mLayoutInflater.inflate(
-                com.android.settingslib.widget.R.layout.settings_entity_header, null /* root */);
+                com.android.settingslib.widget.preference.layout.R.layout.settings_entity_header, null /* root */);
         final TextView label = header.findViewById(R.id.entity_header_title);
         final TextView summary = header.findViewById(R.id.entity_header_summary);
         final TextView secondSummary = header.findViewById(
-                com.android.settingslib.widget.R.id.entity_header_second_summary);
+                com.android.settingslib.widget.preference.layout.R.id.entity_header_second_summary);
 
         mController = EntityHeaderController.newInstance(mActivity, mFragment, header);
         mController.setLabel(testString);
@@ -140,7 +143,7 @@ public class EntityHeaderControllerTest {
         info.activityInfo.packageName = "123";
         info.activityInfo.name = "321";
         final View view = mLayoutInflater.inflate(
-                com.android.settingslib.widget.R.layout.settings_entity_header, null /* root */);
+                com.android.settingslib.widget.preference.layout.R.layout.settings_entity_header, null /* root */);
         when(mActivity.getApplicationContext()).thenReturn(mContext);
 
         mController = EntityHeaderController.newInstance(mActivity, mFragment, view);
@@ -164,7 +167,7 @@ public class EntityHeaderControllerTest {
         info.activityInfo.packageName = "123";
         info.activityInfo.name = "321";
         final View view = mLayoutInflater.inflate(
-                com.android.settingslib.widget.R.layout.settings_entity_header, null /* root */);
+                com.android.settingslib.widget.preference.layout.R.layout.settings_entity_header, null /* root */);
         when(mActivity.getApplicationContext()).thenReturn(mContext);
 
         mController = EntityHeaderController.newInstance(mActivity, mFragment, view);
@@ -181,7 +184,7 @@ public class EntityHeaderControllerTest {
     @Test
     public void bindButton_noAppInfo_shouldNotAttachClickListener() {
         final View appLinks = mLayoutInflater.inflate(
-                com.android.settingslib.widget.R.layout.settings_entity_header, null /* root */);
+                com.android.settingslib.widget.preference.layout.R.layout.settings_entity_header, null /* root */);
         final FragmentActivity activity = mock(FragmentActivity.class);
         when(mFragment.getActivity()).thenReturn(activity);
 
@@ -198,17 +201,16 @@ public class EntityHeaderControllerTest {
         assertThat(appLinks.findViewById(android.R.id.button2).getVisibility())
                 .isEqualTo(View.GONE);
 
-        appLinks.findViewById(com.android.settingslib.widget.R.id.entity_header_content)
+        appLinks.findViewById(com.android.settingslib.widget.preference.layout.R.id.entity_header_content)
                 .performClick();
         verify(mFragment, never()).getActivity();
         verify(activity, never()).startActivity(any(Intent.class));
     }
 
-    @Ignore
     @Test
     public void bindButton_hasAppInfo_shouldAttachClickListener() {
         final View appLinks = mLayoutInflater.inflate(
-                com.android.settingslib.widget.R.layout.settings_entity_header, null /* root */);
+                com.android.settingslib.widget.preference.layout.R.layout.settings_entity_header, null /* root */);
         final FragmentActivity activity = mock(FragmentActivity.class);
         when(mFragment.getActivity()).thenReturn(activity);
         when(mContext.getString(eq(R.string.application_info_label))).thenReturn("App Info");
@@ -222,7 +224,7 @@ public class EntityHeaderControllerTest {
                         EntityHeaderController.ActionType.ACTION_NONE);
         mController.done();
 
-        appLinks.findViewById(com.android.settingslib.widget.R.id.entity_header_content)
+        appLinks.findViewById(com.android.settingslib.widget.preference.layout.R.id.entity_header_content)
                 .performClick();
         verify(activity)
                 .startActivityForResultAsUser(any(Intent.class), anyInt(), any(UserHandle.class));
@@ -231,7 +233,7 @@ public class EntityHeaderControllerTest {
     @Test
     public void iconContentDescription_shouldWorkWithSetIcon() {
         final View view = mLayoutInflater.inflate(
-                com.android.settingslib.widget.R.layout.settings_entity_header, null /* root */);
+                com.android.settingslib.widget.preference.layout.R.layout.settings_entity_header, null /* root */);
         when(mFragment.getActivity()).thenReturn(mock(FragmentActivity.class));
         mController = EntityHeaderController.newInstance(mActivity, mFragment, view);
         String description = "Fake Description";
@@ -245,7 +247,7 @@ public class EntityHeaderControllerTest {
     @Test
     public void iconContentDescription_shouldWorkWithoutSetIcon() {
         final View view = mLayoutInflater.inflate(
-                com.android.settingslib.widget.R.layout.settings_entity_header, null /* root */);
+                com.android.settingslib.widget.preference.layout.R.layout.settings_entity_header, null /* root */);
         when(mFragment.getActivity()).thenReturn(mock(FragmentActivity.class));
         mController = EntityHeaderController.newInstance(mActivity, mFragment, view);
         String description = "Fake Description";
@@ -258,7 +260,7 @@ public class EntityHeaderControllerTest {
     @Test
     public void bindButton_hasAppNotifIntent_shouldShowButton() {
         final View appLinks = mLayoutInflater.inflate(
-                com.android.settingslib.widget.R.layout.settings_entity_header, null /* root */);
+                com.android.settingslib.widget.preference.layout.R.layout.settings_entity_header, null /* root */);
 
         mController = EntityHeaderController.newInstance(mActivity, mFragment, appLinks);
         mController.setAppNotifPrefIntent(new Intent())
@@ -278,11 +280,11 @@ public class EntityHeaderControllerTest {
     @Test
     public void instantApps_normalAppsDontGetLabel() {
         final View header = mLayoutInflater.inflate(
-                com.android.settingslib.widget.R.layout.settings_entity_header, null /* root */);
+                com.android.settingslib.widget.preference.layout.R.layout.settings_entity_header, null /* root */);
         mController = EntityHeaderController.newInstance(mActivity, mFragment, header);
         mController.done();
 
-        View installType = header.findViewById(com.android.settingslib.widget.R.id.install_type);
+        View installType = header.findViewById(com.android.settingslib.widget.preference.layout.R.id.install_type);
         assertThat(installType.getVisibility()).isEqualTo(View.GONE);
     }
 
@@ -290,11 +292,11 @@ public class EntityHeaderControllerTest {
     @Test
     public void instantApps_expectedHeaderItem() {
         final View header = mLayoutInflater.inflate(
-                com.android.settingslib.widget.R.layout.settings_entity_header, null /* root */);
+                com.android.settingslib.widget.preference.layout.R.layout.settings_entity_header, null /* root */);
         mController = EntityHeaderController.newInstance(mActivity, mFragment, header);
         mController.setIsInstantApp(true);
         mController.done();
-        TextView label = header.findViewById(com.android.settingslib.widget.R.id.install_type);
+        TextView label = header.findViewById(com.android.settingslib.widget.preference.layout.R.id.install_type);
 
         assertThat(label.getVisibility()).isEqualTo(View.VISIBLE);
         assertThat(label.getText()).isEqualTo(

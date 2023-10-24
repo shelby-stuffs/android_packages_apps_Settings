@@ -30,6 +30,7 @@ import android.app.ActivityManager;
 import android.app.IActivityManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.UserHandle;
@@ -37,10 +38,14 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.preference.Preference;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.settings.R;
-import com.android.settings.applications.AppInfoWithHeader;
+import com.android.settings.Utils;
+import com.android.settings.applications.AppInfoBase;
+import com.android.settings.widget.EntityHeaderController;
+import com.android.settingslib.applications.AppUtils;
 import com.android.settingslib.widget.ActionButtonsPreference;
 
 import java.util.ArrayList;
@@ -49,10 +54,11 @@ import java.util.List;
 /**
  * App specific activity to show aspect ratio overrides
  */
-public class UserAspectRatioDetails extends AppInfoWithHeader implements
+public class UserAspectRatioDetails extends AppInfoBase implements
         RadioWithImagePreference.OnClickListener {
     private static final String TAG = UserAspectRatioDetails.class.getSimpleName();
 
+    private static final String KEY_HEADER_SUMMARY = "app_aspect_ratio_summary";
     private static final String KEY_HEADER_BUTTONS = "header_view";
     private static final String KEY_PREF_FULLSCREEN = "fullscreen_pref";
     private static final String KEY_PREF_HALF_SCREEN = "half_screen_pref";
@@ -178,8 +184,30 @@ public class UserAspectRatioDetails extends AppInfoWithHeader implements
         }
     }
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        final Preference pref = EntityHeaderController
+                .newInstance(getActivity(), this, null /* header */)
+                .setIcon(Utils.getBadgedIcon(getContext(), mPackageInfo.applicationInfo))
+                .setLabel(mPackageInfo.applicationInfo.loadLabel(mPm))
+                .setIsInstantApp(AppUtils.isInstant(mPackageInfo.applicationInfo))
+                .setPackageName(mPackageName)
+                .setUid(mPackageInfo.applicationInfo.uid)
+                .setHasAppInfoLink(true)
+                .setButtonActions(EntityHeaderController.ActionType.ACTION_NONE,
+                        EntityHeaderController.ActionType.ACTION_NONE)
+                .done(getPrefContext());
+
+        getPreferenceScreen().addPreference(pref);
+    }
+
     private void initPreferences() {
         addPreferencesFromResource(R.xml.user_aspect_ratio_details);
+
+        final String summary = getContext().getResources().getString(
+                R.string.aspect_ratio_main_summary, Build.MODEL);
+        findPreference(KEY_HEADER_SUMMARY).setTitle(summary);
 
         ((ActionButtonsPreference) findPreference(KEY_HEADER_BUTTONS))
                 .setButton1Text(R.string.launch_instant_app)
@@ -205,8 +233,7 @@ public class UserAspectRatioDetails extends AppInfoWithHeader implements
             pref.setVisible(false);
             return;
         }
-        pref.setTitle(mUserAspectRatioManager.getUserMinAspectRatioEntry(aspectRatio,
-                mPackageName));
+        pref.setTitle(mUserAspectRatioManager.getAccessibleEntry(aspectRatio, mPackageName));
         pref.setOnClickListener(this);
         mAspectRatioPreferences.add(pref);
     }

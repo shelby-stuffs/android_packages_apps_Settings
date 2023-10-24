@@ -17,7 +17,6 @@
 package com.android.settings.applications.appcompat;
 
 import static android.content.pm.PackageManager.USER_MIN_ASPECT_RATIO_16_9;
-import static android.content.pm.PackageManager.USER_MIN_ASPECT_RATIO_3_2;
 import static android.content.pm.PackageManager.USER_MIN_ASPECT_RATIO_4_3;
 import static android.content.pm.PackageManager.USER_MIN_ASPECT_RATIO_FULLSCREEN;
 import static android.content.pm.PackageManager.USER_MIN_ASPECT_RATIO_SPLIT_SCREEN;
@@ -32,16 +31,23 @@ import static com.google.common.truth.Truth.assertThat;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
-import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.LauncherActivityInfo;
+import android.content.pm.LauncherApps;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
+import android.platform.test.rule.DeviceTypeRule;
+import android.platform.test.rule.FoldableOnly;
+import android.platform.test.rule.LargeScreenOnly;
+import android.platform.test.rule.TabletOnly;
 import android.provider.DeviceConfig;
 
 import androidx.test.core.app.ApplicationProvider;
@@ -52,13 +58,18 @@ import com.android.settings.testutils.ResourcesUtils;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestRule;
 import org.junit.runner.RunWith;
+
+import java.util.List;
 
 /**
  * To run this test: atest SettingsUnitTests:UserAspectRatioManagerTest
  */
 @RunWith(AndroidJUnit4.class)
+@LargeScreenOnly
 public class UserAspectRatioManagerTest {
 
     private Context mContext;
@@ -67,14 +78,27 @@ public class UserAspectRatioManagerTest {
     private String mOriginalSettingsFlag;
     private String mOriginalFullscreenFlag;
     private String mPackageName = "com.test.mypackage";
+    private LauncherApps mLauncherApps;
+    private List<LauncherActivityInfo> mLauncherActivities;
+
+    @Rule
+    public TestRule mDeviceTypeRule = new DeviceTypeRule();
 
     @Before
     public void setUp() {
         mContext = spy(ApplicationProvider.getApplicationContext());
         mResources = spy(mContext.getResources());
-        mUtils = new UserAspectRatioManager(mContext);
+        mLauncherApps = mock(LauncherApps.class);
+        mLauncherActivities = mock(List.class);
+        mUtils = new UserAspectRatioManager(mContext) {
+            @Override
+            LauncherApps getLauncherApps() {
+                return mLauncherApps;
+            }
+        };
 
         when(mContext.getResources()).thenReturn(mResources);
+        doReturn(mLauncherActivities).when(mLauncherApps).getActivityList(anyString(), any());
 
         mOriginalSettingsFlag = DeviceConfig.getProperty(
                 DeviceConfig.NAMESPACE_WINDOW_MANAGER, KEY_ENABLE_USER_ASPECT_RATIO_SETTINGS);
@@ -98,13 +122,14 @@ public class UserAspectRatioManagerTest {
     public void testCanDisplayAspectRatioUi() {
         final ApplicationInfo canDisplay = new ApplicationInfo();
         canDisplay.packageName = "com.app.candisplay";
-        addResolveInfoLauncherEntry(canDisplay.packageName);
 
+        doReturn(false).when(mLauncherActivities).isEmpty();
         assertTrue(mUtils.canDisplayAspectRatioUi(canDisplay));
 
         final ApplicationInfo noLauncherEntry = new ApplicationInfo();
         noLauncherEntry.packageName = "com.app.nolauncherentry";
 
+        doReturn(true).when(mLauncherActivities).isEmpty();
         assertFalse(mUtils.canDisplayAspectRatioUi(noLauncherEntry));
     }
 
@@ -112,10 +137,10 @@ public class UserAspectRatioManagerTest {
     public void testCanDisplayAspectRatioUi_hasLauncher_propertyFalse_returnFalse()
             throws PackageManager.NameNotFoundException {
         mockProperty(PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_OVERRIDE, false);
+        doReturn(true).when(mLauncherActivities).isEmpty();
 
         final ApplicationInfo canDisplay = new ApplicationInfo();
         canDisplay.packageName = mPackageName;
-        addResolveInfoLauncherEntry(canDisplay.packageName);
 
         assertFalse(mUtils.canDisplayAspectRatioUi(canDisplay));
     }
@@ -124,6 +149,7 @@ public class UserAspectRatioManagerTest {
     public void testCanDisplayAspectRatioUi_noLauncher_propertyTrue_returnFalse()
             throws PackageManager.NameNotFoundException {
         mockProperty(PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_OVERRIDE, true);
+        doReturn(true).when(mLauncherActivities).isEmpty();
 
         final ApplicationInfo noLauncherEntry = new ApplicationInfo();
         noLauncherEntry.packageName = mPackageName;
@@ -203,7 +229,8 @@ public class UserAspectRatioManagerTest {
     }
 
     @Test
-    public void testGetUserMinAspectRatioEntry() {
+    @FoldableOnly
+    public void testGetUserMinAspectRatioEntry_Foldable() {
         // R.string.user_aspect_ratio_app_default
         final String appDefault = ResourcesUtils.getResourcesString(mContext,
                 "user_aspect_ratio_app_default");
@@ -216,19 +243,35 @@ public class UserAspectRatioManagerTest {
         assertThat(mUtils.getUserMinAspectRatioEntry(USER_MIN_ASPECT_RATIO_SPLIT_SCREEN,
                 mPackageName)).isEqualTo(ResourcesUtils.getResourcesString(mContext,
                         "user_aspect_ratio_half_screen"));
-        // R.string.user_aspect_ratio_3_2
-        assertThat(mUtils.getUserMinAspectRatioEntry(USER_MIN_ASPECT_RATIO_3_2, mPackageName))
-                .isEqualTo(ResourcesUtils.getResourcesString(mContext, "user_aspect_ratio_3_2"));
         // R,string.user_aspect_ratio_4_3
         assertThat(mUtils.getUserMinAspectRatioEntry(USER_MIN_ASPECT_RATIO_4_3, mPackageName))
                 .isEqualTo(ResourcesUtils.getResourcesString(mContext, "user_aspect_ratio_4_3"));
-        // R.string.user_aspect_ratio_16_9
+        assertThat(mUtils.getUserMinAspectRatioEntry(USER_MIN_ASPECT_RATIO_FULLSCREEN,
+                mPackageName)).isEqualTo(ResourcesUtils.getResourcesString(mContext,
+                        "user_aspect_ratio_fullscreen"));
+    }
+
+    @Test
+    @TabletOnly
+    public void testGetUserMinAspectRatioEntry_Tablet() {
+        // R.string.user_aspect_ratio_app_default
+        final String appDefault = ResourcesUtils.getResourcesString(mContext,
+                "user_aspect_ratio_app_default");
+        assertThat(mUtils.getUserMinAspectRatioEntry(USER_MIN_ASPECT_RATIO_UNSET, mPackageName))
+                .isEqualTo(appDefault);
+        // should always return default if value does not correspond to anything
+        assertThat(mUtils.getUserMinAspectRatioEntry(-1, mPackageName))
+                .isEqualTo(appDefault);
+        // R.string.user_aspect_ratio_half_screen
+        assertThat(mUtils.getUserMinAspectRatioEntry(USER_MIN_ASPECT_RATIO_SPLIT_SCREEN,
+                mPackageName)).isEqualTo(ResourcesUtils.getResourcesString(mContext,
+                "user_aspect_ratio_half_screen"));
         assertThat(mUtils.getUserMinAspectRatioEntry(USER_MIN_ASPECT_RATIO_16_9, mPackageName))
                 .isEqualTo(ResourcesUtils.getResourcesString(mContext, "user_aspect_ratio_16_9"));
         // R.string.user_aspect_ratio_fullscreen
         assertThat(mUtils.getUserMinAspectRatioEntry(USER_MIN_ASPECT_RATIO_FULLSCREEN,
                 mPackageName)).isEqualTo(ResourcesUtils.getResourcesString(mContext,
-                        "user_aspect_ratio_fullscreen"));
+                "user_aspect_ratio_fullscreen"));
     }
 
     @Test
@@ -266,13 +309,5 @@ public class UserAspectRatioManagerTest {
     private void setAspectRatioFullscreenDeviceConfigEnabled(String enabled, boolean makeDefault) {
         DeviceConfig.setProperty(DeviceConfig.NAMESPACE_WINDOW_MANAGER,
                 KEY_ENABLE_USER_ASPECT_RATIO_FULLSCREEN, enabled, makeDefault);
-    }
-
-    private void addResolveInfoLauncherEntry(String packageName) {
-        final ResolveInfo resolveInfo = mock(ResolveInfo.class);
-        final ActivityInfo activityInfo = mock(ActivityInfo.class);
-        activityInfo.packageName = packageName;
-        resolveInfo.activityInfo = activityInfo;
-        mUtils.addInfoHasLauncherEntry(resolveInfo);
     }
 }
