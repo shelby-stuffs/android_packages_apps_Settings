@@ -43,27 +43,6 @@ java_library {
     ],
 }
 
-soong_config_module_type_import {
-    from: "device/qcom/qssi/Android.bp",
-    module_types: [
-         "bredr_vs_btadva_java_defaults",
-    ],
-}
-
-bredr_vs_btadva_java_defaults {
-    name: "btadva_settings_java_defaults",
-
-    soong_config_variables: {
-        bredr_or_btadva: {
-           btadva: {
-              srcs: [
-                 ":settings-bluetooth-adva-srcs",
-              ],
-           }
-       }
-   }
-}
-
 // Build the Settings APK
 android_library {
     name: "Settings-core",
@@ -73,7 +52,7 @@ android_library {
         "SettingsLib-search-defaults",
         "SpaPrivilegedLib-defaults",
         "framework-wifi-vendor-hide-access-defaults",
-        "btadva_settings_java_defaults",
+//        "btadva_settings_java_defaults",
     ],
 
     srcs: ["src/**/*.java", "src/**/*.kt"],
