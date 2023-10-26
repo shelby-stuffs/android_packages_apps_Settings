@@ -64,7 +64,6 @@ public abstract class BluetoothDeviceUpdater implements BluetoothCallback,
     protected static final String TAG = "BluetoothDeviceUpdater";
     private static final boolean DBG = Log.isLoggable(TAG, Log.DEBUG);
 
-    private GroupUtils mGroupUtils;
 
     @VisibleForTesting
     public final GearPreference.OnGearClickListener mDeviceProfilesListener = pref -> {
@@ -86,7 +85,6 @@ public abstract class BluetoothDeviceUpdater implements BluetoothCallback,
         mLocalManager = localManager;
         mMetricsCategory = metricsCategory;
         mMetricsFeatureProvider = FeatureFactory.getFeatureFactory().getMetricsFeatureProvider();
-        mGroupUtils = new GroupUtils(context);
     }
 
     /**
@@ -358,19 +356,6 @@ public abstract class BluetoothDeviceUpdater implements BluetoothCallback,
             Log.d(getLogTag(), "removePreference key: " + bluetoothDevice.getAnonymizedAddress());
             removePreference(bluetoothDevice);
         }
-    }
-
-    public boolean isGroupDevice(CachedBluetoothDevice cachedDevice) {
-        return mGroupUtils.isGroupDevice(cachedDevice);
-    }
-
-    public boolean isPrivateAddr(CachedBluetoothDevice cachedDevice) {
-        boolean isPvtAddr = cachedDevice.isPrivateAddr();
-        if (DBG) {
-            Log.d(TAG, "isPrivateAddr device name : " + cachedDevice.getName()
-                +  " isPvtAddr " + isPvtAddr);
-        }
-        return isPvtAddr;
     }
 
     protected boolean isDeviceInCachedDevicesList(CachedBluetoothDevice cachedDevice) {
