@@ -4657,6 +4657,12 @@
     <string name="accessibility_shortcut_hardware_keyword">hold volume keys</string>
     <!-- Summary for hardware shortcut in accessibility edit shortcut dialog. [CHAR LIMIT=NONE] -->
     <string name="accessibility_shortcut_edit_dialog_summary_hardware">Press &amp; hold both volume keys</string>
+    <!-- Title for two finger triple tap shortcut in accessibility edit shortcut dialog. [CHAR LIMIT=NONE] -->
+    <string name="accessibility_shortcut_edit_dialog_title_two_finger_triple_tap">Two-finger triple-tap screen</string>
+    <!-- Part of list to compose user's accessibility shortcut list. [CHAR LIMIT=NONE] -->
+    <string name="accessibility_shortcut_two_finger_triple_tap_keyword">two-finger triple-tap screen</string>
+    <!-- Summary for two finger triple tap shortcut in accessibility edit shortcut dialog. [CHAR LIMIT=NONE] -->
+    <string name="accessibility_shortcut_edit_dialog_summary_two_finger_triple_tap">Quickly tap screen {0,number,integer} times with two fingers</string>
     <!-- Title for triple tap shortcut in accessibility edit shortcut dialog. [CHAR LIMIT=NONE] -->
     <string name="accessibility_shortcut_edit_dialog_title_triple_tap">Triple-tap screen</string>
     <!-- Part of list to compose user's accessibility shortcut list. [CHAR LIMIT=NONE] -->
@@ -12560,12 +12566,9 @@
     <string name="content_protection_preference_user_consent_switch_title">Use scanning</string>
     <!-- Title of the toggle switch of work apps on the subpage of content protection settings -->
     <string name="content_protection_preference_user_consent_work_profile_switch_title">Use scanning for work apps</string>
-    <!-- Summary of the subpage of content protection settings -->
-    <string name="content_protection_preference_subpage_summary">Scanning runs privately right on your device, checking app activity for phishing or other deceptive behavior. If it\’s detected, some app info is sent to Google Play Protect to confirm the threat and warn app users.</string>
-    <!-- Information at the bottom of the subpage of content protection settings -->
-    <string name="content_protection_preference_subpage_info">
-        <![CDATA[
-        This is a protected security feature. No device or personal info is shared with Google.
-        \n\nPhishing is an attempt to steal sign-in credentials or other personal info.
-        ]]></string>
+
+    <!-- Default summary of the subpage of content protection settings. Will be overlaid by OEM. -->
+    <string name="content_protection_preference_subpage_summary"></string>
+    <!-- Default information at the bottom of the subpage of content protection settings. Will be overlaid by OEM. -->
+    <string name="content_protection_preference_subpage_info"></string>
 </resources>
