@@ -16,6 +16,12 @@
 
 package com.android.settings.datausage.lib
 
+import android.content.Context
+import android.text.format.DateUtils
+import android.util.Range
+import com.android.settings.R
+import com.android.settings.datausage.DataUsageUtils
+
 /**
  * Base data structure representing usage data in a period.
  */
@@ -23,4 +29,30 @@ data class NetworkUsageData(
     val startTime: Long,
     val endTime: Long,
     val usage: Long,
-)
+) {
+    val timeRange = Range(startTime, endTime)
+
+    fun formatStartDate(context: Context): String =
+        DateUtils.formatDateTime(context, startTime, DATE_FORMAT)
+
+    fun formatDateRange(context: Context): String =
+        DateUtils.formatDateRange(context, startTime, endTime, DATE_FORMAT)
+
+    fun formatUsage(context: Context): CharSequence = DataUsageUtils.formatDataUsage(context, usage)
+
+    fun getDataUsedString(context: Context): String =
+        context.getString(R.string.data_used_template, formatUsage(context))
+
+    private companion object {
+        const val DATE_FORMAT = DateUtils.FORMAT_SHOW_DATE or DateUtils.FORMAT_ABBREV_MONTH
+    }
+}
+
+fun List<NetworkUsageData>.aggregate(): NetworkUsageData? = when {
+    isEmpty() -> null
+    else -> NetworkUsageData(
+        startTime = minOf { it.startTime },
+        endTime = maxOf { it.endTime },
+        usage = sumOf { it.usage },
+    )
+}

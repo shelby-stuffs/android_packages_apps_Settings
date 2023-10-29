@@ -113,8 +113,6 @@
     <string name="bluetooth_disable_leaudio" msgid="8619410595945155354">"Оневозможи Bluetooth LE Audio"</string>
     <string name="bluetooth_disable_leaudio_summary" msgid="4756307633476985470">"Ја оневозможува функцијата Bluetooth LE Audio ако уредот поддржува хардверски способности за LE Audio."</string>
     <string name="bluetooth_show_leaudio_device_details" msgid="3306637862550475370">"Прекинувач за LE Audio во „Детали за уредот“"</string>
-    <string name="bluetooth_enable_leaudio_allow_list" msgid="1692999156437357534">"Овозможи список со дозволени за Bluetooth LE Audio"</string>
-    <string name="bluetooth_enable_leaudio_allow_list_summary" msgid="725601205276008525">"Овозможи ја функцијата за список со дозволени за Bluetooth LE Audio."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"Преносливи уреди"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"Уреди за повикување"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"Други уреди"</string>
@@ -273,8 +271,7 @@
     <string name="location_settings_loading_app_permission_stats" msgid="6054103701535557342">"Се вчитува…"</string>
     <string name="location_settings_footer_general" msgid="1040507068701188821">"Апликациите со дозвола за пристап до уредите во близина може да ја утврдуваат релативната положба на поврзаните уреди."</string>
     <string name="location_settings_footer_location_off" msgid="8568995909147566720">"Пристапот до локацијата е исклучен за апликации и услуги. Сепак, можно е локацијата на уредот да се испрати до службите за спасување во итни случаи кога ќе ги повикате или кога ќе испратите порака на број за итни случаи."</string>
-    <!-- no translation found for location_settings_footer_learn_more_content_description (349380666660145540) -->
-    <skip />
+    <string name="location_settings_footer_learn_more_content_description" msgid="349380666660145540">"Дознајте повеќе за „Поставките за локација“"</string>
     <string name="account_settings_title" msgid="9138880127246241885">"Сметки"</string>
     <string name="security_settings_title" msgid="6710768415432791970">"Безбедност"</string>
     <string name="encryption_and_credential_settings_title" msgid="5856216318961482983">"Шифрирање и акредитиви"</string>
@@ -2245,11 +2242,14 @@
     <string name="power_usage_level_and_status" msgid="821521456989429593">"<xliff:g id="LEVEL">%1$s</xliff:g> - <xliff:g id="STATUS">%2$s</xliff:g>"</string>
     <string name="power_discharge_remaining" msgid="6997529817917076536">"Преостануваат <xliff:g id="REMAIN">%1$s</xliff:g>"</string>
     <string name="power_charge_remaining" msgid="7046064326172265116">"<xliff:g id="UNTIL_CHARGED">%1$s</xliff:g> до полнење"</string>
+    <string name="power_usage_detail_screen_time" msgid="6027274749498485283">"Време на користење"</string>
+    <string name="power_usage_detail_background_time" msgid="3661437083554322691">"Време во заднина"</string>
     <string name="low_battery_summary" msgid="4458925347316501953">"Слаба батерија"</string>
     <string name="background_activity_summary" msgid="3817376868497046016">"Дозволете апликацијата да работи во заднина"</string>
     <string name="background_activity_warning_dialog_title" msgid="3449566823290744823">"Да се ограничи активноста во заднина?"</string>
     <string name="background_activity_warning_dialog_text" msgid="8202776985767701095">"Апликацијата може да се однесува необично ако ја ограничите нејзината активност во заднина"</string>
     <string name="background_activity_disabled_dialog_text" msgid="4053170297325882494">"Апликацијава не е оптимизирана и не може да се ограничи.\n\nЗа да ја ограничите, прво вклучете оптимизација на батеријата."</string>
+    <string name="manager_battery_usage_category_title" msgid="1493303237531629961">"Управувајте со користењето на батеријата"</string>
     <string name="manager_battery_usage_unrestricted_title" msgid="2426486290463258032">"Неограничено"</string>
     <string name="manager_battery_usage_optimized_title" msgid="8080765739761921817">"Оптимизирано"</string>
     <string name="manager_battery_usage_restricted_title" msgid="7702863764130323118">"Ограничено"</string>
@@ -2391,6 +2391,7 @@
     <string name="battery_usage_total_less_than_one_minute" msgid="1035425863251685509">"Вкупно: помалку од една минута"</string>
     <string name="battery_usage_background_less_than_one_minute" msgid="3957971442554437909">"Во заднина: помалку од минута"</string>
     <string name="battery_usage_screen_time_less_than_one_minute" msgid="2911989465891679033">"Време на користење: помалку од минута"</string>
+    <string name="power_usage_time_less_than_one_minute" msgid="8407404329381010144">"Помалку од една минута"</string>
     <string name="battery_usage_for_total_time" msgid="8402254046930910905">"Вкупно: <xliff:g id="TIME">%s</xliff:g>"</string>
     <string name="battery_usage_for_background_time" msgid="9109637210617095188">"Во заднина: <xliff:g id="TIME">%s</xliff:g>"</string>
     <string name="battery_usage_screen_time" msgid="3973865893520804115">"Време на користење: <xliff:g id="TIME">%s</xliff:g>"</string>
@@ -4175,7 +4176,7 @@
     <string name="credman_keywords" msgid="8305600680836806170">"мобилен интернет, криптографски клуч, лозинка"</string>
     <string name="credman_autofill_keywords" msgid="701180623776848914">"автоматски, пополнување, автоматско пополнување, податоци, криптографски клуч, лозинка"</string>
     <string name="autofill_confirmation_message" msgid="4888767934273494272">"&lt;b&gt;Проверете дали е ова апликација на која ѝ верувате&lt;/b&gt; &lt;br/&gt; &lt;br/&gt; &lt;xliff:g id=app_name example=„Автоматско пополнување на Google“&gt;%1$s&lt;/xliff:g&gt; го користи она што е на екранот за да утврди што може автоматски да се пополни."</string>
-    <string name="credman_autofill_confirmation_message" msgid="4951846866327737417">"&lt;b&gt;Да се користи &lt;xliff:g id=app_name example=Provider&gt;%1$s&lt;/xliff:g&gt;?&lt;/b&gt; &lt;br/&gt; &lt;br/&gt; &lt;xliff:g id=app_name example=Provider&gt;%1$s&lt;/xliff:g&gt; го користи она што е на екранот за да утврди што може автоматски да се пополни. Новите лозинки, криптографски клучеви и други податоци отсега ќе се зачувуваат овде."</string>
+    <string name="credman_autofill_confirmation_message" msgid="843829628024668466">"&lt;b&gt;Use &lt;xliff:g id=app_name example=Provider&gt;%1$s&lt;/xliff:g&gt;?&lt;/b&gt; &lt;br/&gt; &lt;br/&gt; Новите лозинки, криптографски клучеви и други податоци отсега ќе се зачувуваат овде. &lt;xliff:g id=app_name example=Provider&gt;%1$s&lt;/xliff:g&gt; може да го користи она што е на екранот за да утврди што може автоматски да се пополни."</string>
     <string name="credman_picker_title" msgid="8191267620665129205">"Услуги за лозинки, криптографски клучеви и податоци"</string>
     <string name="credman_confirmation_message_title" msgid="8847900085593880729">"Да се исклучи %1$s?"</string>
     <string name="credman_confirmation_message" msgid="2357324543658635239">"&lt;b&gt;Да се исклучи оваа услуга?&lt;/b&gt; &lt;br/&gt; &lt;br/&gt; Зачуваните податоци како лозинки, криптографски клучеви, начини на плаќање и други податоци нема да се пополнуваат кога ќе се најавувате. За да ги користите зачуваните податоци, изберете услуга за лозинки, криптографски клучеви или податоци."</string>
@@ -4229,10 +4230,8 @@
     <!-- no translation found for graphics_driver_app_preference_values:1 (485288770206606512) -->
     <!-- no translation found for graphics_driver_app_preference_values:2 (5391218026495225599) -->
     <!-- no translation found for graphics_driver_app_preference_values:3 (2586045835780389650) -->
-    <!-- no translation found for enable_angle_as_system_driver (4648827560023949786) -->
-    <skip />
-    <!-- no translation found for enable_angle_as_system_driver_summary (2170215556348477481) -->
-    <skip />
+    <string name="enable_angle_as_system_driver" msgid="4648827560023949786">"Експериментално: овозможете ANGLE"</string>
+    <string name="enable_angle_as_system_driver_summary" msgid="2170215556348477481">"Предупредување: ќе се овозможи ANGLE како стандарден драјвер за OpenGL ES. Функцијава е експериментална, па можно е да не биде компатибилна со некои апликации за камера и видео."</string>
     <string name="reboot_dialog_enable_angle_as_system_driver" msgid="2619263039763150810">"Потребно е рестартирање за да се промени драјверот за системот OpenGL ES"</string>
     <string name="platform_compat_dashboard_title" msgid="1323980546791790236">"Промени за компатибилност на апликациите"</string>
     <string name="platform_compat_dashboard_summary" msgid="4036546607938791337">"Вклучување/исклучување на промените за компатибилност на апликациите"</string>
