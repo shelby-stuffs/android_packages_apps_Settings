@@ -17,7 +17,7 @@
 package com.android.settings.network.apn
 
 import android.content.Context
-import androidx.compose.runtime.MutableState
+import android.net.Uri
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.test.assertIsDisplayed
@@ -41,6 +41,7 @@ import com.google.common.truth.Truth
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.kotlin.mock
 
 @RunWith(AndroidJUnit4::class)
 class ApnEditPageProviderTest {
@@ -51,38 +52,35 @@ class ApnEditPageProviderTest {
     private val apnName = "apn_name"
     private val mmsc = "mmsc"
     private val mmsProxy = "mms_proxy"
-    private val mnc = "mnc"
     private val apnType = "apn_type"
     private val apnRoaming = "IPv4"
     private val apnEnable = context.resources.getString(R.string.carrier_enabled)
     private val apnProtocolOptions =
         context.resources.getStringArray(R.array.apn_protocol_entries).toList()
-    private val bearer = context.resources.getString(R.string.bearer)
-    private val bearerOptions = context.resources.getStringArray(R.array.bearer_entries).toList()
+    private val networkType = context.resources.getString(R.string.network_type)
     private val passwordTitle = context.resources.getString(R.string.apn_password)
-    private val apnData = mutableStateOf(
-        ApnData(
-            name = apnName,
-            mmsc = mmsc,
-            mmsProxy = mmsProxy,
-            mnc = mnc,
-            apnType = apnType,
-            apnRoaming = apnProtocolOptions.indexOf(apnRoaming),
-            apnEnable = true
-        )
+    private val apnInit = ApnData(
+        name = apnName,
+        mmsc = mmsc,
+        mmsProxy = mmsProxy,
+        apnType = apnType,
+        apnRoaming = apnProtocolOptions.indexOf(apnRoaming),
+        apnEnable = true
     )
+    private val apnData = mutableStateOf(
+        apnInit
+    )
+    private val uri = mock<Uri> {}
 
     @Test
     fun apnEditPageProvider_name() {
-        Truth.assertThat(ApnEditPageProvider.name).isEqualTo("Apn")
+        Truth.assertThat(ApnEditPageProvider.name).isEqualTo("ApnEdit")
     }
 
     @Test
     fun title_displayed() {
         composeTestRule.setContent {
-            ApnPage(remember {
-                apnData
-            })
+            ApnPage(apnInit, remember { apnData }, uri)
         }
         composeTestRule.onNodeWithText(context.getString(R.string.apn_edit)).assertIsDisplayed()
     }
@@ -90,9 +88,7 @@ class ApnEditPageProviderTest {
     @Test
     fun name_displayed() {
         composeTestRule.setContent {
-            ApnPage(remember {
-                apnData
-            })
+            ApnPage(apnInit, remember { apnData }, uri)
         }
         composeTestRule.onNodeWithText(apnName, true).assertIsDisplayed()
     }
@@ -100,9 +96,7 @@ class ApnEditPageProviderTest {
     @Test
     fun mmsc_displayed() {
         composeTestRule.setContent {
-            ApnPage(remember {
-                apnData
-            })
+            ApnPage(apnInit, remember { apnData }, uri)
         }
         composeTestRule.onRoot().onChild().onChildAt(0)
             .performScrollToNode(hasText(mmsc, true))
@@ -112,9 +106,7 @@ class ApnEditPageProviderTest {
     @Test
     fun mms_proxy_displayed() {
         composeTestRule.setContent {
-            ApnPage(remember {
-                apnData
-            })
+            ApnPage(apnInit, remember { apnData }, uri)
         }
         composeTestRule.onRoot().onChild().onChildAt(0)
             .performScrollToNode(hasText(mmsProxy, true))
@@ -122,23 +114,9 @@ class ApnEditPageProviderTest {
     }
 
     @Test
-    fun mnc_displayed() {
-        composeTestRule.setContent {
-            ApnPage(remember {
-                apnData
-            })
-        }
-        composeTestRule.onRoot().onChild().onChildAt(0)
-            .performScrollToNode(hasText(mnc, true))
-        composeTestRule.onNodeWithText(mnc, true).assertIsDisplayed()
-    }
-
-    @Test
     fun apn_type_displayed() {
         composeTestRule.setContent {
-            ApnPage(remember {
-                apnData
-            })
+            ApnPage(apnInit, remember { apnData }, uri)
         }
         composeTestRule.onRoot().onChild().onChildAt(0)
             .performScrollToNode(hasText(apnType, true))
@@ -148,9 +126,7 @@ class ApnEditPageProviderTest {
     @Test
     fun apn_roaming_displayed() {
         composeTestRule.setContent {
-            ApnPage(remember {
-                apnData
-            })
+            ApnPage(apnInit, remember { apnData }, uri)
         }
         composeTestRule.onRoot().onChild().onChildAt(0)
             .performScrollToNode(hasText(apnRoaming, true))
@@ -160,9 +136,7 @@ class ApnEditPageProviderTest {
     @Test
     fun carrier_enabled_displayed() {
         composeTestRule.setContent {
-            ApnPage(remember {
-                apnData
-            })
+            ApnPage(apnInit, remember { apnData }, uri)
         }
         composeTestRule.onRoot().onChild().onChildAt(0)
             .performScrollToNode(hasText(apnEnable, true))
@@ -172,9 +146,7 @@ class ApnEditPageProviderTest {
     @Test
     fun carrier_enabled_isChecked() {
         composeTestRule.setContent {
-            ApnPage(remember {
-                apnData
-            })
+            ApnPage(apnInit, remember { apnData }, uri)
         }
         composeTestRule.onRoot().onChild().onChildAt(0)
             .performScrollToNode(hasText(apnEnable, true))
@@ -184,9 +156,7 @@ class ApnEditPageProviderTest {
     @Test
     fun carrier_enabled_checkChanged() {
         composeTestRule.setContent {
-            ApnPage(remember {
-                apnData
-            })
+            ApnPage(apnInit, remember { apnData }, uri)
         }
         composeTestRule.onRoot().onChild().onChildAt(0)
             .performScrollToNode(hasText(apnEnable, true))
@@ -195,63 +165,59 @@ class ApnEditPageProviderTest {
     }
 
     @Test
-    fun bearer_displayed() {
+    fun network_type_displayed() {
         composeTestRule.setContent {
-            ApnPage(remember {
-                apnData
-            })
+            ApnPage(apnInit, remember { apnData }, uri)
         }
         composeTestRule.onRoot().onChild().onChildAt(0)
-            .performScrollToNode(hasText(bearer, true))
-        composeTestRule.onNodeWithText(bearer, true).assertIsDisplayed()
+            .performScrollToNode(hasText(networkType, true))
+        composeTestRule.onNodeWithText(networkType, true).assertIsDisplayed()
     }
 
     @Test
-    fun bearer_changed() {
-        var apnDataa: MutableState<ApnData> = apnData
+    fun network_type_changed() {
         composeTestRule.setContent {
-            apnDataa = remember {
-                apnData
-            }
-            ApnPage(apnDataa)
+            ApnPage(apnInit, remember { apnData }, uri)
         }
         composeTestRule.onRoot().onChild().onChildAt(0)
-            .performScrollToNode(hasText(bearer, true))
-        composeTestRule.onNodeWithText(bearer, true).performClick()
-        composeTestRule.onNodeWithText(bearerOptions[1], true).performClick()
-        composeTestRule.onNode(hasText(bearerOptions[0]) and isFocused(), true).assertDoesNotExist()
-        composeTestRule.onNode(hasText(bearerOptions[1]) and isFocused(), true).assertIsDisplayed()
+            .performScrollToNode(hasText(networkType, true))
+        composeTestRule.onNodeWithText(networkType, true).performClick()
+        composeTestRule.onNodeWithText(NETWORK_TYPE_LTE, true).performClick()
+        composeTestRule.onNode(hasText(NETWORK_TYPE_UNSPECIFIED) and isFocused(), true)
+            .assertDoesNotExist()
+        composeTestRule.onNode(hasText(NETWORK_TYPE_LTE) and isFocused(), true).assertIsDisplayed()
     }
 
     @Test
-    fun bearer_changed_back2Default() {
-        var apnDataa: MutableState<ApnData> = apnData
+    fun network_type_changed_back2Default() {
         composeTestRule.setContent {
-            apnDataa = remember {
-                apnData
-            }
-            ApnPage(apnDataa)
+            ApnPage(apnInit, remember { apnData }, uri)
         }
         composeTestRule.onRoot().onChild().onChildAt(0)
-            .performScrollToNode(hasText(bearer, true))
-        composeTestRule.onNodeWithText(bearer, true).performClick()
-        composeTestRule.onNodeWithText(bearerOptions[1], true).performClick()
-        composeTestRule.onNode(hasText(bearerOptions[0]) and isFocused(), true).assertDoesNotExist()
-        composeTestRule.onNode(hasText(bearerOptions[1]) and isFocused(), true).assertIsDisplayed()
-        composeTestRule.onAllNodesWithText(bearerOptions[1], true).onLast().performClick()
-        composeTestRule.onNode(hasText(bearerOptions[0]) and isFocused(), true).assertIsDisplayed()
-        composeTestRule.onNode(hasText(bearerOptions[1]) and isFocused(), true).assertDoesNotExist()
+            .performScrollToNode(hasText(networkType, true))
+        composeTestRule.onNodeWithText(networkType, true).performClick()
+        composeTestRule.onNodeWithText(NETWORK_TYPE_LTE, true).performClick()
+        composeTestRule.onNode(hasText(NETWORK_TYPE_UNSPECIFIED) and isFocused(), true)
+            .assertDoesNotExist()
+        composeTestRule.onNode(hasText(NETWORK_TYPE_LTE) and isFocused(), true).assertIsDisplayed()
+        composeTestRule.onAllNodesWithText(NETWORK_TYPE_LTE, true).onLast().performClick()
+        composeTestRule.onNode(hasText(NETWORK_TYPE_UNSPECIFIED) and isFocused(), true)
+            .assertIsDisplayed()
+        composeTestRule.onNode(hasText(NETWORK_TYPE_LTE) and isFocused(), true).assertDoesNotExist()
     }
 
     @Test
     fun password_displayed() {
         composeTestRule.setContent {
-            ApnPage(remember {
-                apnData
-            })
+            ApnPage(apnInit, remember { apnData }, uri)
         }
         composeTestRule.onRoot().onChild().onChildAt(0)
             .performScrollToNode(hasText(passwordTitle, true))
         composeTestRule.onNodeWithText(passwordTitle, true).assertIsDisplayed()
+    }
+
+    private companion object {
+        const val NETWORK_TYPE_UNSPECIFIED = "Unspecified"
+        const val NETWORK_TYPE_LTE = "LTE"
     }
 }

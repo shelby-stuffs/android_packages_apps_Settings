@@ -18,6 +18,7 @@ package com.android.settings.datausage
 
 import android.content.Context
 import android.net.NetworkTemplate
+import android.util.Range
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Spinner
@@ -48,10 +49,9 @@ class DataUsageListHeaderControllerTest {
 
     private val repository = object : INetworkCycleDataRepository {
         override suspend fun loadCycles() = emptyList<NetworkUsageData>()
-
+        override fun getCycles() = emptyList<Range<Long>>()
         override fun getPolicy() = null
-
-        override suspend fun querySummary(startTime: Long, endTime: Long) = null
+        override suspend fun queryChartData(startTime: Long, endTime: Long) = null
     }
 
     private val header =
