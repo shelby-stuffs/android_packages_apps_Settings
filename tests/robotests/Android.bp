@@ -25,6 +25,8 @@ android_app {
         "androidx.fragment_fragment-testing",
         "frameworks-base-testutils",
         "androidx.fragment_fragment",
+        "androidx.lifecycle_lifecycle-runtime-testing",
+        "kotlinx_coroutines_test",
     ],
 
     aaptflags: ["--extra-packages com.android.settings"],
@@ -59,16 +61,21 @@ android_robolectric_test {
         "androidx.test.rules",
         "androidx.test.runner",
         "flag-junit",
+        "flag-junit-base",
         "aconfig_settings_flags_lib",
         "platform-test-annotations",
         "Settings-testutils2",
+        "notification_flags_lib",
     ],
 
     libs: [
         "ims-common",
     ],
 
-    java_resource_dirs: ["config", "resources"],
+    java_resource_dirs: [
+        "config",
+        "resources",
+    ],
 
     instrumentation_for: "SettingsRoboTestStub",
 
@@ -93,6 +100,6 @@ java_library {
         "Robolectric_all-target_upstream",
         "Settings-core",
         "mockito-robolectric-prebuilt",
-        "truth-prebuilt",
+        "truth",
     ],
 }

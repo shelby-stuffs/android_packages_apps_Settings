@@ -19,6 +19,10 @@ package com.android.settings.network.apn
 import android.net.Uri
 import android.os.Bundle
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Done
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
@@ -31,6 +35,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
 import com.android.settings.R
+import com.android.settings.network.apn.ApnNetworkTypes.getNetworkTypeDisplayNames
+import com.android.settings.network.apn.ApnNetworkTypes.getNetworkTypeSelectedOptionsState
 import com.android.settingslib.spa.framework.common.SettingsPageProvider
 import com.android.settingslib.spa.framework.compose.stateOf
 import com.android.settingslib.spa.widget.editor.SettingsExposedDropdownMenuBox
@@ -45,142 +51,132 @@ import java.util.Base64
 const val URI_TYPE = "uriType"
 const val URI = "uri"
 const val SUB_ID = "subId"
-const val MVNO_TYPE = "mvnoType"
-const val MVNO_MATCH_DATA = "mvnoMatchData"
 const val EDIT_URL = "editUrl"
+const val INSERT_URL = "insertUrl"
 
 object ApnEditPageProvider : SettingsPageProvider {
 
-    override val name = "Apn"
-    const val TAG = "ApnPageProvider"
+    override val name = "ApnEdit"
+    const val TAG = "ApnEditPageProvider"
 
     override val parameter = listOf(
         navArgument(URI_TYPE) { type = NavType.StringType },
         navArgument(URI) { type = NavType.StringType },
         navArgument(SUB_ID) { type = NavType.IntType },
-        navArgument(MVNO_TYPE) { type = NavType.StringType },
-        navArgument(MVNO_MATCH_DATA) { type = NavType.StringType },
     )
 
     @Composable
     override fun Page(arguments: Bundle?) {
-        val apnDataInit = ApnData()
+        val uriString = arguments!!.getString(URI)
+        val uriInit = Uri.parse(String(Base64.getDecoder().decode(uriString)))
+        val subId = arguments.getInt(SUB_ID)
+        val apnDataInit = getApnDataInit(arguments, LocalContext.current, uriInit, subId)
         val apnDataCur = remember {
             mutableStateOf(apnDataInit)
         }
-        ApnPage(apnDataCur)
+        ApnPage(apnDataInit, apnDataCur, uriInit)
     }
 
     fun getRoute(
         uriType: String,
         uri: Uri,
-        subId: Int,
-        mMvnoType: String,
-        mMvnoMatchData: String
+        subId: Int
     ): String = "${name}/$uriType/${
         Base64.getUrlEncoder().encodeToString(uri.toString().toByteArray())
-    }/$subId/$mMvnoType/$mMvnoMatchData"
+    }/$subId"
 }
 
 @Composable
-fun ApnPage(apnDataCur: MutableState<ApnData>) {
+fun ApnPage(apnDataInit: ApnData, apnDataCur: MutableState<ApnData>, uriInit: Uri) {
     var apnData by apnDataCur
     val context = LocalContext.current
     val authTypeOptions = stringArrayResource(R.array.apn_auth_entries).toList()
     val apnProtocolOptions = stringArrayResource(R.array.apn_protocol_entries).toList()
-    val bearerOptionsAll = stringArrayResource(R.array.bearer_entries)
-    val bearerOptions = bearerOptionsAll.drop(1).toList()
-    val bearerEmptyVal = bearerOptionsAll[0]
-    val mvnoTypeOptions = stringArrayResource(R.array.mvno_type_entries).toList()
-    val bearerSelectedOptionsState = remember {
-        getBearerSelectedOptionsState(apnData.bearer, apnData.bearerBitmask, context)
+    val networkTypeSelectedOptionsState = remember {
+        getNetworkTypeSelectedOptionsState(apnData.networkType)
     }
     RegularScaffold(
         title = stringResource(id = R.string.apn_edit),
+        actions = {
+            IconButton(onClick = {
+                validateAndSaveApnData(apnDataInit, apnData, context, uriInit)
+            }) { Icon(imageVector = Icons.Outlined.Done, contentDescription = "Save APN") }
+        }
     ) {
         Column() {
             SettingsOutlinedTextField(
-                apnData.name,
-                stringResource(R.string.apn_name),
+                value = apnData.name,
+                label = stringResource(R.string.apn_name),
                 enabled = apnData.nameEnabled
             ) { apnData = apnData.copy(name = it) }
             SettingsOutlinedTextField(
-                apnData.apn,
-                stringResource(R.string.apn_apn),
+                value = apnData.apn,
+                label = stringResource(R.string.apn_apn),
                 enabled = apnData.apnEnabled
             ) { apnData = apnData.copy(apn = it) }
             SettingsOutlinedTextField(
-                apnData.proxy,
-                stringResource(R.string.apn_http_proxy),
+                value = apnData.proxy,
+                label = stringResource(R.string.apn_http_proxy),
                 enabled = apnData.proxyEnabled
             ) { apnData = apnData.copy(proxy = it) }
             SettingsOutlinedTextField(
-                apnData.port,
-                stringResource(R.string.apn_http_port),
+                value = apnData.port,
+                label = stringResource(R.string.apn_http_port),
                 enabled = apnData.portEnabled
             ) { apnData = apnData.copy(port = it) }
             SettingsOutlinedTextField(
-                apnData.userName,
-                stringResource(R.string.apn_user),
+                value = apnData.userName,
+                label = stringResource(R.string.apn_user),
                 enabled = apnData.userNameEnabled
             ) { apnData = apnData.copy(userName = it) }
             SettingsTextFieldPassword(
-                apnData.passWord,
-                stringResource(R.string.apn_password)
+                value = apnData.passWord,
+                label = stringResource(R.string.apn_password),
+                enabled = apnData.passWordEnabled
             ) { apnData = apnData.copy(passWord = it) }
             SettingsOutlinedTextField(
-                apnData.server,
-                stringResource(R.string.apn_server),
+                value = apnData.server,
+                label = stringResource(R.string.apn_server),
                 enabled = apnData.serverEnabled
             ) { apnData = apnData.copy(server = it) }
             SettingsOutlinedTextField(
-                apnData.mmsc,
-                stringResource(R.string.apn_mmsc),
+                value = apnData.mmsc,
+                label = stringResource(R.string.apn_mmsc),
                 enabled = apnData.mmscEnabled
             ) { apnData = apnData.copy(mmsc = it) }
             SettingsOutlinedTextField(
-                apnData.mmsProxy,
-                stringResource(R.string.apn_mms_proxy),
+                value = apnData.mmsProxy,
+                label = stringResource(R.string.apn_mms_proxy),
                 enabled = apnData.mmsProxyEnabled
             ) { apnData = apnData.copy(mmsProxy = it) }
             SettingsOutlinedTextField(
-                apnData.mmsPort,
-                stringResource(R.string.apn_mms_port),
+                value = apnData.mmsPort,
+                label = stringResource(R.string.apn_mms_port),
                 enabled = apnData.mmsPortEnabled
             ) { apnData = apnData.copy(mmsPort = it) }
-            SettingsOutlinedTextField(
-                apnData.mcc,
-                stringResource(R.string.apn_mcc),
-                enabled = apnData.mccEnabled
-            ) { apnData = apnData.copy(mcc = it) }
-            SettingsOutlinedTextField(
-                apnData.mnc,
-                stringResource(R.string.apn_mnc),
-                enabled = apnData.mncEnabled
-            ) { apnData = apnData.copy(mnc = it) }
             // Warning: apnProtocol, apnRoaming, mvnoType string2Int
             SettingsExposedDropdownMenuBox(
-                stringResource(R.string.apn_auth_type),
-                authTypeOptions,
-                apnData.authType,
-                apnData.authTypeEnabled,
+                label = stringResource(R.string.apn_auth_type),
+                options = authTypeOptions,
+                selectedOptionIndex = apnData.authType,
+                enabled = apnData.authTypeEnabled,
             ) { apnData = apnData.copy(authType = it) }
             SettingsOutlinedTextField(
-                apnData.apnType,
-                stringResource(R.string.apn_type),
+                value = apnData.apnType,
+                label = stringResource(R.string.apn_type),
                 enabled = apnData.apnTypeEnabled
-            ) { apnData = apnData.copy(apn = it) } // TODO: updateApnType
+            ) { apnData = apnData.copy(apnType = updateApnType(apnData.copy(apnType = it))) }
             SettingsExposedDropdownMenuBox(
-                stringResource(R.string.apn_protocol),
-                apnProtocolOptions,
-                apnData.apnProtocol,
-                apnData.apnProtocolEnabled
+                label = stringResource(R.string.apn_protocol),
+                options = apnProtocolOptions,
+                selectedOptionIndex = apnData.apnProtocol,
+                enabled = apnData.apnProtocolEnabled
             ) { apnData = apnData.copy(apnProtocol = it) }
             SettingsExposedDropdownMenuBox(
-                stringResource(R.string.apn_roaming_protocol),
-                apnProtocolOptions,
-                apnData.apnRoaming,
-                apnData.apnRoamingEnabled
+                label = stringResource(R.string.apn_roaming_protocol),
+                options = apnProtocolOptions,
+                selectedOptionIndex = apnData.apnRoaming,
+                enabled = apnData.apnRoamingEnabled
             ) { apnData = apnData.copy(apnRoaming = it) }
             SwitchPreference(
                 object : SwitchPreferenceModel {
@@ -195,25 +191,12 @@ fun ApnPage(apnDataCur: MutableState<ApnData>) {
                 }
             )
             SettingsExposedDropdownMenuCheckBox(
-                stringResource(R.string.bearer),
-                bearerOptions,
-                bearerSelectedOptionsState,
-                bearerEmptyVal,
-                apnData.bearerEnabled
+                label = stringResource(R.string.network_type),
+                options = getNetworkTypeDisplayNames(),
+                selectedOptionsState = networkTypeSelectedOptionsState,
+                emptyVal = stringResource(R.string.network_type_unspecified),
+                enabled = apnData.networkTypeEnabled
             ) {}
-            SettingsExposedDropdownMenuBox(
-                stringResource(R.string.mvno_type),
-                mvnoTypeOptions,
-                apnData.mvnoType,
-                apnData.mvnoTypeEnabled
-            ) {
-                apnData = apnData.copy(mvnoType = it)
-            } // TODO: mvnoDescription
-            SettingsOutlinedTextField(
-                apnData.mvnoValue,
-                stringResource(R.string.mvno_match_data),
-                enabled = apnData.mvnoValueEnabled
-            ) { apnData = apnData.copy(mvnoValue = it) }
         }
     }
 }

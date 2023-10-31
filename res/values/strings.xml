@@ -258,10 +258,10 @@
     <!-- Setting toggle title for enabling Bluetooth LE Audio toggle in Device Details. [CHAR LIMIT=40] -->
     <string name="bluetooth_show_leaudio_device_details">Show LE audio toggle in Device Details</string>
 
-    <!-- Setting toggle title for enabling Bluetooth LE Audio Allow List. [CHAR LIMIT=none] -->
-    <string name="bluetooth_enable_leaudio_allow_list">Enable Bluetooth LE audio Allow List</string>
-    <!-- Summary of toggle for enabling Bluetooth LE audio Allow List [CHAR LIMIT=none]-->
-    <string name="bluetooth_enable_leaudio_allow_list_summary">Enable Bluetooth LE audio allow list feature.</string>
+    <!-- Setting toggle title for ignoring Bluetooth LE Audio Allowlist. [CHAR LIMIT=none] -->
+    <string name="bluetooth_bypass_leaudio_allowlist">Bypass Bluetooth LE Audio Allowlist</string>
+    <!-- Summary of toggle for ignoring Bluetooth LE Audio Allowlist [CHAR LIMIT=none]-->
+    <string name="bluetooth_bypass_leaudio_allowlist_summary">Use LE Audio by default even if LE Audio peripheral hasn\'t been verified to meet Allowlist criteria.</string>
 
     <!-- Title for Bluetooth device group with media capability group [CHAR LIMIT=none]-->
     <string name="connected_device_media_device_title">Media devices</string>
@@ -3185,6 +3185,10 @@
     <string name="carrier_enabled_summaryOff">APN disabled</string>
     <!-- Edit Beaerer Info of APN -->
     <string name="bearer">Bearer</string>
+    <!-- Edit Network Type Info of APN -->
+    <string name="network_type">Network type</string>
+    <!-- Network type unspecified -->
+    <string name="network_type_unspecified">Unspecified</string>
     <!-- Edit Mvno Type Info of APN -->
     <string name="mvno_type">MVNO type</string>
     <!-- Edit Mvno Match Data Info of APN -->
@@ -5634,8 +5638,10 @@
     <string name="battery_usage_without_time"></string>
     <!-- Description for the specific time slot in the battery usage page [CHAR LIMIT=120] -->
     <string name="battery_usage_since_last_full_charge">since last full charge</string>
-   <!-- Description for system apps aggregated battery usage data [CHAR LIMIT=120] -->
+    <!-- Description for system apps aggregated battery usage data [CHAR LIMIT=120] -->
     <string name="battery_usage_system_apps">System apps</string>
+    <!-- Description for uninstalled apps aggregated battery usage data [CHAR LIMIT=120] -->
+    <string name="battery_usage_uninstalled_apps">Uninstalled apps</string>
     <!-- Description for others battery usage data [CHAR LIMIT=120] -->
     <string name="battery_usage_others">Others</string>
 
@@ -6251,6 +6257,8 @@
     <string name="account_settings_menu_auto_sync_personal">Auto-sync personal data</string>
     <!--  Title for menu option to enable global auto-sync of work account data [CHAR LIMIT=30] -->
     <string name="account_settings_menu_auto_sync_work">Auto-sync work data</string>
+    <!--  Title for menu option to enable global auto-sync of private account data [CHAR LIMIT=30] -->
+    <string name="account_settings_menu_auto_sync_private">Auto-sync private data</string>
 
     <!-- Title for option to change data usage cycle day. [CHAR LIMIT=32] -->
     <string name="data_usage_change_cycle">Change cycle\u2026</string>
@@ -8291,6 +8299,20 @@
     <string name="notif_listener_not_migrated">This app doesn\u2019t support enhanced settings</string>
     <string name="notif_listener_more_settings">More settings</string>
     <string name="notif_listener_more_settings_desc">More settings are available inside this app</string>
+
+    <!-- Title for Polite Notifications setting  [CHAR LIMIT=30]-->
+    <string name="notification_polite_title">Notification cooldown</string>
+    <string name="notification_polite_all_apps">Apply cooldown to all notifications</string>
+    <string name="notification_polite_all_apps_summary">Gradually lower the notification volume when you get many successive notifications from the same app</string>
+    <string name="notification_polite_conversations">Apply cooldown to conversations</string>
+    <string name="notification_polite_conversations_summary">Gradually lower the notification volume when you get many messages from the same chat within a short period of time</string>
+    <string name="notification_polite_disabled">Don\'t use notification cooldown</string>
+    <string name="notification_polite_disabled_summary">Never lower notification volume, regardless of the amount of successive notifications from the same app</string>
+    <string name="notification_polite_vibrate_unlocked">Vibrate when unlocked</string>
+    <string name="notification_polite_vibrate_unlocked_summary">Only vibrate when screen is unlocked</string>
+    <string name="notification_polite_work">Apply to work profiles</string>
+    <string name="notification_polite_work_summary">Apply the notification cooldown settings from your personal profile to your work profile</string>
+
 
     <!-- Title for managing VR (virtual reality) helper services. [CHAR LIMIT=50] -->
     <string name="vr_listeners_title">VR helper services</string>
@@ -12655,4 +12677,21 @@
     <string name="quarantined_apps_title" translatable="false">Quarantined Apps</string>
     <!-- Do not translate. Developer settings: Button to unquarantine an app [CHAR LIMIT=20] -->
     <string name="unquarantine_app_button" translatable="false">Unquarantine app</string>
+
+    <!-- Title of preference to manage content protection settings -->
+    <string name="content_protection_preference_title">Scanning for deceptive apps</string>
+    <!-- Summary of the preference to manage content protection settings -->
+    <string name="content_protection_preference_summary">Check app activity for phishing</string>
+    <!-- Title of the switch bar on the subpage of content protection settings -->
+    <string name="content_protection_preference_user_consent_switch_title">Use scanning</string>
+    <!-- Title of the toggle switch of work apps on the subpage of content protection settings -->
+    <string name="content_protection_preference_user_consent_work_profile_switch_title">Use scanning for work apps</string>
+    <!-- Summary of the subpage of content protection settings -->
+    <string name="content_protection_preference_subpage_summary">Scanning runs privately right on your device, checking app activity for phishing or other deceptive behavior. If it\’s detected, some app info is sent to Google Play Protect to confirm the threat and warn app users.</string>
+    <!-- Information at the bottom of the subpage of content protection settings -->
+    <string name="content_protection_preference_subpage_info">
+        <![CDATA[
+        This is a protected security feature. No device or personal info is shared with Google.
+        \n\nPhishing is an attempt to steal sign-in credentials or other personal info.
+        ]]></string>
 </resources>

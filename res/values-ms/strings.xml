@@ -113,8 +113,6 @@
     <string name="bluetooth_disable_leaudio" msgid="8619410595945155354">"Lumpuhkan Bluetooth LE Audio"</string>
     <string name="bluetooth_disable_leaudio_summary" msgid="4756307633476985470">"Melumpuhkan ciri Bluetooth LE Audio jika peranti menyokong keupayaan perkakasan LE Audio."</string>
     <string name="bluetooth_show_leaudio_device_details" msgid="3306637862550475370">"Tunjukkan togol LE Audio pada Butiran Peranti"</string>
-    <string name="bluetooth_enable_leaudio_allow_list" msgid="1692999156437357534">"Dayakan Senarai Dibenarkan untuk Bluetooth LE audio"</string>
-    <string name="bluetooth_enable_leaudio_allow_list_summary" msgid="725601205276008525">"Dayakan ciri senarai dibenarkan untuk Bluetooth LE Audio."</string>
     <string name="connected_device_media_device_title" msgid="3783388247594566734">"Peranti media"</string>
     <string name="connected_device_call_device_title" msgid="88732390601723608">"Panggil peranti"</string>
     <string name="connected_device_other_device_title" msgid="4652120430615729193">"Peranti lain"</string>
@@ -273,8 +271,7 @@
     <string name="location_settings_loading_app_permission_stats" msgid="6054103701535557342">"Memuatkan…"</string>
     <string name="location_settings_footer_general" msgid="1040507068701188821">"Apl dengan kebenaran peranti Berdekatan boleh menentukan kedudukan relatif peranti tersambung."</string>
     <string name="location_settings_footer_location_off" msgid="8568995909147566720">"Akses lokasi dimatikan untuk apl dan perkhidmatan. Lokasi peranti anda mungkin tetap dihantar kepada pasukan bantuan kecemasan apabila anda menghubungi atau menghantar teks kepada nombor kecemasan."</string>
-    <!-- no translation found for location_settings_footer_learn_more_content_description (349380666660145540) -->
-    <skip />
+    <string name="location_settings_footer_learn_more_content_description" msgid="349380666660145540">"Ketahui lebih lanjut tentang tetapan Lokasi"</string>
     <string name="account_settings_title" msgid="9138880127246241885">"Akaun"</string>
     <string name="security_settings_title" msgid="6710768415432791970">"Keselamatan"</string>
     <string name="encryption_and_credential_settings_title" msgid="5856216318961482983">"Penyulitan &amp; bukti kelayakan"</string>
@@ -2245,11 +2242,14 @@
     <string name="power_usage_level_and_status" msgid="821521456989429593">"<xliff:g id="LEVEL">%1$s</xliff:g> - <xliff:g id="STATUS">%2$s</xliff:g>"</string>
     <string name="power_discharge_remaining" msgid="6997529817917076536">"<xliff:g id="REMAIN">%1$s</xliff:g> yang tinggal"</string>
     <string name="power_charge_remaining" msgid="7046064326172265116">"<xliff:g id="UNTIL_CHARGED">%1$s</xliff:g> untuk mengecas"</string>
+    <string name="power_usage_detail_screen_time" msgid="6027274749498485283">"Masa skrin"</string>
+    <string name="power_usage_detail_background_time" msgid="3661437083554322691">"Masa latar"</string>
     <string name="low_battery_summary" msgid="4458925347316501953">"Bateri lemah"</string>
     <string name="background_activity_summary" msgid="3817376868497046016">"Benarkan apl berjalan di latar belakang"</string>
     <string name="background_activity_warning_dialog_title" msgid="3449566823290744823">"Hadkan aktiviti latar belakang?"</string>
     <string name="background_activity_warning_dialog_text" msgid="8202776985767701095">"Jika anda mengehadkan aktiviti latar belakang untuk apl, fungsi apl itu mungkin terganggu"</string>
     <string name="background_activity_disabled_dialog_text" msgid="4053170297325882494">"Apl ini tidak boleh dihadkan kerana tidak ditetapkan untuk mengoptimumkan bateri.\n\nHidupkan pengoptimuman bateri dahulu."</string>
+    <string name="manager_battery_usage_category_title" msgid="1493303237531629961">"Urus penggunaan bateri"</string>
     <string name="manager_battery_usage_unrestricted_title" msgid="2426486290463258032">"Tiada sekatan"</string>
     <string name="manager_battery_usage_optimized_title" msgid="8080765739761921817">"Dioptimumkan"</string>
     <string name="manager_battery_usage_restricted_title" msgid="7702863764130323118">"Terhad"</string>
@@ -2391,6 +2391,7 @@
     <string name="battery_usage_total_less_than_one_minute" msgid="1035425863251685509">"Jumlah: kurang dari seminit"</string>
     <string name="battery_usage_background_less_than_one_minute" msgid="3957971442554437909">"Latar: kurang daripada seminit"</string>
     <string name="battery_usage_screen_time_less_than_one_minute" msgid="2911989465891679033">"Masa skrin: kurang daripada seminit"</string>
+    <string name="power_usage_time_less_than_one_minute" msgid="8407404329381010144">"Kurang daripada seminit"</string>
     <string name="battery_usage_for_total_time" msgid="8402254046930910905">"Jumlah: <xliff:g id="TIME">%s</xliff:g>"</string>
     <string name="battery_usage_for_background_time" msgid="9109637210617095188">"Latar: <xliff:g id="TIME">%s</xliff:g>"</string>
     <string name="battery_usage_screen_time" msgid="3973865893520804115">"Masa skrin: <xliff:g id="TIME">%s</xliff:g>"</string>
@@ -4175,7 +4176,7 @@
     <string name="credman_keywords" msgid="8305600680836806170">"data, kunci laluan, kata laluan"</string>
     <string name="credman_autofill_keywords" msgid="701180623776848914">"automatik, isi, autolengkap, data, kunci laluan, kata laluan"</string>
     <string name="autofill_confirmation_message" msgid="4888767934273494272">"&lt;b&gt;Pastikan anda mempercayai apl ini&lt;/b&gt; &lt;br/&gt; &lt;br/&gt; &lt;xliff:g id=app_name example=Google Autofill&gt;%1$s&lt;/xliff:g&gt; menggunakan item yang terdapat pada skrin anda untuk menentukan perkara yang boleh dilengkapkan secara automatik."</string>
-    <string name="credman_autofill_confirmation_message" msgid="4951846866327737417">"&lt;b&gt;Gunakan &lt;xliff:g id=app_name example=Provider&gt;%1$s&lt;/xliff:g&gt;?&lt;/b&gt; &lt;br/&gt; &lt;br/&gt; &lt;xliff:g id=app_name example=Provider&gt;%1$s&lt;/xliff:g&gt; menggunakan maklumat pada skrin untuk menentukan pengisian data automatik. Kata laluan baharu, kunci laluan dan maklumat lain akan disimpan di sini mulai sekarang."</string>
+    <string name="credman_autofill_confirmation_message" msgid="843829628024668466">"&lt;b&gt;Use &lt;xliff:g id=app_name example=Provider&gt;%1$s&lt;/xliff:g&gt;?&lt;/b&gt; &lt;br/&gt; &lt;br/&gt; Kata laluan baharu, kunci laluan dan maklumat lain akan disimpan di sini mulai sekarang. &lt;xliff:g id=app_name example=Provider&gt;%1$s&lt;/xliff:g&gt; mungkin menggunakan maklumat pada skrin anda untuk menentukan pengisian data automatik."</string>
     <string name="credman_picker_title" msgid="8191267620665129205">"Kata laluan, kunci laluan dan perkhidmatan data"</string>
     <string name="credman_confirmation_message_title" msgid="8847900085593880729">"Matikan %1$s?"</string>
     <string name="credman_confirmation_message" msgid="2357324543658635239">"&lt;b&gt;Matikan perkhidmatan ini?&lt;/b&gt; &lt;br/&gt; &lt;br/&gt; Maklumat yang disimpan seperti kata laluan, kunci laluan, kaedah pembayaran dan maklumat lain tidak akan diisikan apabila anda log masuk. Untuk menggunakan maklumat anda yang disimpan, pilih kata laluan, kunci laluan atau perkhidmatan data."</string>
