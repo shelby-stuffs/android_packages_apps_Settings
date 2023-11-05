@@ -81,6 +81,7 @@ public class FastPairDevicePreferenceController extends BasePreferenceController
             mFastPairDeviceUpdater =
                     fastPairFeatureProvider.getFastPairDeviceUpdater(context, this);
         } else {
+            Log.d(TAG, "Flag disabled. Ignore.");
             mFastPairDeviceUpdater = null;
         }
         mIntentFilter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
@@ -90,7 +91,12 @@ public class FastPairDevicePreferenceController extends BasePreferenceController
     @Override
     public void onStart(@NonNull LifecycleOwner owner) {
         if (mFastPairDeviceUpdater != null) {
+            mFastPairDeviceUpdater.setPreferenceContext(mContext);
             mFastPairDeviceUpdater.registerCallback();
+        } else {
+            if (DEBUG) {
+                Log.d(TAG, "Callback register: Fast Pair device updater is null. Ignore.");
+            }
         }
         mContext.registerReceiver(mReceiver, mIntentFilter, Context.RECEIVER_EXPORTED_UNAUDITED);
     }
@@ -98,7 +104,12 @@ public class FastPairDevicePreferenceController extends BasePreferenceController
     @Override
     public void onStop(@NonNull LifecycleOwner owner) {
         if (mFastPairDeviceUpdater != null) {
+            mFastPairDeviceUpdater.setPreferenceContext(null);
             mFastPairDeviceUpdater.unregisterCallback();
+        } else {
+            if (DEBUG) {
+                Log.d(TAG, "Callback unregister: Fast Pair device updater is null. Ignore.");
+            }
         }
         mContext.unregisterReceiver(mReceiver);
     }
@@ -109,7 +120,6 @@ public class FastPairDevicePreferenceController extends BasePreferenceController
         mPreferenceGroup = screen.findPreference(getPreferenceKey());
         mSeeAllPreference = mPreferenceGroup.findPreference(KEY_SEE_ALL);
         updatePreferenceVisibility();
-
         if (isAvailable()) {
             final Context context = screen.getContext();
             mFastPairDeviceUpdater.setPreferenceContext(context);

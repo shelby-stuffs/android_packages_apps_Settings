@@ -25,6 +25,8 @@ import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 import androidx.preference.SwitchPreference;
 import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
+import androidx.preference.TwoStatePreference;
 
 import com.android.settings.core.BasePreferenceController;
 import com.android.settings.overlay.FeatureFactory;
@@ -73,7 +75,7 @@ public class WifiTetherAutoOffPreferenceController extends BasePreferenceControl
         SoftApConfiguration softApConfiguration = mWifiManager.getSoftApConfiguration();
         mSettingsOn = softApConfiguration.isAutoShutdownEnabled();
 
-        ((SwitchPreference) preference).setChecked(mSettingsOn);
+        ((TwoStatePreference) preference).setChecked(mSettingsOn);
     }
 
     @Override
