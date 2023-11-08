@@ -179,6 +179,8 @@ public abstract class DefaultSubscriptionController extends TelephonyBasePrefere
                 subIsAvailable = true;
             }
         }
+
+        mPreference.setEnabled(true);
         updatePreferenceState(mPreference);
 
         if (isAskEverytimeSupported()) {
