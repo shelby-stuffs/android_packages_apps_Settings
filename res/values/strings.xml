@@ -11110,6 +11110,8 @@
     <string name="empty_networks_list">No networks found.</string>
     <!-- Available networks screen, toast when an error is encountered when searching for networks [CHAR LIMIT=NONE] -->
     <string name="network_query_error">Couldn\u2019t find networks. Try again.</string>
+    <!-- Available networks screen, toast when an error is encountered when searching for networks [CHAR LIMIT=NONE] -->
+    <string name="network_scan_error">Network scan have error, either choose network or try again.</string>
     <!-- Text to show this network is forbidden [CHAR LIMIT=NONE] -->
     <string name="forbidden_network">(forbidden)</string>
 

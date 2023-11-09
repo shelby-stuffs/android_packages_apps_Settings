@@ -4376,6 +4376,7 @@
     <string name="network_could_not_connect" msgid="676574629319069922">"无法连接"</string>
     <string name="empty_networks_list" msgid="6519489879480673428">"未找到网络。"</string>
     <string name="network_query_error" msgid="6406348372070035274">"找不到网络，请重试。"</string>
+    <string name="network_scan_error" msgid="6406348372070035274">"网络搜索出错，请选择网络或重试。"</string>
     <string name="forbidden_network" msgid="7404863971282262991">"（禁止）"</string>
     <string name="sim_card" msgid="6381158752066377709">"SIM 卡"</string>
     <string name="wifi_no_sim_card" msgid="7144290066491585672">"没有 SIM 卡"</string>
