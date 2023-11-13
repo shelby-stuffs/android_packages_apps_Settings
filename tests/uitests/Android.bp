@@ -48,6 +48,7 @@ android_test {
         "sysui-helper",
         "timeresult-helper-lib",
         "truth",
+        "flag-junit",
     ],
 
     //sdk_version: "current",
