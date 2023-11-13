@@ -16,6 +16,9 @@
 
 package com.android.settings.ui
 
+import android.os.Flags
+import android.platform.test.annotations.RequiresFlagsEnabled
+import android.platform.test.flag.junit.DeviceFlagsValueProvider
 import android.provider.Settings
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -23,12 +26,17 @@ import androidx.test.uiautomator.UiDevice
 import com.android.settings.ui.testutils.SettingsTestUtils.assertHasTexts
 import com.android.settings.ui.testutils.SettingsTestUtils.startMainActivityFromHomeScreen
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+
 
 @RunWith(AndroidJUnit4::class)
 class SecuritySettingsTest {
     private val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+
+    @get:Rule
+    public val mCheckFlagsRule = DeviceFlagsValueProvider.createCheckFlagsRule()
 
     @Before
     fun setUp() {
@@ -38,6 +46,12 @@ class SecuritySettingsTest {
     @Test
     fun hasTexts() {
         device.assertHasTexts(ON_SCREEN_TEXTS)
+    }
+
+    @Test
+    @RequiresFlagsEnabled(Flags.FLAG_ALLOW_PRIVATE_PROFILE)
+    fun privateSpace_ifFlagON() {
+        device.assertHasTexts(listOf("Private Space"))
     }
 
     private companion object {
