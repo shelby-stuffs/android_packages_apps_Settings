@@ -507,7 +507,7 @@ public class NetworkSelectSettings extends DashboardFragment implements
     protected NetworkOperatorPreference createNetworkOperatorPreference(CellInfo cellInfo) {
         return new NetworkOperatorPreference(getPrefContext(),
                 cellInfo, mForbiddenPlmns, mShow4GForLTE,
-                MobileNetworkUtils.getAccessMode(getContext(),
+                MobileNetworkUtils.getAccessMode(getPrefContext().getApplicationContext(),
                         mTelephonyManager.getSlotIndex()));
     }
 
@@ -547,7 +547,7 @@ public class NetworkSelectSettings extends DashboardFragment implements
                 pref = createNetworkOperatorPreference(cellInfo);
                 pref.setOrder(index);
 
-                if (DomesticRoamUtils.isFeatureEnabled(getContext())) {
+                if (DomesticRoamUtils.isFeatureEnabled(getPrefContext())) {
                     pref.setSubId(mSubId);
                     pref.updateCell(cellInfo);
                 }
@@ -629,7 +629,7 @@ public class NetworkSelectSettings extends DashboardFragment implements
                 }
                 final NetworkOperatorPreference pref = new NetworkOperatorPreference(
                         getPrefContext(), cellIdentity, mForbiddenPlmns, mShow4GForLTE,
-                        MobileNetworkUtils.getAccessMode(getContext(),
+                        MobileNetworkUtils.getAccessMode(getPrefContext().getApplicationContext(),
                                 mTelephonyManager.getSlotIndex()));
                 if (pref.isForbiddenNetwork()) {
                     continue;
