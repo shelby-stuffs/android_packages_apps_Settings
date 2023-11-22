@@ -308,6 +308,17 @@
     <string name="audio_sharing_title">Audio sharing</string>
     <!-- Title for audio sharing primary switch [CHAR LIMIT=none]-->
     <string name="audio_sharing_switch_title">Share audio</string>
+    <!-- Title for calls and alarms device on audio sharing page [CHAR LIMIT=none]-->
+    <string name="calls_and_alarms_device_title">Calls and alarms</string>
+
+    <!-- Title for audio streams preference category [CHAR LIMIT=none]-->
+    <string name="audio_sharing_streams_category_title">Connect to a LE audio stream</string>
+    <!-- Title for audio streams preference [CHAR LIMIT=none]-->
+    <string name="audio_sharing_streams_pref_title">Nearby audio streams</string>
+    <!-- Title for audio streams page [CHAR LIMIT=none]-->
+    <string name="audio_sharing_streams_title">Audio streams</string>
+    <!-- Summary for QR code scanning in audio streams page [CHAR LIMIT=none]-->
+    <string name="audio_sharing_streams_qr_code_summary">Connect to an audio stream using QR code</string>
 
     <!-- Date & time settings screen title -->
     <string name="date_and_time">Date &amp; time</string>
@@ -1217,7 +1228,7 @@
     <string name="private_space_hide_title">Hide when locked</string>
     <!-- Title for the hide Private Space setting. [CHAR LIMIT=60] -->
     <string name="privatespace_hide_page_title">Hide Private Space when locked</string>
-    <!-- Description for hide Private Space settings page. [CHAR LIMIT=60] -->
+    <!-- Description for hide Private Space settings page. [CHAR LIMIT=NONE] -->
     <string name="privatespace_hide_page_summary">To stop other people knowing Private Space is on your device, you can hide it from your apps list</string>
     <!-- Header in hide Private Space settings page to access Private Space when hidden. [CHAR LIMIT=60] -->
     <string name="privatespace_access_header">Access Private Space when hidden</string>
@@ -2658,7 +2669,7 @@
     <!-- Display settings screen, peak refresh rate settings title [CHAR LIMIT=30] -->
     <string name="peak_refresh_rate_title">Smooth Display</string>
     <!-- Display settings screen, peak refresh rate settings summary [CHAR LIMIT=NONE] -->
-    <string name="peak_refresh_rate_summary">Automatically raises the refresh rate from 60 to <xliff:g name="refresh_rate" example="120">%1$s</xliff:g> Hz for some content. Increases battery usage.</string>
+    <string name="peak_refresh_rate_summary">Automatically raises the refresh rate up to <xliff:g name="refresh_rate" example="120">%1$d</xliff:g> Hz for some content. Increases battery usage.</string>
     <!-- Display developer settings: Force to the highest refresh rate [CHAR LIMIT=NONE] -->
     <string name="force_high_refresh_rate_toggle">Force peak refresh rate</string>
     <!-- Display developer settings: Force to the highest refresh rate description [CHAR LIMIT=NONE]-->
@@ -3222,6 +3233,8 @@
     <string name="apn_settings">APNs</string>
     <!-- Screen title after user selects APNs setting option -->
     <string name="apn_edit">Edit access point</string>
+    <!-- Screen title after user selects add APNs setting -->
+    <string name="apn_add">Add access point</string>
     <!-- Edit access point label summary text when no value has been set -->
     <string name="apn_not_set">Not set</string>
     <!-- Edit access point label summary text when no value has been set for mvno value. [CHAR LIMIT=NONE]-->
@@ -4704,6 +4717,8 @@
     <string name="accessibility_tutorial_dialog_title_volume">Hold volume keys to open</string>
     <!-- Title for the accessibility tutorial dialog in accessibility service with triple tap. [CHAR LIMIT=100] -->
     <string name="accessibility_tutorial_dialog_title_triple">Triple tap screen to open</string>
+    <!-- Title for the accessibility tutorial dialog in accessibility service with two finger triple tap. [CHAR LIMIT=100] -->
+    <string name="accessibility_tutorial_dialog_title_two_finger_triple">Two finger triple tap screen to open</string>
     <!-- Title for the accessibility tutorial dialog in accessibility service with gesture. [CHAR LIMIT=50] -->
     <string name="accessibility_tutorial_dialog_title_gesture">Use gesture to open</string>
     <!-- Title for the accessibility tutorial dialog in gesture navigation settings. [CHAR LIMIT=50] -->
@@ -4716,6 +4731,8 @@
     <string name="accessibility_tutorial_dialog_message_volume">To use this feature, press &amp; hold both volume keys.</string>
     <!-- Instruction for the accessibility tutorial dialog in accessibility service with triple tap. [CHAR LIMIT=100] -->
     <string name="accessibility_tutorial_dialog_message_triple">To start and stop magnification, triple-tap anywhere on your screen.</string>
+    <!-- Instruction for the accessibility tutorial dialog in accessibility service with two finger triple tap. [CHAR LIMIT=100] -->
+    <string name="accessibility_tutorial_dialog_message_two_finger_triple">To start and stop magnification, triple-tap anywhere on your screen with two fingers.</string>
     <!-- Message for the accessibility tutorial dialog when user enables an accessibility service while using gesture navigation and touch exploration is not enabled. [CHAR LIMIT=NONE] -->
     <string name="accessibility_tutorial_dialog_message_gesture">To use this feature, swipe up from the bottom of the screen with 2 fingers.\n\nTo switch between features, swipe up with 2 fingers and hold.</string>
     <!-- Message for the accessibility tutorial dialog when user enables an accessibility service while using gesture navigation and touch exploration is enabled. [CHAR LIMIT=NONE] -->
@@ -5490,6 +5507,10 @@
 
     <!-- Category title for battery background settings in power usage detail page [CHAR LIMIT=NONE] -->
     <string name="manager_battery_usage_category_title">Manage battery usage</string>
+    <!-- Title for allow background usage [CHAR LIMIT=NONE] -->
+    <string name="manager_battery_usage_allow_background_usage_title">Allow background usage</string>
+    <!-- Summary for allow background usage [CHAR LIMIT=NONE] -->
+    <string name="manager_battery_usage_allow_background_usage_summary">Enable for real-time updates, disable to save battery</string>
     <!-- Title for the battery unrestricted settings [CHAR_LIMIT=40] -->
     <string name="manager_battery_usage_unrestricted_title">Unrestricted</string>
     <!-- Title for the battery optimized settings [CHAR_LIMIT=40] -->
