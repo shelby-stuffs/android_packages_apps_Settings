@@ -45,6 +45,10 @@ public class BatteryOptimizeUtils {
     private static final String TAG = "BatteryOptimizeUtils";
     private static final String UNKNOWN_PACKAGE = "unknown";
 
+    // Avoid reload the data again since it is predefined in the resource/config.
+    private static List<String> sBatteryOptimizeModeList = null;
+    private static List<String> sBatteryUnrestrictModeList = null;
+
     @VisibleForTesting AppOpsManager mAppOpsManager;
     @VisibleForTesting BatteryUtils mBatteryUtils;
     @VisibleForTesting PowerAllowlistBackend mPowerAllowListBackend;
@@ -130,7 +134,7 @@ public class BatteryOptimizeUtils {
 
     /** Return {@code true} if it is disabled for default optimized mode only. */
     public boolean isDisabledForOptimizeModeOnly() {
-        return getAllowList(mContext).contains(mPackageName)
+        return getForceBatteryOptimizeModeList(mContext).contains(mPackageName)
                 || mBatteryUtils.getPackageUid(mPackageName) == BatteryUtils.UID_NULL;
     }
 
@@ -139,7 +143,23 @@ public class BatteryOptimizeUtils {
      */
     public boolean isSystemOrDefaultApp() {
         mPowerAllowListBackend.refreshList();
-        return isSystemOrDefaultApp(mPowerAllowListBackend, mPackageName, mUid);
+        return isSystemOrDefaultApp(mContext, mPowerAllowListBackend, mPackageName, mUid);
+    }
+
+    /**
+     * Return {@code true} if the optimization mode of this package can be changed
+     */
+    public boolean isOptimizeModeMutable() {
+        return !isDisabledForOptimizeModeOnly() && !isSystemOrDefaultApp();
+    }
+
+    /**
+     * Return {@code true} if the optimization mode is mutable and current state is not restricted
+     */
+    public boolean isSelectorPreferenceEnabled() {
+        // Enable the preference if apps are not set into restricted mode, otherwise disable it
+        return isOptimizeModeMutable()
+                && getAppOptimizationMode() != BatteryOptimizeUtils.MODE_RESTRICTED;
     }
 
     /**
@@ -191,7 +211,8 @@ public class BatteryOptimizeUtils {
             // Ignores default optimized/unknown state or system/default apps.
             if (optimizationMode == MODE_OPTIMIZED
                     || optimizationMode == MODE_UNKNOWN
-                    || isSystemOrDefaultApp(allowlistBackend, info.packageName, info.uid)) {
+                    || isSystemOrDefaultApp(
+                            context, allowlistBackend, info.packageName, info.uid)) {
                 continue;
             }
 
@@ -211,14 +232,32 @@ public class BatteryOptimizeUtils {
     }
 
     static boolean isSystemOrDefaultApp(
-            PowerAllowlistBackend powerAllowlistBackend, String packageName, int uid) {
+            Context context,
+            PowerAllowlistBackend powerAllowlistBackend,
+            String packageName,
+            int uid) {
         return powerAllowlistBackend.isSysAllowlisted(packageName)
+                // Always forced unrestricted apps are one type of system important apps.
+                || getForceBatteryUnrestrictModeList(context).contains(packageName)
                 || powerAllowlistBackend.isDefaultActiveApp(packageName, uid);
     }
 
-    static List<String> getAllowList(Context context) {
-        return Arrays.asList(context.getResources().getStringArray(
-                R.array.config_disable_optimization_mode_apps));
+    static List<String> getForceBatteryOptimizeModeList(Context context) {
+        if (sBatteryOptimizeModeList == null) {
+            sBatteryOptimizeModeList = Arrays.asList(
+                    context.getResources().getStringArray(
+                            R.array.config_force_battery_optimize_mode_apps));
+        }
+        return sBatteryOptimizeModeList;
+    }
+
+    static List<String> getForceBatteryUnrestrictModeList(Context context) {
+        if (sBatteryUnrestrictModeList == null) {
+            sBatteryUnrestrictModeList = Arrays.asList(
+                    context.getResources().getStringArray(
+                            R.array.config_force_battery_unrestrict_mode_apps));
+        }
+        return sBatteryUnrestrictModeList;
     }
 
     private static void setAppUsageStateInternal(

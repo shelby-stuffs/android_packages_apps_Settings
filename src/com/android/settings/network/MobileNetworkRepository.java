@@ -385,7 +385,7 @@ public class MobileNetworkRepository extends SubscriptionManager.OnSubscriptions
         return mMobileNetworkInfoDao.queryMobileNetworkInfoBySubId(subId);
     }
 
-    private void getUiccInfoBySubscriptionInfo(UiccSlotInfo[] uiccSlotInfos,
+    private void getUiccInfoBySubscriptionInfo(@NonNull UiccSlotInfo[] uiccSlotInfos,
             SubscriptionInfo subInfo) {
         for (int i = 0; i < uiccSlotInfos.length; i++) {
             UiccSlotInfo curSlotInfo = uiccSlotInfos[i];
