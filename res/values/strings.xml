@@ -14,8 +14,7 @@
      limitations under the License.
 
      Changes from Qualcomm Innovation Center, Inc. are provided under the following license:
-
-     Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+     Copyright (c) 2022, 2024 Qualcomm Innovation Center, Inc. All rights reserved.
      SPDX-License-Identifier: BSD-3-Clause-Clear
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
@@ -11538,9 +11537,11 @@
     <!-- Dialog title for preferred network type [CHAR LIMIT=NONE] -->
     <string name="preferred_network_mode_dialogtitle">Preferred network type</string>
     <!-- Dialog title for C_IWLAN-unsupported network type [CHAR LIMIT=NONE] -->
-    <string name="preferred_nw_incompatible_ciwlan_nw_mode_dialog_title">Incompatible network type</string>
+    <string name="pref_nw_incompat_ciwlan_dialog_title">Incompatible network type</string>
     <!-- Body of dialog for C_IWLAN-unsupported network type [CHAR LIMIT=NONE] -->
-    <string name="preferred_nw_incompatible_ciwlan_nw_mode_dialog_body">To select a network type not containing LTE, NR, or Global, please turn off Voice Over Cellular Internet.</string>
+    <string name="pref_nw_incompatible_ciwlan_current_sub_dialog_body">To select a network type not containing LTE, NR, or Global, please turn off Voice Over Cellular Internet.</string>
+    <string name="pref_nw_incompatible_ciwlan_other_sub_dialog_body">To select a network type not containing LTE, NR, or Global, please turn off Voice Over Cellular Internet on the other subscription.</string>
+    <string name="pref_nw_incompatible_ciwlan_both_subs_dialog_body">To select a network type not containing LTE, NR, or Global, please turn off Voice Over Cellular Internet on both subscriptions.</string>
     <!-- Mobile network settings screen, a string showing the version of carrier settings for this
          subscription [CHAR LIMIT=NONE] -->
     <string name="carrier_settings_version">Carrier settings version</string>
@@ -11952,7 +11953,9 @@
     <string name="toggle_disable_ciwlan_call_will_drop_dialog_body">Disabling %s will cause ongoing call drop.</string>
     <string name="toggle_disable_ciwlan_call_might_drop_dialog_body">Disabling %s might cause ongoing call drop.</string>
     <!-- Body of dialog shown to warn when an incompatible preferred network type is currently selected and user tries to turn on C_IWLAN [CHAR LIMIT=NONE] -->
-    <string name="backup_calling_enable_dialog_incompatible_nw_type">To turn on Voice Over Cellular Internet, please set the preferred network type to one including LTE, NR, or Global.</string>
+    <string name="ciwlan_enable_dialog_incompatible_nw_type_current_sub">To turn on Voice Over Cellular Internet, please set the preferred network type to one including LTE, NR, or Global.</string>
+    <string name="ciwlan_enable_dialog_incompatible_nw_type_other_sub">To turn on Voice Over Cellular Internet, please set the preferred network type of the other subscription to one including LTE, NR, or Global.</string>
+    <string name="ciwlan_enable_dialog_incompatible_nw_type_both_subs">To turn on Voice Over Cellular Internet, please set the preferred network type of both subscriptions to one including LTE, NR, or Global.</string>
 
     <!-- C_IWLAN exit notification -->
     <string name="ciwlan_exit_notification_title">" unavailable on %s"</string>

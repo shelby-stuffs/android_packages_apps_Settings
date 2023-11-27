@@ -144,12 +144,14 @@ public class BackupCallingPreferenceController extends TelephonyTogglePreference
 
     @Override
     public void onResume(LifecycleOwner owner) {
+        Log.d(LOG_TAG, "onResume subId " + mSubId);
         registerCrossSimObserver();
         mTelephonyCallback.register(mContext, mSubId);
     }
 
     @Override
     public void onPause(LifecycleOwner owner) {
+        Log.d(LOG_TAG, "onPause subId " + mSubId);
         unregisterCrossSimObserver();
         mTelephonyCallback.unregister();
     }
@@ -197,6 +199,7 @@ public class BackupCallingPreferenceController extends TelephonyTogglePreference
             TelephonyCallback.CallStateListener {
         @Override
         public void onCallStateChanged(int state) {
+            Log.d(LOG_TAG, "onCallStateChanged subId " + mSubId);
             mCallState = state;
             updateState(mPreference);
         }
@@ -211,6 +214,7 @@ public class BackupCallingPreferenceController extends TelephonyTogglePreference
         }
 
         public void unregister() {
+            Log.d(LOG_TAG, "unregister subId " + mSubId);
             mCallState = null;
             if (mTelephonyManager != null) {
                 mTelephonyManager.unregisterTelephonyCallback(this);
@@ -272,38 +276,57 @@ public class BackupCallingPreferenceController extends TelephonyTogglePreference
     }
 
     private boolean isDialogNeeded(boolean isChecked) {
-        boolean isInCiwlanOnlyMode = false;
-        // Warn on turning on C_IWLAN when an incompatible network is selected only on targets
-        // that support getting the C_IWLAN config
-        if (MobileNetworkSettings.isCiwlanModeSupported()) {
-            isInCiwlanOnlyMode = MobileNetworkSettings.isInCiwlanOnlyMode();
+        // Warn on turning on C_IWLAN when a C_IWLAN-incompatible network is set
+        final int DDS = SubscriptionManager.getDefaultDataSubscriptionId();
+        final int nDDS = MobileNetworkSettings.getNonDefaultDataSub();
+        final boolean isDDS = mSubId == DDS;
+        // If MSIM C_IWLAN is supported, and the user tries to turn on C_IWLAN on either sub, the
+        // preferred nw mode of both subs need to be checked to contain C_IWLAN-compatible RATs.
+        // Functionality-wise, it is enough to just check the preferred nw mode of the DDS, but
+        // because of the DDS switch scenario, we need to make sure even the nDDS contains
+        // compatible RATs.
+        boolean ciwlanIncompatibleNwSelectedForCurrentSub = isCiwlanIncompatibleNwSelected(mSubId);
+        boolean ciwlanIncompatibleNwSelectedForOtherSub = false;
+        boolean isMsimCiwlanSupported = MobileNetworkSettings.isMsimCiwlanSupported();
+        if (isMsimCiwlanSupported) {
+            ciwlanIncompatibleNwSelectedForOtherSub = isDDS ? isCiwlanIncompatibleNwSelected(nDDS) :
+                    isCiwlanIncompatibleNwSelected(DDS);
+            Log.d(LOG_TAG, "ciwlanIncompatibleNwSelectedForOtherSub = " +
+                    ciwlanIncompatibleNwSelectedForOtherSub);
         }
-        if (!isInCiwlanOnlyMode) {
-            return false;
-        }
-        boolean isCiwlanIncompatibleNetworkSelected = false;
-        if (isChecked) {
-            isCiwlanIncompatibleNetworkSelected = isCiwlanIncompatibleNetworkSelected();
-        }
+        boolean isCiwlanIncompatibleNwSelected = ciwlanIncompatibleNwSelectedForCurrentSub ||
+            ciwlanIncompatibleNwSelectedForOtherSub;
         Log.d(LOG_TAG, "isDialogNeeded: isChecked = " + isChecked +
-                ", isCiwlanIncompatibleNetworkSelected = " + isCiwlanIncompatibleNetworkSelected);
-        if (isChecked && isCiwlanIncompatibleNetworkSelected) {
-            mDialogType =
-                    BackupCallingDialogFragment.TYPE_ENABLE_CIWLAN_INCOMPATIBLE_NW_TYPE_DIALOG;
+                ", isCiwlanIncompatibleNwSelected = " + isCiwlanIncompatibleNwSelected);
+        if (isChecked && isCiwlanIncompatibleNwSelected) {
+            if (ciwlanIncompatibleNwSelectedForCurrentSub &&
+                    ciwlanIncompatibleNwSelectedForOtherSub) {
+                mDialogType = BackupCallingDialogFragment.
+                    TYPE_ENABLE_CIWLAN_INCOMPATIBLE_NW_TYPE_DIALOG_BOTH_SUBS;
+            } else if (ciwlanIncompatibleNwSelectedForCurrentSub &&
+                    !ciwlanIncompatibleNwSelectedForOtherSub) {
+                mDialogType = BackupCallingDialogFragment.
+                    TYPE_ENABLE_CIWLAN_INCOMPATIBLE_NW_TYPE_DIALOG_CURRENT_SUB;
+            } else if (!ciwlanIncompatibleNwSelectedForCurrentSub &&
+                    ciwlanIncompatibleNwSelectedForOtherSub) {
+                mDialogType = BackupCallingDialogFragment.
+                    TYPE_ENABLE_CIWLAN_INCOMPATIBLE_NW_TYPE_DIALOG_OTHER_SUB;
+            }
             return true;
         }
         return false;
     }
 
-    private boolean isCiwlanIncompatibleNetworkSelected() {
-        long preferredRaf = mTelephonyManager.getAllowedNetworkTypesForReason(
+    private boolean isCiwlanIncompatibleNwSelected(int subId) {
+        TelephonyManager tm = mTelephonyManager.createForSubscriptionId(subId);
+        long preferredRaf = tm.getAllowedNetworkTypesForReason(
                 TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_USER);
-        return ((LTE & preferredRaf) == 0 && (NR & preferredRaf) == 0);
+        return (LTE & preferredRaf) == 0 && (NR & preferredRaf) == 0;
     }
 
     private void showDialog(int type) {
         final BackupCallingDialogFragment dialogFragment = BackupCallingDialogFragment.newInstance(
-                mPreference.getTitle().toString(), type, mSubId);
+                mPreference.getTitle().toString(), type);
         dialogFragment.show(mFragmentManager, DIALOG_TAG);
     }
 
@@ -338,12 +361,12 @@ public class BackupCallingPreferenceController extends TelephonyTogglePreference
     @Override
     public void updateState(Preference preference) {
         super.updateState(preference);
+        Log.d(LOG_TAG, "updateState subId " + mSubId + ", call state " + mCallState);
         if ((mCallState == null) || (preference == null) ||
                 (!(preference instanceof SwitchPreference))) {
             Log.d(LOG_TAG, "Skip update under mCallState = " + mCallState);
             return;
         }
-        mCallingPreferenceCategoryController.updateChildVisible(getPreferenceKey(), true);
         SubscriptionInfo subInfo = getSubscriptionInfoFromActiveList(mSubId);
         mPreference = preference;
         final SwitchPreference switchPreference = (SwitchPreference) preference;

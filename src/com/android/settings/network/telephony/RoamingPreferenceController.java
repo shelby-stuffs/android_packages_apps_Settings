@@ -15,8 +15,8 @@
  */
 
 /*
- * Changes from Qualcomm Innovation Center are provided under the following license:
- * Copyright (c) 2022-2023 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Changes from Qualcomm Innovation Center, Inc. are provided under the following license:
+ * Copyright (c) 2022-2024 Qualcomm Innovation Center, Inc. All rights reserved.
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
 
@@ -37,6 +37,7 @@ import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 
 import androidx.annotation.VisibleForTesting;
 import androidx.fragment.app.FragmentManager;
@@ -72,6 +73,11 @@ public class RoamingPreferenceController extends TelephonyTogglePreferenceContro
     private List<MobileNetworkInfoEntity> mMobileNetworkInfoEntityList = new ArrayList<>();
 
     private DdsDataOptionStateTuner mDdsDataOptionStateTuner;
+    private SparseBooleanArray mIsSubInCall;
+    private SparseBooleanArray mIsCiwlanModeSupported;
+    private SparseBooleanArray mIsCiwlanEnabled;
+    private SparseBooleanArray mIsInCiwlanOnlyMode;
+    private SparseBooleanArray mIsImsRegisteredOnCiwlan;
 
     @VisibleForTesting
     FragmentManager mFragmentManager;
@@ -189,47 +195,87 @@ public class RoamingPreferenceController extends TelephonyTogglePreferenceContro
             return true;
         }
         if (isRoamingEnabled) {
-            final boolean isRoaming = MobileNetworkSettings.isRoaming();
-            final boolean isInVoiceCall = mTelephonyManager.getCallStateForSubscription() !=
-                    TelephonyManager.CALL_STATE_IDLE;
-            boolean isCiwlanModeSupported = false;
-            boolean isInCiwlanOnlyMode = false;
-            boolean isImsRegisteredOverCiwlan = false;
-            if (isRoaming && isInVoiceCall) {
-                isCiwlanModeSupported = MobileNetworkSettings.isCiwlanModeSupported();
-                isInCiwlanOnlyMode = MobileNetworkSettings.isInCiwlanOnlyMode();
-                if (isInCiwlanOnlyMode || !isCiwlanModeSupported) {
-                    IImsRegistration imsRegistrationImpl = mTelephonyManager.getImsRegistration(
-                            mSubscriptionManager.getSlotIndex(mSubId), FEATURE_MMTEL);
-                    if (imsRegistrationImpl != null) {
-                        try {
-                            isImsRegisteredOverCiwlan =
-                                    imsRegistrationImpl.getRegistrationTechnology() ==
-                                            REGISTRATION_TECH_CROSS_SIM;
-                        } catch (RemoteException ex) {
-                            Log.e(TAG, "getRegistrationTechnology failed", ex);
-                        }
-                    }
-                    Log.d(TAG, "isDialogNeeded: isRoaming = " + isRoaming +
-                            ", isInVoiceCall = " + isInVoiceCall +
+            final boolean isRoaming = MobileNetworkSettings.isRoaming(mSubId);
+            final int DDS = SubscriptionManager.getDefaultDataSubscriptionId();
+            final int nDDS = MobileNetworkSettings.getNonDefaultDataSub();
+
+            // Store the call state and C_IWLAN-related settings of all active subscriptions
+            int[] activeSubIdList = mSubscriptionManager.getActiveSubscriptionIdList();
+            mIsSubInCall = new SparseBooleanArray(activeSubIdList.length);
+            mIsCiwlanModeSupported = new SparseBooleanArray(activeSubIdList.length);
+            mIsCiwlanEnabled = new SparseBooleanArray(activeSubIdList.length);
+            mIsInCiwlanOnlyMode = new SparseBooleanArray(activeSubIdList.length);
+            mIsImsRegisteredOnCiwlan = new SparseBooleanArray(activeSubIdList.length);
+            for (int i = 0; i < activeSubIdList.length; i++) {
+                int subId = activeSubIdList[i];
+                TelephonyManager tm = mTelephonyManager.createForSubscriptionId(subId);
+                mIsSubInCall.put(subId, tm.getCallStateForSubscription() !=
+                        TelephonyManager.CALL_STATE_IDLE);
+                mIsCiwlanModeSupported.put(subId, MobileNetworkSettings.isCiwlanModeSupported(
+                        subId));
+                mIsCiwlanEnabled.put(subId, MobileNetworkSettings.isCiwlanEnabled(subId));
+                mIsInCiwlanOnlyMode.put(subId, MobileNetworkSettings.isInCiwlanOnlyMode(subId));
+                mIsImsRegisteredOnCiwlan.put(subId, MobileNetworkSettings.isImsRegisteredOnCiwlan(
+                        subId));
+            }
+
+            // For targets that support MSIM C_IWLAN, the warning is to be shown only for the DDS
+            // when either sub is in a call. For other targets, it will be shown only when there is
+            // a call on the DDS.
+            boolean isMsimCiwlanSupported = MobileNetworkSettings.isMsimCiwlanSupported();
+            int subToCheck = DDS;
+            if (isMsimCiwlanSupported) {
+                if (mSubId != DDS) {
+                    // If the code comes here, the user is trying to change the roaming toggle state
+                    // of the nDDS which we don't care about.
+                    return false;
+                } else {
+                    // Otherwise, the user is trying to toggle the roaming toggle state of the DDS.
+                    // In this case, we need to check if the nDDS is in a call. If it is, we will
+                    // check the C_IWLAN related settings belonging to the nDDS. Otherwise, we will
+                    // check those of the DDS.
+                    subToCheck = subToCheckForCiwlanWarningDialog(nDDS, DDS);
+                    Log.d(TAG, "isDialogNeeded DDS = " + DDS + ", subToCheck = " + subToCheck);
+                }
+            }
+
+            if (isRoaming && mIsSubInCall.get(subToCheck)) {
+                boolean isCiwlanModeSupported = mIsCiwlanModeSupported.get(subToCheck);
+                boolean isCiwlanEnabled = mIsCiwlanEnabled.get(subToCheck);
+                boolean isInCiwlanOnlyMode = mIsInCiwlanOnlyMode.get(subToCheck);
+                boolean isImsRegisteredOnCiwlan = mIsImsRegisteredOnCiwlan.get(subToCheck);
+                if (isCiwlanEnabled && (isInCiwlanOnlyMode || !isCiwlanModeSupported)) {
+                    Log.d(TAG, "isDialogNeeded: isRoaming = true, isInCall = true, isCiwlanEnabled = true" +
                             ", isInCiwlanOnlyMode = " + isInCiwlanOnlyMode +
                             ", isCiwlanModeSupported = " + isCiwlanModeSupported +
-                            ", isImsRegisteredOverCiwlan = " + isImsRegisteredOverCiwlan);
+                            ", isImsRegisteredOnCiwlan = " + isImsRegisteredOnCiwlan);
                     // If IMS is registered over C_IWLAN-only mode, the device is in a call, and
                     // user is trying to disable roaming while UE is romaing, display a warning
                     // dialog that disabling roaming will cause a call drop.
-                    if (isImsRegisteredOverCiwlan) {
+                    if (isImsRegisteredOnCiwlan) {
                         mDialogType = RoamingDialogFragment.TYPE_DISABLE_CIWLAN_DIALOG;
                         return true;
                     }
                 } else {
-                    Log.d(TAG, "isDialogNeeded: not in C_IWLAN-only mode");
+                    Log.d(TAG, "isDialogNeeded: C_IWLAN not enabled or not in C_IWLAN-only mode");
                 }
             } else {
-                Log.d(TAG, "isDialogNeeded: not roaming or not in a call");
+                Log.d(TAG, "isDialogNeeded: Not roaming or not in a call");
             }
         }
         return false;
+    }
+
+    private int subToCheckForCiwlanWarningDialog(int ndds, int dds) {
+        int subToCheck = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+        if (mIsSubInCall.get(ndds) && mIsCiwlanEnabled.get(ndds) &&
+                (mIsInCiwlanOnlyMode.get(ndds) || !mIsCiwlanModeSupported.get(ndds)) &&
+                mIsImsRegisteredOnCiwlan.get(ndds)) {
+            subToCheck = ndds;
+        } else {
+            subToCheck = dds;
+        }
+        return subToCheck;
     }
 
     @Override
@@ -268,7 +314,7 @@ public class RoamingPreferenceController extends TelephonyTogglePreferenceContro
     private void showDialog(int type) {
         final RoamingDialogFragment dialogFragment = RoamingDialogFragment.newInstance(
                 mSwitchPreference.getTitle().toString(), type, mSubId,
-                MobileNetworkSettings.isCiwlanModeSupported());
+                MobileNetworkSettings.isCiwlanModeSupported(mSubId));
 
         dialogFragment.show(mFragmentManager, DIALOG_TAG);
     }

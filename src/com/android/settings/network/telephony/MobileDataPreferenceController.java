@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-/* Changes from Qualcomm Innovation Center are provided under the following license:
- * Copyright (c) 2022-2023 Qualcomm Innovation Center, Inc. All rights reserved.
+/* Changes from Qualcomm Innovation Center, Inc. are provided under the following license:
+ * Copyright (c) 2022-2024 Qualcomm Innovation Center, Inc. All rights reserved.
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
 
@@ -30,11 +30,12 @@ import static androidx.lifecycle.Lifecycle.Event.ON_STOP;
 import android.content.Context;
 import android.os.RemoteException;
 import android.provider.Settings;
-import android.telephony.ims.aidl.IImsRegistration;
+import android.telecom.TelecomManager;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 
 import androidx.annotation.VisibleForTesting;
 import androidx.fragment.app.FragmentManager;
@@ -82,6 +83,11 @@ public class MobileDataPreferenceController extends TelephonyTogglePreferenceCon
     SubscriptionInfoEntity mSubscriptionInfoEntity;
     MobileNetworkInfoEntity mMobileNetworkInfoEntity;
     private DdsDataOptionStateTuner mDdsDataOptionStateTuner;
+    private SparseBooleanArray mIsSubInCall;
+    private SparseBooleanArray mIsCiwlanModeSupported;
+    private SparseBooleanArray mIsCiwlanEnabled;
+    private SparseBooleanArray mIsInCiwlanOnlyMode;
+    private SparseBooleanArray mIsImsRegisteredOnCiwlan;
 
     public MobileDataPreferenceController(Context context, String key, Lifecycle lifecycle,
             LifecycleOwner lifecycleOwner, int subId) {
@@ -270,51 +276,92 @@ public class MobileDataPreferenceController extends TelephonyTogglePreferenceCon
             return true;
         }
         if (!enableData) {
-            final boolean isInVoiceCall = mTelephonyManager.getCallStateForSubscription() !=
-                    TelephonyManager.CALL_STATE_IDLE;
-            boolean isCiwlanModeSupported = false;
-            boolean isInCiwlanOnlyMode = false;
-            boolean isImsRegisteredOverCiwlan = false;
-            if (isInVoiceCall) {
-                isCiwlanModeSupported = MobileNetworkSettings.isCiwlanModeSupported();
-                isInCiwlanOnlyMode = MobileNetworkSettings.isInCiwlanOnlyMode();
-                if (isInCiwlanOnlyMode || !isCiwlanModeSupported) {
-                    IImsRegistration imsRegistrationImpl = mTelephonyManager.getImsRegistration(
-                            mSubscriptionManager.getSlotIndex(mSubId), FEATURE_MMTEL);
-                    if (imsRegistrationImpl != null) {
-                        try {
-                            isImsRegisteredOverCiwlan =
-                                    imsRegistrationImpl.getRegistrationTechnology() ==
-                                            REGISTRATION_TECH_CROSS_SIM;
-                        } catch (RemoteException ex) {
-                            Log.e(TAG, "getRegistrationTechnology failed", ex);
-                        }
-                    }
-                    Log.d(TAG, "isDialogNeeded: isInVoiceCall = " + isInVoiceCall +
+            final int DDS = SubscriptionManager.getDefaultDataSubscriptionId();
+            final int nDDS = MobileNetworkSettings.getNonDefaultDataSub();
+
+            // Store the call state and C_IWLAN-related settings of all active subscriptions
+            int[] activeSubIdList = mSubscriptionManager.getActiveSubscriptionIdList();
+            mIsSubInCall = new SparseBooleanArray(activeSubIdList.length);
+            mIsCiwlanModeSupported = new SparseBooleanArray(activeSubIdList.length);
+            mIsCiwlanEnabled = new SparseBooleanArray(activeSubIdList.length);
+            mIsInCiwlanOnlyMode = new SparseBooleanArray(activeSubIdList.length);
+            mIsImsRegisteredOnCiwlan = new SparseBooleanArray(activeSubIdList.length);
+            for (int i = 0; i < activeSubIdList.length; i++) {
+                int subId = activeSubIdList[i];
+                TelephonyManager tm = mTelephonyManager.createForSubscriptionId(subId);
+                mIsSubInCall.put(subId, tm.getCallStateForSubscription() !=
+                        TelephonyManager.CALL_STATE_IDLE);
+                mIsCiwlanModeSupported.put(subId, MobileNetworkSettings.isCiwlanModeSupported(
+                        subId));
+                mIsCiwlanEnabled.put(subId, MobileNetworkSettings.isCiwlanEnabled(subId));
+                mIsInCiwlanOnlyMode.put(subId, MobileNetworkSettings.isInCiwlanOnlyMode(subId));
+                mIsImsRegisteredOnCiwlan.put(subId, MobileNetworkSettings.isImsRegisteredOnCiwlan(
+                        subId));
+            }
+
+            // For targets that support MSIM C_IWLAN, the warning is to be shown only for the DDS
+            // when either sub is in a call. For other targets, it will be shown only when there is
+            // a call on the DDS.
+            boolean isMsimCiwlanSupported = MobileNetworkSettings.isMsimCiwlanSupported();
+            int subToCheck = DDS;
+            if (isMsimCiwlanSupported) {
+                if (mSubId != DDS) {
+                    // If the code comes here, the user is trying to change the mobile data toggle
+                    // of the nDDS which we don't care about.
+                    return false;
+                } else {
+                    // Otherwise, the user is trying to toggle the mobile data of the DDS. In this
+                    // case, we need to check if the nDDS is in a call. If it is, we will check the
+                    // C_IWLAN related settings belonging to the nDDS. Otherwise, we will check
+                    // those of the DDS.
+                    subToCheck = subToCheckForCiwlanWarningDialog(nDDS, DDS);
+                    Log.d(TAG, "isDialogNeeded DDS = " + DDS + ", subToCheck = " + subToCheck);
+                }
+            }
+
+            if (mIsSubInCall.get(subToCheck)) {
+                boolean isCiwlanModeSupported = mIsCiwlanModeSupported.get(subToCheck);
+                boolean isCiwlanEnabled = mIsCiwlanEnabled.get(subToCheck);
+                boolean isInCiwlanOnlyMode = mIsInCiwlanOnlyMode.get(subToCheck);
+                boolean isImsRegisteredOnCiwlan = mIsImsRegisteredOnCiwlan.get(subToCheck);
+                if (isCiwlanEnabled && (isInCiwlanOnlyMode || !isCiwlanModeSupported)) {
+                    Log.d(TAG, "isDialogNeeded: isInCall = true, isCiwlanEnabled = true" +
                             ", isInCiwlanOnlyMode = " + isInCiwlanOnlyMode +
                             ", isCiwlanModeSupported = " + isCiwlanModeSupported +
-                            ", isImsRegisteredOverCiwlan = " + isImsRegisteredOverCiwlan);
+                            ", isImsRegisteredOnCiwlan = " + isImsRegisteredOnCiwlan);
                     // If IMS is registered over C_IWLAN-only mode, the device is in a call, and
                     // user is trying to disable mobile data, display a warning dialog that
                     // disabling mobile data will cause a call drop.
-                    if (isImsRegisteredOverCiwlan) {
+                    if (isImsRegisteredOnCiwlan) {
                         mDialogType = MobileDataDialogFragment.TYPE_DISABLE_CIWLAN_DIALOG;
                         return true;
                     }
                 } else {
-                    Log.d(TAG, "isDialogNeeded: not in C_IWLAN-only mode");
+                    Log.d(TAG, "isDialogNeeded: C_IWLAN not enabled or not in C_IWLAN-only mode");
                 }
             } else {
-                Log.d(TAG, "isDialogNeeded: not in a call");
+                Log.d(TAG, "isDialogNeeded: Not in a call");
             }
         }
         return false;
     }
 
+    private int subToCheckForCiwlanWarningDialog(int ndds, int dds) {
+        int subToCheck = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+        if (mIsSubInCall.get(ndds) && mIsCiwlanEnabled.get(ndds) &&
+                (mIsInCiwlanOnlyMode.get(ndds) || !mIsCiwlanModeSupported.get(ndds)) &&
+                mIsImsRegisteredOnCiwlan.get(ndds)) {
+            subToCheck = ndds;
+        } else {
+            subToCheck = dds;
+        }
+        return subToCheck;
+    }
+
     private void showDialog(int type) {
         final MobileDataDialogFragment dialogFragment = MobileDataDialogFragment.newInstance(
                 mPreference.getTitle().toString(), type, mSubId,
-                MobileNetworkSettings.isCiwlanModeSupported());
+                MobileNetworkSettings.isCiwlanModeSupported(mSubId));
         dialogFragment.show(mFragmentManager, DIALOG_TAG);
     }
 
