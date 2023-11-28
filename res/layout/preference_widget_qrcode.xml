@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (C) 2023 The Android Open Source Project
   ~
@@ -14,11 +15,11 @@
   ~ limitations under the License.
   -->
 
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/private_space_navigation"
-            app:startDestination="@id/ps_profile_lock_fragment">
-    <fragment android:id="@+id/ps_profile_lock_fragment"
-              android:name="com.android.settings.privatespace.PrivateSpaceSetLockFragment"
-              android:label="fragment_ps_lock"/>
-</navigation>
+<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/button_icon"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:minWidth="@dimen/two_target_min_width"
+    android:minHeight="@dimen/min_tap_target_size"
+    android:layout_gravity="center"
+    android:background="?android:attr/selectableItemBackground"/>

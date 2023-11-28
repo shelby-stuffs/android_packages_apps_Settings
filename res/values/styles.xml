@@ -121,6 +121,7 @@
         <item name="android:textAppearance">@android:style/TextAppearance.DeviceDefault.Medium</item>
         <item name="android:textColorHint">?android:attr/textColorSecondary</item>
         <item name="android:minHeight">@dimen/min_tap_target_size</item>
+        <item name="android:maxLength">500</item>
     </style>
 
     <style name="wifi_section">
@@ -428,6 +429,15 @@
     </style>
 
     <style name="device_info_dialog_value">
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:paddingBottom">24dp</item>
+        <item name="android:textIsSelectable">true</item>
+    </style>
+
+    <style name="DeviceAudioSharingText">
         <item name="android:textAlignment">viewStart</item>
         <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
         <item name="android:textSize">14sp</item>

@@ -34,9 +34,28 @@ import com.android.settings.core.instrumentation.InstrumentedDialogFragment;
 import com.android.settings.flags.Flags;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class AudioSharingDialogFragment extends InstrumentedDialogFragment {
     private static final String TAG = "AudioSharingDialog";
+
+    private static final String BUNDLE_KEY_DEVICE_ITEMS = "bundle_key_device_names";
+
+    // The host creates an instance of this dialog fragment must implement this interface to receive
+    // event callbacks.
+    public interface DialogEventListener {
+        /**
+         * Called when users click the device item for sharing in the dialog.
+         *
+         * @param item The device item clicked.
+         */
+        void onItemClick(AudioSharingDeviceItem item);
+
+        /** Called when users click the cancel button in the dialog. */
+        void onCancelClick();
+    }
+
+    private static DialogEventListener sListener;
 
     private View mRootView;
 
@@ -50,40 +69,66 @@ public class AudioSharingDialogFragment extends InstrumentedDialogFragment {
      *
      * @param host The Fragment this dialog will be hosted.
      */
-    public static void show(Fragment host) {
+    public static void show(
+            Fragment host,
+            ArrayList<AudioSharingDeviceItem> deviceItems,
+            DialogEventListener listener) {
         if (!Flags.enableLeAudioSharing()) return;
         final FragmentManager manager = host.getChildFragmentManager();
+        sListener = listener;
         if (manager.findFragmentByTag(TAG) == null) {
-            final AudioSharingDialogFragment dialog = new AudioSharingDialogFragment();
+            final Bundle bundle = new Bundle();
+            bundle.putParcelableArrayList(BUNDLE_KEY_DEVICE_ITEMS, deviceItems);
+            AudioSharingDialogFragment dialog = new AudioSharingDialogFragment();
+            dialog.setArguments(bundle);
             dialog.show(manager, TAG);
         }
     }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Bundle arguments = requireArguments();
+        ArrayList<AudioSharingDeviceItem> deviceItems =
+                arguments.getParcelableArrayList(BUNDLE_KEY_DEVICE_ITEMS);
         final AlertDialog.Builder builder =
-                new AlertDialog.Builder(getActivity()).setTitle("Share audio");
+                new AlertDialog.Builder(getActivity()).setTitle("Share audio").setCancelable(false);
         mRootView =
                 LayoutInflater.from(builder.getContext())
                         .inflate(R.layout.dialog_audio_sharing, /* parent= */ null);
-        // TODO: use real subtitle according to device count.
         TextView subTitle1 = mRootView.findViewById(R.id.share_audio_subtitle1);
         TextView subTitle2 = mRootView.findViewById(R.id.share_audio_subtitle2);
-        subTitle1.setText("2 devices connected");
-        subTitle2.setText("placeholder");
+        if (deviceItems.isEmpty()) {
+            subTitle1.setVisibility(View.INVISIBLE);
+            subTitle2.setText(
+                    "To start sharing audio, connect additional headphones that support LE audio");
+            builder.setNegativeButton(
+                    "Close",
+                    (dialog, which) -> {
+                        sListener.onCancelClick();
+                    });
+        } else {
+            subTitle1.setText(
+                    String.format(
+                            Locale.US,
+                            "%d additional device%s connected",
+                            deviceItems.size(),
+                            deviceItems.size() > 1 ? "" : "s"));
+            subTitle2.setText(
+                    "The headphones you share audio with will hear videos and music playing on this"
+                            + " phone");
+        }
         RecyclerView recyclerView = mRootView.findViewById(R.id.btn_list);
-        // TODO: use real audio sharing device list.
-        ArrayList<String> devices = new ArrayList<>();
-        devices.add("Buds 1");
-        devices.add("Buds 2");
         recyclerView.setAdapter(
                 new AudioSharingDeviceAdapter(
-                        devices,
-                        (int position) -> {
-                            // TODO: add on click callback.
+                        deviceItems,
+                        (AudioSharingDeviceItem item) -> {
+                            sListener.onItemClick(item);
+                            dismiss();
                         }));
         recyclerView.setLayoutManager(
                 new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        return builder.setView(mRootView).create();
+        AlertDialog dialog = builder.setView(mRootView).create();
+        dialog.setCanceledOnTouchOutside(false);
+        return dialog;
     }
 }

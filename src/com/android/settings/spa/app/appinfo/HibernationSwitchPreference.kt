@@ -28,15 +28,14 @@ import android.permission.PermissionControllerManager.HIBERNATION_ELIGIBILITY_UN
 import android.provider.DeviceConfig
 import android.provider.DeviceConfig.NAMESPACE_APP_HIBERNATION
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.android.settings.R
 import com.android.settings.Utils.PROPERTY_APP_HIBERNATION_ENABLED
 import com.android.settings.Utils.PROPERTY_HIBERNATION_TARGETS_PRE_S_APPS
 import com.android.settingslib.spa.framework.compose.OverridableFlow
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.android.settingslib.spa.framework.compose.stateOf
 import com.android.settingslib.spa.widget.preference.SwitchPreference
 import com.android.settingslib.spa.widget.preference.SwitchPreferenceModel
 import com.android.settingslib.spaprivileged.framework.common.appHibernationManager
@@ -44,12 +43,12 @@ import com.android.settingslib.spaprivileged.framework.common.appOpsManager
 import com.android.settingslib.spaprivileged.framework.common.asUser
 import com.android.settingslib.spaprivileged.framework.common.permissionControllerManager
 import com.android.settingslib.spaprivileged.model.app.userHandle
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asExecutor
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
 @Composable
 fun HibernationSwitchPreference(app: ApplicationInfo) {
@@ -57,18 +56,14 @@ fun HibernationSwitchPreference(app: ApplicationInfo) {
     val presenter = remember { HibernationSwitchPresenter(context, app) }
     if (!presenter.isAvailable()) return
 
-    val isEligibleState = presenter.isEligibleFlow.collectAsStateWithLifecycle(initialValue = false)
+    val isEligibleState by presenter.isEligibleFlow.collectAsStateWithLifecycle(initialValue = false)
     val isCheckedState = presenter.isCheckedFlow.collectAsStateWithLifecycle(initialValue = null)
     SwitchPreference(remember {
         object : SwitchPreferenceModel {
             override val title = context.getString(R.string.unused_apps_switch)
-            override val summary = stateOf(context.getString(R.string.unused_apps_switch_summary))
-            override val changeable = isEligibleState
-
-            override val checked = derivedStateOf {
-                if (!changeable.value) false else isCheckedState.value
-            }
-
+            override val summary = { context.getString(R.string.unused_apps_switch_summary) }
+            override val changeable = { isEligibleState }
+            override val checked = { if (changeable()) isCheckedState.value else false }
             override val onCheckedChange = presenter::onCheckedChange
         }
     })
