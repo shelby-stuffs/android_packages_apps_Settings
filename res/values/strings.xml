@@ -312,13 +312,15 @@
     <string name="calls_and_alarms_device_title">Calls and alarms</string>
 
     <!-- Title for audio streams preference category [CHAR LIMIT=none]-->
-    <string name="audio_sharing_streams_category_title">Connect to a LE audio stream</string>
+    <string name="audio_streams_category_title">Connect to a LE audio stream</string>
     <!-- Title for audio streams preference [CHAR LIMIT=none]-->
-    <string name="audio_sharing_streams_pref_title">Nearby audio streams</string>
+    <string name="audio_streams_pref_title">Nearby audio streams</string>
     <!-- Title for audio streams page [CHAR LIMIT=none]-->
-    <string name="audio_sharing_streams_title">Audio streams</string>
+    <string name="audio_streams_title">Audio streams</string>
     <!-- Summary for QR code scanning in audio streams page [CHAR LIMIT=none]-->
-    <string name="audio_sharing_streams_qr_code_summary">Connect to an audio stream using QR code</string>
+    <string name="audio_streams_qr_code_summary">Connect to an audio stream using QR code</string>
+    <!--Text that appears when scanning for nearby audio streams is finished and no streams were found [CHAR LIMIT=40]-->
+    <string name="audio_streams_empty">No nearby audio streams were found.</string>
 
     <!-- Date & time settings screen title -->
     <string name="date_and_time">Date &amp; time</string>
@@ -1222,8 +1224,22 @@
     <string name="private_space_title">Private Space</string>
     <!-- Summary for the Private Space page. [CHAR LIMIT=NONE] -->
     <string name="private_space_summary">Hide apps in a private folder</string>
+    <!-- Description for the Private Space page. [CHAR LIMIT=NONE] -->
+    <string name="private_space_description">Hide apps in a private folder that only you can access</string>
     <!-- Title for the Private Space one lock preference. [CHAR LIMIT=60] -->
-    <string name="private_space_one_lock_title">Unlock using screen lock</string>
+    <string name="private_space_lock_title">Private Space lock</string>
+    <!-- Description for the Private Space one lock preference page. [CHAR LIMIT=NONE] -->
+    <string name="private_space_one_lock_summary">You can unlock Private Space the same way you unlock your device, or choose a different lock</string>
+    <!-- Title for the Private Space one lock preference. [CHAR LIMIT=60] -->
+    <string name="private_space_screen_lock_title">Use device screen lock</string>
+    <!-- Title for the Face and Fingerprint preference. [CHAR LIMIT=60] -->
+    <string name="private_space_biometric_title">Face &amp; Fingerprint Unlock</string>
+    <!-- Summary for the Face and Fingerprint preference when no biometric is set. [CHAR LIMIT=60] -->
+    <string name="private_space_biometric_summary">Tap to set up</string>
+    <!-- Summary for one lock when device screen lock is used as private profile lock. [CHAR LIMIT=60] -->
+    <string name="private_space_screen_lock_summary">Same as device screen lock</string>
+    <!-- Dialog message to choose a new lock for Private Space. [CHAR LIMIT=50] -->
+    <string name="private_space_new_lock_title">Choose a new lock for Private Space?</string>
     <!-- Title for the preference to hide Private Space. [CHAR LIMIT=60] -->
     <string name="private_space_hide_title">Hide when locked</string>
     <!-- Title for the hide Private Space setting. [CHAR LIMIT=60] -->
@@ -1244,16 +1260,8 @@
     <string name="privatespace_hide_on_summary">On</string>
     <!-- System category for the Private Space page. [CHAR LIMIT=30] -->
     <string name="private_space_category_system">System</string>
-    <!-- Title for the preference to create Private Space. [CHAR LIMIT=60] -->
-    <string name="private_space_create_title">Create Private Space</string>
     <!-- Title for the preference to delete Private Space. [CHAR LIMIT=60] -->
     <string name="private_space_delete_title">Delete Private Space</string>
-    <!-- Toast to show when the private space was created. [CHAR LIMIT=NONE] -->
-    <string name="private_space_created">Private Space successfully created</string>
-    <!-- Toast to show when the private space already exists. [CHAR LIMIT=NONE] -->
-    <string name="private_space_already_exists">Private Space already exists</string>
-    <!-- Toast to show when the private space could not be created. [CHAR LIMIT=NONE] -->
-    <string name="private_space_create_failed">Private Space could not be created</string>
     <!-- Toast to show when the private space was deleted. [CHAR LIMIT=NONE] -->
     <string name="private_space_deleted">Private Space successfully deleted</string>
     <!-- Toast to show when the private space could not be deleted. [CHAR LIMIT=NONE] -->
@@ -1286,12 +1294,12 @@
     <string name="privatespace_apps_permission_text">Private Space apps won\u2019t appear in permission manager, privacy dashboard, and other settings when Private Space is locked</string>
     <!-- Text shown at the bottom in Private Space auto advancing  screens. [CHAR LIMIT=60] -->
     <string name="privatespace_setting_up_text">Setting up Private Space\u2026</string>
-    <!-- Title for Private Space setup in auto advancing screen informing private space is protected by a lock. [CHAR LIMIT=60] -->
-    <string name="privatespace_lock_protected_title">Private Space is protected by a lock</string>
     <!-- Title for Private Space setup in auto advancing screen informing private space is hidden when locked. [CHAR LIMIT=NONE] -->
     <string name="privatespace_apps_hidden_title">Usage info for Private Space apps is hidden when it\u2019s locked</string>
     <!-- Title for Private Space setup in auto advancing screen informing private space can be accessed from apps list. [CHAR LIMIT=60] -->
     <string name="privatespace_access_from_apps_title">Access Private Space from your apps list</string>
+    <!-- Title for Private Space setup in auto advancing screen informing some system apps are already installed in Private Space. [CHAR LIMIT=NONE] -->
+    <string name="privatespace_system_apps_installed_title">Some system apps are already installed in Private Space</string>
     <!-- Title for Private Space creation error screen. [CHAR LIMIT=60] -->
     <string name="privatespace_error_screen_title">Couldn\u2019t set up Private Space</string>
     <!-- Summary for the Private Space creation error screen. [CHAR LIMIT=60] -->
@@ -1309,7 +1317,7 @@
     <!-- Title for Private Space setup success screen. [CHAR LIMIT=30] -->
     <string name="privatespace_success_title">All set!</string>
     <!-- Summary for the Private Space setup success screen. [CHAR LIMIT=NONE] -->
-    <string name="privatespace_access_text">To access Private Space, swipe up from the bottom of your home screen, then scroll down</string>
+    <string name="privatespace_access_text">You can access Private Space from your apps list</string>
     <!-- Label for Private Space done button to show a toast, finish setup and launch All apps [CHAR LIMIT=30] -->
     <string name="privatespace_done_label">Done</string>
     <!-- Toast to show on private space setup completion informing user to scroll down All apps to access private space. [CHAR LIMIT=60] -->
@@ -1320,13 +1328,13 @@
     <string name="privatespace_retry_summary">You need to sign in to an account to set up Private Space</string>
 
     <!-- TODO(b/309950257): Remove below strings once QSTIle fulfillment is complete. -->
-    <!-- Header in hide Private Space settings page to unhide Private Space. [CHAR LIMIT=60] -->
+    <!-- Header in hide Private Space settings page to unhide Private Space. [CHAR LIMIT=90] -->
     <string name="privatespace_unhide_header">To show Private Space (Not final UX)</string>
     <!-- Text in hide Private Space settings page on how to open Private Space setting. [CHAR LIMIT=NONE] -->
     <string name="privatespace_open_settings">Open the Settings App</string>
     <!-- Text in hide Private Space settings page on how to open Private Space setting. [CHAR LIMIT=NONE] -->
     <string name="privatespace_tap_settings">Tap on Security &amp; privacy > Private Space > Hide Private Space when locked</string>
-    <!-- Text in hide Private Space settings page to off hide toggle. [CHAR LIMIT=60] -->
+    <!-- Text in hide Private Space settings page to off hide toggle. [CHAR LIMIT=90] -->
     <string name="privatespace_turnoff_hide">Turn off \‘Hide Private Space when locked\’ toggle</string>
     <!-- Note in hide Private Space settings page to inform that this is a development feature. [CHAR LIMIT=NONE] -->
     <string name="privatespace_development_note">Note to Googlers: The development of this feature is still in progress</string>
@@ -1751,7 +1759,7 @@
     <string name="bluetooth_device_context_disconnect">Disconnect</string>
     <!-- Bluetooth settings.  Context menu item for a device.  Action will first pair, and then connect to all profiles on the device. -->
     <string name="bluetooth_device_context_pair_connect">Pair &amp; connect</string>
-    <!-- Bluetooth settings. Text displayed when Bluetooth is off and device list is empty [CHAR LIMIT=50]-->
+    <!-- Bluetooth settings. Text displayed when Bluetooth is off and device list is empty [CHAR LIMIT=NONE]-->
     <string name="bluetooth_empty_list_bluetooth_off">When Bluetooth is turned on, your device can communicate with other nearby Bluetooth devices</string>
     <!-- Bluetooth settings. Text displayed when Bluetooth is off and bluetooth scanning is turned on [CHAR LIMIT=NONE] -->
     <string name="bluetooth_scanning_on_info_message">When Bluetooth is turned on, your device can communicate with other nearby Bluetooth devices.\n\nTo improve device experience, apps and services can still scan for nearby devices at any time, even when Bluetooth is off. This can be used, for example, to improve location-based features and services. You can change this in Bluetooth scanning settings.</string>
@@ -6503,10 +6511,6 @@
     <string name="vpn_type">Type</string>
     <!-- Input label for the server address of a VPN profile. [CHAR LIMIT=40] -->
     <string name="vpn_server">Server address</string>
-    <!-- Checkbox label to enable PPP encryption for a VPN profile. [CHAR LIMIT=40] -->
-    <string name="vpn_mppe">PPP encryption (MPPE)</string>
-    <!-- Input label for the L2TP secret of a VPN profile. [CHAR LIMIT=40] -->
-    <string name="vpn_l2tp_secret">L2TP secret</string>
     <!-- Input label for the IPSec identifier of a VPN profile. [CHAR LIMIT=40] -->
     <string name="vpn_ipsec_identifier">IPSec identifier</string>
     <!-- Input label for the IPSec pre-shared key of a VPN profile. [CHAR LIMIT=40] -->
@@ -6519,12 +6523,6 @@
     <string name="vpn_ipsec_server_cert">IPSec server certificate</string>
     <!-- Checkbox label to show advanced options of a VPN profile. [CHAR LIMIT=40] -->
     <string name="vpn_show_options">Show advanced options</string>
-    <!-- Input label for the DNS search domains of a VPN profile. [CHAR LIMIT=40] -->
-    <string name="vpn_search_domains">DNS search domains</string>
-    <!-- Input label for the DNS servers of a VPN profile. [CHAR LIMIT=40] -->
-    <string name="vpn_dns_servers">DNS servers (e.g. 8.8.8.8)</string>
-    <!-- Input label for the forwarding routes of a VPN profile. [CHAR LIMIT=40] -->
-    <string name="vpn_routes">Forwarding routes (e.g. 10.0.0.0/8)</string>
     <!-- Input label for the username of a VPN profile. [CHAR LIMIT=40] -->
     <string name="vpn_username">Username</string>
     <!-- Input label for the password of a VPN profile. [CHAR LIMIT=40] -->
@@ -6537,22 +6535,6 @@
     <string name="vpn_no_ca_cert">(don\u2019t verify server)</string>
     <!-- Option to use the server certificate received from the VPN server. [CHAR LIMIT=40] -->
     <string name="vpn_no_server_cert">(received from server)</string>
-    <!-- Error message displayed below the always-on VPN checkbox when the checkbox is disabled:
-        the selected VPN type doesn't support always-on. [CHAR LIMIT=120] -->
-    <string name="vpn_always_on_invalid_reason_type">This VPN type can\'t stay connected at all
-        times</string>
-    <!-- Error message displayed below the always-on VPN checkbox when the checkbox is disabled:
-        the server address is not in numeric form (e.g. 8.8.8.8). [CHAR LIMIT=120] -->
-    <string name="vpn_always_on_invalid_reason_server">Always-on VPN only supports numeric server
-        addresses</string>
-    <!-- Error message displayed below the always-on VPN checkbox when the checkbox is disabled:
-        no DNS is found. [CHAR LIMIT=120] -->
-    <string name="vpn_always_on_invalid_reason_no_dns">A DNS server must be specified for always-on
-        VPN</string>
-    <!-- Error message displayed below the always-on VPN checkbox when the checkbox is disabled:
-        DNS server addresses are not in numeric form (e.g. 8.8.8.8). [CHAR LIMIT=120] -->
-    <string name="vpn_always_on_invalid_reason_dns">DNS server addresses must be numeric for
-        always-on VPN</string>
     <!-- Error message displayed below the always-on VPN checkbox when the checkbox is disabled:
         generic error. [CHAR LIMIT=120] -->
     <string name="vpn_always_on_invalid_reason_other">The information entered doesn\'t support
@@ -10116,6 +10098,9 @@
 
     <!-- Summary of apps anomaly for higher than usual in foreground [CHAR LIMIT=NONE] -->
     <string name="battery_tips_apps_summary_higher_than_usual_in_foreground"><xliff:g id="app_label" example="Pokemon Go">%1$s</xliff:g> used more battery than usual while in the foreground</string>
+
+    <!-- Content description of the icon in power anomaly banner [CHAR LIMIT=NONE] -->
+    <string name="battery_usage_anomaly_content_description">Battery usage anomaly</string>
 
     <!-- Label of hint for apps anomaly in battery usage [CHAR LIMIT=NONE] -->
     <string name="battery_app_item_hint">High battery usage</string>
