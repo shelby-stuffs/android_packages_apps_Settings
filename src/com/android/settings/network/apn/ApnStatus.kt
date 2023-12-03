@@ -69,6 +69,7 @@ data class ApnData(
     val networkTypeEnabled: Boolean = true,
     val newApn: Boolean = false,
     val subId: Int = -1,
+    val saveEnabled: Boolean = true,
     val customizedConfig: CustomizedConfig = CustomizedConfig()
 ) {
     fun getContentValues(context: Context): ContentValues {
@@ -93,6 +94,12 @@ data class ApnData(
         values.put(Telephony.Carriers.NETWORK_TYPE_BITMASK, networkType)
         values.put(Telephony.Carriers.CARRIER_ENABLED, apnEnable)
         values.put(Telephony.Carriers.EDITED_STATUS, Telephony.Carriers.USER_EDITED)
+        if (newApn) {
+            val simCarrierId =
+                context.getSystemService(TelephonyManager::class.java)!!.createForSubscriptionId(subId)
+                    .getSimCarrierId()
+            values.put(Telephony.Carriers.CARRIER_ID, simCarrierId)
+        }
         return values
     }
 }
@@ -224,6 +231,10 @@ fun validateAndSaveApnData(
     uriInit: Uri,
     networkTypeSelectedOptionsState: SnapshotStateList<Int>
 ): Boolean {
+    // Can not be saved
+    if (!apnData.saveEnabled) {
+        return false
+    }
     // Nothing to do if it's a read only APN
     if (apnData.customizedConfig.readOnlyApn) {
         return true
@@ -513,4 +524,9 @@ private fun getEditableApnType(apnData: ApnData): String {
             APN_TYPE_IMS,
         )
     }.joinToString()
+}
+
+fun deleteApn(uri: Uri, context: Context) {
+    val contentResolver = context.contentResolver
+    contentResolver.delete(uri, null, null)
 }

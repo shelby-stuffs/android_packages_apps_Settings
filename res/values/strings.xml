@@ -2196,12 +2196,8 @@
 
     <!-- Button label to connect to a Wi-Fi network -->
     <string name="wifi_connect">Connect</string>
-    <!-- Turned on notification for Wi-Fi [CHAR LIMIT=40] -->
-    <string name="wifi_turned_on_message">Wi\u2011Fi turned on</string>
     <!-- A notification for connected to a Wi-Fi network [CHAR LIMIT=NONE] -->
     <string name="wifi_connected_to_message">Connected to <xliff:g id="network_name" example="MyNetwork">%1$s</xliff:g></string>
-    <!-- A notification for connecting to a Wi-Fi network [CHAR LIMIT=NONE] -->
-    <string name="wifi_connecting_to_message">Connecting to <xliff:g id="network_name" example="MyNetwork">%1$s</xliff:g></string>
     <!-- Button label to connecting progress to a Wi-Fi network [CHAR LIMIT=20] -->
     <string name="wifi_connecting">Connecting\u2026</string>
     <!-- Failured notification for connect -->
@@ -2720,6 +2716,8 @@
     <string name="adaptive_sleep_contextual_slice_title">Turn on screen attention</string>
     <!-- Description about the contextual adaptive sleep card [CHAR LIMIT=NONE]-->
     <string name="adaptive_sleep_contextual_slice_summary">Keep screen on when looking at it</string>
+    <!-- Description about the power consumption implication in screen timeout footer [CHAR LIMIT=NONE]-->
+    <string name="power_consumption_footer_summary">Longer screen timeout will use more battery.</string>
     <!-- auto_rotate settings screen, title about the camera privacy lock enabled [CHAR LIMIT=NONE]-->
     <string name="auto_rotate_camera_lock_title">Camera is locked</string>
     <!-- Description feature's privacy sensitive details to make sure users understand what feature users, what it saves/sends etc [CHAR LIMIT=NONE]-->
@@ -3519,9 +3517,6 @@
     <!-- Wireless controls, item title to go into the network settings -->
     <string name="network_settings_title">Mobile network</string>
 
-    <!-- Mobile plan [CHAR LIMIT=35]-->
-    <string name="manage_mobile_plan_title" translatable="true">Mobile plan</string>
-
     <!-- SMS Application [CHAR LIMIT=35]-->
     <string name="sms_application_title" translatable="true">SMS app</string>
     <string name="sms_change_default_dialog_title" translatable="true">Change SMS app?</string>
@@ -3534,18 +3529,6 @@
     <string name="network_scorer_change_active_dialog_text">Use <xliff:g id="new_app">%1$s</xliff:g> instead of <xliff:g id="current_app">%2$s</xliff:g> to manage your network connections?</string>
     <!-- Wifi Assistant request message.  This message asks the user if it is okay for an app to become the Wifi Assistant. [CHAR LIMIT=100] -->
     <string name="network_scorer_change_active_no_previous_dialog_text">Use <xliff:g id="new_app">%s</xliff:g> to manage your network connections?</string>
-
-    <!-- The SIM operator is not known [CHAR_ LIMIT=50]-->
-    <string name="mobile_unknown_sim_operator" translatable="true">Unknown SIM operator</string>
-
-    <!-- There is no mobile provisiong website for the operator which is the firat parameter [CHAR_ LIMIT=50]-->
-    <string name="mobile_no_provisioning_url"><xliff:g id="operator">%1$s</xliff:g> has no known provisioning website</string>
-
-    <!-- Ask user to insert a SIM card [CHAR_ LIMIT=50]-->
-    <string name="mobile_insert_sim_card" translatable="true">Please insert SIM card and restart</string>
-
-    <!-- Ask user to connect to the internet [CHAR_ LIMIT=50]-->
-    <string name="mobile_connect_to_internet" translatable="true">Please connect to the internet</string>
 
     <!-- Location settings screen, sub category for recent location requests [CHAR LIMIT=42] -->
     <string name="location_category_recent_location_requests">Recent location requests</string>
@@ -5340,15 +5323,12 @@
     <string name="accessibility_dialog_button_deny">Deny</string>
 
     <!-- String for the allow button in accessibility permission dialog. [CHAR LIMIT=10] -->
-    <string name="accessibility_dialog_button_stop">Stop</string>
+    <string name="accessibility_dialog_button_stop">Turn off</string>
     <!-- String for the deny button in accessibility permission dialog. [CHAR LIMIT=10] -->
-    <string name="accessibility_dialog_button_cancel">Cancel</string>
+    <string name="accessibility_dialog_button_cancel">Keep on</string>
 
     <!-- Title for a warning about disabling an accessibility service. [CHAR LIMIT=NONE] -->
-    <string name="disable_service_title">Stop <xliff:g id="service" example="TalkBack">%1$s</xliff:g>?</string>
-    <!-- Message for a warning about disabling accessibility service. [CHAR LIMIT=NONE] -->
-    <string name="disable_service_message">Tapping <xliff:g id="stop" example="Stop">%1$s</xliff:g> will
-        stop <xliff:g id="service" example="TalkBack">%2$s</xliff:g>.</string>
+    <string name="disable_service_title">Turn off <xliff:g id="service" example="TalkBack">%1$s</xliff:g>?</string>
 
     <!-- Title for the prompt shown as a placeholder if no accessibility services are installed. [CHAR LIMIT=50] -->
     <string name="accessibility_no_services_installed">No services installed</string>
@@ -6611,6 +6591,11 @@
 
     <!-- Dialog subtitle warning for a VPN app that has an insecure type. [CHAR LIMIT=100]  -->
     <string name="vpn_insecure_dialog_subtitle">Not secure. Update to an IKEv2 VPN</string>
+    <!-- Dialog message when user attempted to start a VPN type that is no longer supported. It is
+         very unlikely, but not impossible, that a user has a very old VPN configuration that the
+         newer device no longer supports. This message is displayed when the user tries to start
+         this unsupported VPN. [CHAR LIMIT=NONE]  -->
+    <string name="vpn_start_unsupported">Failed to start unsupported VPN.</string>
 
     <!-- Summary describing the always-on VPN feature. [CHAR LIMIT=NONE] -->
     <string name="vpn_lockdown_summary">Select a VPN profile to always remain connected to. Network traffic will only be allowed when connected to this VPN.</string>
