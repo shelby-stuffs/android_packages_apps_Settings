@@ -20,6 +20,8 @@
     android:title="@string/choose_network_title">
 
     <PreferenceCategory
+        android:key="error_msg_preference"/>
+    <PreferenceCategory
         android:key="network_operators_preference"/>
 
 </PreferenceScreen>
