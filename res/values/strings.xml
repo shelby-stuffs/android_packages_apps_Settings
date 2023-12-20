@@ -897,11 +897,11 @@
     <!-- Title shown for menu item that launches watch unlock settings. [CHAR LIMIT=40] -->
     <string name ="security_settings_activeunlock_preference_title">Watch Unlock</string>
     <!-- Introduction shown in face and fingerprint page to introduce the biometric feature. [CHAR LIMIT=NONE]-->
-    <string name="biometric_settings_intro_with_activeunlock">When you set up Face Unlock and Fingerprint Unlock, your phone will ask for your fingerprint when you wear a mask or are in a dark area.\n\nYou can unlock with your watch when your face or fingerprint isn\u2019t recognized.</string>
+    <string name="biometric_settings_intro_with_activeunlock">When you set up Face Unlock and Fingerprint Unlock, your phone will ask for your fingerprint when you wear a mask or are in a dark area.\n\nWatch Unlock is another convenient way to unlock your phone, for example, when your fingers are wet or face isn\u2019t recognized.</string>
     <!-- Introduction shown in fingerprint page to explain that watch unlock can be used if fingerprint isn't recognized. [CHAR LIMIT=NONE]-->
-    <string name="biometric_settings_intro_with_fingerprint">You can unlock with your watch when your fingerprint isn\u2019t recognized.</string>
+    <string name="biometric_settings_intro_with_fingerprint">Watch Unlock is another convenient way to unlock your phone, for example, when your fingerprint isn\u2019t recognized.</string>
     <!-- Introduction shown in face page to explain that watch unlock can be used if face isn't recognized. [CHAR LIMIT=NONE]-->
-    <string name="biometric_settings_intro_with_face">You can unlock with your watch when your face isn\u2019t recognized.</string>
+    <string name="biometric_settings_intro_with_face">Watch Unlock is another convenient way to unlock your phone, for example, when your face isn\u2019t recognized.</string>
     <string name="biometric_settings_use_fingerprint_or_watch_for"> Use fingerprint or watch to</string>
     <string name="biometric_settings_use_face_or_watch_for"> Use face or watch to</string>
     <string name="biometric_settings_use_face_fingerprint_or_watch_for"> Use face, fingerprint, or watch to</string>
@@ -3012,9 +3012,9 @@
     <string name="imei_multi_sim_primary">IMEI (sim slot <xliff:g id="imei_slot_id_primary">%1$d</xliff:g>) (primary)</string>
     <!-- About phone screen, summary of the MAC address [CHAR LIMIT=80] -->
     <string name="view_saved_network">To view, choose saved network</string>
-    <!-- Do not translate. About phone, status item title -->
+    <!-- About phone, status item title. This translation is for specific language only. Like: fr-CA -->
     <string name="status_imei">IMEI</string>
-    <!-- Do not translate. About phone, status item title -->
+    <!-- About phone, status item title. This translation is for specific language only. Like: fr-CA -->
     <string name="status_imei_sv">IMEI SV</string>
     <!-- Do not translate. About phone, status item title -->
     <string name="status_iccid">ICCID</string>
@@ -4703,7 +4703,7 @@
     <string name="accessibility_screen_magnification_navbar_short_summary">Tap a button to zoom</string>
     <!-- Intro for the accessibility preference screen to enable screen magnification gestures. [CHAR LIMIT=none] -->
     <string name="accessibility_screen_magnification_intro_text">Quickly zoom in on the screen to make content larger</string>
-    <!-- Summary for the accessibility preference screen to enable screen magnification gestures. [CHAR LIMIT=none] -->
+    <!-- Instructions on the accessibility preference screen teaching the user how to enable screen magnification gestures. [CHAR LIMIT=none] -->
     <string name="accessibility_screen_magnification_summary">
         <![CDATA[
         <b>To zoom in:</b><br/>
@@ -4880,6 +4880,10 @@
     <string name="accessibility_toggle_large_pointer_icon_title">Large mouse pointer</string>
     <!-- Summary for the accessibility preference for enabling/disabling large icons for mouse/trackpad pointers. [CHAR LIMIT=60] -->
     <string name="accessibility_toggle_large_pointer_icon_summary">Make the mouse pointer more noticeable</string>
+    <!-- Title for the accessibility preference for forcing all apps to use dark theme. [CHAR LIMIT=35] -->
+    <string name="accessibility_force_invert_title">Make all apps dark</string>
+    <!-- Summary for the accessibility preference for forcing all apps to use dark theme. [CHAR LIMIT=100] -->
+    <string name="accessibility_force_invert_summary">Applies to apps without their own dark theme. Some apps may have display issues, like inverted colors.</string>
     <!-- Title for the accessibility preference for disabling animations. [CHAR LIMIT=35] -->
     <string name="accessibility_disable_animations">Remove animations</string>
     <!-- Summary for the accessibility preference for disabling animations. [CHAR LIMIT=60] -->
@@ -6165,10 +6169,6 @@
     <!-- Backup and reset Settings screen --><skip />
     <!-- Backup and reset settings menu and activity title -->
     <string name="privacy_settings_title">Backup</string>
-    <!-- Summary for the Backup settings when it is turned on. -->
-    <string name="backup_summary_state_on">On</string>
-    <!-- Summary for the Backup settings when it is turned off. -->
-    <string name="backup_summary_state_off">Off</string>
     <!-- Backup section title -->
     <string name="backup_section_title">Backup &amp; restore</string>
     <!-- Personal data section title -->
@@ -11061,6 +11061,9 @@
     <!-- Title with application label for media output settings. [CHAR LIMIT=NONE] -->
     <string name="media_output_label_title">Play <xliff:g id="label" example="Music Player">%s</xliff:g> on</string>
 
+    <!-- Title for media output settings without media is playing -->
+    <string name="media_output_title_without_playing">Audio will play on</string>
+
     <!-- Summary for media output default settings. (this device) [CHAR LIMIT=30] -->
     <string name="media_output_default_summary">This device</string>
 
@@ -12766,8 +12769,8 @@
     <string name="color_inversion_state_off">Off</string>
     <!-- The color inversion feature summary displayed as a subtext as an item in a list. -->
     <string name="color_inversion_feature_summary">Turns light screens dark and dark screens light</string>
-    <!-- Short summary explains what magnification feature is. -->
-    <string name="magnification_feature_summary">Quickly zoom in on the screen to make content larger</string>
+    <!-- Summary for the accessibility preference screen to enable screen magnification. [CHAR LIMIT=none] -->
+    <string name="magnification_feature_summary">Zoom in on the screen</string>
     <!-- Summary of the AutoClick feature disabled state. -->
     <string name="autoclick_disabled">Off</string>
     <!-- Summary of the show captions preference disabled state. -->
