@@ -25,7 +25,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.android.settings.core.instrumentation.InstrumentedDialogFragment;
-import com.android.settings.flags.Flags;
 
 public class AudioSharingStopDialogFragment extends InstrumentedDialogFragment {
     private static final String TAG = "AudioSharingStopDialog";
@@ -50,18 +49,18 @@ public class AudioSharingStopDialogFragment extends InstrumentedDialogFragment {
      * Display the {@link AudioSharingStopDialogFragment} dialog.
      *
      * @param host The Fragment this dialog will be hosted.
+     * @param newDeviceName The name of the latest connected device triggered this dialog.
+     * @param listener The callback to handle the user action on this dialog.
      */
     public static void show(Fragment host, String newDeviceName, DialogEventListener listener) {
-        if (!Flags.enableLeAudioSharing()) return;
+        if (!AudioSharingUtils.isFeatureEnabled()) return;
         final FragmentManager manager = host.getChildFragmentManager();
         sListener = listener;
-        if (manager.findFragmentByTag(TAG) == null) {
-            final Bundle bundle = new Bundle();
-            bundle.putString(BUNDLE_KEY_NEW_DEVICE_NAME, newDeviceName);
-            AudioSharingStopDialogFragment dialog = new AudioSharingStopDialogFragment();
-            dialog.setArguments(bundle);
-            dialog.show(manager, TAG);
-        }
+        final Bundle bundle = new Bundle();
+        bundle.putString(BUNDLE_KEY_NEW_DEVICE_NAME, newDeviceName);
+        AudioSharingStopDialogFragment dialog = new AudioSharingStopDialogFragment();
+        dialog.setArguments(bundle);
+        dialog.show(manager, TAG);
     }
 
     @Override
