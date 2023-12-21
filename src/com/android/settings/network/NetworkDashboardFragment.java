@@ -60,6 +60,7 @@ public class NetworkDashboardFragment extends DashboardFragment implements
         super.onAttach(context);
 
         use(AirplaneModePreferenceController.class).setFragment(this);
+        use(NetworkProviderCallsSmsController.class).init(this);
         getSettingsLifecycle().addObserver(use(AllInOneTetherPreferenceController.class));
     }
 

@@ -18,6 +18,7 @@ package com.android.settings.privatespace;
 
 import static android.os.UserManager.USER_TYPE_PROFILE_PRIVATE;
 import static android.provider.Settings.Secure.HIDE_PRIVATESPACE_ENTRY_POINT;
+import static android.provider.Settings.Secure.USER_SETUP_COMPLETE;
 
 import android.app.ActivityManager;
 import android.app.IActivityManager;
@@ -34,6 +35,7 @@ import android.util.ArraySet;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.VisibleForTesting;
 
 import com.android.internal.annotations.GuardedBy;
 
@@ -95,6 +97,7 @@ public class PrivateSpaceMaintainer {
 
             IActivityManager am = ActivityManager.getService();
             try {
+                //TODO(b/313926659): To check and handle failure of startProfile
                 am.startProfile(mUserHandle.getIdentifier());
             } catch (RemoteException e) {
                 Log.e(TAG, "Failed to start private profile");
@@ -103,6 +106,7 @@ public class PrivateSpaceMaintainer {
 
             Log.i(TAG, "Private space created with id: " + mUserHandle.getIdentifier());
             resetPrivateSpaceSettings();
+            setUserSetupComplete();
         }
         return true;
     }
@@ -226,7 +230,37 @@ public class PrivateSpaceMaintainer {
                 HIDE_PRIVATE_SPACE_ENTRY_POINT_DISABLED_VAL);
     }
 
+    /**
+     * Returns true if private space exists and quiet mode is successfully enabled, otherwise
+     * returns false
+     */
+    public synchronized boolean lockPrivateSpace() {
+        if (isPrivateProfileRunning()) {
+            return mUserManager.requestQuietModeEnabled(true, mUserHandle);
+        }
+        return false;
+    }
+
+    /** Returns true if private space exists and is running, otherwise returns false */
+    @VisibleForTesting
+    synchronized boolean isPrivateProfileRunning() {
+        if (doesPrivateSpaceExist() && mUserHandle != null) {
+            return mUserManager.isUserRunning(mUserHandle);
+        }
+        return false;
+    }
+
     private void resetPrivateSpaceSettings() {
         setHidePrivateSpaceEntryPointSetting(HIDE_PRIVATE_SPACE_ENTRY_POINT_DISABLED_VAL);
+    }
+
+    /**
+     * Sets the USER_SETUP_COMPLETE for private profile on which device theme is applied to the
+     * profile.
+     */
+    @GuardedBy("this")
+    private void setUserSetupComplete() {
+        Settings.Secure.putIntForUser(mContext.getContentResolver(), USER_SETUP_COMPLETE,
+                1, mUserHandle.getIdentifier());
     }
 }
