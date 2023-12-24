@@ -2567,7 +2567,7 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
 
         <activity android:name=".biometrics.face.FaceEnrollIntroduction"
                   android:exported="true"
-                  android:screenOrientation="portrait">
+                  android:screenOrientation="nosensor">
             <intent-filter>
                 <action android:name="android.settings.FACE_ENROLL"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -2576,12 +2576,12 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
 
         <activity android:name=".biometrics.face.FaceEnrollIntroductionInternal"
                   android:exported="false"
-                  android:screenOrientation="portrait"
+                  android:screenOrientation="nosensor"
                   android:taskAffinity="com.android.settings.root" />
 
         <activity android:name=".biometrics.face.FaceEnrollEducation"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="nosensor"/>
 
         <activity android:name=".biometrics.face.FaceEnrollEnrolling"
             android:exported="false"
@@ -3935,6 +3935,7 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
             android:launchMode="singleTop"
             android:taskAffinity=".wifi.NetworkRequestDialogActivity"
             android:exported="true"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize|smallestScreenSize|screenLayout"
             android:permission="android.permission.NETWORK_SETTINGS">
             <intent-filter>
                 <action android:name="com.android.settings.wifi.action.NETWORK_REQUEST" />
@@ -5069,9 +5070,16 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
             android:theme="@style/GlifV3Theme.Light"
             android:exported="false" />
 
-        <activity android:name=".privatespace.PrivateSpaceAuthenticationActivity"
-                  android:theme="@*android:style/Theme.DeviceDefault.Settings.Dialog.NoActionBar"
-                  android:exported="false"/>
+        <activity
+            android:name=".privatespace.PrivateSpaceAuthenticationActivity"
+            android:theme="@*android:style/Theme.DeviceDefault.Settings.Dialog.NoActionBar"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.settings.action.PRIVATE_SPACE_SETUP_FLOW" />
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
         <activity android:name=".privatespace.PrivateProfileContextHelperActivity" android:exported="false"/>
 
         <activity-alias android:name="UsageStatsActivity"
