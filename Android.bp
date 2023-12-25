@@ -105,6 +105,8 @@ android_library {
         "settings-logtags",
         "settings-telephony-protos-lite",
         "statslog-settings",
+        "androidx.test.rules",
+        "telephony_flags_core_java_lib",
     ],
 
     plugins: ["androidx.room_room-compiler-plugin"],

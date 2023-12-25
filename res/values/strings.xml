@@ -1236,6 +1236,12 @@
     <string name="private_space_biometric_title">Face &amp; Fingerprint Unlock</string>
     <!-- Summary for the Face and Fingerprint preference when no biometric is set. [CHAR LIMIT=60] -->
     <string name="private_space_biometric_summary">Tap to set up</string>
+    <!-- Title for the Fingerprint unlock for private space preference. [CHAR LIMIT=60] -->
+    <string name="private_space_fingerprint_unlock_title">Fingerprint Unlock for Private Space</string>
+    <!-- Title for the Face unlock for private space preference. [CHAR LIMIT=60] -->
+    <string name="private_space_face_unlock_title">Face Unlock for Private Space</string>
+    <!-- Biometric category title - biometric options for unlocking the device. [CHAR LIMIT=50] -->
+    <string name="private_space_category_ways_to_unlock">Ways to unlock</string>
     <!-- Summary for one lock when device screen lock is used as private profile lock. [CHAR LIMIT=60] -->
     <string name="private_space_screen_lock_summary">Same as device screen lock</string>
     <!-- Dialog message to choose a new lock for Private Space. [CHAR LIMIT=50] -->
@@ -1954,6 +1960,12 @@
     <string name="wifi_notify_open_networks">Notify for public networks</string>
     <!-- Checkbox summary for option to notify user when open networks are nearby-->
     <string name="wifi_notify_open_networks_summary">Notify when a high\u2011quality public network is available</string>
+    <!-- Checkbox title for option to allow user to connect to wep networks-->
+    <string name="wifi_allow_wep_networks">Allow WEP networks</string>
+    <!-- Checkbox summary for option to allow user to connect to wep networks-->
+    <string name="wifi_allow_wep_networks_summary">WEP is an older security protocol that\u0027s less secure</string>
+    <!-- Checkbox summary for option to allow user to connect to wep networks when it is blocked by carrier-->
+    <string name="wifi_allow_wep_networks_summary_carrier_not_allow">Your carrier doesn\u0027t allow WEP networks because they\u0027re less secure</string>
     <!-- Checkbox title for option to enable Wi-Fi when saved networks are nearby -->
     <string name="wifi_wakeup">Turn on Wi\u2011Fi automatically</string>
     <!-- Checkbox summary for option to enable Wi-Fi when high quality saved networks are nearby-->
@@ -2003,6 +2015,18 @@
     <string name="wifi_settings_scanning_required_turn_on">Turn on</string>
     <!-- Wi-Fi settings dialog. Text to show in toast for when user turns on wifi scanning. [CHAR LIMIT=NONE] -->
     <string name="wifi_settings_scanning_required_enabled">Wi\u2011Fi scanning turned on</string>
+    <!-- Wi-Fi settings dialog. Warning on the password entry page for a WEP network, when WEP networks are allowed. [CHAR LIMIT=NONE] -->
+    <string name="wifi_settings_warning_wep_network">This network uses an older security protocol that\u0027s less secure</string>
+    <!-- Wi-Fi settings dialog. Title of dialog displayed when WEP network is blocked. [CHAR LIMIT=NONE] -->
+    <string name="wifi_settings_wep_networks_blocked_title"><xliff:g id="name">%1$s</xliff:g> is blocked</string>
+    <!-- Wi-Fi settings dialog. Summary text of dialog displayed when WEP network toggle is turned off. [CHAR LIMIT=NONE] -->
+    <string name="wifi_settings_wep_networks_summary_toggle_off">This network uses an older security protocol called WEP, which is less secure. To connect anyway, you can allow WEP networks.</string>
+    <!-- Wi-Fi settings dialog. Summary text of dialog displayed when WEP network is blocked by the carrier. [CHAR LIMIT=NONE] -->
+    <string name="wifi_settings_wep_networks_summary_blocked_by_carrier">Your carrier doesn\u0027t allow you to connect to this network because it uses an older security protocol that’s less secure</string>
+    <!-- Wi-Fi settings dialog. Button text of dialog displayed when WEP network toggle is turned off. [CHAR LIMIT=NONE] -->
+    <string name="wifi_settings_wep_networks_button_allow">Allow WEP</string>
+    <!-- Wi-Fi settings dialog. Button text of dialog displayed when WEP network toggle is blocked. [CHAR LIMIT=NONE] -->
+    <string name="wifi_settings_ssid_block_button_close">Close</string>
 
     <!-- Dialog for Access Points --> <skip />
     <!-- Label to show/hide advanced options [CHAR LIMIT=40] -->
@@ -2699,8 +2723,12 @@
     <string name="display_white_balance_summary"></string>
     <!-- Display settings screen, setting option name to change Fold setting -->
     <string name="fold_lock_behavior_title">Continue using apps on fold</string>
+    <!-- Display settings screen, game default frame rate settings title [CHAR LIMIT=30] -->
+    <string name="disable_game_default_frame_rate_title">Disable default frame rate for games</string>
+    <!-- Display settings screen, game default frame rate settings summary [CHAR LIMIT=NONE] -->
+    <string name="disable_game_default_frame_rate_summary">Disable limiting the maximum frame rate for games at <xliff:g id="frame_rate" example="60">%1$d</xliff:g> Hz.</string>
     <!-- Display settings screen, peak refresh rate settings title [CHAR LIMIT=30] -->
-    <string name="peak_refresh_rate_title">Smooth Display</string>
+    <string name="peak_refresh_rate_title">Smooth display</string>
     <!-- Display settings screen, peak refresh rate settings summary [CHAR LIMIT=NONE] -->
     <string name="peak_refresh_rate_summary">Automatically raises the refresh rate up to <xliff:g name="refresh_rate" example="120">%1$d</xliff:g> Hz for some content. Increases battery usage.</string>
     <!-- Display developer settings: Force to the highest refresh rate [CHAR LIMIT=NONE] -->
@@ -9574,6 +9602,13 @@
       other   {# apps used memory in the last {time}}
     }</string>
 
+    <!-- Label for toggle that enables the profiling/aggregating of memory usage [CHAR LIMIT=40]-->
+    <string name="force_enable_pss_profiling_title">Enable memory usage profiling</string>
+    <!-- Description with an explanation of the extra resources used if profiling of memory usage is enabled [CHAR LIMIT=NONE]-->
+    <string name="force_enable_pss_profiling_summary">Memory usage profiling requires additional system resources.</string>
+    <!-- Summary that shows the current memory usage profiling status as disabled. [CHAR LIMIT=NONE]-->
+    <string name="pss_profiling_disabled">Memory profiling disabled</string>
+
     <!-- Label for frequency that the app is runnig (e.g. always, sometimes, etc.) [CHAR LIMIT=25] -->
     <string name="running_frequency">Frequency</string>
 
@@ -11954,7 +11989,7 @@
     <!-- Description of toggle to enable or disable the media resumption on lockscreen [CHAR LIMIT=NONE]-->
     <string name="media_controls_lockscreen_description">To quickly resume playback, media player stays open on lock screen</string>
     <!-- Title of toggle to enable or disable media recommendations in quick settings [CHAR LIMIT=NONE] -->
-    <string name="media_controls_recommendations_title">Show media recommendations</string>
+    <string name="media_controls_recommendations_title">Show Assistant media recommendations</string>
     <!-- Description of toggle to enable or disable media recommendations based on user's activity [CHAR LIMIT=NONE] -->
     <string name="media_controls_recommendations_description">Based on your activity</string>
     <!-- Subtext for media settings when the player will be hidden [CHAR LIMIT=50] -->
