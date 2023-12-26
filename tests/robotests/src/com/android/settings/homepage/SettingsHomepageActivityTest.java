@@ -29,6 +29,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -168,6 +169,19 @@ public class SettingsHomepageActivityTest {
     }
 
     @Test
+    public void showHomepageWithSuggestion_callAfterOnStop_shouldUpdateVisibility() {
+        final SettingsHomepageActivity activity = Robolectric.buildActivity(
+                SettingsHomepageActivity.class).create().get();
+        final View suggestionTile = activity.findViewById(R.id.suggestion_content);
+
+        activity.showHomepageWithSuggestion(true);
+        activity.onStop();
+        activity.showHomepageWithSuggestion(false);
+
+        assertThat(suggestionTile.getVisibility()).isEqualTo(View.GONE);
+    }
+
+    @Test
     public void onStart_isNotDebuggable_shouldHideSystemOverlay() {
         ReflectionHelpers.setStaticField(Build.class, "IS_DEBUGGABLE", false);
 
@@ -208,6 +222,28 @@ public class SettingsHomepageActivityTest {
         verify(window).setAttributes(paramCaptor.capture());
         assertThat(paramCaptor.getValue().privateFlags
                 & SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS).isEqualTo(0);
+    }
+
+    @Test
+    public void onCreate_notTaskRoot_shouldFinishActivity() {
+        SettingsHomepageActivity activity =
+                spy(Robolectric.buildActivity(SettingsHomepageActivity.class).get());
+        doReturn(false).when(activity).isTaskRoot();
+
+        activity.onCreate(/* savedInstanceState */ null);
+
+        verify(activity).finish();
+    }
+
+    @Test
+    public void onCreate_singleTaskActivity_shouldNotFinishActivity() {
+        SettingsHomepageActivity activity =
+                spy(Robolectric.buildActivity(DeepLinkHomepageActivity.class).get());
+        doReturn(false).when(activity).isTaskRoot();
+
+        activity.onCreate(/* savedInstanceState */ null);
+
+        verify(activity, never()).finish();
     }
 
     /** This test is for large screen devices Activity embedding. */

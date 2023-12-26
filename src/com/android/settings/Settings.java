@@ -95,6 +95,9 @@ public class Settings extends SettingsActivity {
         return modIntent;
     }
 
+    public static class PrivateSpaceBiometricSettingsActivity extends SettingsActivity {
+        /* empty */
+    }
     public static class VpnSettingsActivity extends SettingsActivity { /* empty */ }
     /** Activity for Data saver settings. */
     public static class DataSaverSummaryActivity extends SettingsActivity { /* empty */ }
@@ -519,4 +522,7 @@ public class Settings extends SettingsActivity {
     public static class PreviouslyConnectedDeviceActivity extends SettingsActivity { /* empty */ }
 
     public static class ScreenTimeoutActivity extends SettingsActivity { /* empty */ }
+
+    /** Activity for the Reset mobile network settings. */
+    public static class ResetMobileNetworkSettingsActivity extends SettingsActivity { /* empty */ }
 }

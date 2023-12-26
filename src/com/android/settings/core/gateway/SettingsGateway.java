@@ -21,6 +21,7 @@ import com.android.settings.DisplaySettings;
 import com.android.settings.IccLockSettings;
 import com.android.settings.MainClear;
 import com.android.settings.MainClearConfirm;
+import com.android.settings.ResetNetwork;
 import com.android.settings.Settings;
 import com.android.settings.TestingSettings;
 import com.android.settings.TrustedCredentialsSettings;
@@ -166,6 +167,7 @@ import com.android.settings.print.PrintJobSettingsFragment;
 import com.android.settings.print.PrintSettingsFragment;
 import com.android.settings.privacy.PrivacyControlsFragment;
 import com.android.settings.privacy.PrivacyDashboardFragment;
+import com.android.settings.privatespace.onelock.PrivateSpaceBiometricSettings;
 import com.android.settings.regionalpreferences.RegionalPreferencesEntriesFragment;
 import com.android.settings.safetycenter.MoreSecurityPrivacyFragment;
 import com.android.settings.security.LockscreenDashboardFragment;
@@ -266,6 +268,7 @@ public class SettingsGateway {
             FingerprintSettingsV2Fragment.class.getName(),
             CombinedBiometricSettings.class.getName(),
             CombinedBiometricProfileSettings.class.getName(),
+            PrivateSpaceBiometricSettings.class.getName(),
             SwipeToNotificationSettings.class.getName(),
             DoubleTapPowerSettings.class.getName(),
             DoubleTapScreenSettings.class.getName(),
@@ -374,6 +377,7 @@ public class SettingsGateway {
             BatteryInfoFragment.class.getName(),
             UserAspectRatioDetails.class.getName(),
             ScreenTimeoutSettings.class.getName(),
+            ResetNetwork.class.getName(),
     };
 
     public static final String[] SETTINGS_FOR_RESTRICTED = {
