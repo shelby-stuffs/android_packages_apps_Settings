@@ -18,6 +18,7 @@ package com.android.settings.wifi.tether;
 
 import static com.android.settings.AllInOneTetherSettings.DEDUP_POSTFIX;
 
+import android.annotation.NonNull;
 import android.content.Context;
 import android.net.wifi.SoftApCapability;
 import android.net.wifi.SoftApConfiguration;
@@ -26,7 +27,6 @@ import android.util.FeatureFlagUtils;
 import android.util.Log;
 import android.content.res.Resources;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
