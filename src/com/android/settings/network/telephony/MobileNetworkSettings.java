@@ -410,8 +410,10 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
         use(Enable2gPreferenceController.class).init(mSubId);
         use(CarrierWifiTogglePreferenceController.class).init(getLifecycle(), mSubId);
 
-        final WifiCallingPreferenceController wifiCallingPreferenceController =
-                use(WifiCallingPreferenceController.class).init(mSubId);
+        final CallingPreferenceCategoryController callingPreferenceCategoryController =
+                use(CallingPreferenceCategoryController.class);
+        use(WifiCallingPreferenceController.class)
+                .init(mSubId, callingPreferenceCategoryController);
 
         final OpenNetworkSelectPagePreferenceController openNetworkSelectPagePreferenceController =
                 use(OpenNetworkSelectPagePreferenceController.class).init(mSubId);
@@ -433,13 +435,8 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
         mCdmaSubscriptionPreferenceController.init(getPreferenceManager(), mSubId);
 
         final VideoCallingPreferenceController videoCallingPreferenceController =
-                use(VideoCallingPreferenceController.class).init(mSubId);
-        // final BackupCallingPreferenceController crossSimCallingPreferenceController =
-        //         use(BackupCallingPreferenceController.class).init(getFragmentManager(), mSubId);
-        // use(CallingPreferenceCategoryController.class).setChildren(
-        //         Arrays.asList(wifiCallingPreferenceController, videoCallingPreferenceController,
-        //                 crossSimCallingPreferenceController));
-        use(Enabled5GPreferenceController.class).init(mSubId);
+                use(VideoCallingPreferenceController.class)
+                        .init(mSubId, callingPreferenceCategoryController);
         use(Enhanced4gLtePreferenceController.class).init(mSubId)
                 .addListener(videoCallingPreferenceController);
         use(Enhanced4gCallingPreferenceController.class).init(mSubId)
