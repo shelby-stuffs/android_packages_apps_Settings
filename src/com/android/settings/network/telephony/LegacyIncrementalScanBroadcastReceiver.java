@@ -207,10 +207,7 @@ public class LegacyIncrementalScanBroadcastReceiver extends BroadcastReceiver {
                         operatorStateString);
 
                 CellInfo cellinfo =
-                        CellInfoUtil.convertLegacyIncrScanOperatorInfoToCellInfo(operatorInfo);
-
-                Log.d(TAG, "OperatorInfo: " + operatorInfo.toString()
-                        + " CellInfo: " + CellInfoUtil.cellInfoToString(cellinfo));
+                        CellInfoUtil.convertOperatorInfoToCellInfo(operatorInfo);
 
                 cellInfoList.add(cellinfo);
             }
