@@ -25,14 +25,12 @@ package com.android.settings.network.telephony;
 
 import static android.telephony.SignalStrength.NUM_SIGNAL_STRENGTH_BINS;
 
+import static com.android.settings.network.telephony.CellInfoUtil.getOperatorNumeric;
+
 import android.content.Context;
 import android.telephony.AccessNetworkConstants.AccessNetworkType;
 import android.telephony.CellIdentity;
-import android.telephony.CellIdentityGsm;
-import android.telephony.CellIdentityLte;
 import android.telephony.CellIdentityNr;
-import android.telephony.CellIdentityTdscdma;
-import android.telephony.CellIdentityWcdma;
 import android.telephony.CellInfo;
 import android.telephony.CellInfoCdma;
 import android.telephony.CellInfoGsm;
@@ -44,6 +42,7 @@ import android.telephony.CellSignalStrength;
 import android.telephony.SubscriptionManager;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 
@@ -104,7 +103,7 @@ public class NetworkOperatorPreference extends Preference {
      * Change cell information
      */
     public void updateCell(CellInfo cellinfo) {
-        updateCell(cellinfo, CellInfoUtil.getCellIdentity(cellinfo));
+        updateCell(cellinfo, cellinfo.getCellIdentity());
     }
 
     @VisibleForTesting
@@ -122,14 +121,14 @@ public class NetworkOperatorPreference extends Preference {
         if (cellinfo == null) {
             return false;
         }
-        return mCellId.equals(CellInfoUtil.getCellIdentity(cellinfo));
+        return mCellId.equals(cellinfo.getCellIdentity());
     }
 
     /**
      * Return true when this preference is for forbidden network
      */
     public boolean isForbiddenNetwork() {
-        return ((mForbiddenPlmns != null) && mForbiddenPlmns.contains(getOperatorNumeric()));
+        return ((mForbiddenPlmns != null) && mForbiddenPlmns.contains(getOperatorNumeric(mCellId)));
     }
 
     /**
@@ -139,18 +138,20 @@ public class NetworkOperatorPreference extends Preference {
         String networkTitle = getOperatorName();
         if (DomesticRoamUtils.isFeatureEnabled(getContext())) {
             String mplmnOperatorName = DomesticRoamUtils.getMPLMNOperatorName(getContext(),
-                    mSubId, getOperatorNumeric());
+                    mSubId, getOperatorNumeric(mCellId));
             if (DomesticRoamUtils.EMPTY_OPERATOR_NAME != mplmnOperatorName) {
                 networkTitle = mplmnOperatorName;
             }
         }
 
-        if(MobileNetworkUtils.isCagSnpnEnabled(getContext()) &&
-                mCellId instanceof CellIdentityNr) {
-            String networkInfo = getNetworkInfo();
-            Log.d(TAG, "networkInfo: " + networkInfo);
-            networkTitle += " " + networkInfo;
-        }
+// KEYSTONE(I8f03722a19f44fc3b5c60bffa6465887e4915cdd,b/318849658)
+//        TODO: perhaps re-enable if getNetworkInfo gets ported into CellInfoUtil.kt (b/318849658)
+//        if(MobileNetworkUtils.isCagSnpnEnabled(getContext()) &&
+//                mCellId instanceof CellIdentityNr) {
+//            String networkInfo = getNetworkInfo();
+//            Log.d(TAG, "networkInfo: " + networkInfo);
+//            networkTitle += " " + networkInfo;
+//        }
 
         if (isForbiddenNetwork()) {
             if (DBG) Log.d(TAG, "refresh forbidden network: " + networkTitle);
@@ -187,53 +188,21 @@ public class NetworkOperatorPreference extends Preference {
     }
 
     /**
-     * Operator numeric of this cell
-     */
-    public String getOperatorNumeric() {
-        final CellIdentity cellId = mCellId;
-        if (cellId == null) {
-            return null;
-        }
-        if (cellId instanceof CellIdentityGsm) {
-            return ((CellIdentityGsm) cellId).getMobileNetworkOperator();
-        }
-        if (cellId instanceof CellIdentityWcdma) {
-            return ((CellIdentityWcdma) cellId).getMobileNetworkOperator();
-        }
-        if (cellId instanceof CellIdentityTdscdma) {
-            return ((CellIdentityTdscdma) cellId).getMobileNetworkOperator();
-        }
-        if (cellId instanceof CellIdentityLte) {
-            return ((CellIdentityLte) cellId).getMobileNetworkOperator();
-        }
-        if (cellId instanceof CellIdentityNr) {
-            if(MobileNetworkUtils.isCagSnpnEnabled(getContext())) {
-                if (((CellIdentityNr) cellId).getSnpnInfo() != null) {
-                    return ((CellIdentityNr) cellId).getSnpnInfo().getOperatorNumeric();
-                }
-            }
-            final String mcc = ((CellIdentityNr) cellId).getMccString();
-            if (mcc == null) {
-                return null;
-            }
-            return mcc.concat(((CellIdentityNr) cellId).getMncString());
-        }
-        return null;
-    }
-
-    /**
      * Operator name of this cell
      */
+    @Nullable
     public String getOperatorName() {
-        return CellInfoUtil.getNetworkTitle(mCellId, getOperatorNumeric());
+        return CellInfoUtil.getNetworkTitle(mCellId);
     }
 
     /**
      * Operator summary of this cell
      */
-    public String getNetworkInfo() {
-        return CellInfoUtil.getNetworkInfo((CellIdentityNr) mCellId);
-    }
+// KEYSTONE(I8f03722a19f44fc3b5c60bffa6465887e4915cdd,b/318849658)
+// There is now no getNetworkInfo() method in CellInfoUtil.kt
+//    public String getNetworkInfo() {
+//        return CellInfoUtil.getNetworkInfo((CellIdentityNr) mCellId);
+//    }
 
 
     /**
@@ -244,19 +213,19 @@ public class NetworkOperatorPreference extends Preference {
             if(mCellId instanceof CellIdentityNr) {
                 return new OperatorInfo(Objects.toString(mCellId.getOperatorAlphaLong(), ""),
                         Objects.toString(mCellId.getOperatorAlphaShort(), ""),
-                        getOperatorNumeric(), getAccessNetworkTypeFromCellInfo(mCellInfo),
+                        getOperatorNumeric(mCellId), getAccessNetworkTypeFromCellInfo(mCellInfo),
                         mAccessMode, ((CellIdentityNr) mCellId).getCagInfo(),
                         ((CellIdentityNr) mCellId).getSnpnInfo());
             } else {
                 return new OperatorInfo(Objects.toString(mCellId.getOperatorAlphaLong(), ""),
                     Objects.toString(mCellId.getOperatorAlphaShort(), ""),
-                    getOperatorNumeric(), getAccessNetworkTypeFromCellInfo(mCellInfo),
+                    getOperatorNumeric(mCellId), getAccessNetworkTypeFromCellInfo(mCellInfo),
                     mAccessMode, null, null);
             }
         } else {
             return new OperatorInfo(Objects.toString(mCellId.getOperatorAlphaLong(), ""),
                     Objects.toString(mCellId.getOperatorAlphaShort(), ""),
-                    getOperatorNumeric(), getAccessNetworkTypeFromCellInfo(mCellInfo));
+                    getOperatorNumeric(mCellId), getAccessNetworkTypeFromCellInfo(mCellInfo));
         }
     }
 
