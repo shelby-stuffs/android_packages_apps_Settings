@@ -300,7 +300,6 @@ public class WifiTetherSettings extends RestrictedDashboardFragment
         mPasswordPreferenceController.setSecurityType(config.getSecurityType());
 
         mWifiTetherViewModel.setSoftApConfiguration(config);
-        use(WifiTetherAutoOffPreferenceController.class).updateDisplay();
 
         if (mSecurityPreferenceController.isOweDualSapSupported()) {
             if (config.getSecurityType() == SoftApConfiguration.SECURITY_TYPE_WPA3_OWE_TRANSITION
