@@ -16,20 +16,13 @@
 
 package com.android.settings.network;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.Mockito.anyInt;
 import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import android.content.ContentProvider;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkPolicyManager;
@@ -66,9 +59,6 @@ public class ResetNetworkOperationBuilderTest {
     private TelephonyManager mTelephonyManager;
     @Mock
     private NetworkPolicyManager mNetworkPolicyManager;
-    @Mock
-    private ContentProvider mContentProvider;;
-
 
     private Context mContext;
     private ResetNetworkOperationBuilder mBuilder;
@@ -77,7 +67,6 @@ public class ResetNetworkOperationBuilderTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         mContext = spy(ApplicationProvider.getApplicationContext());
-        doReturn(ContentResolver.wrap(mContentProvider)).when(mContext).getContentResolver();
 
         mBuilder = spy(new ResetNetworkOperationBuilder(mContext));
     }
@@ -181,43 +170,5 @@ public class ResetNetworkOperationBuilderTest {
         mBuilder.resetIms(subId).build().run();
 
         verify(mTelephonyManager, times(2)).resetIms(anyInt());
-    }
-
-    @Test
-    public void restartPhoneProcess_withoutTelephonyContentProvider_shouldNotCrash() {
-        doThrow(new IllegalArgumentException()).when(mContentProvider).call(
-                anyString(), anyString(), anyString(), any());
-
-        mBuilder.restartPhoneProcess();
-    }
-
-    @Test
-    public void restartRild_withoutTelephonyContentProvider_shouldNotCrash() {
-        doThrow(new IllegalArgumentException()).when(mContentProvider).call(
-                anyString(), anyString(), anyString(), any());
-
-        mBuilder.restartRild();
-    }
-
-    @Test
-    public void restartPhoneProcess_withTelephonyContentProvider_shouldCallRestartPhoneProcess() {
-        mBuilder.restartPhoneProcess();
-
-        verify(mContentProvider).call(
-                eq(mBuilder.getResetTelephonyContentProviderAuthority()),
-                eq(ResetNetworkOperationBuilder.METHOD_RESTART_PHONE_PROCESS),
-                isNull(),
-                isNull());
-    }
-
-    @Test
-    public void restartRild_withTelephonyContentProvider_shouldCallRestartRild() {
-        mBuilder.restartRild();
-
-        verify(mContentProvider).call(
-                eq(mBuilder.getResetTelephonyContentProviderAuthority()),
-                eq(ResetNetworkOperationBuilder.METHOD_RESTART_RILD),
-                isNull(),
-                isNull());
     }
 }

@@ -304,7 +304,7 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
         });
 
         return Arrays.asList(
-                new DataUsageSummaryPreferenceController(context, mSubId),
+                new DataUsageSummaryPreferenceController(getActivity(), mSubId),
                 new RoamingPreferenceController(context, KEY_ROAMING_PREF, getSettingsLifecycle(),
                         this, mSubId),
                 new DataDefaultSubscriptionController(context, KEY_DATA_PREF,
@@ -368,6 +368,11 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
 
         }
 
+        final DataUsageSummaryPreferenceController dataUsageSummaryPreferenceController =
+                use(DataUsageSummaryPreferenceController.class);
+        if (dataUsageSummaryPreferenceController != null) {
+            dataUsageSummaryPreferenceController.init(mSubId);
+        }
         use(MobileNetworkSwitchController.class).init(mSubId);
         use(CarrierSettingsVersionPreferenceController.class).init(mSubId);
         use(BillingCyclePreferenceController.class).init(mSubId);

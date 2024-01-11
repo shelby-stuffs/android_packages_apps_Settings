@@ -17,7 +17,6 @@
 package com.android.settings.datausage;
 
 import static com.google.common.truth.Truth.assertThat;
-
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
@@ -91,7 +90,7 @@ public class DataUsageSummaryPreferenceTest {
 
     @Test
     public void testSetUsageInfo_withNoDataPlans_carrierInfoNotShown() {
-        mSummaryPreference.setUsageInfo(mCycleEnd, -1, FAKE_CARRIER, 0 /* numPlans */);
+        mSummaryPreference.setUsageInfo(mCycleEnd, mUpdateTime, FAKE_CARRIER, 0 /* numPlans */);
 
         mSummaryPreference.onBindViewHolder(mHolder);
         assertThat(mSummaryPreference.getCarrierInfo(mHolder).getVisibility())
@@ -198,7 +197,7 @@ public class DataUsageSummaryPreferenceTest {
 
     @Test
     public void testSetUsageInfo_withNoDataPlans_usageTitleNotShown() {
-        mSummaryPreference.setUsageInfo(mCycleEnd, -1, FAKE_CARRIER, 0 /* numPlans */);
+        mSummaryPreference.setUsageInfo(mCycleEnd, mUpdateTime, FAKE_CARRIER, 0 /* numPlans */);
 
         mSummaryPreference.onBindViewHolder(mHolder);
         assertThat(mSummaryPreference.getUsageTitle(mHolder).getVisibility()).isEqualTo(View.GONE);
@@ -217,7 +216,7 @@ public class DataUsageSummaryPreferenceTest {
     public void testSetUsageInfo_cycleRemainingTimeIsLessOneDay() {
         // just under one day
         final long cycleEnd = System.currentTimeMillis() + TimeUnit.HOURS.toMillis(23);
-        mSummaryPreference.setUsageInfo(cycleEnd, -1, FAKE_CARRIER, 0 /* numPlans */);
+        mSummaryPreference.setUsageInfo(cycleEnd, mUpdateTime, FAKE_CARRIER, 0 /* numPlans */);
 
         mSummaryPreference.onBindViewHolder(mHolder);
         assertThat(mSummaryPreference.getCycleTime(mHolder).getVisibility())
@@ -230,7 +229,7 @@ public class DataUsageSummaryPreferenceTest {
     @Test
     public void testSetUsageInfo_cycleRemainingTimeNegativeDaysLeft_shouldDisplayNoneLeft() {
         final long cycleEnd = System.currentTimeMillis() - 1L;
-        mSummaryPreference.setUsageInfo(cycleEnd, -1, FAKE_CARRIER, 0 /* numPlans */);
+        mSummaryPreference.setUsageInfo(cycleEnd, mUpdateTime, FAKE_CARRIER, 0 /* numPlans */);
 
         mSummaryPreference.onBindViewHolder(mHolder);
         assertThat(mSummaryPreference.getCycleTime(mHolder).getVisibility())
@@ -244,7 +243,7 @@ public class DataUsageSummaryPreferenceTest {
         final int daysLeft = 3;
         final long cycleEnd = System.currentTimeMillis() + TimeUnit.DAYS.toMillis(daysLeft)
                 + TimeUnit.HOURS.toMillis(1);
-        mSummaryPreference.setUsageInfo(cycleEnd, -1, FAKE_CARRIER, 0 /* numPlans */);
+        mSummaryPreference.setUsageInfo(cycleEnd, mUpdateTime, FAKE_CARRIER, 0 /* numPlans */);
 
         mSummaryPreference.onBindViewHolder(mHolder);
         assertThat(mSummaryPreference.getCycleTime(mHolder).getVisibility())
@@ -330,7 +329,8 @@ public class DataUsageSummaryPreferenceTest {
         mSummaryPreference.setUsageInfo(mCycleEnd, mUpdateTime, FAKE_CARRIER, 1 /* numPlans */);
         mSummaryPreference.setUsageNumbers(
                 BillingCycleSettings.MIB_IN_BYTES,
-                10 * BillingCycleSettings.MIB_IN_BYTES);
+                10 * BillingCycleSettings.MIB_IN_BYTES,
+                true /* hasMobileData */);
 
         mSummaryPreference.onBindViewHolder(mHolder);
         assertThat(mSummaryPreference.getDataUsed(mHolder).getText().toString())
@@ -349,7 +349,8 @@ public class DataUsageSummaryPreferenceTest {
         mSummaryPreference.setUsageInfo(mCycleEnd, mUpdateTime, FAKE_CARRIER, 1 /* numPlans */);
         mSummaryPreference.setUsageNumbers(
                 11 * BillingCycleSettings.MIB_IN_BYTES,
-                10 * BillingCycleSettings.MIB_IN_BYTES);
+                10 * BillingCycleSettings.MIB_IN_BYTES,
+                true /* hasMobileData */);
 
         mSummaryPreference.onBindViewHolder(mHolder);
         assertThat(mSummaryPreference.getDataUsed(mHolder).getText().toString())
@@ -363,9 +364,9 @@ public class DataUsageSummaryPreferenceTest {
 
     @Test
     public void testSetUsageInfo_withUsageInfo_dataUsageShown() {
-        mSummaryPreference.setUsageInfo(mCycleEnd, -1, FAKE_CARRIER, 0 /* numPlans */);
+        mSummaryPreference.setUsageInfo(mCycleEnd, mUpdateTime, FAKE_CARRIER, 0 /* numPlans */);
         mSummaryPreference.setUsageNumbers(
-                BillingCycleSettings.MIB_IN_BYTES, -1L);
+                BillingCycleSettings.MIB_IN_BYTES, -1L, true /* hasMobileData */);
 
         mSummaryPreference.onBindViewHolder(mHolder);
         assertThat(mSummaryPreference.getDataUsed(mHolder).getText().toString())
@@ -382,7 +383,8 @@ public class DataUsageSummaryPreferenceTest {
         mSummaryPreference.setUsageInfo(mCycleEnd, mUpdateTime, FAKE_CARRIER, 1 /* numPlans */);
         mSummaryPreference.setUsageNumbers(
                 BillingCycleSettings.MIB_IN_BYTES,
-                10 * BillingCycleSettings.MIB_IN_BYTES);
+                10 * BillingCycleSettings.MIB_IN_BYTES,
+                true /* hasMobileData */);
 
         int data_used_formatted_id = ResourcesUtils.getResourcesId(
                 mContext, "string", "data_used_formatted");
