@@ -49,7 +49,6 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Keep;
-import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
@@ -492,7 +491,8 @@ public class NetworkSelectSettings extends DashboardFragment implements
         mCellInfoList = doAggregation(results);
         Log.d(TAG, "CellInfoList: " + CellInfoUtil.cellInfoListToString(mCellInfoList));
         if (mCellInfoList != null && mCellInfoList.size() != 0) {
-            final NetworkOperatorPreference connectedPref = updateAllPreferenceCategory();
+            final NetworkOperatorPreference connectedPref =
+                    updateAllPreferenceCategory();
             if (connectedPref != null) {
                 // update selected preference instance into connected preference
                 mSelectedPreference = connectedPref;
@@ -510,16 +510,10 @@ public class NetworkSelectSettings extends DashboardFragment implements
     @Keep
     @VisibleForTesting
     protected NetworkOperatorPreference createNetworkOperatorPreference(CellInfo cellInfo) {
-        if (mForbiddenPlmns == null) {
-            updateForbiddenPlmns();
-        }
-        NetworkOperatorPreference preference =
-            new NetworkOperatorPreference(getPrefContext(),
-                mForbiddenPlmns, mShow4GForLTE,
+        return new NetworkOperatorPreference(getPrefContext(),
+                cellInfo, mForbiddenPlmns, mShow4GForLTE,
                 MobileNetworkUtils.getAccessMode(getPrefContext().getApplicationContext(),
                         mTelephonyManager.getSlotIndex()));
-        preference.updateCell(cellInfo);
-        return preference;
     }
 
     /**
@@ -527,7 +521,6 @@ public class NetworkSelectSettings extends DashboardFragment implements
      *
      * @return preference which shows connected
      */
-    @Nullable
     private NetworkOperatorPreference updateAllPreferenceCategory() {
         int numberOfPreferences = mPreferenceCategory.getPreferenceCount();
 
@@ -640,10 +633,9 @@ public class NetworkSelectSettings extends DashboardFragment implements
                     continue;
                 }
                 final NetworkOperatorPreference pref = new NetworkOperatorPreference(
-                        getPrefContext(), mForbiddenPlmns, mShow4GForLTE,
+                        getPrefContext(), cellIdentity, mForbiddenPlmns, mShow4GForLTE,
                         MobileNetworkUtils.getAccessMode(getPrefContext().getApplicationContext(),
                                 mTelephonyManager.getSlotIndex()));
-                pref.updateCell(null, cellIdentity);
                 if (pref.isForbiddenNetwork()) {
                     continue;
                 }

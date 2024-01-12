@@ -33,7 +33,7 @@
         android:icon="@drawable/ic_bt_audio_sharing"
         settings:controller="com.android.settings.connecteddevice.audiosharing.AudioSharingPreferenceController"/>
 
-    <com.android.settingslib.RestrictedPreference
+    <Preference
         android:fragment="com.android.settings.connecteddevice.NfcAndPaymentFragment"
         android:key="nfc_and_payment_settings"
         android:title="@string/nfc_quick_toggle_title"
@@ -69,7 +69,7 @@
         android:fragment="com.android.settings.print.PrintSettingsFragment"
         android:order="-3"/>
 
-    <com.android.settingslib.RestrictedSwitchPreference
+    <SwitchPreferenceCompat
         android:key="uwb_settings"
         android:title="@string/uwb_settings_title"
         android:order="100"
