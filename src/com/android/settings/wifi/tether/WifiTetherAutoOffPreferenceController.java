@@ -19,12 +19,9 @@ package com.android.settings.wifi.tether;
 import android.content.Context;
 import android.net.wifi.SoftApConfiguration;
 import android.net.wifi.WifiManager;
-import android.util.Log;
 
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
-import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 import androidx.preference.TwoStatePreference;
 
@@ -37,8 +34,6 @@ public class WifiTetherAutoOffPreferenceController extends BasePreferenceControl
 
     private final WifiManager mWifiManager;
     private boolean mSettingsOn;
-    private String TAG = "WifiTetherAutoOffPreferenceController";
-    private SwitchPreference mPreference = null;
     @VisibleForTesting
     boolean mNeedShutdownSecondarySap;
 
@@ -55,19 +50,6 @@ public class WifiTetherAutoOffPreferenceController extends BasePreferenceControl
     @Override
     public int getAvailabilityStatus() {
         return AVAILABLE;
-    }
-
-    @Override
-    public void displayPreference(PreferenceScreen scr) {
-        super.displayPreference(scr);
-        mPreference = scr.findPreference(getPreferenceKey());
-    }
-
-    public void updateDisplay() {
-        if(mPreference != null)
-            updateState(mPreference);
-        else
-            Log.e(TAG, "updateDisplay Failed, cannot find switch preference");
     }
 
     @Override
