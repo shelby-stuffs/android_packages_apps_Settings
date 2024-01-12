@@ -292,8 +292,7 @@ public class AppButtonsPreferenceController extends BasePreferenceController imp
         switch (id) {
             case ButtonActionDialogFragment.DialogType.DISABLE:
                 mMetricsFeatureProvider.action(mActivity,
-                        SettingsEnums.ACTION_SETTINGS_DISABLE_APP,
-                        getPackageNameForMetric());
+                        SettingsEnums.ACTION_SETTINGS_DISABLE_APP);
                 AsyncTask.execute(new DisableChangerRunnable(mPm, mAppEntry.info.packageName,
                         PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER));
                 break;

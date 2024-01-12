@@ -27,7 +27,6 @@ import com.android.settingslib.NetworkPolicyEditor
 interface INetworkCycleDataRepository {
     fun getCycles(): List<Range<Long>>
     fun getPolicy(): NetworkPolicy?
-    fun queryUsage(range: Range<Long>): NetworkUsageData
 }
 
 class NetworkCycleDataRepository(
@@ -41,8 +40,12 @@ class NetworkCycleDataRepository(
 
     fun loadFirstCycle(): NetworkUsageData? = getCycles().firstOrNull()?.let { queryUsage(it) }
 
-    override fun getCycles(): List<Range<Long>> =
-        getPolicy()?.getCycles() ?: queryCyclesAsFourWeeks()
+    override fun getCycles(): List<Range<Long>> {
+        val policy = getPolicy() ?: return queryCyclesAsFourWeeks()
+        return policy.cycleIterator().asSequence().map {
+            Range(it.lower.toInstant().toEpochMilli(), it.upper.toInstant().toEpochMilli())
+        }.toList()
+    }
 
     private fun queryCyclesAsFourWeeks(): List<Range<Long>> {
         val timeRange = networkStatsRepository.getTimeRange() ?: return emptyList()
@@ -60,17 +63,13 @@ class NetworkCycleDataRepository(
         }
 
 
-    override fun queryUsage(range: Range<Long>) = NetworkUsageData(
+    fun queryUsage(range: Range<Long>) = NetworkUsageData(
         startTime = range.lower,
         endTime = range.upper,
         usage = networkStatsRepository.querySummaryForDevice(range.lower, range.upper),
     )
 
     companion object {
-        fun NetworkPolicy.getCycles() = cycleIterator().asSequence().map {
-            Range(it.lower.toInstant().toEpochMilli(), it.upper.toInstant().toEpochMilli())
-        }.toList()
-
         fun bucketRange(startTime: Long, endTime: Long, step: Long): List<Range<Long>> =
             (startTime..endTime step step).zipWithNext(::Range)
 

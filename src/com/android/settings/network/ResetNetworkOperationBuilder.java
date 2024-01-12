@@ -33,8 +33,6 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-import com.android.internal.annotations.VisibleForTesting;
-import com.android.settings.R;
 import com.android.settings.ResetNetworkRequest;
 import com.android.settings.network.apn.ApnSettings;
 
@@ -51,13 +49,6 @@ public class ResetNetworkOperationBuilder {
     private static final String TAG = "ResetNetworkOpBuilder";
 
     private static final boolean DRY_RUN = false;
-
-    // TelephonyContentProvider method to restart phone process
-    @VisibleForTesting
-    static final String METHOD_RESTART_PHONE_PROCESS = "restartPhoneProcess";
-    // TelephonyContentProvider method to restart RILD
-    @VisibleForTesting
-    static final String METHOD_RESTART_RILD = "restartRild";
 
     private Context mContext;
     private List<Runnable> mResetSequence = new ArrayList<Runnable>();
@@ -238,53 +229,13 @@ public class ResetNetworkOperationBuilder {
                         // Reset IMS for all slots
                         for (int slotIndex = 0; slotIndex < tm.getActiveModemCount(); slotIndex++) {
                             tm.resetIms(slotIndex);
-                            Log.i(TAG, "IMS was reset for slot " + slotIndex);
                         }
                     } else {
                         // Reset IMS for the slot specified by the sucriptionId.
                         final int slotIndex = SubscriptionManager.getSlotIndex(subId);
                         tm.resetIms(slotIndex);
-                        Log.i(TAG, "IMS was reset for slot " + slotIndex);
                     }
                 });
-        return this;
-    }
-
-    /**
-     * Append a step to restart phone process by the help of TelephonyContentProvider.
-     * It's a no-op if TelephonyContentProvider doesn't exist.
-     * @return this
-     */
-    public ResetNetworkOperationBuilder restartPhoneProcess() {
-        try {
-            mContext.getContentResolver().call(
-                    getResetTelephonyContentProviderAuthority(),
-                    METHOD_RESTART_PHONE_PROCESS,
-                    /* arg= */ null,
-                    /* extras= */ null);
-            Log.i(TAG, "Phone process was restarted.");
-        } catch (IllegalArgumentException iae) {
-            Log.w(TAG, "Fail to restart phone process: " + iae);
-        }
-        return this;
-    }
-
-    /**
-     * Append a step to restart RILD by the help of TelephonyContentProvider.
-     * It's a no-op if TelephonyContentProvider doesn't exist.
-     * @return this
-     */
-    public ResetNetworkOperationBuilder restartRild() {
-        try {
-            mContext.getContentResolver().call(
-                    getResetTelephonyContentProviderAuthority(),
-                    METHOD_RESTART_RILD,
-                    /* arg= */ null,
-                    /* extras= */ null);
-            Log.i(TAG, "RILD was restarted.");
-        } catch (IllegalArgumentException iae) {
-            Log.w(TAG, "Fail to restart RILD: " + iae);
-        }
         return this;
     }
 
@@ -310,15 +261,5 @@ public class ResetNetworkOperationBuilder {
             Log.i(TAG, "Reset " + serviceName + ", takes " + (endTime - startTime) + " ms");
         };
         mResetSequence.add(runnable);
-    }
-
-    /**
-     * @return the authority of the telephony content provider that support methods
-     * resetPhoneProcess and resetRild.
-     */
-    @VisibleForTesting
-    String getResetTelephonyContentProviderAuthority() {
-        return mContext.getResources().getString(
-                R.string.reset_telephony_stack_content_provider_authority);
     }
 }

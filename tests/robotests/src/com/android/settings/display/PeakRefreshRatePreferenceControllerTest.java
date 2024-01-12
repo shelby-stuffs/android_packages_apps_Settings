@@ -25,18 +25,11 @@ import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
-import android.platform.test.annotations.RequiresFlagsDisabled;
-import android.platform.test.annotations.RequiresFlagsEnabled;
-import android.platform.test.flag.junit.CheckFlagsRule;
-import android.platform.test.flag.junit.DeviceFlagsValueProvider;
 import android.provider.Settings;
 
 import androidx.preference.SwitchPreference;
 
-import com.android.server.display.feature.flags.Flags;
-
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -55,9 +48,6 @@ public class PeakRefreshRatePreferenceControllerTest {
     @Mock
     private PeakRefreshRatePreferenceController.DeviceConfigDisplaySettings
             mDeviceConfigDisplaySettings;
-
-    @Rule
-    public final CheckFlagsRule mCheckFlagsRule = DeviceFlagsValueProvider.createCheckFlagsRule();
 
     @Before
     public void setUp() {
@@ -89,19 +79,7 @@ public class PeakRefreshRatePreferenceControllerTest {
     }
 
     @Test
-    @RequiresFlagsDisabled(Flags.FLAG_BACK_UP_SMOOTH_DISPLAY_AND_FORCE_PEAK_REFRESH_RATE)
-    public void setChecked_enableSmoothDisplay_featureFlagOff() {
-        mController.mPeakRefreshRate = 88f;
-        mController.setChecked(true);
-
-        assertThat(Settings.System.getFloat(mContext.getContentResolver(),
-                Settings.System.PEAK_REFRESH_RATE, DEFAULT_REFRESH_RATE))
-                .isEqualTo(88f);
-    }
-
-    @Test
-    @RequiresFlagsEnabled(Flags.FLAG_BACK_UP_SMOOTH_DISPLAY_AND_FORCE_PEAK_REFRESH_RATE)
-    public void setChecked_enableSmoothDisplay_featureFlagOn() {
+    public void setChecked_enableSmoothDisplay_setRefreshRateToInfinity() {
         mController.mPeakRefreshRate = 88f;
         mController.setChecked(true);
 
@@ -122,16 +100,14 @@ public class PeakRefreshRatePreferenceControllerTest {
 
     @Test
     public void isChecked_enableSmoothDisplay_returnTrue() {
-        mController.mPeakRefreshRate = 88f;
-        mController.setChecked(true);
+        enableSmoothDisplayPreference();
 
         assertThat(mController.isChecked()).isTrue();
     }
 
     @Test
     public void isChecked_disableSmoothDisplay_returnFalse() {
-        mController.mPeakRefreshRate = 88f;
-        mController.setChecked(false);
+        disableSmoothDisplayPreference();
 
         assertThat(mController.isChecked()).isFalse();
     }
@@ -151,5 +127,23 @@ public class PeakRefreshRatePreferenceControllerTest {
         when(mDeviceConfigDisplaySettings.getDefaultPeakRefreshRate()).thenReturn(60f);
 
         assertThat(mController.isChecked()).isFalse();
+    }
+
+    private void enableSmoothDisplayPreference() {
+        mController.mPeakRefreshRate = 88f;
+
+        Settings.System.putFloat(
+                mContext.getContentResolver(),
+                Settings.System.PEAK_REFRESH_RATE,
+                mController.mPeakRefreshRate);
+    }
+
+    private void disableSmoothDisplayPreference() {
+        mController.mPeakRefreshRate = 88f;
+
+        Settings.System.putFloat(
+                mContext.getContentResolver(),
+                Settings.System.PEAK_REFRESH_RATE,
+                DEFAULT_REFRESH_RATE);
     }
 }
