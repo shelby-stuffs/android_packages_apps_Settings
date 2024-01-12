@@ -5123,6 +5123,15 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
             android:authorities="${applicationId}.androidx-startup"
             tools:node="remove" />
 
+        <receiver
+            android:name=".network.telephony.CiwlanNotificationReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.qti.phone.action.ACTION_DISABLE_CIWLAN_NOTIFICATION" />
+                <action android:name="org.codeaurora.intent.action.RADIO_POWER_STATE" />
+            </intent-filter>
+        </receiver>
+
         <!-- This is the longest AndroidManifest.xml ever. -->
     </application>
 </manifest>
