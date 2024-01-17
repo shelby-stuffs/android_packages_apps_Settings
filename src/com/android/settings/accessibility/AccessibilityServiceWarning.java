@@ -67,7 +67,11 @@ public class AccessibilityServiceWarning {
         void uninstallPackage();
     }
 
-    /** Returns a {@link Dialog} to be shown to confirm that they want to enable a service. */
+    /**
+     * Returns a {@link Dialog} to be shown to confirm that they want to enable a service.
+     * @deprecated Use {@link com.android.internal.accessibility.dialog.AccessibilityServiceWarning}
+     */
+    @Deprecated
     public static Dialog createCapabilitiesDialog(@NonNull Context context,
             @NonNull AccessibilityServiceInfo info, @NonNull View.OnClickListener listener,
             @NonNull UninstallActionPerformer performer) {
@@ -135,9 +139,6 @@ public class AccessibilityServiceWarning {
 
         return new AlertDialog.Builder(context)
                 .setTitle(context.getString(R.string.disable_service_title, serviceName))
-                .setMessage(context.getString(R.string.disable_service_message,
-                        context.getString(R.string.accessibility_dialog_button_stop),
-                        serviceName))
                 .setCancelable(true)
                 .setPositiveButton(R.string.accessibility_dialog_button_stop, listener)
                 .setNegativeButton(R.string.accessibility_dialog_button_cancel, listener)

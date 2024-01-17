@@ -165,6 +165,13 @@
     <item name="face_preview_scale" format="float" type="dimen">1.0</item>
     <dimen name="face_enroll_intro_illustration_margin_bottom">0dp</dimen>
 
+    <!-- Keyboard -->
+    <dimen name="keyboard_picker_margin_large">68dp</dimen>
+    <dimen name="keyboard_picker_margin">24dp</dimen>
+    <dimen name="keyboard_picker_margin_small">16dp</dimen>
+    <dimen name="keyboard_picker_radius">28dp</dimen>
+    <dimen name="keyboard_picker_text_size">16sp</dimen>
+
     <!-- RemoteAuth-->
     <dimen name="remoteauth_fragment_padding_horizontal">40dp</dimen>
     <dimen name="remoteauth_fragment_subtitle_text_size">14sp</dimen>
@@ -223,10 +230,14 @@
     <dimen name="message_icon_inset">11dp</dimen>
 
     <!-- Text Reading Settings -->
-    <dimen name="text_reading_preview_padding_start">@*android:dimen/list_item_padding_end_material</dimen>
-    <dimen name="text_reading_preview_padding_end">@*android:dimen/list_item_padding_end_material</dimen>
-    <dimen name="text_reading_preview_background_padding_vertical">18dp</dimen>
-    <dimen name="text_reading_preview_background_padding_horizontal">18dp</dimen>
+    <dimen name="text_reading_preview_layout_padding_horizontal_min">
+        @*android:dimen/list_item_padding_start_material</dimen>
+    <dimen name="text_reading_preview_background_padding_horizontal_min">18dp</dimen>
+
+    <dimen name="text_reading_preview_layout_padding_horizontal_min_suw">
+        @dimen/text_reading_preview_layout_padding_horizontal_min</dimen>
+    <dimen name="text_reading_preview_background_padding_horizontal_min_suw">
+        @dimen/text_reading_preview_background_padding_horizontal_min</dimen>
 
     <!-- Accessibility Settings -->
     <dimen name="accessibility_layout_margin_start_end">16dp</dimen>
@@ -389,7 +400,7 @@
     <dimen name="chartview_divider_height">4dp</dimen>
     <dimen name="chartview_transom_width">4dp</dimen>
     <dimen name="chartview_transom_radius">4dp</dimen>
-    <dimen name="chartview_transom_icon_size">12dp</dimen>
+    <dimen name="chartview_transom_icon_size">18dp</dimen>
     <dimen name="chartview_transom_padding_top">2dp</dimen>
     <dimen name="chartview_transom_layout_height">12dp</dimen>
     <dimen name="chartview_layout_height">182dp</dimen>
@@ -447,7 +458,7 @@
     <dimen name="lottie_animation_view_margin_top">-52dp</dimen>
     <dimen name="limited_vision_button_margin_top">0dp</dimen>
     <dimen name="limited_vision_button_margin_bottom">0dp</dimen>
-    <dimen name="limited_vision_button_toggle_margin_top">0dp</dimen>
+    <dimen name="limited_vision_button_toggle_margin_top">20dp</dimen>
 
     <!-- Default margin for side fps enroll find sensor lottie -->
     <dimen name="sfps_enroll_find_sensor_lottie_margin">0dp</dimen>

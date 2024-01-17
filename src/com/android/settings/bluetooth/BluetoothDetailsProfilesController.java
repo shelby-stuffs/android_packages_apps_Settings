@@ -128,9 +128,12 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
         pref.setOnPreferenceClickListener(this);
         pref.setOrder(profile.getOrdinal());
 
-        if (profile instanceof LeAudioProfile && !isModelNameInAllowList(
+        boolean isLeEnabledByDefault =
+                SystemProperties.getBoolean(LE_AUDIO_CONNECTION_BY_DEFAULT_PROPERTY, true);
+
+        if (profile instanceof LeAudioProfile && (!isLeEnabledByDefault || !isModelNameInAllowList(
                 BluetoothUtils.getStringMetaData(mCachedDevice.getDevice(),
-                        METADATA_MODEL_NAME))) {
+                        METADATA_MODEL_NAME)))) {
             pref.setSummary(R.string.device_details_leaudio_toggle_summary);
         }
         return pref;
@@ -357,14 +360,22 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
         }
 
         LocalBluetoothProfile asha = mProfileManager.getHearingAidProfile();
+        LocalBluetoothProfile broadcastAssistant =
+                mProfileManager.getLeAudioBroadcastAssistantProfile();
 
         for (CachedBluetoothDevice leAudioDevice : mProfileDeviceMap.get(profile.toString())) {
             Log.d(TAG,
                     "device:" + leAudioDevice.getDevice().getAnonymizedAddress()
-                            + "disable LE profile");
+                            + " disable LE profile");
             profile.setEnabled(leAudioDevice.getDevice(), false);
             if (asha != null) {
                 asha.setEnabled(leAudioDevice.getDevice(), true);
+            }
+            if (broadcastAssistant != null) {
+                Log.d(TAG,
+                        "device:" + leAudioDevice.getDevice().getAnonymizedAddress()
+                                + " disable LE broadcast assistant profile");
+                broadcastAssistant.setEnabled(leAudioDevice.getDevice(), false);
             }
         }
 
@@ -392,14 +403,22 @@ public class BluetoothDetailsProfilesController extends BluetoothDetailsControll
             disableProfileBeforeUserEnablesLeAudio(mProfileManager.getHeadsetProfile());
         }
         LocalBluetoothProfile asha = mProfileManager.getHearingAidProfile();
+        LocalBluetoothProfile broadcastAssistant =
+                mProfileManager.getLeAudioBroadcastAssistantProfile();
 
         for (CachedBluetoothDevice leAudioDevice : mProfileDeviceMap.get(profile.toString())) {
             Log.d(TAG,
                     "device:" + leAudioDevice.getDevice().getAnonymizedAddress()
-                            + "enable LE profile");
+                            + " enable LE profile");
             profile.setEnabled(leAudioDevice.getDevice(), true);
             if (asha != null) {
                 asha.setEnabled(leAudioDevice.getDevice(), false);
+            }
+            if (broadcastAssistant != null) {
+                Log.d(TAG,
+                        "device:" + leAudioDevice.getDevice().getAnonymizedAddress()
+                                + " enable LE broadcast assistant profile");
+                broadcastAssistant.setEnabled(leAudioDevice.getDevice(), true);
             }
         }
     }

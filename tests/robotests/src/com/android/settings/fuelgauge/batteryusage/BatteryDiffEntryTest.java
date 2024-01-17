@@ -64,7 +64,6 @@ public final class BatteryDiffEntryTest {
     private static final String UNINSTALLED_PACKAGE_NAME = "com.android.testing.uninstalled";
     private static final String UID_ZERO_PACKAGE_NAME = "com.android.testing.uid.zero";
 
-
     private Context mContext;
 
     @Mock private ApplicationInfo mMockAppInfo;
@@ -82,6 +81,7 @@ public final class BatteryDiffEntryTest {
         MockitoAnnotations.initMocks(this);
         ShadowUserHandle.reset();
         mContext = spy(RuntimeEnvironment.application);
+        BatteryUtils.getInstance(mContext).reset();
         doReturn(mContext).when(mContext).getApplicationContext();
         doReturn(mMockUserManager).when(mContext).getSystemService(UserManager.class);
         doReturn(mMockPackageManager).when(mContext).getPackageManager();
@@ -111,8 +111,9 @@ public final class BatteryDiffEntryTest {
                         /* legacyLabel= */ null,
                         /*consumerType*/ ConvertUtils.CONSUMER_TYPE_UID_BATTERY,
                         /* foregroundUsageTimeInMs= */ 10001L,
-                        /* backgroundUsageTimeInMs= */ 20002L,
-                        /* screenOnTimeInMs= */ 30003L,
+                        /* foregroundServiceUsageTimeInMs= */ 20002L,
+                        /* backgroundUsageTimeInMs= */ 30003L,
+                        /* screenOnTimeInMs= */ 40004L,
                         /* consumePower= */ 22.0,
                         /* foregroundUsageConsumePower= */ 10.0,
                         /* foregroundServiceUsageConsumePower= */ 10.0,
@@ -137,8 +138,9 @@ public final class BatteryDiffEntryTest {
                         /* legacyLabel= */ null,
                         /*consumerType*/ ConvertUtils.CONSUMER_TYPE_UID_BATTERY,
                         /* foregroundUsageTimeInMs= */ 10001L,
-                        /* backgroundUsageTimeInMs= */ 20002L,
-                        /* screenOnTimeInMs= */ 30003L,
+                        /* foregroundServiceUsageTimeInMs= */ 20002L,
+                        /* backgroundUsageTimeInMs= */ 30003L,
+                        /* screenOnTimeInMs= */ 40004L,
                         /* consumePower= */ 22.0,
                         /* foregroundUsageConsumePower= */ 10.0,
                         /* foregroundServiceUsageConsumePower= */ 10.0,
@@ -165,6 +167,7 @@ public final class BatteryDiffEntryTest {
                         /* legacyLabel= */ BatteryDiffEntry.SYSTEM_APPS_KEY,
                         /*consumerType*/ ConvertUtils.CONSUMER_TYPE_UID_BATTERY,
                         /* foregroundUsageTimeInMs= */ 0,
+                        /* foregroundServiceUsageTimeInMs= */ 0,
                         /* backgroundUsageTimeInMs= */ 0,
                         /* screenOnTimeInMs= */ 0,
                         /* consumePower= */ 0,
@@ -351,16 +354,18 @@ public final class BatteryDiffEntryTest {
     }
 
     @Test
-    public void testClearCache_clearDataForResourcesAndFlags() {
+    public void testClearCache_clearDataForAllCaches() {
         BatteryDiffEntry.sResourceCache.put(
                 "fake application key",
                 new BatteryEntry.NameAndIcon("app label", null, /* iconId= */ 0));
         BatteryDiffEntry.sValidForRestriction.put("fake application key", Boolean.valueOf(false));
+        BatteryDiffEntry.sPackageNameAndUidCache.put(PACKAGE_NAME, UID);
 
         BatteryDiffEntry.clearCache();
 
         assertThat(BatteryDiffEntry.sResourceCache).isEmpty();
         assertThat(BatteryDiffEntry.sValidForRestriction).isEmpty();
+        assertThat(BatteryDiffEntry.sPackageNameAndUidCache).isEmpty();
     }
 
     @Test
@@ -444,7 +449,10 @@ public final class BatteryDiffEntryTest {
         final BatteryDiffEntry entry = createBatteryDiffEntry(10, new BatteryHistEntry(values));
 
         assertThat(entry.isSystemEntry()).isFalse();
+        assertThat(BatteryDiffEntry.sPackageNameAndUidCache.containsKey(PACKAGE_NAME)).isFalse();
         assertThat(entry.isUninstalledEntry()).isFalse();
+        assertThat(BatteryDiffEntry.sPackageNameAndUidCache.containsKey(PACKAGE_NAME)).isTrue();
+        assertThat(BatteryDiffEntry.sPackageNameAndUidCache.get(PACKAGE_NAME)).isEqualTo(UID);
     }
 
     @Test
@@ -456,14 +464,13 @@ public final class BatteryDiffEntryTest {
         final BatteryDiffEntry entry = createBatteryDiffEntry(10, new BatteryHistEntry(values));
 
         assertThat(entry.isSystemEntry()).isFalse();
+        assertThat(BatteryDiffEntry.sPackageNameAndUidCache.containsKey(PACKAGE_NAME)).isFalse();
         assertThat(entry.isUninstalledEntry()).isFalse();
+        assertThat(BatteryDiffEntry.sPackageNameAndUidCache.containsKey(PACKAGE_NAME)).isFalse();
     }
 
     @Test
     public void testIsUninstalledEntry_uninstalledApp_returnTrue() throws Exception {
-        doReturn(BatteryUtils.UID_NULL)
-                .when(mMockPackageManager)
-                .getPackageUid(PACKAGE_NAME, PackageManager.GET_META_DATA);
         final ContentValues values =
                 getContentValuesWithType(ConvertUtils.CONSUMER_TYPE_UID_BATTERY);
         values.put(BatteryHistEntry.KEY_UID, UNINSTALLED_UID);
@@ -471,7 +478,11 @@ public final class BatteryDiffEntryTest {
         final BatteryDiffEntry entry = createBatteryDiffEntry(10, new BatteryHistEntry(values));
 
         assertThat(entry.isSystemEntry()).isFalse();
+        assertThat(BatteryDiffEntry.sPackageNameAndUidCache.containsKey(UNINSTALLED_PACKAGE_NAME))
+                .isFalse();
         assertThat(entry.isUninstalledEntry()).isTrue();
+        assertThat(BatteryDiffEntry.sPackageNameAndUidCache.get(UNINSTALLED_PACKAGE_NAME))
+                .isEqualTo(BatteryUtils.UID_NULL);
     }
 
     @Test
@@ -544,6 +555,7 @@ public final class BatteryDiffEntryTest {
                 /* legacyLabel= */ null,
                 /*consumerType*/ consumerType,
                 /* foregroundUsageTimeInMs= */ 0,
+                /* foregroundServiceUsageTimeInMs= */ 0,
                 /* backgroundUsageTimeInMs= */ 0,
                 /* screenOnTimeInMs= */ 0,
                 /* consumePower= */ 0,
@@ -568,6 +580,7 @@ public final class BatteryDiffEntryTest {
                         batteryHistEntry.mConsumerType,
                         /* foregroundUsageTimeInMs= */ 0,
                         /* backgroundUsageTimeInMs= */ 0,
+                        /* foregroundServiceUsageTimeInMs= */ 0,
                         /* screenOnTimeInMs= */ 0,
                         consumePower,
                         /* foregroundUsageConsumePower= */ 0,

@@ -16,19 +16,26 @@
 
 package com.android.settings.connecteddevice.audiosharing;
 
+import android.app.settings.SettingsEnums;
 import android.content.Context;
 import android.os.Bundle;
 
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
+import com.android.settings.connecteddevice.audiosharing.audiostreams.AudioStreamsCategoryController;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.widget.SettingsMainSwitchBar;
 
-public class AudioSharingDashboardFragment extends DashboardFragment {
+public class AudioSharingDashboardFragment extends DashboardFragment
+        implements AudioSharingSwitchBarController.OnSwitchBarChangedListener {
     private static final String TAG = "AudioSharingDashboardFrag";
 
     SettingsMainSwitchBar mMainSwitchBar;
     private AudioSharingSwitchBarController mSwitchBarController;
+    private AudioSharingDeviceVolumeGroupController mAudioSharingDeviceVolumeGroupController;
+    private CallsAndAlarmsPreferenceController mCallsAndAlarmsPreferenceController;
+    private AudioSharingNamePreferenceController mAudioSharingNamePreferenceController;
+    private AudioStreamsCategoryController mAudioStreamsCategoryController;
 
     public AudioSharingDashboardFragment() {
         super();
@@ -36,8 +43,7 @@ public class AudioSharingDashboardFragment extends DashboardFragment {
 
     @Override
     public int getMetricsCategory() {
-        // TODO: update category id.
-        return 0;
+        return SettingsEnums.AUDIO_SHARING_SETTINGS;
     }
 
     @Override
@@ -63,6 +69,13 @@ public class AudioSharingDashboardFragment extends DashboardFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        mAudioSharingDeviceVolumeGroupController =
+                use(AudioSharingDeviceVolumeGroupController.class);
+        mAudioSharingDeviceVolumeGroupController.init(this);
+        mCallsAndAlarmsPreferenceController = use(CallsAndAlarmsPreferenceController.class);
+        mCallsAndAlarmsPreferenceController.init(this);
+        mAudioSharingNamePreferenceController = use(AudioSharingNamePreferenceController.class);
+        mAudioStreamsCategoryController = use(AudioStreamsCategoryController.class);
     }
 
     @Override
@@ -73,7 +86,21 @@ public class AudioSharingDashboardFragment extends DashboardFragment {
         final SettingsActivity activity = (SettingsActivity) getActivity();
         mMainSwitchBar = activity.getSwitchBar();
         mMainSwitchBar.setTitle(getText(R.string.audio_sharing_switch_title));
-        mSwitchBarController = new AudioSharingSwitchBarController(activity, mMainSwitchBar);
+        mSwitchBarController = new AudioSharingSwitchBarController(activity, mMainSwitchBar, this);
+        mSwitchBarController.init(this);
+        getSettingsLifecycle().addObserver(mSwitchBarController);
         mMainSwitchBar.show();
+    }
+
+    @Override
+    public void onSwitchBarChanged() {
+        updateVisibilityForAttachedPreferences();
+    }
+
+    private void updateVisibilityForAttachedPreferences() {
+        mAudioSharingDeviceVolumeGroupController.updateVisibility();
+        mCallsAndAlarmsPreferenceController.updateVisibility();
+        mAudioSharingNamePreferenceController.updateVisibility();
+        mAudioStreamsCategoryController.updateVisibility();
     }
 }

@@ -53,7 +53,6 @@ import android.view.Surface;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
-import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 import android.widget.ProgressBar;
@@ -70,6 +69,7 @@ import com.android.settings.biometrics.BiometricUtils;
 import com.android.settings.biometrics.BiometricsEnrollEnrolling;
 import com.android.settings.biometrics.fingerprint.feature.SfpsEnrollmentFeature;
 import com.android.settings.core.instrumentation.InstrumentedDialogFragment;
+import com.android.settings.flags.Flags;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settingslib.display.DisplayDensityUtils;
 
@@ -190,13 +190,15 @@ public class FingerprintEnrollEnrolling extends BiometricsEnrollEnrolling {
     private boolean mHaveShownSfpsRightEdgeLottie;
     private boolean mShouldShowLottie;
 
-    private ObjectAnimator mHelpAnimation;
+    private Animator mHelpAnimation;
 
     private OrientationEventListener mOrientationEventListener;
     private int mPreviousRotation = 0;
 
     @NonNull
     private SfpsEnrollmentFeature mSfpsEnrollmentFeature = new EmptySfpsEnrollmentFeature();
+    @Nullable
+    private UdfpsEnrollCalibrator mCalibrator;
 
     @VisibleForTesting
     protected boolean shouldShowLottie() {
@@ -245,6 +247,12 @@ public class FingerprintEnrollEnrolling extends BiometricsEnrollEnrolling {
 
             setContentView(layout);
             setDescriptionText(R.string.security_settings_udfps_enroll_start_message);
+
+            if (Flags.udfpsEnrollCalibration()) {
+                mCalibrator = FeatureFactory.getFeatureFactory().getFingerprintFeatureProvider()
+                        .getUdfpsEnrollCalibrator(getApplicationContext(), savedInstanceState,
+                                getIntent());
+            }
         } else if (mCanAssumeSfps) {
             mSfpsEnrollmentFeature = FeatureFactory.getFeatureFactory()
                     .getFingerprintFeatureProvider().getSfpsEnrollmentFeature();
@@ -332,16 +340,10 @@ public class FingerprintEnrollEnrolling extends BiometricsEnrollEnrolling {
     }
 
     private void setHelpAnimation() {
-        final float translationX = 40;
-        final int duration = 550;
         final RelativeLayout progressLottieLayout = findViewById(R.id.progress_lottie);
-        mHelpAnimation = ObjectAnimator.ofFloat(progressLottieLayout,
-                "translationX" /* propertyName */,
-                0, translationX, -1 * translationX, translationX, 0f);
-        mHelpAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        mHelpAnimation.setDuration(duration);
-        mHelpAnimation.setAutoCancel(false);
+        mHelpAnimation = mSfpsEnrollmentFeature.getHelpAnimator(progressLottieLayout);
     }
+
     @Override
     protected BiometricEnrollSidecar getSidecar() {
         final FingerprintEnrollSidecar sidecar = new FingerprintEnrollSidecar(this,
@@ -364,6 +366,11 @@ public class FingerprintEnrollEnrolling extends BiometricsEnrollEnrolling {
         super.onSaveInstanceState(outState);
         outState.putBoolean(KEY_STATE_CANCELED, mIsCanceled);
         outState.putInt(KEY_STATE_PREVIOUS_ROTATION, mPreviousRotation);
+        if (Flags.udfpsEnrollCalibration()) {
+            if (mCalibrator != null) {
+                mCalibrator.onSaveInstanceState(outState);
+            }
+        }
     }
 
     private void restoreSavedState(Bundle savedInstanceState) {
@@ -689,6 +696,9 @@ public class FingerprintEnrollEnrolling extends BiometricsEnrollEnrolling {
         view.setComposition(composition);
         view.setVisibility(View.VISIBLE);
         view.playAnimation();
+        if (mCanAssumeSfps) {
+            mSfpsEnrollmentFeature.handleOnEnrollmentLottieComposition(view);
+        }
     }
 
     @EnrollStage
@@ -1210,6 +1220,11 @@ public class FingerprintEnrollEnrolling extends BiometricsEnrollEnrolling {
 
         @Override
         public float getEnrollStageThreshold(@NonNull Context context, int index) {
+            throw new IllegalStateException(exceptionStr);
+        }
+
+        @Override
+        public Animator getHelpAnimator(@NonNull View target) {
             throw new IllegalStateException(exceptionStr);
         }
     }

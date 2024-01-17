@@ -32,6 +32,7 @@ import android.provider.Settings.Secure;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.InputDevice;
+import android.view.KeyEvent;
 import android.view.inputmethod.InputMethodInfo;
 import android.view.inputmethod.InputMethodManager;
 
@@ -105,6 +106,17 @@ public class StylusDevicesController extends AbstractPreferenceController implem
         RoleManager rm = mContext.getSystemService(RoleManager.class);
         if (rm == null || !rm.isRoleAvailable(RoleManager.ROLE_NOTES)) {
             return null;
+        }
+
+        // Check if the connected stylus supports the tail button. A connected device is when input
+        // device is available (mInputDevice != null). For a cached device (mInputDevice == null)
+        // there isn't way to check if the device supports the button so assume it does.
+        if (mInputDevice != null) {
+            boolean doesStylusSupportTailButton =
+                    mInputDevice.hasKeys(KeyEvent.KEYCODE_STYLUS_BUTTON_TAIL)[0];
+            if (!doesStylusSupportTailButton) {
+                return null;
+            }
         }
 
         Preference pref = preference == null ? new Preference(mContext) : preference;

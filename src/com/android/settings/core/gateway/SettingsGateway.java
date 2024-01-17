@@ -101,6 +101,7 @@ import com.android.settings.deviceinfo.firmwareversion.FirmwareVersionSettings;
 import com.android.settings.deviceinfo.legal.ModuleLicensesDashboard;
 import com.android.settings.display.AutoBrightnessSettings;
 import com.android.settings.display.NightDisplaySettings;
+import com.android.settings.display.ScreenTimeoutSettings;
 import com.android.settings.display.SmartAutoRotatePreferenceFragment;
 import com.android.settings.display.darkmode.DarkModeSettingsFragment;
 import com.android.settings.dream.DreamSettings;
@@ -143,7 +144,6 @@ import com.android.settings.network.apn.ApnSettings;
 import com.android.settings.network.telephony.MobileNetworkSettings;
 import com.android.settings.network.telephony.NetworkSelectSettings;
 import com.android.settings.network.tether.TetherSettings;
-import com.android.settings.nfc.AndroidBeam;
 import com.android.settings.nfc.PaymentSettings;
 import com.android.settings.notification.ConfigureNotificationSettings;
 import com.android.settings.notification.NotificationAccessSettings;
@@ -258,7 +258,6 @@ public class SettingsGateway {
             PrivateVolumeForget.class.getName(),
             PublicVolumeSettings.class.getName(),
             DevelopmentSettingsDashboardFragment.class.getName(),
-            AndroidBeam.class.getName(),
             WifiDisplaySettings.class.getName(),
             PowerUsageSummary.class.getName(),
             AccountSyncSettings.class.getName(),
@@ -373,7 +372,8 @@ public class SettingsGateway {
             LongBackgroundTasksDetails.class.getName(),
             RegionalPreferencesEntriesFragment.class.getName(),
             BatteryInfoFragment.class.getName(),
-            UserAspectRatioDetails.class.getName()
+            UserAspectRatioDetails.class.getName(),
+            ScreenTimeoutSettings.class.getName(),
     };
 
     public static final String[] SETTINGS_FOR_RESTRICTED = {

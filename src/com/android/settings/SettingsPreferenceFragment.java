@@ -479,6 +479,10 @@ public abstract class SettingsPreferenceFragment extends InstrumentedPreferenceF
                 mDialogFragment.dismiss();
                 mDialogFragment = null;
             }
+            RecyclerView view = getListView();
+            if (view != null) {
+                view.clearOnScrollListeners();
+            }
         }
         super.onDetach();
     }

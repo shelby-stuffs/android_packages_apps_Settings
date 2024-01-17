@@ -22,6 +22,8 @@
 
 package com.android.settings.network.telephony;
 
+import static com.android.settings.network.MobileNetworkListFragment.collectAirplaneModeAndFinishIfOn;
+
 import static android.telephony.AccessNetworkConstants.TRANSPORT_TYPE_WWAN;
 import static android.telephony.NetworkRegistrationInfo.DOMAIN_PS;
 
@@ -47,7 +49,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 
@@ -375,8 +380,7 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
         use(AutoDataSwitchPreferenceController.class).init(mSubId);
         use(DataDuringCallsPreferenceController.class).init(mSubId);
         use(DisabledSubscriptionController.class).init(mSubId);
-        use(DeleteSimProfilePreferenceController.class).init(mSubId, this,
-                REQUEST_CODE_DELETE_SUBSCRIPTION);
+        use(DeleteSimProfilePreferenceController.class).init(mSubId);
         use(DisableSimFooterPreferenceController.class).init(mSubId);
         use(NrDisabledInDsdsFooterPreferenceController.class).init(mSubId);
 
@@ -480,6 +484,12 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        collectAirplaneModeAndFinishIfOn(this);
+    }
+
+    @Override
     public void onResume() {
         Log.i(LOG_TAG, "onResume:+");
         super.onResume();
@@ -513,15 +523,6 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
     public void onPause() {
         mMobileNetworkRepository.removeRegister(this);
         super.onPause();
-    }
-
-    @Override
-    public void onDestroy() {
-        if (mExtTelServiceConnected) {
-            mExtTelephonyManager.disconnectService(mExtTelServiceCallback);
-            mExtTelephonyManager = null;
-        }
-        super.onDestroy();
     }
 
     @VisibleForTesting

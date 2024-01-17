@@ -16,16 +16,16 @@
 
 package com.android.settings.security;
 
-import android.content.Context;
 import android.app.settings.SettingsEnums;
+import android.content.Context;
+import android.os.Bundle;
 
-import com.android.settings.dashboard.DashboardFragment;
+import androidx.annotation.VisibleForTesting;
+
 import com.android.settings.R;
-import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.search.SearchIndexable;
-
-import android.os.Bundle;
 
 @SearchIndexable
 public class ContentProtectionPreferenceFragment extends DashboardFragment {
@@ -33,8 +33,10 @@ public class ContentProtectionPreferenceFragment extends DashboardFragment {
 
     // Required by @SearchIndexable to make the fragment and preferences to be indexed.
     // Do not rename.
-    public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
-            new BaseSearchIndexProvider(R.layout.content_protection_preference_fragment);
+    @VisibleForTesting
+    public static final ContentProtectionSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+            new ContentProtectionSearchIndexProvider(
+                    R.layout.content_protection_preference_fragment);
 
     @Override
     public void onAttach(Context context) {
@@ -44,7 +46,6 @@ public class ContentProtectionPreferenceFragment extends DashboardFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-	// TODO(b/304681048): Update the toggles' behavior according to user's profile
     }
 
     @Override
@@ -60,5 +61,18 @@ public class ContentProtectionPreferenceFragment extends DashboardFragment {
     @Override
     protected String getLogTag() {
         return TAG;
+    }
+
+    public static class ContentProtectionSearchIndexProvider extends BaseSearchIndexProvider {
+
+        public ContentProtectionSearchIndexProvider(int xmlRes) {
+            super(xmlRes);
+        }
+
+        @Override
+        @VisibleForTesting
+        public boolean isPageSearchEnabled(Context context) {
+            return ContentProtectionPreferenceUtils.isAvailable(context);
+        }
     }
 }

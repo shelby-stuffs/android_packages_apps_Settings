@@ -45,8 +45,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Switch;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
@@ -80,7 +83,6 @@ import com.android.settingslib.development.DeveloperOptionsPreferenceController;
 import com.android.settingslib.development.DevelopmentSettingsEnabler;
 import com.android.settingslib.development.SystemPropPoker;
 import com.android.settingslib.search.SearchIndexable;
-import com.android.settingslib.widget.OnMainSwitchChangeListener;
 
 import com.google.android.setupcompat.util.WizardManagerHelper;
 
@@ -89,7 +91,7 @@ import java.util.List;
 
 @SearchIndexable(forTarget = SearchIndexable.ALL & ~SearchIndexable.ARC)
 public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFragment
-        implements OnMainSwitchChangeListener, OemUnlockDialogHost, AdbDialogHost,
+        implements OnCheckedChangeListener, OemUnlockDialogHost, AdbDialogHost,
         AdbClearKeysDialogHost, LogPersistDialogHost,
         BluetoothRebootDialog.OnRebootDialogListener,
         AbstractBluetoothPreferenceController.Callback,
@@ -230,6 +232,12 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
             getActivity().finish();
             return;
         }
+        Context context = requireContext();
+        if (!DevelopmentSettingsEnabler.isDevelopmentSettingsEnabled(context)) {
+            Toast.makeText(context, R.string.dev_settings_disabled_warning, Toast.LENGTH_SHORT)
+                    .show();
+            finish();
+        }
     }
 
     @Override
@@ -333,7 +341,7 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
     }
 
     @Override
-    public void onSwitchChanged(Switch switchView, boolean isChecked) {
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         final boolean developmentEnabledState =
                 DevelopmentSettingsEnabler.isDevelopmentSettingsEnabled(getContext());
         if (isChecked != developmentEnabledState) {
@@ -599,8 +607,9 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
     }
 
     private static List<AbstractPreferenceController> buildPreferenceControllers(Context context,
-            Activity activity, Lifecycle lifecycle, DevelopmentSettingsDashboardFragment fragment,
-            BluetoothA2dpConfigStore bluetoothA2dpConfigStore) {
+            @Nullable Activity activity, @Nullable Lifecycle lifecycle,
+            @Nullable DevelopmentSettingsDashboardFragment fragment,
+            @Nullable BluetoothA2dpConfigStore bluetoothA2dpConfigStore) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
         controllers.add(new PreferVonrController(context, lifecycle));
         controllers.add(new MemoryUsagePreferenceController(context));
@@ -667,6 +676,7 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
         controllers.add(new ShowKeyPressesPreferenceController(context));
         controllers.add(new ShowSurfaceUpdatesPreferenceController(context));
         controllers.add(new ShowLayoutBoundsPreferenceController(context));
+        controllers.add(new ShowHdrSdrRatioPreferenceController(context));
         controllers.add(new ShowRefreshRatePreferenceController(context));
         controllers.add(new RtlLayoutPreferenceController(context));
         controllers.add(new WindowAnimationScalePreferenceController(context));

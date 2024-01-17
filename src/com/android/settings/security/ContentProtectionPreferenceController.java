@@ -15,11 +15,16 @@
  */
 package com.android.settings.security;
 
-import static android.view.contentprotection.flags.Flags.settingUiEnabled;
+import static com.android.internal.R.string.config_defaultContentProtectionService;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.provider.DeviceConfig;
+import android.view.contentcapture.ContentCaptureManager;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.VisibleForTesting;
 
 import com.android.settings.core.BasePreferenceController;
 
@@ -31,7 +36,8 @@ public class ContentProtectionPreferenceController extends BasePreferenceControl
 
     @Override
     public int getAvailabilityStatus() {
-      // TODO(b/306565942): Add a resource value check.
-      return settingUiEnabled() ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
+        return ContentProtectionPreferenceUtils.isAvailable(mContext)
+                ? AVAILABLE
+                : UNSUPPORTED_ON_DEVICE;
     }
 }

@@ -20,6 +20,7 @@ import static android.app.admin.DevicePolicyManager.ACTION_SET_NEW_PASSWORD;
 
 import android.app.AlertDialog;
 import android.app.KeyguardManager;
+import android.app.PendingIntent;
 import android.app.settings.SettingsEnums;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -42,9 +43,10 @@ import com.android.settingslib.transition.SettingsTransitionHelper;
 import com.google.android.setupdesign.util.ThemeHelper;
 
 /**
- * Prompts user to set a device lock if not set with an alert dialog.
- * If a lock is already set then first authenticates user before displaying private space settings
- * page.
+ * This class represents an activity responsible for user authentication before starting the private
+ * space setup flow or accessing the private space settings page if already created. Also prompts
+ * user to set a device lock if not set with an alert dialog. This can be launched using the intent
+ * com.android.settings.action.PRIVATE_SPACE_SETUP_FLOW.
  */
 public class PrivateSpaceAuthenticationActivity extends FragmentActivity {
     private static final String TAG = "PrivateSpaceAuthCheck";
@@ -52,11 +54,12 @@ public class PrivateSpaceAuthenticationActivity extends FragmentActivity {
     private KeyguardManager mKeyguardManager;
 
     private final ActivityResultLauncher<Intent> mSetDeviceLock =
-            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+            registerForActivityResult(
+                    new ActivityResultContracts.StartActivityForResult(),
                     this::onSetDeviceLockResult);
     private final ActivityResultLauncher<Intent> mVerifyDeviceLock =
-            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-                    this::onVerifyDeviceLock);
+            registerForActivityResult(
+                    new ActivityResultContracts.StartActivityForResult(), this::onVerifyDeviceLock);
 
     static class Injector {
         PrivateSpaceMaintainer injectPrivateSpaceMaintainer(Context context) {
@@ -70,24 +73,20 @@ public class PrivateSpaceAuthenticationActivity extends FragmentActivity {
 
         if (Flags.allowPrivateProfile()) {
             ThemeHelper.trySetDynamicColor(this);
-            mPrivateSpaceMaintainer = new Injector().injectPrivateSpaceMaintainer(
-                    getApplicationContext());
+            mPrivateSpaceMaintainer =
+                    new Injector().injectPrivateSpaceMaintainer(getApplicationContext());
             if (getKeyguardManager().isDeviceSecure()) {
                 if (savedInstanceState == null) {
-                    Intent credentialIntent =
-                            mPrivateSpaceMaintainer.getPrivateProfileLockCredentialIntent();
-                    if (credentialIntent != null) {
-                        mVerifyDeviceLock.launch(credentialIntent);
+                    if (mPrivateSpaceMaintainer.doesPrivateSpaceExist()) {
+                        unlockAndLaunchPrivateSpaceSettings(this);
                     } else {
-                        Log.e(TAG, "verifyCredentialIntent is null even though device lock is set");
-                        finish();
+                        authenticatePrivateSpaceEntry();
                     }
                 }
             } else {
                 promptToSetDeviceLock();
             }
         } else {
-            Log.w(TAG, "allowPrivateProfile flag is Off!");
             finish();
         }
     }
@@ -96,14 +95,10 @@ public class PrivateSpaceAuthenticationActivity extends FragmentActivity {
     @VisibleForTesting
     public void onLockAuthentication(Context context) {
         if (mPrivateSpaceMaintainer.doesPrivateSpaceExist()) {
-            new SubSettingLauncher(context)
-                    .setDestination(PrivateSpaceDashboardFragment.class.getName())
-                    .setTransitionType(
-                            SettingsTransitionHelper.TransitionType.TRANSITION_SLIDE)
-                    .setSourceMetricsCategory(SettingsEnums.PRIVATE_SPACE_SETTINGS)
-                    .launch();
+            unlockAndLaunchPrivateSpaceSettings(context);
         } else {
             startActivity(new Intent(context, PrivateSpaceSetupActivity.class));
+            finish();
         }
     }
 
@@ -135,22 +130,54 @@ public class PrivateSpaceAuthenticationActivity extends FragmentActivity {
         if (mKeyguardManager == null) {
             mKeyguardManager = getSystemService(KeyguardManager.class);
         }
-        return  mKeyguardManager;
+        return mKeyguardManager;
     }
 
     private void onSetDeviceLockResult(@Nullable ActivityResult result) {
         if (result != null) {
             if (getKeyguardManager().isDeviceSecure()) {
                 onLockAuthentication(this);
+            } else {
+                finish();
             }
-            finish();
         }
     }
 
     private void onVerifyDeviceLock(@Nullable ActivityResult result) {
         if (result != null && result.getResultCode() == RESULT_OK) {
             onLockAuthentication(this);
+        } else {
+            finish();
+        }
+    }
+
+    private void unlockAndLaunchPrivateSpaceSettings(Context context) {
+        SubSettingLauncher privateSpaceSettings =
+                new SubSettingLauncher(context)
+                        .setDestination(PrivateSpaceDashboardFragment.class.getName())
+                        .setTransitionType(SettingsTransitionHelper.TransitionType.TRANSITION_SLIDE)
+                        .setSourceMetricsCategory(SettingsEnums.PRIVATE_SPACE_SETTINGS);
+        if (mPrivateSpaceMaintainer.isPrivateSpaceLocked()) {
+            mPrivateSpaceMaintainer.unlockPrivateSpace(
+                    PendingIntent.getActivity(
+                                    context, /* requestCode */
+                                    0,
+                                    privateSpaceSettings.toIntent(),
+                                    PendingIntent.FLAG_IMMUTABLE)
+                            .getIntentSender());
+        } else {
+            privateSpaceSettings.launch();
         }
         finish();
+    }
+
+    private void authenticatePrivateSpaceEntry() {
+        Intent credentialIntent = mPrivateSpaceMaintainer.getPrivateProfileLockCredentialIntent();
+        if (credentialIntent != null) {
+            mVerifyDeviceLock.launch(credentialIntent);
+        } else {
+            Log.e(TAG, "verifyCredentialIntent is null even though device lock is set");
+            finish();
+        }
     }
 }

@@ -87,13 +87,16 @@ public class NetworkSelectSettings extends DashboardFragment implements
     private static final int EVENT_NETWORK_SCAN_COMPLETED = 4;
 
     private static final String PREF_KEY_NETWORK_OPERATORS = "network_operators_preference";
+    private static final String PREF_KEY_ERROR_MSG = "error_msg_preference";
     private static final int MIN_NUMBER_OF_SCAN_REQUIRED = 2;
 
     private PreferenceCategory mPreferenceCategory;
+    private PreferenceCategory mErrorMsgCategory;
     @VisibleForTesting
     NetworkOperatorPreference mSelectedPreference;
     private View mProgressHeader;
     private Preference mStatusMessagePreference;
+    private Preference mErrorMsgPreference;
     @VisibleForTesting
     List<CellInfo> mCellInfoList;
     private int mSubId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
@@ -134,6 +137,9 @@ public class NetworkSelectSettings extends DashboardFragment implements
         mSubId = getSubId();
 
         mPreferenceCategory = getPreferenceCategory(PREF_KEY_NETWORK_OPERATORS);
+        mErrorMsgCategory = getPreferenceCategory(PREF_KEY_ERROR_MSG);
+        mErrorMsgPreference = new Preference(getContext());
+        mErrorMsgPreference.setSelectable(false);
         mStatusMessagePreference = new Preference(getContext());
         mStatusMessagePreference.setSelectable(false);
         mSelectedPreference = null;
@@ -387,7 +393,8 @@ public class NetworkSelectSettings extends DashboardFragment implements
                         clearPreferenceSummary();
                         enablePreferenceScreen(true);
                     } else {
-                        addMessagePreference(R.string.network_query_error);
+                        //will not clean previous searched plmn list when network query have errors
+                        addErrorMessagePreference(R.string.network_scan_error);
                     }
                     break;
 
@@ -507,7 +514,7 @@ public class NetworkSelectSettings extends DashboardFragment implements
     protected NetworkOperatorPreference createNetworkOperatorPreference(CellInfo cellInfo) {
         return new NetworkOperatorPreference(getPrefContext(),
                 cellInfo, mForbiddenPlmns, mShow4GForLTE,
-                MobileNetworkUtils.getAccessMode(getContext(),
+                MobileNetworkUtils.getAccessMode(getPrefContext().getApplicationContext(),
                         mTelephonyManager.getSlotIndex()));
     }
 
@@ -547,7 +554,7 @@ public class NetworkSelectSettings extends DashboardFragment implements
                 pref = createNetworkOperatorPreference(cellInfo);
                 pref.setOrder(index);
 
-                if (DomesticRoamUtils.isFeatureEnabled(getContext())) {
+                if (DomesticRoamUtils.isFeatureEnabled(getPrefContext())) {
                     pref.setSubId(mSubId);
                     pref.updateCell(cellInfo);
                 }
@@ -629,7 +636,7 @@ public class NetworkSelectSettings extends DashboardFragment implements
                 }
                 final NetworkOperatorPreference pref = new NetworkOperatorPreference(
                         getPrefContext(), cellIdentity, mForbiddenPlmns, mShow4GForLTE,
-                        MobileNetworkUtils.getAccessMode(getContext(),
+                        MobileNetworkUtils.getAccessMode(getPrefContext().getApplicationContext(),
                                 mTelephonyManager.getSlotIndex()));
                 if (pref.isForbiddenNetwork()) {
                     continue;
@@ -679,6 +686,12 @@ public class NetworkSelectSettings extends DashboardFragment implements
         mStatusMessagePreference.setTitle(messageId);
         mPreferenceCategory.removeAll();
         mPreferenceCategory.addPreference(mStatusMessagePreference);
+    }
+
+    private void addErrorMessagePreference(int messageId) {
+        setProgressBarVisible(false);
+        mErrorMsgPreference.setTitle(messageId);
+        mErrorMsgCategory.addPreference(mErrorMsgPreference);
     }
 
     private void startNetworkQuery() {

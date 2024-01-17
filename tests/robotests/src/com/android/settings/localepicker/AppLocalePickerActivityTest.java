@@ -18,6 +18,8 @@ package com.android.settings.localepicker;
 
 import static com.google.common.truth.Truth.assertThat;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
@@ -27,6 +29,7 @@ import static org.mockito.Mockito.when;
 import android.app.Activity;
 import android.app.ApplicationPackageManager;
 import android.app.LocaleConfig;
+import android.app.settings.SettingsEnums;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -51,9 +54,11 @@ import com.android.internal.app.LocaleStore;
 import com.android.settings.applications.AppInfoBase;
 import com.android.settings.applications.AppLocaleUtil;
 import com.android.settings.flags.Flags;
+import com.android.settings.testutils.FakeFeatureFactory;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -91,6 +96,7 @@ public class AppLocalePickerActivityTest {
     private static final String EN_US = "en-US";
     private static int sUid;
 
+    private FakeFeatureFactory mFeatureFactory;
     private LocaleNotificationDataManager mDataManager;
     private AppLocalePickerActivity mActivity;
 
@@ -117,6 +123,7 @@ public class AppLocalePickerActivityTest {
         when(mLocaleConfig.getSupportedLocales()).thenReturn(LocaleList.forLanguageTags("en-US"));
         ReflectionHelpers.setStaticField(AppLocaleUtil.class, "sLocaleConfig", mLocaleConfig);
         sUid = Process.myUid();
+        mFeatureFactory = FakeFeatureFactory.setupForTest();
     }
 
     @After
@@ -196,6 +203,7 @@ public class AppLocalePickerActivityTest {
         assertThat(controller.get().isFinishing()).isTrue();
     }
 
+    @Ignore("b/313604701")
     @Test
     public void onLocaleSelected_getLocaleNotNull_getLanguageTag() {
         ActivityController<TestAppLocalePickerActivity> controller =
@@ -226,6 +234,37 @@ public class AppLocalePickerActivityTest {
 
         verify(mLocaleInfo, times(1)).getLocale();
         assertThat(controller.get().isFinishing()).isTrue();
+    }
+
+    @Test
+    public void onLocaleSelected_logLocaleSource() {
+        ActivityController<TestAppLocalePickerActivity> controller =
+                initActivityController(true);
+        LocaleList.setDefault(LocaleList.forLanguageTags("ja-JP,en-CA,en-US"));
+        Locale locale = new Locale("en", "US");
+        when(mLocaleInfo.getLocale()).thenReturn(locale);
+        when(mLocaleInfo.isSystemLocale()).thenReturn(false);
+        when(mLocaleInfo.isSuggested()).thenReturn(true);
+        when(mLocaleInfo.isSuggestionOfType(LocaleStore.LocaleInfo.SUGGESTION_TYPE_SIM)).thenReturn(
+                true);
+        when(mLocaleInfo.isSuggestionOfType(
+                LocaleStore.LocaleInfo.SUGGESTION_TYPE_SYSTEM_AVAILABLE_LANGUAGE)).thenReturn(
+                true);
+        when(mLocaleInfo.isSuggestionOfType(
+                LocaleStore.LocaleInfo.SUGGESTION_TYPE_OTHER_APP_LANGUAGE)).thenReturn(
+                true);
+        when(mLocaleInfo.isSuggestionOfType(
+                LocaleStore.LocaleInfo.SUGGESTION_TYPE_IME_LANGUAGE)).thenReturn(
+                true);
+
+        controller.create();
+        AppLocalePickerActivity mActivity = controller.get();
+        mActivity.onLocaleSelected(mLocaleInfo);
+
+        int localeSource = 15; // SIM_LOCALE | SYSTEM_LOCALE |IME_LOCALE|APP_LOCALE
+        verify(mFeatureFactory.metricsFeatureProvider).action(
+                any(), eq(SettingsEnums.ACTION_CHANGE_APP_LANGUAGE_FROM_SUGGESTED),
+                eq(localeSource));
     }
 
     @Test

@@ -6,15 +6,7 @@ aconfig_declarations {
     name: "aconfig_settings_flags",
     package: "com.android.settings.flags",
     srcs: [
-        "settings_accessibility_flag_declarations.aconfig",
-        "settings_connecteddevice_flag_declarations.aconfig",
-        "settings_globalintl_flag_declarations.aconfig",
-        "settings_experience_flag_declarations.aconfig",
-        "settings_onboarding_experience_flag_declarations.aconfig",
-        "settings_telephony_flag_declarations.aconfig",
-        "settings_biometrics_integration_declarations.aconfig",
-        "settings_voice_activation_apps_flag_declarations.aconfig",
-        "settings_biometrics_framework_flag_declarations.aconfig",
+        "*.aconfig",
     ],
 }
 
@@ -32,4 +24,39 @@ aconfig_declarations {
 java_aconfig_library {
     name: "factory_reset_flags_lib",
     aconfig_declarations: "factory_reset_flags",
+}
+
+aconfig_declarations {
+    name: "media_drm_flags",
+    package: "com.android.settings.media_drm",
+    srcs: ["media_drm/*.aconfig"],
+}
+
+java_aconfig_library {
+    name: "MediaDrmSettingsFlagsLib",
+    aconfig_declarations: "media_drm_flags",
+}
+
+aconfig_declarations {
+    name: "accessibility_flags",
+    package: "com.android.settings.accessibility",
+    srcs: ["accessibility/*.aconfig"],
+}
+
+java_aconfig_library {
+    name: "accessibility_settings_flags_lib",
+    aconfig_declarations: "accessibility_flags",
+}
+
+aconfig_declarations {
+    name: "development_settings_flags",
+    package: "com.android.settings.development",
+    srcs: [
+        "development/**/*.aconfig"
+    ],
+}
+
+java_aconfig_library {
+    name: "development_settings_flag_lib",
+    aconfig_declarations: "development_settings_flags",
 }

@@ -134,7 +134,7 @@ public class Settings extends SettingsActivity {
     public static class HighPowerApplicationsActivity extends SettingsActivity { /* empty */ }
     public static class BackgroundCheckSummaryActivity extends SettingsActivity { /* empty */ }
     public static class StorageUseActivity extends SettingsActivity { /* empty */ }
-    public static class DevelopmentSettingsDashboardActivity extends SettingsActivity { /* empty */ }
+    public static class DevelopmentSettingsActivity extends SettingsActivity { /* empty */ }
     public static class AccessibilitySettingsActivity extends SettingsActivity { /* empty */ }
     public static class AccessibilityDetailsSettingsActivity extends SettingsActivity { /* empty */ }
     public static class CaptioningSettingsActivity extends SettingsActivity { /* empty */ }
@@ -314,7 +314,6 @@ public class Settings extends SettingsActivity {
     public static class ConfigureWifiSettingsActivity extends SettingsActivity { /* empty */ }
     public static class SavedAccessPointsSettingsActivity extends SettingsActivity { /* empty */ }
     public static class TextToSpeechSettingsActivity extends SettingsActivity { /* empty */ }
-    public static class AndroidBeamSettingsActivity extends SettingsActivity { /* empty */ }
     public static class WifiDisplaySettingsActivity extends SettingsActivity { /* empty */ }
     public static class DreamSettingsActivity extends SettingsActivity { /* empty */ }
     /** Activity to manage communal settings */
@@ -518,4 +517,6 @@ public class Settings extends SettingsActivity {
     public static class OneHandedSettingsActivity extends SettingsActivity { /* empty */ }
 
     public static class PreviouslyConnectedDeviceActivity extends SettingsActivity { /* empty */ }
+
+    public static class ScreenTimeoutActivity extends SettingsActivity { /* empty */ }
 }

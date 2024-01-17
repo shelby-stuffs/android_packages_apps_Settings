@@ -16,55 +16,78 @@
 
 package com.android.settings.security;
 
-import static android.view.contentprotection.flags.Flags.FLAG_SETTING_UI_ENABLED;
+import static com.android.internal.R.string.config_defaultContentProtectionService;
+
 import static com.google.common.truth.Truth.assertThat;
 
-import android.content.ContentResolver;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.spy;
+
+import android.content.ComponentName;
 import android.content.Context;
 import android.platform.test.flag.junit.SetFlagsRule;
-import android.provider.Settings;
+import android.provider.DeviceConfig;
+import android.view.contentcapture.ContentCaptureManager;
 
-import androidx.preference.Preference;
-
-import com.android.settings.R;
+import com.android.settings.testutils.shadow.ShadowDeviceConfig;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 @RunWith(RobolectricTestRunner.class)
+@Config(
+        shadows = {
+            ShadowDeviceConfig.class,
+        })
 public class ContentProtectionPreferenceControllerTest {
+
+    private static final String PACKAGE_NAME = "com.test.package";
+
+    private static final ComponentName COMPONENT_NAME =
+            new ComponentName(PACKAGE_NAME, "TestClass");
 
     @Rule public final SetFlagsRule mSetFlagsRule = new SetFlagsRule();
 
     private Context mContext;
+
+    private String mConfigDefaultContentProtectionService = COMPONENT_NAME.flattenToString();
+
     private ContentProtectionPreferenceController mController;
-    private Preference mPreference;
 
     @Before
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
-        mContext = RuntimeEnvironment.application;
+        mContext = spy(RuntimeEnvironment.application);
         mController = new ContentProtectionPreferenceController(mContext, "key");
-        mPreference = new Preference(mContext);
-        mPreference.setKey(mController.getPreferenceKey());
+    }
+
+    @After
+    public void tearDown() {
+        ShadowDeviceConfig.reset();
     }
 
     @Test
-    public void isAvailable_flagSettingUiDisabled_isFalse() {
-        mSetFlagsRule.disableFlags(FLAG_SETTING_UI_ENABLED);
+    public void isAvailable_isFalse() {
         assertThat(mController.isAvailable()).isFalse();
     }
 
     @Test
-    public void isAvailable_flagSettingUiEnabled_isTrue() {
-        mSetFlagsRule.enableFlags(FLAG_SETTING_UI_ENABLED);
+    public void isAvailable_isTrue() {
+        doReturn(COMPONENT_NAME.flattenToString())
+                .when(mContext)
+                .getString(config_defaultContentProtectionService);
+
+        DeviceConfig.setProperty(
+                DeviceConfig.NAMESPACE_CONTENT_CAPTURE,
+                ContentCaptureManager.DEVICE_CONFIG_PROPERTY_ENABLE_CONTENT_PROTECTION_RECEIVER,
+                "true",
+                /* makeDefault= */ false);
+
         assertThat(mController.isAvailable()).isTrue();
     }
 }

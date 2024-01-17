@@ -224,6 +224,7 @@ public class LocaleListEditor extends RestrictedSettingsFragment implements View
             localeInfo = mayAppendUnicodeTags(localeInfo, preferencesTags);
             mAdapter.addLocale(localeInfo);
             updateVisibilityOfRemoveMenu();
+            mMetricsFeatureProvider.action(getContext(), SettingsEnums.ACTION_ADD_LANGUAGE);
         } else if (requestCode == DIALOG_CONFIRM_SYSTEM_DEFAULT) {
             localeInfo = mAdapter.getFeedItemList().get(0);
             if (resultCode == Activity.RESULT_OK) {
@@ -237,8 +238,7 @@ public class LocaleListEditor extends RestrictedSettingsFragment implements View
                     localeDialogFragment.setArguments(args);
                     localeDialogFragment.show(mFragmentManager, TAG_DIALOG_NOT_AVAILABLE);
                     mMetricsFeatureProvider.action(getContext(),
-                            SettingsEnums.ACTION_NOT_SUPPORTED_SYSTEM_LANGUAGE,
-                            localeInfo.getLocale().toLanguageTag());
+                            SettingsEnums.ACTION_NOT_SUPPORTED_SYSTEM_LANGUAGE);
                 }
             } else {
                 mAdapter.notifyListChanged(localeInfo);
@@ -470,6 +470,7 @@ public class LocaleListEditor extends RestrictedSettingsFragment implements View
     private void configureDragAndDrop(LayoutPreference layout) {
         final RecyclerView list = layout.findViewById(R.id.dragList);
         final LocaleLinearLayoutManager llm = new LocaleLinearLayoutManager(getContext(), mAdapter);
+        llm.setLocaleListEditor(this);
         llm.setAutoMeasureEnabled(true);
         list.setLayoutManager(llm);
         list.setHasFixedSize(true);
@@ -503,7 +504,7 @@ public class LocaleListEditor extends RestrictedSettingsFragment implements View
         return false;
     }
 
-    private void showConfirmDialog(boolean isFirstRemoved, LocaleStore.LocaleInfo localeInfo) {
+    public void showConfirmDialog(boolean isFirstRemoved, LocaleStore.LocaleInfo localeInfo) {
         Locale currentSystemLocale = LocalePicker.getLocales().get(0);
         if (!localeInfo.getLocale().equals(currentSystemLocale)) {
             final LocaleDialogFragment localeDialogFragment =

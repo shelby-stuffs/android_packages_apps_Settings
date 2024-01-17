@@ -74,24 +74,28 @@ android_library {
         "BiometricsSharedLib",
         "SystemUIUnfoldLib",
         "WifiTrackerLib",
-        "android.content.pm.flags-aconfig-java",
         "android.hardware.dumpstate-V1-java",
         "android.hardware.dumpstate-V1.0-java",
         "android.hardware.dumpstate-V1.1-java",
+        "android.view.accessibility.flags-aconfig-java",
+        "com_android_server_accessibility_flags_lib",
         "net-utils-framework-common",
         "notification_flags_lib",
         "securebox",
 
         // Settings dependencies
         "FingerprintManagerInteractor",
+        "MediaDrmSettingsFlagsLib",
         "Settings-change-ids",
         "SettingsLib",
         "SettingsLibActivityEmbedding",
         "aconfig_settings_flags_lib",
+        "accessibility_settings_flags_lib",
         "app-usage-event-protos-lite",
         "battery-event-protos-lite",
         "battery-usage-slot-protos-lite",
         "contextualcards",
+        "development_settings_flag_lib",
         "factory_reset_flags_lib",
         "fuelgauge-log-protos-lite",
         "fuelgauge-usage-state-protos-lite",
@@ -101,18 +105,16 @@ android_library {
         "settings-logtags",
         "settings-telephony-protos-lite",
         "statslog-settings",
-        "com_android_server_accessibility_flags_lib",
     ],
 
     plugins: ["androidx.room_room-compiler-plugin"],
 
-    // TODO: b/307330031 - Re-enable the nullaway plugin when the issue is fixed.
-    // errorprone: {
-    //     extra_check_modules: ["//external/nullaway:nullaway_plugin"],
-    //     javacflags: [
-    //         "-XepOpt:NullAway:AnnotatedPackages=com.android.settings",
-    //     ],
-    // },
+    errorprone: {
+        extra_check_modules: ["//external/nullaway:nullaway_plugin"],
+        javacflags: [
+            "-XepOpt:NullAway:AnnotatedPackages=com.android.settings",
+        ],
+    },
 
     libs: [
         "telephony-common",

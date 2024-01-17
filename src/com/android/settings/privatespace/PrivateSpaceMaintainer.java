@@ -17,20 +17,26 @@
 package com.android.settings.privatespace;
 
 import static android.os.UserManager.USER_TYPE_PROFILE_PRIVATE;
+import static android.provider.Settings.Secure.HIDE_PRIVATESPACE_ENTRY_POINT;
+import static android.provider.Settings.Secure.USER_SETUP_COMPLETE;
 
 import android.app.ActivityManager;
 import android.app.IActivityManager;
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.pm.UserInfo;
+import android.os.Flags;
 import android.os.RemoteException;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.provider.Settings;
 import android.util.ArraySet;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.VisibleForTesting;
 
 import com.android.internal.annotations.GuardedBy;
 
@@ -40,6 +46,7 @@ import java.util.List;
 /** A class to help with the creation / deletion of Private Space */
 public class PrivateSpaceMaintainer {
     private static final String TAG = "PrivateSpaceMaintainer";
+
     @GuardedBy("this")
     private static PrivateSpaceMaintainer sPrivateSpaceMaintainer;
 
@@ -48,6 +55,10 @@ public class PrivateSpaceMaintainer {
     @GuardedBy("this")
     private UserHandle mUserHandle;
     private final KeyguardManager mKeyguardManager;
+
+    /** This is the default value for the hide private space entry point settings. */
+    public static final int HIDE_PRIVATE_SPACE_ENTRY_POINT_DISABLED_VAL = 0;
+    public static final int HIDE_PRIVATE_SPACE_ENTRY_POINT_ENABLED_VAL = 1;
 
     public enum ErrorDeletingPrivateSpace {
             DELETE_PS_ERROR_NONE,
@@ -61,6 +72,9 @@ public class PrivateSpaceMaintainer {
      * <p> This method should be used by the Private Space Setup Flow ONLY.
      */
     final synchronized boolean createPrivateSpace() {
+        if (!Flags.allowPrivateProfile()) {
+            return false;
+        }
         // Check if Private space already exists
         if (doesPrivateSpaceExist()) {
             return true;
@@ -84,6 +98,7 @@ public class PrivateSpaceMaintainer {
 
             IActivityManager am = ActivityManager.getService();
             try {
+                //TODO(b/313926659): To check and handle failure of startProfile
                 am.startProfile(mUserHandle.getIdentifier());
             } catch (RemoteException e) {
                 Log.e(TAG, "Failed to start private profile");
@@ -91,6 +106,8 @@ public class PrivateSpaceMaintainer {
             }
 
             Log.i(TAG, "Private space created with id: " + mUserHandle.getIdentifier());
+            resetPrivateSpaceSettings();
+            setUserSetupComplete();
         }
         return true;
     }
@@ -122,6 +139,9 @@ public class PrivateSpaceMaintainer {
 
     /** Returns true if the Private space exists. */
     public synchronized boolean doesPrivateSpaceExist() {
+        if (!Flags.allowPrivateProfile()) {
+            return false;
+        }
         if (mUserHandle != null) {
             return true;
         }
@@ -196,5 +216,63 @@ public class PrivateSpaceMaintainer {
     private boolean isPrivateProfileLockSet() {
         return doesPrivateSpaceExist()
                 && mKeyguardManager.isDeviceSecure(mUserHandle.getIdentifier());
+    }
+
+    /** Sets the setting to show PS entry point to the provided value. */
+    public void setHidePrivateSpaceEntryPointSetting(int value) {
+        Settings.Secure.putInt(mContext.getContentResolver(), HIDE_PRIVATESPACE_ENTRY_POINT, value);
+    }
+
+    /** @return the setting to show PS entry point. */
+    public int getHidePrivateSpaceEntryPointSetting() {
+        return Settings.Secure.getInt(
+                mContext.getContentResolver(),
+                HIDE_PRIVATESPACE_ENTRY_POINT,
+                HIDE_PRIVATE_SPACE_ENTRY_POINT_DISABLED_VAL);
+    }
+
+    /**
+     * Returns true if private space exists and quiet mode is successfully enabled, otherwise
+     * returns false
+     */
+    public synchronized boolean lockPrivateSpace() {
+        if (isPrivateProfileRunning()) {
+            return mUserManager.requestQuietModeEnabled(true, mUserHandle);
+        }
+        return false;
+    }
+
+    /**
+     * Checks if private space exists and requests to disable quiet mode.
+     *
+     * @param intentSender target to start when the user is unlocked
+     */
+    public synchronized void unlockPrivateSpace(IntentSender intentSender) {
+        if (mUserHandle != null) {
+            mUserManager.requestQuietModeEnabled(false, mUserHandle, intentSender);
+        }
+    }
+
+    /** Returns true if private space exists and is running, otherwise returns false */
+    @VisibleForTesting
+    synchronized boolean isPrivateProfileRunning() {
+        if (doesPrivateSpaceExist() && mUserHandle != null) {
+            return mUserManager.isUserRunning(mUserHandle);
+        }
+        return false;
+    }
+
+    private void resetPrivateSpaceSettings() {
+        setHidePrivateSpaceEntryPointSetting(HIDE_PRIVATE_SPACE_ENTRY_POINT_DISABLED_VAL);
+    }
+
+    /**
+     * Sets the USER_SETUP_COMPLETE for private profile on which device theme is applied to the
+     * profile.
+     */
+    @GuardedBy("this")
+    private void setUserSetupComplete() {
+        Settings.Secure.putIntForUser(mContext.getContentResolver(), USER_SETUP_COMPLETE,
+                1, mUserHandle.getIdentifier());
     }
 }
