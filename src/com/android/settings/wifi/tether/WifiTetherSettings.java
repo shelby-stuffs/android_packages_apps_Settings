@@ -64,6 +64,7 @@ public class WifiTetherSettings extends RestrictedDashboardFragment
     private static final String KEY_WIFI_TETHER_SCREEN = "wifi_tether_settings_screen";
     private static final int EXPANDED_CHILD_COUNT_WITH_SECURITY_NON = 3;
     private static boolean mWasApBand6GHzSelected = false;
+    boolean mShouldHidePreference;
 
     @VisibleForTesting
     static final String KEY_WIFI_TETHER_NETWORK_NAME = "wifi_tether_network_name";
@@ -140,6 +141,8 @@ public class WifiTetherSettings extends RestrictedDashboardFragment
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        mShouldHidePreference = FeatureFactory.getFeatureFactory()
+                .getWifiFeatureProvider().getWifiHotspotRepository().isSpeedFeatureAvailable();
         if (!canShowWifiHotspot(getContext())) {
             Log.e(TAG, "can not launch Wi-Fi hotspot settings"
                     + " because the config is not set to show.");
@@ -383,7 +386,7 @@ public class WifiTetherSettings extends RestrictedDashboardFragment
                        SoftApConfiguration.BAND_2GHZ, SoftApConfiguration.BAND_5GHZ};
                 configBuilder.setBands(dualBands);
             }
-        } else {
+        } else if (!mShouldHidePreference) {
             configBuilder.setBand(mApBandPreferenceController.getBandIndex());
         }
         return configBuilder.build();

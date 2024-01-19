@@ -61,6 +61,7 @@ import com.android.settings.wifi.tether.WifiTetherSecurityPreferenceController;
 import com.android.settingslib.TetherUtil;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.search.SearchIndexable;
+import com.android.settings.overlay.FeatureFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -380,7 +381,10 @@ public class AllInOneTetherSettings extends RestrictedDashboardFragment
                     mPasswordPreferenceController.getPasswordValidated(securityType),
                     SoftApConfiguration.SECURITY_TYPE_WPA2_PSK);
         }
-        configBuilder.setBand(mApBandPreferenceController.getBandIndex());
+        if (!FeatureFactory.getFeatureFactory()
+                .getWifiFeatureProvider().getWifiHotspotRepository().isSpeedFeatureAvailable()) {
+            configBuilder.setBand(mApBandPreferenceController.getBandIndex());
+        }
         return configBuilder.build();
     }
 
