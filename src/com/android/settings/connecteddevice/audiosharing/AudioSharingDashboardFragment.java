@@ -34,7 +34,7 @@ public class AudioSharingDashboardFragment extends DashboardFragment
     private AudioSharingSwitchBarController mSwitchBarController;
     private AudioSharingDeviceVolumeGroupController mAudioSharingDeviceVolumeGroupController;
     private CallsAndAlarmsPreferenceController mCallsAndAlarmsPreferenceController;
-    private AudioSharingNamePreferenceController mAudioSharingNamePreferenceController;
+    private AudioSharingPlaySoundPreferenceController mAudioSharingPlaySoundPreferenceController;
     private AudioStreamsCategoryController mAudioStreamsCategoryController;
 
     public AudioSharingDashboardFragment() {
@@ -74,7 +74,8 @@ public class AudioSharingDashboardFragment extends DashboardFragment
         mAudioSharingDeviceVolumeGroupController.init(this);
         mCallsAndAlarmsPreferenceController = use(CallsAndAlarmsPreferenceController.class);
         mCallsAndAlarmsPreferenceController.init(this);
-        mAudioSharingNamePreferenceController = use(AudioSharingNamePreferenceController.class);
+        mAudioSharingPlaySoundPreferenceController =
+                use(AudioSharingPlaySoundPreferenceController.class);
         mAudioStreamsCategoryController = use(AudioStreamsCategoryController.class);
     }
 
@@ -100,7 +101,7 @@ public class AudioSharingDashboardFragment extends DashboardFragment
     private void updateVisibilityForAttachedPreferences() {
         mAudioSharingDeviceVolumeGroupController.updateVisibility();
         mCallsAndAlarmsPreferenceController.updateVisibility();
-        mAudioSharingNamePreferenceController.updateVisibility();
+        mAudioSharingPlaySoundPreferenceController.updateVisibility();
         mAudioStreamsCategoryController.updateVisibility();
     }
 }
