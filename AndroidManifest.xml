@@ -120,6 +120,7 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
     <uses-permission android:name="android.permission.OVERRIDE_WIFI_CONFIG" />
     <uses-permission android:name="android.permission.RESTART_WIFI_SUBSYSTEM" />
     <uses-permission android:name="android.permission.MANAGE_FINGERPRINT" />
+    <uses-permission android:name="android.permission.RECOVERY"/>
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
     <uses-permission android:name="android.permission.USE_BIOMETRIC_INTERNAL" />
     <uses-permission android:name="android.permission.USER_ACTIVITY" />
@@ -473,6 +474,7 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
         <activity
             android:name="Settings$NetworkSelectActivity"
             android:label="@string/choose_network_title"
+            android:permission="android.permission.SATELLITE_COMMUNICATION"
             android:configChanges="orientation|keyboard|keyboardHidden|screenSize|screenLayout|smallestScreenSize">
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.network.telephony.NetworkSelectSettings" />
@@ -4739,28 +4741,6 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
             android:name=".slices.VolumeSliceRelayReceiver"
             android:permission="android.permission.MANAGE_SLICE_PERMISSIONS"
             android:exported="true" />
-
-        <!-- Couldn't be triggered from outside of settings. Statsd can trigger it because we send
-             PendingIntent to it-->
-        <receiver android:name=".fuelgauge.batterytip.AnomalyDetectionReceiver"
-                  android:exported="false" />
-
-        <receiver android:name=".fuelgauge.batterytip.AnomalyConfigReceiver"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.app.action.STATSD_STARTED"/>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-            </intent-filter>
-        </receiver>
-
-        <service android:name=".fuelgauge.batterytip.AnomalyCleanupJobService"
-                 android:permission="android.permission.BIND_JOB_SERVICE" />
-
-        <service android:name=".fuelgauge.batterytip.AnomalyConfigJobService"
-                 android:permission="android.permission.BIND_JOB_SERVICE" />
-
-        <service android:name=".fuelgauge.batterytip.AnomalyDetectionJobService"
-                 android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <provider
             android:name=".homepage.contextualcards.CardContentProvider"

@@ -124,6 +124,10 @@ android_library {
         "telephony-ext",
         "extphonelib",
     ],
+
+    lint: {
+        extra_check_modules: ["SettingsLibLintChecker"],
+    },
 }
 
 platform_compat_config {
