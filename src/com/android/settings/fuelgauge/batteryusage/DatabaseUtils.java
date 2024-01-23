@@ -458,55 +458,24 @@ public final class DatabaseUtils {
 
     /** Clears all data and jobs if current timestamp is out of the range of last recorded job. */
     public static void clearDataAfterTimeChangedIfNeeded(Context context, Intent intent) {
+        if ((intent.getFlags() & FLAG_RECEIVER_REPLACE_PENDING) != 0) {
+            BatteryUsageLogUtils.writeLog(
+                    context,
+                    Action.TIME_UPDATED,
+                    "Database is not cleared because the time change intent is only"
+                            + " for the existing pending receiver.");
+            return;
+        }
         AsyncTask.execute(
                 () -> {
                     try {
-                        if ((intent.getFlags() & FLAG_RECEIVER_REPLACE_PENDING) != 0) {
-                            BatteryUsageLogUtils.writeLog(
-                                    context,
-                                    Action.TIME_UPDATED,
-                                    "Database is not cleared because the time change intent is only"
-                                            + " for the existing pending receiver.");
-                            return;
-                        }
-                        final List<BatteryEvent> batteryLevelRecordEvents =
-                                DatabaseUtils.getBatteryEvents(
-                                        context,
-                                        Calendar.getInstance(),
-                                        getLastFullChargeTime(context),
-                                        BATTERY_LEVEL_RECORD_EVENTS);
-                        final long lastRecordTimestamp =
-                                batteryLevelRecordEvents.isEmpty()
-                                        ? INVALID_TIMESTAMP
-                                        : batteryLevelRecordEvents.get(0).getTimestamp();
-                        final long nextRecordTimestamp =
-                                TimestampUtils.getNextEvenHourTimestamp(lastRecordTimestamp);
-                        final long currentTime = System.currentTimeMillis();
-                        final boolean isOutOfTimeRange =
-                                lastRecordTimestamp == INVALID_TIMESTAMP
-                                        || currentTime < lastRecordTimestamp
-                                        || currentTime > nextRecordTimestamp;
-                        final String logInfo =
-                                String.format(
-                                        Locale.ENGLISH,
-                                        "clear database = %b, current time = %d, "
-                                                + "last record time = %d",
-                                        isOutOfTimeRange,
-                                        currentTime,
-                                        lastRecordTimestamp);
-                        Log.d(TAG, logInfo);
-                        BatteryUsageLogUtils.writeLog(context, Action.TIME_UPDATED, logInfo);
-                        if (isOutOfTimeRange) {
-                            DatabaseUtils.clearAll(context);
-                            PeriodicJobManager.getInstance(context)
-                                    .refreshJob(/* fromBoot= */ false);
-                        }
+                        clearDataAfterTimeChangedIfNeededInternal(context);
                     } catch (RuntimeException e) {
-                        Log.e(TAG, "refreshDataAndJobIfNeededAfterTimeChanged() failed", e);
+                        Log.e(TAG, "clearDataAfterTimeChangedIfNeeded() failed", e);
                         BatteryUsageLogUtils.writeLog(
                                 context,
                                 Action.TIME_UPDATED,
-                                "refreshDataAndJobIfNeededAfterTimeChanged() failed" + e);
+                                "clearDataAfterTimeChangedIfNeeded() failed" + e);
                     }
                 });
     }
@@ -798,7 +767,8 @@ public final class DatabaseUtils {
                 BatteryUsageBroadcastReceiver.ACTION_CLEAR_BATTERY_CACHE_DATA);
         writeString(context, writer, "LastLoadFullChargeTime", KEY_LAST_LOAD_FULL_CHARGE_TIME);
         writeString(context, writer, "LastUploadFullChargeTime", KEY_LAST_UPLOAD_FULL_CHARGE_TIME);
-        writeString(context, writer, "DismissedPowerAnomalyKeys", KEY_DISMISSED_POWER_ANOMALY_KEYS);
+        writeStringSet(
+                context, writer, "DismissedPowerAnomalyKeys", KEY_DISMISSED_POWER_ANOMALY_KEYS);
     }
 
     static SharedPreferences getSharedPreferences(Context context) {
@@ -890,6 +860,40 @@ public final class DatabaseUtils {
         }
     }
 
+    private static void clearDataAfterTimeChangedIfNeededInternal(Context context) {
+        final List<BatteryEvent> batteryLevelRecordEvents =
+                DatabaseUtils.getBatteryEvents(
+                        context,
+                        Calendar.getInstance(),
+                        getLastFullChargeTime(context),
+                        BATTERY_LEVEL_RECORD_EVENTS);
+        final long lastRecordTimestamp =
+                batteryLevelRecordEvents.isEmpty()
+                        ? INVALID_TIMESTAMP
+                        : batteryLevelRecordEvents.get(0).getTimestamp();
+        final long nextRecordTimestamp =
+                TimestampUtils.getNextEvenHourTimestamp(lastRecordTimestamp);
+        final long currentTime = System.currentTimeMillis();
+        final boolean isOutOfTimeRange =
+                lastRecordTimestamp == INVALID_TIMESTAMP
+                        || currentTime < lastRecordTimestamp
+                        || currentTime > nextRecordTimestamp;
+        final String logInfo =
+                String.format(
+                        Locale.ENGLISH,
+                        "clear database = %b, current time = %d, last record time = %d",
+                        isOutOfTimeRange,
+                        currentTime,
+                        lastRecordTimestamp);
+        Log.d(TAG, logInfo);
+        BatteryUsageLogUtils.writeLog(context, Action.TIME_UPDATED, logInfo);
+        if (isOutOfTimeRange) {
+            DatabaseUtils.clearAll(context);
+            PeriodicJobManager.getInstance(context)
+                    .refreshJob(/* fromBoot= */ false);
+        }
+    }
+
     private static long loadLongFromContentProvider(
             Context context, Uri uri, final long defaultValue) {
         return loadFromContentProvider(
@@ -918,9 +922,22 @@ public final class DatabaseUtils {
     private static void writeString(
             Context context, PrintWriter writer, String prefix, String key) {
         final SharedPreferences sharedPreferences = getSharedPreferences(context);
-        if (sharedPreferences != null) {
-            final String content = sharedPreferences.getString(key, "");
-            writer.println(String.format("\t\t%s: %s", prefix, content));
+        if (sharedPreferences == null) {
+            return;
+        }
+        final String content = sharedPreferences.getString(key, "");
+        writer.println(String.format("\t\t%s: %s", prefix, content));
+    }
+
+    private static void writeStringSet(
+            Context context, PrintWriter writer, String prefix, String key) {
+        final SharedPreferences sharedPreferences = getSharedPreferences(context);
+        if (sharedPreferences == null) {
+            return;
+        }
+        final Set<String> results = sharedPreferences.getStringSet(key, new ArraySet<>());
+        if (results != null) {
+            writer.println(String.format("\t\t%s: %s", prefix, results.toString()));
         }
     }
 

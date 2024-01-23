@@ -45,6 +45,7 @@ import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import android.telephony.satellite.SatelliteManager;
 import android.util.Log;
 import android.view.View;
 
@@ -54,6 +55,7 @@ import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 
+import com.android.internal.annotations.Initializer;
 import com.android.internal.telephony.OperatorInfo;
 import com.android.settings.R;
 import com.android.settings.Utils;
@@ -72,6 +74,8 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Collectors;
 
 /**
  * "Choose network" settings UI for the Settings app.
@@ -104,6 +108,8 @@ public class NetworkSelectSettings extends DashboardFragment implements
     private TelephonyManager mTelephonyManager;
     SubscriptionManager mSubscriptionManager;
     private SubscriptionsChangeListener mSubscriptionsChangeListener;
+    private SatelliteManager mSatelliteManager;
+    private CarrierConfigManager mCarrierConfigManager;
     private List<String> mForbiddenPlmns;
     private boolean mShow4GForLTE = false;
     private NetworkScanHelper mNetworkScanHelper;
@@ -116,6 +122,8 @@ public class NetworkSelectSettings extends DashboardFragment implements
     private long mWaitingForNumberOfScanResults;
     @VisibleForTesting
     boolean mIsAggregationEnabled = false;
+    private CarrierConfigManager.CarrierConfigChangeListener mCarrierConfigChangeListener;
+    private AtomicBoolean mShouldFilterOutSatellitePlmn = new AtomicBoolean();
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -125,8 +133,10 @@ public class NetworkSelectSettings extends DashboardFragment implements
 
     @Keep
     @VisibleForTesting
+    @Initializer
     protected void onCreateInitialization() {
-        mUseNewApi = enableNewAutoSelectNetworkUI(getContext());
+        Context context = getContext();
+        mUseNewApi = enableNewAutoSelectNetworkUI(context);
 
         if (TelephonyUtils.isServiceConnected()) {
             mIsAdvancedScanSupported = TelephonyUtils.isAdvancedPlmnScanSupported(
@@ -141,25 +151,36 @@ public class NetworkSelectSettings extends DashboardFragment implements
         mErrorMsgCategory = getPreferenceCategory(PREF_KEY_ERROR_MSG);
         mErrorMsgPreference = new Preference(getContext());
         mErrorMsgPreference.setSelectable(false);
-        mStatusMessagePreference = new Preference(getContext());
+        mStatusMessagePreference = new Preference(context);
         mStatusMessagePreference.setSelectable(false);
         mSelectedPreference = null;
-        mTelephonyManager = getTelephonyManager(getContext(), mSubId);
+        mTelephonyManager = getTelephonyManager(context, mSubId);
+        mSatelliteManager = getSatelliteManager(context);
+        mCarrierConfigManager = getCarrierConfigManager(context);
         mSubscriptionManager = getContext().getSystemService(SubscriptionManager.class);
         mSubscriptionsChangeListener = new SubscriptionsChangeListener(getContext(), this);
         mNetworkScanHelper = new NetworkScanHelper(
                 getContext(), mTelephonyManager, mCallback, mNetworkScanExecutor);
-        PersistableBundle bundle = getCarrierConfigManager(getContext())
-                .getConfigForSubId(mSubId);
-        if (bundle != null) {
-            mShow4GForLTE = bundle.getBoolean(
-                    CarrierConfigManager.KEY_SHOW_4G_FOR_LTE_DATA_ICON_BOOL);
-        }
+        PersistableBundle bundle = mCarrierConfigManager.getConfigForSubId(mSubId,
+                CarrierConfigManager.KEY_SHOW_4G_FOR_LTE_DATA_ICON_BOOL,
+                CarrierConfigManager.KEY_REMOVE_SATELLITE_PLMN_IN_MANUAL_NETWORK_SCAN_BOOL);
+        mShow4GForLTE = bundle.getBoolean(CarrierConfigManager.KEY_SHOW_4G_FOR_LTE_DATA_ICON_BOOL,
+                false);
+        mShouldFilterOutSatellitePlmn.set(bundle.getBoolean(
+                CarrierConfigManager.KEY_REMOVE_SATELLITE_PLMN_IN_MANUAL_NETWORK_SCAN_BOOL,
+                true));
 
-        mMetricsFeatureProvider = getMetricsFeatureProvider(getContext());
-        mIsAggregationEnabled = enableAggregation(getContext());
+        mMetricsFeatureProvider = getMetricsFeatureProvider(context);
+        mIsAggregationEnabled = enableAggregation(context);
         Log.d(TAG, "init: mUseNewApi:" + mUseNewApi
                 + " ,mIsAggregationEnabled:" + mIsAggregationEnabled + " ,mSubId:" + mSubId);
+
+        mCarrierConfigChangeListener =
+                (slotIndex, subId, carrierId, specificCarrierId) -> handleCarrierConfigChanged(
+                        subId);
+        mCarrierConfigManager.registerCarrierConfigChangeListener(mNetworkScanExecutor,
+                mCarrierConfigChangeListener);
+
     }
 
     @Keep
@@ -199,6 +220,12 @@ public class NetworkSelectSettings extends DashboardFragment implements
     @VisibleForTesting
     protected MetricsFeatureProvider getMetricsFeatureProvider(Context context) {
         return FeatureFactory.getFeatureFactory().getMetricsFeatureProvider();
+    }
+
+    @Keep
+    @VisibleForTesting
+    protected SatelliteManager getSatelliteManager(Context context) {
+        return context.getSystemService(SatelliteManager.class);
     }
 
     @Keep
@@ -449,7 +476,43 @@ public class NetworkSelectSettings extends DashboardFragment implements
             }
             aggregatedList.add(cellInfo);
         }
-        return aggregatedList;
+
+        return filterOutSatellitePlmn(aggregatedList);
+    }
+
+    /* We do not want to expose carrier satellite plmns to the user when manually scan the
+       cellular network. Therefore, it is needed to filter out satellite plmns from current cell
+       info list  */
+    private List<CellInfo> filterOutSatellitePlmn(List<CellInfo> cellInfoList) {
+        List<String> aggregatedSatellitePlmn = getAllSatellitePlmnsForCarrierWrapper();
+        if (!mShouldFilterOutSatellitePlmn.get() || aggregatedSatellitePlmn.isEmpty()) {
+            return cellInfoList;
+        }
+        return cellInfoList.stream()
+                .filter(cellInfo -> !aggregatedSatellitePlmn.contains(
+                        CellInfoUtil.getOperatorNumeric(cellInfo.getCellIdentity())))
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Serves as a wrapper method for {@link SatelliteManager#getAllSatellitePlmnsForCarrier(int)}.
+     * Since SatelliteManager is final, this wrapper enables mocking or spying of
+     * {@link SatelliteManager#getAllSatellitePlmnsForCarrier(int)} for unit testing purposes.
+     */
+    @VisibleForTesting
+    protected List<String> getAllSatellitePlmnsForCarrierWrapper() {
+        return mSatelliteManager.getAllSatellitePlmnsForCarrier(mSubId);
+    }
+
+    private void handleCarrierConfigChanged(int subId) {
+        PersistableBundle config = mCarrierConfigManager.getConfigForSubId(subId,
+                CarrierConfigManager.KEY_REMOVE_SATELLITE_PLMN_IN_MANUAL_NETWORK_SCAN_BOOL);
+        boolean shouldFilterSatellitePlmn = config.getBoolean(
+                CarrierConfigManager.KEY_REMOVE_SATELLITE_PLMN_IN_MANUAL_NETWORK_SCAN_BOOL,
+                true);
+        if (shouldFilterSatellitePlmn != mShouldFilterOutSatellitePlmn.get()) {
+            mShouldFilterOutSatellitePlmn.set(shouldFilterSatellitePlmn);
+        }
     }
 
     private final NetworkScanHelper.NetworkScanCallback mCallback =
