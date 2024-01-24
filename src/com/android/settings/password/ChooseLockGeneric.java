@@ -203,6 +203,7 @@ public class ChooseLockGeneric extends SettingsActivity {
         private boolean mOnlyEnforceDevicePasswordRequirement = false;
         private int mExtraLockScreenTitleResId;
         private int mExtraLockScreenDescriptionResId;
+        private boolean mWaitingForBiometricEnrollment = false;
 
         @Override
         public int getMetricsCategory() {
@@ -251,6 +252,7 @@ public class ChooseLockGeneric extends SettingsActivity {
                     ChooseLockSettingsHelper.EXTRA_KEY_FOR_FACE, false);
             mForBiometrics = intent.getBooleanExtra(
                     ChooseLockSettingsHelper.EXTRA_KEY_FOR_BIOMETRICS, false);
+            mWaitingForBiometricEnrollment = mForBiometrics || mForFingerprint || mForFace;
 
             mExtraLockScreenTitleResId = intent.getIntExtra(EXTRA_KEY_CHOOSE_LOCK_SCREEN_TITLE, -1);
             mExtraLockScreenDescriptionResId =
@@ -441,6 +443,7 @@ public class ChooseLockGeneric extends SettingsActivity {
                 return true;
             } else if (KEY_SKIP_FINGERPRINT.equals(key) || KEY_SKIP_FACE.equals(key)
                     || KEY_SKIP_BIOMETRICS.equals(key)) {
+                mWaitingForBiometricEnrollment = false;
                 Intent chooseLockGenericIntent = new Intent(getActivity(),
                     getInternalActivityClass());
                 chooseLockGenericIntent.setAction(getIntent().getAction());
@@ -494,6 +497,7 @@ public class ChooseLockGeneric extends SettingsActivity {
                 finish();
             } else if (requestCode == CHOOSE_LOCK_BEFORE_BIOMETRIC_REQUEST
                     && resultCode == BiometricEnrollBase.RESULT_FINISHED) {
+                mWaitingForBiometricEnrollment = false;
                 Intent intent = getBiometricEnrollIntent(getActivity());
                 if (data != null) {
                     // ChooseLockGeneric should have requested for a Gatekeeper Password Handle to
@@ -874,7 +878,8 @@ public class ChooseLockGeneric extends SettingsActivity {
             // Otherwise, bugs would be caused. (e.g. b/278488549, b/278530059)
             final boolean hasCredential = mLockPatternUtils.isSecure(mUserId);
             if (!getActivity().isChangingConfigurations()
-                    && !mWaitingForConfirmation && !mWaitingForActivityResult && hasCredential) {
+                    && !mWaitingForConfirmation && !mWaitingForActivityResult && hasCredential
+                    && !mWaitingForBiometricEnrollment) {
                 getActivity().finish();
             }
         }
