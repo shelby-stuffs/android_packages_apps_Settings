@@ -117,6 +117,9 @@ public class WifiTetherSecurityPreferenceController extends WifiTetherBasePrefer
 
     @Override
     public void updateDisplay() {
+        if (mShouldHidePreference) {
+            return;
+        }
         // The mPreference will be ready when the fragment calls displayPreference(). Since the
         // capability of WPA3 hotspot callback will update the preference list here, add null point
         // checking to avoid the mPreference is not ready when the fragment is loading for settings

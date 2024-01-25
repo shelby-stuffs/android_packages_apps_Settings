@@ -34,6 +34,7 @@ import com.android.settings.R;
 import com.android.settings.core.FeatureFlags;
 import java.util.ArrayList;
 import java.util.Arrays;
+import com.android.settings.overlay.FeatureFactory;
 
 public class WifiTetherApBandPreferenceController extends WifiTetherBasePreferenceController {
 
@@ -53,6 +54,7 @@ public class WifiTetherApBandPreferenceController extends WifiTetherBasePreferen
     private boolean m5GHzSupported;
     private boolean m6GHzSupported;
     private String mCountryCode;
+    boolean mShouldHidePreference;
 
     // Dual Band (2G + 5G)
     public static final int BAND_BOTH_2G_5G = 1 << 4;
@@ -62,12 +64,30 @@ public class WifiTetherApBandPreferenceController extends WifiTetherBasePreferen
         super(context, listener);
         mContext = context;
 
+        // If the Wi-Fi Hotspot Speed Feature available, then hide this controller.
+        mShouldHidePreference = FeatureFactory.getFeatureFactory()
+                .getWifiFeatureProvider().getWifiHotspotRepository().isSpeedFeatureAvailable();
+        if (mShouldHidePreference) {
+            return;
+        }
+
         syncBandSupportAndCountryCode();
         updatePreferenceEntries();
     }
 
     @Override
+    public boolean isAvailable() {
+        if (mShouldHidePreference) {
+            return false;
+        }
+        return super.isAvailable();
+    }
+
+    @Override
     public void updateDisplay() {
+        if (mShouldHidePreference) {
+            return;
+        }
         final SoftApConfiguration config = mWifiManager.getSoftApConfiguration();
         syncBandSupportAndCountryCode();
         if (config == null) {
