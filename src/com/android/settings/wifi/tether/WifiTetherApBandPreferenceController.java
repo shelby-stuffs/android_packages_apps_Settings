@@ -118,6 +118,9 @@ public class WifiTetherApBandPreferenceController extends WifiTetherBasePreferen
         }
         ListPreference preference =
                 (ListPreference) mPreference;
+        if (preference == null) {
+            return;
+        }
         preference.setEntries(mBandSummaries);
         preference.setEntryValues(mBandEntries);
 
@@ -182,6 +185,9 @@ public class WifiTetherApBandPreferenceController extends WifiTetherBasePreferen
 
     @VisibleForTesting
     void updatePreferenceEntries() {
+        if (mShouldHidePreference) {
+            return;
+        }
         final SoftApConfiguration config = mWifiManager.getSoftApConfiguration();
         Resources res = mContext.getResources();
         ArrayList<String> bandEntries =  new ArrayList<String>();
@@ -243,6 +249,9 @@ public class WifiTetherApBandPreferenceController extends WifiTetherBasePreferen
     }
 
     public int getBandIndex() {
+        if (mShouldHidePreference) {
+            return 0;
+        }
         return mBandIndex;
     }
 
