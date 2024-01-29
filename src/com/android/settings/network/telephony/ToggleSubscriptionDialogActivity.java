@@ -389,8 +389,7 @@ public class ToggleSubscriptionDialogActivity extends SubscriptionActionDialogAc
             showEnableDsdsConfirmDialog();
             return;
         }
-        if (!mIsEsimOperation && (isRemovableSimEnabled() ||
-                UiccSlotUtil.isEsimSub(mSubInfo, mTelMgr))) {
+        if (!mIsEsimOperation && isRemovableSimEnabled()) {
             // This case is for switching on psim when device is not multiple enable profile
             // supported.
             Log.i(TAG, "Toggle on pSIM, no dialog displayed.");
