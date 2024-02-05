@@ -395,6 +395,11 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
             roamingPreferenceController.init(getFragmentManager(), mSubId,
                     mMobileNetworkInfoEntity);
         }
+        final SatelliteSettingPreferenceController satelliteSettingPreferenceController = use(
+                SatelliteSettingPreferenceController.class);
+        if (satelliteSettingPreferenceController != null) {
+            satelliteSettingPreferenceController.init(mSubId);
+        }
         use(ApnPreferenceController.class).init(mSubId);
         use(UserPLMNPreferenceController.class).init(mSubId);
         use(CarrierPreferenceController.class).init(mSubId);

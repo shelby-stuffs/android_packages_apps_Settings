@@ -22,6 +22,7 @@ import com.android.settings.network.apn.ApnEditPageProvider
 import com.android.settings.spa.about.AboutPhonePageProvider
 import com.android.settings.spa.app.AllAppListPageProvider
 import com.android.settings.spa.app.AppsMainPageProvider
+import com.android.settings.spa.app.battery.BatteryOptimizationModeAppListPageProvider
 import com.android.settings.spa.app.appcompat.UserAspectRatioAppsPageProvider
 import com.android.settings.spa.app.appinfo.AppInfoSettingsProvider
 import com.android.settings.spa.app.appinfo.CloneAppInfoSettingsProvider
@@ -47,6 +48,8 @@ import com.android.settings.spa.development.UsageStatsPageProvider
 import com.android.settings.spa.development.compat.PlatformCompatAppListPageProvider
 import com.android.settings.spa.home.HomePageProvider
 import com.android.settings.spa.network.NetworkAndInternetPageProvider
+import com.android.settings.spa.network.NetworkCellularGroupProvider
+import com.android.settings.spa.network.SimOnboardingPageProvider
 import com.android.settings.spa.notification.AppListNotificationsPageProvider
 import com.android.settings.spa.notification.NotificationMainPageProvider
 import com.android.settings.spa.system.AppLanguagesPageProvider
@@ -114,6 +117,9 @@ open class SettingsSpaEnvironment(context: Context) : SpaEnvironment(context) {
         StorageAppListPageProvider.Apps,
         StorageAppListPageProvider.Games,
         ApnEditPageProvider,
+        SimOnboardingPageProvider,
+        BatteryOptimizationModeAppListPageProvider,
+        NetworkCellularGroupProvider,
     )
 
     override val logger = if (FeatureFlagUtils.isEnabled(

@@ -140,6 +140,7 @@ public class Settings extends SettingsActivity {
     public static class DevelopmentSettingsActivity extends SettingsActivity { /* empty */ }
     public static class AccessibilitySettingsActivity extends SettingsActivity { /* empty */ }
     public static class AccessibilityDetailsSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class AccessibilityEditShortcutsActivity extends SettingsActivity { /* empty */ }
     public static class CaptioningSettingsActivity extends SettingsActivity { /* empty */ }
     public static class AccessibilityInversionSettingsActivity extends SettingsActivity { /* empty */ }
     public static class AccessibilityContrastSettingsActivity extends SettingsActivity { /* empty */ }
@@ -383,6 +384,7 @@ public class Settings extends SettingsActivity {
         /* empty */
     }
 
+    public static class SatelliteSettingActivity extends SettingsActivity { /* empty */ }
     public static class ApnSettingsActivity extends SettingsActivity { /* empty */ }
     public static class WifiCallingSettingsActivity extends SettingsActivity { /* empty */ }
     public static class MemorySettingsActivity extends SettingsActivity { /* empty */ }
@@ -437,6 +439,7 @@ public class Settings extends SettingsActivity {
     public static class StylusUsiDetailsActivity extends SettingsActivity { /* empty */ }
     public static class BluetoothBroadcastActivity extends SettingsActivity { /* empty */ }
     public static class BluetoothFindBroadcastsActivity extends SettingsActivity { /* empty */ }
+    public static class AudioStreamConfirmDialogActivity extends SettingsActivity { /* empty */ }
     public static class WifiCallingDisclaimerActivity extends SettingsActivity { /* empty */ }
     public static class MobileNetworkListActivity extends SettingsActivity {}
     public static class PowerMenuSettingsActivity extends SettingsActivity {}
