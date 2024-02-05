@@ -15,7 +15,7 @@
  */
 
 /* Changes from Qualcomm Innovation Center, Inc. are provided under the following license:
- * Copyright (c) 2022-2023 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (c) 2022-2024 Qualcomm Innovation Center, Inc. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted (subject to the limitations in the
@@ -69,6 +69,8 @@ import androidx.core.app.NotificationCompat;
 import com.android.settings.R;
 import com.android.settings.network.SubscriptionUtil;
 
+import com.qti.extphone.ExtTelephonyManager;
+
 /**
  * Displays a notification that allows users to disable C_IWLAN
  */
@@ -97,7 +99,12 @@ public class CiwlanNotificationReceiver extends BroadcastReceiver {
                 boolean show = intent.getBooleanExtra(CIWLAN_EXIT_NOTIFICATION_STATUS, false);
                 int phoneId = intent.getIntExtra(CIWLAN_EXIT_NOTIFICATION_PHONE_ID,
                         SubscriptionManager.INVALID_PHONE_INDEX);
-                if (show && SubscriptionManager.getSubscriptionId(phoneId) !=
+                ExtTelephonyManager extTelephonyManager = ExtTelephonyManager.getInstance(context);
+                boolean isMsimCiwlanSupported = extTelephonyManager.isFeatureSupported(
+                        ExtTelephonyManager.FEATURE_CIWLAN_MODE_PREFERENCE);
+                // If MSIM C_IWLAN is not supported, this notification must be shown for DDS only
+                if (!isMsimCiwlanSupported && show &&
+                        SubscriptionManager.getSubscriptionId(phoneId) !=
                         SubscriptionManager.getDefaultDataSubscriptionId()) {
                     Log.d(TAG, "Notification not supported for nDDS, ignoring...");
                     return;
