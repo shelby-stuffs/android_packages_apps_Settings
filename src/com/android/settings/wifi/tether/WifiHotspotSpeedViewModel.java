@@ -54,8 +54,8 @@ public class WifiHotspotSpeedViewModel extends AndroidViewModel {
     protected final WifiHotspotRepository mWifiHotspotRepository;
     protected Map<Integer, SpeedInfo> mSpeedInfoMap = new HashMap<>();
     protected MutableLiveData<Map<Integer, SpeedInfo>> mSpeedInfoMapData;
-    protected SpeedInfo mSpeedInfo2g = new SpeedInfo(false, true, false);
-    protected SpeedInfo mSpeedInfo5g = new SpeedInfo(false, true, false);
+    protected SpeedInfo mSpeedInfo2g = new SpeedInfo(false, true, true);
+    protected SpeedInfo mSpeedInfo5g = new SpeedInfo(false, true, true);
     protected SpeedInfo mSpeedInfo2g5g = new SpeedInfo(false, true, true);
     protected SpeedInfo mSpeedInfo6g = new SpeedInfo(false, true, true);
 
@@ -100,8 +100,6 @@ public class WifiHotspotSpeedViewModel extends AndroidViewModel {
         boolean showDualBand = mWifiHotspotRepository.isDualBand() && available;
         log("on5gAvailableChanged(), showDualBand:" + showDualBand);
         mSpeedInfo2g5g.mIsVisible = showDualBand;
-        mSpeedInfo2g.mIsVisible = !showDualBand;
-        mSpeedInfo5g.mIsVisible = !showDualBand;
         updateSpeedInfoMapData();
     }
 
