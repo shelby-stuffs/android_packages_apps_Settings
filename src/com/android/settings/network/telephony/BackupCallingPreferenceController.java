@@ -367,6 +367,7 @@ public class BackupCallingPreferenceController extends TelephonyTogglePreference
             Log.d(LOG_TAG, "Skip update under mCallState = " + mCallState);
             return;
         }
+        mCallingPreferenceCategoryController.updateChildVisible(getPreferenceKey(), true);
         SubscriptionInfo subInfo = getSubscriptionInfoFromActiveList(mSubId);
         mPreference = preference;
         final SwitchPreference switchPreference = (SwitchPreference) preference;
