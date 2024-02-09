@@ -31,11 +31,28 @@
         android:title="@string/calls_and_alarms_device_title"
         settings:controller="com.android.settings.connecteddevice.audiosharing.CallsAndAlarmsPreferenceController" />
 
-    <com.android.settings.connecteddevice.audiosharing.AudioSharingNamePreference
-        android:key="audio_sharing_stream_name"
-        android:summary="********"
-        android:title="Stream name"
-        settings:controller="com.android.settings.connecteddevice.audiosharing.AudioSharingNamePreferenceController" />
+    <Preference
+        android:icon="@drawable/ic_audio_play_sample"
+        android:key="audio_sharing_play_sound"
+        android:summary="Everyone listening should hear it"
+        android:title="Play a test sound"
+        settings:controller="com.android.settings.connecteddevice.audiosharing.AudioSharingPlaySoundPreferenceController" />
+
+    <PreferenceCategory
+        android:key="audio_sharing_stream_settings_category"
+        android:title="Stream settings"
+        settings:controller="com.android.settings.connecteddevice.audiosharing.StreamSettingsCategoryController">
+
+        <com.android.settings.connecteddevice.audiosharing.AudioSharingNamePreference
+            android:key="audio_sharing_stream_name"
+            android:summary="********"
+            android:title="Stream name"
+            settings:controller="com.android.settings.connecteddevice.audiosharing.AudioSharingNamePreferenceController" />
+        <SwitchPreferenceCompat
+            android:key="audio_sharing_stream_compatibility"
+            android:title="Improve compatibility"
+            settings:controller="com.android.settings.connecteddevice.audiosharing.AudioSharingCompatibilityPreferenceController" />
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:key="audio_streams_settings_category"

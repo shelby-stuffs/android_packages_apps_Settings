@@ -107,6 +107,12 @@
             android:summary="@string/oem_unlock_enable_summary"
             settings:useAdditionalSummary="true" />
 
+        <SwitchPreference
+            android:key="enable_16k_pages"
+            android:title="@string/enable_16k_pages"
+            android:summary="@string/enable_16k_pages_summary"
+            settings:useAdditionalSummary="true" />
+
         <Preference
             android:key="running_apps"
             android:title="@string/runningservices_settings_title"
@@ -254,6 +260,11 @@
             android:key="enable_angle_as_system_driver"
             android:title="@string/enable_angle_as_system_driver"
             android:summary="@string/enable_angle_as_system_driver_summary" />
+
+        <SwitchPreferenceCompat
+            android:key="disable_game_default_frame_rate"
+            android:title="@string/disable_game_default_frame_rate_title"
+            android:summary="@string/disable_game_default_frame_rate_summary"/>
 
         <Preference
             android:key="graphics_driver_dashboard"

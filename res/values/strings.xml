@@ -46,8 +46,12 @@
     <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
     <string name="show_dev_already">No need, you are already a developer.</string>
 
-    <!-- [CHAR LIMIT=NONE] Toast message when user attemps to launch developer otions before enabling it. -->
+    <!-- [CHAR LIMIT=NONE] Toast message when user attempts to launch developer options before enabling it. -->
     <string name="dev_settings_disabled_warning">Please enable developer options first.</string>
+
+    <!-- [CHAR LIMIT=NONE] Toast message when non-admin user attempts to launch developer options. -->
+    <string name="dev_settings_available_to_admin_only_warning">Only the admin users can access developer settings.</string>
+
 
     <!-- Category headings in left-pane header menu --> <skip />
     <!-- Settings main menu category heading. System (Updates, data, accessibility, about phone). [CHAR LIMIT=40] -->
@@ -93,6 +97,11 @@
     <string name="selective_stay_awake_title">Only games, videos, and more</string>
     <!-- Summary for selective stay awake radio button. [CHAR_LIMIT=NONE] -->
     <string name="selective_stay_awake_summary">Front display turns on for apps that stop your screen going idle</string>
+    <!-- Title for fold grace period radio button that, on fold, goes to the lockscreen. [CHAR_LIMIT=NONE] -->
+    <string name="stay_awake_on_lockscreen_title">Swipe up to continue</string>
+    <!-- Summary for folding grace period radio button that, on fold, goes to the lockscreen. [CHAR_LIMIT=NONE] -->
+    <string name="stay_awake_on_lockscreen_summary">Fold your phone and swipe up on the front display to continue using the app, or wait a few seconds for the screen to lock</string>
+
     <!-- Title for sleep on fold radio button. [CHAR_LIMIT=NONE] -->
     <string name="sleep_on_fold_title">Never</string>
     <!-- Summary for sleep on fold radio button. [CHAR_LIMIT=NONE] -->
@@ -679,6 +688,8 @@
     <string name="location_settings_footer_learn_more_content_description">
         Learn more about Location settings
     </string>
+    <!-- Tooltip for switchbar on Chrome devices. [CHAR LIMIT=90]-->
+    <string name="location_settings_tooltip_text_for_chrome">To change location access, go to Settings > Security and Privacy > Privacy controls</string>
 
     <!-- Main Settings screen setting option title for the item to take you to the accounts screen [CHAR LIMIT=22] -->
     <string name="account_settings_title">Accounts</string>
@@ -1119,6 +1130,8 @@
     <string name="security_settings_udfps_enroll_progress_a11y_message">Enrolling fingerprint <xliff:g id="percentage" example="10">%d</xliff:g> percent</string>
     <!-- Title shown in fingerprint enrollment dialog once enrollment is completed [CHAR LIMIT=29] -->
     <string name="security_settings_fingerprint_enroll_finish_title">Fingerprint added</string>
+    <!-- Key for require screen on to auth toggle shown in fingerprint enrollment dialog once enrollment is completed. [CHAR LIMIT=NONE] -->
+    <string name="security_settings_require_screen_on_to_auth_key" translatable="false">security_settings_require_screen_on_to_auth</string>
     <!-- Title for require screen on to auth toggle shown in fingerprint enrollment dialog once enrollment is completed. [CHAR LIMIT=NONE] -->
     <string name="security_settings_require_screen_on_to_auth_title">Touch to unlock anytime</string>
     <!-- Description for require screen on to auth toggle shown in fingerprint enrollment dialog once enrollment is completed. [CHAR LIMIT=NONE] -->
@@ -1225,7 +1238,7 @@
     <!-- Summary for the Private Space page. [CHAR LIMIT=NONE] -->
     <string name="private_space_summary">Keep private apps locked and hidden</string>
     <!-- Description for the Private Space page. [CHAR LIMIT=NONE] -->
-    <string name="private_space_description">Hide apps in a private folder that only you can access</string>
+    <string name="private_space_description">Keep private apps in a separate space that you can hide or lock</string>
     <!-- Title for the Private Space one lock preference. [CHAR LIMIT=60] -->
     <string name="private_space_lock_title">Private Space lock</string>
     <!-- Description for the Private Space one lock preference page. [CHAR LIMIT=NONE] -->
@@ -1234,12 +1247,34 @@
     <string name="private_space_screen_lock_title">Use device screen lock</string>
     <!-- Title for the Face and Fingerprint preference. [CHAR LIMIT=60] -->
     <string name="private_space_biometric_title">Face &amp; Fingerprint Unlock</string>
+    <!-- Title for the Fingerprint preference when face hardware is not supported on device. [CHAR LIMIT=40] -->
+    <string name="private_space_fingerprint_title">Fingerprint Unlock</string>
+    <!-- Title for the Face preference when fingerprint unlock is not supported on device. [CHAR LIMIT=40] -->
+    <string name="private_space_face_title">Face Unlock</string>
     <!-- Summary for the Face and Fingerprint preference when no biometric is set. [CHAR LIMIT=60] -->
     <string name="private_space_biometric_summary">Tap to set up</string>
-    <!-- Summary for one lock when device screen lock is used as private profile lock. [CHAR LIMIT=60] -->
+    <!-- Title for the Fingerprint unlock for private space preference. [CHAR LIMIT=60] -->
+    <string name="private_space_fingerprint_unlock_title">Fingerprint Unlock for Private Space</string>
+    <!-- Title for the Face unlock for private space preference. [CHAR LIMIT=60] -->
+    <string name="private_space_face_unlock_title">Face Unlock for Private Space</string>
+    <!-- Biometric category title - biometric options for unlocking the device. [CHAR LIMIT=50] -->
+    <string name="private_space_category_ways_to_unlock">Ways to unlock</string>
+    <!-- Summary for one lock when device screen lock is used as private profile lock. [CHAR LIMIT=40] -->
     <string name="private_space_screen_lock_summary">Same as device screen lock</string>
     <!-- Dialog message to choose a new lock for Private Space. [CHAR LIMIT=50] -->
     <string name="private_space_new_lock_title">Choose a new lock for Private Space?</string>
+    <!-- Title for the preference for auto lock private space. [CHAR LIMIT=40] -->
+    <string name="private_space_auto_lock_title">Lock automatically</string>
+    <!-- Title for private space auto lock settings page. [CHAR LIMIT=50] -->
+    <string name="private_space_auto_lock_page_title">Lock private space automatically</string>
+    <!-- Description for private space auto lock settings page. [CHAR LIMIT=NONE] -->
+    <string name="private_space_auto_lock_page_summary">You can lock your private space automatically if you haven\’t used your device for a period of time</string>
+    <!-- Configure auto lock: Value for auto lock configuration to lock private space every time device locks. [CHAR LIMIT=40] -->
+    <string name="private_space_auto_lock_every_time">Every time device locks</string>
+    <!-- Configure auto lock: Value for auto lock configuration to lock private space after 5 minutes of inactivity. [CHAR LIMIT=40] -->
+    <string name="private_space_auto_lock_after_inactivity">After 5 minutes of inactivity</string>
+    <!-- Configure auto lock: Value for auto lock configuration to never lock private space. [CHAR LIMIT=20] -->
+    <string name="private_space_auto_lock_never">Never</string>
     <!-- Title for the preference to hide Private Space. [CHAR LIMIT=60] -->
     <string name="private_space_hide_title">Hide when locked</string>
     <!-- Title for the hide Private Space setting. [CHAR LIMIT=60] -->
@@ -1266,6 +1301,8 @@
     <string name="private_space_deleted">Private Space successfully deleted</string>
     <!-- Toast to show when the private space could not be deleted. [CHAR LIMIT=NONE] -->
     <string name="private_space_delete_failed">Private Space could not be deleted</string>
+    <!-- Toast to show when the private space is unlocked from settings entry point. [CHAR LIMIT=40] -->
+    <string name="private_space_unlocked">Private space unlocked</string>
     <!-- Title of the Alert Dialog when no screen lock is set [CHAR LIMIT=30] -->
     <string name="no_device_lock_title">Set a screen lock</string>
     <!-- Summary of the alert when no screen lock is set [CHAR LIMIT=90] -->
@@ -1954,6 +1991,12 @@
     <string name="wifi_notify_open_networks">Notify for public networks</string>
     <!-- Checkbox summary for option to notify user when open networks are nearby-->
     <string name="wifi_notify_open_networks_summary">Notify when a high\u2011quality public network is available</string>
+    <!-- Checkbox title for option to allow user to connect to wep networks-->
+    <string name="wifi_allow_wep_networks">Allow WEP networks</string>
+    <!-- Checkbox summary for option to allow user to connect to wep networks-->
+    <string name="wifi_allow_wep_networks_summary">WEP is an older security protocol that\u0027s less secure</string>
+    <!-- Checkbox summary for option to allow user to connect to wep networks when it is blocked by carrier-->
+    <string name="wifi_allow_wep_networks_summary_carrier_not_allow">Your carrier doesn\u0027t allow WEP networks because they\u0027re less secure</string>
     <!-- Checkbox title for option to enable Wi-Fi when saved networks are nearby -->
     <string name="wifi_wakeup">Turn on Wi\u2011Fi automatically</string>
     <!-- Checkbox summary for option to enable Wi-Fi when high quality saved networks are nearby-->
@@ -2003,6 +2046,18 @@
     <string name="wifi_settings_scanning_required_turn_on">Turn on</string>
     <!-- Wi-Fi settings dialog. Text to show in toast for when user turns on wifi scanning. [CHAR LIMIT=NONE] -->
     <string name="wifi_settings_scanning_required_enabled">Wi\u2011Fi scanning turned on</string>
+    <!-- Wi-Fi settings dialog. Warning on the password entry page for a WEP network, when WEP networks are allowed. [CHAR LIMIT=NONE] -->
+    <string name="wifi_settings_warning_wep_network">This network uses an older security protocol that\u0027s less secure</string>
+    <!-- Wi-Fi settings dialog. Title of dialog displayed when WEP network is blocked. [CHAR LIMIT=NONE] -->
+    <string name="wifi_settings_wep_networks_blocked_title"><xliff:g id="name">%1$s</xliff:g> is blocked</string>
+    <!-- Wi-Fi settings dialog. Summary text of dialog displayed when WEP network toggle is turned off. [CHAR LIMIT=NONE] -->
+    <string name="wifi_settings_wep_networks_summary_toggle_off">This network uses an older security protocol called WEP, which is less secure. To connect anyway, you can allow WEP networks.</string>
+    <!-- Wi-Fi settings dialog. Summary text of dialog displayed when WEP network is blocked by the carrier. [CHAR LIMIT=NONE] -->
+    <string name="wifi_settings_wep_networks_summary_blocked_by_carrier">Your carrier doesn\u0027t allow you to connect to this network because it uses an older security protocol that’s less secure</string>
+    <!-- Wi-Fi settings dialog. Button text of dialog displayed when WEP network toggle is turned off. [CHAR LIMIT=NONE] -->
+    <string name="wifi_settings_wep_networks_button_allow">Allow WEP</string>
+    <!-- Wi-Fi settings dialog. Button text of dialog displayed when WEP network toggle is blocked. [CHAR LIMIT=NONE] -->
+    <string name="wifi_settings_ssid_block_button_close">Close</string>
 
     <!-- Dialog for Access Points --> <skip />
     <!-- Label to show/hide advanced options [CHAR LIMIT=40] -->
@@ -2699,8 +2754,12 @@
     <string name="display_white_balance_summary"></string>
     <!-- Display settings screen, setting option name to change Fold setting -->
     <string name="fold_lock_behavior_title">Continue using apps on fold</string>
+    <!-- Display settings screen, game default frame rate settings title [CHAR LIMIT=65] -->
+    <string name="disable_game_default_frame_rate_title">Disable default frame rate for games</string>
+    <!-- Display settings screen, game default frame rate settings summary [CHAR LIMIT=NONE] -->
+    <string name="disable_game_default_frame_rate_summary">Disable limiting the maximum frame rate for games at <xliff:g id="frame_rate" example="60">%1$d</xliff:g> Hz.</string>
     <!-- Display settings screen, peak refresh rate settings title [CHAR LIMIT=30] -->
-    <string name="peak_refresh_rate_title">Smooth Display</string>
+    <string name="peak_refresh_rate_title">Smooth display</string>
     <!-- Display settings screen, peak refresh rate settings summary [CHAR LIMIT=NONE] -->
     <string name="peak_refresh_rate_summary">Automatically raises the refresh rate up to <xliff:g name="refresh_rate" example="120">%1$d</xliff:g> Hz for some content. Increases battery usage.</string>
     <!-- Display developer settings: Force to the highest refresh rate [CHAR LIMIT=NONE] -->
@@ -3330,6 +3389,8 @@
     <string name="menu_cancel">Cancel</string>
     <!-- APN error dialog title -->
     <string name="error_title"></string>
+    <!-- APN error dialog messages when the new apn is a duplicate: -->
+    <string name="error_duplicate_apn_entry">Duplicate apn entry.</string>
     <!-- APN error dialog messages: -->
     <string name="error_name_empty">The Name field can\u2019t be empty.</string>
     <!-- APN error dialog messages: -->
@@ -4116,8 +4177,6 @@
     <string name="archiving_succeeded">Archived <xliff:g id="package_label" example="Translate">%1$s</xliff:g></string>
     <!-- Toast message when restoring an app failed. -->
     <string name="restoring_failed">Restoring failed</string>
-    <!-- Toast message when restoring an app succeeded. -->
-    <string name="restoring_succeeded">Restored <xliff:g id="package_label" example="Translate">%1$s</xliff:g></string>
     <!-- Toast message when restoring an app has started. -->
     <string name="restoring_in_progress">Restoring <xliff:g id="package_label" example="Translate">%1$s</xliff:g></string>
 
@@ -4318,12 +4377,22 @@
     <string name="add_virtual_keyboard">Manage on-screen keyboards</string>
     <!-- Title for the 'keyboard options' preference category. [CHAR LIMIT=35] -->
     <string name="keyboard_options_category">Options</string>
+    <!-- Title for the 'keyboard accessibility options' preference category. [CHAR LIMIT=35] -->
+    <string name="keyboard_a11y_category">Accessibility</string>
     <!-- Title for the 'physical keyboard' settings screen. [CHAR LIMIT=35] -->
     <string name="physical_keyboard_title">Physical keyboard</string>
     <!-- Title for the 'show virtual keyboard' preference switch. [CHAR LIMIT=35] -->
     <string name="show_ime">Use on-screen keyboard</string>
     <!-- Summary text for the 'add virtual keyboard' preference sub-screen. [CHAR LIMIT=100] -->
     <string name="show_ime_summary">Keep it on screen while physical keyboard is active</string>
+    <!-- Title for the 'Bounce keys' preference switch. [CHAR LIMIT=35] -->
+    <string name="bounce_keys">Bounce keys</string>
+    <!-- Summary text for the 'Bounce keys' preference sub-screen. [CHAR LIMIT=100] -->
+    <string name="bounce_keys_summary">Enable Bounce keys for physical keyboard accessibility</string>
+    <!-- Title for the 'Sticky keys' preference switch. [CHAR LIMIT=35] -->
+    <string name="sticky_keys">Sticky keys</string>
+    <!-- Summary text for the 'Sticky keys' preference sub-screen. [CHAR LIMIT=100] -->
+    <string name="sticky_keys_summary">Enable Sticky keys for physical keyboard accessibility</string>
     <!-- Title for the button to trigger the 'keyboard shortcuts helper' dialog. [CHAR LIMIT=35] -->
     <string name="keyboard_shortcuts_helper">Keyboard shortcuts</string>
     <!-- Summary text for the 'keyboard shortcuts helper' dialog. [CHAR LIMIT=100] -->
@@ -4560,7 +4629,9 @@
     <!-- Spinner label to indicate sort by app name. [CHAR LIMIT=30] -->
     <string name="usage_stats_sort_by_app_name">Sort by app name</string>
     <!-- label for last time used -->
-    <string name="last_time_used_label">Last time used</string>
+    <string name="last_time_used_label">Last used</string>
+    <!-- label for last time used of never opened apps -->
+    <string name="last_time_used_never">never</string>
     <!-- label for usage time -->
     <string name="usage_time_label">Usage time</string>
 
@@ -5913,12 +5984,16 @@
     <string name="battery_usage_timestamps_hyphen"><xliff:g id="from_timestamp">%1$s</xliff:g> - <xliff:g id="to_timestamp">%2$s</xliff:g></string>
     <!-- [CHAR_LIMIT=NONE] The first slot is a week day (e.g. "Monday"); the second slot is a hourly time span (e.g. "6 AM - 8 AM"). -->
     <string name="battery_usage_day_and_hour"><xliff:g id="day">%1$s</xliff:g> <xliff:g id="hour">%2$s</xliff:g></string>
+    <!-- [CHAR_LIMIT=NONE] Accessibility content description for each slot in battery chart view. -->
+    <string name="battery_usage_time_info_and_battery_level"><xliff:g id="time_info" example="Battery usage for Monday 6 AM - 8 AM">%1$s</xliff:g> <xliff:g id="battery_level" example="Battery level percentage from 83% to 59%">%2$s</xliff:g></string>
     <!-- [CHAR_LIMIT=NONE] Accessibility content description for battery chart view. -->
     <string name="battery_usage_chart">Battery usage chart</string>
     <!-- [CHAR_LIMIT=NONE] Accessibility content description for daily battery chart view. -->
     <string name="daily_battery_usage_chart">Daily battery usage chart</string>
     <!-- [CHAR_LIMIT=NONE] Accessibility content description for hourly battery chart view. -->
     <string name="hourly_battery_usage_chart">Hourly battery usage chart</string>
+    <!-- [CHAR_LIMIT=NONE] Accessibility content description for battery level percentage. -->
+    <string name="battery_level_percentage">Battery level percentage from <xliff:g id="start_percentage">%1$s</xliff:g> to <xliff:g id="end_percentage">%2$s</xliff:g></string>
     <!-- [CHAR_LIMIT=NONE] Battery usage breakdown title since last full charge -->
     <string name="battery_usage_breakdown_title_since_last_full_charge">Battery usage since last full charge</string>
     <!-- [CHAR_LIMIT=NONE] Battery usage breakdown title for a selected slot -->
@@ -8276,6 +8351,9 @@
     <!-- a11y string -->
     <string name="clear">Clear</string>
 
+    <!-- a11y string -->
+    <string name="clear_conversation">Clear <xliff:g id="conversation_name" example="Mom">%1$s</xliff:g></string>
+
     <!-- title for conversation onboarding -->
     <string name="conversation_onboarding_title">Priority and modified conversations will appear here</string>
 
@@ -9574,6 +9652,13 @@
       other   {# apps used memory in the last {time}}
     }</string>
 
+    <!-- Label for toggle that enables the profiling/aggregating of memory usage [CHAR LIMIT=80]-->
+    <string name="force_enable_pss_profiling_title">Enable memory usage profiling</string>
+    <!-- Description with an explanation of the extra resources used if profiling of memory usage is enabled [CHAR LIMIT=NONE]-->
+    <string name="force_enable_pss_profiling_summary">Memory usage profiling requires additional system resources.</string>
+    <!-- Summary that shows the current memory usage profiling status as disabled. [CHAR LIMIT=NONE]-->
+    <string name="pss_profiling_disabled">Memory profiling disabled</string>
+
     <!-- Label for frequency that the app is runnig (e.g. always, sometimes, etc.) [CHAR LIMIT=25] -->
     <string name="running_frequency">Frequency</string>
 
@@ -9650,6 +9735,10 @@
     <string name="permit_voice_activation_apps">Allow voice activation</string>
     <!-- Description for a setting which controls whether an app can be voice activated [CHAR LIMIT=NONE] -->
     <string name ="allow_voice_activation_apps_description">Voice activation turns-on approved apps, hands-free, using voice command. Built-in adaptive sensing ensures data stays private only to you.\n\n<a href="">More about protected adaptive sensing</a></string>
+    <!-- Label for a setting which controls whether an app can receive sandboxed detection training data [CHAR LIMIT=NONE] -->
+    <string name = "permit_receive_sandboxed_detection_training_data">Improve voice activation</string>
+    <!-- Description for a setting which controls whether an app can receive sandboxed detection training data [CHAR LIMIT=NONE] -->
+    <string name= "receive_sandboxed_detection_training_data_description">This device uses private intelligence to improve the voice activation model. Apps can receive summarized updates that are aggregated across many users to maintain privacy while improving the model for everyone.\n\n<a href="">More about private intelligence</a></string>
 
     <!-- Manage full screen intent permission title [CHAR LIMIT=40] -->
     <string name="full_screen_intent_title">Full screen notifications</string>
@@ -10858,8 +10947,36 @@
         ]]>
     </string>
 
+    <!-- Message of the warning dialog for disabling the credential provider (new strings for 24Q3). [CHAR_LIMIT=NONE] -->
+    <string name="credman_confirmation_message_new_ui">
+        <![CDATA[
+        <b>Turn off all services?</b>
+        <br/>
+        <br/>
+        Passwords, passkeys, and other saved info won\'t be available for autofill when you sign in
+        ]]>
+    </string>
+
+    <!-- Message of the warning dialog for setting a new preferred credential provider (new strings for 24Q3). [CHAR_LIMIT=NONE] -->
+    <string name="credman_autofill_confirmation_message_new_ui">
+        <![CDATA[
+        <b>Change your preferred service to <xliff:g id="app_name" example="Provider">%1$s</xliff:g>\?</b>
+        <br/>
+        <br/>
+        New passwords, passkeys, and other info will be saved here from now on.
+        <xliff:g id="app_name" example="Provider">%1$s</xliff:g> may use what\'s on your
+        screen to determine what can be autofilled
+        ]]>
+    </string>
+
     <!-- Title of the warning dialog for enabling the credential provider. [CHAR_LIMIT=NONE] -->
     <string name="credman_enable_confirmation_message_title">Use %1$s\?</string>
+
+    <!-- Title of the error dialog when too many credential providers are selected (new strings for 24Q3). [CHAR_LIMIT=NONE] -->
+    <string name="credman_limit_error_msg_title">You can only have 5 services on</string>
+
+    <!-- Message of the error dialog when too many credential providers are selected (new strings for 24Q3). [CHAR_LIMIT=NONE] -->
+    <string name="credman_limit_error_msg">Turn off at least 1 service to add another</string>
 
     <!-- Message of the warning dialog for enabling the credential provider. [CHAR_LIMIT=NONE] -->
     <string name="credman_enable_confirmation_message">%1$s uses what\'s on your screen to determine what can be autofilled.</string>
@@ -11391,7 +11508,7 @@
     <string name="mobile_network_sim_name_rename">Save</string>
     <!-- Label for the on position of a switch on the mobile network details page which allows
          disabling/enabling a SIM. The SIM is enabled in this state. [CHAR LIMIT=40] -->
-    <string name="mobile_network_use_sim_on">Use SIM</string>
+    <string name="mobile_network_use_sim_on">Use this SIM</string>
     <!-- Label for the off position of a switch on the mobile network details page which allows
          disabling/enabling a SIM. The SIM is disabled in this state. [CHAR LIMIT=40] -->
     <string name="mobile_network_use_sim_off">Off</string>
@@ -11544,6 +11661,56 @@
     <string name="dsds_activation_failure_title">Can\u2019t activate SIM</string>
     <!-- Body text of DSDS activation failure dialog. Users could toggle the selected SIM again or reboot to recover. [CHAR LIMIT=NONE] -->
     <string name="dsds_activation_failure_body_msg2">Try turning on the SIM again. If the problem continues, restart your device.</string>
+
+    <!-- Strings for dual SIM onboarding -->
+    <!-- Title of dual sim onboarding's bottom sheets. [CHAR LIMIT=30] -->
+    <string name="sim_onboarding_bottomsheets_title">Set up your SIM</string>
+    <!-- Body text of dual sim onboarding's bottom sheets. [CHAR LIMIT=NONE] -->
+    <string name="sim_onboarding_bottomsheets_msg">Set your mobile network preferences to use multiple SIMs on this device</string>
+    <!-- Title of dual sim onboarding's label sim page. [CHAR LIMIT=30] -->
+    <string name="sim_onboarding_label_sim_title">Label your SIMs</string>
+    <!-- Body text of dual sim onboarding's label sim page. [CHAR LIMIT=NONE] -->
+    <string name="sim_onboarding_label_sim_msg">You’ll see these labels when making calls, sending texts, and using data, and in Settings</string>
+    <!-- Title of dual sim onboarding's label sim dialog. [CHAR LIMIT=30] -->
+    <string name="sim_onboarding_label_sim_dialog_title">SIM label</string>
+    <!-- Label text of dual sim onboarding's label sim dialog. [CHAR LIMIT=30] -->
+    <string name="sim_onboarding_label_sim_dialog_label">Label</string>
+    <!-- Title of dual sim onboarding's select sim page. [CHAR LIMIT=30] -->
+    <string name="sim_onboarding_select_sim_title">Select which SIMs to use</string>
+    <!-- Body text of dual sim onboarding's select sim page. [CHAR LIMIT=NONE] -->
+    <string name="sim_onboarding_select_sim_msg">You can use 2 SIMs at a time</string>
+    <!-- Title of dual sim onboarding's primary sim page. [CHAR LIMIT=30] -->
+    <string name="sim_onboarding_primary_sim_title">Set your primary SIMs</string>
+    <!-- Body text of dual sim onboarding's primary sim page. [CHAR LIMIT=NONE] -->
+    <string name="sim_onboarding_primary_sim_msg">Choose which SIMs to use by default for calls, texts, and data</string>
+
+    <!-- Title of primary sim at SIMs page. [CHAR LIMIT=30] -->
+    <string name="primary_sim_title">Your primary SIMs</string>
+
+    <!-- Title of Calls item/dialog at dual sim onboarding's primary sim page or SIMs page. [CHAR LIMIT=30] -->
+    <string name="primary_sim_calls_title">Calls</string>
+    <!-- Title of Texts item/dialog at dual sim onboarding's primary sim page or SIMs page. [CHAR LIMIT=30] -->
+    <string name="primary_sim_texts_title">Texts</string>
+    <!-- Title of automatic data switching at dual sim onboarding's primary sim page or SIMs page. [CHAR LIMIT=30] -->
+    <string name="primary_sim_automatic_data_title">Automatic data switching</string>
+    <!-- Body text of automatic data switching at dual sim onboarding's primary sim page or SIMs page. [CHAR LIMIT=NONE] -->
+    <string name="primary_sim_automatic_data_msg">Use data from either SIM depending on coverage and availability</string>
+
+    <!-- Text of phone number item when the sim is data only. [CHAR LIMIT=NONE] -->
+    <string name="sim_onboarding_phoneNumber_data_only">Data only</string>
+
+    <!-- Button on the dual sim onboarding to start to set up sim. [CHAR LIMIT=30] -->
+    <string name="sim_onboarding_setup">Set up</string>
+    <!-- Button on the dual sim onboarding to go to next page. [CHAR LIMIT=30] -->
+    <string name="sim_onboarding_next">Next</string>
+    <!-- Text on the progressbar of dual sim onboarding for turning sim on. [CHAR LIMIT=30] -->
+    <string name="sim_onboarding_profressbar_turning_sim_on">Turning on <xliff:g id="carrier_name" example="Google Fi">%1$s</xliff:g>&#8230;</string>
+    <!-- Title of service provider name(SPN) at mobile network settings page. [CHAR LIMIT=30] -->
+    <string name="mobile_network_spn_title">Mobile network</string>
+    <!-- Title of phone number at mobile network settings page. [CHAR LIMIT=30] -->
+    <string name="mobile_network_phone_number_title">Phone number</string>
+    <!-- Title of SIM label and color editor dialog at mobile network settings page. [CHAR LIMIT=30] -->
+    <string name="mobile_network_sim_label_color_title">SIM label and color</string>
 
     <!--  Strings for SIM push notifications  -->
     <!-- Category name of the notifications related to SIM setup. [CHAR LIMIT=NONE] -->
@@ -11770,6 +11937,15 @@
     <!-- Summary for Wi-Fi calling to explain this feature [CHAR LIMIT=NONE] -->
     <string name="wifi_calling_summary">Use Wi\u2011Fi for calls to improve quality</string>
 
+    <!-- Mobile network settings screen, title of Backup calling setting.  [CHAR LIMIT=NONE] -->
+    <string name="backup_calling_settings_title">Backup calling</string>
+
+    <!-- Backup calling summary.  [CHAR LIMIT=100] -->
+    <string name="backup_calling_setting_summary">If <xliff:g id="backup_calling_operator_text" example="Google Fi">%1$s</xliff:g> is unavailable or roaming, use your mobile data SIM for <xliff:g id="backup_calling_carrier_text" example="Google Fi">%1$s</xliff:g> calls.</string>
+
+    <!-- List of synonyms for the cross SIM calling titles, used to match in settings search [CHAR LIMIT=NONE] -->
+    <string name="keywords_backup_calling">backup calling</string>
+
     <!-- Title of dialog shown to request confirmation that disabling certain toggles, like mobile data, roaming, and backup calling, will cause a call drop while IMS is registered on C_IWLAN-only and device is in a call [CHAR LIMIT=120] -->
     <string name="toggle_disable_ciwlan_call_dialog_title">Disable %s?</string>
     <!-- Body of dialog shown to request confirmation that disabling certain toggles, like mobile data, roaming, and backup calling, will cause a call drop while IMS is registered on C_IWLAN-only and device is in a call [CHAR LIMIT=NONE] -->
@@ -11777,6 +11953,13 @@
     <string name="toggle_disable_ciwlan_call_might_drop_dialog_body">Disabling %s might cause ongoing call drop.</string>
     <!-- Body of dialog shown to warn when an incompatible preferred network type is currently selected and user tries to turn on C_IWLAN [CHAR LIMIT=NONE] -->
     <string name="backup_calling_enable_dialog_incompatible_nw_type">To turn on Voice Over Cellular Internet, please set the preferred network type to one including LTE, NR, or Global.</string>
+
+    <!-- C_IWLAN exit notification -->
+    <string name="ciwlan_exit_notification_title">" unavailable on %s"</string>
+    <string name="ciwlan_exit_notification_description">Disabling it might help acquire service.</string>
+    <string name="ciwlan_exit_notification_positive_button">OPEN SETTINGS</string>
+    <string name="ciwlan_exit_notification_negative_button">DISMISS</string>
+    <string name="ciwlan_channel_name">Voice Over Cellular Internet</string>
 
     <!-- Title for enable MMS notification when trying to receive MMS.  [CHAR LIMIT=40] -->
     <string name="enable_receiving_mms_notification_title">Incoming MMS message</string>
@@ -11804,7 +11987,23 @@
     <!-- Developer Settings: Search keywords for the Profile HWUI rendering. [CHAR_LIMIT=NONE] -->
     <string name="track_frame_time_keywords">GPU</string>
 
+    <!-- setting Checkbox title whether to boot with 16K page size [CHAR_LIMIT=35] -->
+    <string name="enable_16k_pages">Boot with 16K page size</string>
+    <!-- setting Checkbox summary whether to boot with 16K page size[CHAR_LIMIT=50] -->
+    <string name="enable_16k_pages_summary">Boot device using 16K page size supported kernel</string>
+    <!-- Confirmation dialog title to ensure user wishes to enable 16K page size -->
+    <string name="confirm_enable_16k_pages_title">Reboot with 16KB pages compatible kernel?</string>
+    <!-- Warning dialog message to confirm user wishes to enable 16K page size -->
+    <string name="confirm_enable_16k_pages_text">WARNING: Some applications may not be compatible with this mode. Device will reboot after confirmation.</string>
+    <!-- dialog title to confirm user wishes to revert to 4k page size kernel -->
+    <string name="confirm_enable_4k_pages_title">Reboot with 4KB pages compatible kernel?</string>
+    <!-- dialog message to confirm user wishes to enable 4K page size -->
+    <string name="confirm_enable_4k_pages_text">Device will reboot after confirmation.</string>
+    <!-- Toast message when 16k OTA update fails -->
+    <string name="toast_16k_update_failed_text">Failed to update kernel to 16KB pages compatible kernel.</string>
+    <string name="progress_16k_ota_title">Applying change</string>
     <!-- DSU Loader. Do not translate. -->
+
     <string name="dsu_loader_title" translatable="false">DSU Loader</string>
     <!-- DSU Loader Description. Do not translate. -->
     <string name="dsu_loader_description" translatable="false">Load a Dynamic System Update Image</string>
@@ -11954,7 +12153,7 @@
     <!-- Description of toggle to enable or disable the media resumption on lockscreen [CHAR LIMIT=NONE]-->
     <string name="media_controls_lockscreen_description">To quickly resume playback, media player stays open on lock screen</string>
     <!-- Title of toggle to enable or disable media recommendations in quick settings [CHAR LIMIT=NONE] -->
-    <string name="media_controls_recommendations_title">Show media recommendations</string>
+    <string name="media_controls_recommendations_title">Show Assistant media recommendations</string>
     <!-- Description of toggle to enable or disable media recommendations based on user's activity [CHAR LIMIT=NONE] -->
     <string name="media_controls_recommendations_description">Based on your activity</string>
     <!-- Subtext for media settings when the player will be hidden [CHAR LIMIT=50] -->
@@ -12849,4 +13048,7 @@
 
     <!-- Content description for setting password complete-->
     <string name="accessibility_setup_password_complete">Password is now set up</string>
+
+    <!-- Authority of the content provider that support methods restartPhoneProcess and restartRild. Will be overlaid by OEM.-->
+    <string name="reset_telephony_stack_content_provider_authority" translatable="false"></string>
 </resources>

@@ -23,8 +23,8 @@ java_library {
 genrule {
     name: "statslog-settings-java-gen",
     tools: ["stats-log-api-gen"],
-    cmd: "$(location stats-log-api-gen) --java $(out) --module settings"
-        + " --javaPackage com.android.settings.core.instrumentation --javaClass SettingsStatsLog",
+    cmd: "$(location stats-log-api-gen) --java $(out) --module settings" +
+        " --javaPackage com.android.settings.core.instrumentation --javaClass SettingsStatsLog",
     out: ["com/android/settings/core/instrumentation/SettingsStatsLog.java"],
 }
 
@@ -48,12 +48,16 @@ android_library {
     platform_apis: true,
     defaults: [
         "SettingsLib-search-defaults",
+        "SettingsLintDefaults",
         "SpaPrivilegedLib-defaults",
         "framework-wifi-vendor-hide-access-defaults",
 //        "btadva_settings_java_defaults",
     ],
 
-    srcs: ["src/**/*.java", "src/**/*.kt"],
+    srcs: [
+        "src/**/*.java",
+        "src/**/*.kt",
+    ],
     exclude_srcs: [
         "src/com/android/settings/biometrics/fingerprint2/shared/**/*.kt",
     ],
@@ -105,6 +109,8 @@ android_library {
         "settings-logtags",
         "settings-telephony-protos-lite",
         "statslog-settings",
+        "androidx.test.rules",
+        "telephony_flags_core_java_lib",
     ],
 
     plugins: ["androidx.room_room-compiler-plugin"],

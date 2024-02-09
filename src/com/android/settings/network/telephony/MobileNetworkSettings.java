@@ -304,7 +304,7 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
         });
 
         return Arrays.asList(
-                new DataUsageSummaryPreferenceController(getActivity(), mSubId),
+                new DataUsageSummaryPreferenceController(context, mSubId),
                 new RoamingPreferenceController(context, KEY_ROAMING_PREF, getSettingsLifecycle(),
                         this, mSubId),
                 new DataDefaultSubscriptionController(context, KEY_DATA_PREF,
@@ -368,11 +368,6 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
 
         }
 
-        final DataUsageSummaryPreferenceController dataUsageSummaryPreferenceController =
-                use(DataUsageSummaryPreferenceController.class);
-        if (dataUsageSummaryPreferenceController != null) {
-            dataUsageSummaryPreferenceController.init(mSubId);
-        }
         use(MobileNetworkSwitchController.class).init(mSubId);
         use(CarrierSettingsVersionPreferenceController.class).init(mSubId);
         use(BillingCyclePreferenceController.class).init(mSubId);
@@ -410,20 +405,22 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
         use(Enable2gPreferenceController.class).init(mSubId);
         use(CarrierWifiTogglePreferenceController.class).init(getLifecycle(), mSubId);
 
-        final WifiCallingPreferenceController wifiCallingPreferenceController =
-                use(WifiCallingPreferenceController.class).init(mSubId);
+        final CallingPreferenceCategoryController callingPreferenceCategoryController =
+                use(CallingPreferenceCategoryController.class);
+        use(WifiCallingPreferenceController.class)
+                .init(mSubId, callingPreferenceCategoryController);
 
         final OpenNetworkSelectPagePreferenceController openNetworkSelectPagePreferenceController =
                 use(OpenNetworkSelectPagePreferenceController.class).init(mSubId);
         final AutoSelectPreferenceController autoSelectPreferenceController =
                 use(AutoSelectPreferenceController.class)
-                        .init(getLifecycle(), mSubId)
+                        .init(mSubId)
                         .addListener(openNetworkSelectPagePreferenceController);
 
-        final SelectNetworkPreferenceController selectNetworkPreferenceController =
-                use(SelectNetworkPreferenceController.class)
-                        .init(mSubId)
-                        .addListener(autoSelectPreferenceController);
+        // final SelectNetworkPreferenceController selectNetworkPreferenceController =
+        //         use(SelectNetworkPreferenceController.class)
+        //                 .init(mSubId)
+        //                 .addListener(autoSelectPreferenceController);
 
         use(NetworkPreferenceCategoryController.class).init(mSubId)
                 .setChildren(Arrays.asList(autoSelectPreferenceController));
@@ -433,12 +430,11 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
         mCdmaSubscriptionPreferenceController.init(getPreferenceManager(), mSubId);
 
         final VideoCallingPreferenceController videoCallingPreferenceController =
-                use(VideoCallingPreferenceController.class).init(mSubId);
-        // final BackupCallingPreferenceController crossSimCallingPreferenceController =
-        //         use(BackupCallingPreferenceController.class).init(getFragmentManager(), mSubId);
-        // use(CallingPreferenceCategoryController.class).setChildren(
-        //         Arrays.asList(wifiCallingPreferenceController, videoCallingPreferenceController,
-        //                 crossSimCallingPreferenceController));
+                use(VideoCallingPreferenceController.class)
+                        .init(mSubId, callingPreferenceCategoryController);
+        final BackupCallingPreferenceController crossSimCallingPreferenceController =
+                use(BackupCallingPreferenceController.class)
+                        .init(getFragmentManager(), mSubId, callingPreferenceCategoryController);
         use(Enabled5GPreferenceController.class).init(mSubId);
         use(Enhanced4gLtePreferenceController.class).init(mSubId)
                 .addListener(videoCallingPreferenceController);
