@@ -36,7 +36,6 @@ import androidx.preference.PreferenceScreen;
 
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
-import com.android.settings.deviceinfo.PhoneNumberSummaryPreference;
 import com.android.settings.deviceinfo.simstatus.SlotSimStatus;
 import com.android.settings.network.SubscriptionUtil;
 import com.android.settings.network.telephony.TelephonyUtils;
@@ -110,6 +109,7 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
             multiImeiPreference.setKey(DEFAULT_KEY + (1 + simSlotNumber));
             multiImeiPreference.setEnabled(true);
             multiImeiPreference.setCopyingEnabled(true);
+
             category.addPreference(multiImeiPreference);
        }
 
@@ -160,11 +160,6 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
         updatePreference(preference, keyToSlotIndex(preference.getKey()));
     }
 
-    @Override
-    public CharSequence getSummary() {
-        return mContext.getString(R.string.device_info_protected_single_press);
-    }
-
     private CharSequence getSummary(int simSlot) {
         final int phoneType = getPhoneType(simSlot);
         if (Utils.isSupportCTPA(mContext)) {
@@ -209,8 +204,12 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
 
     @VisibleForTesting
     protected void updatePreference(Preference preference, int simSlot) {
+        if (simSlot < 0) {
+            preference.setVisible(false);
+            return;
+        }
         preference.setTitle(getTitle(simSlot));
-        preference.setSummary(getSummary());
+        preference.setSummary(getSummary(simSlot));
     }
 
     private String getImei(int slot) {
@@ -324,7 +323,7 @@ public class ImeiInfoPreferenceController extends BasePreferenceController {
 
     @VisibleForTesting
     Preference createNewPreference(Context context) {
-        return new PhoneNumberSummaryPreference(context);
+        return new Preference(context);
     }
 
     private int makeRadioVersion(int major, int minor) {

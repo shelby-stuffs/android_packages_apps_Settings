@@ -35,6 +35,7 @@ import com.android.settings.accessibility.TextReadingPreferenceFragmentForSetupW
 import com.android.settings.accessibility.ToggleColorInversionPreferenceFragment;
 import com.android.settings.accessibility.ToggleDaltonizerPreferenceFragment;
 import com.android.settings.accessibility.ToggleReduceBrightColorsPreferenceFragment;
+import com.android.settings.accessibility.VibrationIntensitySettingsFragment;
 import com.android.settings.accessibility.shortcuts.EditShortcutsPreferenceFragment;
 import com.android.settings.accounts.AccountDashboardFragment;
 import com.android.settings.accounts.AccountSyncSettings;
@@ -170,6 +171,8 @@ import com.android.settings.print.PrintJobSettingsFragment;
 import com.android.settings.print.PrintSettingsFragment;
 import com.android.settings.privacy.PrivacyControlsFragment;
 import com.android.settings.privacy.PrivacyDashboardFragment;
+import com.android.settings.privatespace.delete.PrivateSpaceDeleteFragment;
+import com.android.settings.privatespace.delete.PrivateSpaceDeletionProgressFragment;
 import com.android.settings.privatespace.onelock.PrivateSpaceBiometricSettings;
 import com.android.settings.regionalpreferences.RegionalPreferencesEntriesFragment;
 import com.android.settings.safetycenter.MoreSecurityPrivacyFragment;
@@ -273,6 +276,8 @@ public class SettingsGateway {
             CombinedBiometricSettings.class.getName(),
             CombinedBiometricProfileSettings.class.getName(),
             PrivateSpaceBiometricSettings.class.getName(),
+            PrivateSpaceDeleteFragment.class.getName(),
+            PrivateSpaceDeletionProgressFragment.class.getName(),
             SwipeToNotificationSettings.class.getName(),
             DoubleTapPowerSettings.class.getName(),
             DoubleTapScreenSettings.class.getName(),
@@ -384,6 +389,7 @@ public class SettingsGateway {
             UserAspectRatioDetails.class.getName(),
             ScreenTimeoutSettings.class.getName(),
             ResetNetwork.class.getName(),
+            VibrationIntensitySettingsFragment.class.getName(),
     };
 
     public static final String[] SETTINGS_FOR_RESTRICTED = {
