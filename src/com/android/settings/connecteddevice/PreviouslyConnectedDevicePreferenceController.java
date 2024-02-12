@@ -99,6 +99,10 @@ public class PreviouslyConnectedDevicePreferenceController extends BasePreferenc
         } else {
             mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         }
+        manager = Utils.getLocalBtManager(context);
+        if ( manager != null) {
+            mLocalAdapter = manager.getBluetoothAdapter();
+        }
     }
 
     @Override
