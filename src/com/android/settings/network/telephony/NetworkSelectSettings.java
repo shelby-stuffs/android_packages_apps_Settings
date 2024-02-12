@@ -490,7 +490,7 @@ public class NetworkSelectSettings extends DashboardFragment implements
        cellular network. Therefore, it is needed to filter out satellite plmns from current cell
        info list  */
     private List<CellInfo> filterOutSatellitePlmn(List<CellInfo> cellInfoList) {
-        List<String> aggregatedSatellitePlmn = getAllSatellitePlmnsForCarrierWrapper();
+        List<String> aggregatedSatellitePlmn = getSatellitePlmnsForCarrierWrapper();
         if (!mShouldFilterOutSatellitePlmn.get() || aggregatedSatellitePlmn.isEmpty()) {
             return cellInfoList;
         }
@@ -501,13 +501,13 @@ public class NetworkSelectSettings extends DashboardFragment implements
     }
 
     /**
-     * Serves as a wrapper method for {@link SatelliteManager#getAllSatellitePlmnsForCarrier(int)}.
+     * Serves as a wrapper method for {@link SatelliteManager#getSatellitePlmnsForCarrier(int)}.
      * Since SatelliteManager is final, this wrapper enables mocking or spying of
-     * {@link SatelliteManager#getAllSatellitePlmnsForCarrier(int)} for unit testing purposes.
+     * {@link SatelliteManager#getSatellitePlmnsForCarrier(int)} for unit testing purposes.
      */
     @VisibleForTesting
-    protected List<String> getAllSatellitePlmnsForCarrierWrapper() {
-        return mSatelliteManager.getAllSatellitePlmnsForCarrier(mSubId);
+    protected List<String> getSatellitePlmnsForCarrierWrapper() {
+        return mSatelliteManager.getSatellitePlmnsForCarrier(mSubId);
     }
 
     private void handleCarrierConfigChanged(int subId) {

@@ -22,6 +22,7 @@ import static android.os.UserManager.DISALLOW_CONFIG_BLUETOOTH;
 import android.app.settings.SettingsEnums;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.hardware.input.InputManager;
 import android.net.Uri;
@@ -58,6 +59,7 @@ import com.android.settings.slices.SlicePreferenceController;
 import com.android.settingslib.bluetooth.CachedBluetoothDevice;
 import com.android.settingslib.bluetooth.LocalBluetoothManager;
 import com.android.settingslib.core.AbstractPreferenceController;
+import com.android.settingslib.core.instrumentation.MetricsFeatureProvider;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 
 import java.lang.reflect.Constructor;
@@ -337,7 +339,6 @@ public class BluetoothDeviceDetailsFragment extends RestrictedDashboardFragment 
     @Override
     protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
         ArrayList<AbstractPreferenceController> controllers = new ArrayList<>();
-
           if (mCachedDevice == null) return controllers;
 
           Lifecycle lifecycle = getSettingsLifecycle();
@@ -363,6 +364,11 @@ public class BluetoothDeviceDetailsFragment extends RestrictedDashboardFragment 
                   lifecycle));
           controllers.add(new BluetoothDetailsHearingDeviceControlsController(context, this,
                   mCachedDevice, lifecycle));
+          // Don't need to show hearing device again when launched from the same page.
+          if (!isLaunchFromHearingDevicePage()) {
+              controllers.add(new BluetoothDetailsHearingDeviceControlsController(context, this,
+                      mCachedDevice, lifecycle));
+          }
           controllers.add(new BluetoothDetailsDataSyncController(context, this,
                   mCachedDevice, lifecycle));
           controllers.add(new BluetoothDetailsExtraOptionsController(context, this, 
@@ -422,6 +428,16 @@ public class BluetoothDeviceDetailsFragment extends RestrictedDashboardFragment 
                 + resolvedAttributes.getDimensionPixelSize(1, 0);
         resolvedAttributes.recycle();
         return width;
+    }
+
+    private boolean isLaunchFromHearingDevicePage() {
+        final Intent intent = getIntent();
+        if (intent == null) {
+            return false;
+        }
+
+        return intent.getIntExtra(MetricsFeatureProvider.EXTRA_SOURCE_METRICS_CATEGORY,
+                SettingsEnums.PAGE_UNKNOWN) == SettingsEnums.ACCESSIBILITY_HEARING_AID_SETTINGS;
     }
 
     @VisibleForTesting
