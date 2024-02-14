@@ -821,6 +821,11 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
             </intent-filter>
         </activity>
 
+        <activity android:name=".network.SimOnboardingActivity"
+            android:exported="false"
+            android:permission="android.permission.WRITE_EMBEDDED_SUBSCRIPTIONS"
+            android:theme="@style/Theme.SpaLib.BottomSheetDialog"/>
+
         <activity android:name=".network.telephony.ToggleSubscriptionDialogActivity"
                   android:exported="false"
                   android:permission="android.permission.WRITE_EMBEDDED_SUBSCRIPTIONS"
@@ -3282,7 +3287,8 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
 
         <receiver
             android:name=".fuelgauge.batteryusage.BootBroadcastReceiver"
-            android:exported="true">
+            android:exported="true"
+            android:permission="com.android.settings.BATTERY_DATA">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
                 <action android:name="com.google.android.setupwizard.SETUP_WIZARD_FINISHED"/>
@@ -4453,9 +4459,12 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
         <activity android:name=".applications.credentials.CredentialsPickerActivity"
                 android:excludeFromRecents="true"
                 android:launchMode="singleInstance"
-                android:exported="false">
-            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                       android:value="com.android.settings.applications.credentials.DefaultCombinedPicker" />
+                android:exported="true">
+            <intent-filter android:priority="1">
+                <action android:name="android.settings.REQUEST_SET_AUTOFILL_SERVICE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="package" />
+            </intent-filter>
         </activity>
 
         <activity
@@ -4598,19 +4607,6 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
                 android:excludeFromRecents="true"
                 android:launchMode="singleInstance"
                 android:exported="false">
-        </activity>
-
-        <activity android:name=".applications.autofill.AutofillPickerTrampolineActivity"
-                android:theme="@android:style/Theme.NoDisplay"
-                android:excludeFromRecents="true"
-                android:launchMode="singleInstance"
-                android:exported="true"
-                android:label="@string/autofill_app">
-            <intent-filter android:priority="1">
-                <action android:name="android.settings.REQUEST_SET_AUTOFILL_SERVICE" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:scheme="package" />
-            </intent-filter>
         </activity>
 
         <activity android:name="Settings$AdvancedConnectedDeviceActivity"
