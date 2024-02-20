@@ -1283,7 +1283,7 @@
     <string name="privatespace_hide_page_summary">To stop other people knowing you have a private space on your device, you can hide it from your apps list</string>
     <!-- Header in hide Private Space settings page to access Private Space when hidden. [CHAR LIMIT=60] -->
     <string name="privatespace_access_header">Access private space when hidden</string>
-    <!-- Text in hide Private Space settings page on how to search Private Space when hidden. [CHAR LIMIT=60] -->
+    <!-- Text in hide Private Space settings page on how to search Private Space when hidden. [CHAR LIMIT=90] -->
     <string name="privatespace_search_description">From your apps list, enter \"private space\" in the search bar</string>
     <!-- Text in hide Private Space settings page to tap on Private Space tile. [CHAR LIMIT=60] -->
     <string name="privatespace_tap_tile_description">Tap the private space tile</string>
@@ -1536,7 +1536,7 @@
     <string name="unlock_set_unlock_mode_password">Password</string>
 
     <!-- Title of the dialog shown when the user removes the device lock [CHAR LIMIT=NONE] -->
-    <string name="unlock_disable_frp_warning_title">Delete screen lock?</string>
+    <string name="unlock_disable_frp_warning_title">Remove all types of device unlock?</string>
     <!-- Title of the dialog shown when the user removes the profile lock [CHAR LIMIT=NONE] -->
     <string name="unlock_disable_frp_warning_title_profile">Remove profile protection?</string>
 
@@ -1550,12 +1550,20 @@
     <string name="unlock_disable_frp_warning_content_pattern_face_fingerprint">"A pattern protects your phone if it\u2019s lost or stolen.<xliff:g id="empty_line">\n\n</xliff:g>This deletes the fingerprint model stored on your device. Your face model will also be permanently and securely deleted. You won\u2019t be able to use your face or fingerprint for authentication in apps."</string>
     <!-- Content of the dialog shown when the user removes the device lock PIN [CHAR LIMIT=NONE] -->
     <string name="unlock_disable_frp_warning_content_pin">"A PIN protects your phone if it\u2019s lost or stolen"</string>
+    <!-- Content of the dialog shown when the user removes the device lock PIN and there are apps with auth-bound keys that will be affected [CHAR LIMIT=NONE] -->
+    <string name="unlock_disable_frp_warning_content_pin_authbound_keys">"You will lose saved data like your PIN.<xliff:g id="empty_line">\n\n</xliff:g>Cards set up for tap to pay will be removed.<xliff:g id="empty_line">\n\n</xliff:g>Wallets and other apps that require device unlock may not work properly."</string>
     <!-- Content of the dialog shown when the user removes the device lock PIN and the user has fingerprints enrolled [CHAR LIMIT=NONE] -->
     <string name="unlock_disable_frp_warning_content_pin_fingerprint">"A PIN protects your phone if it\u2019s lost or stolen.<xliff:g id="empty_line">\n\n</xliff:g>This also deletes the fingerprint model stored on your device. You won\u2019t be able to use your fingerprint for authentication in apps."</string>
+    <!-- Content of the dialog shown when the user removes the device lock PIN and the user has fingerprints enrolled and there are apps with auth-bound keys that will be affected [CHAR LIMIT=NONE] -->
+    <string name="unlock_disable_frp_warning_content_pin_fingerprint_authbound_keys">"You will lose saved data like your PIN and fingerprint model.<xliff:g id="empty_line">\n\n</xliff:g>Cards set up for tap to pay will be removed.<xliff:g id="empty_line">\n\n</xliff:g>Wallets and other apps that require device unlock may not work properly."</string>
     <!-- Content of the dialog shown when the user removes the device lock PIN and the user has face enrolled [CHAR LIMIT=NONE] -->
     <string name="unlock_disable_frp_warning_content_pin_face">"A PIN protects your phone if it\u2019s lost or stolen.<xliff:g id="empty_line">\n\n</xliff:g>Your face model will also be permanently and securely deleted. You won\u2019t be able to use your face for authentication in apps."</string>
+    <!-- Content of the dialog shown when the user removes the device lock PIN and the user has face enrolled and there are apps with auth-bound keys that will be affected [CHAR LIMIT=NONE] -->
+    <string name="unlock_disable_frp_warning_content_pin_face_authbound_keys">"You will lose saved data like your PIN and face model.<xliff:g id="empty_line">\n\n</xliff:g>Cards set up for tap to pay will be removed.<xliff:g id="empty_line">\n\n</xliff:g>Wallets and other apps that require device unlock may not work properly."</string>
     <!-- Content of the dialog shown when the user removes the device lock PIN and the user has face authentication and fingerprint enrolled [CHAR LIMIT=NONE] -->
     <string name="unlock_disable_frp_warning_content_pin_face_fingerprint">"A PIN protects your phone if it\u2019s lost or stolen.<xliff:g id="empty_line">\n\n</xliff:g>This deletes the fingerprint model stored on your device. Your face model will also be permanently and securely deleted. You won\u2019t be able to use your face or fingerprint for authentication in apps."</string>
+    <!-- Content of the dialog shown when the user removes the device lock PIN and the user has face authentication and fingerprint enrolled and there are apps with auth-bound keys that will be affected [CHAR LIMIT=NONE] -->
+    <string name="unlock_disable_frp_warning_content_pin_face_fingerprint_authbound_keys">"You will lose saved data like your PIN, face and fingerprint models.<xliff:g id="empty_line">\n\n</xliff:g>Cards set up for tap to pay will be removed.<xliff:g id="empty_line">\n\n</xliff:g>Wallets and other apps that require device unlock may not work properly."</string>
     <!-- Content of the dialog shown when the user removes the device lock password [CHAR LIMIT=NONE] -->
     <string name="unlock_disable_frp_warning_content_password">"A password protects your phone if it\u2019s lost or stolen"</string>
     <!-- Content of the dialog shown when the user removes the device lock password and the user has fingerprints enrolled [CHAR LIMIT=NONE] -->
@@ -10913,6 +10921,8 @@
     <string name="credman_button_change">Change</string>
     <!-- Button for opening credman service settings. [CHAR LIMIT=40] -->
     <string name="credman_button_open">Open</string>
+    <!-- Label for None item in Credential Manager service selection [CHAR LIMIT=40] -->
+    <string name="credman_app_list_preference_none">None selected</string>
 
     <!-- Message of the warning dialog for setting the auto-fill app. [CHAR_LIMIT=NONE] -->
     <string name="autofill_confirmation_message">
@@ -12219,6 +12229,11 @@
     <string name="media_controls_show_player">Show player</string>
     <!-- Keywords for the media controls setting [CHAR LIMIT=NONE]-->
     <string name="keywords_media_controls">media</string>
+
+    <!-- Title of toggle to enable or disable the media resumption on lockscreen [CHAR LIMIT=NONE]-->
+    <string name="camera_extensions_fallback_title">Allow camera software extensions</string>
+    <!-- Description of toggle to enable or disable the media resumption on lockscreen [CHAR LIMIT=NONE]-->
+    <string name="camera_extensions_fallback_description">Enables the default software implementation of advanced camera features, such as Eyes Free videography.</string>
 
     <!-- Summary for see all preference when bluetooth is disable [CHAR LIMIT=none]-->
     <string name="connected_device_see_all_summary">Bluetooth will turn on</string>
