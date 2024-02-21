@@ -49,10 +49,16 @@ open class NetworkOperatorPreference(
 ) : Preference(context) {
     private var cellInfo: CellInfo? = null
     private var cellId: CellIdentity? = null
-    private val useNewApi = context.resources.getBoolean(
-        com.android.internal.R.bool.config_enableNewAutoSelectNetworkUI
-    )
     private var subId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+    private var isAdvancedScanSupported: Boolean = false;
+
+    init {
+        if (TelephonyUtils.isServiceConnected()) {
+            isAdvancedScanSupported = TelephonyUtils.isAdvancedPlmnScanSupported(context)
+        } else {
+            Log.d(TAG, "ExtTelephonyService is not connected!");
+        }
+    }
 
     /**
      * Change cell information
@@ -95,7 +101,8 @@ open class NetworkOperatorPreference(
      * Update the icon according to the input signal strength level.
      */
     override fun setIcon(level: Int) {
-        if (!useNewApi || level < 0 || level >= SignalStrength.NUM_SIGNAL_STRENGTH_BINS) {
+        if (!isAdvancedScanSupported || level < 0
+                || level >= SignalStrength.NUM_SIGNAL_STRENGTH_BINS) {
             return
         }
         icon = MobileNetworkUtils.getSignalStrengthIcon(
