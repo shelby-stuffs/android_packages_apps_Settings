@@ -132,7 +132,7 @@ abstract class BluetoothNameDialogFragment extends InstrumentedDialogFragment
 
     @Override
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-        if (actionId == EditorInfo.IME_ACTION_DONE) {
+        if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_NULL) {
             // Rejecting Empty String
             if (v.length() != 0 && !(v.getText().toString().trim().isEmpty()))
             {
