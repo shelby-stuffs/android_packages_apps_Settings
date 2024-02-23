@@ -295,7 +295,7 @@ public class BackupCallingPreferenceController extends TelephonyTogglePreference
                     ciwlanIncompatibleNwSelectedForOtherSub);
         }
         boolean isCiwlanIncompatibleNwSelected = ciwlanIncompatibleNwSelectedForCurrentSub ||
-            ciwlanIncompatibleNwSelectedForOtherSub;
+                ciwlanIncompatibleNwSelectedForOtherSub;
         Log.d(LOG_TAG, "isDialogNeeded: isChecked = " + isChecked +
                 ", isCiwlanIncompatibleNwSelected = " + isCiwlanIncompatibleNwSelected);
         if (isChecked && isCiwlanIncompatibleNwSelected) {
