@@ -217,36 +217,20 @@ public class EnabledNetworkModePreferenceController extends
                 ", isCiwlanIncompatibleNetworkSelected = " + isCiwlanIncompatibleNetworkSelected);
         if (isMsimCiwlanSupported) {
             if (isCiwlanIncompatibleNetworkSelected) {
-                if (isDDS) {
-                    if (otherSubCiwlanEnabled && currentSubCiwlanEnabled) {
-                        showCiwlanWarningDialog(
-                                R.string.pref_nw_incompatible_ciwlan_both_subs_dialog_body);
-                        return false;
-                    } else if (otherSubCiwlanEnabled && !currentSubCiwlanEnabled) {
-                        showCiwlanWarningDialog(
-                                R.string.pref_nw_incompatible_ciwlan_other_sub_dialog_body);
-                        return false;
-                    } else if (!otherSubCiwlanEnabled && currentSubCiwlanEnabled) {
-                        showCiwlanWarningDialog(
-                                R.string.pref_nw_incompatible_ciwlan_current_sub_dialog_body);
-                        return false;
-                    } else {
-                        // No warning
-                    }
+                if (otherSubCiwlanEnabled && currentSubCiwlanEnabled) {
+                    showCiwlanWarningDialog(
+                            R.string.pref_nw_incompatible_ciwlan_both_subs_dialog_body);
+                    return false;
+                } else if (otherSubCiwlanEnabled && !currentSubCiwlanEnabled) {
+                    showCiwlanWarningDialog(
+                            R.string.pref_nw_incompatible_ciwlan_other_sub_dialog_body);
+                    return false;
+                } else if (!otherSubCiwlanEnabled && currentSubCiwlanEnabled) {
+                    showCiwlanWarningDialog(
+                            R.string.pref_nw_incompatible_ciwlan_current_sub_dialog_body);
+                    return false;
                 } else {
-                    if (otherSubCiwlanEnabled && currentSubCiwlanEnabled) {
-                        showCiwlanWarningDialog(
-                                R.string.pref_nw_incompatible_ciwlan_both_subs_dialog_body);
-                        return false;
-                    } else if (otherSubCiwlanEnabled && !currentSubCiwlanEnabled) {
-                        showCiwlanWarningDialog(
-                                R.string.pref_nw_incompatible_ciwlan_other_sub_dialog_body);
-                        return false;
-                    } else if (!otherSubCiwlanEnabled && currentSubCiwlanEnabled) {
-                        // No warning
-                    } else {
-                        // No warning
-                    }
+                    // No warning
                 }
             }
         } else {
