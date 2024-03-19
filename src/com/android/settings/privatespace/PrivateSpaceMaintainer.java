@@ -45,6 +45,7 @@ import com.android.internal.annotations.GuardedBy;
 import java.util.List;
 
 // TODO(b/293569406): Update the javadoc when we have the setup flow in place to create PS
+
 /** A class to help with the creation / deletion of Private Space */
 public class PrivateSpaceMaintainer {
     private static final String TAG = "PrivateSpaceMaintainer";
@@ -65,9 +66,9 @@ public class PrivateSpaceMaintainer {
     public static final int PRIVATE_SPACE_AUTO_LOCK_DEFAULT_VAL = PRIVATE_SPACE_AUTO_LOCK_NEVER;
 
     public enum ErrorDeletingPrivateSpace {
-            DELETE_PS_ERROR_NONE,
-            DELETE_PS_ERROR_NO_PRIVATE_SPACE,
-            DELETE_PS_ERROR_INTERNAL
+        DELETE_PS_ERROR_NONE,
+        DELETE_PS_ERROR_NO_PRIVATE_SPACE,
+        DELETE_PS_ERROR_INTERNAL
     }
 
     /**
@@ -75,7 +76,8 @@ public class PrivateSpaceMaintainer {
      *
      * <p> This method should be used by the Private Space Setup Flow ONLY.
      */
-    final synchronized boolean createPrivateSpace() {
+    @VisibleForTesting
+    public final synchronized boolean createPrivateSpace() {
         if (!Flags.allowPrivateProfile()) {
             return false;
         }
@@ -89,7 +91,7 @@ public class PrivateSpaceMaintainer {
         if (mUserHandle == null) {
             try {
                 mUserHandle = mUserManager.createProfile(
-                                userName, USER_TYPE_PROFILE_PRIVATE, new ArraySet<>());
+                        userName, USER_TYPE_PROFILE_PRIVATE, new ArraySet<>());
             } catch (Exception e) {
                 Log.e(TAG, "Error creating private space", e);
                 return false;
@@ -116,7 +118,8 @@ public class PrivateSpaceMaintainer {
         return true;
     }
 
-    /** Returns the {@link ErrorDeletingPrivateSpace} enum representing the result of operation.
+    /**
+     * Returns the {@link ErrorDeletingPrivateSpace} enum representing the result of operation.
      *
      * <p> This method should be used ONLY by the delete-PS controller in the PS Settings page.
      */
@@ -211,6 +214,7 @@ public class PrivateSpaceMaintainer {
 
 
     // TODO(b/307281644): Remove this method once new auth change is merged
+
     /**
      * Returns true if private space exists and a separate private profile lock is set
      * otherwise false when the private space does not exit or exists but does not have a
@@ -224,6 +228,7 @@ public class PrivateSpaceMaintainer {
 
     /** Sets the setting to show PS entry point to the provided value. */
     public void setHidePrivateSpaceEntryPointSetting(int value) {
+        Log.d(TAG, "Setting HIDE_PRIVATE_SPACE_ENTRY_POINT = " + value);
         Settings.Secure.putInt(mContext.getContentResolver(), HIDE_PRIVATESPACE_ENTRY_POINT, value);
     }
 
@@ -261,6 +266,7 @@ public class PrivateSpaceMaintainer {
      */
     public synchronized boolean lockPrivateSpace() {
         if (isPrivateProfileRunning()) {
+            Log.d(TAG, "Calling requestQuietModeEnabled to enableQuietMode");
             return mUserManager.requestQuietModeEnabled(true, mUserHandle);
         }
         return false;
@@ -273,6 +279,7 @@ public class PrivateSpaceMaintainer {
      */
     public synchronized void unlockPrivateSpace(IntentSender intentSender) {
         if (mUserHandle != null) {
+            Log.d(TAG, "Calling requestQuietModeEnabled to disableQuietMode");
             mUserManager.requestQuietModeEnabled(false, mUserHandle, intentSender);
         }
     }
@@ -286,9 +293,20 @@ public class PrivateSpaceMaintainer {
         return false;
     }
 
+    @GuardedBy("this")
     private void resetPrivateSpaceSettings() {
         setHidePrivateSpaceEntryPointSetting(HIDE_PRIVATE_SPACE_ENTRY_POINT_DISABLED_VAL);
         setPrivateSpaceAutoLockSetting(PRIVATE_SPACE_AUTO_LOCK_DEFAULT_VAL);
+        setPrivateSpaceSensitiveNotificationsDefaultValue();
+    }
+
+    /** Sets private space sensitive notifications hidden on lockscreen by default */
+    @GuardedBy("this")
+    private void setPrivateSpaceSensitiveNotificationsDefaultValue() {
+        Settings.Secure.putIntForUser(mContext.getContentResolver(),
+                Settings.Secure.LOCK_SCREEN_ALLOW_PRIVATE_NOTIFICATIONS,
+                HidePrivateSpaceSensitiveNotificationsController.DISABLED,
+                mUserHandle.getIdentifier());
     }
 
     /**
@@ -297,6 +315,7 @@ public class PrivateSpaceMaintainer {
      */
     @GuardedBy("this")
     private void setUserSetupComplete() {
+        Log.d(TAG, "setting USER_SETUP_COMPLETE = 1 for private profile");
         Settings.Secure.putIntForUser(mContext.getContentResolver(), USER_SETUP_COMPLETE,
                 1, mUserHandle.getIdentifier());
     }

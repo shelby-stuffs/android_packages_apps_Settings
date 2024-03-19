@@ -15,8 +15,8 @@
  */
 
 /*
- * Changes from Qualcomm Innovation Center are provided under the following license:
- * Copyright (c) 2022-2023 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Changes from Qualcomm Innovation Center, Inc. are provided under the following license:
+ * Copyright (c) 2022-2024 Qualcomm Innovation Center, Inc. All rights reserved.
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
 
@@ -25,7 +25,11 @@ package com.android.settings.network.telephony;
 import static com.android.settings.network.MobileNetworkListFragment.collectAirplaneModeAndFinishIfOn;
 
 import static android.telephony.AccessNetworkConstants.TRANSPORT_TYPE_WWAN;
+import static android.telephony.ims.feature.ImsFeature.FEATURE_MMTEL;
+import static android.telephony.ims.stub.ImsRegistrationImplBase.REGISTRATION_TECH_CROSS_SIM;
 import static android.telephony.NetworkRegistrationInfo.DOMAIN_PS;
+
+import static com.qti.extphone.ExtPhoneCallbackListener.EVENT_ON_CIWLAN_CONFIG_CHANGE;
 
 import android.app.Activity;
 import android.app.settings.SettingsEnums;
@@ -36,16 +40,18 @@ import android.os.RemoteException;
 import android.os.UserManager;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.telephony.ims.aidl.IImsRegistration;
+import android.telephony.ims.ImsException;
+import android.telephony.ims.ImsManager;
+import android.telephony.ims.ImsMmTelManager;
 import android.telephony.NetworkRegistrationInfo;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
-import android.telephony.ims.ImsException;
-import android.telephony.ims.ImsManager;
-import android.telephony.ims.ImsMmTelManager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -78,6 +84,8 @@ import com.android.settingslib.search.SearchIndexable;
 import com.android.settingslib.utils.ThreadUtils;
 
 import com.qti.extphone.CiwlanConfig;
+import com.qti.extphone.Client;
+import com.qti.extphone.ExtPhoneCallbackListener;
 import com.qti.extphone.ExtTelephonyManager;
 import com.qti.extphone.ServiceCallback;
 
@@ -108,6 +116,7 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
     private static final String KEY_SMS_PREF = "sms_preference";
     private static final String KEY_MOBILE_DATA_PREF = "mobile_data_enable";
     private static final String KEY_CONVERT_TO_ESIM_PREF = "convert_to_esim";
+    private static final String KEY_EID_KEY = "network_mode_eid_info";
 
     // UICC provisioning status
     public static final int CARD_NOT_PROVISIONED = 0;
@@ -117,7 +126,7 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
     private static final String BUTTON_CDMA_SYSTEM_SELECT_KEY = "cdma_system_select_key";
     private static final String BUTTON_CDMA_SUBSCRIPTION_KEY = "cdma_subscription_key";
 
-    private final ExecutorService mExecutor = Executors.newSingleThreadExecutor();
+    private static final ExecutorService mExecutor = Executors.newSingleThreadExecutor();
 
     private static TelephonyManager mTelephonyManager;
     private static int mSubId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
@@ -134,46 +143,72 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
     private SubscriptionInfoEntity mSubscriptionInfoEntity;
     private MobileNetworkInfoEntity mMobileNetworkInfoEntity;
 
-    private static ImsManager mImsMgr;
-    private static CiwlanConfig mCiwlanConfig = null;
-    private boolean mExtTelServiceConnected = false;
-    private ExtTelephonyManager mExtTelephonyManager;
-    private final ServiceCallback mExtTelServiceCallback = new ServiceCallback() {
+    private static ImsManager sImsMgr;
+    private static String sPackageName;
+    private static SparseArray<CiwlanConfig> sCiwlanConfig = new SparseArray();
+    private static boolean sExtTelServiceConnected = false;
+    private static Client sClient;
+    private static ExtTelephonyManager sExtTelephonyManager;
+    private static SubscriptionManager sSubscriptionManager;
+    private static final ServiceCallback mExtTelServiceCallback = new ServiceCallback() {
         @Override
         public void onConnected() {
             Log.d(LOG_TAG, "ExtTelephony service connected");
-            mExtTelServiceConnected = true;
+            sExtTelServiceConnected = true;
+            int[] events = new int[] {EVENT_ON_CIWLAN_CONFIG_CHANGE};
+            sClient = sExtTelephonyManager.registerCallbackWithEvents(sPackageName,
+                    mExtPhoneCallbackListener, events);
+            Log.d(LOG_TAG, "Client = " + sClient);
             getCiwlanConfig();
         }
 
         @Override
         public void onDisconnected() {
             Log.d(LOG_TAG, "ExtTelephony service disconnected");
-            mExtTelServiceConnected = false;
+            sExtTelServiceConnected = false;
+            sClient = null;
         }
     };
 
-    private CiwlanConfig getCiwlanConfig() {
-        if (mCiwlanConfig != null) {
-            return mCiwlanConfig;
+    private static ExtPhoneCallbackListener mExtPhoneCallbackListener =
+            new ExtPhoneCallbackListener() {
+        @Override
+        public void onCiwlanConfigChange(int slotId, CiwlanConfig ciwlanConfig) {
+           Log.d(LOG_TAG, "onCiwlanConfigChange: slotId = " + slotId + ", config = " +
+                   ciwlanConfig);
+           int subId = SubscriptionManager.getSubscriptionId(slotId);
+           sCiwlanConfig.put(subId, ciwlanConfig);
         }
+    };
+
+    private static CiwlanConfig getCiwlanConfig(int... subscriptionId) {
+        // If subscriptionId is passed in, return the config belonging to that subId. Otherwise,
+        // query the config for all active subscriptions.
+        if (subscriptionId.length != 0 && sCiwlanConfig != null) {
+            return sCiwlanConfig.get(subscriptionId[0]);
+        }
+
         mExecutor.execute(new Runnable() {
             @Override
             public void run() {
-                // Query the C_IWLAN config
-                try {
-                    mCiwlanConfig = mExtTelephonyManager.getCiwlanConfig(
-                            SubscriptionManager.getSlotIndex(mSubId));
-                } catch (RemoteException ex) {
-                    Log.e(LOG_TAG, "getCiwlanConfig exception", ex);
+                // Query the C_IWLAN config of all active subscriptions
+                int[] activeSubIdList = sSubscriptionManager.getActiveSubscriptionIdList();
+                for (int i = 0; i < activeSubIdList.length; i++) {
+                    try {
+                        int subId = activeSubIdList[i];
+                        sCiwlanConfig.put(subId, sExtTelephonyManager.getCiwlanConfig(
+                                SubscriptionManager.getSlotIndex(subId)));
+                    } catch (RemoteException ex) {
+                        Log.e(LOG_TAG, "getCiwlanConfig exception", ex);
+                    }
                 }
             }
         });
         return null;
     }
 
-    static boolean isCiwlanEnabled() {
-        ImsMmTelManager imsMmTelMgr = getImsMmTelManager();
+    static boolean isCiwlanEnabled(int subId) {
+        ImsMmTelManager imsMmTelMgr = getImsMmTelManager(subId);
         if (imsMmTelMgr == null) {
             return false;
         }
@@ -185,44 +220,81 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
         return false;
     }
 
-    private static ImsMmTelManager getImsMmTelManager() {
-        if (!SubscriptionManager.isUsableSubscriptionId(mSubId)) {
+    private static ImsMmTelManager getImsMmTelManager(int subId) {
+        if (!SubscriptionManager.isUsableSubscriptionId(subId)) {
             Log.d(LOG_TAG, "getImsMmTelManager: subId unusable");
             return null;
         }
-        if (mImsMgr == null) {
+        if (sImsMgr == null) {
             Log.d(LOG_TAG, "getImsMmTelManager: ImsManager null");
             return null;
         }
-        return mImsMgr.getImsMmTelManager(mSubId);
+        return sImsMgr.getImsMmTelManager(subId);
     }
 
-    static boolean isInCiwlanOnlyMode() {
-        if (mCiwlanConfig == null) {
-            Log.d(LOG_TAG, "isInCiwlanOnlyMode: C_IWLAN config null");
+    static boolean isInCiwlanOnlyMode(int subId) {
+        if (sCiwlanConfig == null) {
+            Log.d(LOG_TAG, "isInCiwlanOnlyMode: C_IWLAN config map null");
             return false;
         }
-        if (isRoaming()) {
-            return mCiwlanConfig.isCiwlanOnlyInRoam();
-        }
-        return mCiwlanConfig.isCiwlanOnlyInHome();
-    }
-
-    static boolean isCiwlanModeSupported() {
-        if (mCiwlanConfig == null) {
-            Log.d(LOG_TAG, "isCiwlanModeSupported: C_IWLAN config null");
+        CiwlanConfig config = sCiwlanConfig.get(subId);
+        if (config != null) {
+            if (isRoaming(subId)) {
+                return config.isCiwlanOnlyInRoam();
+            }
+            return config.isCiwlanOnlyInHome();
+        } else {
+            Log.d(LOG_TAG, "isInCiwlanOnlyMode: C_IWLAN config null for subId " + subId);
             return false;
         }
-        return mCiwlanConfig.isCiwlanModeSupported();
     }
 
-    static boolean isRoaming() {
+    static boolean isCiwlanModeSupported(int subId) {
+        if (sCiwlanConfig == null) {
+            Log.d(LOG_TAG, "isCiwlanModeSupported: C_IWLAN config map null");
+            return false;
+        }
+        CiwlanConfig config = sCiwlanConfig.get(subId);
+        if (config != null) {
+            return config.isCiwlanModeSupported();
+        } else {
+            Log.d(LOG_TAG, "isCiwlanModeSupported: C_IWLAN config null for subId " + subId);
+            return false;
+        }
+    }
+
+    static boolean isImsRegisteredOnCiwlan(int subId) {
+        if (mTelephonyManager == null) {
+            Log.d(LOG_TAG, "isImsRegisteredOnCiwlan: TelephonyManager null");
+            return false;
+        }
+        TelephonyManager tm = mTelephonyManager.createForSubscriptionId(subId);
+        IImsRegistration imsRegistrationImpl = tm.getImsRegistration(
+                SubscriptionManager.getSlotIndex(subId), FEATURE_MMTEL);
+        if (imsRegistrationImpl != null) {
+            try {
+                return imsRegistrationImpl.getRegistrationTechnology() ==
+                        REGISTRATION_TECH_CROSS_SIM;
+            } catch (RemoteException ex) {
+                Log.e(LOG_TAG, "getRegistrationTechnology failed", ex);
+            }
+        }
+        return false;
+    }
+
+    static boolean isMsimCiwlanSupported() {
+        return sExtTelephonyManager.isFeatureSupported(
+                ExtTelephonyManager.FEATURE_CIWLAN_MODE_PREFERENCE);
+    }
+
+    static boolean isRoaming(int subId) {
         if (mTelephonyManager == null) {
             Log.d(LOG_TAG, "isRoaming: TelephonyManager null");
             return false;
         }
+        TelephonyManager tm = mTelephonyManager.createForSubscriptionId(subId);
         boolean nriRoaming = false;
-        ServiceState serviceState = mTelephonyManager.getServiceState();
+        ServiceState serviceState = tm.getServiceState();
         if (serviceState != null) {
             NetworkRegistrationInfo nri =
                     serviceState.getNetworkRegistrationInfo(DOMAIN_PS, TRANSPORT_TYPE_WWAN);
@@ -235,6 +307,18 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
             Log.d(LOG_TAG, "isRoaming: service state null");
         }
         return nriRoaming;
+    }
+
+    static int getNonDefaultDataSub() {
+        final int DDS = SubscriptionManager.getDefaultDataSubscriptionId();
+        int nDDS = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+        int[] activeSubIdList = sSubscriptionManager.getActiveSubscriptionIdList();
+        for (int i = 0; i < activeSubIdList.length; i++) {
+            if (activeSubIdList[i] != DDS) {
+                nDDS = activeSubIdList[i];
+            }
+        }
+        return nDDS;
     }
 
     public MobileNetworkSettings() {
@@ -303,6 +387,10 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
                             String.valueOf(mSubId));
         });
 
+        MobileNetworkEidPreferenceController eid = new MobileNetworkEidPreferenceController(context,
+                KEY_EID_KEY);
+        eid.init(this, mSubId);
+
         return Arrays.asList(
                 new DataUsageSummaryPreferenceController(context, mSubId),
                 new RoamingPreferenceController(context, KEY_ROAMING_PREF, getSettingsLifecycle(),
@@ -316,7 +404,7 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
                 new MobileDataPreferenceController(context, KEY_MOBILE_DATA_PREF,
                         getSettingsLifecycle(), this, mSubId),
                 new ConvertToEsimPreferenceController(context, KEY_CONVERT_TO_ESIM_PREF,
-                        getSettingsLifecycle(), this, mSubId));
+                        getSettingsLifecycle(), this, mSubId), eid);
     }
 
     @Override
@@ -334,7 +422,7 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
             Log.d(LOG_TAG, "Show NetworkSettings fragment for subId" + mSubId);
         }
 
-        mImsMgr = context.getSystemService(ImsManager.class);
+        sImsMgr = context.getSystemService(ImsManager.class);
 
         // Connect TelephonyUtils to ExtTelephonyService
         TelephonyUtils.connectExtTelephonyService(context);
@@ -379,6 +467,10 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
         use(DisableSimFooterPreferenceController.class).init(mSubId);
         use(NrDisabledInDsdsFooterPreferenceController.class).init(mSubId);
 
+        use(MobileNetworkSpnPreferenceController.class).init(this, mSubId);
+        use(MobileNetworkPhoneNumberPreferenceController.class).init(this, mSubId);
+        use(MobileNetworkImeiPreferenceController.class).init(this, mSubId);
+
         final MobileDataPreferenceController mobileDataPreferenceController =
                 use(MobileDataPreferenceController.class);
         if (mobileDataPreferenceController != null) {
@@ -394,6 +486,11 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
         if (roamingPreferenceController != null) {
             roamingPreferenceController.init(getFragmentManager(), mSubId,
                     mMobileNetworkInfoEntity);
+        }
+        final SatelliteSettingPreferenceController satelliteSettingPreferenceController = use(
+                SatelliteSettingPreferenceController.class);
+        if (satelliteSettingPreferenceController != null) {
+            satelliteSettingPreferenceController.init(mSubId);
         }
         use(ApnPreferenceController.class).init(mSubId);
         use(UserPLMNPreferenceController.class).init(mSubId);
@@ -468,8 +565,10 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
 
         super.onCreate(icicle);
         final Context context = getContext();
-        mExtTelephonyManager = ExtTelephonyManager.getInstance(context);
-        mExtTelephonyManager.connectService(mExtTelServiceCallback);
+        sPackageName = this.getClass().getPackage().toString();
+        sExtTelephonyManager = ExtTelephonyManager.getInstance(context);
+        sExtTelephonyManager.connectService(mExtTelServiceCallback);
+        sSubscriptionManager = context.getSystemService(SubscriptionManager.class);
         mUserManager = (UserManager) context.getSystemService(Context.USER_SERVICE);
         mTelephonyManager = context.getSystemService(TelephonyManager.class)
                 .createForSubscriptionId(mSubId);
@@ -519,6 +618,15 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
     public void onPause() {
         mMobileNetworkRepository.removeRegister(this);
         super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        if (sExtTelServiceConnected) {
+            sExtTelephonyManager.disconnectService(mExtTelServiceCallback);
+            sExtTelephonyManager = null;
+        }
+        super.onDestroy();
     }
 
     @VisibleForTesting

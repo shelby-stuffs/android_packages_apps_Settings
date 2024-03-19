@@ -26,7 +26,6 @@ import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.UiccCardInfo;
-import android.telephony.UiccPortInfo;
 import android.telephony.UiccSlotInfo;
 import android.telephony.UiccSlotMapping;
 import android.util.Log;
@@ -167,7 +166,7 @@ public class UiccSlotUtil {
         Log.d(TAG, "The SimSlotMapping: " + uiccSlotMappings);
 
         SubscriptionManager subscriptionManager = context.getSystemService(
-                SubscriptionManager.class);
+                SubscriptionManager.class).createForAllUserProfiles();
         int excludedLogicalSlotIndex = getExcludedLogicalSlotIndex(uiccSlotMappings,
                 SubscriptionUtil.getActiveSubscriptions(subscriptionManager), removedSubInfo,
                 telMgr.isMultiSimEnabled());
@@ -208,7 +207,7 @@ public class UiccSlotUtil {
         }
 
         SubscriptionManager subscriptionManager = context.getSystemService(
-                SubscriptionManager.class);
+                SubscriptionManager.class).createForAllUserProfiles();
         int excludedLogicalSlotIndex = getExcludedLogicalSlotIndex(uiccSlotMappings,
                 SubscriptionUtil.getActiveSubscriptions(subscriptionManager), removedSubInfo,
                 telMgr.isMultiSimEnabled());
@@ -227,7 +226,7 @@ public class UiccSlotUtil {
         List<UiccCardInfo> uiccCardInfos = telMgr.getUiccCardsInfo();
         ImmutableList<UiccSlotInfo> slotInfos = UiccSlotUtil.getSlotInfos(telMgr);
         SubscriptionManager subscriptionManager = context.getSystemService(
-                SubscriptionManager.class);
+                SubscriptionManager.class).createForAllUserProfiles();
         SubscriptionInfo subInfo = SubscriptionUtil.getSubById(subscriptionManager, subId);
 
         // checking whether this is the removable esim. If it is, then return the removable slot id.
@@ -468,42 +467,29 @@ public class UiccSlotUtil {
         if (telMgr == null) {
             return false;
         }
-        ImmutableList<UiccSlotInfo> slotInfos = UiccSlotUtil.getSlotInfos(telMgr);
+        List<UiccSlotInfo> slotInfos = UiccSlotUtil.getSlotInfos(telMgr);
+        return isRemovableSimEnabled(slotInfos);
+    }
+
+    /**
+     * Return whether the removable psim is enabled.
+     *
+     * @param slotInfos is a List of UiccSlotInfo.
+     * @return whether the removable psim is enabled.
+     */
+    public static boolean isRemovableSimEnabled(List<UiccSlotInfo> slotInfos) {
         boolean isRemovableSimEnabled =
                 slotInfos.stream()
                         .anyMatch(
                                 slot -> slot != null
                                         && slot.isRemovable()
                                         && !slot.getIsEuicc()
-                                        && slot.getPorts().stream().anyMatch(
-                                                port -> port.isActive())
+                                        && slot.getPorts().stream()
+                                                .anyMatch(port -> port.isActive())
                                         && slot.getCardStateInfo()
-                                                == UiccSlotInfo.CARD_STATE_INFO_PRESENT);
+                                        == UiccSlotInfo.CARD_STATE_INFO_PRESENT);
         Log.i(TAG, "isRemovableSimEnabled: " + isRemovableSimEnabled);
         return isRemovableSimEnabled;
-    }
-
-    public static boolean isEsimSub(SubscriptionInfo subInfo, TelephonyManager telMgr) {
-        if (telMgr == null) {
-            return false;
-        }
-        UiccSlotInfo[] slotsInfo = telMgr.getUiccSlotsInfo();
-        for (int i = 0; slotsInfo != null && i < slotsInfo.length; i++) {
-            UiccSlotInfo slotInfo = slotsInfo[i];
-            if (slotInfo == null || !slotInfo.getIsEuicc()) {
-                continue;
-            }
-            for (UiccPortInfo portInfo : slotInfo.getPorts()) {
-                String iccId = portInfo.getIccId();
-                Log.i(TAG, "isEsimSub: " + " subInfo iccid: " + subInfo.getIccId()
-                        + " portInfoiccid: " + portInfo.getIccId() + " portIndex: "
-                        + portInfo.getPortIndex());
-                if (iccId.equals(subInfo.getIccId())) {
-                    return true;
-                }
-            }
-        }
-        return false;
     }
 
     private static boolean isMultipleEnabledProfilesSupported(TelephonyManager telMgr) {

@@ -23,9 +23,9 @@
     settings:searchable="false">
 
     <com.android.settingslib.widget.IllustrationPreference
-        android:key="privatespace_hide_video"
+        android:key="private_space_settings"
         settings:searchable="false"
-        settings:lottie_rawRes="@drawable/privatespace_placeholder_image"/>
+        settings:lottie_rawRes="@drawable/private_space_illustration"/>
 
     <Preference
         android:key="private_space_description"
@@ -60,12 +60,23 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:title="@string/private_space_apps_and_notifications_header">
+
+        <com.android.settingslib.RestrictedSwitchPreference
+            android:key="private_space_sensitive_notifications"
+            android:title="@string/private_space_notifications_title"
+            android:summary="@string/private_space_sensitive_notifications_description"
+            settings:controller="com.android.settings.privatespace.HidePrivateSpaceSensitiveNotificationsController" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="@string/private_space_category_system">
 
         <Preference
             android:key="private_space_delete"
             android:title="@string/private_space_delete_title"
-            settings:controller="com.android.settings.privatespace.DeletePrivateSpaceController"
+            settings:controller="com.android.settings.privatespace.delete.DeletePrivateSpaceController"
             settings:searchable="false" />
 
     </PreferenceCategory>

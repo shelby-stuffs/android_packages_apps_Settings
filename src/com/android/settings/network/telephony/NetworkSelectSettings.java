@@ -99,6 +99,7 @@ public class NetworkSelectSettings extends DashboardFragment implements
     private PreferenceCategory mErrorMsgCategory;
     @VisibleForTesting
     NetworkOperatorPreference mSelectedPreference;
+    NetworkOperatorPreference mConnectedPreference;
     private View mProgressHeader;
     private Preference mStatusMessagePreference;
     private Preference mErrorMsgPreference;
@@ -154,6 +155,7 @@ public class NetworkSelectSettings extends DashboardFragment implements
         mStatusMessagePreference = new Preference(context);
         mStatusMessagePreference.setSelectable(false);
         mSelectedPreference = null;
+        mConnectedPreference = null;
         mTelephonyManager = getTelephonyManager(context, mSubId);
         mSatelliteManager = getSatelliteManager(context);
         mCarrierConfigManager = getCarrierConfigManager(context);
@@ -321,12 +323,16 @@ public class NetworkSelectSettings extends DashboardFragment implements
         // Refresh the last selected item in case users reselect network.
         clearPreferenceSummary();
         if (mSelectedPreference != null) {
-            // Set summary as "Disconnected" to the previously connected network
+            // Set summary as "Disconnected" to the previously selected network
             mSelectedPreference.setSummary(R.string.network_disconnected);
+        } else if (mConnectedPreference != null) {
+            // Set summary as "Disconnected" to the previously connected network
+            mConnectedPreference.setSummary(R.string.network_disconnected);
         }
 
         mSelectedPreference = (NetworkOperatorPreference) preference;
         mSelectedPreference.setSummary(R.string.network_connecting);
+        mConnectedPreference = mSelectedPreference;
 
         mMetricsFeatureProvider.action(getContext(),
                 SettingsEnums.ACTION_MOBILE_NETWORK_MANUAL_SELECT_NETWORK);
@@ -484,7 +490,7 @@ public class NetworkSelectSettings extends DashboardFragment implements
        cellular network. Therefore, it is needed to filter out satellite plmns from current cell
        info list  */
     private List<CellInfo> filterOutSatellitePlmn(List<CellInfo> cellInfoList) {
-        List<String> aggregatedSatellitePlmn = getAllSatellitePlmnsForCarrierWrapper();
+        List<String> aggregatedSatellitePlmn = getSatellitePlmnsForCarrierWrapper();
         if (!mShouldFilterOutSatellitePlmn.get() || aggregatedSatellitePlmn.isEmpty()) {
             return cellInfoList;
         }
@@ -495,13 +501,13 @@ public class NetworkSelectSettings extends DashboardFragment implements
     }
 
     /**
-     * Serves as a wrapper method for {@link SatelliteManager#getAllSatellitePlmnsForCarrier(int)}.
+     * Serves as a wrapper method for {@link SatelliteManager#getSatellitePlmnsForCarrier(int)}.
      * Since SatelliteManager is final, this wrapper enables mocking or spying of
-     * {@link SatelliteManager#getAllSatellitePlmnsForCarrier(int)} for unit testing purposes.
+     * {@link SatelliteManager#getSatellitePlmnsForCarrier(int)} for unit testing purposes.
      */
     @VisibleForTesting
-    protected List<String> getAllSatellitePlmnsForCarrierWrapper() {
-        return mSatelliteManager.getAllSatellitePlmnsForCarrier(mSubId);
+    protected List<String> getSatellitePlmnsForCarrierWrapper() {
+        return mSatelliteManager.getSatellitePlmnsForCarrier(mSubId);
     }
 
     private void handleCarrierConfigChanged(int subId) {
@@ -557,10 +563,16 @@ public class NetworkSelectSettings extends DashboardFragment implements
         if (mCellInfoList != null && mCellInfoList.size() != 0) {
             final NetworkOperatorPreference connectedPref = updateAllPreferenceCategory();
             if (connectedPref != null) {
+                // update connected preference instance
+                mConnectedPreference = connectedPref;
                 // update selected preference instance into connected preference
-                mSelectedPreference = connectedPref;
+                if (mSelectedPreference != null) {
+                    mSelectedPreference = connectedPref;
+                }
             } else if (!isPreferenceScreenEnabled()) {
-                mSelectedPreference.setSummary(R.string.network_connecting);
+                if (mSelectedPreference != null) {
+                    mSelectedPreference.setSummary(R.string.network_connecting);
+                }
             }
             enablePreferenceScreen(true);
         } else if (isPreferenceScreenEnabled()) {
@@ -645,6 +657,7 @@ public class NetworkSelectSettings extends DashboardFragment implements
             if ((mSelectedPreference != null) && mSelectedPreference.isSameCell(cellInfo)) {
                 mSelectedPreference = (NetworkOperatorPreference)
                         (mPreferenceCategory.getPreference(index));
+                mConnectedPreference = mSelectedPreference;
             }
         }
 

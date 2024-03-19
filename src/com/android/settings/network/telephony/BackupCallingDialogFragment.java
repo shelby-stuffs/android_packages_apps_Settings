@@ -15,8 +15,8 @@
  */
 
 /*
- * Changes from Qualcomm Innovation Center are provided under the following license:
- * Copyright (c) 2022-2023 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Changes from Qualcomm Innovation Center, Inc. are provided under the following license:
+ * Copyright (c) 2022-2024 Qualcomm Innovation Center, Inc. All rights reserved.
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
 
@@ -46,18 +46,18 @@ public class BackupCallingDialogFragment extends InstrumentedDialogFragment {
     private static final String ARG_DIALOG_TYPE = "dialog_type";
     private static final String ARG_SUB_ID = "subId";
 
-    public static final int TYPE_ENABLE_CIWLAN_INCOMPATIBLE_NW_TYPE_DIALOG = 0;
+    public static final int TYPE_ENABLE_CIWLAN_INCOMPATIBLE_NW_TYPE_DIALOG_CURRENT_SUB = 0;
+    public static final int TYPE_ENABLE_CIWLAN_INCOMPATIBLE_NW_TYPE_DIALOG_OTHER_SUB = 1;
+    public static final int TYPE_ENABLE_CIWLAN_INCOMPATIBLE_NW_TYPE_DIALOG_BOTH_SUBS = 2;
 
     private String mPrefTitle;
     private int mType;
-    private int mSubId;
 
-    public static BackupCallingDialogFragment newInstance(String prefTitle, int type, int subId) {
+    public static BackupCallingDialogFragment newInstance(String prefTitle, int type) {
         final BackupCallingDialogFragment dialogFragment = new BackupCallingDialogFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PREF_TITLE, prefTitle);
         args.putInt(ARG_DIALOG_TYPE, type);
-        args.putInt(ARG_SUB_ID, subId);
         dialogFragment.setArguments(args);
         return dialogFragment;
     }
@@ -69,18 +69,26 @@ public class BackupCallingDialogFragment extends InstrumentedDialogFragment {
 
         mPrefTitle = bundle.getString(ARG_PREF_TITLE).toLowerCase();
         mType = bundle.getInt(ARG_DIALOG_TYPE);
-        mSubId = bundle.getInt(ARG_SUB_ID);
 
+        int dialogBodyTextId;
         switch (mType) {
-            case TYPE_ENABLE_CIWLAN_INCOMPATIBLE_NW_TYPE_DIALOG:
-                return new AlertDialog.Builder(context)
-                        .setTitle(R.string.preferred_nw_incompatible_ciwlan_nw_mode_dialog_title)
-                        .setMessage(R.string.backup_calling_enable_dialog_incompatible_nw_type)
-                        .setPositiveButton(android.R.string.ok, null)
-                        .create();
+            case TYPE_ENABLE_CIWLAN_INCOMPATIBLE_NW_TYPE_DIALOG_CURRENT_SUB:
+                dialogBodyTextId = R.string.ciwlan_enable_dialog_incompatible_nw_type_current_sub;
+                break;
+            case TYPE_ENABLE_CIWLAN_INCOMPATIBLE_NW_TYPE_DIALOG_OTHER_SUB:
+                dialogBodyTextId = R.string.ciwlan_enable_dialog_incompatible_nw_type_other_sub;
+                break;
+            case TYPE_ENABLE_CIWLAN_INCOMPATIBLE_NW_TYPE_DIALOG_BOTH_SUBS:
+                dialogBodyTextId = R.string.ciwlan_enable_dialog_incompatible_nw_type_both_subs;
+                break;
             default:
                 throw new IllegalArgumentException("Unknown type " + mType);
         }
+        return new AlertDialog.Builder(context)
+                .setTitle(R.string.pref_nw_incompat_ciwlan_dialog_title)
+                .setMessage(dialogBodyTextId)
+                .setPositiveButton(android.R.string.ok, null)
+                .create();
     }
 
     @Override

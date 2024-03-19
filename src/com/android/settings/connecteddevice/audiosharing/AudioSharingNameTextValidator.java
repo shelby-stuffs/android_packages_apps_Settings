@@ -18,10 +18,27 @@ package com.android.settings.connecteddevice.audiosharing;
 
 import com.android.settings.widget.ValidatedEditTextPreference;
 
+import java.nio.charset.StandardCharsets;
+
+/**
+ * Validator for Audio Sharing Name, which should be a UTF-8 encoded string containing a minimum of
+ * 4 characters and a maximum of 32 human-readable characters.
+ */
 public class AudioSharingNameTextValidator implements ValidatedEditTextPreference.Validator {
+    private static final int MIN_LENGTH = 4;
+    private static final int MAX_LENGTH = 32;
+
     @Override
     public boolean isTextValid(String value) {
-        // TODO: Add validate rule if applicable.
-        return true;
+        if (value == null || value.length() < MIN_LENGTH || value.length() > MAX_LENGTH) {
+            return false;
+        }
+        return isValidUTF8(value);
+    }
+
+    private static boolean isValidUTF8(String value) {
+        byte[] bytes = value.getBytes(StandardCharsets.UTF_8);
+        String reconstructedString = new String(bytes, StandardCharsets.UTF_8);
+        return value.equals(reconstructedString);
     }
 }

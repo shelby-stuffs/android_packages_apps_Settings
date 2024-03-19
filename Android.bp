@@ -1,4 +1,5 @@
 package {
+    default_team: "trendy_team_android_settings_app",
     default_applicable_licenses: ["packages_apps_Settings_license"],
 }
 
@@ -45,7 +46,6 @@ java_library {
 
 android_library {
     name: "Settings-core",
-    platform_apis: true,
     defaults: [
         "SettingsLib-search-defaults",
         "SettingsLintDefaults",
@@ -59,7 +59,7 @@ android_library {
         "src/**/*.kt",
     ],
     exclude_srcs: [
-        "src/com/android/settings/biometrics/fingerprint2/shared/**/*.kt",
+        "src/com/android/settings/biometrics/fingerprint2/lib/**/*.kt",
     ],
     use_resource_processor: true,
     resource_dirs: [
@@ -111,6 +111,7 @@ android_library {
         "statslog-settings",
         "androidx.test.rules",
         "telephony_flags_core_java_lib",
+        "setupdesign-lottie-loading-layout",
     ],
 
     plugins: ["androidx.room_room-compiler-plugin"],

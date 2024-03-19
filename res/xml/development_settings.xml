@@ -379,6 +379,13 @@
             android:title="@string/bluetooth_disable_leaudio"
             android:summary="@string/bluetooth_disable_leaudio_summary" />
 
+        <ListPreference
+            android:key="bluetooth_leaudio_mode"
+            android:title="@string/bluetooth_leaudio_mode"
+            android:summary="@string/summary_placeholder"
+            android:entries="@array/bluetooth_leaudio_mode"
+            android:entryValues="@array/bluetooth_leaudio_mode_values"/>
+
         <SwitchPreferenceCompat
             android:key="bluetooth_show_leaudio_device_details"
             android:title="@string/bluetooth_show_leaudio_device_details"/>
@@ -703,6 +710,11 @@
             android:key="show_notification_channel_warnings"
             android:title="@string/show_notification_channel_warnings"
             android:summary="@string/show_notification_channel_warnings_summary" />
+
+        <SwitchPreferenceCompat
+            android:key="disable_screen_share_protections_for_apps_and_notifications"
+            android:title="@string/disable_screen_share_protections_for_apps_and_notifications"
+            android:summary="@string/disable_screen_share_protections_for_apps_and_notifications_summary" />
 
         <Preference
             android:key="asst_importance_reset"

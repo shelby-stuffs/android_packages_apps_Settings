@@ -17,17 +17,18 @@
 package com.android.settings.connecteddevice.audiosharing;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothCsipSetCoordinator;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothLeBroadcast;
 import android.bluetooth.BluetoothLeBroadcastAssistant;
 import android.bluetooth.BluetoothLeBroadcastMetadata;
 import android.bluetooth.BluetoothLeBroadcastReceiveState;
-import android.bluetooth.BluetoothLeBroadcastSubgroupSettings;
 import android.bluetooth.BluetoothProfile;
 import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.DefaultLifecycleObserver;
@@ -44,6 +45,7 @@ import com.android.settings.dashboard.DashboardFragment;
 import com.android.settingslib.bluetooth.BluetoothCallback;
 import com.android.settingslib.bluetooth.BluetoothUtils;
 import com.android.settingslib.bluetooth.CachedBluetoothDevice;
+import com.android.settingslib.bluetooth.CachedBluetoothDeviceManager;
 import com.android.settingslib.bluetooth.LeAudioProfile;
 import com.android.settingslib.bluetooth.LocalBluetoothLeBroadcast;
 import com.android.settingslib.bluetooth.LocalBluetoothLeBroadcastAssistant;
@@ -69,9 +71,10 @@ public class AudioSharingDevicePreferenceController extends BasePreferenceContro
             "connected_device_audio_sharing_settings";
 
     private final LocalBluetoothManager mLocalBtManager;
-    private final LocalBluetoothLeBroadcast mBroadcast;
-    private final LocalBluetoothLeBroadcastAssistant mAssistant;
     private final Executor mExecutor;
+    private CachedBluetoothDeviceManager mDeviceManager;
+    private LocalBluetoothLeBroadcast mBroadcast;
+    private LocalBluetoothLeBroadcastAssistant mAssistant;
     private PreferenceGroup mPreferenceGroup;
     private Preference mAudioSharingSettingsPreference;
     private BluetoothDeviceUpdater mBluetoothDeviceUpdater;
@@ -166,6 +169,12 @@ public class AudioSharingDevicePreferenceController extends BasePreferenceContro
                                     + ", reason = "
                                     + reason);
                     mBluetoothDeviceUpdater.forceUpdate();
+                    if (mDeviceManager != null) {
+                        CachedBluetoothDevice cachedDevice = mDeviceManager.findDevice(sink);
+                        if (cachedDevice != null) {
+                            closeOpeningDialogsForLeaDevice(cachedDevice);
+                        }
+                    }
                 }
 
                 @Override
@@ -242,8 +251,11 @@ public class AudioSharingDevicePreferenceController extends BasePreferenceContro
     public AudioSharingDevicePreferenceController(Context context) {
         super(context, KEY);
         mLocalBtManager = Utils.getLocalBtManager(mContext);
-        mBroadcast = mLocalBtManager.getProfileManager().getLeAudioBroadcastProfile();
-        mAssistant = mLocalBtManager.getProfileManager().getLeAudioBroadcastAssistantProfile();
+        if (mLocalBtManager != null) {
+            mDeviceManager = mLocalBtManager.getCachedDeviceManager();
+            mBroadcast = mLocalBtManager.getProfileManager().getLeAudioBroadcastProfile();
+            mAssistant = mLocalBtManager.getProfileManager().getLeAudioBroadcastAssistantProfile();
+        }
         mExecutor = Executors.newSingleThreadExecutor();
     }
 
@@ -345,6 +357,17 @@ public class AudioSharingDevicePreferenceController extends BasePreferenceContro
             @NonNull CachedBluetoothDevice cachedDevice,
             @ConnectionState int state,
             int bluetoothProfile) {
+        if (state == BluetoothAdapter.STATE_DISCONNECTED) {
+            boolean isLeAudio = isLeAudioSupported(cachedDevice);
+            if (isLeAudio && bluetoothProfile == BluetoothProfile.LE_AUDIO) {
+                closeOpeningDialogsForLeaDevice(cachedDevice);
+                return;
+            }
+            if (!isLeAudio && !cachedDevice.isConnected()) {
+                closeOpeningDialogsForNonLeaDevice(cachedDevice);
+                return;
+            }
+        }
         if (state != BluetoothAdapter.STATE_CONNECTED || !cachedDevice.getDevice().isConnected()) {
             Log.d(TAG, "Ignore onProfileConnectionStateChanged, not connected state");
             return;
@@ -419,12 +442,12 @@ public class AudioSharingDevicePreferenceController extends BasePreferenceContro
         if (isBroadcasting()) {
             // Show stop audio sharing dialog when an ineligible (non LE audio) remote device
             // connected during a sharing session.
-            ThreadUtils.postOnMainThread(
+            postOnMainThread(
                     () -> {
-                        closeOpeningDialogs();
+                        closeOpeningDialogsOtherThan(AudioSharingStopDialogFragment.tag());
                         AudioSharingStopDialogFragment.show(
                                 mFragment,
-                                cachedDevice.getName(),
+                                cachedDevice,
                                 () -> mBroadcast.stopBroadcast(mBroadcast.getLatestBroadcastId()));
                     });
         } else {
@@ -443,8 +466,9 @@ public class AudioSharingDevicePreferenceController extends BasePreferenceContro
         Map<Integer, List<CachedBluetoothDevice>> groupedDevices =
                 AudioSharingUtils.fetchConnectedDevicesByGroupId(mLocalBtManager);
         if (isBroadcasting()) {
-            if (groupedDevices.containsKey(cachedDevice.getGroupId())
-                    && groupedDevices.get(cachedDevice.getGroupId()).stream()
+            int groupId = AudioSharingUtils.getGroupId(cachedDevice);
+            if (groupedDevices.containsKey(groupId)
+                    && groupedDevices.get(groupId).stream()
                             .anyMatch(
                                     device ->
                                             AudioSharingUtils.hasBroadcastSource(
@@ -464,13 +488,14 @@ public class AudioSharingDevicePreferenceController extends BasePreferenceContro
             // Show audio sharing switch dialog when the third eligible (LE audio) remote device
             // connected during a sharing session.
             if (deviceItemsInSharingSession.size() >= 2) {
-                ThreadUtils.postOnMainThread(
+                postOnMainThread(
                         () -> {
-                            closeOpeningDialogs();
+                            closeOpeningDialogsOtherThan(
+                                    AudioSharingDisconnectDialogFragment.tag());
                             AudioSharingDisconnectDialogFragment.show(
                                     mFragment,
                                     deviceItemsInSharingSession,
-                                    cachedDevice.getName(),
+                                    cachedDevice,
                                     (AudioSharingDeviceItem item) -> {
                                         // Remove all sources from the device user clicked
                                         if (groupedDevices.containsKey(item.getGroupId())) {
@@ -495,13 +520,13 @@ public class AudioSharingDevicePreferenceController extends BasePreferenceContro
             } else {
                 // Show audio sharing join dialog when the first or second eligible (LE audio)
                 // remote device connected during a sharing session.
-                ThreadUtils.postOnMainThread(
+                postOnMainThread(
                         () -> {
-                            closeOpeningDialogs();
+                            closeOpeningDialogsOtherThan(AudioSharingJoinDialogFragment.tag());
                             AudioSharingJoinDialogFragment.show(
                                     mFragment,
                                     deviceItemsInSharingSession,
-                                    cachedDevice.getName(),
+                                    cachedDevice,
                                     () -> {
                                         // Add current broadcast to the latest connected device
                                         mAssistant.addSource(
@@ -516,7 +541,8 @@ public class AudioSharingDevicePreferenceController extends BasePreferenceContro
             for (List<CachedBluetoothDevice> devices : groupedDevices.values()) {
                 // Use random device in the group within the sharing session to represent the group.
                 CachedBluetoothDevice device = devices.get(0);
-                if (device.getGroupId() == cachedDevice.getGroupId()) {
+                if (AudioSharingUtils.getGroupId(device)
+                        == AudioSharingUtils.getGroupId(cachedDevice)) {
                     continue;
                 }
                 deviceItems.add(AudioSharingUtils.buildAudioSharingDeviceItem(device));
@@ -524,13 +550,13 @@ public class AudioSharingDevicePreferenceController extends BasePreferenceContro
             // Show audio sharing join dialog when the second eligible (LE audio) remote
             // device connect and no sharing session.
             if (deviceItems.size() == 1) {
-                ThreadUtils.postOnMainThread(
+                postOnMainThread(
                         () -> {
-                            closeOpeningDialogs();
+                            closeOpeningDialogsOtherThan(AudioSharingJoinDialogFragment.tag());
                             AudioSharingJoinDialogFragment.show(
                                     mFragment,
                                     deviceItems,
-                                    cachedDevice.getName(),
+                                    cachedDevice,
                                     () -> {
                                         mTargetSinks = new ArrayList<>();
                                         for (List<CachedBluetoothDevice> devices :
@@ -539,8 +565,7 @@ public class AudioSharingDevicePreferenceController extends BasePreferenceContro
                                                 mTargetSinks.add(device.getDevice());
                                             }
                                         }
-                                        mBroadcast.startPrivateBroadcast(
-                                                BluetoothLeBroadcastSubgroupSettings.QUALITY_HIGH);
+                                        mBroadcast.startPrivateBroadcast();
                                     });
                         });
             }
@@ -591,14 +616,62 @@ public class AudioSharingDevicePreferenceController extends BasePreferenceContro
         }
     }
 
-    private void closeOpeningDialogs() {
+    private void closeOpeningDialogsOtherThan(String tag) {
         if (mFragment == null) return;
         List<Fragment> fragments = mFragment.getChildFragmentManager().getFragments();
         for (Fragment fragment : fragments) {
-            if (fragment instanceof DialogFragment) {
+            if (fragment instanceof DialogFragment && !fragment.getTag().equals(tag)) {
                 Log.d(TAG, "Remove staled opening dialog " + fragment.getTag());
                 ((DialogFragment) fragment).dismiss();
             }
         }
+    }
+
+    private void closeOpeningDialogsForLeaDevice(@NonNull CachedBluetoothDevice cachedDevice) {
+        if (mFragment == null) return;
+        int groupId = AudioSharingUtils.getGroupId(cachedDevice);
+        List<Fragment> fragments = mFragment.getChildFragmentManager().getFragments();
+        for (Fragment fragment : fragments) {
+            CachedBluetoothDevice device = getCachedBluetoothDeviceFromDialog(fragment);
+            if (device != null
+                    && groupId != BluetoothCsipSetCoordinator.GROUP_ID_INVALID
+                    && AudioSharingUtils.getGroupId(device) == groupId) {
+                Log.d(TAG, "Remove staled opening dialog for group " + groupId);
+                ((DialogFragment) fragment).dismiss();
+            }
+        }
+    }
+
+    private void closeOpeningDialogsForNonLeaDevice(@NonNull CachedBluetoothDevice cachedDevice) {
+        if (mFragment == null) return;
+        String address = cachedDevice.getAddress();
+        List<Fragment> fragments = mFragment.getChildFragmentManager().getFragments();
+        for (Fragment fragment : fragments) {
+            CachedBluetoothDevice device = getCachedBluetoothDeviceFromDialog(fragment);
+            if (device != null && address != null && address.equals(device.getAddress())) {
+                Log.d(
+                        TAG,
+                        "Remove staled opening dialog for device "
+                                + cachedDevice.getDevice().getAnonymizedAddress());
+                ((DialogFragment) fragment).dismiss();
+            }
+        }
+    }
+
+    @Nullable
+    private CachedBluetoothDevice getCachedBluetoothDeviceFromDialog(Fragment fragment) {
+        CachedBluetoothDevice device = null;
+        if (fragment instanceof AudioSharingJoinDialogFragment) {
+            device = ((AudioSharingJoinDialogFragment) fragment).getDevice();
+        } else if (fragment instanceof AudioSharingStopDialogFragment) {
+            device = ((AudioSharingStopDialogFragment) fragment).getDevice();
+        } else if (fragment instanceof AudioSharingDisconnectDialogFragment) {
+            device = ((AudioSharingDisconnectDialogFragment) fragment).getDevice();
+        }
+        return device;
+    }
+
+    private void postOnMainThread(@NonNull Runnable runnable) {
+        mContext.getMainExecutor().execute(runnable);
     }
 }

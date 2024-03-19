@@ -15,8 +15,8 @@
  */
 
 /*
- * Changes from Qualcomm Innovation Center are provided under the following license:
- * Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Changes from Qualcomm Innovation Center, Inc. are provided under the following license:
+ * Copyright (c) 2023-2024 Qualcomm Innovation Center, Inc. All rights reserved.
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
 
@@ -142,27 +142,47 @@ public class PreferredNetworkModePreferenceController extends TelephonyBasePrefe
     @Override
     public boolean onPreferenceChange(Preference preference, Object object) {
         final int newPreferredNetworkMode = Integer.parseInt((String) object);
-        // Check UE's C_IWLAN configuration and user's current network mode selection. If UE is in
-        // C_IWLAN-only mode and the selection does not contain LTE or NR, show a dialog to disable
-        // C_IWLAN.
-        boolean isDefaultDataSub = mSubId == SubscriptionManager.getDefaultDataSubscriptionId();
-        boolean isCiwlanEnabled = MobileNetworkSettings.isCiwlanEnabled();
+        final int DDS = SubscriptionManager.getDefaultDataSubscriptionId();
+        final int nDDS = MobileNetworkSettings.getNonDefaultDataSub();
+        final boolean isDDS = mSubId == DDS;
+        // Check UE's C_IWLAN configuration and user's current network mode selection. If C_IWLAN is
+        // enabled, and the selection does not contain LTE or NR, show a dialog to disable C_IWLAN.
         boolean isCiwlanIncompatibleNetworkSelected = isCiwlanIncompatibleNetworkSelected(
                 newPreferredNetworkMode);
-        boolean isInCiwlanOnlyMode = false;
-        // Warn on C_IWLAN-incompatible network selection only on targets that support getting the
-        // C_IWLAN config
-        if (MobileNetworkSettings.isCiwlanModeSupported()) {
-            isInCiwlanOnlyMode = MobileNetworkSettings.isInCiwlanOnlyMode();
-        }
-        Log.d(LOG_TAG, "isDDS = " + isDefaultDataSub + ", isCiwlanEnabled = " + isCiwlanEnabled +
-                ", isInCiwlanOnlyMode = " + isInCiwlanOnlyMode +
+        boolean isMsimCiwlanSupported = MobileNetworkSettings.isMsimCiwlanSupported();
+        boolean currentSubCiwlanEnabled = MobileNetworkSettings.isCiwlanEnabled(mSubId);
+        boolean otherSubCiwlanEnabled = isDDS ? MobileNetworkSettings.isCiwlanEnabled(nDDS) :
+                MobileNetworkSettings.isCiwlanEnabled(DDS);
+        Log.d(LOG_TAG, "isDDS = " + isDDS +
+                ", currentSubCiwlanEnabled = " + currentSubCiwlanEnabled +
+                ", otherSubCiwlanEnabled = " + otherSubCiwlanEnabled +
                 ", isCiwlanIncompatibleNetworkSelected = " + isCiwlanIncompatibleNetworkSelected);
-        if (isDefaultDataSub && isCiwlanEnabled && isInCiwlanOnlyMode &&
-                isCiwlanIncompatibleNetworkSelected) {
-            showCiwlanWarningDialog();
-            return false;
+        if (isMsimCiwlanSupported) {
+            if (isCiwlanIncompatibleNetworkSelected) {
+                if (otherSubCiwlanEnabled && currentSubCiwlanEnabled) {
+                    showCiwlanWarningDialog(
+                            R.string.pref_nw_incompatible_ciwlan_both_subs_dialog_body);
+                    return false;
+                } else if (otherSubCiwlanEnabled && !currentSubCiwlanEnabled) {
+                    showCiwlanWarningDialog(
+                            R.string.pref_nw_incompatible_ciwlan_other_sub_dialog_body);
+                    return false;
+                } else if (!otherSubCiwlanEnabled && currentSubCiwlanEnabled) {
+                    showCiwlanWarningDialog(
+                            R.string.pref_nw_incompatible_ciwlan_current_sub_dialog_body);
+                    return false;
+                } else {
+                    // No warning
+                }
+            }
+        } else {
+            if (currentSubCiwlanEnabled && isCiwlanIncompatibleNetworkSelected) {
+                showCiwlanWarningDialog(
+                        R.string.pref_nw_incompatible_ciwlan_current_sub_dialog_body);
+                return false;
+            }
         }
+
         mTelephonyManager.setAllowedNetworkTypesForReason(
                 TelephonyManager.ALLOWED_NETWORK_TYPES_REASON_USER,
                 MobileNetworkUtils.getRafFromNetworkType(newPreferredNetworkMode));
@@ -174,13 +194,13 @@ public class PreferredNetworkModePreferenceController extends TelephonyBasePrefe
 
     private boolean isCiwlanIncompatibleNetworkSelected(int networkMode) {
         long raf = MobileNetworkUtils.getRafFromNetworkType(networkMode);
-        return ((LTE & raf) == 0 && (NR & raf) == 0);
+        return (LTE & raf) == 0 && (NR & raf) == 0;
     }
 
-    private void showCiwlanWarningDialog() {
+    private void showCiwlanWarningDialog(int dialogBodyTextId) {
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-        builder.setTitle(R.string.preferred_nw_incompatible_ciwlan_nw_mode_dialog_title)
-               .setMessage(R.string.preferred_nw_incompatible_ciwlan_nw_mode_dialog_body)
+        builder.setTitle(R.string.pref_nw_incompat_ciwlan_dialog_title)
+               .setMessage(dialogBodyTextId)
                .setPositiveButton(R.string.okay, new DialogInterface.OnClickListener() {
                    public void onClick(DialogInterface dialog, int id) {
                    }

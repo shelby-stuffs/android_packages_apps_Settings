@@ -301,7 +301,7 @@ public class WifiHotspotRepository {
         }
         if ((keyBand & BAND_6GHZ) != 0) {
             keyBand = BAND_6GHZ;
-        } else if (isDualBand() && is5gAvailable()) {
+        } else if (isDualBand() && is5gAvailable() && (config.getBands().length > 1)) {
             keyBand = BAND_2GHZ_5GHZ;
         } else if ((keyBand & BAND_5GHZ) != 0) {
             keyBand = BAND_5GHZ;
@@ -345,7 +345,7 @@ public class WifiHotspotRepository {
         } else if (speedType == SPEED_5GHZ) {
             log("setSpeedType(), setBand(BAND_2GHZ_5GHZ)");
             configBuilder.setBand(BAND_2GHZ_5GHZ);
-        } else if (mIsDualBand) {
+        } else if (mIsDualBand && speedType != SPEED_2GHZ) {
             log("setSpeedType(), setBands(BAND_2GHZ + BAND_2GHZ_5GHZ)");
             int[] bands = {BAND_2GHZ, BAND_2GHZ_5GHZ};
             configBuilder.setBands(bands);
