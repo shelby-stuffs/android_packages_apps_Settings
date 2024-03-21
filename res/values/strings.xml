@@ -11675,11 +11675,15 @@
     <!-- Dialog title for preferred network type [CHAR LIMIT=NONE] -->
     <string name="preferred_network_mode_dialogtitle">Preferred network type</string>
     <!-- Dialog title for C_IWLAN-unsupported network type [CHAR LIMIT=NONE] -->
-    <string name="pref_nw_incompat_ciwlan_dialog_title">Incompatible network type</string>
+    <string name="incompatible_pref_nw_ciwlan_dialog_title">Incompatible network type</string>
     <!-- Body of dialog for C_IWLAN-unsupported network type [CHAR LIMIT=NONE] -->
-    <string name="pref_nw_incompatible_ciwlan_current_sub_dialog_body">To select a network type not containing LTE, NR, or Global, please turn off Voice Over Cellular Internet.</string>
-    <string name="pref_nw_incompatible_ciwlan_other_sub_dialog_body">To select a network type not containing LTE, NR, or Global, please turn off Voice Over Cellular Internet on the other subscription.</string>
-    <string name="pref_nw_incompatible_ciwlan_both_subs_dialog_body">To select a network type not containing LTE, NR, or Global, please turn off Voice Over Cellular Internet on both subscriptions.</string>
+    <string name="incompatible_pref_nw_for_dds_with_ciwlan_ui_on_dds">To select a network type not containing LTE, NR, or Global, please turn off Voice Over Cellular Internet.</string>
+    <string name="incompatible_pref_nw_for_dds_with_ciwlan_ui_on_ndds">To select a network type not containing LTE, NR, or Global, please turn off Voice Over Cellular Internet on the other subscription.</string>
+    <string name="incompatible_pref_nw_for_dds_with_ciwlan_ui_on_both">To select a network type not containing LTE, NR, or Global, please turn off Voice Over Cellular Internet on both subscriptions.</string>
+    <string name="incompatible_pref_nw_for_ndds_with_ciwlan_ui_on_both">Voice Over Cellular Internet might become unavailable on both subscriptions when the data preference changes since the selection does not contain LTE, NR, or Global.</string>
+    <string name="incompatible_pref_nw_for_ndds_with_ciwlan_ui_on_dds">Voice Over Cellular Internet might become unavailable on the other subscription when the data preference changes since the selection does not contain LTE, NR, or Global.</string>
+    <string name="incompatible_pref_nw_for_ndds_with_ciwlan_ui_on_ndds">Voice Over Cellular Internet might become unavailable when the data preference changes since the selection does not contain LTE, NR, or Global.</string>
+
     <!-- Mobile network settings screen, a string showing the version of carrier settings for this
          subscription [CHAR LIMIT=NONE] -->
     <string name="carrier_settings_version">Carrier settings version</string>
@@ -12144,9 +12148,11 @@
     <string name="toggle_disable_ciwlan_call_will_drop_dialog_body">Disabling %s will cause ongoing call drop.</string>
     <string name="toggle_disable_ciwlan_call_might_drop_dialog_body">Disabling %s might cause ongoing call drop.</string>
     <!-- Body of dialog shown to warn when an incompatible preferred network type is currently selected and user tries to turn on C_IWLAN [CHAR LIMIT=NONE] -->
-    <string name="ciwlan_enable_dialog_incompatible_nw_type_current_sub">To turn on Voice Over Cellular Internet, please set the preferred network type to one including LTE, NR, or Global.</string>
-    <string name="ciwlan_enable_dialog_incompatible_nw_type_other_sub">To turn on Voice Over Cellular Internet, please set the preferred network type of the other subscription to one including LTE, NR, or Global.</string>
-    <string name="ciwlan_enable_dialog_incompatible_nw_type_both_subs">To turn on Voice Over Cellular Internet, please set the preferred network type of both subscriptions to one including LTE, NR, or Global.</string>
+    <string name="ciwlan_dialog_nw_incompatible_dds_compatible_ndds_attempt_dds">To turn on Voice Over Cellular Internet, please set the preferred network type to one including LTE, NR, or Global.</string>
+    <string name="ciwlan_dialog_nw_incompatible_dds_compatible_ndds_attempt_ndds">To turn on Voice Over Cellular Internet, please set the preferred network type of the other subscription to one including LTE, NR, or Global.</string>
+    <string name="ciwlan_dialog_nw_incompatible_dds_incompatible_ndds_attempt_either">To turn on Voice Over Cellular Internet, please set the preferred network type of both subscriptions to one including LTE, NR, or Global.</string>
+    <string name="ciwlan_dialog_nw_compatible_dds_incompatible_ndds_attempt_dds">Voice Over Cellular Internet might become unavailable when the data preference changes since the preferred network type of the other subscription does not contain LTE, NR, or Global.</string>
+    <string name="ciwlan_dialog_nw_compatible_dds_incompatible_ndds_attempt_ndds">Voice Over Cellular Internet might become unavailable when the data preference changes since the preferred network type does not contain LTE, NR, or Global.</string>
 
     <!-- C_IWLAN exit notification -->
     <string name="ciwlan_exit_notification_title">" unavailable on %s"</string>
