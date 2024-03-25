@@ -593,7 +593,9 @@ public class NetworkSelectSettings extends DashboardFragment implements
                 mForbiddenPlmns, mShow4GForLTE,
                 MobileNetworkUtils.getAccessMode(getPrefContext().getApplicationContext(),
                         mTelephonyManager.getSlotIndex()));
-        preference.updateCell(cellInfo);
+        if (!DomesticRoamUtils.isFeatureEnabled(getPrefContext())) {
+            preference.updateCell(cellInfo);
+        }
         return preference;
     }
 
