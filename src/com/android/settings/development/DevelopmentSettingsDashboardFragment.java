@@ -62,13 +62,16 @@ import com.android.settings.development.autofill.AutofillCategoryController;
 import com.android.settings.development.autofill.AutofillLoggingLevelPreferenceController;
 import com.android.settings.development.autofill.AutofillResetOptionsPreferenceController;
 import com.android.settings.development.bluetooth.AbstractBluetoothDialogPreferenceController;
+import com.android.settings.development.bluetooth.AbstractBluetoothListPreferenceController;
 import com.android.settings.development.bluetooth.AbstractBluetoothPreferenceController;
 import com.android.settings.development.bluetooth.BluetoothBitPerSampleDialogPreferenceController;
 import com.android.settings.development.bluetooth.BluetoothChannelModeDialogPreferenceController;
 import com.android.settings.development.bluetooth.BluetoothCodecDialogPreferenceController;
+import com.android.settings.development.bluetooth.BluetoothCodecListPreferenceController;
 import com.android.settings.development.bluetooth.BluetoothHDAudioPreferenceController;
 import com.android.settings.development.bluetooth.BluetoothQualityDialogPreferenceController;
 import com.android.settings.development.bluetooth.BluetoothSampleRateDialogPreferenceController;
+import com.android.settings.development.bluetooth.BluetoothStackLogPreferenceController;
 import com.android.settings.development.graphicsdriver.GraphicsDriverEnableAngleAsSystemDriverController;
 import com.android.settings.development.qstile.DevelopmentTiles;
 import com.android.settings.development.storage.SharedDataPreferenceController;
@@ -638,6 +641,7 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
         controllers.add(new StayAwakePreferenceController(context, lifecycle));
         controllers.add(new HdcpCheckingPreferenceController(context));
         controllers.add(new BluetoothSnoopLogPreferenceController(context, fragment));
+        controllers.add(new BluetoothStackLogPreferenceController(context));
         controllers.add(new DefaultLaunchPreferenceController(context,
                 "snoop_logger_filters_dashboard"));
         controllers.add(new BluetoothSnoopLogFilterProfilePbapPreferenceController(context));
@@ -687,7 +691,6 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
         controllers.add(new BluetoothA2dpHwOffloadPreferenceController(context, fragment));
         controllers.add(new BluetoothLeAudioHwOffloadPreferenceController(context, fragment));
         controllers.add(new BluetoothMaxConnectedAudioDevicesPreferenceController(context));
-        controllers.add(new NfcStackDebugLogPreferenceController(context));
         controllers.add(new NfcSnoopLogPreferenceController(context, fragment));
         controllers.add(new NfcVerboseVendorLogPreferenceController(context, fragment));
         controllers.add(new ShowTapsPreferenceController(context));
@@ -744,6 +747,9 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
         controllers.add(new AutofillResetOptionsPreferenceController(context));
         controllers.add(new BluetoothCodecDialogPreferenceController(context, lifecycle,
                 bluetoothA2dpConfigStore, fragment));
+        controllers.add(
+                new BluetoothCodecListPreferenceController(
+                        context, lifecycle, bluetoothA2dpConfigStore, fragment));
         controllers.add(new BluetoothSampleRateDialogPreferenceController(context, lifecycle,
                 bluetoothA2dpConfigStore));
         controllers.add(new BluetoothBitPerSampleDialogPreferenceController(context, lifecycle,
@@ -792,6 +798,9 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
             if (controller instanceof AbstractBluetoothDialogPreferenceController) {
                 ((AbstractBluetoothDialogPreferenceController) controller).onHDAudioEnabled(
                         enabled);
+            }
+            if (controller instanceof AbstractBluetoothListPreferenceController) {
+                ((AbstractBluetoothListPreferenceController) controller).onHDAudioEnabled(enabled);
             }
         }
     }

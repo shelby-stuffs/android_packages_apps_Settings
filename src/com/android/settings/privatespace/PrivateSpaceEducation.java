@@ -19,10 +19,12 @@ package com.android.settings.privatespace;
 import android.app.Activity;
 import android.app.settings.SettingsEnums;
 import android.os.Bundle;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.navigation.fragment.NavHostFragment;
@@ -34,6 +36,8 @@ import com.google.android.setupcompat.template.FooterBarMixin;
 import com.google.android.setupcompat.template.FooterButton;
 import com.google.android.setupdesign.GlifLayout;
 
+import java.util.regex.Pattern;
+
 /** Fragment educating about the usage of Private Space. */
 public class PrivateSpaceEducation extends InstrumentedFragment {
     private static final String TAG = "PrivateSpaceEducation";
@@ -43,7 +47,8 @@ public class PrivateSpaceEducation extends InstrumentedFragment {
             LayoutInflater inflater,
             @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
-        if (!android.os.Flags.allowPrivateProfile()) {
+        if (!android.os.Flags.allowPrivateProfile()
+                || !android.multiuser.Flags.enablePrivateSpaceFeatures()) {
             return null;
         }
         GlifLayout rootView =
@@ -62,10 +67,15 @@ public class PrivateSpaceEducation extends InstrumentedFragment {
                         .setText(R.string.private_space_cancel_label)
                         .setListener(onCancel())
                         .setButtonType(FooterButton.ButtonType.CANCEL)
-                        .setTheme(
-                                androidx.appcompat.R.style
-                                        .Base_TextAppearance_AppCompat_Widget_Button)
+                        .setTheme(com.google.android.setupdesign.R.style.SudGlifButton_Secondary)
                         .build());
+
+        TextView infoTextView = rootView.findViewById(R.id.learn_more);
+        Pattern pattern = Pattern.compile(infoTextView.getText().toString());
+        Linkify.addLinks(
+                infoTextView,
+                pattern,
+                getContext().getString(R.string.private_space_learn_more_url));
 
         return rootView;
     }

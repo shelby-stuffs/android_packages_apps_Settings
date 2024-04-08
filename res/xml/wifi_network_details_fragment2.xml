@@ -97,6 +97,11 @@
         android:entries="@array/wifi_privacy_entries"
         android:entryValues="@array/wifi_privacy_values"/>
 
+    <com.android.settings.spa.preference.ComposePreference
+        android:key="privacy_settings"
+        android:title="@string/wifi_privacy_settings"
+        settings:controller="com.android.settings.wifi.details2.WifiPrivacyPreferenceController"/>
+
     <Preference
         android:key="subscription_detail"
         android:title="@string/wifi_subscription"
@@ -106,6 +111,10 @@
         android:key="auto_connect"
         android:title="@string/wifi_auto_connect_title"
         android:summary="@string/wifi_auto_connect_summary"/>
+
+    <com.android.settings.spa.preference.ComposePreference
+        android:key="certificate_details"
+        settings:controller="com.android.settings.wifi.details2.CertificateDetailsPreferenceController"/>
 
     <!-- Add device Preference -->
     <Preference

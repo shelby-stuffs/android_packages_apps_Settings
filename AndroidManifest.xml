@@ -162,6 +162,9 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
     <uses-permission android:name="android.permission.MANAGE_GAME_MODE" />
     <uses-permission android:name="android.permission.RESTART_PHONE_PROCESS" />
     <uses-permission android:name="android.permission.MANAGE_ENHANCED_CONFIRMATION_STATES" />
+    <uses-permission android:name="android.permission.ACCESS_KEYGUARD_SECURE_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_NETWORK_POLICY" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
 
     <application
             android:name=".SettingsApplication"
@@ -172,6 +175,7 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
             android:requiredForAllUsers="true"
             android:supportsRtl="true"
             android:backupAgent="com.android.settings.backup.SettingsBackupHelper"
+            android:restoreAnyVersion="true"
             android:usesCleartextTraffic="true"
             android:defaultToDeviceProtectedStorage="true"
             android:directBootAware="true"
@@ -647,6 +651,17 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
                 android:value="true" />
         </activity>
 
+        <activity android:name="Settings$CellularSecuritySettingsActivity"
+                  android:label="@string/cellular_security_settings_title"
+                  android:exported="true">
+            <intent-filter android:priority="1">
+                <action android:name="android.settings.CELLULAR_NETWORK_SECURITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+              android:value="com.android.settings.network.telephony.CellularSecuritySettingsFragment"/>
+        </activity>
+
         <activity android:name="Settings$SatelliteSettingActivity"
                   android:label="@string/satellite_setting"
                   android:exported="true"
@@ -837,6 +852,10 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
                   android:permission="android.permission.WRITE_EMBEDDED_SUBSCRIPTIONS"
                   android:theme="@style/Theme.AlertDialog.SimConfirmDialog"/>
 
+        <activity android:name=".network.telephony.EuiccRacConnectivityDialogActivity"
+                  android:exported="false"
+                  android:theme="@style/Theme.AlertDialog.SimConfirmDialog"/>
+
         <activity
             android:name="Settings$TetherSettingsActivity"
             android:label="@string/tether_settings_title_all"
@@ -967,6 +986,39 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
             <meta-data android:name="com.android.settings.HIGHLIGHT_MENU_KEY"
                        android:value="@string/menu_key_apps"/>
         </activity>
+
+        <activity-alias
+            android:name="BackupTasksActivity"
+            android:knownActivityEmbeddingCerts="@array/config_known_host_certs"
+            android:exported="true"
+            android:targetActivity=".spa.SpaBridgeActivity"
+            android:label="@string/run_backup_tasks_title">
+            <intent-filter android:priority="1">
+                <action android:name="android.settings.REQUEST_RUN_BACKUP_JOBS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.spa.DESTINATION"
+                       android:value="TogglePermissionAppList/BackupTasksApps"/>
+            <meta-data android:name="com.android.settings.HIGHLIGHT_MENU_KEY"
+                       android:value="@string/menu_key_apps"/>
+        </activity-alias>
+
+        <activity-alias
+            android:name="AppBackupTasksActivity"
+            android:knownActivityEmbeddingCerts="@array/config_known_host_certs"
+            android:exported="true"
+            android:targetActivity=".spa.SpaAppBridgeActivity"
+            android:label="@string/run_backup_tasks_title">
+            <intent-filter android:priority="1">
+                <action android:name="android.settings.REQUEST_RUN_BACKUP_JOBS" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.spa.DESTINATION"
+                       android:value="TogglePermissionAppInfoPage/BackupTasksApps"/>
+            <meta-data android:name="com.android.settings.HIGHLIGHT_MENU_KEY"
+                       android:value="@string/menu_key_apps"/>
+        </activity-alias>
 
         <activity
             android:name="Settings$DateTimeSettingsActivity"
@@ -2515,6 +2567,22 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.accessibility.ColorAndMotionFragment" />
+            <meta-data android:name="com.android.settings.HIGHLIGHT_MENU_KEY"
+                android:value="@string/menu_key_accessibility"/>
+            <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
+                android:value="true" />
+        </activity>
+
+        <activity
+            android:name="Settings$ColorContrastActivity"
+            android:exported="true"
+            android:label="@string/accessibility_color_contrast_title">
+            <intent-filter>
+                <action android:name="android.settings.ACCESSIBILITY_COLOR_CONTRAST_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.accessibility.ColorContrastFragment" />
             <meta-data android:name="com.android.settings.HIGHLIGHT_MENU_KEY"
                 android:value="@string/menu_key_accessibility"/>
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
@@ -4695,22 +4763,6 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
         </activity>
 
         <activity
-            android:name="Settings$AudioStreamConfirmDialogActivity"
-            android:exported="true"
-            android:theme="@style/Transparent"
-            android:permission="android.permission.BLUETOOTH_CONNECT"
-            android:configChanges="orientation|keyboardHidden|screenSize">
-            <intent-filter android:priority="1">
-                <action android:name="android.settings.AUDIO_STREAM_DIALOG" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.connecteddevice.audiosharing.audiostreams.AudioStreamConfirmDialog" />
-            <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
-                android:value="true" />
-        </activity>
-
-        <activity
             android:name=".Settings$PreviouslyConnectedDeviceActivity"
             android:label="@string/connected_device_saved_title"
             android:exported="true"
@@ -5083,16 +5135,6 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
         </activity>
 
         <activity
-            android:name="com.android.settings.connecteddevice.audiosharing.audiostreams.qrcode.QrCodeScanModeActivity"
-            android:permission="android.permission.BLUETOOTH_CONNECT"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.settings.BLUETOOTH_LE_AUDIO_QR_CODE_SCANNER"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
-        </activity>
-
-        <activity
             android:name=".spa.SpaActivity"
             android:configChanges="orientation|screenLayout|screenSize|smallestScreenSize"
             android:knownActivityEmbeddingCerts="@array/config_known_host_certs"
@@ -5177,8 +5219,9 @@ SPDX-License-Identifier: BSD-3-Clause-Clear -->
 
         <activity
             android:name="com.android.settings.network.WepNetworkDialogActivity"
-            android:exported="false"
-            android:theme="@style/Theme.SpaLib.Dialog">
+            android:exported="true"
+            android:theme="@style/Theme.SpaLib.Dialog"
+            android:permission="android.permission.NETWORK_SETTINGS">
         </activity>
 
         <!-- This is the longest AndroidManifest.xml ever. -->

@@ -125,6 +125,9 @@ public abstract class AccessibilityShortcutPreferenceFragment extends Restricted
         final List<String> shortcutFeatureKeys = new ArrayList<>();
         shortcutFeatureKeys.add(Settings.Secure.ACCESSIBILITY_BUTTON_TARGETS);
         shortcutFeatureKeys.add(Settings.Secure.ACCESSIBILITY_SHORTCUT_TARGET_SERVICE);
+        if (android.view.accessibility.Flags.a11yQsShortcut()) {
+            shortcutFeatureKeys.add(Settings.Secure.ACCESSIBILITY_QS_TARGETS);
+        }
         mSettingsContentObserver = new AccessibilitySettingsContentObserver(new Handler());
         mSettingsContentObserver.registerKeysToObserverCallback(shortcutFeatureKeys, key -> {
             updateShortcutPreferenceData();
@@ -452,7 +455,13 @@ public abstract class AccessibilityShortcutPreferenceFragment extends Restricted
                 getComponentName().flattenToString());
 
         final List<CharSequence> list = new ArrayList<>();
-
+        if (android.view.accessibility.Flags.a11yQsShortcut()) {
+            if (hasShortcutType(shortcutTypes, AccessibilityUtil.UserShortcutType.QUICK_SETTINGS)) {
+                final CharSequence qsTitle = context.getText(
+                        R.string.accessibility_feature_shortcut_setting_summary_quick_settings);
+                list.add(qsTitle);
+            }
+        }
         if (hasShortcutType(shortcutTypes, AccessibilityUtil.UserShortcutType.SOFTWARE)) {
             list.add(getSoftwareShortcutTypeSummary(context));
         }
@@ -538,6 +547,10 @@ public abstract class AccessibilityShortcutPreferenceFragment extends Restricted
     }
 
     private void showQuickSettingsTooltipIfNeeded() {
+        if (android.view.accessibility.Flags.a11yQsShortcut()) {
+            // Don't show Quick Settings tooltip
+            return;
+        }
         final ComponentName tileComponentName = getTileComponentName();
         if (tileComponentName == null) {
             // Returns if no tile service assigned.

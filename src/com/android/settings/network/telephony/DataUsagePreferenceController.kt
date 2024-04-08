@@ -33,6 +33,7 @@ import com.android.settings.datausage.DataUsageUtils
 import com.android.settings.datausage.lib.DataUsageLib
 import com.android.settings.datausage.lib.NetworkCycleDataRepository
 import com.android.settings.datausage.lib.NetworkStatsRepository.Companion.AllTimeRange
+import com.android.settingslib.spaprivileged.framework.compose.getPlaceholder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -63,6 +64,7 @@ class DataUsagePreferenceController(context: Context, key: String) :
     }
 
     override fun onViewCreated(viewLifecycleOwner: LifecycleOwner) {
+        preference.summary = mContext.getPlaceholder()
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 update()
@@ -81,16 +83,12 @@ class DataUsagePreferenceController(context: Context, key: String) :
     }
 
     private suspend fun update() {
-        val summary = withContext(Dispatchers.Default) {
+        val (summary, enabled) = withContext(Dispatchers.Default) {
             networkTemplate = getNetworkTemplate()
-            getDataUsageSummary()
+            getDataUsageSummaryAndEnabled()
         }
-        if (summary == null) {
-            preference.isEnabled = false
-        } else {
-            preference.isEnabled = true
-            preference.summary = summary
-        }
+        preference.isEnabled = enabled
+        preference.summary = summary
     }
 
     private fun getNetworkTemplate(): NetworkTemplate? = when {
@@ -105,17 +103,18 @@ class DataUsagePreferenceController(context: Context, key: String) :
     fun createNetworkCycleDataRepository(): NetworkCycleDataRepository? =
         networkTemplate?.let { NetworkCycleDataRepository(mContext, it) }
 
-    private fun getDataUsageSummary(): String? {
-        val repository = createNetworkCycleDataRepository() ?: return null
+    private fun getDataUsageSummaryAndEnabled(): Pair<String?, Boolean> {
+        val repository = createNetworkCycleDataRepository() ?: return null to false
+
         repository.loadFirstCycle()?.let { usageData ->
             return mContext.getString(
                 R.string.data_usage_template,
                 usageData.formatUsage(mContext),
                 usageData.formatDateRange(mContext),
-            )
+            ) to (usageData.usage > 0 || repository.queryUsage(AllTimeRange).usage > 0)
         }
 
-        return repository.queryUsage(AllTimeRange).takeIf { it.usage > 0 }
-            ?.getDataUsedString(mContext)
+        val allTimeUsage = repository.queryUsage(AllTimeRange)
+        return allTimeUsage.getDataUsedString(mContext) to (allTimeUsage.usage > 0)
     }
 }

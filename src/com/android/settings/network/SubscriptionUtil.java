@@ -17,13 +17,15 @@
 package com.android.settings.network;
 
 import static android.telephony.SubscriptionManager.INVALID_SIM_SLOT_INDEX;
-import static android.telephony.UiccSlotInfo.CARD_STATE_INFO_PRESENT;
 import static android.telephony.SubscriptionManager.PROFILE_CLASS_PROVISIONING;
+import static android.telephony.UiccSlotInfo.CARD_STATE_INFO_PRESENT;
 
 import static com.android.internal.util.CollectionUtils.emptyIfNull;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkCapabilities;
 import android.os.ParcelUuid;
 import android.provider.Settings;
 import android.telephony.PhoneNumberUtils;
@@ -47,11 +49,13 @@ import com.android.settings.flags.Flags;
 import com.android.settings.network.helper.SelectableSubscriptions;
 import com.android.settings.network.helper.SubscriptionAnnotation;
 import com.android.settings.network.telephony.DeleteEuiccSubscriptionDialogActivity;
+import com.android.settings.network.telephony.EuiccRacConnectivityDialogActivity;
+import com.android.settings.network.telephony.SubscriptionRepositoryKt;
 import com.android.settings.network.telephony.ToggleSubscriptionDialogActivity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -495,40 +499,7 @@ public class SubscriptionUtil {
      * @return list of user selectable subscriptions.
      */
     public static List<SubscriptionInfo> getSelectableSubscriptionInfoList(Context context) {
-        SubscriptionManager subManager = context.getSystemService(SubscriptionManager.class);
-        List<SubscriptionInfo> availableList = subManager.getAvailableSubscriptionInfoList();
-        if (availableList == null) {
-            return null;
-        } else {
-            // Multiple subscriptions in a group should only have one representative.
-            // It should be the current active primary subscription if any, or any
-            // primary subscription.
-            List<SubscriptionInfo> selectableList = new ArrayList<>();
-            Map<ParcelUuid, SubscriptionInfo> groupMap = new HashMap<>();
-
-            for (SubscriptionInfo info : availableList) {
-                // Opportunistic subscriptions are considered invisible
-                // to users so they should never be returned.
-                if (!isSubscriptionVisible(subManager, context, info)) continue;
-
-                ParcelUuid groupUuid = info.getGroupUuid();
-                if (groupUuid == null) {
-                    // Doesn't belong to any group. Add in the list.
-                    selectableList.add(info);
-                } else if (!groupMap.containsKey(groupUuid)
-                        || (groupMap.get(groupUuid).getSimSlotIndex() == INVALID_SIM_SLOT_INDEX
-                        && info.getSimSlotIndex() != INVALID_SIM_SLOT_INDEX)) {
-                    // If it belongs to a group that has never been recorded or it's the current
-                    // active subscription, add it in the list.
-                    selectableList.remove(groupMap.get(groupUuid));
-                    selectableList.add(info);
-                    groupMap.put(groupUuid, info);
-                }
-
-            }
-            Log.d(TAG, "getSelectableSubscriptionInfoList: " + selectableList);
-            return selectableList;
-        }
+        return SubscriptionRepositoryKt.getSelectableSubscriptionInfoList(context);
     }
 
     /**
@@ -552,15 +523,25 @@ public class SubscriptionUtil {
 
     /**
      * Starts a dialog activity to handle eSIM deletion.
+     *
      * @param context {@code Context}
      * @param subId The id of subscription need to be deleted.
+     * @param carrierId The carrier id of the subscription.
      */
-    public static void startDeleteEuiccSubscriptionDialogActivity(Context context, int subId) {
+    public static void startDeleteEuiccSubscriptionDialogActivity(
+            @NonNull Context context, int subId, int carrierId) {
         if (!SubscriptionManager.isUsableSubscriptionId(subId)) {
             Log.i(TAG, "Unable to delete subscription due to invalid subscription ID.");
             return;
         }
-        context.startActivity(DeleteEuiccSubscriptionDialogActivity.getIntent(context, subId));
+
+        if (isCarrierRac(context, carrierId)
+                && (!isConnectedToWifi(context)
+                        || isConnectedToMobileDataWithDifferentSubId(context, subId))) {
+            context.startActivity(EuiccRacConnectivityDialogActivity.getIntent(context, subId));
+        } else {
+            context.startActivity(DeleteEuiccSubscriptionDialogActivity.getIntent(context, subId));
+        }
     }
 
     /**
@@ -831,5 +812,78 @@ public class SubscriptionUtil {
             return false;
         }
         return true;
+    }
+
+    /**
+     * Checks if the device is connected to Wi-Fi.
+     *
+     * @param context context
+     * @return {@code true} if connected to Wi-Fi
+     */
+    static boolean isConnectedToWifi(@NonNull Context context) {
+        NetworkCapabilities capabilities = getNetworkCapabilities(context);
+
+        return capabilities != null
+                && capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI);
+    }
+
+    /**
+     * Checks if the device is connected to mobile data provided by a different subId.
+     *
+     * @param context context
+     * @param targetSubId subscription that is going to be deleted
+     * @return {@code true} if connected to mobile data provided by a different subId
+     */
+    @VisibleForTesting
+    static boolean isConnectedToMobileDataWithDifferentSubId(
+            @NonNull Context context, int targetSubId) {
+        NetworkCapabilities capabilities = getNetworkCapabilities(context);
+
+        return capabilities != null
+                && capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)
+                && targetSubId != SubscriptionManager.getActiveDataSubscriptionId();
+    }
+
+    /**
+     * Checks if any subscription carrier use reusable activation codes.
+     *
+     * @param context The context used to retrieve carriers that uses reusable activation codes.
+     * @return {@code true} if any subscription has a matching carrier that uses reusable activation
+     *     codes
+     */
+    static boolean hasSubscriptionWithRacCarrier(@NonNull Context context) {
+        List<SubscriptionInfo> subs = getAvailableSubscriptions(context);
+        final int[] carriersThatUseRac =
+                context.getResources().getIntArray(R.array.config_carrier_use_rac);
+
+        return Arrays.stream(carriersThatUseRac)
+                .anyMatch(cid -> subs.stream().anyMatch(sub -> sub.getCarrierId() == cid));
+    }
+
+    /**
+     * Checks if a carrier use reusable activation codes.
+     *
+     * @param context The context used to retrieve carriers that uses reusable activation codes.
+     * @param carrierId The carrier id to check if it use reusable activation codes.
+     * @return {@code true} if carrier id use reusable activation codes.
+     */
+    @VisibleForTesting
+    static boolean isCarrierRac(@NonNull Context context, int carrierId) {
+        final int[] carriersThatUseRAC =
+                context.getResources().getIntArray(R.array.config_carrier_use_rac);
+
+        return Arrays.stream(carriersThatUseRAC).anyMatch(cid -> cid == carrierId);
+    }
+
+    /**
+     * Retrieves NetworkCapabilities for the active network.
+     *
+     * @param context context
+     * @return NetworkCapabilities or null if not available
+     */
+    private static NetworkCapabilities getNetworkCapabilities(@NonNull Context context) {
+        ConnectivityManager connectivityManager =
+                context.getSystemService(ConnectivityManager.class);
+        return connectivityManager.getNetworkCapabilities(connectivityManager.getActiveNetwork());
     }
 }

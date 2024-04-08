@@ -249,7 +249,8 @@ public class MobileNetworkRepository extends SubscriptionManager.OnSubscriptions
     }
 
     private void createTelephonyManagerBySubId(int subId) {
-        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID
+                || mTelephonyCallbackMap.containsKey(subId)) {
             return;
         }
         PhoneCallStateTelephonyCallback
@@ -299,7 +300,9 @@ public class MobileNetworkRepository extends SubscriptionManager.OnSubscriptions
     }
 
     public void removeRegister(MobileNetworkCallback mobileNetworkCallback) {
-        sCallbacks.remove(mobileNetworkCallback);
+        synchronized (this) {
+            sCallbacks.remove(mobileNetworkCallback);
+        }
         if (sCallbacks.isEmpty()) {
             mSubscriptionManager.removeOnSubscriptionsChangedListener(this);
             mAirplaneModeObserver.unRegister(mContext);

@@ -87,6 +87,7 @@ import com.android.settings.network.CarrierConfigCache;
 import com.android.settings.network.SubscriptionUtil;
 import com.android.settings.network.ims.WifiCallingQueryImsState;
 import com.android.settings.network.telephony.TelephonyConstants.TelephonyManagerConstants;
+import com.android.settings.network.telephony.wificalling.WifiCallingRepository;
 import com.android.settingslib.core.instrumentation.Instrumentable;
 import com.android.settingslib.development.DevelopmentSettingsEnabler;
 import com.android.settingslib.graph.SignalDrawable;
@@ -322,7 +323,7 @@ public class MobileNetworkUtils {
     public static Boolean showEuiccSettingsDetecting(Context context) {
         final EuiccManager euiccManager =
                 (EuiccManager) context.getSystemService(EuiccManager.class);
-        if (!euiccManager.isEnabled()) {
+        if (euiccManager == null || !euiccManager.isEnabled()) {
             Log.w(TAG, "EuiccManager is not enabled.");
             return false;
         }
@@ -943,7 +944,10 @@ public class MobileNetworkUtils {
 
     /**
      * Copied from WifiCallingPreferenceController#isWifiCallingEnabled()
+     *
+     * @deprecated Use {@link WifiCallingRepository#wifiCallingReadyFlow()} instead.
      */
+    @Deprecated
     public static boolean isWifiCallingEnabled(Context context, int subId,
             @Nullable WifiCallingQueryImsState queryImsState) {
         if (queryImsState == null) {

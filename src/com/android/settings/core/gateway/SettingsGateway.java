@@ -30,6 +30,7 @@ import com.android.settings.accessibility.AccessibilitySettings;
 import com.android.settings.accessibility.AccessibilitySettingsForSetupWizard;
 import com.android.settings.accessibility.CaptioningPropertiesFragment;
 import com.android.settings.accessibility.ColorAndMotionFragment;
+import com.android.settings.accessibility.ColorContrastFragment;
 import com.android.settings.accessibility.TextReadingPreferenceFragment;
 import com.android.settings.accessibility.TextReadingPreferenceFragmentForSetupWizard;
 import com.android.settings.accessibility.ToggleColorInversionPreferenceFragment;
@@ -87,7 +88,6 @@ import com.android.settings.connecteddevice.AdvancedConnectedDeviceDashboardFrag
 import com.android.settings.connecteddevice.ConnectedDeviceDashboardFragment;
 import com.android.settings.connecteddevice.NfcAndPaymentFragment;
 import com.android.settings.connecteddevice.PreviouslyConnectedDeviceDashboardFragment;
-import com.android.settings.connecteddevice.audiosharing.audiostreams.AudioStreamConfirmDialog;
 import com.android.settings.connecteddevice.stylus.StylusUsiDetailsFragment;
 import com.android.settings.connecteddevice.usb.UsbDetailsFragment;
 import com.android.settings.datausage.DataSaverSummary;
@@ -145,6 +145,7 @@ import com.android.settings.network.NetworkDashboardFragment;
 import com.android.settings.network.NetworkProviderSettings;
 import com.android.settings.network.apn.ApnEditor;
 import com.android.settings.network.apn.ApnSettings;
+import com.android.settings.network.telephony.CellularSecuritySettingsFragment;
 import com.android.settings.network.telephony.MobileNetworkSettings;
 import com.android.settings.network.telephony.NetworkSelectSettings;
 import com.android.settings.network.telephony.SatelliteSetting;
@@ -361,7 +362,6 @@ public class SettingsGateway {
             DataUsageList.class.getName(),
             ToggleBackupSettingFragment.class.getName(),
             PreviouslyConnectedDeviceDashboardFragment.class.getName(),
-            AudioStreamConfirmDialog.class.getName(),
             BatterySaverScheduleSettings.class.getName(),
             MobileNetworkListFragment.class.getName(),
             PowerMenuSettings.class.getName(),
@@ -383,6 +383,7 @@ public class SettingsGateway {
             TurnScreenOnDetails.class.getName(),
             NfcAndPaymentFragment.class.getName(),
             ColorAndMotionFragment.class.getName(),
+            ColorContrastFragment.class.getName(),
             LongBackgroundTasksDetails.class.getName(),
             RegionalPreferencesEntriesFragment.class.getName(),
             BatteryInfoFragment.class.getName(),
@@ -390,6 +391,7 @@ public class SettingsGateway {
             ScreenTimeoutSettings.class.getName(),
             ResetNetwork.class.getName(),
             VibrationIntensitySettingsFragment.class.getName(),
+            CellularSecuritySettingsFragment.class.getName(),
     };
 
     public static final String[] SETTINGS_FOR_RESTRICTED = {

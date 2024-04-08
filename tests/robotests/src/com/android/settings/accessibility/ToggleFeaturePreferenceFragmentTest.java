@@ -24,6 +24,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -34,10 +35,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.icu.text.CaseMap;
 import android.os.Bundle;
-import android.platform.test.annotations.RequiresFlagsEnabled;
-import android.platform.test.flag.junit.CheckFlagsRule;
-import android.platform.test.flag.junit.DeviceFlagsValueProvider;
+import android.platform.test.annotations.DisableFlags;
+import android.platform.test.annotations.EnableFlags;
+import android.platform.test.flag.junit.SetFlagsRule;
 import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,6 +78,8 @@ import org.robolectric.annotation.LooperMode;
 import org.robolectric.shadow.api.Shadow;
 import org.robolectric.shadows.ShadowApplication;
 
+import java.util.Locale;
+
 /** Tests for {@link ToggleFeaturePreferenceFragment} */
 @RunWith(RobolectricTestRunner.class)
 @LooperMode(LooperMode.Mode.LEGACY)
@@ -83,9 +87,8 @@ import org.robolectric.shadows.ShadowApplication;
         ShadowFragment.class,
 })
 public class ToggleFeaturePreferenceFragmentTest {
-
     @Rule
-    public final CheckFlagsRule mCheckFlagsRule = DeviceFlagsValueProvider.createCheckFlagsRule();
+    public final SetFlagsRule mSetFlagsRule = new SetFlagsRule();
 
     private static final String PLACEHOLDER_PACKAGE_NAME = "com.placeholder.example";
     private static final String PLACEHOLDER_CLASS_NAME = PLACEHOLDER_PACKAGE_NAME + ".placeholder";
@@ -144,8 +147,9 @@ public class ToggleFeaturePreferenceFragmentTest {
     }
 
     @Test
+    @EnableFlags(android.view.accessibility.Flags.FLAG_A11Y_QS_SHORTCUT)
     @Config(shadows = {ShadowFragment.class})
-    public void onResume_haveRegisterToSpecificUris() {
+    public void onResume_flagEnabled_haveRegisterToSpecificUris() {
         mFragment.onAttach(mContext);
         mFragment.onCreate(Bundle.EMPTY);
 
@@ -158,6 +162,36 @@ public class ToggleFeaturePreferenceFragmentTest {
         verify(mContentResolver).registerContentObserver(
                 eq(Settings.Secure.getUriFor(
                         Settings.Secure.ACCESSIBILITY_SHORTCUT_TARGET_SERVICE)),
+                eq(false),
+                any(AccessibilitySettingsContentObserver.class));
+        verify(mContentResolver).registerContentObserver(
+                eq(Settings.Secure.getUriFor(
+                        Settings.Secure.ACCESSIBILITY_QS_TARGETS)),
+                eq(false),
+                any(AccessibilitySettingsContentObserver.class));
+    }
+
+    @Test
+    @DisableFlags(android.view.accessibility.Flags.FLAG_A11Y_QS_SHORTCUT)
+    @Config(shadows = {ShadowFragment.class})
+    public void onResume_flagDisabled_haveRegisterToSpecificUris() {
+        mFragment.onAttach(mContext);
+        mFragment.onCreate(Bundle.EMPTY);
+
+        mFragment.onResume();
+
+        verify(mContentResolver).registerContentObserver(
+                eq(Settings.Secure.getUriFor(Settings.Secure.ACCESSIBILITY_BUTTON_TARGETS)),
+                eq(false),
+                any(AccessibilitySettingsContentObserver.class));
+        verify(mContentResolver).registerContentObserver(
+                eq(Settings.Secure.getUriFor(
+                        Settings.Secure.ACCESSIBILITY_SHORTCUT_TARGET_SERVICE)),
+                eq(false),
+                any(AccessibilitySettingsContentObserver.class));
+        verify(mContentResolver, never()).registerContentObserver(
+                eq(Settings.Secure.getUriFor(
+                        Settings.Secure.ACCESSIBILITY_QS_TARGETS)),
                 eq(false),
                 any(AccessibilitySettingsContentObserver.class));
     }
@@ -295,6 +329,7 @@ public class ToggleFeaturePreferenceFragmentTest {
     }
 
     @Test
+    @DisableFlags(android.view.accessibility.Flags.FLAG_A11Y_QS_SHORTCUT)
     @Config(shadows = ShadowFragment.class)
     public void onPreferenceToggledOnEnabledService_showTooltipView() {
         mFragment.onPreferenceToggled(
@@ -304,7 +339,7 @@ public class ToggleFeaturePreferenceFragmentTest {
     }
 
     @Test
-    @RequiresFlagsEnabled(com.android.settings.accessibility.Flags.FLAG_REMOVE_QS_TOOLTIP_IN_SUW)
+    @EnableFlags(com.android.settings.accessibility.Flags.FLAG_REMOVE_QS_TOOLTIP_IN_SUW)
     @Config(shadows = ShadowFragment.class)
     public void onPreferenceToggledOnEnabledService_inSuw_toolTipViewShouldNotShow() {
         Intent suwIntent = new Intent();
@@ -318,6 +353,7 @@ public class ToggleFeaturePreferenceFragmentTest {
     }
 
     @Test
+    @DisableFlags(android.view.accessibility.Flags.FLAG_A11Y_QS_SHORTCUT)
     @Config(shadows = ShadowFragment.class)
     public void onPreferenceToggledOnEnabledService_tooltipViewShown_notShowTooltipView() {
         mFragment.onPreferenceToggled(
@@ -348,7 +384,7 @@ public class ToggleFeaturePreferenceFragmentTest {
     }
 
     @Test
-    @RequiresFlagsEnabled(Flags.FLAG_ACCESSIBILITY_SHOW_APP_INFO_BUTTON)
+    @EnableFlags(Flags.FLAG_ACCESSIBILITY_SHOW_APP_INFO_BUTTON)
     public void createAppInfoPreference_withValidComponentName() {
         when(mPackageManager.isPackageAvailable(PLACEHOLDER_PACKAGE_NAME)).thenReturn(true);
         mFragment.mComponentName = PLACEHOLDER_COMPONENT_NAME;
@@ -363,7 +399,7 @@ public class ToggleFeaturePreferenceFragmentTest {
     }
 
     @Test
-    @RequiresFlagsEnabled(Flags.FLAG_ACCESSIBILITY_SHOW_APP_INFO_BUTTON)
+    @EnableFlags(Flags.FLAG_ACCESSIBILITY_SHOW_APP_INFO_BUTTON)
     public void createAppInfoPreference_noComponentName_shouldBeNull() {
         mFragment.mComponentName = null;
 
@@ -373,7 +409,7 @@ public class ToggleFeaturePreferenceFragmentTest {
     }
 
     @Test
-    @RequiresFlagsEnabled(Flags.FLAG_ACCESSIBILITY_SHOW_APP_INFO_BUTTON)
+    @EnableFlags(Flags.FLAG_ACCESSIBILITY_SHOW_APP_INFO_BUTTON)
     public void createAppInfoPreference_withUnavailablePackage_shouldBeNull() {
         when(mPackageManager.isPackageAvailable(PLACEHOLDER_PACKAGE_NAME)).thenReturn(false);
         mFragment.mComponentName = PLACEHOLDER_COMPONENT_NAME;
@@ -384,7 +420,7 @@ public class ToggleFeaturePreferenceFragmentTest {
     }
 
     @Test
-    @RequiresFlagsEnabled(Flags.FLAG_ACCESSIBILITY_SHOW_APP_INFO_BUTTON)
+    @EnableFlags(Flags.FLAG_ACCESSIBILITY_SHOW_APP_INFO_BUTTON)
     public void createAppInfoPreference_inSetupWizard_shouldBeNull() {
         when(mFragment.isAnySetupWizard()).thenReturn(true);
         mFragment.mComponentName = PLACEHOLDER_COMPONENT_NAME;
@@ -419,6 +455,40 @@ public class ToggleFeaturePreferenceFragmentTest {
         assertThat(
                 getSecureStringFromSettings(Settings.Secure.ACCESSIBILITY_SHORTCUT_TARGET_SERVICE))
                 .isEqualTo(PLACEHOLDER_COMPONENT_NAME.flattenToString());
+    }
+
+    @Test
+    @EnableFlags(android.view.accessibility.Flags.FLAG_A11Y_QS_SHORTCUT)
+    @Config(shadows = ShadowFragment.class)
+    public void showQuickSettingsTooltipIfNeeded_qsFlagOn_dontShowTooltipView() {
+        mFragment.showQuickSettingsTooltipIfNeeded(QuickSettingsTooltipType.GUIDE_TO_EDIT);
+
+        assertThat(getLatestPopupWindow()).isNull();
+    }
+
+    @Test
+    @EnableFlags(android.view.accessibility.Flags.FLAG_A11Y_QS_SHORTCUT)
+    public void getShortcutTypeSummary_shortcutSummaryIsCorrectlySet() {
+        final PreferredShortcut userPreferredShortcut = new PreferredShortcut(
+                PLACEHOLDER_COMPONENT_NAME.flattenToString(),
+                UserShortcutType.HARDWARE | UserShortcutType.QUICK_SETTINGS);
+        putUserShortcutTypeIntoSharedPreference(mContext, userPreferredShortcut);
+        final ShortcutPreference shortcutPreference =
+                new ShortcutPreference(mContext, /* attrs= */ null);
+        shortcutPreference.setChecked(true);
+        shortcutPreference.setSettingsEditable(true);
+        mFragment.mComponentName = PLACEHOLDER_COMPONENT_NAME;
+        mFragment.mShortcutPreference = shortcutPreference;
+        String expected = CaseMap.toTitle().wholeString().noLowercase().apply(Locale.getDefault(),
+                /* iter= */ null,
+                mContext.getString(
+                        R.string.accessibility_feature_shortcut_setting_summary_quick_settings)
+                        + ", "
+                        + mContext.getString(R.string.accessibility_shortcut_hardware_keyword));
+
+        String summary = mFragment.getShortcutTypeSummary(mContext).toString();
+
+        assertThat(summary).isEqualTo(expected);
     }
 
     private void putSecureStringIntoSettings(String key, String componentName) {

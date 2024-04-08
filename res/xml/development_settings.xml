@@ -75,6 +75,13 @@
             android:entryValues="@array/hdcp_checking_values" />
 
         <ListPreference
+            android:key="bt_stack_log_level"
+            android:title="@string/bt_stack_log_level"
+            android:dialogTitle="@string/bt_stack_log_level_summary"
+            android:entries="@array/bt_stack_log_level_entries"
+            android:entryValues="@array/bt_stack_log_level_values" />
+
+        <ListPreference
             android:key="bt_hci_snoop_log"
             android:title="@string/bt_hci_snoop_log"
             android:dialogTitle="@string/bt_hci_snoop_log_summary"
@@ -429,6 +436,11 @@
             android:positiveButtonText=""
             android:negativeButtonText="@string/dlg_ok"/>
 
+        <ListPreference
+            android:key="bluetooth_audio_codec_settings_list"
+            android:title="@string/bluetooth_select_a2dp_codec_type"
+            android:dialogTitle="@string/bluetooth_select_a2dp_codec_type_dialog_title"/>
+
         <com.android.settings.development.bluetooth.BluetoothSampleRateDialogPreference
             android:key="bluetooth_sample_rate_settings"
             android:title="@string/bluetooth_select_a2dp_codec_sample_rate"
@@ -467,11 +479,6 @@
             android:dialogTitle="@string/bluetooth_max_connected_audio_devices_dialog_title"
             android:entries="@array/bluetooth_max_connected_audio_devices"
             android:entryValues="@array/bluetooth_max_connected_audio_devices_values" />
-
-        <SwitchPreferenceCompat
-            android:key="nfc_stack_debuglog_enabled"
-            android:title="@string/nfc_stack_debuglog_title"
-            android:summary="@string/nfc_stack_debuglog_summary" />
 
         <SwitchPreferenceCompat
             android:key="nfc_verbose_vendor_log"
@@ -774,12 +781,6 @@
             android:key="force_enable_notes_role"
             android:title="@string/enable_notes_role_title"
             android:summary="@string/enable_notes_role_summary" />
-
-        <Preference
-            android:key="quarantined_apps"
-            android:title="@string/quarantined_apps_title"
-            settings:controller="com.android.settings.development.quarantine.QuarantinedAppsPreferenceController"
-            android:fragment="com.android.settings.development.quarantine.QuarantinedAppsFragment" />
 
     </PreferenceCategory>
 

@@ -14,6 +14,13 @@
  * limitations under the License.
  */
 
+/*
+ * Changes from Qualcomm Innovation Center are provided under the following license:
+ *
+ * Copyright (c) 2024 Qualcomm Innovation Center, Inc. All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause-Clear
+ */
+
 package com.android.settings.network.telephony.gsm
 
 import android.content.Context
@@ -21,11 +28,13 @@ import android.content.Intent
 import android.provider.Settings
 import android.telephony.ServiceState
 import android.telephony.TelephonyManager
+import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.preference.Preference
 import androidx.preference.PreferenceScreen
 import com.android.settings.R
 import com.android.settings.Settings.NetworkSelectActivity
+import com.android.settings.network.telephony.DomesticRoamUtils
 import com.android.settings.network.telephony.MobileNetworkUtils
 import com.android.settings.network.telephony.TelephonyBasePreferenceController
 import com.android.settings.network.telephony.allowedNetworkTypesFlow
@@ -34,6 +43,8 @@ import com.android.settingslib.spa.framework.util.collectLatestWithLifecycle
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
+
+import com.qti.extphone.ExtTelephonyManager
 
 /**
  * Preference controller for "Open network select"
@@ -49,12 +60,14 @@ class OpenNetworkSelectPagePreferenceController @JvmOverloads constructor(
     AutoSelectPreferenceController.OnNetworkSelectModeListener {
 
     private var preference: Preference? = null
+    private val telephonyManager = context.getSystemService(TelephonyManager::class.java)!!
 
     /**
      * Initialization based on given subscription id.
      */
     fun init(subId: Int): OpenNetworkSelectPagePreferenceController {
         mSubId = subId
+        telephonyManager.createForSubscriptionId(mSubId)
         return this
     }
 
@@ -80,14 +93,31 @@ class OpenNetworkSelectPagePreferenceController @JvmOverloads constructor(
 
         serviceStateFlowFactory(mSubId)
             .collectLatestWithLifecycle(viewLifecycleOwner) { serviceState ->
-                preference?.summary = if (serviceState.state == ServiceState.STATE_IN_SERVICE) {
+                preference?.summary = if (serviceState.state == ServiceState.STATE_IN_SERVICE ||
+                        isSnpnInService(serviceState)) {
                     withContext(Dispatchers.Default) {
-                        MobileNetworkUtils.getCurrentCarrierNameForDisplay(mContext, mSubId)
+                        if (DomesticRoamUtils.isFeatureEnabled(mContext)) {
+                            val registeredOperatorName : String = DomesticRoamUtils
+                                    .getRegisteredOperatorName(mContext, mSubId)
+                            if (DomesticRoamUtils.EMPTY_OPERATOR_NAME != registeredOperatorName) {
+                                registeredOperatorName
+                            } else {
+                                MobileNetworkUtils.getCurrentCarrierNameForDisplay(mContext, mSubId)
+                            }
+                        } else {
+                            MobileNetworkUtils.getCurrentCarrierNameForDisplay(mContext, mSubId)
+                        }
                     }
                 } else {
                     mContext.getString(R.string.network_disconnected)
                 }
             }
+    }
+
+    private fun isSnpnInService(ss: ServiceState): Boolean {
+        return ((MobileNetworkUtils.getAccessMode(mContext, telephonyManager.getSlotIndex())
+                == ExtTelephonyManager.ACCESS_MODE_SNPN)
+                && (ss.getDataRegState() == ServiceState.STATE_IN_SERVICE))
     }
 
     override fun onNetworkSelectModeUpdated(mode: Int) {

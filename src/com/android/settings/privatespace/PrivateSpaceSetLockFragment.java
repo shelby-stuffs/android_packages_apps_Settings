@@ -16,7 +16,6 @@
 
 package com.android.settings.privatespace;
 
-import static com.android.settings.privatespace.PrivateSpaceSetupActivity.ACCOUNT_LOGIN_ACTION;
 import static com.android.settings.privatespace.PrivateSpaceSetupActivity.EXTRA_ACTION_TYPE;
 import static com.android.settings.privatespace.PrivateSpaceSetupActivity.SET_LOCK_ACTION;
 
@@ -31,6 +30,7 @@ import android.view.ViewGroup;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.android.settings.R;
 import com.android.settings.core.InstrumentedFragment;
@@ -51,7 +51,8 @@ public class PrivateSpaceSetLockFragment extends InstrumentedFragment {
             LayoutInflater inflater,
             @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
-        if (!android.os.Flags.allowPrivateProfile()) {
+        if (!android.os.Flags.allowPrivateProfile()
+                || !android.multiuser.Flags.enablePrivateSpaceFeatures()) {
             return null;
         }
         GlifLayout rootView =
@@ -70,9 +71,7 @@ public class PrivateSpaceSetLockFragment extends InstrumentedFragment {
                         .setText(R.string.private_space_set_lock_label)
                         .setListener(onClickNewLock())
                         .setButtonType(FooterButton.ButtonType.NEXT)
-                        .setTheme(
-                                androidx.appcompat.R.style
-                                        .Base_TextAppearance_AppCompat_Widget_Button)
+                        .setTheme(com.google.android.setupdesign.R.style.SudGlifButton_Secondary)
                         .build());
         OnBackPressedCallback callback =
                 new OnBackPressedCallback(true /* enabled by default */) {
@@ -97,10 +96,8 @@ public class PrivateSpaceSetLockFragment extends InstrumentedFragment {
             mMetricsFeatureProvider.action(
                     getContext(), SettingsEnums.ACTION_PRIVATE_SPACE_SETUP_USE_SCREEN_LOCK);
             // Simply Use default screen lock. No need to handle
-            mMetricsFeatureProvider.action(
-                    getContext(), SettingsEnums.ACTION_PRIVATE_SPACE_SETUP_ACCOUNT_LOGIN_START);
-            Log.d(TAG, "Use device lock for private profile");
-            launchActivityForAction(ACCOUNT_LOGIN_ACTION);
+            NavHostFragment.findNavController(PrivateSpaceSetLockFragment.this)
+                    .navigate(R.id.action_lock_success_fragment);
         };
     }
 

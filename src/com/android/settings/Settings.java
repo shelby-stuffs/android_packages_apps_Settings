@@ -155,6 +155,8 @@ public class Settings extends SettingsActivity {
     public static class TextReadingSettingsActivity extends SettingsActivity { /* empty */ }
     /** Activity for text color and motion settings. */
     public static class ColorAndMotionActivity extends SettingsActivity { /* empty */ }
+    /** Activity for color contrast settings. */
+    public static class ColorContrastActivity extends SettingsActivity { /* empty */ }
     /** Activity for the security dashboard. */
     public static class SecurityDashboardActivity extends SettingsActivity {
 
@@ -384,6 +386,7 @@ public class Settings extends SettingsActivity {
         /* empty */
     }
 
+    public static class CellularSecuritySettingsActivity extends SettingsActivity { /* empty */ }
     public static class SatelliteSettingActivity extends SettingsActivity { /* empty */ }
     public static class ApnSettingsActivity extends SettingsActivity { /* empty */ }
     public static class WifiCallingSettingsActivity extends SettingsActivity { /* empty */ }
@@ -439,7 +442,6 @@ public class Settings extends SettingsActivity {
     public static class StylusUsiDetailsActivity extends SettingsActivity { /* empty */ }
     public static class BluetoothBroadcastActivity extends SettingsActivity { /* empty */ }
     public static class BluetoothFindBroadcastsActivity extends SettingsActivity { /* empty */ }
-    public static class AudioStreamConfirmDialogActivity extends SettingsActivity { /* empty */ }
     public static class WifiCallingDisclaimerActivity extends SettingsActivity { /* empty */ }
     public static class MobileNetworkListActivity extends SettingsActivity {}
     public static class PowerMenuSettingsActivity extends SettingsActivity {}
