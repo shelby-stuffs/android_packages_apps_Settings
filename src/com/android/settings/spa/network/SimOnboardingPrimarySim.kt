@@ -59,12 +59,12 @@ fun SimOnboardingPrimarySimImpl(
         imageVector = Icons.Outlined.SignalCellularAlt,
         title = stringResource(id = R.string.sim_onboarding_primary_sim_title),
         actionButton = BottomAppBarButton(
-            stringResource(id = R.string.done),
-            nextAction
+            text = stringResource(id = R.string.done),
+            onClick = nextAction
         ),
         dismissButton = BottomAppBarButton(
-            stringResource(id = R.string.cancel),
-            cancelAction
+            text = stringResource(id = R.string.cancel),
+            onClick = cancelAction
         ),
     ) {
         val callsSelectedId = rememberSaveable {
@@ -102,18 +102,21 @@ fun SimOnboardingPrimarySimImpl(
             mobileDataSelectedId = mobileDataSelectedId,
             actionSetCalls = {
                 callsSelectedId.intValue = it
-                onboardingService.targetPrimarySimCalls = it},
+                onboardingService.targetPrimarySimCalls = it
+            },
             actionSetTexts = {
                 textsSelectedId.intValue = it
-                onboardingService.targetPrimarySimTexts = it},
+                onboardingService.targetPrimarySimTexts = it
+            },
             actionSetMobileData = {
                 mobileDataSelectedId.intValue = it
-                onboardingService.targetPrimarySimMobileData = it},
-            isAutoDataEnabled = { isAutoDataEnabled },
+                onboardingService.targetPrimarySimMobileData = it
+            }
+        )
+        AutomaticDataSwitchingPreference(isAutoDataEnabled = { isAutoDataEnabled },
             setAutoDataEnabled = { newEnabled ->
                 onboardingService.targetPrimarySimAutoDataSwitch.value = newEnabled
-            },
-        )
+            })
     }
 }
 

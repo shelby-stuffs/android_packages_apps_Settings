@@ -92,12 +92,14 @@ public class DefaultCombinedPreferenceController extends DefaultAppPreferenceCon
     @Override
     public void updateState(@NonNull Preference preference) {
         final CombinedProviderInfo topProvider = getTopProvider();
+        final int userId = getUser();
+
         if (topProvider != null && mContext != null) {
             updatePreferenceForProvider(
                     preference,
                     topProvider.getAppName(mContext),
                     topProvider.getSettingsSubtitle(),
-                    topProvider.getAppIcon(mContext, getUser()),
+                    topProvider.getAppIcon(mContext, userId),
                     topProvider.getPackageName(),
                     topProvider.getSettingsActivity());
         } else {
@@ -111,7 +113,7 @@ public class DefaultCombinedPreferenceController extends DefaultAppPreferenceCon
             @Nullable CharSequence appName,
             @Nullable String appSubtitle,
             @Nullable Drawable appIcon,
-            @Nullable CharSequence packageName,
+            @Nullable String packageName,
             @Nullable CharSequence settingsActivity) {
         if (appName == null) {
             preference.setTitle(R.string.credman_app_list_preference_none);
@@ -149,7 +151,17 @@ public class DefaultCombinedPreferenceController extends DefaultAppPreferenceCon
     }
 
     private @Nullable CombinedProviderInfo getTopProvider() {
-        return CombinedProviderInfo.getTopProvider(getAllProviders(getUser()));
+        final int userId = getUser();
+        final @Nullable CombinedProviderInfo topProvider =
+                CombinedProviderInfo.getTopProvider(getAllProviders(userId));
+
+        // Apply device admin restrictions to top provider.
+        if (topProvider != null
+                && topProvider.getDeviceAdminRestrictions(mContext, userId) != null) {
+            return null;
+        }
+
+        return topProvider;
     }
 
     @Override
