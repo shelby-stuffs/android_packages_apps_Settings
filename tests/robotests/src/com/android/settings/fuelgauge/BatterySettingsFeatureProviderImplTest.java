@@ -69,4 +69,14 @@ public class BatterySettingsFeatureProviderImplTest {
         var expectedResult = tips.stream().anyMatch(tip -> tip instanceof LowBatteryTip);
         assertThat(expectedResult).isTrue();
     }
+
+    @Test
+    public void getWirelessChargingLabel_returnNull() {
+        assertThat(mImpl.getWirelessChargingLabel(mContext, new BatteryInfo())).isNull();
+    }
+
+    @Test
+    public void getWirelessChargingRemainingLabel_returnNull() {
+        assertThat(mImpl.getWirelessChargingRemainingLabel(mContext, 1000L, 1000L)).isNull();
+    }
 }

@@ -17,7 +17,7 @@
 /*
  * Changes from Qualcomm Innovation Center are provided under the following license:
  *
- * Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (c) 2022-2024 Qualcomm Innovation Center, Inc. All rights reserved.
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
 
@@ -206,6 +206,7 @@ public class NetworkSelectSettings extends DashboardFragment implements
 
     @Keep
     @VisibleForTesting
+    @Nullable
     protected SatelliteManager getSatelliteManager(Context context) {
         return context.getSystemService(SatelliteManager.class);
     }
@@ -263,10 +264,14 @@ public class NetworkSelectSettings extends DashboardFragment implements
             if (!isPreferenceScreenEnabled()) {
                 clearPreferenceSummary();
                 enablePreferenceScreen(true);
-            } else if (networkScanResult instanceof NetworkScanComplete
-                    && mCellInfoList == null) {
-                // In case the scan timeout before getting any results
-                addMessagePreference(R.string.empty_networks_list);
+            } else if (networkScanResult instanceof NetworkScanComplete) {
+                if (mCellInfoList == null) {
+                    // In case the scan times out before getting any results
+                    addMessagePreference(R.string.empty_networks_list);
+                } else {
+                    // dismiss progress bar when network scan completed
+                    setProgressBarVisible(false);
+                }
             } else if (networkScanResult instanceof NetworkScanError) {
                 addMessagePreference(R.string.network_query_error);
             }
@@ -426,7 +431,13 @@ public class NetworkSelectSettings extends DashboardFragment implements
         if (!Flags.carrierEnabledSatelliteFlag()) {
             return new ArrayList<>();
         }
-        return mSatelliteManager.getSatellitePlmnsForCarrier(mSubId);
+
+        if (mSatelliteManager != null) {
+            return mSatelliteManager.getSatellitePlmnsForCarrier(mSubId);
+        } else {
+            Log.e(TAG, "mSatelliteManager is null, return empty list");
+            return new ArrayList<>();
+        }
     }
 
     private void handleCarrierConfigChanged(int subId) {
@@ -570,6 +581,7 @@ public class NetworkSelectSettings extends DashboardFragment implements
      */
     private void forceUpdateConnectedPreferenceCategory(
             NetworkSelectRepository.NetworkRegistrationAndForbiddenInfo info) {
+        mPreferenceCategory.removeAll();
         for (NetworkRegistrationInfo regInfo : info.getNetworkList()) {
             final CellIdentity cellIdentity = regInfo.getCellIdentity();
             if (cellIdentity == null) {

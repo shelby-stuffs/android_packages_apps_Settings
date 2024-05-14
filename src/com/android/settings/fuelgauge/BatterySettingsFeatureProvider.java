@@ -18,6 +18,9 @@ package com.android.settings.fuelgauge;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.android.settings.fuelgauge.batterytip.BatteryTipPolicy;
 import com.android.settings.fuelgauge.batterytip.tips.BatteryTip;
 
@@ -41,4 +44,13 @@ public interface BatterySettingsFeatureProvider {
             List<BatteryTip> batteryTips,
             BatteryInfo batteryInfo,
             BatteryTipPolicy batteryTipPolicy);
+
+    /** Return a label for the bottom summary during wireless charging. */
+    @Nullable
+    CharSequence getWirelessChargingLabel(@NonNull Context context, @NonNull BatteryInfo info);
+
+    /** Return a charging remaining time label for wireless charging. */
+    @Nullable
+    CharSequence getWirelessChargingRemainingLabel(
+            @NonNull Context context, long remainingTimeMs, long currentTimeMs);
 }
