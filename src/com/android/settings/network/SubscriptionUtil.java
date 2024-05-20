@@ -522,10 +522,6 @@ public class SubscriptionUtil {
             Log.i(TAG, "Unable to toggle subscription due to invalid subscription ID.");
             return;
         }
-        if (enable && Flags.isDualSimOnboardingEnabled()) {
-            SimOnboardingActivity.startSimOnboardingActivity(context, subId);
-            return;
-        }
         context.startActivity(ToggleSubscriptionDialogActivity.getIntent(context, subId, enable));
     }
 

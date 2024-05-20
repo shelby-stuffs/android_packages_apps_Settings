@@ -46,10 +46,6 @@ class MobileNetworkListFragment : DashboardFragment() {
     override fun onCreate(icicle: Bundle?) {
         super.onCreate(icicle)
 
-        if (Flags.isDualSimOnboardingEnabled()) {
-            context?.startSpaActivity(NetworkCellularGroupProvider.name);
-            finish()
-        }
     }
 
     override fun onResume() {
