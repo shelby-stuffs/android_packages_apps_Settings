@@ -26,7 +26,7 @@
     <string name="device_info_protected_single_press" msgid="3810785480060743677">"Presiona para obtener más información"</string>
     <string name="show_dev_countdown" msgid="2936506773086395069">"{count,plural, =1{Ahora estás a # paso de activar las opciones para desarrolladores}other{Ahora estás a # pasos de activar las opciones para desarrolladores}}"</string>
     <string name="show_dev_on" msgid="2840850085134853754">"¡Ya eres desarrollador!"</string>
-    <string name="show_dev_already" msgid="7041756429707644630">"No es necesario, ya eres programador."</string>
+    <string name="show_dev_already" msgid="7041756429707644630">"No es necesario, ya eres desarrollador."</string>
     <string name="dev_settings_disabled_warning" msgid="6971867026249671244">"Primero habilita las opciones para programador."</string>
     <string name="dev_settings_available_to_admin_only_warning" msgid="3408243404879083111">"Solo los usuarios administradores pueden acceder a la configuración para desarrolladores."</string>
     <string name="header_category_system" msgid="1665516346845259058">"Sistema"</string>
@@ -280,13 +280,14 @@
     <string name="owner_info_settings_edit_text_hint" msgid="841926875876050274">"Por ejemplo, Android de Juan"</string>
     <string name="location_settings_title" msgid="8375074508036087178">"Ubicación"</string>
     <string name="location_settings_primary_switch_title" msgid="8849081766644685127">"Usar ubicación"</string>
-    <string name="location_settings_summary_location_off" msgid="4797932754681162262">"Desactivado"</string>
+    <string name="location_settings_summary_location_off" msgid="4797932754681162262">"Desactivada"</string>
     <string name="location_settings_summary_location_on" msgid="4273299717586679786">"{count,plural, =1{Activada: # app tiene acceso a la ubicación}other{Activada: # apps tienen acceso a la ubicación}}"</string>
     <string name="location_settings_loading_app_permission_stats" msgid="6054103701535557342">"Cargando…"</string>
     <string name="location_settings_footer_general" msgid="1040507068701188821">"Las apps que tienen el permiso de dispositivos cercanos pueden determinar la posición relativa de los dispositivos conectados."</string>
     <string name="location_settings_footer_location_off" msgid="8568995909147566720">"El acceso a la ubicación está desactivado para las apps y los servicios. Todavía se puede enviar la ubicación del dispositivo a los servicios de emergencia cuando llamas o mandas un mensaje a un número de emergencia."</string>
     <string name="location_settings_footer_learn_more_content_description" msgid="349380666660145540">"Más información sobre la configuración de la ubicación"</string>
-    <string name="location_settings_tooltip_text_for_chrome" msgid="3574930966097093550">"Cambia el acceso a la ubicación en Config. &gt; Seguridad y priv. &gt; Controles de priv."</string>
+    <!-- no translation found for location_settings_tooltip_text_for_chrome (5781821709250544575) -->
+    <skip />
     <string name="account_settings_title" msgid="9138880127246241885">"Cuentas"</string>
     <string name="security_settings_title" msgid="6710768415432791970">"Seguridad"</string>
     <string name="encryption_and_credential_settings_title" msgid="5856216318961482983">"Encriptación y credenciales"</string>
@@ -559,14 +560,15 @@
     <string name="private_space_face_unlock_title" msgid="462248384776453613">"Desbloqueo facial para espacio privado"</string>
     <string name="private_space_category_ways_to_unlock" msgid="4356631225316950046">"Métodos de desbloqueo"</string>
     <string name="private_space_screen_lock_summary" msgid="394837965365561070">"Igual al bloqueo de pantalla del dispositivo"</string>
-    <string name="private_space_new_lock_title" msgid="9056139964133004094">"¿Quieres un nuevo bloqueo para tu espacio privado?"</string>
+    <string name="private_space_new_lock_title" msgid="9056139964133004094">"¿Elegir un nuevo bloqueo para tu espacio privado?"</string>
     <string name="private_space_new_lock_message" msgid="3117703578905489206">"Deberás ingresar el PIN, el patrón o la contraseña del dispositivo en la próxima pantalla"</string>
     <string name="private_space_auto_lock_title" msgid="8663409382910601261">"Bloquear espacio privado automáticamente"</string>
-    <string name="private_space_auto_lock_page_summary" msgid="8679844515655838654">"Puedes bloquear el espacio privado automáticamente si no usas el dispositivo por un cierto período"</string>
+    <string name="private_space_auto_lock_page_summary" msgid="8679844515655838654">"Puedes bloquear el espacio privado automáticamente si no usas el dispositivo por cierto período"</string>
     <string name="private_space_auto_lock_every_time" msgid="1215061855836002830">"Cada vez que el dispositivo se bloquea"</string>
     <string name="private_space_auto_lock_after_inactivity" msgid="1748673030841528649">"Después de 5 minutos de inactividad"</string>
     <string name="private_space_auto_lock_after_device_restart" msgid="288755768725895029">"Solo después de reiniciar el dispositivo"</string>
-    <string name="private_space_hide_page_title" msgid="4351404195904146088">"Ocultar espacio privado cuando está bloqueado"</string>
+    <string name="private_space_hide_page_title" msgid="3364639176511877414">"Oculta el espacio privado"</string>
+    <string name="private_space_hide_when_locked" msgid="6219472348124151797">"Oculta el espacio privado cuando está bloqueado"</string>
     <string name="private_space_hide_page_summary" msgid="6247773353685839242">"Oculta el espacio privado de tu lista de apps en el dispositivo para que otras personas no puedan verlo"</string>
     <string name="private_space_access_header" msgid="1077082416567150819">"Accede al espacio privado cuando está oculto"</string>
     <string name="private_space_search_description" msgid="1538155187658429618">"En la barra de búsqueda, ingresa \"espacio privado\""</string>
@@ -605,7 +607,7 @@
     <string name="private_space_setting_up_text" msgid="8458035555212009528">"Configurando espacio privado…"</string>
     <string name="private_space_error_screen_title" msgid="739381738044418346">"No se pudo configurar el espacio privado"</string>
     <string name="private_space_tryagain_label" msgid="8305362615231738367">"Reintentar"</string>
-    <string name="private_space_lockscreen_title" msgid="5785259588888586366">"¿Quieres un nuevo bloqueo para tu espacio privado?"</string>
+    <string name="private_space_lockscreen_title" msgid="5785259588888586366">"¿Elegir un nuevo bloqueo para tu espacio privado?"</string>
     <string name="private_space_lockscreen_summary" msgid="3053836076639653805">"Puedes establecer un nuevo bloqueo solo para el espacio privado, o bien puedes usar el mismo que usas para desbloquear el dispositivo"</string>
     <string name="private_space_use_screenlock_label" msgid="9182153443192032782">"Usar bloqueo de pantalla"</string>
     <string name="private_space_set_lock_label" msgid="1790408277477408475">"Elegir nuevo bloqueo"</string>
@@ -1496,9 +1498,8 @@
     <string name="reset_network_complete_toast" msgid="1367872474130621115">"Se restableció la configuración de red."</string>
     <string name="reset_esim_error_title" msgid="6516110227665862295">"No se puede borrar las eSIM"</string>
     <string name="reset_esim_error_msg" msgid="8459527827897797168">"Se produjo un error y tus eSIM no se borraron.\n\nReinicia el dispositivo y vuelve a intentarlo."</string>
-    <string name="reset_private_space_delete_title" msgid="2555885198282572990">"Borra un espacio privado"</string>
-    <!-- no translation found for reset_private_space_delete_dialog (7506471054091800883) -->
-    <skip />
+    <string name="reset_private_space_delete_title" msgid="2555885198282572990">"Borrar espacio privado"</string>
+    <string name="reset_private_space_delete_dialog" msgid="7506471054091800883">"Si tienes un espacio privado en el dispositivo, se borrará de forma permanente, y la Cuenta de Google agregada al espacio se quitará.\n\nTodas las apps de tu espacio y sus datos también se borrarán de forma permanente."</string>
     <string name="main_clear_title" msgid="277664302144837723">"Borrar todo (restablecer configuración de fábrica)"</string>
     <string name="main_clear_short_title" msgid="4752094765533020696">"Borrar todo (restablecer configuración de fábrica)"</string>
     <string name="main_clear_desc_also_erases_external" msgid="3687911419628956693"><li>"Música"</li>\n<li>"Fotos"</li>\n<li>"Otros datos del usuario"</li></string>
@@ -1811,6 +1812,7 @@
     <string name="app_install_details_group_title" msgid="1172114479073704677">"Tienda"</string>
     <string name="app_install_details_title" msgid="7783556181897142187">"Detalles de la app"</string>
     <string name="app_install_details_summary" msgid="2013043219249992373">"App instalada desde <xliff:g id="APP_STORE">%1$s</xliff:g>"</string>
+    <string name="app_install_details_different_initiating_package_summary" msgid="6093306593167176688">"La app se instaló desde <xliff:g id="APP_STORE1">%1$s</xliff:g> (a través de <xliff:g id="APP_STORE2">%2$s</xliff:g>)"</string>
     <string name="instant_app_details_summary" msgid="417197491598208216">"Más información en <xliff:g id="APP_STORE">%1$s</xliff:g>"</string>
     <string name="app_ops_running" msgid="6127474473137428721">"En curso"</string>
     <string name="app_ops_never_used" msgid="9038133162371204506">"(Sin utilizar)"</string>
@@ -2016,7 +2018,6 @@
     <string name="accessibility_color_contrast_title" msgid="5757724357142452378">"Contraste de color"</string>
     <string name="accessibility_color_contrast_intro" msgid="7795090401101214930">"El contraste más alto destaca el texto, los botones y los íconos. Elige la intensidad que más te guste."</string>
     <string name="color_contrast_note" msgid="7592686603372566198">"Es posible que algunas apps no admitan todos los parámetros de contraste de texto y colores"</string>
-    <string name="accessibility_color_contrast_summary" msgid="7563237683500106632">"Modifica cómo se ven los colores y el texto en contraste con el color del fondo de pantalla"</string>
     <string name="color_contrast_preview" msgid="6791430227535363883">"Vista previa"</string>
     <string name="color_contrast_preview_sender_name" msgid="8641943417589238147">"Helena, Adán"</string>
     <string name="color_contrast_preview_email_send_date" msgid="2108702726171600080">"Hace 2 días"</string>
@@ -2146,7 +2147,7 @@
     <string name="accessibility_feature_shortcut_setting_summary_quick_settings" msgid="7006526933552889373">"Configuración rápida"</string>
     <string name="accessibility_shortcut_edit_dialog_title_hardware" msgid="844089763968552142">"Teclas de volumen"</string>
     <string name="accessibility_shortcut_hardware_keyword" msgid="2483152542320987022">"teclas de volumen"</string>
-    <string name="accessibility_shortcut_edit_dialog_summary_hardware" msgid="2503134386397991634">"Mantén presionadas ambas teclas de volumen."</string>
+    <string name="accessibility_shortcut_edit_dialog_summary_hardware" msgid="2503134386397991634">"Mantén presionadas ambas teclas de volumen"</string>
     <string name="accessibility_shortcut_edit_dialog_title_two_finger_double_tap" msgid="2271778556854020996">"Presiona dos veces la pantalla con dos dedos"</string>
     <string name="accessibility_shortcut_edit_screen_title_two_finger_double_tap" msgid="8952595692906527694">"Presiona dos veces con %1$d dedos"</string>
     <string name="accessibility_shortcut_edit_screen_summary_two_finger_double_tap" msgid="385404127425496362">"Presiona rápidamente la pantalla dos veces con %1$d dedos."</string>
@@ -2290,9 +2291,9 @@
     <string name="accessibility_hearingaid_pair_instructions_title" msgid="2357706801112207624">"Vincula los audífonos"</string>
     <string name="accessibility_hearingaid_pair_instructions_message" msgid="581652489109350119">"En la siguiente pantalla, presiona tus audífonos. Es posible que debas vincular el audífono izquierdo y el derecho por separado.\n\nAsegúrate de que los audífonos estén encendidos y listos para la vinculación."</string>
     <string name="accessibility_hearingaid_active_device_summary" msgid="509703438222873967">"<xliff:g id="DEVICE_NAME">%1$s</xliff:g> activo"</string>
-    <string name="accessibility_hearingaid_left_side_device_summary" msgid="1907302799168261001">"<xliff:g id="DEVICE_NAME">%1$s</xliff:g>, solo izquierdo"</string>
-    <string name="accessibility_hearingaid_right_side_device_summary" msgid="148257064855054376">"<xliff:g id="DEVICE_NAME">%1$s</xliff:g>, solo el derecho"</string>
-    <string name="accessibility_hearingaid_left_and_right_side_device_summary" msgid="4268221140368164452">"<xliff:g id="DEVICE_NAME">%1$s</xliff:g>, izquierdo y derecho"</string>
+    <string name="accessibility_hearingaid_left_side_device_summary" msgid="12349058624943107">"<xliff:g id="DEVICE_NAME">%1$s</xliff:g>, solo izquierdo"</string>
+    <string name="accessibility_hearingaid_right_side_device_summary" msgid="8645789702686724188">"<xliff:g id="DEVICE_NAME">%1$s</xliff:g>, solo derecho"</string>
+    <string name="accessibility_hearingaid_left_and_right_side_device_summary" msgid="3314103411842694197">"<xliff:g id="DEVICE_NAME">%1$s</xliff:g>, izquierdo y derecho"</string>
     <string name="accessibility_hearingaid_more_device_summary" msgid="8092641784056942546">"Más de 1 <xliff:g id="DEVICE_NAME">%1$s</xliff:g>"</string>
     <string name="accessibility_hearing_device_pairing_title" msgid="2701812183769537320">"Vincular nuevo disp."</string>
     <string name="accessibility_hearing_device_connected_title" msgid="3785140037249487287">"Disp. auditivos"</string>
@@ -2571,7 +2572,7 @@
     <string name="battery_saver_turn_on_summary" msgid="1433919417587171160">"Extender la duración de la batería"</string>
     <string name="battery_saver_sticky_title_new" msgid="5942813274115684599">"Desactivar cuando la batería esté cargada"</string>
     <string name="battery_saver_sticky_title_percentage" msgid="1178162022087559148">"Desactivar cuando alcance el <xliff:g id="BATTERY_PERCENTAGE">%1$s</xliff:g>"</string>
-    <string name="battery_saver_sticky_description_new" msgid="6472610662679038342">"Cuando el dispositivo tiene más del <xliff:g id="BATTERY_PERCENTAGE">%1$s</xliff:g> de carga, se desactiva el Ahorro de batería"</string>
+    <string name="battery_saver_sticky_description_new" msgid="8543277078136947874">"El Ahorro de batería se desactiva cuando la batería tiene más del <xliff:g id="BATTERY_PERCENTAGE">%1$s</xliff:g> de carga"</string>
     <!-- no translation found for battery_saver_seekbar_title (3712266470054006641) -->
     <skip />
     <string name="battery_saver_seekbar_title_placeholder" msgid="7141264642540687540">"Activado"</string>
@@ -2601,8 +2602,7 @@
     <string name="battery_usage_screen_footer_empty" msgid="3301144846133808193">"Los datos de uso de batería estarán disponibles en unas horas, cuando la carga esté completa"</string>
     <string name="battery_usage_chart_label_now" msgid="4598282721949430165">"ahora"</string>
     <string name="battery_usage_timestamps_hyphen" msgid="7401188432989043905">"<xliff:g id="FROM_TIMESTAMP">%1$s</xliff:g>-<xliff:g id="TO_TIMESTAMP">%2$s</xliff:g>"</string>
-    <!-- no translation found for battery_usage_timestamps_content_description (1927748134271595985) -->
-    <skip />
+    <string name="battery_usage_timestamps_content_description" msgid="1927748134271595985">"De <xliff:g id="FROM_TIMESTAMP">%1$s</xliff:g> a <xliff:g id="TO_TIMESTAMP">%2$s</xliff:g>"</string>
     <string name="battery_usage_day_and_hour" msgid="1417890420844950881">"<xliff:g id="DAY">%1$s</xliff:g> <xliff:g id="HOUR">%2$s</xliff:g>"</string>
     <string name="battery_usage_time_info_and_battery_level" msgid="6732629268310936155">"<xliff:g id="TIME_INFO">%1$s</xliff:g> <xliff:g id="BATTERY_LEVEL">%2$s</xliff:g>"</string>
     <string name="battery_usage_chart" msgid="4114747521432440017">"Gráfico del uso de batería"</string>
@@ -2616,8 +2616,7 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"Ver por apps"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"Ver por sistemas"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
-    <!-- no translation found for battery_usage_less_than_percent_content_description (6265933174815461493) -->
-    <skip />
+    <string name="battery_usage_less_than_percent_content_description" msgid="6265933174815461493">"inferior a <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
     <string name="battery_cycle_count_footer" msgid="3642121059800373545">"Debido a la calidad de las inspecciones antes del envío, es posible que la cantidad de ciclos no sea igual a cero en el primer uso"</string>
     <string name="process_stats_summary_title" msgid="502683176231281732">"Estadísticas de procesos"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"Estadísticas para geeks sobre procesos activos"</string>
@@ -2685,12 +2684,13 @@
     <string name="adaptive_connectivity_switch_on" msgid="3653067561620745493">"Sí"</string>
     <string name="adaptive_connectivity_switch_off" msgid="5076172560836115265">"No"</string>
     <string name="adaptive_connectivity_main_switch_title" msgid="261045483524512420">"Usar la conectividad adaptable"</string>
-    <string name="cellular_security_title" msgid="7124079732186082924">"Seguridad de red móvil"</string>
+    <string name="cellular_security_title" msgid="5562899485544677941">"Seguridad de redes móviles"</string>
     <string name="cellular_security_summary" msgid="1893770670709928113">"Tipo de red, encriptación, controles de notificaciones"</string>
-    <string name="cellular_security_settings_title" msgid="116950133456981770">"Seguridad de red móvil"</string>
+    <string name="cellular_security_top_intro" msgid="6749166804080092892">"Estos parámetros de configuración ayudan a proteger tus llamadas, mensajes y datos de redes desactualizadas o no encriptadas que podrían exponerte a robos de datos o vigilancia"</string>
+    <string name="cellular_security_settings_title" msgid="7779141923670352595">"Seguridad de redes móviles"</string>
     <string name="cellular_security_notifications" msgid="4619728340612184944">"Notificaciones"</string>
-    <string name="cellular_security_notifications_controller_title" msgid="5085567551536606230">"Notificaciones de seguridad"</string>
-    <string name="cellular_security_notifications_controller_summary" msgid="2876183397456700377">"Recibe notificaciones en caso de que la red móvil a la que te hayas conectado no sea segura por falta de encriptación, o bien si la red móvil registra tus identificadores de SIM o del dispositivo únicos (IMEI o IMSI)."</string>
+    <string name="cellular_security_notifications_controller_title" msgid="4853056963523277847">"Notificaciones de red"</string>
+    <string name="cellular_security_notifications_controller_summary" msgid="8339863845393759958">"Recibe una notificación cuando tu dispositivo se conecta con una red no encriptada o cuando una red registra el ID único de tu dispositivo o SIM"</string>
     <string name="cellular_security_settings_encryption_title" msgid="4013084091666375780">"Encriptación"</string>
     <string name="cellular_security_network_generations_title" msgid="2343026988833783854">"Generaciones de redes"</string>
     <string name="cellular_security_network_generations_summary" msgid="139087814553929402">"Puedes configurar que cada tarjeta SIM instalada se conecte solo a redes que admitan 3G, 4G y 5G. La SIM no se conectará a redes 2G no seguras y antiguas. Este parámetro de configuración limita tu conectividad si solo hay redes 2G disponibles. En caso de una emergencia, se podría usar una red 2G."</string>
@@ -2963,15 +2963,14 @@
     <string name="ssl_ca_cert_info_message" msgid="3111724430981667845">"{numberOfCertificates,plural, =1{{orgName} instaló una autoridad certificadora para tu perfil de trabajo, lo que le permitirá supervisar la actividad de la red laboral, incluidos los correos electrónicos, las apps y los sitios web seguros.\n\nPara obtener más información sobre este certificado, comunícate con tu administrador.}other{{orgName} instaló autoridades certificadoras para tu perfil de trabajo, lo que les permitirá supervisar la actividad de la red laboral, como los correos electrónicos, las apps y los sitios web seguros.\n\nPara obtener más información sobre estos certificados, comunícate con tu administrador.}}"</string>
     <string name="ssl_ca_cert_warning_message" msgid="4374052724815563051">"Un tercero puede supervisar tu actividad en la red, incluido el correo electrónico, las aplicaciones y los sitios web seguros.\n\nEsto ocurre porque hay una credencial de confianza instalada en el dispositivo."</string>
     <string name="ssl_ca_cert_settings_button" msgid="2044927302268394991">"{count,plural, =1{Revisar certificado}other{Revisar certificados}}"</string>
-    <string name="user_settings_title" msgid="6550866465409807877">"Varios usuarios"</string>
+    <string name="user_settings_title" msgid="9208831545558787202">"Usuarios"</string>
     <string name="user_list_title" msgid="1387379079186123404">"Usuarios y perfiles"</string>
     <string name="user_add_user_or_profile_menu" msgid="305851380425838287">"Agregar usuario o perfil"</string>
     <string name="user_summary_restricted_profile" msgid="451650609582185813">"Perfil restringido"</string>
     <string name="user_summary_not_set_up" msgid="4602868481732886115">"No configurado"</string>
     <string name="user_summary_restricted_not_set_up" msgid="1658946988920104613">"Sin configurar - Perfil restringido"</string>
     <string name="user_summary_managed_profile_not_set_up" msgid="5739207307082458746">"Sin configurar: perfil de trabajo"</string>
-    <!-- no translation found for user_owner (2079206733011361994) -->
-    <skip />
+    <string name="user_owner" msgid="2079206733011361994">"Propietario"</string>
     <string name="user_admin" msgid="4024553191395768119">"Administrador"</string>
     <string name="user_you" msgid="3070562015202859996">"Tú (<xliff:g id="NAME">%s</xliff:g>)"</string>
     <string name="user_add_max_count" msgid="3328539978480663740">"No puedes agregar más usuarios. Quita alguno para agregar nuevos."</string>
@@ -4132,7 +4131,7 @@
     <string name="suggestion_additional_fingerprints" msgid="4726777300101156208">"Agregar otra huella dactilar"</string>
     <string name="suggestion_additional_fingerprints_summary" msgid="2825364645039666674">"Desbloquea con otro dedo"</string>
     <string name="battery_saver_on_summary" msgid="4605146593966255848">"Activado"</string>
-    <string name="battery_saver_off_scheduled_summary" msgid="2193875981740829819">"Se activará cuando quede <xliff:g id="BATTERY_PERCENTAGE">%1$s</xliff:g>"</string>
+    <string name="battery_saver_off_scheduled_summary" msgid="2193875981740829819">"Se activará cuando quede un <xliff:g id="BATTERY_PERCENTAGE">%1$s</xliff:g>"</string>
     <string name="battery_saver_off_summary" msgid="4411561435493109261">"Desactivado"</string>
     <string name="app_battery_usage_title" msgid="346558380609793334">"Uso de batería en las apps"</string>
     <string name="app_battery_usage_summary" msgid="6349965904306339539">"Establecer uso de batería para apps"</string>
@@ -4215,7 +4214,7 @@
     <string name="dark_ui_mode_disabled_summary_dark_theme_off" msgid="4154227921313505702">"Activado temporalmente por el Ahorro de batería"</string>
     <string name="dark_theme_slice_title" msgid="4684222119481114062">"Prueba el Tema oscuro"</string>
     <string name="dark_theme_slice_subtitle" msgid="5555724345330434268">"Extiende la duración de la batería"</string>
-    <string name="quick_settings_developer_tiles" msgid="7336007844525766623">"Azulejos de configuración rápida para desarrolladores"</string>
+    <string name="quick_settings_developer_tiles" msgid="7336007844525766623">"Tarjetas de configuración rápida para desarrolladores"</string>
     <string name="adb_authorization_timeout_title" msgid="6996844506783749754">"Inhabilitar tiempo de espera de autorización ADB"</string>
     <string name="adb_authorization_timeout_summary" msgid="409931540424019778">"Inhabilita la revocación automática de autorizaciones ADB para sistemas que no se volvieron a conectar dentro de un período predeterminado (7 días) o uno configurado por el usuario (mínimo de 1 día)."</string>
     <string name="sensors_off_quick_settings_title" msgid="8472151847125917167">"Sensores desactivados"</string>
@@ -4304,7 +4303,7 @@
     <string name="automatic_storage_manager_activation_warning" msgid="170508173207142665">"Tu almacenamiento ahora está a cargo del administrador de almacenamiento"</string>
     <string name="account_for_section_header" msgid="7466759342105251096">"Cuentas de <xliff:g id="USER_NAME">%1$s</xliff:g>"</string>
     <string name="auto_sync_account_title" msgid="1070908045600374254">"Sincronizar datos de apps automáticamente"</string>
-    <string name="auto_sync_account_summary" msgid="7580352130028957346">"Permitir que las apps actualicen datos automáticamente"</string>
+    <string name="auto_sync_account_summary" msgid="7580352130028957346">"Permite que las apps actualicen datos automáticamente"</string>
     <string name="account_sync_title" msgid="7036067017433297574">"Sincronización de la cuenta"</string>
     <string name="account_sync_summary_some_on" msgid="911460286297968724">"Sincronización activada para <xliff:g id="ID_1">%1$d</xliff:g> de <xliff:g id="ID_2">%2$d</xliff:g> elementos"</string>
     <string name="account_sync_summary_all_on" msgid="2953682111836599841">"Sincronización activada para todos los elementos"</string>
@@ -4433,7 +4432,7 @@
     <string name="credman_confirmation_turn_off_positive_button" msgid="5678773011513369161">"Desactivar"</string>
     <string name="credman_confirmation_change_provider_positive_button" msgid="7732302992885116967">"Cambiar"</string>
     <string name="credman_limit_error_msg_title" msgid="1525814645803612135">"Solo puedes tener 5 servicios activos"</string>
-    <string name="credman_limit_error_msg" msgid="2521803280130310063">"Desactiva al menos 1 servicio para agregar otro"</string>
+    <string name="credman_limit_error_msg" msgid="2521803280130310063">"Desactiva al menos 1 servicio para agregar otro."</string>
     <string name="credman_main_settings_intro_text" msgid="4981603639240772620">"Elige el servicio que prefieras para guardar los datos de acceso y las sugerencias de Autocompletar. Activa servicios adicionales si quieres que también te proporcionen sugerencias."</string>
     <string name="credman_enable_confirmation_message" msgid="8407841892310870169">"%1$s usa el contenido de tu pantalla para determinar qué se puede autocompletar."</string>
     <string name="credman_error_message_title" msgid="4099557206946333568">"Límite de servicios de contraseñas, llaves de acceso y datos"</string>
@@ -4644,6 +4643,8 @@
     <string name="summary_supported_service" msgid="4320535903444834786">"Puedes enviar mensajes de texto a quien quieras, incluidos los servicios de emergencia. Tu teléfono se volverá a conectar a la red móvil cuando esté disponible."</string>
     <string name="satellite_setting_summary_more_information" msgid="7729454610548016356">"La mensajería satelital podría demorar más y solo está disponible en ciertas áreas. El clima y ciertas estructuras podrían afectar su conexión. Las llamadas satelitales no están disponibles. Es posible que puedas realizar las llamadas de emergencia.\n\nLos cambios en la cuenta podrían demorar en mostrarse en Configuración. Para obtener más detalles, comunícate con tu operador."</string>
     <string name="more_about_satellite_messaging" msgid="3385673133561348509">"Más información sobre la mensajería satelital"</string>
+    <string name="satellite_warning_dialog_title" msgid="1610117852475376931">"No se puede activar <xliff:g id="FUNCTION">%1$s</xliff:g>"</string>
+    <string name="satellite_warning_dialog_content" msgid="936419945275934955">"Para activar <xliff:g id="FUNCTION">%1$s</xliff:g>, primero termina la conexión satelital"</string>
     <string name="mobile_network_apn_title" msgid="5582995550142073054">"Nombres de puntos de acceso"</string>
     <string name="keywords_access_point_names" msgid="8174967126858505945">"apn"</string>
     <string name="manual_mode_disallowed_summary" msgid="4243142645520152175">"No está disponible cuando estás conectado a <xliff:g id="CARRIER">%1$s</xliff:g>"</string>
@@ -4682,15 +4683,15 @@
     <string name="dsds_activation_failure_body_msg2" msgid="73044349546544410">"Vuelve a activar la SIM. Si el problema persiste, reinicia el dispositivo."</string>
     <string name="sim_onboarding_dialog_starting_title" msgid="4212945803784596345">"Configurar preferencias de SIM"</string>
     <string name="sim_onboarding_dialog_starting_msg" msgid="8450391476631265209">"Configura las preferencias de tu red móvil para usar varias tarjetas SIM en este dispositivo"</string>
-    <string name="sim_onboarding_label_sim_title" msgid="273162565849288273">"Etiqueta tus SIM"</string>
+    <string name="sim_onboarding_label_sim_title" msgid="273162565849288273">"Etiqueta tus SIMs"</string>
     <string name="sim_onboarding_label_sim_msg" msgid="5105859235219529056">"Verás estas etiquetas cuando realices llamadas, envíes mensajes de texto y uses datos, y en la Configuración"</string>
     <string name="sim_onboarding_label_sim_dialog_title" msgid="5839073125605286120">"Etiqueta de SIM"</string>
     <string name="sim_onboarding_label_sim_dialog_label" msgid="9020433985426525185">"Etiqueta"</string>
     <string name="sim_onboarding_select_sim_title" msgid="5895262188167744055">"Selecciona qué SIM usar"</string>
     <string name="sim_onboarding_select_sim_msg" msgid="5638859405391915048">"Puedes usar 2 SIM a la vez"</string>
-    <string name="sim_onboarding_primary_sim_title" msgid="2793090401371135675">"Configura tus SIM principales"</string>
-    <string name="sim_onboarding_primary_sim_msg" msgid="5484656671490558032">"Elige qué SIM se deben usar de manera predeterminada para llamadas, mensajes de texto y datos"</string>
-    <string name="primary_sim_title" msgid="2508161011657571566">"Tus SIM principales"</string>
+    <string name="sim_onboarding_primary_sim_title" msgid="2793090401371135675">"Configura tus SIMs principales"</string>
+    <string name="sim_onboarding_primary_sim_msg" msgid="5484656671490558032">"Elige qué SIMs se deben usar de manera predeterminada para llamadas, mensajes de texto y datos"</string>
+    <string name="primary_sim_title" msgid="2508161011657571566">"Tus SIMs principales"</string>
     <string name="primary_sim_calls_title" msgid="4961189133582615685">"Llamadas"</string>
     <string name="primary_sim_texts_title" msgid="1287584042733097749">"Mensajes de texto"</string>
     <string name="primary_sim_automatic_data_title" msgid="1265528923229642480">"Cambio de datos automático"</string>
@@ -4805,19 +4806,27 @@
     <string name="work_policy_privacy_settings" msgid="2702644843505242596">"Información sobre la política de tu trabajo"</string>
     <string name="work_policy_privacy_settings_summary" msgid="690118670737638405">"Configuración gestionada por tu administrador de TI"</string>
     <string name="track_frame_time_keywords" msgid="7885340257945922239">"GPU"</string>
-    <string name="enable_16k_pages" msgid="5009476566957520607">"Inicia con páginas de 16 KB"</string>
-    <string name="enable_16k_pages_summary" msgid="428117226069445198">"Inicia con kernel compatible con páginas de 16 KB"</string>
-    <string name="confirm_enable_16k_pages_title" msgid="6751570067857011642">"¿Quieres reiniciar con el kernel compatible con páginas de 16 KB?"</string>
-    <string name="confirm_enable_16k_pages_text" msgid="702888115148257215">"ADVERTENCIA: Algunas aplicaciones podrían no ser compatibles con este modo. El dispositivo se reiniciará luego de la confirmación."</string>
-    <string name="confirm_enable_4k_pages_title" msgid="626987400420355263">"¿Quieres reiniciar con el kernel compatible con páginas de 4 KB?"</string>
-    <string name="confirm_enable_4k_pages_text" msgid="6168921566226074524">"El dispositivo se reiniciará luego de la confirmación."</string>
+    <string name="enable_16k_pages" msgid="8001470927566110689">"Iniciar en tamaño de página 16 KB"</string>
+    <string name="enable_16k_pages_summary" msgid="1964363364670306912">"Iniciar con kernel compatible con páginas de 16 KB"</string>
+    <string name="confirm_enable_16k_pages_title" msgid="1286925577014793351">"Cambiar del modo de 4 KB al de 16 KB"</string>
+    <string name="confirm_enable_16k_pages_text" msgid="570198382662424714">"Estás en un modo independiente de la página, ejecutando un kernel de 4 KB, y cambiarás al modo de 16 KB. No se puede garantizar la integridad del software en este modo, y los datos almacenados en el teléfono podrían estar en riesgo durante el desbloqueo del bootloader. Esta acción reiniciará el dispositivo. Algunas funciones quedan inhabilitadas en estos modos, así que algunas aplicaciones podrían no ejecutarse. Para revertir el dispositivo al modo de producción, debes volver al modo de 4 KB y bloquear el bootloader, lo que restablecerá la configuración de fábrica del dispositivo. Una vez que el dispositivo se inicie correctamente ejecutando Android, inhabilita el desbloqueo para OEM en Opciones para desarrolladores."</string>
+    <string name="confirm_enable_4k_pages_title" msgid="3210360137887034659">"Cambiar del modo de 16 KB al de 4 KB"</string>
+    <string name="confirm_enable_4k_pages_text" msgid="155070605667160083">"Estás en un modo independiente de la página, ejecutando un kernel de 16 KB, y cambiarás al modo de 4 KB. No se puede garantizar la integridad del software en este modo, y los datos almacenados en el teléfono podrían estar en riesgo durante el desbloqueo del bootloader. Esta acción reiniciará el dispositivo. Algunas funciones quedan inhabilitadas en estos modos, así que algunas aplicaciones podrían no ejecutarse. Para revertir el dispositivo al modo de producción, debes bloquear el bootloader, lo que restablecerá la configuración de fábrica del dispositivo. Una vez que el dispositivo se inicie correctamente ejecutando Android, inhabilita el desbloqueo para OEM en Opciones para desarrolladores."</string>
     <string name="toast_16k_update_failed_text" msgid="8888858987184345567">"No se pudo actualizar el kernel a uno compatible con páginas de 16 KB"</string>
     <string name="progress_16k_ota_title" msgid="2117218313875523741">"Aplicando cambio"</string>
-    <string name="confirm_format_ext4_title" msgid="4453684705528818873">"¿Quieres volver a formatear el dispositivo a ext4?"</string>
-    <string name="confirm_format_ext4_text" msgid="8164677342487500794">"La opción para desarrolladores 16K es compatible con el sistema de archivos ext4. Se limpiará el dispositivo y el sistema de archivos se cambiará a ext4 luego de confirmar la acción."</string>
-    <string name="format_ext4_failure_toast" msgid="6904611547290793885">"No se pudo volver a formatear el dispositivo y falló la eliminación de la partición de datos a ext4."</string>
-    <string name="confirm_oem_unlock_for_16k_title" msgid="6338135847153690912">"Se requiere el desbloqueo de OEM"</string>
-    <string name="confirm_oem_unlock_for_16k_text" msgid="236718973897424382">"Se debe hacer un desbloqueo de OEM del dispositivo antes de usar la opción para desarrolladores de 16K. También se requiere ese tipo de desbloqueo para formatear los datos del usuario. Haz un desbloqueo de OEM y vuelve a intentarlo."</string>
+    <string name="confirm_format_ext4_title" msgid="6696191800594435577">"¿Quieres volver a formatear el dispositivo a ext4? (paso obligatorio para el modo de 16 KB)"</string>
+    <string name="confirm_format_ext4_text" msgid="7940372488624630214">"La partición de datos del dispositivo debe convertirse a ext4 antes de usar la opción para desarrolladores de 16 KB. No se puede garantizar la integridad del software en este modo, y los datos almacenados en el teléfono podrían estar en riesgo durante el desbloqueo del bootloader. Si activas la opción de 16 KB, deberás volver a reiniciar. Una vez que se habilite este modo, podrás cambiar entre los modos de 4 KB y 16 KB con un único reinicio. Algunas funciones quedan inhabilitadas en estos modos, así que algunas aplicaciones podrían no ejecutarse. Para revertir el dispositivo al modo de producción, debes volver al modo de 4 KB y bloquear el bootloader, lo que restablecerá la configuración del dispositivo. Una vez que el dispositivo se inicie correctamente ejecutando Android, inhabilita el desbloqueo para OEM en Opciones para desarrolladores. Después de la confirmación, se limpiará el dispositivo, y el sistema de archivos cambiará a ext4. Una vez que se complete el proceso, vuelve a habilitar nuevamente el modo de 16 KB."</string>
+    <string name="format_ext4_failure_toast" msgid="8059453995800471549">"No se pudo volver a formatear el dispositivo y falló la limpieza de la partición de datos a ext4."</string>
+    <string name="confirm_oem_unlock_for_16k_title" msgid="5374451262432025419">"Debes desbloquear el bootloader para usar el modo de 16 KB"</string>
+    <string name="confirm_oem_unlock_for_16k_text" msgid="3583604865119937957">"Este dispositivo debe tener el bootloader desbloqueado para poder usar la opción para desarrolladores de 16 KB. No se puede garantizar la integridad del software en este modo, y los datos almacenados en el teléfono podrían estar en riesgo durante el desbloqueo del bootloader. Se limpiarán la configuración y los datos del usuario cuando se active el modo de 16 KB. Una vez que se desbloquee el bootloader, deberás reiniciar dos veces para activar la opción de 16 KB. Una vez que se habilite este modo, podrás cambiar entre los modos de 4 KB y 16 KB con un único reinicio. Algunas funciones quedan inhabilitadas en estos modos, así que algunas aplicaciones podrían no ejecutarse. Para revertir el dispositivo al modo de producción, debes volver al modo de 4 KB y bloquear el dispositivo con OEM/bootloader (lo que restablecerá la configuración de fábrica). Desbloquea el bootloader y vuelve a intentarlo. Puedes ver las instrucciones de este proceso en &lt;a href=\"https://source.android.com/docs/core/architecture/bootloader/locking_unlocking\"&gt;https://source.android.com/docs/core/architecture/bootloader/locking_unlocking&lt;/a&gt;"</string>
+    <string name="page_agnostic_4k_pages_title" msgid="1184703958249093215">"Modo independiente de la página de 4 KB en uso"</string>
+    <string name="page_agnostic_4k_pages_text_short" msgid="2894243902906666242">"Estás en el modo de 4 KB del modo independiente de la página. No se puede garantizar la integridad del software en este modo, y los datos almacenados en el teléfono podrían estar en riesgo durante el desbloqueo del bootloader. Algunas funciones quedan inhabilitadas en estos modos, así que algunas aplicaciones podrían no ejecutarse. Para volver a entrar al modo de producción, debes bloquear el bootloader del dispositivo. Presiona para obtener más información."</string>
+    <string name="page_agnostic_4k_pages_text" msgid="8284806650260868833">"Estás en el modo de 4 KB del modo independiente de la página. No se puede garantizar la integridad del software en este modo, y los datos almacenados en el teléfono podrían estar en riesgo durante el desbloqueo del bootloader. Algunas funciones quedan inhabilitadas en estos modos, así que algunas aplicaciones podrían no ejecutarse. Para volver a entrar al modo de producción, debes bloquear el bootloader del dispositivo. Se restablecerá la configuración de fábrica del dispositivo, que quedará en modo de producción. Una vez que el dispositivo se inicie correctamente ejecutando Android, inhabilita el desbloqueo para OEM en Opciones para desarrolladores. Si el dispositivo no se puede iniciar ejecutando Android o si es inestable, actualízalo con las imágenes de fábrica más recientes de &lt;a href=\"https://developers.google.com/android/images\"&gt;https://developers.google.com/android/images&lt;/a&gt;, o bien usa &lt;a href=\"https://flash.android.com/back-to-public\"&gt;https://flash.android.com/back-to-public&lt;/a&gt; y selecciona \"Limpiar el dispositivo\", \"Bloquear el bootloader\" y \"Forzar la escritura de todas las particiones en la memoria flash\"."</string>
+    <string name="page_agnostic_16k_pages_title" msgid="7762533464569818498">"Modo independiente de la página de 16 KB en uso"</string>
+    <string name="page_agnostic_16k_pages_text_short" msgid="269039281591806585">"Estás en el modo de 16 KB del modo independiente de la página. No se puede garantizar la integridad del software en este modo, y los datos almacenados en el teléfono podrían estar en riesgo durante el desbloqueo del bootloader. Algunas funciones quedan inhabilitadas en estos modos, así que algunas aplicaciones podrían no ejecutarse. Para volver a entrar al modo de producción, debes volver al modo de 4 KB y bloquear el bootloader del dispositivo. Presiona para obtener más información."</string>
+    <string name="page_agnostic_16k_pages_text" msgid="6208765386837706582">"Estás en el modo de 16 KB del modo independiente de la página. No se puede garantizar la integridad del software en este modo, y los datos almacenados en el teléfono podrían estar en riesgo durante el desbloqueo del bootloader. Algunas funciones quedan inhabilitadas en estos modos, así que algunas aplicaciones podrían no ejecutarse. Para volver a entrar al modo de producción, debes volver al modo de 4 KB y bloquear el bootloader del dispositivo. Se restablecerá la configuración de fábrica del dispositivo, que quedará en modo de producción. Una vez que el dispositivo se inicie correctamente ejecutando Android, inhabilita el desbloqueo para OEM en Opciones para desarrolladores. Si el dispositivo no se puede iniciar ejecutando Android o si es inestable, actualízalo con las imágenes de fábrica más recientes de &lt;a href=\"https://developers.google.com/android/images\"&gt;https://developers.google.com/android/images&lt;/a&gt;, o bien usa &lt;a href=\"https://flash.android.com/back-to-public\"&gt;https://flash.android.com/back-to-public&lt;/a&gt; y selecciona \"Limpiar el dispositivo\", \"Bloquear el bootloader\" y \"Forzar la escritura de todas las particiones en la memoria flash\"."</string>
+    <string name="page_agnostic_notification_channel_name" msgid="1658444283036376361">"Modo independiente de la página de 16 KB"</string>
+    <string name="page_agnostic_notification_action" msgid="2309805437430150456">"Leer más"</string>
     <string name="bug_report_handler_title" msgid="713439959113250125">"Controlador de informes de errores"</string>
     <string name="bug_report_handler_picker_footer_text" msgid="4935758328366585673">"Determina qué app controla el acceso directo a los informes de errores en el dispositivo."</string>
     <string name="personal_profile_app_subtext" msgid="5586060806997067676">"Personal"</string>
@@ -4879,10 +4888,10 @@
     <string name="media_controls_show_player" msgid="8504571042365814021">"Mostrar reproductor"</string>
     <string name="keywords_media_controls" msgid="8345490568291778638">"contenido multimedia"</string>
     <string name="camera_extensions_fallback_title" msgid="3604579046777004989">"Permitir extensiones de software de la cámara"</string>
-    <string name="camera_extensions_fallback_description" msgid="6939818294458854536">"Permite la implementación predeterminada de software de funciones avanzadas de la cámara, como la videografía audible"</string>
+    <string name="camera_extensions_fallback_description" msgid="4306833827773277263">"Habilita la implementación predeterminada de software de funciones avanzadas de la cámara, como HDR, Visión nocturna y otras extensiones de la cámara."</string>
     <string name="connected_device_see_all_summary" msgid="2056010318537268108">"Se activará el Bluetooth"</string>
     <string name="provider_internet_settings" msgid="3831259474776313323">"Internet"</string>
-    <string name="provider_network_settings_title" msgid="2624756136016346774">"SIM"</string>
+    <string name="provider_network_settings_title" msgid="2624756136016346774">"SIMs"</string>
     <string name="calls_and_sms" msgid="1931855083959003306">"Llamadas y SMS"</string>
     <string name="calls_and_sms_category" msgid="3788238090898237767">"Llamada por Wi‑Fi"</string>
     <string name="calls_sms_wfc_summary" msgid="3940529919408667336">"Hacer y recibir llamadas a través de Wi-Fi"</string>
@@ -4949,6 +4958,7 @@
     <string name="default_print_service_main_switch_title" msgid="4697133737128324036">"Usar servicio de impresión"</string>
     <string name="multiple_users_main_switch_title" msgid="6686858308083037810">"Permitir varios usuarios"</string>
     <string name="multiple_users_main_switch_keywords" msgid="4845954458094134356">"permitir, varios, usuarios, habilitar, muchos"</string>
+    <string name="multiple_users_title_keywords" msgid="2395593167746225172">"múltiples, usuarios, perfiles, personas, cuentas, cambiar, muchos"</string>
     <string name="wireless_debugging_main_switch_title" msgid="8463499572781441719">"Usar depuración inalámbrica"</string>
     <string name="graphics_driver_main_switch_title" msgid="6125172901855813790">"Usar las preferencias del controlador gráfico"</string>
     <string name="night_light_main_switch_title" msgid="3428298022467805219">"Usar Luz nocturna"</string>
@@ -4971,8 +4981,8 @@
     <string name="enable_2g_title" msgid="8184757884636162942">"Permitir 2G"</string>
     <string name="enable_2g_summary" msgid="2794534052372565914">"2G es menos seguro, pero podría mejorar tu conexión en algunas ubicaciones. Para llamadas de emergencia, siempre se permite 2G"</string>
     <string name="enable_2g_summary_disabled_carrier" msgid="8141118453219482762">"<xliff:g id="CARRIER_NAME_2G">%1$s</xliff:g> requiere 2G para brindar servicio"</string>
-    <string name="require_cellular_encryption_title" msgid="7516008146269371585">"Solicitar encriptación"</string>
-    <string name="require_cellular_encryption_summary" msgid="4813823321032908641">"La encriptación es más segura, pero es posible que no puedas establecer conexión en algunas ubicaciones. No es necesaria la encriptación para realizar llamadas de emergencia."</string>
+    <string name="require_cellular_encryption_title" msgid="6087085031703089235">"Permitir solo las redes encriptadas"</string>
+    <string name="require_cellular_encryption_summary" msgid="6090569065420631457">"Esto es más seguro, pero podría limitar tu conexión de red móvil en algunas ubicaciones. Las llamadas de emergencia siempre están permitidas"</string>
     <string name="app_info_all_services_label" msgid="1487070364839071105">"Todos los servicios"</string>
     <string name="show_clip_access_notification" msgid="7782300987639778542">"Mostrar acceso a portapapeles"</string>
     <string name="show_clip_access_notification_summary" msgid="474090757777203207">"Muestra un mensaje cuando las apps accedan a texto, imágenes y otro contenido que hayas copiado"</string>
@@ -4983,8 +4993,12 @@
     <string name="uwb_settings_summary_airplane_mode" msgid="1328864888135086484">"Desactiva el modo de avión para usar UWB"</string>
     <string name="uwb_settings_summary_no_uwb_regulatory" msgid="3465456428217979428">"UWB no está disponible en la ubicación actual"</string>
     <string name="thread_network_settings_title" msgid="4212301030523859220">"Thread"</string>
-    <string name="thread_network_settings_summary" msgid="8065599651021748339">"Conéctate a dispositivos compatibles usando Thread para obtener una experiencia fluida de casa inteligente"</string>
-    <string name="thread_network_settings_summary_airplane_mode" msgid="7207252895832446979">"Desactiva el modo de avión para usar Thread"</string>
+    <!-- no translation found for thread_network_settings_main_switch_title (3859168481929323474) -->
+    <skip />
+    <!-- no translation found for thread_network_settings_footer_title (7385600318850220927) -->
+    <skip />
+    <!-- no translation found for thread_network_settings_learn_more (8278498005848565050) -->
+    <skip />
     <string name="camera_toggle_title" msgid="8952668677727244992">"Acceso a la cámara"</string>
     <string name="mic_toggle_title" msgid="265145278323852547">"Acceso al micrófono"</string>
     <string name="perm_toggle_description" msgid="5754629581767319022">"Para apps y servicios"</string>
@@ -5195,8 +5209,6 @@
     <string name="force_swcrypto_fallback_title" msgid="8053166299808645593">"Forzar criptografía de protección de software"</string>
     <string name="force_swcrypto_fallback_summary" msgid="181969966310309701">"Forzar la administración de claves de DRM para usar criptografía de caja blanca basada en software"</string>
     <string name="fingerprint_acquired_imager_dirty_udfps" msgid="7005042288289506776">"Limpia la pantalla cerca del sensor y vuelve a intentarlo"</string>
-    <!-- no translation found for sim_category_converted_sim (8575548015816988908) -->
-    <skip />
-    <!-- no translation found for sync_across_devices_title (3447757705383089345) -->
-    <skip />
+    <string name="sim_category_converted_sim" msgid="8575548015816988908">"Se convirtió a eSIM. Quitar y descartar."</string>
+    <string name="sync_across_devices_title" msgid="3447757705383089345">"Sincronizar dispositivos"</string>
 </resources>

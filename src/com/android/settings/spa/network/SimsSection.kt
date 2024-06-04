@@ -37,7 +37,8 @@ import com.android.settings.R
 import com.android.settings.Utils
 import com.android.settings.network.SubscriptionUtil
 import com.android.settings.network.telephony.MobileNetworkUtils
-import com.android.settings.network.telephony.isSubscriptionEnabledFlow
+import com.android.settings.network.telephony.SubscriptionActivationRepository
+import com.android.settings.network.telephony.SubscriptionRepository
 import com.android.settings.network.telephony.phoneNumberFlow
 import com.android.settingslib.spa.widget.preference.PreferenceModel
 import com.android.settingslib.spa.widget.preference.SwitchPreferenceModel
@@ -62,13 +63,16 @@ fun SimsSection(subscriptionInfoList: List<SubscriptionInfo>) {
 private fun SimPreference(subInfo: SubscriptionInfo) {
     val context = LocalContext.current
     val checked = remember(subInfo.subscriptionId) {
-        context.isSubscriptionEnabledFlow(subInfo.subscriptionId)
+        SubscriptionRepository(context).isSubscriptionEnabledFlow(subInfo.subscriptionId)
     }.collectAsStateWithLifecycle(initialValue = false)
     val phoneNumber = phoneNumber(subInfo)
     val isConvertedPsim by remember(subInfo) {
         flow {
             emit(SubscriptionUtil.isConvertedPsimSubscription(subInfo))
         }
+    }.collectAsStateWithLifecycle(initialValue = false)
+    val isActivationChangeable by remember {
+        SubscriptionActivationRepository(context).isActivationChangeableFlow()
     }.collectAsStateWithLifecycle(initialValue = false)
     RestrictedTwoTargetSwitchPreference(
         model = object : SwitchPreferenceModel {
@@ -81,7 +85,7 @@ private fun SimPreference(subInfo: SubscriptionInfo) {
                 }
             }
             override val icon = @Composable { SimIcon(subInfo.isEmbedded) }
-            override val changeable = { !isConvertedPsim }
+            override val changeable = { isActivationChangeable && !isConvertedPsim }
             override val checked = { checked.value }
             override val onCheckedChange = { newChecked: Boolean ->
                 SubscriptionUtil.startToggleSubscriptionDialogActivity(

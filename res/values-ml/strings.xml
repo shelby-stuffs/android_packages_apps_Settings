@@ -286,7 +286,8 @@
     <string name="location_settings_footer_general" msgid="1040507068701188821">"സമീപമുള്ള ഉപകരണങ്ങളുടെ അനുമതിയുള്ള ആപ്പുകൾക്ക്, കണക്‌റ്റ് ചെയ്‌തിരിക്കുന്ന ഉപകരണങ്ങളുടെ ആപേക്ഷിക സ്ഥാനം നിർണ്ണയിക്കാനാകും."</string>
     <string name="location_settings_footer_location_off" msgid="8568995909147566720">"ആപ്പുകൾക്കും സേവനങ്ങൾക്കും ലൊക്കേഷൻ ആക്‌സസ് ഓഫാണ്. നിങ്ങൾ അടിയന്തര നമ്പറിലേക്ക് കോൾ ചെയ്യുമ്പോഴോ ടെക്‌സ്‌റ്റ് ചെയ്യുമ്പോഴോ നിങ്ങളുടെ ഉപകരണ ലൊക്കേഷൻ, അടിയന്തര സാഹചര്യത്തിൽ പ്രതികരിക്കുന്നവർക്ക് തുടർന്നും അയച്ചേക്കാം."</string>
     <string name="location_settings_footer_learn_more_content_description" msgid="349380666660145540">"ലൊക്കേഷൻ ക്രമീകരണത്തെക്കുറിച്ച് കൂടുതലറിയുക"</string>
-    <string name="location_settings_tooltip_text_for_chrome" msgid="3574930966097093550">"ലൊക്കേഷൻ ആക്സസ് മാറ്റാൻ, ക്രമീകരണം &gt; സുരക്ഷയും സ്വകാര്യതയും &gt; സ്വകാര്യതാ നിയന്ത്രണങ്ങൾ എന്നിവ സന്ദർശിക്കുക"</string>
+    <!-- no translation found for location_settings_tooltip_text_for_chrome (5781821709250544575) -->
+    <skip />
     <string name="account_settings_title" msgid="9138880127246241885">"അക്കൗണ്ടുകൾ"</string>
     <string name="security_settings_title" msgid="6710768415432791970">"സുരക്ഷ"</string>
     <string name="encryption_and_credential_settings_title" msgid="5856216318961482983">"എൻക്രിപ്‌ഷനും ക്രെഡന്‍ഷ്യലുകളും"</string>
@@ -566,7 +567,8 @@
     <string name="private_space_auto_lock_every_time" msgid="1215061855836002830">"ഉപകരണം ലോക്ക് ചെയ്യുമ്പോഴെല്ലാം"</string>
     <string name="private_space_auto_lock_after_inactivity" msgid="1748673030841528649">"5 മിനിറ്റ് നിഷ്‌ക്രിയമായതിന് ശേഷം"</string>
     <string name="private_space_auto_lock_after_device_restart" msgid="288755768725895029">"ഉപകരണം റീസ്റ്റാർട്ട് ചെയ്തശേഷം മാത്രം"</string>
-    <string name="private_space_hide_page_title" msgid="4351404195904146088">"സ്വകാര്യ സ്പേസ് ലോക്ക് ചെയ്തിരിക്കുമ്പോൾ അത് മറയ്ക്കുക"</string>
+    <string name="private_space_hide_page_title" msgid="3364639176511877414">"സ്വകാര്യ സ്പേസ് മറയ്ക്കുക"</string>
+    <string name="private_space_hide_when_locked" msgid="6219472348124151797">"ലോക്ക് ചെയ്തിരിക്കുമ്പോൾ സ്വകാര്യ സ്പേസ് മറയ്ക്കുക"</string>
     <string name="private_space_hide_page_summary" msgid="6247773353685839242">"നിങ്ങളുടെ ഉപകരണത്തിൽ നിങ്ങൾക്ക് ഒരു സ്വകാര്യ സ്‌പേസ് ഉണ്ടെന്ന് മറ്റുള്ളവർ അറിയാതിരിക്കാൻ നിങ്ങളുടെ ആപ്പ് ലിസ്‌റ്റിൽ നിന്ന് അത് മറയ്ക്കാം"</string>
     <string name="private_space_access_header" msgid="1077082416567150819">"മറച്ചിരിക്കുമ്പോൾ സ്വകാര്യ സ്പേസ് ആക്സസ് ചെയ്യൂ"</string>
     <string name="private_space_search_description" msgid="1538155187658429618">"തിരയൽ ബാറിൽ \"സ്വകാര്യ സ്പേസ്\" എന്ന് നൽകുക"</string>
@@ -1497,8 +1499,7 @@
     <string name="reset_esim_error_title" msgid="6516110227665862295">"ഇ-സിമ്മുകൾ മായ്ക്കാനാകുന്നില്ല"</string>
     <string name="reset_esim_error_msg" msgid="8459527827897797168">"എന്തോ കുഴപ്പമുണ്ടായതിനാൽ നിങ്ങളുടെ ഇ-സിമ്മുകൾ മായ്‌ച്ചിട്ടില്ല.\n\nനിങ്ങളുടെ ഉപകരണം റീസ്‌റ്റാർട്ട് ചെയ്‌ത് വീണ്ടും ശ്രമിക്കുക."</string>
     <string name="reset_private_space_delete_title" msgid="2555885198282572990">"സ്വകാര്യ സ്പേസ് ഇല്ലാതാക്കുക"</string>
-    <!-- no translation found for reset_private_space_delete_dialog (7506471054091800883) -->
-    <skip />
+    <string name="reset_private_space_delete_dialog" msgid="7506471054091800883">"നിങ്ങളുടെ ഉപകരണത്തിൽ ഒരു സ്വകാര്യ സ്പേസ് ഉണ്ടെങ്കിൽ, അത് ശാശ്വതമായി ഇല്ലാതാക്കി നിങ്ങളുടെ സ്പേസിലേക്ക് ചേർത്ത Google Account നീക്കം ചെയ്യുന്നതാണ്.\n\nനിങ്ങളുടെ സ്പേസിലെ എല്ലാ ആപ്പുകളും അവയുടെ ഡാറ്റയും ശാശ്വതമായി ഇല്ലാതാക്കും."</string>
     <string name="main_clear_title" msgid="277664302144837723">"എല്ലാ ഡാറ്റയും മായ്‌ക്കുക (ഫാക്‌ടറി റീസെറ്റ്)"</string>
     <string name="main_clear_short_title" msgid="4752094765533020696">"എല്ലാ ഡാറ്റയും മായ്‌ക്കുക (ഫാക്‌ടറി റീസെറ്റ്)"</string>
     <string name="main_clear_desc_also_erases_external" msgid="3687911419628956693"><li>"സംഗീതം"</li>\n<li>"ഫോട്ടോകൾ"</li>\n<li>"മറ്റ് ഉപയോക്തൃ ഡാറ്റ"</li></string>
@@ -1811,6 +1812,7 @@
     <string name="app_install_details_group_title" msgid="1172114479073704677">"സ്റ്റോർ"</string>
     <string name="app_install_details_title" msgid="7783556181897142187">"ആപ്പ് വിശദാംശങ്ങൾ"</string>
     <string name="app_install_details_summary" msgid="2013043219249992373">"<xliff:g id="APP_STORE">%1$s</xliff:g> എന്നതിൽ നിന്ന് ആപ്പ് ഇൻസ്റ്റാൾ ചെയ്തു"</string>
+    <string name="app_install_details_different_initiating_package_summary" msgid="6093306593167176688">"<xliff:g id="APP_STORE1">%1$s</xliff:g> എന്നതിൽ നിന്ന് ആപ്പ് ഇൻസ്റ്റാൾ ചെയ്തു (<xliff:g id="APP_STORE2">%2$s</xliff:g> വഴി)"</string>
     <string name="instant_app_details_summary" msgid="417197491598208216">"<xliff:g id="APP_STORE">%1$s</xliff:g> സംബന്ധിച്ച കൂടുതൽ ‌വിവരങ്ങൾ"</string>
     <string name="app_ops_running" msgid="6127474473137428721">"പ്രവര്‍ത്തിക്കുന്നു"</string>
     <string name="app_ops_never_used" msgid="9038133162371204506">"(ഒരിക്കലും ഉപയോഗിക്കരുത്)"</string>
@@ -2016,7 +2018,6 @@
     <string name="accessibility_color_contrast_title" msgid="5757724357142452378">"കളർ കോൺട്രാസ്റ്റ്"</string>
     <string name="accessibility_color_contrast_intro" msgid="7795090401101214930">"ഉയർന്ന കോൺട്രാസ്റ്റ്, ടെക്സ്റ്റിനെയും ബട്ടണുകളെയും ഐക്കണുകളെയും കൂടുതൽ വേറിട്ട് നിർത്തും. നിങ്ങൾക്ക് മികച്ചതെന്ന് തോന്നുന്ന കോൺട്രാസ്റ്റ് തിരഞ്ഞെടുക്കുക."</string>
     <string name="color_contrast_note" msgid="7592686603372566198">"എല്ലാ നിറങ്ങളുടെയും ടെക്സ്റ്റിന്റെയും കോൺട്രാസ്റ്റ് ക്രമീകരണങ്ങൾക്ക് ചില ആപ്പുകളിൽ പിന്തുണയുണ്ടാകില്ല"</string>
-    <string name="accessibility_color_contrast_summary" msgid="7563237683500106632">"നിങ്ങളുടെ സ്ക്രീനിന്റെ പശ്ചാത്തല നിറത്തിനെതിരെ നിറങ്ങളും ടെക്സ്റ്റും ദൃശ്യമാകുന്ന രീതി ക്രമീകരിക്കുക"</string>
     <string name="color_contrast_preview" msgid="6791430227535363883">"പ്രിവ്യൂ"</string>
     <string name="color_contrast_preview_sender_name" msgid="8641943417589238147">"ഹെലൻ, ആദം"</string>
     <string name="color_contrast_preview_email_send_date" msgid="2108702726171600080">"2 ദിവസം മുമ്പ്"</string>
@@ -2290,9 +2291,9 @@
     <string name="accessibility_hearingaid_pair_instructions_title" msgid="2357706801112207624">"ശ്രവണ സഹായികൾ ജോടിയാക്കുക"</string>
     <string name="accessibility_hearingaid_pair_instructions_message" msgid="581652489109350119">"അടുത്ത സ്ക്രീനിൽ, നിങ്ങളുടെ ശ്രവണ സഹായികളിൽ ടാപ്പ് ചെയ്യുക. ഇടത്, വലത് ചെവികൾ പ്രത്യേകം ജോടിയാക്കേണ്ടി വന്നേക്കാം.\n\nനിങ്ങളുടെ ശ്രവണ സഹായികൾ ഓണാക്കിയിട്ടുണ്ടെന്നും ജോടിയാക്കാൻ തയ്യാറാണെന്നും ഉറപ്പാക്കുക."</string>
     <string name="accessibility_hearingaid_active_device_summary" msgid="509703438222873967">"<xliff:g id="DEVICE_NAME">%1$s</xliff:g> സജീവമാണ്"</string>
-    <string name="accessibility_hearingaid_left_side_device_summary" msgid="1907302799168261001">"<xliff:g id="DEVICE_NAME">%1$s</xliff:g>, ഇടത് മാത്രം"</string>
-    <string name="accessibility_hearingaid_right_side_device_summary" msgid="148257064855054376">"<xliff:g id="DEVICE_NAME">%1$s</xliff:g>, വലത് മാത്രം"</string>
-    <string name="accessibility_hearingaid_left_and_right_side_device_summary" msgid="4268221140368164452">"<xliff:g id="DEVICE_NAME">%1$s</xliff:g>, ഇടതും വലതും"</string>
+    <string name="accessibility_hearingaid_left_side_device_summary" msgid="12349058624943107">"<xliff:g id="DEVICE_NAME">%1$s</xliff:g> / ഇടതുഭാഗത്ത് മാത്രം"</string>
+    <string name="accessibility_hearingaid_right_side_device_summary" msgid="8645789702686724188">"<xliff:g id="DEVICE_NAME">%1$s</xliff:g> / വലതുഭാഗത്ത് മാത്രം"</string>
+    <string name="accessibility_hearingaid_left_and_right_side_device_summary" msgid="3314103411842694197">"<xliff:g id="DEVICE_NAME">%1$s</xliff:g> / ഇടതുഭാഗത്തും വലതുഭാഗത്തും"</string>
     <string name="accessibility_hearingaid_more_device_summary" msgid="8092641784056942546">"<xliff:g id="DEVICE_NAME">%1$s</xliff:g> +1 കൂടി"</string>
     <string name="accessibility_hearing_device_pairing_title" msgid="2701812183769537320">"പുതിയ ഉപകരണം ജോടിയാക്കുക"</string>
     <string name="accessibility_hearing_device_connected_title" msgid="3785140037249487287">"ശ്രവണ ഉപകരണങ്ങൾ"</string>
@@ -2571,7 +2572,7 @@
     <string name="battery_saver_turn_on_summary" msgid="1433919417587171160">"ബാറ്ററി ലൈഫ് നീട്ടുക"</string>
     <string name="battery_saver_sticky_title_new" msgid="5942813274115684599">"ചാർജായാൽ ഓഫാക്കുക"</string>
     <string name="battery_saver_sticky_title_percentage" msgid="1178162022087559148">"<xliff:g id="BATTERY_PERCENTAGE">%1$s</xliff:g> ആകുമ്പോൾ ഓഫാക്കുക"</string>
-    <string name="battery_saver_sticky_description_new" msgid="6472610662679038342">"ബാറ്ററി ചാർജ് <xliff:g id="BATTERY_PERCENTAGE">%1$s</xliff:g> ആകുമ്പോൾ ബാറ്ററി ലാഭിക്കൽ ഓഫാകും"</string>
+    <string name="battery_saver_sticky_description_new" msgid="8543277078136947874">"ബാറ്ററി <xliff:g id="BATTERY_PERCENTAGE">%1$s</xliff:g>-ന് മുകളിൽ ചാർജ് ചെയ്യുമ്പോൾ ബാറ്ററി സേവർ ഓഫാകും"</string>
     <!-- no translation found for battery_saver_seekbar_title (3712266470054006641) -->
     <skip />
     <string name="battery_saver_seekbar_title_placeholder" msgid="7141264642540687540">"ഓണാക്കുക"</string>
@@ -2601,8 +2602,7 @@
     <string name="battery_usage_screen_footer_empty" msgid="3301144846133808193">"പൂർണ്ണമായി ചാർജ് ചെയ്താൽ, ഏതാനും മണിക്കൂറുകൾക്കുള്ളിൽ ബാറ്ററി ഉപയോഗ ഡാറ്റ ലഭ്യമാകും ബാറ്ററി പൂർണ്ണമായി ചാർജ് ചെയ്തതിന് ശേഷം കുറച്ച് മണിക്കൂറുകൾക്ക് ശേഷം ബാറ്ററി ഉപയോഗ ഡാറ്റ ലഭ്യമാകും"</string>
     <string name="battery_usage_chart_label_now" msgid="4598282721949430165">"ഇപ്പോൾ"</string>
     <string name="battery_usage_timestamps_hyphen" msgid="7401188432989043905">"<xliff:g id="FROM_TIMESTAMP">%1$s</xliff:g> - <xliff:g id="TO_TIMESTAMP">%2$s</xliff:g>"</string>
-    <!-- no translation found for battery_usage_timestamps_content_description (1927748134271595985) -->
-    <skip />
+    <string name="battery_usage_timestamps_content_description" msgid="1927748134271595985">"<xliff:g id="FROM_TIMESTAMP">%1$s</xliff:g> മുതൽ <xliff:g id="TO_TIMESTAMP">%2$s</xliff:g> വരെ"</string>
     <string name="battery_usage_day_and_hour" msgid="1417890420844950881">"<xliff:g id="DAY">%1$s</xliff:g> <xliff:g id="HOUR">%2$s</xliff:g>⁠"</string>
     <string name="battery_usage_time_info_and_battery_level" msgid="6732629268310936155">"<xliff:g id="TIME_INFO">%1$s</xliff:g> <xliff:g id="BATTERY_LEVEL">%2$s</xliff:g>⁠"</string>
     <string name="battery_usage_chart" msgid="4114747521432440017">"ബാറ്ററി ഉപയോഗത്തിന്റെ ചാർട്ട്"</string>
@@ -2616,8 +2616,7 @@
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"ആപ്പുകളുടെ അടിസ്ഥാനത്തിൽ കാണുക"</string>
     <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"സിസ്റ്റങ്ങളുടെ അടിസ്ഥാനത്തിൽ കാണുക"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
-    <!-- no translation found for battery_usage_less_than_percent_content_description (6265933174815461493) -->
-    <skip />
+    <string name="battery_usage_less_than_percent_content_description" msgid="6265933174815461493">"<xliff:g id="PERCENTAGE">%1$s</xliff:g> എന്നതിൽ കുറവ്"</string>
     <string name="battery_cycle_count_footer" msgid="3642121059800373545">"ഷിപ്പിംഗിന് മുമ്പുള്ള ഗുണമേന്മാ പരിശോധനകൾ കാരണം, ആദ്യ ഉപയോഗത്തിൽ സൈക്കിൾ എണ്ണം പൂജ്യമായേക്കില്ല"</string>
     <string name="process_stats_summary_title" msgid="502683176231281732">"പ്രോസസ്സ് സ്ഥിതിവിവരക്കണക്കുകൾ"</string>
     <string name="process_stats_summary" msgid="522842188571764699">"പ്രവർത്തന പ്രോസസ്സുകളെക്കുറിച്ചുള്ള Geeky സ്ഥിതിവിവരക്കണക്കുകൾ"</string>
@@ -2685,12 +2684,13 @@
     <string name="adaptive_connectivity_switch_on" msgid="3653067561620745493">"ഓണാണ്"</string>
     <string name="adaptive_connectivity_switch_off" msgid="5076172560836115265">"ഓഫാണ്"</string>
     <string name="adaptive_connectivity_main_switch_title" msgid="261045483524512420">"അഡാപ്റ്റീവ് കണക്റ്റിവിറ്റി ഉപയോഗിക്കുക"</string>
-    <string name="cellular_security_title" msgid="7124079732186082924">"സെല്ലുലാർ നെറ്റ്‌വർക്ക് സുരക്ഷ"</string>
+    <string name="cellular_security_title" msgid="5562899485544677941">"മൊബൈൽ നെറ്റ്‍വർക്ക് സുരക്ഷ"</string>
     <string name="cellular_security_summary" msgid="1893770670709928113">"നെറ്റ്‌വർക്ക് തരം, എൻ‍ക്രിപ്ഷൻ, അറിയിപ്പ് നിയന്ത്രണങ്ങൾ"</string>
-    <string name="cellular_security_settings_title" msgid="116950133456981770">"സെല്ലുലാർ നെറ്റ്‌വർക്ക് സുരക്ഷ"</string>
+    <string name="cellular_security_top_intro" msgid="6749166804080092892">"ഡാറ്റ മോഷണത്തിനോ നിരീക്ഷണത്തിനോ നിങ്ങളെ വിധേയമാക്കാനിടയുള്ള, കാലഹരണപ്പെട്ടതോ എൻക്രിപ്റ്റ് ചെയ്യാത്തതോ ആയ നെറ്റ്‌വർക്കുകളിൽ നിന്ന് കോളുകൾ, സന്ദേശങ്ങൾ, ഡാറ്റ എന്നിവയെ സംരക്ഷിക്കാൻ ഈ ക്രമീകരണം സഹായിക്കുന്നു"</string>
+    <string name="cellular_security_settings_title" msgid="7779141923670352595">"മൊബൈൽ നെറ്റ്‍വർക്ക് സുരക്ഷ"</string>
     <string name="cellular_security_notifications" msgid="4619728340612184944">"അറിയിപ്പുകൾ"</string>
-    <string name="cellular_security_notifications_controller_title" msgid="5085567551536606230">"സുരക്ഷാ അറിയിപ്പുകൾ"</string>
-    <string name="cellular_security_notifications_controller_summary" msgid="2876183397456700377">"എൻക്രിപ്ഷൻ ഇല്ലാത്തതിനാൽ നിങ്ങൾ കണക്റ്റ് ചെയ്തിരിക്കുന്ന സെല്ലുലാർ നെറ്റ്‌വർക്ക് സുരക്ഷിതമല്ലെങ്കിലോ സെല്ലുലാർ നെറ്റ്‌വർക്ക് നിങ്ങളുടെ തനത് ഉപകരണ അല്ലെങ്കിൽ സിം ഐഡന്റിഫയറുകൾ (IMEI, IMSI എന്നിവ) റെക്കോർഡ് ചെയ്യുന്നുണ്ടെങ്കിലോ അറിയിപ്പുകൾ നേടുക."</string>
+    <string name="cellular_security_notifications_controller_title" msgid="4853056963523277847">"നെറ്റ്‍വര്‍ക്ക് അറിയിപ്പുകൾ"</string>
+    <string name="cellular_security_notifications_controller_summary" msgid="8339863845393759958">"നിങ്ങളുടെ ഉപകരണം എൻക്രിപ്റ്റ് ചെയ്യാത്ത നെറ്റ്‌വർക്കിലേക്ക് കണക്‌റ്റ് ചെയ്യുമ്പോൾ അല്ലെങ്കിൽ ഒരു നെറ്റ്‌വർക്ക് നിങ്ങളുടെ തനത് ഉപകരണമോ സിം ഐഡിയോ റെക്കോർഡ് ചെയ്യുമ്പോൾ അറിയിപ്പ് നേടുക"</string>
     <string name="cellular_security_settings_encryption_title" msgid="4013084091666375780">"എൻ‌ക്രിപ്ഷൻ"</string>
     <string name="cellular_security_network_generations_title" msgid="2343026988833783854">"നെറ്റ്‍വര്‍ക്ക് ജനറേഷനുകൾ"</string>
     <string name="cellular_security_network_generations_summary" msgid="139087814553929402">"ഇൻസ്റ്റാൾ ചെയ്ത ഓരോ സിം കാർഡും 3G, 4G, 5G എന്നിവ പിന്തുണയ്ക്കുന്ന നെറ്റ്‍വര്‍ക്കുകളിലേക്ക് മാത്രം കണക്റ്റ് ചെയ്യാനായി നിങ്ങൾക്കിപ്പോൾ കോൺഫിഗർ ചെയ്യാം. പഴയതും സുരക്ഷിതമല്ലാത്തതുമായ 2G നെറ്റ്‍വര്‍ക്കുകളിലേക്ക് സിം കണക്റ്റ് ചെയ്യില്ല. ലഭ്യമായ ഒരേയൊരു നെറ്റ്‍വര്‍ക്ക്, 2G ആണെങ്കിൽ ഈ ക്രമീകരണം നിങ്ങളുടെ കണക്റ്റിവിറ്റി പരിമിതപ്പെടുത്തിയേക്കാം. അടിയന്തര സാഹചര്യത്തിൽ 2G ഉപയോഗിച്ചേക്കാം."</string>
@@ -2963,15 +2963,14 @@
     <string name="ssl_ca_cert_info_message" msgid="3111724430981667845">"{numberOfCertificates,plural, =1{{orgName}, നിങ്ങളുടെ ഔദ്യോഗിക പ്രൊഫൈലിന് ഒരു സർട്ടിഫിക്കറ്റ് അതോറിറ്റി ഇൻസ്റ്റാൾ ചെയ്തിട്ടുണ്ട്, ഇമെയിലുകളും ആപ്പുകളും സുരക്ഷിത വെബ്‌സൈറ്റുകളും ഉൾപ്പെടെ, ഔദ്യോഗിക നെറ്റ്‌വർക്ക് ആക്റ്റിവിറ്റി നിരീക്ഷിക്കുന്നതിന് ഇത് അവരെ അനുവദിച്ചേക്കാം.\n\nഈ സർട്ടിഫിക്കറ്റിനെക്കുറിച്ചുള്ള കൂടുതൽ വിവരങ്ങൾക്ക്, നിങ്ങളുടെ അഡ്‌മിനെ ബന്ധപ്പെടുക.}other{{orgName}, നിങ്ങളുടെ ഔദ്യോഗിക പ്രൊഫൈലിന് സർട്ടിഫിക്കറ്റ് അതോറിറ്റികൾ ഇൻസ്റ്റാൾ ചെയ്തിട്ടുണ്ട്, ഇമെയിലുകളും ആപ്പുകളും സുരക്ഷിത വെബ്‌സൈറ്റുകളും ഉൾപ്പെടെ, ഔദ്യോഗിക നെറ്റ്‌വർക്ക് ആക്റ്റിവിറ്റി നിരീക്ഷിക്കുന്നതിന് ഇത് അവരെ അനുവദിച്ചേക്കാം.\n\nഈ സർട്ടിഫിക്കറ്റുകളെക്കുറിച്ചുള്ള കൂടുതൽ വിവരങ്ങൾക്ക്, നിങ്ങളുടെ അഡ്‌മിനെ ബന്ധപ്പെടുക.}}"</string>
     <string name="ssl_ca_cert_warning_message" msgid="4374052724815563051">"ഇമെയിലുകളും അപ്ലിക്കേഷനുകളും വെബ്‌സൈറ്റുകൾ സുരക്ഷിതമാക്കലും ഉൾപ്പെടെയുള്ള നിങ്ങളുടെ നെറ്റ്‌വർക്ക് പ്രവർത്തനങ്ങൾ നിരീക്ഷിക്കാൻ ഒരു മൂന്നാം കക്ഷിയ്‌ക്ക് കഴിയും.\n\nനിങ്ങളുടെ ഉപകരണത്തിൽ വിശ്വാസ്യയോഗ്യമായ ഒരു ക്രെഡൻഷ്യൽ ഇൻസ്റ്റാളുചെയ്യുന്നത് ഇത് സാധ്യമാക്കുന്നു."</string>
     <string name="ssl_ca_cert_settings_button" msgid="2044927302268394991">"{count,plural, =1{സർട്ടിഫിക്കറ്റ് പരിശോധിക്കുക}other{സർട്ടിഫിക്കറ്റുകൾ പരിശോധിക്കുക}}"</string>
-    <string name="user_settings_title" msgid="6550866465409807877">"ഒന്നിലധികം ഉപയോക്താക്കൾ"</string>
+    <string name="user_settings_title" msgid="9208831545558787202">"ഉപയോക്താക്കൾ"</string>
     <string name="user_list_title" msgid="1387379079186123404">"ഉപയോക്താക്കളും പ്രൊഫൈലുകളും"</string>
     <string name="user_add_user_or_profile_menu" msgid="305851380425838287">"ഉപയോക്താവിനെയോ പ്രൊഫൈലോ ചേർക്കുക"</string>
     <string name="user_summary_restricted_profile" msgid="451650609582185813">"നിയന്ത്രിത പ്രൊഫൈൽ"</string>
     <string name="user_summary_not_set_up" msgid="4602868481732886115">"സജ്ജീകരിച്ചിട്ടില്ല"</string>
     <string name="user_summary_restricted_not_set_up" msgid="1658946988920104613">"സജ്ജീകരിച്ചിട്ടില്ല - നിയന്ത്രിത പ്രൊഫൈൽ"</string>
     <string name="user_summary_managed_profile_not_set_up" msgid="5739207307082458746">"സജ്ജീകരിച്ചിട്ടില്ല - ഔദ്യോഗിക പ്രൊഫൈൽ"</string>
-    <!-- no translation found for user_owner (2079206733011361994) -->
-    <skip />
+    <string name="user_owner" msgid="2079206733011361994">"ഉടമ"</string>
     <string name="user_admin" msgid="4024553191395768119">"അഡ്‌മിന്‍"</string>
     <string name="user_you" msgid="3070562015202859996">"നിങ്ങൾ (<xliff:g id="NAME">%s</xliff:g>)"</string>
     <string name="user_add_max_count" msgid="3328539978480663740">"കൂടുതൽ ഉപയോക്താക്കളെ ചേർക്കാനാവില്ല. പുതിയ ഉപയോക്താവിനെ ചേർക്കാൻ നിലവിലുള്ള ഒരാളെ നീക്കം ചെയ്യുക."</string>
@@ -4644,6 +4643,8 @@
     <string name="summary_supported_service" msgid="4320535903444834786">"അടിയന്തര സേവനങ്ങൾക്ക് ഉൾപ്പെടെ ഏതൊരാൾക്കും ടെക്‌സ്‌റ്റ് ചെയ്യാൻ നിങ്ങൾക്ക് കഴിയും. ഒരു മൊബൈൽ നെറ്റ്‌വർക്ക് ലഭ്യമാകുമ്പോൾ നിങ്ങളുടെ ഫോൺ അതിലേക്ക് വീണ്ടും കണക്‌റ്റ് ചെയ്യും."</string>
     <string name="satellite_setting_summary_more_information" msgid="7729454610548016356">"സാറ്റലൈറ്റ് സന്ദേശമയയ്ക്കലിന് കൂടുതൽ സമയമെടുത്തേക്കാം, ചില പ്രദേശങ്ങളിൽ മാത്രമേ അത് ലഭ്യമാകൂ. കാലാവസ്ഥയും ചില ഘടനകളും നിങ്ങളുടെ സാറ്റലൈറ്റ് കണക്ഷനെ ബാധിച്ചേക്കാം. സാറ്റലൈറ്റ് വഴി കോളുകൾ ചെയ്യുന്നത് ലഭ്യമല്ല. എമർജൻസി കോളുകൾ തുടർന്നും കണക്റ്റ് ചെയ്‌തേക്കാം.\n\nഅക്കൗണ്ടിലെ മാറ്റങ്ങൾ, ക്രമീകരണത്തിൽ ദൃശ്യമാകാൻ കുറച്ച് സമയമെടുത്തേക്കാം. വിശദാംശങ്ങൾക്ക് നിങ്ങളുടെ സേവനദാതാവിനെ ബന്ധപ്പെടുക."</string>
     <string name="more_about_satellite_messaging" msgid="3385673133561348509">"സാറ്റലൈറ്റ് സന്ദേശമയയ്ക്കലിനെ കുറിച്ചുള്ള കൂടുതൽ വിവരങ്ങൾ"</string>
+    <string name="satellite_warning_dialog_title" msgid="1610117852475376931">"<xliff:g id="FUNCTION">%1$s</xliff:g> ഓണാക്കാനാകുന്നില്ല"</string>
+    <string name="satellite_warning_dialog_content" msgid="936419945275934955">"<xliff:g id="FUNCTION">%1$s</xliff:g> ഓണാക്കാൻ, ആദ്യം സാറ്റലൈറ്റ് കണക്ഷൻ അവസാനിപ്പിക്കുക"</string>
     <string name="mobile_network_apn_title" msgid="5582995550142073054">"ആക്‌സസ് പോയിന്റ് പേരുകൾ"</string>
     <string name="keywords_access_point_names" msgid="8174967126858505945">"APN"</string>
     <string name="manual_mode_disallowed_summary" msgid="4243142645520152175">"<xliff:g id="CARRIER">%1$s</xliff:g> എന്നതിലേക്ക് കണക്‌റ്റ് ചെയ്‌തിരിക്കുമ്പോൾ ലഭ്യമല്ല"</string>
@@ -4805,19 +4806,27 @@
     <string name="work_policy_privacy_settings" msgid="2702644843505242596">"നിങ്ങളുടെ ഔദ്യോഗിക നയ വിവരം"</string>
     <string name="work_policy_privacy_settings_summary" msgid="690118670737638405">"നിങ്ങളുടെ ഐടി അഡ്‌മിൻ ‌മാനേജ് ചെയ്യുന്ന ക്രമീകരണം"</string>
     <string name="track_frame_time_keywords" msgid="7885340257945922239">"GPU"</string>
-    <string name="enable_16k_pages" msgid="5009476566957520607">"16K പേജ് വലുപ്പത്തിൽ ബൂട്ട് ചെയ്യുക"</string>
-    <string name="enable_16k_pages_summary" msgid="428117226069445198">"16K പിന്തുണയുള്ള കേർണലുപയോഗിച്ച് ഉപകരണം ബൂട്ടുചെയ്യൂ"</string>
-    <string name="confirm_enable_16k_pages_title" msgid="6751570067857011642">"16KB പേജുകൾക്ക് അനുയോജ്യമായ കേർണൽ ഉപയോഗിച്ച് റീബൂട്ട് ചെയ്യണോ?"</string>
-    <string name="confirm_enable_16k_pages_text" msgid="702888115148257215">"മുന്നറിയിപ്പ്: ചില ആപ്പുകളിൽ ഈ മോഡ് അനുയോജ്യമല്ലായിരിക്കാം. സ്ഥിരീകരിച്ച ശേഷം, ഉപകരണം റീബൂട്ട് ചെയ്യും."</string>
-    <string name="confirm_enable_4k_pages_title" msgid="626987400420355263">"4KB പേജുകൾക്ക് അനുയോജ്യമായ കേർണൽ ഉപയോഗിച്ച് റീബൂട്ട് ചെയ്യണോ?"</string>
-    <string name="confirm_enable_4k_pages_text" msgid="6168921566226074524">"സ്ഥിരീകരിച്ച ശേഷം, ഉപകരണം റീബൂട്ട് ചെയ്യും."</string>
+    <string name="enable_16k_pages" msgid="8001470927566110689">"16KB പേജ് വലുപ്പത്തിൽ ബൂട്ട് ചെയ്യൂ"</string>
+    <string name="enable_16k_pages_summary" msgid="1964363364670306912">"16KB പേജ് വലുപ്പം പിന്തുണയ്ക്കുന്ന കേർണൽ വഴി ഉപകരണം ബൂട്ടുചെയ്യൂ"</string>
+    <string name="confirm_enable_16k_pages_title" msgid="1286925577014793351">"4kB മോഡിൽ നിന്ന് 16KB മോഡിലേക്ക് മാറുക"</string>
+    <string name="confirm_enable_16k_pages_text" msgid="570198382662424714">"നിലവിൽ 4kB കേർണൽ റൺ ചെയ്യുന്ന പേജ്-ആഗ്നോസ്റ്റിക് മോഡിൽ നിന്ന് നിങ്ങൾ 16KB മോഡിലേക്ക് മാറുകയാണ്. ഈ മോഡിൽ സോഫ്‌റ്റ്‌വെയർ സമഗ്രത സംബന്ധിച്ച് ഉറപ്പ് നൽകാനാകില്ല, കൂടാതെ ബൂട്ട് ലോഡർ അൺലോക്ക് ചെയ്‌തിരിക്കുമ്പോൾ ഫോണിൽ സംഭരിച്ചിരിക്കുന്ന ഏതെങ്കിലും ഡാറ്റ അപകടത്തിലായേക്കാം. ഇത് ഉപകരണത്തെ റീബൂട്ട് ചെയ്യും. ഈ മോഡുകളിൽ ചില ഫീച്ചറുകൾ പ്രവർത്തനരഹിതമാക്കുന്നതിനാൽ, ചില ആപ്പുകൾ പ്രവർത്തിച്ചേക്കില്ല. ഉപകരണത്തെ തിരികെ പ്രൊഡക്ഷൻ മോഡിലേക്ക് മാറ്റുന്നതിന്, നിങ്ങൾ 4kB മോഡിലേക്ക് തിരികെ മാറുകയും ബൂട്ട് ലോഡർ ലോക്ക് ചെയ്യുകയും വേണം, ഇത് ഉപകരണത്തെ ഫാക്‌ടറി റീസെറ്റ് ചെയ്യും. ഉപകരണം വിജയകരമായി Android-ലേക്ക് ബൂട്ട് ചെയ്ത് കഴിഞ്ഞ്, ഡെവലപ്പർ ഓപ്‌ഷനുകളിൽ OEM അൺലോക്ക് ചെയ്യൽ പ്രവർത്തനരഹിതമാക്കുക."</string>
+    <string name="confirm_enable_4k_pages_title" msgid="3210360137887034659">"16KB മോഡിൽ നിന്ന് 4KB മോഡിലേക്ക് മാറുക"</string>
+    <string name="confirm_enable_4k_pages_text" msgid="155070605667160083">"നിലവിൽ 16KB കേർണൽ റൺ ചെയ്യുന്ന പേജ്-ആഗ്നോസ്റ്റിക് മോഡിൽ നിന്ന് നിങ്ങൾ 4KB മോഡിലേക്ക് മാറുകയാണ്. ഈ മോഡിൽ സോഫ്‌റ്റ്‌വെയർ സമഗ്രത സംബന്ധിച്ച് ഉറപ്പ് നൽകാനാകില്ല, കൂടാതെ ബൂട്ട് ലോഡർ അൺലോക്ക് ചെയ്‌തിരിക്കുമ്പോൾ ഫോണിൽ സംഭരിച്ചിരിക്കുന്ന ഏതെങ്കിലും ഡാറ്റ അപകടത്തിലായേക്കാം. ഇത് ഉപകരണത്തെ റീബൂട്ട് ചെയ്യും. ഈ മോഡുകളിൽ ചില ഫീച്ചറുകൾ പ്രവർത്തനരഹിതമാക്കുന്നതിനാൽ, ചില ആപ്പുകൾ പ്രവർത്തിച്ചേക്കില്ല. ഉപകരണത്തെ തിരികെ പ്രൊഡക്ഷൻ മോഡിലേക്ക് മാറ്റുന്നതിന്, നിങ്ങൾ ബൂട്ട് ലോഡർ ലോക്ക് ചെയ്യണം, ഇത് ഉപകരണത്തെ ഫാക്‌ടറി റീസെറ്റ് ചെയ്യും. ഉപകരണം വിജയകരമായി Android-ലേക്ക് ബൂട്ട് ചെയ്ത് കഴിഞ്ഞ്, ഡെവലപ്പർ ഓപ്‌ഷനുകളിൽ OEM അൺലോക്ക് ചെയ്യൽ പ്രവർത്തനരഹിതമാക്കുക."</string>
     <string name="toast_16k_update_failed_text" msgid="8888858987184345567">"കേർണൽ, 16KB പേജുകൾക്ക് അനുയോജ്യമായ കേർണലിലേക്ക് അപ്‌ഡേറ്റ് ചെയ്യാനായില്ല."</string>
     <string name="progress_16k_ota_title" msgid="2117218313875523741">"മാറ്റം ബാധകമാക്കുന്നു"</string>
-    <string name="confirm_format_ext4_title" msgid="4453684705528818873">"ഉപകരണം, ext4 എന്നതിലേക്ക് വീണ്ടും ഫോർമാറ്റ് ചെയ്യണോ?"</string>
-    <string name="confirm_format_ext4_text" msgid="8164677342487500794">"ext4 ഫയൽസിസ്റ്റം ഉപയോഗിച്ച് 16K ഡെവലപ്പർ ഓപ്ഷന് പിന്തുണയുണ്ട്. സ്ഥിരീകരണത്തിന് ശേഷം ഉപകരണം തുടച്ചുനീക്കും, ഫയൽസിസ്റ്റം ext4 എന്നതിലേക്ക് മാറും."</string>
-    <string name="format_ext4_failure_toast" msgid="6904611547290793885">"ഡാറ്റാ പാർട്ടീഷൻ ext4 എന്നതിലേക്ക് വീണ്ടും ഫോർമാറ്റ് ചെയ്യാനും തുടച്ചുനീക്കാനും കഴിഞ്ഞില്ല."</string>
-    <string name="confirm_oem_unlock_for_16k_title" msgid="6338135847153690912">"OEM അൺലോക്ക് ചെയ്യേണ്ടതുണ്ട്"</string>
-    <string name="confirm_oem_unlock_for_16k_text" msgid="236718973897424382">"16K ഡെവലപ്പർ ഓപ്ഷൻ ഉപയോഗിക്കുന്നതിന് മുമ്പ് OEM അൺലോക്ക് ചെയ്യേണ്ടതുണ്ട്. OEM അൺലോക്ക് ചെയ്യാൻ ഉപയോക്തൃഡാറ്റ ഫോർമാറ്റ് ചെയ്യുകയും വേണം. ഉപകരണം OEM അൺലോക്ക് ചെയ്ത് വീണ്ടും ശ്രമിക്കുക."</string>
+    <string name="confirm_format_ext4_title" msgid="6696191800594435577">"ഉപകരണം, ext4 എന്നതിലേക്ക് വീണ്ടും ഫോർമാറ്റ് ചെയ്യണോ? (16KB മോഡിന് ആവശ്യമാണ്)"</string>
+    <string name="confirm_format_ext4_text" msgid="7940372488624630214">"16KB ഡെവലപ്പർ ഓപ്‌ഷൻ ഉപയോഗിക്കുന്നതിന് മുമ്പ് ഈ ഉപകരണത്തിന്റെ ഡാറ്റ പാർട്ടീഷൻ ext4 എന്നതിലേക്ക് പരിവർത്തനം ചെയ്യേണ്ടതുണ്ട്. ഈ മോഡിൽ സോഫ്‌റ്റ്‌വെയർ സമഗ്രത സംബന്ധിച്ച് ഉറപ്പ് നൽകാനാകില്ല, കൂടാതെ ബൂട്ട് ലോഡർ അൺലോക്ക് ചെയ്‌തിരിക്കുമ്പോൾ ഫോണിൽ സംഭരിച്ചിരിക്കുന്ന ഏതെങ്കിലും ഡാറ്റ അപകടത്തിലായേക്കാം. 16KB ഓപ്‌ഷൻ സജീവമാക്കുന്നതിന് ഇതിന് ശേഷം ഒരു റീബൂട്ട് കൂടി വേണ്ടി വരും. നിങ്ങൾ ഈ മോഡിൽ ആയിക്കഴിഞ്ഞ്, ഒരു സിംഗിൾ റീബൂട്ടിലൂടെ 4KB, 16KB മോഡുകൾക്കിടയിൽ പരസ്‌പരം മാറാം. ഈ മോഡുകളിൽ ചില ഫീച്ചറുകൾ പ്രവർത്തനരഹിതമാക്കുന്നതിനാൽ, ചില ആപ്പുകൾ പ്രവർത്തിച്ചേക്കില്ല. ഉപകരണത്തെ തിരികെ പ്രൊഡക്ഷൻ മോഡിലേക്ക് മാറ്റുന്നതിന്, നിങ്ങൾ 4KB മോഡിലേക്ക് തിരികെ മാറുകയും ബൂട്ട് ലോഡർ ലോക്ക് ചെയ്യുകയും വേണം, ഇത് ഉപകരണത്തെ ഫാക്‌ടറി റീസെറ്റ് ചെയ്യും. ഉപകരണം വിജയകരമായി Android-ലേക്ക് ബൂട്ട് ചെയ്ത് കഴിഞ്ഞ്, ഡെവലപ്പർ ഓപ്‌ഷനുകളിൽ OEM അൺലോക്ക് ചെയ്യൽ പ്രവർത്തനരഹിതമാക്കുക. സ്ഥിരീകരണത്തിന് ശേഷം ഉപകരണം തുടച്ചുനീക്കുകയും ഫയൽസിസ്‌റ്റം ext4 എന്നതിലേക്ക് മാറ്റുകയും ചെയ്യും. ഇത് പൂർത്തിയായി കഴിഞ്ഞ്, 16KB വീണ്ടും പ്രവർത്തനക്ഷമമാക്കാൻ തിരികെ വരിക."</string>
+    <string name="format_ext4_failure_toast" msgid="8059453995800471549">"ഡാറ്റ പാർട്ടീഷൻ ext4 എന്നതിലേക്ക് വീണ്ടും ഫോർമാറ്റ് ചെയ്യാനും തുടച്ചുനീക്കാനും കഴിഞ്ഞില്ല."</string>
+    <string name="confirm_oem_unlock_for_16k_title" msgid="5374451262432025419">"16KB മോഡിന് ബൂട്ട് ലോഡർ അൺലോക്ക് ചെയ്യണം"</string>
+    <string name="confirm_oem_unlock_for_16k_text" msgid="3583604865119937957">"16KB ഡെവലപ്പർ ഓപ്‌ഷൻ ഉപയോഗിക്കുന്നതിന് മുമ്പ് ഈ ഉപകരണത്തിന്റെ ബൂട്ട് ലോഡർ അൺലോക്ക് ചെയ്യണം. ഈ മോഡിൽ സോഫ്‌റ്റ്‌വെയർ സമഗ്രത സംബന്ധിച്ച് ഉറപ്പ് നൽകാനാകില്ല, കൂടാതെ ബൂട്ട് ലോഡർ അൺലോക്ക് ചെയ്‌തിരിക്കുമ്പോൾ ഫോണിൽ സംഭരിച്ചിരിക്കുന്ന ഏതെങ്കിലും ഡാറ്റ അപകടത്തിലായേക്കാം. 16KB മോഡ് സജീവമാക്കുമ്പോൾ എല്ലാ ഉപയോക്തൃ ഡാറ്റയും ക്രമീകരണവും തുടച്ചുനീക്കും. ബൂട്ട് ലോഡർ അൺലോക്ക് ചെയ്‌ത് കഴിഞ്ഞ്, 16KB ഓപ്‌ഷൻ സജീവമാക്കുന്നതിന് രണ്ട് റീബൂട്ടുകൾ വേണ്ടി വരും. നിങ്ങൾ ഈ മോഡിൽ ആയിക്കഴിഞ്ഞ്, ഒരു സിംഗിൾ റീബൂട്ടിലൂടെ 4KB, 16KB മോഡുകൾക്കിടയിൽ പരസ്‌പരം മാറാം. ഈ മോഡുകളിൽ ചില ഫീച്ചറുകൾ പ്രവർത്തനരഹിതമാക്കുന്നതിനാൽ, ചില ആപ്പുകൾ പ്രവർത്തിച്ചേക്കില്ല. ഉപകരണത്തെ തിരികെ പ്രൊഡക്ഷൻ മോഡിലേക്ക് മാറ്റുന്നതിന്, നിങ്ങൾ 4KB മോഡിലേക്ക് തിരികെ മാറുകയും OEM/ബൂട്ട് ലോഡർ ലോക്ക് ചെയ്യുകയും വേണം (ഇത് ഉപകരണത്തെ ഫാക്‌ടറി റീസെറ്റ് ചെയ്യും). ബൂട്ട് ലോഡർ അൺലോക്ക് ചെയ്യുക അമർത്തിയ ശേഷം വീണ്ടും ശ്രമിക്കുക. ഇത് എങ്ങനെ ചെയ്യണമെന്നത് സംബന്ധിച്ച നിർദ്ദേശങ്ങൾ at &lt;a href=\"https://source.android.com/docs/core/architecture/bootloader/locking_unlocking\"&gt;https://source.android.com/docs/core/architecture/bootloader/locking_unlocking&lt;/a&gt; എന്നതിൽ കാണാനാകും"</string>
+    <string name="page_agnostic_4k_pages_title" msgid="1184703958249093215">"4KB പേജ്-ആഗ്നോസ്റ്റിക് മോഡ് ഉപയോഗിക്കുന്നു"</string>
+    <string name="page_agnostic_4k_pages_text_short" msgid="2894243902906666242">"നിങ്ങൾ പേജ്-ആഗ്നോസ്റ്റിക് മോഡിന്റെ 4KB മോഡിലാണ്. ഈ മോഡിൽ സോഫ്‌റ്റ്‌വെയർ സമഗ്രത സംബന്ധിച്ച് ഉറപ്പ് നൽകാനാകില്ല, കൂടാതെ ബൂട്ട് ലോഡർ അൺലോക്ക് ചെയ്‌തിരിക്കുമ്പോൾ ഫോണിൽ സംഭരിച്ചിരിക്കുന്ന ഏതെങ്കിലും ഡാറ്റ അപകടത്തിലായേക്കാം. ഈ മോഡുകളിൽ ചില ഫീച്ചറുകൾ പ്രവർത്തനരഹിതമാക്കുന്നതിനാൽ, ചില ആപ്പുകൾ പ്രവർത്തിച്ചേക്കില്ല. പ്രൊഡക്ഷൻ മോഡിൽ തിരികെ പ്രവേശിക്കുന്നതിന്, നിങ്ങൾ ഉപകരണത്തിന്റെ ബൂട്ട് ലോഡർ ലോക്ക് ചെയ്യണം. കൂടുതൽ വായിക്കാൻ ടാപ്പ് ചെയ്യുക."</string>
+    <string name="page_agnostic_4k_pages_text" msgid="8284806650260868833">"നിങ്ങൾ പേജ്-ആഗ്നോസ്റ്റിക് മോഡിന്റെ 4KB മോഡിലാണ്. ഈ മോഡിൽ സോഫ്‌റ്റ്‌വെയർ സമഗ്രത സംബന്ധിച്ച് ഉറപ്പ് നൽകാനാകില്ല, കൂടാതെ ബൂട്ട് ലോഡർ അൺലോക്ക് ചെയ്‌തിരിക്കുമ്പോൾ ഫോണിൽ സംഭരിച്ചിരിക്കുന്ന ഏതെങ്കിലും ഡാറ്റ അപകടത്തിലായേക്കാം. ഈ മോഡുകളിൽ ചില ഫീച്ചറുകൾ പ്രവർത്തനരഹിതമാക്കുന്നതിനാൽ, ചില ആപ്പുകൾ പ്രവർത്തിച്ചേക്കില്ല. പ്രൊഡക്ഷൻ മോഡിൽ തിരികെ പ്രവേശിക്കുന്നതിന്, നിങ്ങൾ ഉപകരണത്തിന്റെ ബൂട്ട് ലോഡർ ലോക്ക് ചെയ്യണം. ഇത് ഉപകരണത്തെ വീണ്ടും ഫാക്‌ടറി റീസെറ്റ് ചെയ്യുകയും പ്രൊഡക്ഷൻ ക്രമീകരണത്തിലേക്ക് പുനഃസ്ഥാപിക്കുകയും ചെയ്യും. ഉപകരണം വിജയകരമായി Android-ലേക്ക് ബൂട്ട് ചെയ്ത് കഴിഞ്ഞ്, ഡെവലപ്പർ ഓപ്‌ഷനുകളിൽ OEM അൺലോക്ക് ചെയ്യൽ പ്രവർത്തനരഹിതമാക്കുക. ഉപകരണം Android-ലേക്ക് ബൂട്ട് ചെയ്യാനായില്ലെങ്കിലോ അസ്ഥിരമാണെങ്കിലോ, &lt;a href=\"https://developers.google.com/android/images\"&gt;https://developers.google.com/android/images&lt;/a&gt; or use &lt;a href=\"https://flash.android.com/back-to-public\"&gt;https://flash.android.com/back-to-public&lt;/a&gt; എന്നതിൽ നിന്നുള്ള ഏറ്റവും പുതിയ ഫാക്‌ടറി ചിത്രങ്ങൾ ഉപയോഗിച്ച് ഉപകരണം അപ്‌ഡേറ്റ് ചെയ്ത ശേഷം \'ഉപകരണം തുടച്ചുനീക്കുക\', \'ബൂട്ട് ലോഡർ ലോക്ക് ചെയ്യുക\', \'എല്ലാ പാർട്ടീഷനുകളും ഫോഴ്‌സ് ഫ്ലാഷ് ചെയ്യുക\' എന്നതിലേക്ക് പോകുക."</string>
+    <string name="page_agnostic_16k_pages_title" msgid="7762533464569818498">"16KB പേജ്-ആഗ്നോസ്റ്റിക് മോഡ് ഉപയോഗിക്കുന്നു"</string>
+    <string name="page_agnostic_16k_pages_text_short" msgid="269039281591806585">"നിങ്ങൾ പേജ്-ആഗ്നോസ്റ്റിക് മോഡിന്റെ 16KB മോഡിലാണ്. ഈ മോഡിൽ സോഫ്‌റ്റ്‌വെയർ സമഗ്രത സംബന്ധിച്ച് ഉറപ്പ് നൽകാനാകില്ല, കൂടാതെ ബൂട്ട് ലോഡർ അൺലോക്ക് ചെയ്‌തിരിക്കുമ്പോൾ ഫോണിൽ സംഭരിച്ചിരിക്കുന്ന ഏതെങ്കിലും ഡാറ്റ അപകടത്തിലായേക്കാം. ഈ മോഡുകളിൽ ചില ഫീച്ചറുകൾ പ്രവർത്തനരഹിതമാക്കുന്നതിനാൽ, ചില ആപ്പുകൾ പ്രവർത്തിച്ചേക്കില്ല. പ്രൊഡക്ഷൻ മോഡിൽ തിരികെ പ്രവേശിക്കുന്നതിന്, നിങ്ങൾ 4K മോഡിലേക്ക് തിരികെ മാറുകയും ഉപകരണത്തിന്റെ ബൂട്ട് ലോഡർ ലോക്ക് ചെയ്യുകയും വേണം. കൂടുതൽ വായിക്കാൻ ടാപ്പ് ചെയ്യുക."</string>
+    <string name="page_agnostic_16k_pages_text" msgid="6208765386837706582">"നിങ്ങൾ പേജ്-ആഗ്നോസ്റ്റിക് മോഡിന്റെ 16KB മോഡിലാണ്. ഈ മോഡിൽ സോഫ്‌റ്റ്‌വെയർ സമഗ്രത സംബന്ധിച്ച് ഉറപ്പ് നൽകാനാകില്ല, കൂടാതെ ബൂട്ട് ലോഡർ അൺലോക്ക് ചെയ്‌തിരിക്കുമ്പോൾ ഫോണിൽ സംഭരിച്ചിരിക്കുന്ന ഏതെങ്കിലും ഡാറ്റ അപകടത്തിലായേക്കാം. ഈ മോഡുകളിൽ ചില ഫീച്ചറുകൾ പ്രവർത്തനരഹിതമാക്കുന്നതിനാൽ, ചില ആപ്പുകൾ പ്രവർത്തിച്ചേക്കില്ല. പ്രൊഡക്ഷൻ മോഡിൽ തിരികെ പ്രവേശിക്കുന്നതിന്, നിങ്ങൾ 4K മോഡിലേക്ക് തിരികെ മാറുകയും ഉപകരണത്തിന്റെ ബൂട്ട് ലോഡർ ലോക്ക് ചെയ്യുകയും വേണം. ഇത് ഉപകരണത്തെ വീണ്ടും ഫാക്‌ടറി റീസെറ്റ് ചെയ്യുകയും പ്രൊഡക്ഷൻ ക്രമീകരണത്തിലേക്ക് പുനഃസ്ഥാപിക്കുകയും ചെയ്യും. ഉപകരണം വിജയകരമായി Android-ലേക്ക് ബൂട്ട് ചെയ്ത് കഴിഞ്ഞ്, ഡെവലപ്പർ ഓപ്‌ഷനുകളിൽ OEM അൺലോക്ക് ചെയ്യൽ പ്രവർത്തനരഹിതമാക്കുക. ഉപകരണം Android-ലേക്ക് ബൂട്ട് ചെയ്യാനായില്ലെങ്കിലോ അസ്ഥിരമാണെങ്കിലോ, &lt;a href=\"https://developers.google.com/android/images\"&gt;https://developers.google.com/android/images&lt;/a&gt; or use &lt;a href=\"https://flash.android.com/back-to-public\"&gt;https://flash.android.com/back-to-public&lt;/a&gt; എന്നതിൽ നിന്നുള്ള ഏറ്റവും പുതിയ ഫാക്‌ടറി ചിത്രങ്ങൾ ഉപയോഗിച്ച് ഉപകരണം അപ്‌ഡേറ്റ് ചെയ്ത ശേഷം \'ഉപകരണം തുടച്ചുനീക്കുക\', \'ബൂട്ട് ലോഡർ ലോക്ക് ചെയ്യുക\', \'എല്ലാ പാർട്ടീഷനുകളും ഫോഴ്‌സ് ഫ്ലാഷ് ചെയ്യുക\' എന്നതിലേക്ക് പോകുക."</string>
+    <string name="page_agnostic_notification_channel_name" msgid="1658444283036376361">"16KB പേജ്-ആഗ്നോസ്റ്റിക് മോഡ്"</string>
+    <string name="page_agnostic_notification_action" msgid="2309805437430150456">"കൂടുതൽ വായിക്കുക"</string>
     <string name="bug_report_handler_title" msgid="713439959113250125">"ബഗ് റിപ്പോർട്ട് ഹാൻഡ്‍ലർ"</string>
     <string name="bug_report_handler_picker_footer_text" msgid="4935758328366585673">"നിങ്ങളുടെ ഉപകരണത്തിലെ ബഗ് റിപ്പോർട്ട് കുറുക്കുവഴി കൈകാര്യം ചെയ്യുന്നത് ഏത് ആപ്പാണെന്ന് നിർണ്ണയിക്കുന്നു."</string>
     <string name="personal_profile_app_subtext" msgid="5586060806997067676">"വ്യക്തിപരം"</string>
@@ -4879,7 +4888,7 @@
     <string name="media_controls_show_player" msgid="8504571042365814021">"പ്ലേയർ കാണിക്കുക"</string>
     <string name="keywords_media_controls" msgid="8345490568291778638">"മീഡിയ"</string>
     <string name="camera_extensions_fallback_title" msgid="3604579046777004989">"ക്യാമറ സോഫ്‌റ്റ്‌വെയർ വിപുലീകരണങ്ങൾ അനുവദിക്കുക"</string>
-    <string name="camera_extensions_fallback_description" msgid="6939818294458854536">"കാഴ്‌ച ആവശ്യമില്ലാത്ത വീഡിയോഗ്രഫി പോലുള്ള വിപുലമായ ക്യാമറ ഫീച്ചറുകളുടെ സോഫ്‌റ്റ്‌വെയർ നിർവ്വഹണം പ്രവർത്തനക്ഷമമാക്കുന്നു."</string>
+    <string name="camera_extensions_fallback_description" msgid="4306833827773277263">"HDR, നൈറ്റ് അല്ലെങ്കിൽ മറ്റ് ക്യാമറ വിപുലീകരണങ്ങൾ പോലുള്ള വിപുലമായ ക്യാമറ ഫീച്ചറുകളുടെ ഡിഫോൾട്ട് സോഫ്‌റ്റ്‌വെയർ നിർവ്വഹണം പ്രവർത്തനക്ഷമമാക്കുന്നു."</string>
     <string name="connected_device_see_all_summary" msgid="2056010318537268108">"Bluetooth ഓണാകും"</string>
     <string name="provider_internet_settings" msgid="3831259474776313323">"ഇന്റർനെറ്റ്"</string>
     <string name="provider_network_settings_title" msgid="2624756136016346774">"സിമ്മുകൾ"</string>
@@ -4949,6 +4958,7 @@
     <string name="default_print_service_main_switch_title" msgid="4697133737128324036">"പ്രിന്റ് സേവനം ഉപയോഗിക്കുക"</string>
     <string name="multiple_users_main_switch_title" msgid="6686858308083037810">"ഒന്നിലധികം ഉപയോക്താക്കളെ അനുവദിക്കുക"</string>
     <string name="multiple_users_main_switch_keywords" msgid="4845954458094134356">"അനുവദിക്കുക, ഒന്നിലധികം, ഉപയോക്താവ്, അനുവാദം, നിരവധി"</string>
+    <string name="multiple_users_title_keywords" msgid="2395593167746225172">"ഒന്നിലധികം, ഉപയോക്താക്കൾ, പ്രൊഫൈലുകൾ, ആളുകൾ, അക്കൗണ്ടുകൾ, മാറുക, നിരവധി"</string>
     <string name="wireless_debugging_main_switch_title" msgid="8463499572781441719">"വയർലസ് ഡീബഗ്ഗിംഗ് ഉപയോഗിക്കുക"</string>
     <string name="graphics_driver_main_switch_title" msgid="6125172901855813790">"ഗ്രാഫിക്‌സ് ഡ്രൈവർ മുൻഗണനകൾ ഉപയോഗിക്കുക"</string>
     <string name="night_light_main_switch_title" msgid="3428298022467805219">"നൈറ്റ് ലൈറ്റ് ഉപയോഗിക്കുക"</string>
@@ -4971,8 +4981,8 @@
     <string name="enable_2g_title" msgid="8184757884636162942">"2G അനുവദിക്കുക"</string>
     <string name="enable_2g_summary" msgid="2794534052372565914">"2G-യ്ക്ക് സുരക്ഷ കുറവാണെങ്കിലും ചില ലൊക്കേഷനുകളിൽ അത് നിങ്ങളുടെ കണക്ഷൻ മെച്ചപ്പെടുത്തിയേക്കാം. എമർജൻസി കോളുകൾക്ക്, 2G എപ്പോഴും അനുവദനീയമാണ്."</string>
     <string name="enable_2g_summary_disabled_carrier" msgid="8141118453219482762">"<xliff:g id="CARRIER_NAME_2G">%1$s</xliff:g> എന്നതിന് 2G ആവശ്യമാണ്"</string>
-    <string name="require_cellular_encryption_title" msgid="7516008146269371585">"എൻക്രിപ്ഷൻ ആവശ്യമാണ്"</string>
-    <string name="require_cellular_encryption_summary" msgid="4813823321032908641">"എൻക്രിപ്ഷൻ കൂടുതൽ സുരക്ഷിതമാണ്, എന്നാൽ ചില ലൊക്കേഷനുകളിൽ നിങ്ങൾക്ക് കണക്റ്റ് ചെയ്യാൻ കഴിഞ്ഞേക്കില്ല. എമർജൻസി കോളുകൾക്ക് എൻക്രിപ്ഷൻ ഒരിക്കലും ആവശ്യമില്ല"</string>
+    <string name="require_cellular_encryption_title" msgid="6087085031703089235">"എൻക്രിപ്റ്റ് ചെയ്ത നെറ്റ്‍വർക്ക് മാത്രം"</string>
+    <string name="require_cellular_encryption_summary" msgid="6090569065420631457">"ഇത് കൂടുതൽ സുരക്ഷിതമാണെങ്കിലും ചില സ്ഥലങ്ങളിൽ നിങ്ങളുടെ മൊബൈൽ നെറ്റ്‌വർക്ക് കണക്ഷൻ പരിമിതപ്പെടുത്തിയേക്കാം. എമർജൻസി കോൾ എ‌പ്പോഴും അനുവദനീയം."</string>
     <string name="app_info_all_services_label" msgid="1487070364839071105">"എല്ലാ സേവനങ്ങളും"</string>
     <string name="show_clip_access_notification" msgid="7782300987639778542">"ക്ലിപ്പ്ബോർഡ് ആക്‌സസ് കാണിക്കുക"</string>
     <string name="show_clip_access_notification_summary" msgid="474090757777203207">"നിങ്ങൾ പകർത്തിയ ടെക്‌സ്‌റ്റോ ചിത്രങ്ങളോ മറ്റ് ഉള്ളടക്കമോ ആപ്പുകൾ ആക്‌സസ് ചെയ്യുമ്പോൾ ഒരു സന്ദേശം കാണിക്കുക"</string>
@@ -4983,8 +4993,12 @@
     <string name="uwb_settings_summary_airplane_mode" msgid="1328864888135086484">"UWB ഉപയോഗിക്കാൻ ഫ്ലൈറ്റ് മോഡ് ഓഫാക്കുക"</string>
     <string name="uwb_settings_summary_no_uwb_regulatory" msgid="3465456428217979428">"നിലവിലെ ലൊക്കേഷനിൽ UWB ലഭ്യമല്ല"</string>
     <string name="thread_network_settings_title" msgid="4212301030523859220">"Thread"</string>
-    <string name="thread_network_settings_summary" msgid="8065599651021748339">"സുഗമമായ സ്മാർട്ട് ഹോം അനുഭവത്തിന്, Thread ഉപയോഗിച്ച് അനുയോജ്യമായ ഉപകരണങ്ങളിലേക്ക് കണക്റ്റ് ചെയ്യുക"</string>
-    <string name="thread_network_settings_summary_airplane_mode" msgid="7207252895832446979">"Thread ഉപയോഗിക്കാൻ ഫ്ലൈറ്റ് മോഡ് ഓഫാക്കുക"</string>
+    <!-- no translation found for thread_network_settings_main_switch_title (3859168481929323474) -->
+    <skip />
+    <!-- no translation found for thread_network_settings_footer_title (7385600318850220927) -->
+    <skip />
+    <!-- no translation found for thread_network_settings_learn_more (8278498005848565050) -->
+    <skip />
     <string name="camera_toggle_title" msgid="8952668677727244992">"ക്യാമറ ആക്‌സസ്"</string>
     <string name="mic_toggle_title" msgid="265145278323852547">"മൈക്രോഫോൺ ആക്‌സസ്"</string>
     <string name="perm_toggle_description" msgid="5754629581767319022">"ആപ്പുകൾക്കും സേവനങ്ങൾക്കും"</string>
@@ -5195,8 +5209,6 @@
     <string name="force_swcrypto_fallback_title" msgid="8053166299808645593">"സോഫ്‌റ്റ്‌വെയർ സെക്യൂർ ക്രിപ്റ്റോ നിർബന്ധമാക്കുക"</string>
     <string name="force_swcrypto_fallback_summary" msgid="181969966310309701">"സോഫ്‌റ്റ്‌വെയർ അധിഷ്‌ഠിത വൈറ്റ്‌ബോക്‌സ് ക്രിപ്‌റ്റോഗ്രഫി ഉപയോഗിക്കാൻ DRM കീ മാനേജ്‌മെന്റിനെ നിർബന്ധിക്കുക"</string>
     <string name="fingerprint_acquired_imager_dirty_udfps" msgid="7005042288289506776">"സെൻസറിന് സമീപമുള്ള സ്ക്രീൻ വൃത്തിയാക്കി വീണ്ടും ശ്രമിക്കുക"</string>
-    <!-- no translation found for sim_category_converted_sim (8575548015816988908) -->
-    <skip />
-    <!-- no translation found for sync_across_devices_title (3447757705383089345) -->
-    <skip />
+    <string name="sim_category_converted_sim" msgid="8575548015816988908">"ഇ-സിമ്മിലേക്ക് മാറ്റി. നീക്കം ചെയ്യൂ, ഉപേക്ഷിക്കൂ."</string>
+    <string name="sync_across_devices_title" msgid="3447757705383089345">"ഉപകരണങ്ങളിലുടനീളം സമന്വയിപ്പിക്കുക"</string>
 </resources>

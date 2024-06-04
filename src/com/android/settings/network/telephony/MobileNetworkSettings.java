@@ -347,6 +347,9 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
         }
         final String key = preference.getKey();
 
+        if (mTelephonyManager == null) {
+            return false;
+        }
         if (TextUtils.equals(key, BUTTON_CDMA_SYSTEM_SELECT_KEY)
                 || TextUtils.equals(key, BUTTON_CDMA_SUBSCRIPTION_KEY)) {
             if (mTelephonyManager.getEmergencyCallbackMode()) {
@@ -570,6 +573,12 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings impleme
                 setTelephonyAvailabilityStatus(getPreferenceControllersAsList());
 
         super.onCreate(icicle);
+        if (mSubId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            Log.i(LOG_TAG, "onCreate: invalid subId. finish");
+            session.close();
+            finish();
+            return;
+        }
         final Context context = getContext();
         sPackageName = this.getClass().getPackage().toString();
         sSubscriptionManager = context.getSystemService(SubscriptionManager.class);
