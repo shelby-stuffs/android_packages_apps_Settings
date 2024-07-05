@@ -1611,20 +1611,6 @@
         <item>fr</item> <!-- French -->
     </string-array>
 
-    <!-- Values for notification cooldown -->
-    <string-array name="notification_polite_options">
-        <item>@string/notification_polite_all_apps</item>
-        <item>@string/notification_polite_conversations</item>
-        <item>@string/notification_polite_disabled</item>
-    </string-array>
-
-    <!-- Values for notification cooldown -->
-    <string-array name="notification_polite_options_values" translatable="false">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-    </string-array>
-
     <!-- Entries for private space auto lock option -->
     <string-array name="private_space_auto_lock_options">
         <item>@string/private_space_auto_lock_every_time</item>
@@ -1639,4 +1625,31 @@
         <item>2</item>
     </string-array>
 
+    <!-- TODO: b/333901673 - Get full icon list. -->
+    <array name="zen_mode_icon_options" translatable="false">
+        <item>@*android:drawable/ic_zen_mode_type_bedtime</item>
+        <item>@*android:drawable/ic_zen_mode_type_driving</item>
+        <item>@*android:drawable/ic_zen_mode_type_immersive</item>
+        <item>@*android:drawable/ic_zen_mode_type_managed</item>
+        <item>@*android:drawable/ic_zen_mode_type_other</item>
+        <item>@*android:drawable/ic_zen_mode_type_schedule_calendar</item>
+        <item>@*android:drawable/ic_zen_mode_type_schedule_time</item>
+        <item>@*android:drawable/ic_zen_mode_type_theater</item>
+        <item>@*android:drawable/ic_zen_mode_type_unknown</item>
+    </array>
+
+    <!-- TODO: b/333901673 - Complete list -->
+    <!-- Descriptions of the icons in zen_mode_icon_options. Should describe the associated image
+         [CHAR LIMIT=NONE] -->
+    <string-array name="zen_mode_icon_options_descriptions">
+        <item>Bedtime</item>
+        <item>Driving</item>
+        <item>Immersive</item>
+        <item>Managed</item>
+        <item>Star</item>
+        <item>Calendar</item>
+        <item>Time</item>
+        <item>Theater</item>
+        <item>Flower</item>
+    </string-array>
 </resources>

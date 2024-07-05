@@ -48,9 +48,9 @@
     <string name="selective_stay_awake_title" msgid="7887645333447645168">"僅限遊戲、影片等等"</string>
     <string name="selective_stay_awake_summary" msgid="9055967322921984543">"如果應用程式不讓螢幕進入閒置狀態，封面螢幕就會開啟"</string>
     <string name="stay_awake_on_lockscreen_title" msgid="8088456642083051068">"向上滑動繼續使用"</string>
-    <string name="stay_awake_on_lockscreen_summary" msgid="2299351813382522952">"你可以將手機摺疊並在封面螢幕向上滑動，繼續使用應用程式，或等待幾秒，讓系統鎖定螢幕"</string>
+    <string name="stay_awake_on_lockscreen_summary" msgid="8825321939913726566">"手機摺疊後，在封面螢幕向上滑動，即可繼續使用應用程式。你也可以等待幾秒，讓系統鎖定螢幕。遊戲和影片應用程式會自動繼續執行。"</string>
     <string name="sleep_on_fold_title" msgid="7626123024330501411">"永不"</string>
-    <string name="sleep_on_fold_summary" msgid="7737992842459588846">"裝置摺疊時鎖定封面螢幕"</string>
+    <string name="sleep_on_fold_summary" msgid="4191753338303043456">"裝置摺疊時關閉並鎖定封面螢幕"</string>
     <string name="auto_rotate_settings_primary_switch_title" msgid="3440951924928594520">"使用自動旋轉"</string>
     <string name="smart_rotate_text_headline" msgid="5878008933992951904">"臉部偵測功能會使用前置鏡頭提高「自動旋轉」功能的準確度。系統不會儲存相關圖像，也不會將這類圖像傳送給 Google。"</string>
     <string name="bluetooth" msgid="8898478620943459654">"藍牙"</string>
@@ -65,7 +65,8 @@
     <string name="bluetooth_disconnect_title" msgid="4581951246357823044">"要取消連結裝置嗎？"</string>
     <string name="bluetooth_pairing_pref_title" msgid="3497193027590444598">"配對新裝置"</string>
     <string name="keywords_add_bt_device" msgid="4533191164203174011">"藍牙"</string>
-    <string name="bluetooth_screen_auto_on_title" msgid="8496443490064988240">"明天自動重新開啟"</string>
+    <!-- no translation found for bluetooth_screen_auto_on_title (2203993262483477532) -->
+    <skip />
     <string name="bluetooth_pair_right_ear_button" msgid="3979894494803078852">"配對右耳的裝置"</string>
     <string name="bluetooth_pair_left_ear_button" msgid="1019938875726073791">"配對左耳的裝置"</string>
     <string name="bluetooth_pair_other_ear_dialog_title" msgid="3814943511999984012">"配對另一耳的裝置"</string>
@@ -75,7 +76,7 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"配對左耳的裝置"</string>
     <string name="bluetooth_hearing_device_settings_title" msgid="6060072560486755057">"助聽器設定"</string>
     <string name="bluetooth_hearing_device_settings_summary" msgid="3822646075744075158">"捷徑、助聽器相容性"</string>
-    <string name="bluetooth_hearing_aids_presets" msgid="5429761844739722885">"預設設定"</string>
+    <string name="bluetooth_hearing_aids_presets" msgid="4615094985857156388">"預設設定"</string>
     <string name="bluetooth_hearing_aids_presets_error" msgid="2095249829735188484">"無法更新預設設定"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"音訊輸出裝置"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"關於音訊輸出"</string>
@@ -139,7 +140,6 @@
     <string name="stylus_textfield_handwriting" msgid="2363579035338976327">"在文字欄位中書寫"</string>
     <string name="stylus_ignore_button" msgid="7734540973145241391">"忽略所有觸控筆按鈕按壓動作"</string>
     <string name="stylus_connected_devices_title" msgid="2823967577941359812">"觸控筆"</string>
-    <string name="audio_streams_empty" msgid="8803517701437394982">"未偵測到附近有音訊串流。"</string>
     <string name="date_and_time" msgid="1788358029823431692">"日期和時間"</string>
     <string name="proxy_settings_title" msgid="4201866858226087066">"Proxy"</string>
     <string name="proxy_clear_text" msgid="6529658759984031149">"清除"</string>
@@ -286,8 +286,7 @@
     <string name="location_settings_footer_general" msgid="1040507068701188821">"如果應用程式具有鄰近裝置權限，就能判斷已連結裝置的相對位置。"</string>
     <string name="location_settings_footer_location_off" msgid="8568995909147566720">"應用程式和服務的位置存取權已關閉。當你撥打或傳訊息到緊急電話號碼時，系統仍會將你的裝置位置資訊傳送給緊急應變人員。"</string>
     <string name="location_settings_footer_learn_more_content_description" msgid="349380666660145540">"進一步瞭解位置資訊設定"</string>
-    <!-- no translation found for location_settings_tooltip_text_for_chrome (5781821709250544575) -->
-    <skip />
+    <string name="location_settings_tooltip_text_for_chrome" msgid="5781821709250544575">"如要變更，請前往 ChromeOS 設定 &gt;「隱私權和安全性」&gt;「隱私權控制項」&gt;「位置資訊存取權」"</string>
     <string name="account_settings_title" msgid="9138880127246241885">"帳戶"</string>
     <string name="security_settings_title" msgid="6710768415432791970">"安全性"</string>
     <string name="encryption_and_credential_settings_title" msgid="5856216318961482983">"加密和憑證"</string>
@@ -314,7 +313,7 @@
     <string name="security_settings_face_enroll_introduction_accessibility_diversity" msgid="2774962371839179206"></string>
     <string name="security_settings_face_enroll_introduction_accessibility_vision" msgid="7700394302162170363"></string>
     <string name="security_settings_face_enroll_introduction_cancel" msgid="7551159644361639436">"取消"</string>
-    <string name="security_settings_face_enroll_introduction_no_thanks" msgid="1820618982738898717">"不用了，謝謝"</string>
+    <string name="security_settings_face_enroll_introduction_no_thanks" msgid="6603178409726203187">"暫時不要"</string>
     <string name="security_settings_face_enroll_introduction_agree" msgid="6319476573697497750">"我同意"</string>
     <string name="security_settings_face_enroll_introduction_more" msgid="1970820298889710532">"更多"</string>
     <string name="security_settings_face_enroll_introduction_title" msgid="7061610077237098046">"以臉孔解鎖"</string>
@@ -375,7 +374,7 @@
     <string name="security_settings_fingerprint_enroll_introduction_footer_title_2" msgid="5663733424583416266">"注意事項"</string>
     <string name="security_settings_fingerprint_enroll_introduction_message_unlock_disabled" msgid="8957789840251747092">"使用你的指紋將手機解鎖或核准購物交易。\n\n注意：你無法使用指紋將這個裝置解鎖，詳情請洽貴機構的管理員。"</string>
     <string name="security_settings_fingerprint_enroll_introduction_cancel" msgid="6086532316718920562">"取消"</string>
-    <string name="security_settings_fingerprint_enroll_introduction_no_thanks" msgid="6104718999323591180">"不用了，謝謝"</string>
+    <string name="security_settings_fingerprint_enroll_introduction_no_thanks" msgid="1663906389456119842">"暫時不要"</string>
     <string name="security_settings_fingerprint_enroll_introduction_agree" msgid="4068276083536421828">"我同意"</string>
     <string name="setup_fingerprint_enroll_skip_title" msgid="2473807887676247264">"要略過指紋設定程序嗎？"</string>
     <string name="setup_fingerprint_enroll_skip_after_adding_lock_text" msgid="2412645723804450304">"指紋設定只需一兩分鐘即可完成。如果選擇略過，之後可以在「設定」中新增指紋。"</string>
@@ -558,6 +557,18 @@
     <string name="private_space_biometric_summary" msgid="4403837276018724581">"輕觸即可設定"</string>
     <string name="private_space_fingerprint_unlock_title" msgid="3614016453395789051">"使用指紋解鎖私人空間"</string>
     <string name="private_space_face_unlock_title" msgid="462248384776453613">"使用人臉解鎖私人空間"</string>
+    <string name="private_space_biometric_unlock_title" msgid="1978145237698659673">"使用人臉和指紋解鎖私人空間"</string>
+    <string name="private_space_fingerprint_enroll_introduction_title" msgid="5187730641333680942">"設定用指紋解鎖私人空間設定"</string>
+    <string name="private_space_fingerprint_enroll_introduction_message" msgid="9092068873421435300">"指紋可用於解鎖私人空間或驗證身分，以便執行特定操作，例如登入應用程式或核准購買交易"</string>
+    <string name="private_space_fingerprint_enroll_introduction_footer_message" msgid="7125255484447984854">"私人空間可能會在許多情況下意外解鎖。舉例來說，有人可能會讓你的手指觸碰手機，藉此解鎖私人空間。"</string>
+    <string name="private_space_fingerprint_enroll_finish_message" msgid="4754797926493316965">"指紋可用於解鎖私人空間或核准購買交易"</string>
+    <string name="private_space_face_enroll_introduction_title" msgid="3717541082520006032">"設定用人臉解鎖私人空間"</string>
+    <string name="private_space_face_enroll_introduction_message" msgid="250239418499081821">"臉孔可用於解鎖私人空間或驗證身分，以便執行特定操作，例如登入應用程式或核准購買交易"</string>
+    <string name="private_space_face_enroll_introduction_info_looking" msgid="5694757845303924042">"只要看著手機，就可能會讓私人空間意外解鎖。此外，長相與你十分相似的人 (例如孿生兄弟姐妹)，或有人將裝置拿到你的面前，都有可能會將私人空間解鎖。"</string>
+    <string name="private_space_face_enroll_introduction_info_less_secure" msgid="8460719783943533172">"使用複雜的圖案、PIN 碼或密碼解鎖私人空間，可能比使用人臉解鎖來得安全"</string>
+    <string name="private_space_face_settings_require_attention_details" msgid="2799569069549999689">"眼睛必須睜開，才能解鎖私人空間。為求順利解鎖，建議取下太陽眼鏡。"</string>
+    <string name="private_space_face_settings_footer" msgid="7722256209563543711">"臉孔可用於解鎖私人空間。\n\n注意事項：\n一次只能設定一張臉孔。如要新增其他臉孔，請刪除目前設定的臉孔。\n\n只要看著手機，就可能會讓手機意外解鎖。\n\n如果有人將裝置對著你的臉，私人空間可能會因此解鎖。\n\n長相與你十分相似的人 (例如孿生兄弟姐妹) 或許可以解鎖你的私人空間。"</string>
+    <string name="private_space_face_settings_require_confirmation_details" msgid="5406498664903812249">"使用人臉解鎖功能時，一律執行確認步驟"</string>
     <string name="private_space_category_ways_to_unlock" msgid="4356631225316950046">"解鎖方式"</string>
     <string name="private_space_screen_lock_summary" msgid="394837965365561070">"與裝置螢幕鎖定相同"</string>
     <string name="private_space_new_lock_title" msgid="9056139964133004094">"要選擇新的私人空間鎖定方式嗎？"</string>
@@ -565,7 +576,7 @@
     <string name="private_space_auto_lock_title" msgid="8663409382910601261">"自動鎖定私人空間"</string>
     <string name="private_space_auto_lock_page_summary" msgid="8679844515655838654">"裝置可在閒置一段時間後自動鎖定私人空間"</string>
     <string name="private_space_auto_lock_every_time" msgid="1215061855836002830">"裝置每次鎖定時"</string>
-    <string name="private_space_auto_lock_after_inactivity" msgid="1748673030841528649">"閒置 5 分鐘後"</string>
+    <string name="private_space_auto_lock_after_inactivity" msgid="7107814517866649733">"螢幕自動關閉的 5 分鐘後"</string>
     <string name="private_space_auto_lock_after_device_restart" msgid="288755768725895029">"僅在裝置重新啟動後"</string>
     <string name="private_space_hide_page_title" msgid="3364639176511877414">"隱藏私人空間"</string>
     <string name="private_space_hide_when_locked" msgid="6219472348124151797">"隱藏鎖定的私人空間"</string>
@@ -581,8 +592,8 @@
     <string name="private_space_hide_dialog_button" msgid="4157191429310035457">"我知道了"</string>
     <string name="private_space_category_system" msgid="1286843321867285700">"系統"</string>
     <string name="private_space_delete_title" msgid="636873505724100006">"刪除私人空間"</string>
-    <string name="private_space_delete_header" msgid="4594429153176776184">"要刪除私人空間嗎？"</string>
-    <string name="private_space_delete_summary" msgid="3344372988408565545">"你的私人空間將從裝置上移除，所有私人應用程式和資料也都會刪除。這項操作無法取消。"</string>
+    <string name="private_space_delete_header" msgid="4594429153176776184">"刪除私人空間？"</string>
+    <string name="private_space_delete_summary" msgid="7507302208399543921">"你的私人空間將從裝置上刪除。\n\n空間中的所有應用程式及其資料，也都會從手機的"<b>"內部儲存空間"</b>"中永久刪除。"</string>
     <string name="private_space_accounts" msgid="1078277762792056395">"以下帳戶將從你的私人空間移除："</string>
     <string name="private_space_delete_button_label" msgid="1256981385318225002">"刪除"</string>
     <string name="private_space_confirm_deletion_header" msgid="3468651585498942977">"正在刪除私人空間…"</string>
@@ -597,11 +608,16 @@
     <string name="private_space_setup_button_label" msgid="2094882154623560585">"設定"</string>
     <string name="private_space_setup_title" msgid="2272968244329821450">"私人空間"</string>
     <string name="private_space_hide_apps_summary" msgid="4418722947376042418">"將私人應用程式隱藏或鎖定於獨立的空間，並搭配專用的 Google 帳戶，安全更有保障。"</string>
-    <string name="private_space_setup_sub_header" msgid="5454598292017819146">"設定私人空間"</string>
-    <string name="private_space_separate_account_text" msgid="4492251315012955548"><b>"選擇私人空間專用的 Google 帳戶"</b>\n"使用專用帳戶可防止同步處理的檔案、相片和電子郵件出現在空間之外"</string>
+    <string name="private_space_setup_sub_header" msgid="550476876393954356">"運作方式"</string>
+    <string name="private_space_separate_account_text" msgid="790319706810190320"><b>"建立空間專屬 Google 帳戶"</b>\n"如果你使用專屬帳戶，有助避免經過同步的檔案、相片和電子郵件顯示在空間之外"</string>
     <string name="private_space_protected_lock_text" msgid="9123250938334372735"><b>"設定鎖定功能"</b>\n"鎖定私人空間，禁止其他使用者開啟"</string>
-    <string name="private_space_install_apps_text" msgid="5693139160766464498"><b>"安裝應用程式"</b>\n"私人空間內建 Play 商店，方便你安裝應用程式"</string>
-    <string name="private_space_apps_permission_text" msgid="7030946025253366172">"私人空間鎖定時，當中的應用程式不會顯示在權限管理工具、隱私資訊主頁和其他設定。\n\n你無法將私人空間轉移到新裝置。如要在其他裝置上使用私人空間，請重新設定。\n\n如果有人將裝置接上電腦，或在裝置上安裝有害的應用程式，或許能夠存取你的私人空間。"</string>
+    <string name="private_space_install_apps_text" msgid="8072027796190028830"><b>"安裝應用程式"</b>\n"在空間中安裝想保密的應用程式"</string>
+    <string name="private_space_keep_in_mind_text" msgid="7721081172657563800">"注意事項"</string>
+    <string name="private_space_apps_stopped_text" msgid="4034574118911250169"><b>"應用程式會在空間鎖定後停止運作"</b>\n"空間鎖定之後，當中的應用程式將停止運作，你不會收到這些應用程式的通知"</string>
+    <!-- no translation found for private_space_apps_permission_text (4416201648436201393) -->
+    <skip />
+    <!-- no translation found for private_space_settings_footer_text (3742468470394835356) -->
+    <skip />
     <string name="private_space_learn_more_text" msgid="5314198983263277586">"進一步瞭解私人空間"</string>
     <string name="private_space_few_moments_text" msgid="7166883272914424011">"請稍待片刻"</string>
     <string name="private_space_setting_up_text" msgid="8458035555212009528">"正在設定私人空間…"</string>
@@ -611,7 +627,7 @@
     <string name="private_space_lockscreen_summary" msgid="3053836076639653805">"你可以專為私人空間設定新的鎖定方式，也可以直接使用裝置的螢幕鎖定方式"</string>
     <string name="private_space_use_screenlock_label" msgid="9182153443192032782">"使用螢幕鎖定功能"</string>
     <string name="private_space_set_lock_label" msgid="1790408277477408475">"選擇新的鎖定方式"</string>
-    <string name="private_space_pre_finish_title" msgid="2314776598615113267">"請稍候…"</string>
+    <string name="private_space_wait_screen_title" msgid="1535431437075585381">"請稍候…"</string>
     <string name="private_space_success_title" msgid="4351904015352046118">"大功告成！"</string>
     <string name="private_space_access_text" msgid="4433988836344567888">"如要尋找私人空間，請前往應用程式清單並向下捲動畫面"</string>
     <string name="private_space_done_label" msgid="1020482651595246071">"完成"</string>
@@ -625,14 +641,6 @@
     <string name="private_space_choose_your_pin_header" msgid="4560802934975898265">"設定私人空間的 PIN 碼"</string>
     <string name="private_space_choose_your_password_header" msgid="7660259341095044434">"設定私人空間的密碼"</string>
     <string name="private_space_choose_your_pattern_header" msgid="2165607102459936724">"設定私人空間的解鎖圖案"</string>
-    <string name="private_space_gaia_education_title" msgid="3787414895669666563">"建立 Google 帳戶協助保障資料隱私"</string>
-    <string name="private_space_gaia_education_description" msgid="1592753570023264559">"你可以在下個畫面登入帳戶，用來使用私人空間"</string>
-    <string name="private_space_gaia_education_header" msgid="7835879839637613495"><b>"建立專用帳戶，防止資料出現在私人空間外，例如："</b></string>
-    <string name="private_space_gaia_education_bullet1" msgid="641701340908301992">"已同步相片、檔案、電子郵件、聯絡人、日曆活動和其他資料"</string>
-    <string name="private_space_gaia_education_bullet2" msgid="3679859681253672976">"應用程式下載記錄和建議"</string>
-    <string name="private_space_gaia_education_bullet3" msgid="1703614225321289717">"瀏覽記錄、書籤和儲存的密碼"</string>
-    <string name="private_space_gaia_education_bullet4" msgid="515761604505366164">"與私人空間應用程式活動相關的建議內容"</string>
-    <string name="private_space_gaia_education_got_it" msgid="7824029819615566806">"我知道了"</string>
     <string name="private_space_category_lock" msgid="1917657024358778169">"鎖定"</string>
     <string name="private_space_category_hide" msgid="3236587591523126649">"隱藏"</string>
     <string name="fingerprint_add_max" msgid="8639321019299347447">"你最多可以新增 <xliff:g id="COUNT">%d</xliff:g> 個指紋"</string>
@@ -653,12 +661,12 @@
     <string name="lock_settings_picker_new_lock_title" msgid="3113042086804290919">"選擇螢幕鎖定方式"</string>
     <string name="lock_settings_picker_update_lock_title" msgid="536853138943415927">"選擇新的螢幕鎖定方式"</string>
     <string name="lock_settings_picker_new_profile_lock_title" msgid="2270462215256413800">"選擇工作應用程式的鎖定方式"</string>
-    <string name="lock_settings_picker_update_profile_lock_title" msgid="5929068163516308927">"選擇新的工作應用程式鎖定方式"</string>
+    <string name="lock_settings_picker_update_profile_lock_title" msgid="5929068163516308927">"選擇新的工作資料夾鎖定方式"</string>
     <string name="lock_settings_picker_biometrics_added_security_message" msgid="1105247657304421299">"為提升安全性，請設定備用螢幕鎖定方式"</string>
     <string name="lock_settings_picker_biometric_message" msgid="2609666443527262781">"選擇備用的螢幕鎖定方法"</string>
     <string name="lock_settings_picker_admin_restricted_personal_message" msgid="3532653662159888328">"如果你忘記如何解除螢幕鎖定，IT 管理員也無法重設。"</string>
     <string name="lock_settings_picker_admin_restricted_personal_message_action" msgid="5956615234246626264">"另外為工作應用程式設定螢幕鎖定"</string>
-    <string name="lock_settings_picker_profile_message" msgid="9142379549980873478">"如果你忘記這個鎖定方式，必須請 IT 管理員重設"</string>
+    <string name="lock_settings_picker_profile_message" msgid="9142379549980873478">"如果你忘記鎖定方式，必須請 IT 管理員重設"</string>
     <string name="setup_lock_settings_options_button_label" msgid="6098297461618298505">"螢幕鎖定選項"</string>
     <string name="setup_lock_settings_options_dialog_title" msgid="7985107300517468569">"螢幕鎖定選項"</string>
     <string name="lock_screen_auto_pin_confirm_title" msgid="3012128112186088375">"自動確認解鎖"</string>
@@ -784,7 +792,7 @@
     <string name="lockpassword_password_requires_nonletter" msgid="1185342065898300006">"{count,plural, =1{至少要有 1 個非字母半形字元}other{至少要有 # 個非字母半形字元}}"</string>
     <string name="lockpassword_password_requires_nonnumerical" msgid="389687423482993365">"{count,plural, =1{至少要有 1 個非數值半形字元}other{至少要有 # 個非數值半形字元}}"</string>
     <string name="lockpassword_password_recently_used" msgid="5341218079730167191">"裝置管理員不允許使用最近用過的密碼"</string>
-    <string name="lockpassword_pin_no_sequential_digits" msgid="5843639256988031272">"不允許使用依遞增或遞減順序排列或是重複的一串數字"</string>
+    <string name="lockpassword_pin_no_sequential_digits" msgid="5843639256988031272">"不允許使用遞增、遞減或重複的數字"</string>
     <string name="lockpassword_confirm_label" msgid="560897521093566777">"確認"</string>
     <string name="lockpassword_clear_label" msgid="311359833434539894">"清除"</string>
     <string name="lockpassword_credential_changed" msgid="5934778179732392028">"螢幕鎖定設定已變更，請使用新的螢幕鎖定設定再試一次。"</string>
@@ -821,7 +829,7 @@
     <string name="bluetooth_empty_list_bluetooth_off" msgid="7326727272747345476">"藍牙開啟後，裝置即可與其他鄰近的藍牙裝置互傳資料"</string>
     <string name="bluetooth_empty_list_bluetooth_off_auto_on_available" msgid="3430864468105204282">"藍牙開啟後，裝置就能與附近的其他藍牙裝置通訊。「快速分享」和「尋找我的裝置」等功能需要藍牙。"</string>
     <string name="bluetooth_scanning_on_info_message" msgid="786648535600075223">"藍牙功能開啟後，裝置即可與附近的其他藍牙裝置通訊。\n\n為提升裝置使用體驗，即使藍牙功能未開啟，應用程式和服務仍可隨時掃描鄰近裝置。這項功能可加強適地性功能與服務，可在藍牙掃描設定中變更。"</string>
-    <string name="bluetooth_scanning_on_info_message_auto_on_available" msgid="7792443293031247638">"藍牙開啟後，裝置就能與附近的其他藍牙裝置通訊。「快速分享」和「尋找我的裝置」等功能需要藍牙。\n\n即使藍牙功能未開啟，應用程式和服務仍可隨時掃描鄰近裝置。舉例來說，這項功能可用來改善適地性功能和服務。你可以在藍牙掃描設定中變更這項功能。"</string>
+    <string name="bluetooth_scanning_on_info_message_auto_on_available" msgid="7792443293031247638">"藍牙開啟後，裝置就能與附近的其他藍牙裝置通訊。「快速分享」和「尋找我的裝置」等功能都需要使用藍牙技術。\n\n即使藍牙功能未開啟，應用程式和服務仍可隨時掃描鄰近裝置，改善適地性功能和服務等等。你可以在藍牙掃描設定中變更這項功能。"</string>
     <string name="bluetooth_scan_change" msgid="1744636222637390367">"變更"</string>
     <string name="device_details_title" msgid="1155622417516195481">"裝置詳細資料"</string>
     <string name="bluetooth_device_keyboard_settings_preference_title" msgid="3411693160917620519">"鍵盤設定"</string>
@@ -1043,6 +1051,7 @@
     <string name="wifi_certificate_summary_system" msgid="6521297326433133669">"系統憑證"</string>
     <string name="wifi_certificate_summary_pinning" msgid="5901067790901727957">"憑證綁定"</string>
     <string name="wifi_details_title" msgid="222735438574597493">"網路詳細資料"</string>
+    <string name="wep_network_less_secure_warning_title" msgid="2118823633436946728">"這個網路使用較舊的安全通訊協定 (WEP)，安全性較低"</string>
     <string name="wifi_details_subnet_mask" msgid="1619151769276260512">"子網路遮罩"</string>
     <string name="server_name_title" msgid="7257095185810299066">"伺服器名稱"</string>
     <string name="wifi_type_title" msgid="2174893488722015838">"類型"</string>
@@ -1360,7 +1369,7 @@
     <string name="status_device_wifi_mac_address" msgid="1896121694334176494">"裝置的 Wi‑Fi MAC 位址"</string>
     <string name="status_bt_address" msgid="6919660304578476547">"藍牙位址"</string>
     <string name="status_serial_number" msgid="9060064164331466789">"序號"</string>
-    <string name="status_up_time" msgid="1274778533719495438">"累計開機時間"</string>
+    <string name="status_up_time" msgid="4250719389455342087">"運作時間"</string>
     <string name="battery_manufacture_date" msgid="7139426520156833987">"製造日期"</string>
     <string name="battery_first_use_date" msgid="3157207331722711317">"首次使用日期"</string>
     <string name="battery_cycle_count" msgid="2912949283386571900">"週期數"</string>
@@ -1472,6 +1481,7 @@
     <string name="error_duplicate_apn_entry" msgid="7792928408935276618">"重複的 APN 項目。"</string>
     <string name="error_name_empty" msgid="1258275899283079142">"[名稱] 欄位不得留空。"</string>
     <string name="error_apn_empty" msgid="7657491065443746915">"APN 不可留空。"</string>
+    <string name="error_apn_type_empty" msgid="8697781608034468813">"APN 類型不可空白。"</string>
     <string name="error_mcc_not3" msgid="883659545640179094">"MCC 欄位必須為 3 位數。"</string>
     <string name="error_mnc_not23" msgid="7642478711158474918">"MNC 欄位必須要有 2 或 3 位數。"</string>
     <string name="error_adding_apn_type" msgid="1324263534991467943">"電信業者不允許新增「%s」類型的 APN。"</string>
@@ -1499,7 +1509,7 @@
     <string name="reset_esim_error_title" msgid="6516110227665862295">"無法清除 eSIM 卡"</string>
     <string name="reset_esim_error_msg" msgid="8459527827897797168">"系統發生錯誤，因此未清除 eSIM 卡。\n\n請重新啟動裝置並再試一次。"</string>
     <string name="reset_private_space_delete_title" msgid="2555885198282572990">"刪除私人空間"</string>
-    <string name="reset_private_space_delete_dialog" msgid="7506471054091800883">"系統會永久刪除裝置上的私人空間 (如果有的話)，並移除新增到空間的 Google 帳戶。\n\n此外，空間中的所有應用程式及其資料也將一併永久刪除。"</string>
+    <string name="reset_private_space_delete_dialog" msgid="2325106559507364385">"裝置上如果有私人空間，系統會永久刪除，並移除已新增到空間中的 Google 帳戶。\n\n空間中的所有應用程式及其資料，也都會從手機的"<b>"內部儲存空間"</b>"永久刪除。"</string>
     <string name="main_clear_title" msgid="277664302144837723">"清除所有資料 (恢復原廠設定)"</string>
     <string name="main_clear_short_title" msgid="4752094765533020696">"清除所有資料 (恢復原廠設定)"</string>
     <string name="main_clear_desc_also_erases_external" msgid="3687911419628956693"><li>"音樂"</li>\n<li>"相片"</li>\n<li>"其他使用者資料"</li></string>
@@ -1753,7 +1763,7 @@
     <string name="enable_text" msgid="8570798764647110430">"啟用"</string>
     <string name="clear_user_data_text" msgid="6773186434260397947">"清除儲存空間"</string>
     <string name="app_factory_reset" msgid="8974044931667015201">"解除安裝更新"</string>
-    <string name="app_restricted_settings_lockscreen_title" msgid="796413224212436400">"授予受限制權限"</string>
+    <string name="app_restricted_settings_lockscreen_title" msgid="5993061278264872648">"解除受限制的設定"</string>
     <string name="auto_launch_enable_text" msgid="8912714475823807798">"你選取的某些活動預設會在這個應用程式中開啟。"</string>
     <string name="always_allow_bind_appwidgets_text" msgid="2069415023986858324">"你已選擇允許這個應用程式建立小工具並存取其資料。"</string>
     <string name="auto_launch_disable_text" msgid="502648841250936209">"沒有預設值。"</string>
@@ -1913,6 +1923,12 @@
     <string name="trackpad_bottom_right_tap_title" msgid="6275428879042702880">"輕觸右下角"</string>
     <string name="trackpad_bottom_right_tap_summary" msgid="8734094086900680674">"在觸控板上輕觸右下角即可查看更多選項"</string>
     <string name="trackpad_pointer_speed" msgid="7786579408631352625">"游標速度"</string>
+    <string name="pointer_fill_style" msgid="8413840032931637595">"指標填滿樣式"</string>
+    <string name="pointer_fill_style_black_button" msgid="4540815366995820960">"將指標填滿樣式變更為黑色"</string>
+    <string name="pointer_fill_style_green_button" msgid="3731413496528067979">"將指標填滿樣式變更為綠色"</string>
+    <string name="pointer_fill_style_yellow_button" msgid="5025969961559379024">"將指標填滿樣式變更為黃色"</string>
+    <string name="pointer_fill_style_pink_button" msgid="4106218142489635673">"將指標填滿樣式變更為粉紅色"</string>
+    <string name="pointer_fill_style_blue_button" msgid="5594958078854032785">"將指標填滿樣式變更為藍色"</string>
     <string name="trackpad_touch_gesture" msgid="8641725062131922497">"學習觸控板手勢"</string>
     <string name="keywords_touchpad" msgid="8159846254066666032">"觸控板, 滑鼠, 游標, 捲動, 滑動, 按滑鼠右鍵, 點按, 指標"</string>
     <string name="keywords_trackpad_bottom_right_tap" msgid="1285062446073929305">"按滑鼠右鍵, 輕觸"</string>
@@ -2021,10 +2037,10 @@
     <string name="color_contrast_preview" msgid="6791430227535363883">"預覽"</string>
     <string name="color_contrast_preview_sender_name" msgid="8641943417589238147">"Helen、Adam"</string>
     <string name="color_contrast_preview_email_send_date" msgid="2108702726171600080">"2 天前"</string>
-    <string name="color_contrast_preview_email_badge" msgid="4845484039428505392">"要追蹤後續嗎？"</string>
+    <string name="color_contrast_preview_email_badge" msgid="4845484039428505392">"追蹤後續？"</string>
     <string name="color_contrast_preview_email_title" msgid="198712116139754823">"出差報告"</string>
     <string name="color_contrast_preview_email_body" msgid="2714343154965937945">"如需進一步協助，請與我或 Helen 聯絡。報告將會"</string>
-    <string name="color_contrast_preview_email_attachment_name" msgid="852407311884814746">"用戶端支出"</string>
+    <string name="color_contrast_preview_email_attachment_name" msgid="852407311884814746">"客戶支出"</string>
     <string name="color_contrast_about_title" msgid="5939566801408667867">"關於色彩對比"</string>
     <string name="accessibility_turn_screen_darker_title" msgid="5986223133285858349">"調暗螢幕"</string>
     <string name="interaction_control_category_title" msgid="2696474616743882372">"互動控制項"</string>
@@ -2325,6 +2341,7 @@
     <string name="daltonizer_mode_protanomaly_title" msgid="6392456967103014723">"紅綠"</string>
     <string name="daltonizer_mode_tritanomaly_title" msgid="2278786218762602022">"藍黃"</string>
     <string name="daltonizer_mode_grayscale_title" msgid="152005391387952588">"灰階"</string>
+    <string name="daltonizer_saturation_title" msgid="2999486412114963068">"強度"</string>
     <string name="daltonizer_mode_deuteranomaly_summary" msgid="2117727423019598455">"綠色弱、綠色盲"</string>
     <string name="daltonizer_mode_protanomaly_summary" msgid="4617032854982040748">"紅色弱、紅色盲"</string>
     <string name="daltonizer_mode_tritanomaly_summary" msgid="2428218320118180070">"藍色弱視"</string>
@@ -2405,7 +2422,6 @@
     <string name="keywords_select_to_speak" msgid="2872704811610888719"></string>
     <string name="keywords_color_correction" msgid="8540442886990423681">"調整顏色"</string>
     <string name="keywords_color_inversion" msgid="4291058365873221962">"調暗螢幕, 調亮螢幕"</string>
-    <string name="keywords_contrast" msgid="4668393735398949873">"色彩對比"</string>
     <string name="keywords_accessibility_menu" msgid="4300579436464706608"></string>
     <string name="keywords_switch_access" msgid="5813094504384313402"></string>
     <string name="keywords_auto_click" msgid="6811744211216280998">"動作, 滑鼠, 外接滑鼠, 頭控滑鼠, 調適型滑鼠, 輪椅, 搖桿"</string>
@@ -2572,7 +2588,7 @@
     <string name="battery_saver_turn_on_summary" msgid="1433919417587171160">"延長電池續航力"</string>
     <string name="battery_saver_sticky_title_new" msgid="5942813274115684599">"充電時關閉"</string>
     <string name="battery_saver_sticky_title_percentage" msgid="1178162022087559148">"電量達 <xliff:g id="BATTERY_PERCENTAGE">%1$s</xliff:g> 時關閉"</string>
-    <string name="battery_saver_sticky_description_new" msgid="8543277078136947874">"在電池充電達 <xliff:g id="BATTERY_PERCENTAGE">%1$s</xliff:g> 的電量時關閉省電模式"</string>
+    <string name="battery_saver_sticky_description_new" msgid="8543277078136947874">"充電達 <xliff:g id="BATTERY_PERCENTAGE">%1$s</xliff:g> 時關閉省電模式"</string>
     <!-- no translation found for battery_saver_seekbar_title (3712266470054006641) -->
     <skip />
     <string name="battery_saver_seekbar_title_placeholder" msgid="7141264642540687540">"開啟"</string>
@@ -2611,10 +2627,10 @@
     <string name="battery_level_percentage" msgid="1433178290838842146">"電池電量百分比：從 <xliff:g id="START_PERCENTAGE">%1$s</xliff:g> 到 <xliff:g id="END_PERCENTAGE">%2$s</xliff:g>"</string>
     <string name="battery_usage_breakdown_title_since_last_full_charge" msgid="435006273323199906">"上次充飽電後的電池用量"</string>
     <string name="battery_usage_breakdown_title_for_slot" msgid="4823179483667671406">"<xliff:g id="SLOT">%s</xliff:g>的電池用量"</string>
-    <string name="screen_time_category_last_full_charge" msgid="8856908320256057753">"自上次充飽電後的螢幕時間"</string>
+    <string name="screen_time_category_last_full_charge" msgid="8856908320256057753">"上次充飽電後的螢幕時間"</string>
     <string name="screen_time_category_for_slot" msgid="8287722270554654959">"<xliff:g id="SLOT">%s</xliff:g>的螢幕時間"</string>
     <string name="battery_usage_spinner_view_by_apps" msgid="8769276544072098082">"應用程式"</string>
-    <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"系統"</string>
+    <string name="battery_usage_spinner_view_by_systems" msgid="7904104223212160541">"按系統查看"</string>
     <string name="battery_usage_less_than_percent" msgid="5873099028895001082">"&lt; <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
     <string name="battery_usage_less_than_percent_content_description" msgid="6265933174815461493">"少於 <xliff:g id="PERCENTAGE">%1$s</xliff:g>"</string>
     <string name="battery_cycle_count_footer" msgid="3642121059800373545">"送貨前會進行品質檢測，因此初次使用時，電池循環次數可能不是零"</string>
@@ -2686,11 +2702,11 @@
     <string name="adaptive_connectivity_main_switch_title" msgid="261045483524512420">"使用自動調節連線"</string>
     <string name="cellular_security_title" msgid="5562899485544677941">"行動網路安全性"</string>
     <string name="cellular_security_summary" msgid="1893770670709928113">"網路類型、加密、通知控制選項"</string>
-    <string name="cellular_security_top_intro" msgid="6749166804080092892">"這些設定可以保護你的通話、訊息和資料，避免有心人士利用過時或未加密網路竊取或監視你的資料"</string>
+    <string name="cellular_security_top_intro" msgid="6749166804080092892">"這些設定可以保護你的通話、訊息和資料，避免有心人士利用過時或未加密網路，竊取或監視你的資料"</string>
     <string name="cellular_security_settings_title" msgid="7779141923670352595">"行動網路安全性"</string>
     <string name="cellular_security_notifications" msgid="4619728340612184944">"通知"</string>
     <string name="cellular_security_notifications_controller_title" msgid="4853056963523277847">"網路通知"</string>
-    <string name="cellular_security_notifications_controller_summary" msgid="8339863845393759958">"裝置連上未加密網路，或是網路記錄你的裝置專屬 ID 或 SIM 卡 ID 時接收通知"</string>
+    <string name="cellular_security_notifications_controller_summary" msgid="8339863845393759958">"發生下列情況時接收通知：裝置連上未加密網路，或是網路記錄你的裝置專屬 ID/SIM 卡 ID"</string>
     <string name="cellular_security_settings_encryption_title" msgid="4013084091666375780">"加密"</string>
     <string name="cellular_security_network_generations_title" msgid="2343026988833783854">"各代網路"</string>
     <string name="cellular_security_network_generations_summary" msgid="139087814553929402">"你可以將每一張已經安裝的 SIM 卡設為只連線至支援 3G、4G 和 5G 的網路，以免 SIM 卡連上不安全的舊式 2G 網路。如果只有 2G 網路可用，這項設定可能會限制連線，但發生緊急情況時，你仍可使用 2G 網路。"</string>
@@ -3240,7 +3256,7 @@
     <string name="keywords_storage_settings" msgid="6018856193950281898">"記憶體, 快取, 資料, 刪除, 清除, 釋出, 空間"</string>
     <string name="keywords_bluetooth_settings" msgid="2588159530959868188">"已連線, 裝置, 耳罩式耳機, 耳機, 喇叭, 無線, 配對, 耳塞式耳機, 音樂, 媒體"</string>
     <string name="keywords_wallpaper" msgid="7332890404629446192">"背景, 主題, 格線, 自訂, 個人化"</string>
-    <string name="keywords_styles" msgid="3367789885254807447">"圖示, 強調色, 顏色, 主畫面, 螢幕鎖定, 快速鍵, 時鐘大小"</string>
+    <string name="keywords_styles" msgid="1137053187860081131">"圖示, 圖示, 強調色, 顏色, 主畫面, 螢幕鎖定, 捷徑, 時鐘大小"</string>
     <string name="keywords_assist_input" msgid="3086289530227075593">"預設,  Google 助理"</string>
     <string name="keywords_default_payment_app" msgid="5162298193637362104">"付款, 預設"</string>
     <string name="keywords_ambient_display" msgid="3149287105145443697">"收到的通知"</string>
@@ -3306,6 +3322,7 @@
     <string name="spatial_audio_footer_learn_more_text" msgid="3826811708094366301">"已連結裝置設定"</string>
     <string name="zen_mode_settings_schedules_summary" msgid="2047688589286811617">"{count,plural, =0{無}=1{已設定 1 個時間表}other{已設定 # 個時間表}}"</string>
     <string name="zen_mode_settings_title" msgid="682676757791334259">"零打擾"</string>
+    <string name="zen_modes_list_title" msgid="5138745349253275428">"優先模式"</string>
     <string name="zen_mode_settings_summary" msgid="6040862775514495191">"僅接收重要聯絡人和應用程式的通知"</string>
     <string name="zen_mode_slice_subtitle" msgid="6849372107272604160">"降低干擾"</string>
     <string name="zen_mode_settings_turn_on_dialog_title" msgid="7500702838426404527">"開啟「零打擾」模式"</string>
@@ -3316,6 +3333,16 @@
     <string name="zen_mode_rule_name_edit" msgid="1053237022416700481">"編輯"</string>
     <string name="zen_mode_automation_settings_page_title" msgid="6217433860514433311">"排程"</string>
     <string name="zen_mode_automatic_rule_settings_page_title" msgid="5264835276518295033">"排程"</string>
+    <string name="zen_mode_automatic_trigger_title" msgid="9193777783079000267">"自動開啟"</string>
+    <string name="zen_mode_set_calendar_title" msgid="7216665046452644450">"新增日曆"</string>
+    <string name="zen_mode_set_calendar_link" msgid="5694504696975898068">"使用日曆"</string>
+    <string name="zen_mode_set_calendar_category_title" msgid="4860286061420133360">"安排時間"</string>
+    <!-- no translation found for zen_mode_set_schedule_title (8023100831320026233) -->
+    <skip />
+    <!-- no translation found for zen_mode_set_schedule_link (2534032127923435737) -->
+    <skip />
+    <!-- no translation found for zen_mode_schedule_duration (299332195675875111) -->
+    <skip />
     <string name="zen_mode_schedule_category_title" msgid="1381879916197350988">"排程"</string>
     <string name="zen_mode_automation_suggestion_title" msgid="7776129050500707960">"在特定時間將手機設為靜音"</string>
     <string name="zen_mode_automation_suggestion_summary" msgid="1946750790084170826">"設定「零打擾」規則"</string>
@@ -3325,7 +3352,24 @@
     <string name="zen_mode_settings_category" msgid="3794956668816783447">"允許發出音效的干擾"</string>
     <string name="zen_mode_visual_interruptions_settings_title" msgid="7806181124566937214">"封鎖視覺干擾"</string>
     <string name="zen_mode_visual_signals_settings_subtitle" msgid="7433077540895876672">"允許視覺信號"</string>
-    <string name="zen_mode_restrict_notifications_title" msgid="4169952466106040297">"如何顯示隱藏的通知"</string>
+    <string name="mode_interruption_filter_title" msgid="6657431939996264417">"可收到的通知"</string>
+    <string name="mode_device_effects_title" msgid="5857008332618433744">"其他動作"</string>
+    <string name="mode_display_settings_title" msgid="8132825978346535472">"顯示設定"</string>
+    <string name="mode_display_options_section" msgid="5151597748243866532">"顯示選項"</string>
+    <string name="mode_grayscale_title" msgid="6027553257331235461">"灰階"</string>
+    <string name="mode_grayscale_title_secondary_list" msgid="2662593380253642581">"灰階"</string>
+    <string name="mode_grayscale_summary" msgid="6682099523626777038">"將螢幕切換為黑白模式"</string>
+    <string name="mode_aod_title" msgid="5903435070341237325">"不要喚醒螢幕"</string>
+    <string name="mode_aod_title_secondary_list" msgid="8268180392811027557">"不要喚醒螢幕"</string>
+    <string name="mode_aod_summary" msgid="7516159044827627065">"停用螢幕長亮模式"</string>
+    <string name="mode_wallpaper_title" msgid="5549693923133928374">"調低桌布亮度"</string>
+    <string name="mode_wallpaper_title_secondary_list" msgid="5034602021811580157">"調低桌布亮度"</string>
+    <string name="mode_wallpaper_summary" msgid="665480011615603784">"變更桌布亮度"</string>
+    <string name="mode_dark_theme_title" msgid="8099007897943513209">"啟用深色主題"</string>
+    <string name="mode_dark_theme_title_secondary_list" msgid="4761262694149772845">"啟用深色主題"</string>
+    <string name="mode_dark_theme_summary" msgid="8428887193785431898">"將作業系統和應用程式偏好設定切換成「淺色文字搭配深色背景」。這項設定或許可以降低眼睛負擔，而且在某些裝置上還能節省大量電力"</string>
+    <string name="mode_display_settings_summary" msgid="5929234706883482380">"{count,plural,offset:2 =0{沒有顯示變更}=1{{effect_1}}=2{{effect_1}和{effect_2}}=3{{effect_1}、{effect_2}和{effect_3}}other{{effect_1}、{effect_2}和另外 # 個設定}}"</string>
+    <string name="zen_mode_restrict_notifications_title" msgid="4926944083757096458">"如何顯示已過濾的通知"</string>
     <string name="zen_mode_restrict_notifications_category" msgid="5870944770935394566">"開啟「零打擾」模式時"</string>
     <string name="zen_mode_restrict_notifications_mute" msgid="6692072837485018287">"不發出通知音效"</string>
     <string name="zen_mode_restrict_notifications_mute_summary" msgid="966597459849580949">"通知會顯示在畫面上"</string>
@@ -3336,9 +3380,9 @@
     <string name="zen_mode_restrict_notifications_custom" msgid="5469078057954463796">"自訂"</string>
     <string name="zen_mode_restrict_notifications_enable_custom" msgid="4303255634151330401">"啟用自訂設定"</string>
     <string name="zen_mode_restrict_notifications_disable_custom" msgid="5062332754972217218">"移除自訂設定"</string>
-    <string name="zen_mode_restrict_notifications_summary_muted" msgid="4750213316794189968">"不發出通知音效"</string>
-    <string name="zen_mode_restrict_notifications_summary_custom" msgid="3918461289557316364">"部分隱藏"</string>
-    <string name="zen_mode_restrict_notifications_summary_hidden" msgid="636494600775773296">"不顯示通知也不發出音效"</string>
+    <string name="zen_mode_restrict_notifications_summary_muted" msgid="2826459087306271381">"顯示通知"</string>
+    <string name="zen_mode_restrict_notifications_summary_custom" msgid="6455811408721183198">"隱藏部分通知"</string>
+    <string name="zen_mode_restrict_notifications_summary_hidden" msgid="2157279412167366119">"隱藏通知"</string>
     <string name="zen_mode_what_to_block_title" msgid="5692710098205334164">"自訂限制"</string>
     <string name="zen_mode_block_effects_screen_on" msgid="8780668375194500987">"螢幕開啟時"</string>
     <string name="zen_mode_block_effects_screen_off" msgid="2291988790355612826">"螢幕關閉時"</string>
@@ -3448,7 +3492,7 @@
     <string name="bubbles_feature_disabled_dialog_text" msgid="5275666953364031055">"為這個應用程式啟用對話框功能後，也會一併為裝置啟用對話框功能。\n\n這麼做會影響能夠以對話框形式顯示的其他應用程式和對話。"</string>
     <string name="bubbles_feature_disabled_button_approve" msgid="2042628067101419871">"開啟"</string>
     <string name="bubbles_feature_disabled_button_cancel" msgid="8963409459448350600">"取消"</string>
-    <string name="notifications_bubble_setting_on_summary" msgid="4641572377430901196">"已開啟 / 對話能以浮動圖示形式顯示"</string>
+    <string name="notifications_bubble_setting_on_summary" msgid="4641572377430901196">"已開啟 / 對話可顯示為浮動圖示"</string>
     <string name="notifications_bubble_setting_title" msgid="8287649393774855268">"允許應用程式顯示對話框"</string>
     <string name="notifications_bubble_setting_description" msgid="7336770088735025981">"部分對話將以浮動圖示形式，顯示在其他應用程式的上層"</string>
     <string name="bubble_app_setting_all" msgid="312524752846978277">"所有對話都能以對話框形式顯示"</string>
@@ -3469,7 +3513,7 @@
     <string name="locked_work_profile_notification_title" msgid="279367321791301499">"工作資料夾鎖定時"</string>
     <string name="unseen_notifs_lock_screen" msgid="6910701117021324612">"螢幕鎖定畫面上只顯示新通知"</string>
     <string name="unseen_notifs_lock_screen_summary" msgid="5996722793868021391">"自動從螢幕鎖定畫面移除先前看過的通知"</string>
-    <string name="lock_screen_notifs_title" msgid="3412042692317304449">"螢幕鎖定畫面上的通知"</string>
+    <string name="lock_screen_notifs_title" msgid="3412042692317304449">"螢幕鎖定畫面通知"</string>
     <string name="lock_screen_notifs_show_all_summary" msgid="4226586018375762117">"顯示對話通知、預設通知和已設為靜音的通知"</string>
     <string name="lock_screen_notifs_show_all" msgid="1300418674456749664">"顯示對話通知、預設通知和已設為靜音的通知"</string>
     <string name="lock_screen_notifs_show_alerting" msgid="6584682657382684566">"隱藏已設為靜音的對話和通知"</string>
@@ -3535,7 +3579,7 @@
     <string name="notifications_sent_daily" msgid="10274479224185437">"{count,plural, =1{每天約 # 則通知}other{每天約 # 則通知}}"</string>
     <string name="notifications_sent_weekly" msgid="7895656213187555346">"{count,plural, =1{每週約 # 則通知}other{每週約 # 則通知}}"</string>
     <string name="notifications_sent_never" msgid="9081278709126812062">"永遠不要"</string>
-    <string name="manage_notification_access_title" msgid="6481256069087219982">"裝置與應用程式通知"</string>
+    <string name="manage_notification_access_title" msgid="4154723216570646451">"閱讀、回覆及控制通知"</string>
     <string name="manage_notification_access_summary" msgid="2907135226478903997">"控管可以讀取通知的應用程式和裝置"</string>
     <string name="work_profile_notification_access_blocked_summary" msgid="8643809206612366067">"管理員已禁止存取工作資料夾通知"</string>
     <string name="notification_assistant_title" msgid="5889201903272393099">"加強型通知"</string>
@@ -3572,17 +3616,14 @@
     <string name="notif_listener_not_migrated" msgid="6265206376374278226">"這個應用程式不支援加強型設定"</string>
     <string name="notif_listener_more_settings" msgid="1348409392307208921">"更多設定"</string>
     <string name="notif_listener_more_settings_desc" msgid="7995492074281663658">"應用程式內提供更多設定"</string>
-    <string name="notification_polite_title" msgid="6121016426991791557">"通知緩和功能"</string>
-    <string name="notification_polite_all_apps" msgid="1118651561594250059">"將緩和功能套用至所有通知"</string>
-    <string name="notification_polite_all_apps_summary" msgid="540268373207498126">"從同一應用程式連續收到大量通知時，逐漸降低通知音量"</string>
-    <string name="notification_polite_conversations" msgid="8197695136727245741">"將緩和功能套用至對話"</string>
-    <string name="notification_polite_conversations_summary" msgid="2677141765664359994">"在短時間內從同一對話連續收到大量訊息時，逐漸降低通知音量"</string>
-    <string name="notification_polite_disabled" msgid="1378078021594282842">"不使用通知緩和功能"</string>
-    <string name="notification_polite_disabled_summary" msgid="1145341260283746936">"無論從同一應用程式連續收到多少通知，一律不降低通知音量"</string>
-    <string name="notification_polite_vibrate_unlocked" msgid="6142573851761357903">"在解鎖時震動"</string>
-    <string name="notification_polite_vibrate_unlocked_summary" msgid="1678472892282874459">"只在螢幕解鎖狀態下震動"</string>
+    <!-- no translation found for notification_polite_title (4737150709382859870) -->
+    <skip />
+    <!-- no translation found for notification_polite_main_control_title (7267191551379543859) -->
+    <skip />
+    <!-- no translation found for notification_polite_description (7749280535620291610) -->
+    <skip />
     <string name="notification_polite_work" msgid="8823596456640216391">"套用至工作資料夾"</string>
-    <string name="notification_polite_work_summary" msgid="8260947839104352075">"將個人資料夾的通知緩和設定套用至工作資料夾"</string>
+    <string name="notification_polite_work_summary" msgid="5014189280132951378">"套用到工作資料夾應用程式"</string>
     <string name="vr_listeners_title" msgid="4960357292472540964">"VR 小幫手服務"</string>
     <string name="no_vr_listeners" msgid="8442646085375949755">"沒有任何已安裝的應用程式要求以 VR 小幫手服務的形式執行。"</string>
     <string name="vr_listener_security_warning_title" msgid="7026351795627615177">"要允許 <xliff:g id="SERVICE">%1$s</xliff:g> 存取 VR 服務嗎？"</string>
@@ -3635,11 +3676,11 @@
     <string name="app_notification_block_summary" msgid="1804611676339341551">"一律不顯示這類通知"</string>
     <string name="notification_content_block_title" msgid="6689085826061361351">"顯示通知"</string>
     <string name="notification_content_block_summary" msgid="329171999992248925">"一律不在通知欄或週邊裝置上顯示通知"</string>
-    <string name="app_notification_fsi_permission_title" msgid="5424116606034705020">"允許顯示全螢幕通知"</string>
+    <string name="app_notification_fsi_permission_title" msgid="2260977598430154428">"允許顯示全螢幕通知"</string>
     <string name="app_notification_fsi_permission_summary" msgid="7673487977631068039">"允許在裝置鎖定時顯示全螢幕通知。"</string>
     <string name="notification_badge_title" msgid="6854537463548411313">"允許使用通知圓點"</string>
     <string name="notification_channel_badge_title" msgid="6505542437385640049">"顯示通知圓點"</string>
-    <string name="app_notification_override_dnd_title" msgid="3769539356442226691">"忽略「零打擾」模式設定"</string>
+    <string name="app_notification_override_dnd_title" msgid="3769539356442226691">"忽略「零打擾」模式"</string>
     <string name="app_notification_override_dnd_summary" msgid="4894641191397562920">"允許系統在「零打擾」模式開啟時繼續發出這些通知"</string>
     <string name="app_notification_visibility_override_title" msgid="7778628150022065920">"螢幕鎖定"</string>
     <string name="app_notifications_dialog_done" msgid="573716608705273004">"完成"</string>
@@ -3731,6 +3772,11 @@
     <string name="zen_mode_events_summary" msgid="3241903481309766428">"近期日曆活動的通知/音效"</string>
     <string name="zen_mode_events_list" msgid="7191316245742097229">"活動"</string>
     <string name="zen_mode_events_list_first" msgid="7425369082835214361">"活動"</string>
+    <string name="zen_mode_apps_title" msgid="1691010857014041183">"應用程式"</string>
+    <string name="zen_mode_apps_category" msgid="4082380323683889391">"例外的應用程式"</string>
+    <string name="zen_mode_apps_priority_apps" msgid="7386196048313716076">"所選應用程式"</string>
+    <string name="zen_mode_apps_none_apps" msgid="2493642312793604327">"無"</string>
+    <string name="zen_mode_apps_all_apps" msgid="705700582778445484">"全部"</string>
     <string name="zen_mode_bypassing_apps" msgid="625309443389126481">"允許應用程式覆寫"</string>
     <string name="zen_mode_bypassing_apps_header" msgid="60083006963906906">"例外的應用程式"</string>
     <string name="zen_mode_bypassing_apps_add_header" msgid="3201829605075172536">"選取更多應用程式"</string>
@@ -3767,6 +3813,12 @@
     <string name="zen_mode_summary_alarms_only_by_hour" msgid="7400910210950788163">"{count,plural, =1{變更為僅限鬧鐘模式並持續 1 小時，結束時間為 {time}}other{變更為僅限鬧鐘模式並持續 # 小時，結束時間為 {time}}}"</string>
     <string name="zen_mode_summary_alarms_only_by_time" msgid="8140619669703968810">"變更為僅允許鬧鐘模式，結束時間為 <xliff:g id="FORMATTEDTIME">%1$s</xliff:g>"</string>
     <string name="zen_mode_summary_always" msgid="722093064250082317">"變更為一律允許干擾模式"</string>
+    <!-- no translation found for zen_mode_action_change_name (766639614789907016) -->
+    <skip />
+    <!-- no translation found for zen_mode_action_change_icon (6192187791750301778) -->
+    <skip />
+    <!-- no translation found for zen_mode_icon_picker_title (6845490379143557472) -->
+    <skip />
     <string name="warning_button_text" msgid="1274234338874005639">"警告"</string>
     <string name="suggestion_button_close" msgid="6865170855573283759">"關閉"</string>
     <string name="device_feedback" msgid="5351614458411688608">"傳送你對這個裝置的意見"</string>
@@ -3869,7 +3921,7 @@
     <string name="open_supported_links_footer" msgid="3188808142432787933">"應用程式要求處理以下連結："</string>
     <string name="assist_and_voice_input_title" msgid="6317935163145135914">"小幫手和語音輸入"</string>
     <string name="default_assist_title" msgid="1182435129627493758">"數位助理應用程式"</string>
-    <string name="default_digital_assistant_title" msgid="5654663086385490838">"預設的數位助理應用程式"</string>
+    <string name="default_digital_assistant_title" msgid="5654663086385490838">"預設數位助理應用程式"</string>
     <string name="assistant_security_warning_agree" msgid="9013334158753473359">"同意"</string>
     <string name="default_browser_title" msgid="8342074390782390458">"瀏覽器應用程式"</string>
     <string name="default_phone_title" msgid="7616730756650803827">"電話應用程式"</string>
@@ -3984,8 +4036,8 @@
     <string name="permit_manage_external_storage" msgid="6928847280689401761">"授予管理所有檔案的權限"</string>
     <string name="allow_manage_external_storage_description" msgid="5707948153603253225">"允許這個應用程式讀取、修改及刪除這部裝置或任何已連結儲存空間上的所有檔案。如果應用程式獲得授權，可能會在你不知情的情況下存取檔案。"</string>
     <string name="filter_manage_external_storage" msgid="6751640571715343804">"可以存取所有檔案"</string>
-    <string name="full_screen_intent_title" msgid="747270185715224130">"全螢幕通知"</string>
-    <string name="permit_full_screen_intent" msgid="9035367640019960861">"允許這個應用程式顯示全螢幕通知"</string>
+    <string name="full_screen_intent_title" msgid="5888548315628268674">"全螢幕通知"</string>
+    <string name="permit_full_screen_intent" msgid="2414307667550523630">"允許這個應用程式顯示全螢幕通知"</string>
     <string name="footer_description_full_screen_intent" msgid="7716518411349225528">"允許這個應用程式在裝置鎖定時顯示全螢幕通知。應用程式可能會利用這類通知顯示鬧鐘、來電或其他緊急通知。"</string>
     <string name="media_management_apps_title" msgid="8222942355578724582">"媒體管理應用程式"</string>
     <string name="media_management_apps_toggle_label" msgid="166724270857067456">"允許應用程式管理媒體"</string>
@@ -4103,7 +4155,7 @@
     <string name="data_usage_template" msgid="3822452362629968010">"<xliff:g id="ID_2">%2$s</xliff:g>期間已使用 <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="configure" msgid="1499586749829665889">"設定"</string>
     <string name="data_usage_other_apps" msgid="5649047093607329537">"計入數據用量的其他應用程式"</string>
-    <string name="data_saver_unrestricted_summary" msgid="7343571401172437542">"{count,plural, =1{數據節省模式開啟時，1 個應用程式的數據用量將不會受限}other{數據節省模式開啟時，# 個應用程式的數據用量將不會受限}}"</string>
+    <string name="data_saver_unrestricted_summary" msgid="559673440849071149">"{count,plural, =1{1 個應用程式可在數據節省模式開啟時，無限量使用行動數據}other{# 個應用程式可在數據節省模式開啟時，無限量使用行動數據}}"</string>
     <string name="data_usage_title" msgid="4039024073687469094">"主要數據"</string>
     <string name="data_usage_wifi_title" msgid="1060495519280456926">"Wi‑Fi 數據"</string>
     <string name="data_used_formatted" msgid="7913920278059077938">"已使用 <xliff:g id="ID_1">^1</xliff:g> <xliff:g id="ID_2">^2</xliff:g>"</string>
@@ -4120,13 +4172,13 @@
     <string name="no_carrier_update_now_text" msgid="7898004907837200752">"剛才更新"</string>
     <string name="launch_wifi_text" msgid="976421974332512894">"查看詳細資料"</string>
     <string name="data_saver_title" msgid="2593804270788863815">"數據節省模式"</string>
-    <string name="unrestricted_data_saver" msgid="7922563266857367495">"數據用量不受限"</string>
+    <string name="unrestricted_data_saver" msgid="5913547065342097274">"不限制行動數據用量"</string>
     <string name="restrict_background_blocklisted" msgid="2308345280442438232">"背景資料功能已關閉"</string>
     <string name="data_saver_on" msgid="7848893946018448793">"已開啟"</string>
     <string name="data_saver_off" msgid="5891210864117269045">"關閉"</string>
     <string name="data_saver_switch_title" msgid="7111538580123722959">"使用數據節省模式"</string>
-    <string name="unrestricted_app_title" msgid="7117585996574329284">"數據用量不受限"</string>
-    <string name="unrestricted_app_summary" msgid="282698963532000403">"開啟數據節省模式時，這個應用程式的數據用量不會受限"</string>
+    <string name="unrestricted_app_title" msgid="8531936851059106374">"不限制行動數據用量"</string>
+    <string name="unrestricted_app_summary" msgid="8320813971858627624">"開啟數據節省模式時，不限制行動數據用量"</string>
     <string name="home_app" msgid="6056850504746902747">"主畫面應用程式"</string>
     <string name="suggestion_additional_fingerprints" msgid="4726777300101156208">"新增其他指紋"</string>
     <string name="suggestion_additional_fingerprints_summary" msgid="2825364645039666674">"使用其他指紋解鎖"</string>
@@ -4200,9 +4252,9 @@
     <string name="notification_suggestion_summary" msgid="7615611244249276113">"顯示或隱藏通知內容"</string>
     <string name="page_tab_title_support" msgid="3235725053332345773">"提示和支援"</string>
     <string name="developer_smallest_width" msgid="632354817870920911">"最小寬度"</string>
-    <string name="premium_sms_none" msgid="8737045049886416739">"沒有任何已安裝的應用程式要求「付費簡訊」存取權"</string>
+    <string name="premium_sms_none" msgid="4718916765158062108">"已安裝的應用程式都未要求「付費簡訊」存取權"</string>
     <string name="premium_sms_warning" msgid="2192300872411073324">"「付費簡訊」需要額外計費，相關費用會併入你的電信費帳單。如果你為某個應用程式啟用權限，即可利用該應用程式傳送付費簡訊。"</string>
-    <string name="premium_sms_access" msgid="5605970342699013212">"付費簡訊存取權"</string>
+    <string name="premium_sms_access" msgid="8487315743197916530">"付費簡訊"</string>
     <string name="bluetooth_disabled" msgid="835838280837359514">"關閉"</string>
     <string name="bluetooth_connected_summary" msgid="8043167194934315712">"已連線到「<xliff:g id="ID_1">%1$s</xliff:g>」"</string>
     <string name="bluetooth_connected_multiple_devices_summary" msgid="2294954614327771844">"已連線到多個裝置"</string>
@@ -4509,7 +4561,7 @@
     <string name="media_output_label_title" msgid="4139048973886819148">"透過以下裝置播放「<xliff:g id="LABEL">%s</xliff:g>」"</string>
     <string name="media_output_title_without_playing" msgid="3339321669132875821">"音訊播放位置"</string>
     <string name="media_output_default_summary" msgid="4200343059396412376">"這部裝置"</string>
-    <string name="media_output_audio_sharing" msgid="6531742594884809737">"音訊分享"</string>
+    <string name="media_output_audio_sharing" msgid="8169294522817470115">"正在分享音訊"</string>
     <string name="media_out_summary_ongoing_call_state" msgid="475188726850090363">"通話時無法使用"</string>
     <string name="take_call_on_title" msgid="1159417893879946757">"接聽來電時使用的裝置"</string>
     <string name="cannot_change_apn_toast" msgid="296540724089240405">"這個 APN 無法變更。"</string>
@@ -4705,6 +4757,8 @@
     <string name="sim_onboarding_next" msgid="6415025179929475355">"繼續"</string>
     <string name="sim_onboarding_progressbar_turning_sim_on" msgid="1163318788393361574">"正在啟用「<xliff:g id="CARRIER_NAME">%1$s</xliff:g>」…"</string>
     <string name="mobile_network_spn_title" msgid="3053793174495329077">"行動網路"</string>
+    <string name="imei_primary" msgid="5312232202518974440">"IMEI (主要)"</string>
+    <string name="meid_primary" msgid="3256732684155678106">"MEID (主要)"</string>
     <string name="mobile_network_phone_number_title" msgid="2090794402855021784">"電話號碼"</string>
     <string name="mobile_network_sim_label_color_title" msgid="2401352348041132876">"SIM 卡標籤和顏色"</string>
     <string name="sim_setup_channel_id" msgid="8797972565087458515">"啟用網路"</string>
@@ -4748,6 +4802,7 @@
     <string name="bluetooth_left_name" msgid="7440064067910080502">"左耳機"</string>
     <string name="bluetooth_right_name" msgid="7588088072444124949">"右耳機"</string>
     <string name="bluetooth_middle_name" msgid="3909371955137442319">"充電盒"</string>
+    <string name="bluetooth_header_battery_content_description" msgid="3804237436331504879">"電池"</string>
     <string name="settings_panel_title" msgid="346363079938069215">"設定面板"</string>
     <string name="force_desktop_mode" msgid="1336913605091334238">"強制使用桌面模式"</string>
     <string name="force_desktop_mode_summary" msgid="4587416867846930479">"在次要顯示器上強制使用桌面模式實驗性功能"</string>
@@ -4808,14 +4863,15 @@
     <string name="track_frame_time_keywords" msgid="7885340257945922239">"GPU"</string>
     <string name="enable_16k_pages" msgid="8001470927566110689">"以 16KB 頁面大小啟動"</string>
     <string name="enable_16k_pages_summary" msgid="1964363364670306912">"使用支援 16KB 頁面大小的核心啟動裝置"</string>
-    <string name="confirm_enable_16k_pages_title" msgid="1286925577014793351">"從 4KB 模式切換回 16KB 模式"</string>
-    <string name="confirm_enable_16k_pages_text" msgid="570198382662424714">"你正處於執行 4KB 核心的可變頁面模式，即將切換為 16KB 模式。此模式無法保證軟體完整性，且系統啟動載入程式解鎖時，手機上的資料可能面臨風險。這樣做會重新啟動裝置。在這類模式中，部分功能會停用，因此有些應用程式可能無法運作。如要返回實際工作環境模式，必須切換回 4KB 模式並鎖定系統啟動載入程式，裝置就會恢復原廠設定。裝置成功啟動 Android 系統後，請在開發人員選項中停用 OEM 解鎖設定。"</string>
+    <string name="confirm_enable_16k_pages_title" msgid="611010487387251491">"從 4KB 模式切換為 16KB 模式"</string>
+    <string name="confirm_enable_16k_pages_text" msgid="6129208614283750541">"你正處於執行 4KB 核心的可變頁面模式，即將切換為 16KB 模式。此模式無法保證軟體完整性，且系統啟動載入程式解鎖時，手機上的資料可能面臨風險。這樣做會重新啟動裝置。在這類模式中，部分功能會停用，因此有些應用程式可能無法運作。如要讓裝置返回實際工作環境模式，必須切換回 4KB 模式並鎖定系統啟動載入程式，裝置就會恢復原廠設定。裝置成功啟動 Android 系統後，請在開發人員選項中停用 OEM 解鎖設定。"</string>
     <string name="confirm_enable_4k_pages_title" msgid="3210360137887034659">"從 16KB 模式切換回 4KB 模式"</string>
     <string name="confirm_enable_4k_pages_text" msgid="155070605667160083">"你正處於執行 16KB 核心的可變頁面模式，即將切換為 4KB 模式。此模式無法保證軟體完整性，且系統啟動載入程式解鎖時，手機上的資料可能面臨風險。這樣做會重新啟動裝置。在這類模式中，部分功能會停用，因此有些應用程式可能無法運作。如要返回實際工作環境模式，必須鎖定系統啟動載入程式，裝置就會恢復原廠設定。裝置成功啟動 Android 系統後，請在開發人員選項中停用 OEM 解鎖設定。"</string>
     <string name="toast_16k_update_failed_text" msgid="8888858987184345567">"無法將核心更新為 16 KB 頁面相容核心。"</string>
     <string name="progress_16k_ota_title" msgid="2117218313875523741">"正在套用變更"</string>
     <string name="confirm_format_ext4_title" msgid="6696191800594435577">"要將裝置重新格式化為 ext4 嗎？(啟用 16KB 模式需執行這項操作)"</string>
     <string name="confirm_format_ext4_text" msgid="7940372488624630214">"必須先將這部裝置的資料分區轉換為 ext4，才能使用 16KB 開發人員選項。此模式無法保證軟體完整性，且系統啟動載入程式解鎖時，手機上的資料可能面臨風險。在此之後還必須再重新啟動一次，才能啟用 16KB 選項。當你處於此模式時，可以在 4KB 和 16KB 模式之間來回切換，每次切換都要重新啟動一次。在這類模式中，部分功能會停用，因此有些應用程式可能無法運作。如要返回實際工作環境模式，必須切換回 4KB 模式並鎖定系統啟動載入程式，裝置就會恢復原廠設定。裝置成功啟動 Android 系統後，請在開發人員選項中停用 OEM 解鎖設定。裝置資料將會抹除，檔案系統會在確認後變更為 ext4。完成此步驟之後，請再次返回啟用 16KB。"</string>
+    <string name="confirm_ext4_button_text" msgid="6045501984773738407">"清除所有資料"</string>
     <string name="format_ext4_failure_toast" msgid="8059453995800471549">"無法抹除資料分區並重新格式化為 ext4。"</string>
     <string name="confirm_oem_unlock_for_16k_title" msgid="5374451262432025419">"如要啟用 16KB 模式，需解鎖系統啟動載入程式"</string>
     <string name="confirm_oem_unlock_for_16k_text" msgid="3583604865119937957">"必須先將這部裝置的系統啟動載入程式解鎖，才能使用 16KB 開發人員選項。此模式無法保證軟體完整性，且系統啟動載入程式解鎖時，手機上的資料可能面臨風險。啟用 16KB 模式時，所有使用者資料和設定都將抹除。系統啟動載入程式解鎖後，需要經過兩次重新啟動，才能啟用 16KB 選項。當你處於此模式時，可以在 4KB 和 16KB 模式之間來回切換，每次切換都要重新啟動一次。在這類模式中，部分功能會停用，因此有些應用程式可能無法運作。如要返回實際工作環境模式，必須切換回 4KB 模式，OEM/系統啟動載入程式就會鎖定裝置，裝置也將恢復原廠設定。請解鎖系統啟動載入程式，然後再試一次。操作方法如以下網址說明：&lt;a href=\"https://source.android.com/docs/core/architecture/bootloader/locking_unlocking\"&gt;https://source.android.com/docs/core/architecture/bootloader/locking_unlocking&lt;/a&gt;"</string>
@@ -4922,7 +4978,7 @@
     <string name="default_active_sim_calls" msgid="2390973682556353558">"通話"</string>
     <string name="default_active_sim_sms" msgid="8041498593025994921">"簡訊"</string>
     <string name="default_active_sim_mobile_data" msgid="6798083892814045301">"行動數據"</string>
-    <string name="wifi_scan_notify_message" msgid="1331238142061476869">"為提升裝置使用體驗，應用程式和服務仍可隨時掃描 Wi‑Fi 網路 (即使 Wi-Fi 關閉時也不例外)，改善適地性等功能和服務。你可以前往「掃描 Wi-Fi」設定進行變更。"</string>
+    <string name="wifi_scan_notify_message" msgid="1331238142061476869">"為提升裝置使用體驗，應用程式和服務仍可隨時掃描 Wi‑Fi 網路 (即使 Wi-Fi 關閉時也不例外)，改善需要位置資訊的功能和服務。你可以前往「掃描 Wi-Fi」設定進行變更。"</string>
     <string name="wifi_scan_change" msgid="8438320311511852918">"變更"</string>
     <string name="preference_summary_default_combination" msgid="4643585915107796253">"<xliff:g id="STATE">%1$s</xliff:g>/<xliff:g id="NETWORKMODE">%2$s</xliff:g>"</string>
     <string name="mobile_data_connection_active" msgid="2422223108911581552">"已連線"</string>
@@ -4931,7 +4987,7 @@
     <string name="mobile_data_no_connection" msgid="905897142426974030">"沒有網路連線"</string>
     <string name="mobile_data_off_summary" msgid="1884248776904165539">"系統將不會自動使用行動數據連線"</string>
     <string name="mobile_data_disable_title" msgid="8438714772256088913">"要關閉行動數據嗎？"</string>
-    <string name="mobile_data_disable_message" msgid="7829414836454769970">"你將無法透過「<xliff:g id="CARRIER">%s</xliff:g>」使用行動數據或網際網路，只能透過 Wi-Fi 使用網際網路。"</string>
+    <string name="mobile_data_disable_message" msgid="7829414836454769970">"你將無法透過「<xliff:g id="CARRIER">%s</xliff:g>」使用行動數據或網際網路，只能利用 Wi-Fi 上網。"</string>
     <string name="mobile_data_disable_message_default_carrier" msgid="4449469407705838612">"你的電信業者"</string>
     <string name="not_allowed_by_ent" msgid="1958611623122304411">"貴機構禁止使用"</string>
     <string name="aware_summary_when_bedtime_on" msgid="2063856008597376344">"就寢時間模式開啟時無法使用"</string>
@@ -4982,7 +5038,7 @@
     <string name="enable_2g_summary" msgid="2794534052372565914">"2G 的安全性較低，但在某些地區可改善連線狀況。你隨時都能利用 2G 撥打緊急電話。"</string>
     <string name="enable_2g_summary_disabled_carrier" msgid="8141118453219482762">"必須啟用 2G 才能使用「<xliff:g id="CARRIER_NAME_2G">%1$s</xliff:g>」的服務"</string>
     <string name="require_cellular_encryption_title" msgid="6087085031703089235">"僅允許加密網路"</string>
-    <string name="require_cellular_encryption_summary" msgid="6090569065420631457">"這麼做雖然更加安全，但行動網路連線在某些地區可能會受到限制。緊急電話撥號服務則隨時可用，不受任何影響。"</string>
+    <string name="require_cellular_encryption_summary" msgid="6090569065420631457">"這麼做雖然更加安全，但行動網路連線在某些地區可能會受到限制。緊急電話撥號服務則隨時可用，不會受到影響"</string>
     <string name="app_info_all_services_label" msgid="1487070364839071105">"所有服務"</string>
     <string name="show_clip_access_notification" msgid="7782300987639778542">"顯示剪貼簿存取通知"</string>
     <string name="show_clip_access_notification_summary" msgid="474090757777203207">"系統會在應用程式存取你複製的文字、圖片或其他內容時顯示通知訊息"</string>
@@ -4993,12 +5049,9 @@
     <string name="uwb_settings_summary_airplane_mode" msgid="1328864888135086484">"請關閉飛航模式，以便使用 UWB"</string>
     <string name="uwb_settings_summary_no_uwb_regulatory" msgid="3465456428217979428">"無法在目前的位置使用 UWB"</string>
     <string name="thread_network_settings_title" msgid="4212301030523859220">"Thread"</string>
-    <!-- no translation found for thread_network_settings_main_switch_title (3859168481929323474) -->
-    <skip />
-    <!-- no translation found for thread_network_settings_footer_title (7385600318850220927) -->
-    <skip />
-    <!-- no translation found for thread_network_settings_learn_more (8278498005848565050) -->
-    <skip />
+    <string name="thread_network_settings_main_switch_title" msgid="3859168481929323474">"使用 Thread"</string>
+    <string name="thread_network_settings_footer_title" msgid="7385600318850220927">"Thread 可連結智慧住宅裝置及提升效率和效能。\n\n啟用設定後，這部裝置就能加入 Thread 網路，用來控制支援 Matter 的裝置。"</string>
+    <string name="thread_network_settings_learn_more" msgid="8278498005848565050">"進一步瞭解 Thread"</string>
     <string name="camera_toggle_title" msgid="8952668677727244992">"相機存取權"</string>
     <string name="mic_toggle_title" msgid="265145278323852547">"麥克風存取權"</string>
     <string name="perm_toggle_description" msgid="5754629581767319022">"適用於應用程式和服務"</string>
@@ -5083,12 +5136,12 @@
     <string name="bluetooth_details_head_tracking_summary" msgid="3942238746595985395">"音訊會隨著你轉動頭部而變化，因此聽起來更自然"</string>
     <string name="bluetooth_details_permissions_sync_title" msgid="7277580382321003521">"同步處理手機的權限"</string>
     <string name="bluetooth_details_permissions_sync_summary" msgid="8125037984381432059">"將這部手機上你已允許的相同應用程式權限授予手錶"</string>
-    <string name="bluetooth_details_audio_device_types_title" msgid="3381941189346781614">"音訊裝置類型"</string>
-    <string name="bluetooth_details_audio_device_type_unknown" msgid="839337391037998014">"不明"</string>
+    <string name="bluetooth_details_audio_device_types_title" msgid="1889644189800180316">"音訊裝置類型"</string>
+    <string name="bluetooth_details_audio_device_type_unknown" msgid="5299284975435974206">"未設定"</string>
     <string name="bluetooth_details_audio_device_type_speaker" msgid="3706227767994792124">"揚聲器"</string>
     <string name="bluetooth_details_audio_device_type_headphones" msgid="7644588291215033798">"耳機"</string>
-    <string name="bluetooth_details_audio_device_type_hearing_aid" msgid="1310631131071939859">"助聽器"</string>
-    <string name="bluetooth_details_audio_device_type_carkit" msgid="4439017600454703229">"車用套件"</string>
+    <string name="bluetooth_details_audio_device_type_hearing_aid" msgid="6311786545025321187">"助聽器"</string>
+    <string name="bluetooth_details_audio_device_type_carkit" msgid="1866236563013629394">"車輛"</string>
     <string name="bluetooth_details_audio_device_type_other" msgid="7019481234617207563">"其他"</string>
     <string name="ingress_rate_limit_title" msgid="2106694002836274350">"網路下載頻率限制"</string>
     <string name="ingress_rate_limit_summary" msgid="1097811019742438371">"設定網路頻寬輸入頻率限制，這項設定會套用到提供網際網路連線的所有網路。"</string>
@@ -5173,8 +5226,6 @@
     <string name="screen_flash_color_violet" msgid="1279950780509029495">"紫羅蘭"</string>
     <string name="color_selector_dialog_done" msgid="121253968943363376">"完成"</string>
     <string name="color_selector_dialog_cancel" msgid="8667350644753900701">"取消"</string>
-    <string name="contrast_title" msgid="6885768151336508075">"對比"</string>
-    <string name="contrast_standard" msgid="1097297089917185235">"標準"</string>
     <string name="contrast_default" msgid="8918545965525226966">"預設"</string>
     <string name="contrast_medium" msgid="384414510709285811">"中"</string>
     <string name="contrast_high" msgid="3988567609694797696">"高"</string>
@@ -5211,4 +5262,98 @@
     <string name="fingerprint_acquired_imager_dirty_udfps" msgid="7005042288289506776">"請清潔感應器周圍的螢幕，然後再試一次"</string>
     <string name="sim_category_converted_sim" msgid="8575548015816988908">"實體 SIM 卡已轉換為 eSIM 卡，請取出並丟棄。"</string>
     <string name="sync_across_devices_title" msgid="3447757705383089345">"在所有裝置上保持同步"</string>
+    <string name="device_diagnostics_title" msgid="2914523189695727897">"裝置診斷"</string>
+    <string name="audio_sharing_title" msgid="4144157137502923821">"音訊分享功能"</string>
+    <string name="audio_sharing_switch_title" msgid="7052827328670825701">"分享音訊"</string>
+    <string name="calls_and_alarms_device_title" msgid="6993559028175454198">"通話與鬧鐘"</string>
+    <string name="audio_sharing_description" msgid="1660255584523640628">"讓他人一起聆聽你的媒體內容。每個人需使用各自的 LE Audio 耳機。"</string>
+    <string name="audio_sharing_device_group_title" msgid="3019780581643956943">"有效的媒體裝置"</string>
+    <string name="audio_sharing_call_audio_title" msgid="7978867452289583929">"通話音訊"</string>
+    <string name="audio_sharing_call_audio_description" msgid="6573621048260616924">"只在「<xliff:g id="DEVICE_NAME">%1$s</xliff:g>」上播放"</string>
+    <string name="audio_sharing_test_sound_title" msgid="6438868185641027763">"播放測試音效"</string>
+    <string name="audio_sharing_test_sound_description" msgid="4072462502371937399">"所有聆聽的人都應該聽到"</string>
+    <string name="audio_sharing_stream_settings_title" msgid="1374391898689242036">"音訊串流設定"</string>
+    <string name="audio_sharing_stream_name_title" msgid="8156859441897180940">"名稱"</string>
+    <string name="audio_sharing_stream_password_title" msgid="7026649168165764602">"密碼"</string>
+    <string name="audio_sharing_stream_compatibility_title" msgid="5690947186724469918">"提升相容性"</string>
+    <string name="audio_sharing_stream_compatibility_description" msgid="8170241188606110963">"降低音質，有助與部分裝置連線 (例如助聽器)"</string>
+    <string name="audio_sharing_stream_compatibility_disabled_description" msgid="2586408353546825682">"關閉音訊分享即可設定相容性"</string>
+    <string name="audio_sharing_nearby_audio_title" msgid="4795438407040677177">"聆聽鄰近音訊"</string>
+    <string name="audio_sharing_footer_description" msgid="4786942197840271680">"音訊分享功能支援 Auracast™"</string>
+    <string name="audio_sharing_stream_name_dialog_title" msgid="6706027295417556499">"音訊串流名稱"</string>
+    <string name="audio_sharing_stream_password_dialog_title" msgid="4148196538860845705">"音訊串流密碼"</string>
+    <string name="audio_sharing_media_device_group_title" msgid="4850674234590549565">"其他媒體裝置"</string>
+    <string name="audio_sharing_summary_on" msgid="611197542982323788">"開啟"</string>
+    <string name="audio_sharing_summary_off" msgid="8833198995257547378">"關閉"</string>
+    <string name="audio_sharing_share_dialog_title" msgid="427514648577553621">"分享音訊"</string>
+    <string name="audio_sharing_share_dialog_subtitle" msgid="5208582843732057871">"<xliff:g id="DEVICE_NAME1">%1$s</xliff:g> 和 <xliff:g id="DEVICE_NAME2">%2$s</xliff:g>"</string>
+    <string name="audio_sharing_share_button_label" msgid="3895900668317105537">"分享音訊"</string>
+    <string name="audio_sharing_no_thanks_button_label" msgid="5822491984114744357">"不用了，謝謝"</string>
+    <string name="audio_sharing_share_with_dialog_title" msgid="3934377530640830364">"要與「<xliff:g id="DEVICE_NAME">%1$s</xliff:g>」分享音訊嗎？"</string>
+    <string name="audio_sharing_share_with_more_dialog_title" msgid="2840069088858232267">"與其他裝置分享音訊"</string>
+    <string name="audio_sharing_share_with_button_label" msgid="4146194430380237357">"與「<xliff:g id="DEVICE_NAME">%1$s</xliff:g>」分享"</string>
+    <string name="audio_sharing_close_button_label" msgid="2666534149100498574">"關閉"</string>
+    <string name="audio_sharing_dialog_connect_device_content" msgid="2873230647152283734">"連線至另一對相容耳機，或者與其他人分享音訊串流名稱和密碼"</string>
+    <string name="audio_sharing_dialog_pair_device_content" msgid="3136997898244863470">"配對另一組相容耳機，或者與其他人分享音訊串流 QR code"</string>
+    <string name="audio_sharing_sharing_label" msgid="1038021053061111508">"分享音訊"</string>
+    <string name="audio_sharing_pair_button_label" msgid="7987236990273083588">"配對新裝置"</string>
+    <string name="audio_sharing_qrcode_button_label" msgid="3207039106555097659">"顯示 QR code"</string>
+    <string name="audio_sharing_notification_title" msgid="1204798942946033005">"你正在分享音訊"</string>
+    <string name="audio_sharing_notification_content" msgid="1577180829878785642">"聆聽音訊的人可以聽見你的媒體，但不會聽到通話。"</string>
+    <string name="audio_sharing_stop_button_label" msgid="8770519671470608849">"停止分享"</string>
+    <string name="audio_sharing_settings_button_label" msgid="8574808650318270491">"設定"</string>
+    <string name="audio_sharing_disconnect_dialog_title" msgid="2192751727237748602">"選擇要中斷連線的裝置"</string>
+    <string name="audio_sharing_dialog_disconnect_content" msgid="3840488888970653308">"一次只能有 2 部裝置分享音訊"</string>
+    <string name="audio_sharing_disconnect_device_button_label" msgid="4272897217708930576">"中斷與「<xliff:g id="DEVICE_NAME">%1$s</xliff:g>」的連線"</string>
+    <string name="audio_sharing_stop_dialog_title" msgid="4872853738164232075">"要連線至「<xliff:g id="DEVICE_NAME">%1$s</xliff:g>」嗎？"</string>
+    <string name="audio_sharing_stop_dialog_content" msgid="6371546856710692910">"你將停止與「<xliff:g id="DEVICE_NAME">%1$s</xliff:g>」分享音訊"</string>
+    <string name="audio_sharing_stop_dialog_with_two_content" msgid="2119020725467967219">"你將停止與「<xliff:g id="DEVICE_NAME1">%1$s</xliff:g>」和「<xliff:g id="DEVICE_NAME2">%2$s</xliff:g>」分享音訊"</string>
+    <string name="audio_sharing_stop_dialog_with_more_content" msgid="5262441138981618703">"你將停止與連線的耳機分享音訊"</string>
+    <string name="audio_sharing_connect_button_label" msgid="4241911519063029982">"連線"</string>
+    <string name="audio_sharing_sharing_stopped_label" msgid="8128194452354240996">"已停止分享音訊"</string>
+    <string name="audio_sharing_confirm_dialog_title" msgid="7655147122624691167">"連線到相容裝置"</string>
+    <string name="audio_sharing_comfirm_dialog_content" msgid="3479217934447446066">"如要分享音訊，請先將 LE Audio 耳機連到手機"</string>
+    <string name="audio_streams_category_title" msgid="4878022761829895463">"連線至 LE 音訊串流"</string>
+    <string name="audio_streams_pref_title" msgid="6320485086288646209">"附近的音訊串流"</string>
+    <string name="audio_streams_title" msgid="6617990880383079165">"音訊串流"</string>
+    <string name="audio_streams_qr_code_summary" msgid="2838923349871884871">"使用 QR code 連線至音訊串流"</string>
+    <string name="audio_streams_empty" msgid="8803517701437394982">"未偵測到附近有音訊串流。"</string>
+    <string name="audio_streams_disconnect" msgid="1755594831469579161">"中斷連線"</string>
+    <string name="audio_streams_connect" msgid="1955964373102927954">"連線"</string>
+    <string name="audio_streams_qr_code_is_not_valid_format" msgid="4856288389653121830">"QR code 格式無效"</string>
+    <string name="audio_streams_qr_code_scanner" msgid="525396804963685478">"如要開始收聽，請將掃描器對準下方的 QR code"</string>
+    <string name="audio_streams_add_source_bad_code_state_summary" msgid="6527086906921868757">"請檢查密碼，然後再試一次"</string>
+    <string name="audio_streams_add_source_failed_state_summary" msgid="3937546443978562322">"無法連線，請再試一次。"</string>
+    <string name="audio_streams_connecting_summary" msgid="7237827765572331702">"連線中…"</string>
+    <string name="audio_streams_dialog_stream_is_not_available" msgid="4032878851270690546">"無法使用音訊串流"</string>
+    <string name="audio_streams_is_not_playing" msgid="8480293894696007941">"這個音訊串流現在並未播放任何聲音"</string>
+    <string name="audio_streams_dialog_close" msgid="8177201719298408431">"關閉"</string>
+    <string name="audio_streams_dialog_listen" msgid="7290340191504987685">"聆聽"</string>
+    <string name="audio_streams_dialog_retry" msgid="4456843891970998556">"再試一次"</string>
+    <string name="audio_streams_dialog_listen_to_audio_stream" msgid="8585253007762261528">"聆聽音訊串流"</string>
+    <string name="audio_streams_dialog_control_volume" msgid="7615062686016713544">"音訊串流會在「<xliff:g id="DEVICE_NAME">%1$s</xliff:g>」上播放，請使用這部裝置控制音量。"</string>
+    <string name="audio_streams_dialog_cannot_listen" msgid="4432257183698209966">"聽不到音訊串流"</string>
+    <string name="audio_streams_dialog_default_device" msgid="6159800303379303266">"已連上相容耳機"</string>
+    <string name="audio_streams_activity_title" msgid="6766869545769831935">"音訊串流"</string>
+    <string name="audio_streams_no_password_summary" msgid="8976357323034830144">"不需密碼"</string>
+    <string name="audio_streams_dialog_learn_more" msgid="6711241053442211345">"瞭解詳情"</string>
+    <string name="audio_streams_dialog_cannot_play" msgid="1358828316927479091">"無法在「<xliff:g id="DEVICE_NAME">%1$s</xliff:g>」上播放這個音訊串流。"</string>
+    <string name="audio_streams_listening_now" msgid="4205614429222949176">"正在聆聽"</string>
+    <string name="audio_streams_media_service_notification_leave_broadcast_text" msgid="4938656134300913647">"停止聆聽"</string>
+    <string name="audio_streams_dialog_no_le_device_title" msgid="3931163990976742282">"連線至相容耳機"</string>
+    <string name="audio_streams_dialog_no_le_device_button" msgid="4484355549428642588">"連線至裝置"</string>
+    <string name="audio_streams_detail_page_title" msgid="7884132061275273766">"音訊串流詳細資料"</string>
+    <string name="audio_streams_qr_code_page_title" msgid="9169570362469544641">"音訊串流 QR code"</string>
+    <string name="audio_streams_qr_code_page_password" msgid="7268475614131297060">"密碼：<xliff:g id="PASSWORD">%1$s</xliff:g>"</string>
+    <string name="audio_streams_qr_code_page_description" msgid="1317961663706630428">"如要聆聽「<xliff:g id="STREAM_NAME">%1$s</xliff:g>」，其他使用者只要將相容耳機連線至 Android 裝置，然後掃描這個 QR code 即可。"</string>
+    <string name="audio_streams_main_page_title" msgid="1838380471076527639">"尋找音訊串流"</string>
+    <string name="audio_streams_main_page_subtitle" msgid="3251995732921981539">"聆聽裝置分享的音訊，或是鄰近的 Auracast 廣播"</string>
+    <string name="audio_streams_main_page_device_title" msgid="2635744035523908253">"音訊裝置"</string>
+    <string name="audio_streams_main_page_no_device_summary" msgid="2936000845397406389">"連線至相容耳機"</string>
+    <string name="audio_streams_main_page_scan_section_title" msgid="2778235929304061163">"鄰近的音訊串流"</string>
+    <string name="audio_streams_main_page_scan_qr_code_title" msgid="8337270277392468895">"掃描 QR code"</string>
+    <string name="audio_streams_main_page_scan_qr_code_summary" msgid="1991792283368249499">"掃描串流的 QR code 即可開始聆聽"</string>
+    <string name="audio_streams_main_page_password_dialog_join_button" msgid="2967747276379153408">"聆聽串流"</string>
+    <string name="audio_streams_main_page_qr_code_scanner_summary" msgid="5312980105735143360">"使用「<xliff:g id="DEVICE_NAME">%1$s</xliff:g>」掃描音訊串流 QR code 即可聆聽"</string>
+    <string name="audio_streams_main_page_password_dialog_cannot_edit" msgid="9020898619297520153">"分享期間無法編輯密碼。如要變更密碼，請先關閉音訊分享功能。"</string>
 </resources>

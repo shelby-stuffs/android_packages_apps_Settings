@@ -20,9 +20,10 @@ import static android.app.admin.DevicePolicyManager.ACTION_SET_NEW_PASSWORD;
 
 import static com.android.internal.app.SetScreenLockDialogActivity.LAUNCH_REASON_PRIVATE_SPACE_SETTINGS_ACCESS;
 import static com.android.settings.activityembedding.EmbeddedDeepLinkUtils.tryStartMultiPaneDeepLink;
+import static com.android.settings.password.ConfirmDeviceCredentialActivity.CUSTOM_BIOMETRIC_PROMPT_LOGO_DESCRIPTION_KEY;
+import static com.android.settings.password.ConfirmDeviceCredentialActivity.CUSTOM_BIOMETRIC_PROMPT_LOGO_RES_ID_KEY;
 
 import android.app.ActivityOptions;
-import android.app.AlertDialog;
 import android.app.KeyguardManager;
 import android.app.PendingIntent;
 import android.app.settings.SettingsEnums;
@@ -37,6 +38,7 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.FragmentActivity;
 
 import com.android.internal.annotations.VisibleForTesting;
@@ -152,7 +154,7 @@ public class PrivateSpaceAuthenticationActivity extends FragmentActivity {
             startActivity(setScreenLockPromptIntent);
             finish();
         } else {
-            new AlertDialog.Builder(this)
+            new AlertDialog.Builder(this, R.style.Theme_AlertDialog)
                     .setTitle(R.string.no_device_lock_title)
                     .setMessage(R.string.no_device_lock_summary)
                     .setPositiveButton(
@@ -228,6 +230,14 @@ public class PrivateSpaceAuthenticationActivity extends FragmentActivity {
     private void authenticatePrivateSpaceEntry() {
         Intent credentialIntent = mPrivateSpaceMaintainer.getPrivateProfileLockCredentialIntent();
         if (credentialIntent != null) {
+            if (android.multiuser.Flags.usePrivateSpaceIconInBiometricPrompt()) {
+                credentialIntent.putExtra(CUSTOM_BIOMETRIC_PROMPT_LOGO_RES_ID_KEY,
+                        com.android.internal.R.drawable.stat_sys_private_profile_status);
+                credentialIntent.putExtra(CUSTOM_BIOMETRIC_PROMPT_LOGO_DESCRIPTION_KEY,
+                        getApplicationContext().getString(
+                                com.android.internal.R.string.private_space_biometric_prompt_title
+                        ));
+            }
             mVerifyDeviceLock.launch(credentialIntent);
         } else {
             Log.e(TAG, "verifyCredentialIntent is null even though device lock is set");

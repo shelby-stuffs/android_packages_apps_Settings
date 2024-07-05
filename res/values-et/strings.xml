@@ -48,9 +48,9 @@
     <string name="selective_stay_awake_title" msgid="7887645333447645168">"Ainult mängude, videote jne puhul"</string>
     <string name="selective_stay_awake_summary" msgid="9055967322921984543">"Esiekraan lülitub sisse rakenduste jaoks, mis takistavad ekraanil unerežiimile lülitumist"</string>
     <string name="stay_awake_on_lockscreen_title" msgid="8088456642083051068">"Jätkamiseks pühkige üles"</string>
-    <string name="stay_awake_on_lockscreen_summary" msgid="2299351813382522952">"Voltige telefon kokku ja pühkige esiekraanil üles, et jätkata rakenduse kasutamist, või oodake mõni sekund, et ekraan lukustuks"</string>
+    <string name="stay_awake_on_lockscreen_summary" msgid="8825321939913726566">"Voltige telefon kokku ja pühkige esiekraanil üles, et jätkata rakenduse kasutamist, või oodake mõni sekund, et ekraan lukustuks. Mängud ja videorakendused jätkuvad automaatselt."</string>
     <string name="sleep_on_fold_title" msgid="7626123024330501411">"Mitte kunagi"</string>
-    <string name="sleep_on_fold_summary" msgid="7737992842459588846">"Esiekraan lukustub seadme kokkuvoltimisel"</string>
+    <string name="sleep_on_fold_summary" msgid="4191753338303043456">"Seadme kokkuvoltimise korral lülitub esiekraan välja ja lukustub"</string>
     <string name="auto_rotate_settings_primary_switch_title" msgid="3440951924928594520">"Kasuta automaatset pööramist"</string>
     <string name="smart_rotate_text_headline" msgid="5878008933992951904">"Näotuvastus kasutab esikaamerat, et parandada automaatse pööramise täpsust. Pilte ei salvestata ega saadeta kunagi Google\'ile."</string>
     <string name="bluetooth" msgid="8898478620943459654">"Bluetooth"</string>
@@ -65,7 +65,8 @@
     <string name="bluetooth_disconnect_title" msgid="4581951246357823044">"Kas katkestada seadme ühendus?"</string>
     <string name="bluetooth_pairing_pref_title" msgid="3497193027590444598">"Uue seadme sidumine"</string>
     <string name="keywords_add_bt_device" msgid="4533191164203174011">"Bluetooth"</string>
-    <string name="bluetooth_screen_auto_on_title" msgid="8496443490064988240">"Lülita automaatselt homme uuesti sisse"</string>
+    <!-- no translation found for bluetooth_screen_auto_on_title (2203993262483477532) -->
+    <skip />
     <string name="bluetooth_pair_right_ear_button" msgid="3979894494803078852">"Seo parempoolne"</string>
     <string name="bluetooth_pair_left_ear_button" msgid="1019938875726073791">"Seo vasakpoolne"</string>
     <string name="bluetooth_pair_other_ear_dialog_title" msgid="3814943511999984012">"Teise kõrva sidumine"</string>
@@ -75,7 +76,7 @@
     <string name="bluetooth_pair_other_ear_dialog_left_ear_positive_button" msgid="6500192653171220257">"Seo vasakpoolne"</string>
     <string name="bluetooth_hearing_device_settings_title" msgid="6060072560486755057">"Kuuldeseade seaded"</string>
     <string name="bluetooth_hearing_device_settings_summary" msgid="3822646075744075158">"Otsetee, ühilduvus kuuldeaparaatidega"</string>
-    <string name="bluetooth_hearing_aids_presets" msgid="5429761844739722885">"Eelseadistused"</string>
+    <string name="bluetooth_hearing_aids_presets" msgid="4615094985857156388">"Eelseadistus"</string>
     <string name="bluetooth_hearing_aids_presets_error" msgid="2095249829735188484">"Eelseadistust ei saanud värskendada"</string>
     <string name="bluetooth_audio_routing_title" msgid="5541729245424856226">"Heliväljund"</string>
     <string name="bluetooth_audio_routing_about_title" msgid="5773336779246891954">"Teave heliväljundi kohta"</string>
@@ -139,7 +140,6 @@
     <string name="stylus_textfield_handwriting" msgid="2363579035338976327">"Kirjutamine tekstiväljadele"</string>
     <string name="stylus_ignore_button" msgid="7734540973145241391">"Elektronpliiatsi kõigi nupuvajutuste eiramine"</string>
     <string name="stylus_connected_devices_title" msgid="2823967577941359812">"Elektronpliiats"</string>
-    <string name="audio_streams_empty" msgid="8803517701437394982">"Läheduses asuvaid helivooge ei leitud"</string>
     <string name="date_and_time" msgid="1788358029823431692">"Kuupäev ja kellaaeg"</string>
     <string name="proxy_settings_title" msgid="4201866858226087066">"Puhverserver"</string>
     <string name="proxy_clear_text" msgid="6529658759984031149">"Kustuta"</string>
@@ -286,8 +286,7 @@
     <string name="location_settings_footer_general" msgid="1040507068701188821">"Rakendused, millel on luba läheduses olevatele seadmetele juurde pääseda, saavad määrata ühendatud seadmete suhtelise asukoha."</string>
     <string name="location_settings_footer_location_off" msgid="8568995909147566720">"Juurdepääs asukohale on rakenduste ja teenuste jaoks välja lülitatud. Teie seadme asukoht võidakse siiski päästeteenistusele saata, kui helistate või saadate sõnumi hädaabinumbrile."</string>
     <string name="location_settings_footer_learn_more_content_description" msgid="349380666660145540">"Lisateave asukohaseadete kohta"</string>
-    <!-- no translation found for location_settings_tooltip_text_for_chrome (5781821709250544575) -->
-    <skip />
+    <string name="location_settings_tooltip_text_for_chrome" msgid="5781821709250544575">"Muutmiseks avage ChromeOS-i seaded &gt; Privaatsus ja turvalisus &gt; Privaatsuse seaded &gt; Juurdepääs asukohale"</string>
     <string name="account_settings_title" msgid="9138880127246241885">"Kontod"</string>
     <string name="security_settings_title" msgid="6710768415432791970">"Turvalisus"</string>
     <string name="encryption_and_credential_settings_title" msgid="5856216318961482983">"Krüpteerimine ja mandaadid"</string>
@@ -314,7 +313,7 @@
     <string name="security_settings_face_enroll_introduction_accessibility_diversity" msgid="2774962371839179206"></string>
     <string name="security_settings_face_enroll_introduction_accessibility_vision" msgid="7700394302162170363"></string>
     <string name="security_settings_face_enroll_introduction_cancel" msgid="7551159644361639436">"Tühista"</string>
-    <string name="security_settings_face_enroll_introduction_no_thanks" msgid="1820618982738898717">"Tänan, ei"</string>
+    <string name="security_settings_face_enroll_introduction_no_thanks" msgid="6603178409726203187">"Mitte praegu"</string>
     <string name="security_settings_face_enroll_introduction_agree" msgid="6319476573697497750">"Nõustun"</string>
     <string name="security_settings_face_enroll_introduction_more" msgid="1970820298889710532">"Rohkem"</string>
     <string name="security_settings_face_enroll_introduction_title" msgid="7061610077237098046">"Avage oma näoga"</string>
@@ -375,7 +374,7 @@
     <string name="security_settings_fingerprint_enroll_introduction_footer_title_2" msgid="5663733424583416266">"Pidage meeles"</string>
     <string name="security_settings_fingerprint_enroll_introduction_message_unlock_disabled" msgid="8957789840251747092">"Kasutage telefoni avamiseks või ostude kinnitamiseks oma sõrmejälge.\n\nMärkus: te ei saa kasutada oma sõrmejälge selle seadme avamiseks. Lisateabe saamiseks võtke ühendust oma organisatsiooni administraatoriga."</string>
     <string name="security_settings_fingerprint_enroll_introduction_cancel" msgid="6086532316718920562">"Tühista"</string>
-    <string name="security_settings_fingerprint_enroll_introduction_no_thanks" msgid="6104718999323591180">"Tänan, ei"</string>
+    <string name="security_settings_fingerprint_enroll_introduction_no_thanks" msgid="1663906389456119842">"Mitte praegu"</string>
     <string name="security_settings_fingerprint_enroll_introduction_agree" msgid="4068276083536421828">"Nõustun"</string>
     <string name="setup_fingerprint_enroll_skip_title" msgid="2473807887676247264">"Kas jätta sõrmejälg vahele?"</string>
     <string name="setup_fingerprint_enroll_skip_after_adding_lock_text" msgid="2412645723804450304">"Sõrmejälje seadistamiseks kulub vaid paar minutit. Kui selle vahele jätate, saab sõrmejälje hiljem lisada jaotises Seaded."</string>
@@ -558,6 +557,18 @@
     <string name="private_space_biometric_summary" msgid="4403837276018724581">"Seadistamiseks puudutage"</string>
     <string name="private_space_fingerprint_unlock_title" msgid="3614016453395789051">"Privaatse ruumi sõrmejäljega avamine"</string>
     <string name="private_space_face_unlock_title" msgid="462248384776453613">"Privaatse ruumi näoga avamine"</string>
+    <string name="private_space_biometric_unlock_title" msgid="1978145237698659673">"Näo ja sõrmejäljega avamine privaatse ruumi jaoks"</string>
+    <string name="private_space_fingerprint_enroll_introduction_title" msgid="5187730641333680942">"Seadistage sõrmejäljega avamine privaatse ruumi jaoks"</string>
+    <string name="private_space_fingerprint_enroll_introduction_message" msgid="9092068873421435300">"Kasutage oma privaatse ruumi avamiseks või oma isiku kinnitamiseks (nt rakendustesse sisselogimisel või ostude kinnitamisel) oma sõrmejälge."</string>
+    <string name="private_space_fingerprint_enroll_introduction_footer_message" msgid="7125255484447984854">"Teie privaatse ruumi saab avada, isegi kui te seda teha ei kavatsenud, nt kui keegi hoiab telefoni teie sõrme vastas."</string>
+    <string name="private_space_fingerprint_enroll_finish_message" msgid="4754797926493316965">"Kasutage oma privaatse ruumi avamiseks või ostude kinnitamiseks oma sõrmejälge"</string>
+    <string name="private_space_face_enroll_introduction_title" msgid="3717541082520006032">"Seadistage näoga avamine privaatse ruumi jaoks"</string>
+    <string name="private_space_face_enroll_introduction_message" msgid="250239418499081821">"Kasutage oma privaatse ruumi avamiseks või oma isiku kinnitamiseks (nt rakendustesse sisselogimisel või ostude kinnitamisel) oma nägu."</string>
+    <string name="private_space_face_enroll_introduction_info_looking" msgid="5694757845303924042">"Telefoni vaatamisel võib privaatne ruum avaneda ka siis, kui te seda ei soovi. Teiega sarnane inimene, näiteks teie identne vend või õde, saab samuti teie privaatse ruumi avada. Selle saab avada ka nii, et keegi hoiab seadet teie näo ees."</string>
+    <string name="private_space_face_enroll_introduction_info_less_secure" msgid="8460719783943533172">"Privaatse ruumi avamiseks näo kasutamine võib olla vähem turvaline kui tugev muster, PIN-kood või parool"</string>
+    <string name="private_space_face_settings_require_attention_details" msgid="2799569069549999689">"Privaatse ruumi avamiseks peavad teie silmad avatud olema. Parima tulemuse saavutamiseks võtke päikeseprillid ära."</string>
+    <string name="private_space_face_settings_footer" msgid="7722256209563543711">"Kasutage privaatse ruumi avamiseks oma nägu.\n\nPidage meeles järgmist.\nKorraga saab olla seadistatud ainult üks nägu. Uue näo lisamiseks kustutage praegune nägu.\n\nTelefoni vaatamisel võib see soovimatult avaneda.\n\nKeegi teine võib teie privaatse ruumi avada, kui seadet hoitakse teie näo ees.\n\nVõib juhtuda, et teiega sarnane inimene, näiteks identne vend/õde, saab teie privaatse ruumi avada."</string>
+    <string name="private_space_face_settings_require_confirmation_details" msgid="5406498664903812249">"Näoga avamise funktsiooni kasutamiseks on alati vaja kinnitusetappi"</string>
     <string name="private_space_category_ways_to_unlock" msgid="4356631225316950046">"Võimalused avamiseks"</string>
     <string name="private_space_screen_lock_summary" msgid="394837965365561070">"Sama mis seadme ekraanilukk"</string>
     <string name="private_space_new_lock_title" msgid="9056139964133004094">"Kas valida privaatse ruumi jaoks uus lukk?"</string>
@@ -565,7 +576,7 @@
     <string name="private_space_auto_lock_title" msgid="8663409382910601261">"Privaatse ruumi automaatselt lukustamine"</string>
     <string name="private_space_auto_lock_page_summary" msgid="8679844515655838654">"Saate oma privaatse ruumi automaatselt lukustada, kui te pole oma seadet teatud perioodi jooksul kasutanud"</string>
     <string name="private_space_auto_lock_every_time" msgid="1215061855836002830">"Iga kord, kui seade lukustatakse"</string>
-    <string name="private_space_auto_lock_after_inactivity" msgid="1748673030841528649">"Pärast 5 minutit tegevusetust"</string>
+    <string name="private_space_auto_lock_after_inactivity" msgid="7107814517866649733">"5 minutit pärast ekraani ajalõppu"</string>
     <string name="private_space_auto_lock_after_device_restart" msgid="288755768725895029">"Ainult pärast seadme taaskäivitamist"</string>
     <string name="private_space_hide_page_title" msgid="3364639176511877414">"Privaatse ruumi peitmine"</string>
     <string name="private_space_hide_when_locked" msgid="6219472348124151797">"Privaatse ruumi peitmine, kui see on lukustatud"</string>
@@ -582,7 +593,7 @@
     <string name="private_space_category_system" msgid="1286843321867285700">"Süsteem"</string>
     <string name="private_space_delete_title" msgid="636873505724100006">"Privaatse ruumi kustutamine"</string>
     <string name="private_space_delete_header" msgid="4594429153176776184">"Kas kustutada privaatne ruum?"</string>
-    <string name="private_space_delete_summary" msgid="3344372988408565545">"Teie privaatne ruum eemaldatakse seadmest. Kõik privaatsed rakendused ja andmed kustutatakse. Seda toimingut ei saa tagasi võtta."</string>
+    <string name="private_space_delete_summary" msgid="7507302208399543921">"Teie privaatne ruum kustutatakse teie seadmest jäädavalt. \n\nKõik teie ruumis olevad rakendused ja nende andmed kustutatakse jäädavalt ka teie telefoni "<b>"sisemisest salvestusruumist"</b>"."</string>
     <string name="private_space_accounts" msgid="1078277762792056395">"Järgmised kontod eemaldatakse teie privaatsest ruumist."</string>
     <string name="private_space_delete_button_label" msgid="1256981385318225002">"Kustuta"</string>
     <string name="private_space_confirm_deletion_header" msgid="3468651585498942977">"Privaatse ruumi kustutamine …"</string>
@@ -597,11 +608,16 @@
     <string name="private_space_setup_button_label" msgid="2094882154623560585">"Seadistamine"</string>
     <string name="private_space_setup_title" msgid="2272968244329821450">"Privaatne ruum"</string>
     <string name="private_space_hide_apps_summary" msgid="4418722947376042418">"Peitke või lukustage privaatsed rakendused eraldi ruumis. Lisaturvalisuse jaoks kasutage spetsiaalselt Google\'i kontot."</string>
-    <string name="private_space_setup_sub_header" msgid="5454598292017819146">"Privaatse ruumi seadistamine"</string>
-    <string name="private_space_separate_account_text" msgid="4492251315012955548"><b>"Ruumi jaoks Google\'i konto valimine"</b>\n"Spetsiaalse konto kasutamine aitab vältida sünkroonitud failide, fotode ja meilide kuvamist väljaspool teie ruumi."</string>
+    <string name="private_space_setup_sub_header" msgid="550476876393954356">"Kuidas see toimib?"</string>
+    <string name="private_space_separate_account_text" msgid="790319706810190320"><b>"Looge oma ruumi jaoks Google\'i konto"</b>\n"Eraldi Google\'i konto kasutamine aitab vältida sünkroonitud failide, fotode ja meilide kuvamist väljaspool teie ruumi"</string>
     <string name="private_space_protected_lock_text" msgid="9123250938334372735"><b>"Luku seadistamine"</b>\n"Lukustage oma ruum, et teised ei saaks seda avada."</string>
-    <string name="private_space_install_apps_text" msgid="5693139160766464498"><b>"Rakenduste installimine"</b>\n"Teie privaatsel ruumil on oma Play pood, et saaksite hõlpsalt rakendusi installida."</string>
-    <string name="private_space_apps_permission_text" msgid="7030946025253366172">"Kui teie privaatne ruum on lukustatud, ei kuvata teie privaatses ruumis olevaid rakendusi lubade halduris, privaatsuse juhtpaneelil ega muudes seadetes.\n\nTeie privaatset ruumi ei saa uude seadmesse teisaldada. Kui soovite seda mõnes teises seadmes kasutada, peate seadistama teise privaatse ruumi.\n\nKõik, kes ühendavad teie seadme arvutiga või installivad teie seadmesse kahjulikke rakendusi, võivad pääseda juurde teie privaatsele ruumile."</string>
+    <string name="private_space_install_apps_text" msgid="8072027796190028830"><b>"Installige rakendused"</b>\n"Installige rakendused, mille soovite oma ruumis privaatsena hoida"</string>
+    <string name="private_space_keep_in_mind_text" msgid="7721081172657563800">"Pidage meeles"</string>
+    <string name="private_space_apps_stopped_text" msgid="4034574118911250169"><b>"Ruumi lukustamisel peatatakse rakendused"</b>\n"Kui lukustate oma ruumi, peatatakse teie ruumis olevad rakendused ja te ei saa neilt märguandeid"</string>
+    <!-- no translation found for private_space_apps_permission_text (4416201648436201393) -->
+    <skip />
+    <!-- no translation found for private_space_settings_footer_text (3742468470394835356) -->
+    <skip />
     <string name="private_space_learn_more_text" msgid="5314198983263277586">"Lisateave privaatsete ruumide kohta"</string>
     <string name="private_space_few_moments_text" msgid="7166883272914424011">"See võtab mõne hetke"</string>
     <string name="private_space_setting_up_text" msgid="8458035555212009528">"Privaatse ruumi seadistamine …"</string>
@@ -611,7 +627,7 @@
     <string name="private_space_lockscreen_summary" msgid="3053836076639653805">"Saate seadistada uue luku vaid privaatse ruumi jaoks või kasutada sama lukku, mida kasutate seadme avamiseks"</string>
     <string name="private_space_use_screenlock_label" msgid="9182153443192032782">"Kasuta ekraanilukku"</string>
     <string name="private_space_set_lock_label" msgid="1790408277477408475">"Uue luku valimine"</string>
-    <string name="private_space_pre_finish_title" msgid="2314776598615113267">"Oodake pisut …"</string>
+    <string name="private_space_wait_screen_title" msgid="1535431437075585381">"Oodake pisut …"</string>
     <string name="private_space_success_title" msgid="4351904015352046118">"Valmis!"</string>
     <string name="private_space_access_text" msgid="4433988836344567888">"Privaatse ruumi leidmiseks avage oma rakenduste loend ja kerige seejärel alla"</string>
     <string name="private_space_done_label" msgid="1020482651595246071">"Valmis"</string>
@@ -625,14 +641,6 @@
     <string name="private_space_choose_your_pin_header" msgid="4560802934975898265">"Määrake privaatse ruumi jaoks PIN-kood"</string>
     <string name="private_space_choose_your_password_header" msgid="7660259341095044434">"Määrake oma privaatse ruumi jaoks parool"</string>
     <string name="private_space_choose_your_pattern_header" msgid="2165607102459936724">"Määrake oma privaatse ruumi jaoks muster"</string>
-    <string name="private_space_gaia_education_title" msgid="3787414895669666563">"Looge Google\'i konto, et oma andmed privaatsena hoida"</string>
-    <string name="private_space_gaia_education_description" msgid="1592753570023264559">"Järgmisel ekraanikuval saate sisse logida kontole, mida kasutada oma privaatse ruumiga"</string>
-    <string name="private_space_gaia_education_header" msgid="7835879839637613495"><b>"Looge spetsiaalne konto, et aidata peatada andmete kuvamine väljaspool privaatset ruumi, näiteks:"</b></string>
-    <string name="private_space_gaia_education_bullet1" msgid="641701340908301992">"Sünkroonitud fotod, failid, meilid, kontaktid, kalendrisündmused ja muud andmed"</string>
-    <string name="private_space_gaia_education_bullet2" msgid="3679859681253672976">"Rakenduse allalaadimiste ajalugu ja soovitused"</string>
-    <string name="private_space_gaia_education_bullet3" msgid="1703614225321289717">"Sirvimisajalugu, järjehoidjad ja salvestatud paroolid"</string>
-    <string name="private_space_gaia_education_bullet4" msgid="515761604505366164">"Privaatse ruumi rakendustes teie tegevusega seotud soovitatud sisu"</string>
-    <string name="private_space_gaia_education_got_it" msgid="7824029819615566806">"Selge"</string>
     <string name="private_space_category_lock" msgid="1917657024358778169">"Lukusta"</string>
     <string name="private_space_category_hide" msgid="3236587591523126649">"Peida"</string>
     <string name="fingerprint_add_max" msgid="8639321019299347447">"Saate lisada kuni <xliff:g id="COUNT">%d</xliff:g> sõrmejälge"</string>
@@ -819,9 +827,9 @@
     <string name="bluetooth_device_context_disconnect" msgid="4464167389972513232">"Katkesta ühendus"</string>
     <string name="bluetooth_device_context_pair_connect" msgid="2406032703622371826">"Seo ja ühenda"</string>
     <string name="bluetooth_empty_list_bluetooth_off" msgid="7326727272747345476">"Kui Bluetooth on sisse lülitatud, saab seade suhelda teiste lähikonna Bluetooth-seadmetega"</string>
-    <string name="bluetooth_empty_list_bluetooth_off_auto_on_available" msgid="3430864468105204282">"Kui Bluetooth on sees, saab seade suhelda teiste lähikonna Bluetooth-seadmetega Funktsioonid, nagu Kiirjagamine ja Leia mu seade, kasutavad Bluetoothi."</string>
+    <string name="bluetooth_empty_list_bluetooth_off_auto_on_available" msgid="3430864468105204282">"Kui Bluetooth on sees, saab seade suhelda teiste lähikonna Bluetooth-seadmetega. Sellised funktsioonid nagu Kiirjagamine ja Leia mu seade kasutavad Bluetoothi."</string>
     <string name="bluetooth_scanning_on_info_message" msgid="786648535600075223">"Kui Bluetooth on sisse lülitatud, saab teie seade suhelda teiste läheduses olevate Bluetooth-seadmetega.\n\nSeadme kasutuskogemuse täiustamiseks saavad rakendused ja teenused endiselt igal ajal otsida läheduses olevaid seadmeid isegi siis, kui Bluetooth on välja lülitatud. Seda saab kasutada näiteks asukohapõhiste funktsioonide ja teenuste täiustamiseks. Saate seda muuta Bluetoothi skannimise seadetes."</string>
-    <string name="bluetooth_scanning_on_info_message_auto_on_available" msgid="7792443293031247638">"Kui Bluetooth on sees, saab seade suhelda teiste lähikonna Bluetooth-seadmetega Funktsioonid, nagu Kiirjagamine ja Leia mu seade, kasutavad Bluetoothi.\n\nRakendused ja teenused saavad siiski mis tahes ajal otsida lähedalasuvaid seadmeid, isegi kui Bluetooth on väljas. Seda saab kasutada näiteks asukohapõhiste funktsioonide ja teenuste täiustamiseks. Saate seda muuta Bluetoothi skannimise seadetes."</string>
+    <string name="bluetooth_scanning_on_info_message_auto_on_available" msgid="7792443293031247638">"Kui Bluetooth on sees, saab seade suhelda teiste lähikonna Bluetooth-seadmetega. Sellised funktsioonid nagu Kiirjagamine ja Leia mu seade kasutavad Bluetoothi.\n\nRakendused ja teenused saavad siiski mis tahes ajal otsida lähedalasuvaid seadmeid, isegi kui Bluetooth on väljas. Seda saab kasutada näiteks asukohapõhiste funktsioonide ja teenuste täiustamiseks. Saate seda muuta Bluetoothi skannimise seadetes."</string>
     <string name="bluetooth_scan_change" msgid="1744636222637390367">"Muutke"</string>
     <string name="device_details_title" msgid="1155622417516195481">"Seadme üksikasjad"</string>
     <string name="bluetooth_device_keyboard_settings_preference_title" msgid="3411693160917620519">"Klaviatuuriseaded"</string>
@@ -1043,6 +1051,7 @@
     <string name="wifi_certificate_summary_system" msgid="6521297326433133669">"Süsteemi sertifikaat"</string>
     <string name="wifi_certificate_summary_pinning" msgid="5901067790901727957">"Sertifikaadi kinnitamine"</string>
     <string name="wifi_details_title" msgid="222735438574597493">"Võrgu üksikasjad"</string>
+    <string name="wep_network_less_secure_warning_title" msgid="2118823633436946728">"See võrk kasutab vanemat turvaprotokolli WEP, mis on vähem turvaline"</string>
     <string name="wifi_details_subnet_mask" msgid="1619151769276260512">"Alamvõrgu mask"</string>
     <string name="server_name_title" msgid="7257095185810299066">"Serveri nimi"</string>
     <string name="wifi_type_title" msgid="2174893488722015838">"Tüüp"</string>
@@ -1328,7 +1337,7 @@
     <string name="module_version" msgid="1787518340082046658">"Google Play süsteemivärskendus"</string>
     <string name="battery_info" msgid="7873528123969546728">"Akuteave"</string>
     <string name="device_info_not_available" msgid="4804474466616712326">"Pole saadaval"</string>
-    <string name="storage_settings" msgid="7472188817781592677">"Mäluruum"</string>
+    <string name="storage_settings" msgid="7472188817781592677">"Salvestusruum"</string>
     <string name="storage_settings_for_app" msgid="229425418984637483">"Salvestusruum ja vahemälu"</string>
     <string name="storage_settings_title" msgid="486118156723194815">"Mäluruumi seaded"</string>
     <string name="status_eid" msgid="3588471107671992684">"E​ID"</string>
@@ -1360,7 +1369,7 @@
     <string name="status_device_wifi_mac_address" msgid="1896121694334176494">"Seadme WiFi MAC-aadress"</string>
     <string name="status_bt_address" msgid="6919660304578476547">"Bluetoothi aadress"</string>
     <string name="status_serial_number" msgid="9060064164331466789">"Seerianumber"</string>
-    <string name="status_up_time" msgid="1274778533719495438">"Talitlusaeg"</string>
+    <string name="status_up_time" msgid="4250719389455342087">"Tööaeg"</string>
     <string name="battery_manufacture_date" msgid="7139426520156833987">"Tootmiskuupäev"</string>
     <string name="battery_first_use_date" msgid="3157207331722711317">"Esmakordse kasutamise kuupäev"</string>
     <string name="battery_cycle_count" msgid="2912949283386571900">"Tsüklite arv"</string>
@@ -1472,6 +1481,7 @@
     <string name="error_duplicate_apn_entry" msgid="7792928408935276618">"APN-i duplikaatkanne."</string>
     <string name="error_name_empty" msgid="1258275899283079142">"Nimeväli ei tohi tühi olla."</string>
     <string name="error_apn_empty" msgid="7657491065443746915">"APN ei saa olla tühi."</string>
+    <string name="error_apn_type_empty" msgid="8697781608034468813">"APN-i tüüp ei saa olla tühi."</string>
     <string name="error_mcc_not3" msgid="883659545640179094">"MCC-väli peab olema kolmekohaline."</string>
     <string name="error_mnc_not23" msgid="7642478711158474918">"MNC-väli peab olema kahe- või kolmekohaline."</string>
     <string name="error_adding_apn_type" msgid="1324263534991467943">"Operaator ei luba tüübiga %s APN-ide lisamist."</string>
@@ -1499,7 +1509,7 @@
     <string name="reset_esim_error_title" msgid="6516110227665862295">"eSIM-e ei saa kustutada"</string>
     <string name="reset_esim_error_msg" msgid="8459527827897797168">"Midagi läks valesti ja teie eSIM-e ei kustutatud.\n\nTaaskäivitage seade ja proovige uuesti."</string>
     <string name="reset_private_space_delete_title" msgid="2555885198282572990">"Privaatse ruumi kustutamine"</string>
-    <string name="reset_private_space_delete_dialog" msgid="7506471054091800883">"Kui teie seadmes on privaatne ruum, kustutatakse see jäädavalt ja ruumi lisatud Google\'i konto eemaldatakse.\n\nJäädavalt kustutatakse ka ruumis olevad rakendused ja nende andmed."</string>
+    <string name="reset_private_space_delete_dialog" msgid="2325106559507364385">"Kui teie seadmes on privaatne ruum, kustutatakse see jäädavalt ja ruumi lisatud Google\'i konto eemaldatakse. \n\nKõik teie ruumis olevad rakendused ja nende andmed kustutatakse jäädavalt ka teie telefoni "<b>"sisemisest salvestusruumist"</b>"."</string>
     <string name="main_clear_title" msgid="277664302144837723">"Kõigi andmete kustutamine (tehaseseaded)"</string>
     <string name="main_clear_short_title" msgid="4752094765533020696">"Kõigi andmete kustutamine (tehaseseaded)"</string>
     <string name="main_clear_desc_also_erases_external" msgid="3687911419628956693"><li>"Muusika"</li>\n<li>"Fotod"</li>\n<li>"Muud kasutajaandmed"</li></string>
@@ -1753,7 +1763,7 @@
     <string name="enable_text" msgid="8570798764647110430">"Luba"</string>
     <string name="clear_user_data_text" msgid="6773186434260397947">"Tühjenda salvestusruum"</string>
     <string name="app_factory_reset" msgid="8974044931667015201">"Desinstalli värskendused"</string>
-    <string name="app_restricted_settings_lockscreen_title" msgid="796413224212436400">"Piiratud lubade andmine"</string>
+    <string name="app_restricted_settings_lockscreen_title" msgid="5993061278264872648">"Piiratud seadete lubamine"</string>
     <string name="auto_launch_enable_text" msgid="8912714475823807798">"Mõni teie valitud tegevus avaneb selles rakenduses vaikimisi."</string>
     <string name="always_allow_bind_appwidgets_text" msgid="2069415023986858324">"Olete lubanud sellel rakendusel vidinaid luua ja nende andmetele juurde pääseda."</string>
     <string name="auto_launch_disable_text" msgid="502648841250936209">"Vaike-eelistusi pole määratud."</string>
@@ -1913,6 +1923,12 @@
     <string name="trackpad_bottom_right_tap_title" msgid="6275428879042702880">"Parema alaosa puudutamine"</string>
     <string name="trackpad_bottom_right_tap_summary" msgid="8734094086900680674">"Lisavalikute nägemiseks puudutage puuteplaadi paremat alaosa"</string>
     <string name="trackpad_pointer_speed" msgid="7786579408631352625">"Kursori kiirus"</string>
+    <string name="pointer_fill_style" msgid="8413840032931637595">"Kursori sisu stiil"</string>
+    <string name="pointer_fill_style_black_button" msgid="4540815366995820960">"Kursori sisu muutmine mustaks"</string>
+    <string name="pointer_fill_style_green_button" msgid="3731413496528067979">"Kursori sisu muutmine roheliseks"</string>
+    <string name="pointer_fill_style_yellow_button" msgid="5025969961559379024">"Kursori sisu muutmine kollaseks"</string>
+    <string name="pointer_fill_style_pink_button" msgid="4106218142489635673">"Kursori sisu muutmine roosaks"</string>
+    <string name="pointer_fill_style_blue_button" msgid="5594958078854032785">"Kursori sisu muutmine siniseks"</string>
     <string name="trackpad_touch_gesture" msgid="8641725062131922497">"Õppige puuteplaadi liigutusi"</string>
     <string name="keywords_touchpad" msgid="8159846254066666032">"puuteplaat, hiir, kursor, kerimine, pühkimine, sõrmega tõmbamine, paremklõps, klõpsamine"</string>
     <string name="keywords_trackpad_bottom_right_tap" msgid="1285062446073929305">"paremklõps, puudutamine"</string>
@@ -2015,9 +2031,9 @@
     <string name="general_category_title" msgid="6298579528716834157">"Üldine"</string>
     <string name="display_category_title" msgid="6638191682294461408">"Ekraan"</string>
     <string name="accessibility_color_and_motion_title" msgid="2323301706545305874">"Värvid ja liigutused"</string>
-    <string name="accessibility_color_contrast_title" msgid="5757724357142452378">"Värvi kontrastsus"</string>
+    <string name="accessibility_color_contrast_title" msgid="5757724357142452378">"Värvikontrastsus"</string>
     <string name="accessibility_color_contrast_intro" msgid="7795090401101214930">"Suurem kontrastsus muudab teksti, nupud ja ikoonid väljapaistvamaks. Valige kontrastsus, mis tundub teie jaoks kõige sobivam."</string>
-    <string name="color_contrast_note" msgid="7592686603372566198">"Mõni rakendus ei pruugi kõiki värvi ja teksti kontrastsuse seadeid toetada"</string>
+    <string name="color_contrast_note" msgid="7592686603372566198">"Mõni rakendus ei pruugi kõiki värvi- ja tekstikontrastsuse seadeid toetada"</string>
     <string name="color_contrast_preview" msgid="6791430227535363883">"Eelvaade"</string>
     <string name="color_contrast_preview_sender_name" msgid="8641943417589238147">"Helen, Adam"</string>
     <string name="color_contrast_preview_email_send_date" msgid="2108702726171600080">"2 päeva tagasi"</string>
@@ -2185,7 +2201,7 @@
     <string name="accessibility_button_high_label" msgid="9138077512008190896">"Läbipaistmatu"</string>
     <string name="accessibility_toggle_high_text_contrast_preference_title" msgid="1830189632458752698">"Suure kontrastsusega tekst"</string>
     <string name="accessibility_toggle_high_text_contrast_preference_summary" msgid="5286411556836346180">"Muutke tekst mustaks või valgeks. Maksimeerib kontrasti taustaga."</string>
-    <string name="accessibility_toggle_maximize_text_contrast_preference_title" msgid="8737272017343509753">"Teksti kontrastsuse maksimeerimine"</string>
+    <string name="accessibility_toggle_maximize_text_contrast_preference_title" msgid="8737272017343509753">"Tekstikontrastsuse maksimeerimine"</string>
     <string name="accessibility_toggle_maximize_text_contrast_preference_summary" msgid="8200408691846666900">"Lisage tekstile must või valge taust, et kontrastsust suurendada"</string>
     <string name="accessibility_toggle_screen_magnification_auto_update_preference_title" msgid="4987009529235165664">"Ekraanisuurenduse värskendus"</string>
     <string name="accessibility_toggle_screen_magnification_auto_update_preference_summary" msgid="9034532513972547720">"Ekraanisuurenduse kasutus rakenduste vahetamisel"</string>
@@ -2325,6 +2341,7 @@
     <string name="daltonizer_mode_protanomaly_title" msgid="6392456967103014723">"Punane-roheline"</string>
     <string name="daltonizer_mode_tritanomaly_title" msgid="2278786218762602022">"Sinine-kollane"</string>
     <string name="daltonizer_mode_grayscale_title" msgid="152005391387952588">"Halltoonid"</string>
+    <string name="daltonizer_saturation_title" msgid="2999486412114963068">"Intensiivsus"</string>
     <string name="daltonizer_mode_deuteranomaly_summary" msgid="2117727423019598455">"Rohelise vähenenud tajumine, deuteranomaalia"</string>
     <string name="daltonizer_mode_protanomaly_summary" msgid="4617032854982040748">"Punase vähenenud tajumine, protanomaalia"</string>
     <string name="daltonizer_mode_tritanomaly_summary" msgid="2428218320118180070">"Tritanomaalia"</string>
@@ -2405,7 +2422,6 @@
     <string name="keywords_select_to_speak" msgid="2872704811610888719"></string>
     <string name="keywords_color_correction" msgid="8540442886990423681">"värvide korrigeerimine"</string>
     <string name="keywords_color_inversion" msgid="4291058365873221962">"ekraanikuva tumendamine, ekraanikuva helendamine"</string>
-    <string name="keywords_contrast" msgid="4668393735398949873">"värvikontrastsus"</string>
     <string name="keywords_accessibility_menu" msgid="4300579436464706608"></string>
     <string name="keywords_switch_access" msgid="5813094504384313402"></string>
     <string name="keywords_auto_click" msgid="6811744211216280998">"motoorika, hiir, väline hiir, peahiir, adaptiivne hiir, ratastool, juhtkang"</string>
@@ -3240,7 +3256,7 @@
     <string name="keywords_storage_settings" msgid="6018856193950281898">"mälu, vahemälu, andmed, kustutamine, tühjendamine, vaba, ruum"</string>
     <string name="keywords_bluetooth_settings" msgid="2588159530959868188">"ühendatud, seade, kõrvaklapid, peakomplekt, kõlar, juhtmeta, sidumine, nööpkõrvaklapid, muusika, meedia"</string>
     <string name="keywords_wallpaper" msgid="7332890404629446192">"taust, teema, ruudustik, kohandamine, isikupärastamine"</string>
-    <string name="keywords_styles" msgid="3367789885254807447">"ikoon, aktsent, värv, avakuva, lukustuskuva, otsetee, kella suurus"</string>
+    <string name="keywords_styles" msgid="1137053187860081131">"ikoon, ikoonid, aktsent, värv, avakuva, lukustuskuva, otsetee, kella suurus"</string>
     <string name="keywords_assist_input" msgid="3086289530227075593">"vaikimisi, assistent"</string>
     <string name="keywords_default_payment_app" msgid="5162298193637362104">"makse, vaikeseade"</string>
     <string name="keywords_ambient_display" msgid="3149287105145443697">"sissetulev märguanne"</string>
@@ -3306,6 +3322,7 @@
     <string name="spatial_audio_footer_learn_more_text" msgid="3826811708094366301">"Ühendatud seadmete seaded"</string>
     <string name="zen_mode_settings_schedules_summary" msgid="2047688589286811617">"{count,plural, =0{Puudub}=1{1 ajakava on määratud}other{# ajakava on määratud}}"</string>
     <string name="zen_mode_settings_title" msgid="682676757791334259">"Mitte segada"</string>
+    <string name="zen_modes_list_title" msgid="5138745349253275428">"Prioriteetsed režiimid"</string>
     <string name="zen_mode_settings_summary" msgid="6040862775514495191">"Ainult oluliste inimeste ja rakendustega seotud märguanded"</string>
     <string name="zen_mode_slice_subtitle" msgid="6849372107272604160">"Katkestuste piiramine"</string>
     <string name="zen_mode_settings_turn_on_dialog_title" msgid="7500702838426404527">"Valiku Mitte segada sisselülitamine"</string>
@@ -3316,6 +3333,16 @@
     <string name="zen_mode_rule_name_edit" msgid="1053237022416700481">"Muuda"</string>
     <string name="zen_mode_automation_settings_page_title" msgid="6217433860514433311">"Ajakavad"</string>
     <string name="zen_mode_automatic_rule_settings_page_title" msgid="5264835276518295033">"Ajakava"</string>
+    <string name="zen_mode_automatic_trigger_title" msgid="9193777783079000267">"Automaatselt sisselülitamine"</string>
+    <string name="zen_mode_set_calendar_title" msgid="7216665046452644450">"Lisage kalender"</string>
+    <string name="zen_mode_set_calendar_link" msgid="5694504696975898068">"Kasutage oma kalendrit"</string>
+    <string name="zen_mode_set_calendar_category_title" msgid="4860286061420133360">"Ajastamine"</string>
+    <!-- no translation found for zen_mode_set_schedule_title (8023100831320026233) -->
+    <skip />
+    <!-- no translation found for zen_mode_set_schedule_link (2534032127923435737) -->
+    <skip />
+    <!-- no translation found for zen_mode_schedule_duration (299332195675875111) -->
+    <skip />
     <string name="zen_mode_schedule_category_title" msgid="1381879916197350988">"Ajastamine"</string>
     <string name="zen_mode_automation_suggestion_title" msgid="7776129050500707960">"Telefoni vaigistamine teatud ajal"</string>
     <string name="zen_mode_automation_suggestion_summary" msgid="1946750790084170826">"Režiimi Mitte segada reeglite määramine"</string>
@@ -3325,7 +3352,24 @@
     <string name="zen_mode_settings_category" msgid="3794956668816783447">"Helimärguandega katkestuste lubamine"</string>
     <string name="zen_mode_visual_interruptions_settings_title" msgid="7806181124566937214">"Visuaalsete häirimiste blok."</string>
     <string name="zen_mode_visual_signals_settings_subtitle" msgid="7433077540895876672">"Luba visuaalsed signaalid"</string>
-    <string name="zen_mode_restrict_notifications_title" msgid="4169952466106040297">"Peidetud märguannete kuvamisvalikud"</string>
+    <string name="mode_interruption_filter_title" msgid="6657431939996264417">"Teieni jõudvad märguanded"</string>
+    <string name="mode_device_effects_title" msgid="5857008332618433744">"Lisatoimingud"</string>
+    <string name="mode_display_settings_title" msgid="8132825978346535472">"Kuvaseaded"</string>
+    <string name="mode_display_options_section" msgid="5151597748243866532">"Kuvavalikud"</string>
+    <string name="mode_grayscale_title" msgid="6027553257331235461">"Halltoonid"</string>
+    <string name="mode_grayscale_title_secondary_list" msgid="2662593380253642581">"halltoonid"</string>
+    <string name="mode_grayscale_summary" msgid="6682099523626777038">"Muutke ekraanikuva mustvalgeks"</string>
+    <string name="mode_aod_title" msgid="5903435070341237325">"Ekraanikuva tumedana hoidmine"</string>
+    <string name="mode_aod_title_secondary_list" msgid="8268180392811027557">"ekraanikuva tumedana hoidmine"</string>
+    <string name="mode_aod_summary" msgid="7516159044827627065">"Keelake alati sisse lülitatud ekraan"</string>
+    <string name="mode_wallpaper_title" msgid="5549693923133928374">"Taustapildi hämardamine"</string>
+    <string name="mode_wallpaper_title_secondary_list" msgid="5034602021811580157">"taustapildi hämardamine"</string>
+    <string name="mode_wallpaper_summary" msgid="665480011615603784">"Filtreerige taustapildi heledust"</string>
+    <string name="mode_dark_theme_title" msgid="8099007897943513209">"Tumeda teema lubamine"</string>
+    <string name="mode_dark_theme_title_secondary_list" msgid="4761262694149772845">"tumeda teema lubamine"</string>
+    <string name="mode_dark_theme_summary" msgid="8428887193785431898">"Lülitage OS ja rakendused heleda teksti ja tumeda tausta eelistusele, mis võib hõlbustada teksti lugemist ning säästab teatud seadmetes oluliselt akut"</string>
+    <string name="mode_display_settings_summary" msgid="5929234706883482380">"{count,plural,offset:2 =0{Ekraanikuva muudatusi pole}=1{{effect_1}}=2{{effect_1} ja {effect_2}}=3{{effect_1}, {effect_2} ja {effect_3}}other{{effect_1}, {effect_2} ja veel #}}"</string>
+    <string name="zen_mode_restrict_notifications_title" msgid="4926944083757096458">"Filtreeritud märguannete kuvavalikud"</string>
     <string name="zen_mode_restrict_notifications_category" msgid="5870944770935394566">"Kui funktsioon Mitte segada on sisse lülitatud"</string>
     <string name="zen_mode_restrict_notifications_mute" msgid="6692072837485018287">"Hääletud märguanded"</string>
     <string name="zen_mode_restrict_notifications_mute_summary" msgid="966597459849580949">"Näete ekraanil märguandeid"</string>
@@ -3336,9 +3380,9 @@
     <string name="zen_mode_restrict_notifications_custom" msgid="5469078057954463796">"Kohandatud"</string>
     <string name="zen_mode_restrict_notifications_enable_custom" msgid="4303255634151330401">"Kohandatud seade lubamine"</string>
     <string name="zen_mode_restrict_notifications_disable_custom" msgid="5062332754972217218">"Kohandatud seade eemaldamine"</string>
-    <string name="zen_mode_restrict_notifications_summary_muted" msgid="4750213316794189968">"Hääletud märguanded"</string>
-    <string name="zen_mode_restrict_notifications_summary_custom" msgid="3918461289557316364">"Osaliselt peidetud"</string>
-    <string name="zen_mode_restrict_notifications_summary_hidden" msgid="636494600775773296">"Hääletud ja ekraanilt peidetud märguanded"</string>
+    <string name="zen_mode_restrict_notifications_summary_muted" msgid="2826459087306271381">"Märguanded on kuvatud"</string>
+    <string name="zen_mode_restrict_notifications_summary_custom" msgid="6455811408721183198">"Märguanded on osaliselt peidetud"</string>
+    <string name="zen_mode_restrict_notifications_summary_hidden" msgid="2157279412167366119">"Märguanded on peidetud"</string>
     <string name="zen_mode_what_to_block_title" msgid="5692710098205334164">"Kohandatud piirangud"</string>
     <string name="zen_mode_block_effects_screen_on" msgid="8780668375194500987">"Kui ekraan on sees"</string>
     <string name="zen_mode_block_effects_screen_off" msgid="2291988790355612826">"Kui ekraan on väljas"</string>
@@ -3535,7 +3579,7 @@
     <string name="notifications_sent_daily" msgid="10274479224185437">"{count,plural, =1{Ligikaudu # märguanne päevas}other{Ligikaudu # märguannet päevas}}"</string>
     <string name="notifications_sent_weekly" msgid="7895656213187555346">"{count,plural, =1{Ligikaudu # märguanne nädalas}other{Ligikaudu # märguannet nädalas}}"</string>
     <string name="notifications_sent_never" msgid="9081278709126812062">"Mitte kunagi"</string>
-    <string name="manage_notification_access_title" msgid="6481256069087219982">"Seadmete ja rakenduste märguanded"</string>
+    <string name="manage_notification_access_title" msgid="4154723216570646451">"Märguannete lugemine, neile vastamine ja nende haldamine"</string>
     <string name="manage_notification_access_summary" msgid="2907135226478903997">"Hallake, millised rakendused ja seadmed saavad märguandeid lugeda"</string>
     <string name="work_profile_notification_access_blocked_summary" msgid="8643809206612366067">"Juurdepääs tööprofiili märguannetele on blokeeritud"</string>
     <string name="notification_assistant_title" msgid="5889201903272393099">"Täiustatud märguanded"</string>
@@ -3572,17 +3616,14 @@
     <string name="notif_listener_not_migrated" msgid="6265206376374278226">"See rakendus ei toeta täiustatud seadeid"</string>
     <string name="notif_listener_more_settings" msgid="1348409392307208921">"Rohkem seadeid"</string>
     <string name="notif_listener_more_settings_desc" msgid="7995492074281663658">"Selle rakenduse sees on saadaval rohkem seadeid"</string>
-    <string name="notification_polite_title" msgid="6121016426991791557">"Märguannete summutamine"</string>
-    <string name="notification_polite_all_apps" msgid="1118651561594250059">"Summutamise rakendamine kõigile märguannetele"</string>
-    <string name="notification_polite_all_apps_summary" msgid="540268373207498126">"Vähendab järk-järgult märguannete helitugevust, kui saate samast rakendusest mitu järjestikust teavitust"</string>
-    <string name="notification_polite_conversations" msgid="8197695136727245741">"Summutamise rakendamine vestlustele"</string>
-    <string name="notification_polite_conversations_summary" msgid="2677141765664359994">"Vähendab järk-järgult märguannete helitugevust, kui saate samast vestlusest mitu järjestikust teavitust"</string>
-    <string name="notification_polite_disabled" msgid="1378078021594282842">"Ära kasuta märguannete summutamist"</string>
-    <string name="notification_polite_disabled_summary" msgid="1145341260283746936">"Ei vähenda kunagi märguannete helitugevust, olenemata sama rakenduse järjestikuste märguannete arvust"</string>
-    <string name="notification_polite_vibrate_unlocked" msgid="6142573851761357903">"Avatuna vibreerimine"</string>
-    <string name="notification_polite_vibrate_unlocked_summary" msgid="1678472892282874459">"Vibreerib ainult, kui ekraan on avatud"</string>
+    <!-- no translation found for notification_polite_title (4737150709382859870) -->
+    <skip />
+    <!-- no translation found for notification_polite_main_control_title (7267191551379543859) -->
+    <skip />
+    <!-- no translation found for notification_polite_description (7749280535620291610) -->
+    <skip />
     <string name="notification_polite_work" msgid="8823596456640216391">"Tööprofiilidele rakendamine"</string>
-    <string name="notification_polite_work_summary" msgid="8260947839104352075">"Rakendab märguannete summutamise seaded teie isiklikult profiililt teie tööprofiilile"</string>
+    <string name="notification_polite_work_summary" msgid="5014189280132951378">"Rakendage tööprofiili rakendustele"</string>
     <string name="vr_listeners_title" msgid="4960357292472540964">"VR-abilise teenused"</string>
     <string name="no_vr_listeners" msgid="8442646085375949755">"Ükski installitud rakendus pole taotlenud VR-abilise teenusena käitamist."</string>
     <string name="vr_listener_security_warning_title" msgid="7026351795627615177">"Kas lubada VR-teenuse juurdepääs teenusele <xliff:g id="SERVICE">%1$s</xliff:g>?"</string>
@@ -3635,12 +3676,12 @@
     <string name="app_notification_block_summary" msgid="1804611676339341551">"Ära kunagi näita neid märguandeid"</string>
     <string name="notification_content_block_title" msgid="6689085826061361351">"Kuva märguanded"</string>
     <string name="notification_content_block_summary" msgid="329171999992248925">"Ära kuva märguandeid kunagi märguandealal ega välisseadmetes"</string>
-    <string name="app_notification_fsi_permission_title" msgid="5424116606034705020">"Kogu ekraani katvate märguannete lubamine"</string>
+    <string name="app_notification_fsi_permission_title" msgid="2260977598430154428">"Kogu ekraani katvate märguannete lubamine"</string>
     <string name="app_notification_fsi_permission_summary" msgid="7673487977631068039">"Lubage kuvada kogu ekraani katvaid märguandeid, kui seade on lukustatud"</string>
     <string name="notification_badge_title" msgid="6854537463548411313">"Luba märguandetäpp"</string>
     <string name="notification_channel_badge_title" msgid="6505542437385640049">"Kuva märguandetäpp"</string>
     <string name="app_notification_override_dnd_title" msgid="3769539356442226691">"Funktsiooni Mitte segada alistamine"</string>
-    <string name="app_notification_override_dnd_summary" msgid="4894641191397562920">"Nendel märguannetel lubatakse teid jätkuvalt katkestada, kui funktsioon Mitte segada on sisse lülitatud"</string>
+    <string name="app_notification_override_dnd_summary" msgid="4894641191397562920">"Need märguanded esitatakse ka siis, kui funktsioon Mitte segada on sisse lülitatud"</string>
     <string name="app_notification_visibility_override_title" msgid="7778628150022065920">"Lukustuskuva"</string>
     <string name="app_notifications_dialog_done" msgid="573716608705273004">"Valmis"</string>
     <string name="notification_show_lights_title" msgid="5564315979007438583">"Vilkuv tuli"</string>
@@ -3731,6 +3772,11 @@
     <string name="zen_mode_events_summary" msgid="3241903481309766428">"Tulevastelt kalendrisündmustelt"</string>
     <string name="zen_mode_events_list" msgid="7191316245742097229">"sündmused"</string>
     <string name="zen_mode_events_list_first" msgid="7425369082835214361">"Sündmused"</string>
+    <string name="zen_mode_apps_title" msgid="1691010857014041183">"Rakendused"</string>
+    <string name="zen_mode_apps_category" msgid="4082380323683889391">"Rakendused, mis saavad katkestada"</string>
+    <string name="zen_mode_apps_priority_apps" msgid="7386196048313716076">"Valitud rakendused"</string>
+    <string name="zen_mode_apps_none_apps" msgid="2493642312793604327">"Puudub"</string>
+    <string name="zen_mode_apps_all_apps" msgid="705700582778445484">"Kõik"</string>
     <string name="zen_mode_bypassing_apps" msgid="625309443389126481">"Luba rakendustel alistada"</string>
     <string name="zen_mode_bypassing_apps_header" msgid="60083006963906906">"Rakendused, mis saavad katkestada"</string>
     <string name="zen_mode_bypassing_apps_add_header" msgid="3201829605075172536">"Valige rohkem rakendusi"</string>
@@ -3767,6 +3813,12 @@
     <string name="zen_mode_summary_alarms_only_by_hour" msgid="7400910210950788163">"{count,plural, =1{Muudetakse valikule Ainult äratused 1 tunniks kuni {time}}other{Muudetakse valikule Ainult äratused # tunniks kuni {time}}}"</string>
     <string name="zen_mode_summary_alarms_only_by_time" msgid="8140619669703968810">"Muudetakse valikule Ainult alarmid kuni kella <xliff:g id="FORMATTEDTIME">%1$s</xliff:g>"</string>
     <string name="zen_mode_summary_always" msgid="722093064250082317">"Muudetakse valikule Katkesta alati"</string>
+    <!-- no translation found for zen_mode_action_change_name (766639614789907016) -->
+    <skip />
+    <!-- no translation found for zen_mode_action_change_icon (6192187791750301778) -->
+    <skip />
+    <!-- no translation found for zen_mode_icon_picker_title (6845490379143557472) -->
+    <skip />
     <string name="warning_button_text" msgid="1274234338874005639">"Hoiatus"</string>
     <string name="suggestion_button_close" msgid="6865170855573283759">"Sule"</string>
     <string name="device_feedback" msgid="5351614458411688608">"Seadme kohta tagasiside saatmine"</string>
@@ -3984,8 +4036,8 @@
     <string name="permit_manage_external_storage" msgid="6928847280689401761">"Luba juurdepääs kõikide failide haldamisele"</string>
     <string name="allow_manage_external_storage_description" msgid="5707948153603253225">"Sellel rakendusel lubatakse lugeda, muuta ja kustutada kõiki selles seadmes ning ühendatud andmekandjatel olevaid faile. Loa andmisel võib rakendus failidele juurde pääseda ilma teie teadmata."</string>
     <string name="filter_manage_external_storage" msgid="6751640571715343804">"Pääseb failidele juurde"</string>
-    <string name="full_screen_intent_title" msgid="747270185715224130">"Kogu ekraani katvad märguanded"</string>
-    <string name="permit_full_screen_intent" msgid="9035367640019960861">"Luba selle rakenduse kogu ekraani katvad märguanded"</string>
+    <string name="full_screen_intent_title" msgid="5888548315628268674">"Kogu ekraani katvad märguanded"</string>
+    <string name="permit_full_screen_intent" msgid="2414307667550523630">"Selle rakenduse kogu ekraani katvate märguannete lubamine"</string>
     <string name="footer_description_full_screen_intent" msgid="7716518411349225528">"Lubage sellel rakendusel kuvada kogu ekraani katvaid märguandeid, kui seade on lukustatud. Rakendused võivad selle abil tõsta esile alarme, sissetulevaid kõnesid või muid pakilisi märguandeid."</string>
     <string name="media_management_apps_title" msgid="8222942355578724582">"Meediahalduse rakendused"</string>
     <string name="media_management_apps_toggle_label" msgid="166724270857067456">"Rakendusel meedia haldamise lubamine"</string>
@@ -4103,7 +4155,7 @@
     <string name="data_usage_template" msgid="3822452362629968010">"Vahemikus <xliff:g id="ID_2">%2$s</xliff:g> on kasutatud <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="configure" msgid="1499586749829665889">"Seadistamine"</string>
     <string name="data_usage_other_apps" msgid="5649047093607329537">"Muud kasutusandmetesse kaasatud rakendused"</string>
-    <string name="data_saver_unrestricted_summary" msgid="7343571401172437542">"{count,plural, =1{1 rakendusel on lubatud kasutada piiranguteta andmemahtu, kui andmemahu säästja on sisse lülitatud}other{# rakendusel on lubatud kasutada piiranguteta andmemahtu, kui andmemahu säästja on sisse lülitatud}}"</string>
+    <string name="data_saver_unrestricted_summary" msgid="559673440849071149">"{count,plural, =1{1 rakendusel on lubatud kasutada mahupiiranguta mobiilset andmesidet, kui andmemahu säästja on sisse lülitatud}other{# rakendusel on lubatud kasutada mahupiiranguta mobiilset andmesidet, kui andmemahu säästja on sisse lülitatud}}"</string>
     <string name="data_usage_title" msgid="4039024073687469094">"Peamine andmeside"</string>
     <string name="data_usage_wifi_title" msgid="1060495519280456926">"WiFi-andmeside"</string>
     <string name="data_used_formatted" msgid="7913920278059077938">"Kasutatud on <xliff:g id="ID_1">^1</xliff:g> <xliff:g id="ID_2">^2</xliff:g>"</string>
@@ -4120,13 +4172,13 @@
     <string name="no_carrier_update_now_text" msgid="7898004907837200752">"Värskendati äsja"</string>
     <string name="launch_wifi_text" msgid="976421974332512894">"Kuva üksikasjad"</string>
     <string name="data_saver_title" msgid="2593804270788863815">"Andmemahu säästja"</string>
-    <string name="unrestricted_data_saver" msgid="7922563266857367495">"Piiramata andmeside"</string>
+    <string name="unrestricted_data_saver" msgid="5913547065342097274">"Mahupiiranguta mobiilne andmeside"</string>
     <string name="restrict_background_blocklisted" msgid="2308345280442438232">"Taustaandmed on välja lülitatud"</string>
     <string name="data_saver_on" msgid="7848893946018448793">"Sees"</string>
     <string name="data_saver_off" msgid="5891210864117269045">"Väljas"</string>
     <string name="data_saver_switch_title" msgid="7111538580123722959">"Andmemahu säästja kasutamine"</string>
-    <string name="unrestricted_app_title" msgid="7117585996574329284">"Piiranguteta andmekasutus"</string>
-    <string name="unrestricted_app_summary" msgid="282698963532000403">"Luba piiranguteta juurdepääs andmesidele, kui andmemahu säästja on sisse lülitatud"</string>
+    <string name="unrestricted_app_title" msgid="8531936851059106374">"Mahupiiranguta mobiilse andmeside kasutus"</string>
+    <string name="unrestricted_app_summary" msgid="8320813971858627624">"Luba juurdepääs mahupiiranguta mobiilsele andmesidele, kui andmemahu säästja on sisse lülitatud"</string>
     <string name="home_app" msgid="6056850504746902747">"Avakuva rakendus"</string>
     <string name="suggestion_additional_fingerprints" msgid="4726777300101156208">"Lisage veel üks sõrmejälg"</string>
     <string name="suggestion_additional_fingerprints_summary" msgid="2825364645039666674">"Teise sõrmega avamine"</string>
@@ -4200,9 +4252,9 @@
     <string name="notification_suggestion_summary" msgid="7615611244249276113">"Märguande sisu kuvamine või peitmine"</string>
     <string name="page_tab_title_support" msgid="3235725053332345773">"Nõuanded ja tugi"</string>
     <string name="developer_smallest_width" msgid="632354817870920911">"Kõige väiksem laius"</string>
-    <string name="premium_sms_none" msgid="8737045049886416739">"Ükski installitud rakendus pole taotlenud juurdepääsu tasuliste SMS-ide saatmiseks"</string>
+    <string name="premium_sms_none" msgid="4718916765158062108">"Ükski installitud rakendus pole taotlenud juurdepääsu tasuliste SMS-ide saatmiseks"</string>
     <string name="premium_sms_warning" msgid="2192300872411073324">"Tasuliste SMS-ide saatmisel võidakse teilt nõuda tasu, mis lisatakse operaatori esitatud arvele. Kui annate rakendusele loa, saate selle rakendusega tasulisi SMS-e saata."</string>
-    <string name="premium_sms_access" msgid="5605970342699013212">"Juurdepääs tasuliste SMS-ide saatmiseks"</string>
+    <string name="premium_sms_access" msgid="8487315743197916530">"Tasuline SMS"</string>
     <string name="bluetooth_disabled" msgid="835838280837359514">"Väljas"</string>
     <string name="bluetooth_connected_summary" msgid="8043167194934315712">"Ühendatud seadmega <xliff:g id="ID_1">%1$s</xliff:g>"</string>
     <string name="bluetooth_connected_multiple_devices_summary" msgid="2294954614327771844">"Ühendatud mitme seadmega"</string>
@@ -4509,7 +4561,7 @@
     <string name="media_output_label_title" msgid="4139048973886819148">"Esita rakendust <xliff:g id="LABEL">%s</xliff:g> väljundis"</string>
     <string name="media_output_title_without_playing" msgid="3339321669132875821">"Jätkatakse heli esitamist"</string>
     <string name="media_output_default_summary" msgid="4200343059396412376">"See seade"</string>
-    <string name="media_output_audio_sharing" msgid="6531742594884809737">"Heli jagamine"</string>
+    <string name="media_output_audio_sharing" msgid="8169294522817470115">"Heli jagamine"</string>
     <string name="media_out_summary_ongoing_call_state" msgid="475188726850090363">"Pole kõnede ajal saadaval"</string>
     <string name="take_call_on_title" msgid="1159417893879946757">"Vasta kõnele seadmes"</string>
     <string name="cannot_change_apn_toast" msgid="296540724089240405">"Seda APN-i ei saa muuta."</string>
@@ -4705,6 +4757,8 @@
     <string name="sim_onboarding_next" msgid="6415025179929475355">"Järgmine"</string>
     <string name="sim_onboarding_progressbar_turning_sim_on" msgid="1163318788393361574">"Teenuse <xliff:g id="CARRIER_NAME">%1$s</xliff:g> sisselülitamine …"</string>
     <string name="mobile_network_spn_title" msgid="3053793174495329077">"Mobiilsidevõrk"</string>
+    <string name="imei_primary" msgid="5312232202518974440">"IMEI (peamine)"</string>
+    <string name="meid_primary" msgid="3256732684155678106">"MEID (peamine)"</string>
     <string name="mobile_network_phone_number_title" msgid="2090794402855021784">"Telefoninumber"</string>
     <string name="mobile_network_sim_label_color_title" msgid="2401352348041132876">"SIM-i silt ja värv"</string>
     <string name="sim_setup_channel_id" msgid="8797972565087458515">"Võrgu aktiveerimine"</string>
@@ -4748,6 +4802,7 @@
     <string name="bluetooth_left_name" msgid="7440064067910080502">"Vasak"</string>
     <string name="bluetooth_right_name" msgid="7588088072444124949">"Parem"</string>
     <string name="bluetooth_middle_name" msgid="3909371955137442319">"Ümbris"</string>
+    <string name="bluetooth_header_battery_content_description" msgid="3804237436331504879">"Aku"</string>
     <string name="settings_panel_title" msgid="346363079938069215">"Seadete paneel"</string>
     <string name="force_desktop_mode" msgid="1336913605091334238">"Jõusta töölauarežiim"</string>
     <string name="force_desktop_mode_summary" msgid="4587416867846930479">"Katselise töölauarežiimi jõustamine teisestel ekraanidel"</string>
@@ -4808,23 +4863,24 @@
     <string name="track_frame_time_keywords" msgid="7885340257945922239">"GPU"</string>
     <string name="enable_16k_pages" msgid="8001470927566110689">"Käivitamine lehe suurusega 16 kB"</string>
     <string name="enable_16k_pages_summary" msgid="1964363364670306912">"Seadme käivitamine 16 kB lehte toetava tuumaga"</string>
-    <string name="confirm_enable_16k_pages_title" msgid="1286925577014793351">"Lülitumine 4 kB režiimilt 16 kB režiimile"</string>
-    <string name="confirm_enable_16k_pages_text" msgid="570198382662424714">"Olete lehest sõltumatus režiimis, mis kasutab 4 kB tuuma, ja soovite lülituda 16 kB režiimile. Selles režiimis ei saa garanteerida tarkvara terviklust ja andmed, mis salvestatakse telefoni, kui käivituslaadur on avatud, võivad olla ohus. Pärast kinnitamist seade taaskäivitatakse. Mõned funktsioonid on nendes režiimides keelatud, mistõttu ei pruugi kõik rakendused töötada. Selleks, et viia seade uuesti tavarežiimile, peate lülituma tagasi 4 kB režiimile ja lukustama käivituslaaduri. See lähtestab seadme tehaseseadetele. Pärast seda, kui seade on Androidi käivitanud, keelake arendaja valikutes OEM-tootjaluku avamine."</string>
+    <string name="confirm_enable_16k_pages_title" msgid="611010487387251491">"Lülitumine 4 kB režiimilt 16 kB režiimile"</string>
+    <string name="confirm_enable_16k_pages_text" msgid="6129208614283750541">"Olete lehest sõltumatus režiimis, mis kasutab 4 kB tuuma, ja soovite lülituda 16 kB režiimile. Selles režiimis ei saa garanteerida tarkvara terviklust ja andmed, mis salvestatakse telefoni, kui käivituslaadur on avatud, võivad olla ohus. Pärast kinnitamist seade taaskäivitatakse. Mõned funktsioonid on nendes režiimides keelatud, mistõttu ei pruugi kõik rakendused töötada. Seadme lähtestamiseks ja tavarežiimi naasmiseks lülituge uuesti 4 kB režiimile ja lukustage käivituslaadur. Pärast seda, kui seade on Androidi käivitanud, keelake arendaja valikutes OEM-tootjaluku avamine."</string>
     <string name="confirm_enable_4k_pages_title" msgid="3210360137887034659">"Lülitumine 16 kB režiimilt 4 kB režiimile"</string>
     <string name="confirm_enable_4k_pages_text" msgid="155070605667160083">"Olete lehest sõltumatus režiimis, mis kasutab 16 kB tuuma, ja soovite lülituda 4 kB režiimile. Selles režiimis ei saa garanteerida tarkvara terviklust ja andmed, mis salvestatakse telefoni, kui käivituslaadur on avatud, võivad olla ohus. Pärast kinnitamist seade taaskäivitatakse. Mõned funktsioonid on nendes režiimides keelatud, mistõttu ei pruugi kõik rakendused töötada. Selleks, et viia seade uuesti tavarežiimile, peate lukustama käivituslaaduri. See lähtestab seadme tehaseseadetele. Pärast seda, kui seade on Androidi käivitanud, keelake arendaja valikutes OEM-tootjaluku avamine."</string>
     <string name="toast_16k_update_failed_text" msgid="8888858987184345567">"Ei õnnestunud tuuma 16 kB lehtedega ühilduvale tuumale värskendada."</string>
     <string name="progress_16k_ota_title" msgid="2117218313875523741">"Muudatuse rakendamine"</string>
     <string name="confirm_format_ext4_title" msgid="6696191800594435577">"Kas vormindada seade ümber ext4-le? (vajalik 16 kB režiimi jaoks)"</string>
-    <string name="confirm_format_ext4_text" msgid="7940372488624630214">"Arendaja valiku 16 kB kasutamiseks peab seadme andmete sektsioon olema konverditud failisüsteemiks ext4. Selles režiimis ei saa garanteerida tarkvara terviklust ja andmed, mis salvestatakse telefoni, kui käivituslaadur on avatud, võivad olla ohus. Pärast valiku 16 kB aktiveerimist tuleb seade veel korra taaskäivitada. Selles režiimis saate 4 kB ja 16 kB režiimide vahel vahetada ühe taaskäivitamisega. Mõned funktsioonid on nendes režiimides keelatud, mistõttu ei pruugi kõik rakendused töötada. Selleks, et viia seade uuesti tavarežiimile, peate lülituma tagasi 4 kB režiimile ja lukustama käivituslaaduri. See lähtestab seadme tehaseseadetele. Pärast seda, kui seade on Androidi käivitanud, keelake arendaja valikutes OEM-tootjaluku avamine. Pärast kinnitamist seade tühjendatakse ja failisüsteemiks seatakse ext4. Kui need toimingud on lõpetatud, lubage taas režiim 16 kB."</string>
+    <string name="confirm_format_ext4_text" msgid="7940372488624630214">"Arendaja valiku 16 kB kasutamiseks peab seadme andmete sektsioon olema konverditud failisüsteemiks ext4. Selles režiimis ei saa garanteerida tarkvara terviklust ja andmed, mis salvestatakse telefoni, kui käivituslaadur on avatud, võivad olla ohus. Pärast valiku 16 kB aktiveerimist tuleb seade veel korra taaskäivitada. Selles režiimis saate 4 kB ja 16 kB režiimide vahel vahetada ühe taaskäivitamisega. Mõned funktsioonid on nendes režiimides keelatud, mistõttu ei pruugi kõik rakendused töötada Seadme tehaseseadetele lähtestamiseks ja tavarežiimi naasmiseks lülituge uuesti 4K režiimile ja avage seadme käivituslaadur. Pärast seda, kui seade on Androidi käivitanud, keelake arendaja valikutes OEM-tootjaluku avamine. Pärast kinnitamist seade tühjendatakse ja failisüsteemiks seatakse ext4. Kui need toimingud on lõpetatud, lubage taas režiim 16 kB."</string>
+    <string name="confirm_ext4_button_text" msgid="6045501984773738407">"Kustuta kõik andmed"</string>
     <string name="format_ext4_failure_toast" msgid="8059453995800471549">"Andmete sektsiooni ümbervormindamine failisüsteemiks ext4 ja seadme tühjendamine ebaõnnestus."</string>
     <string name="confirm_oem_unlock_for_16k_title" msgid="5374451262432025419">"16 kB režiimi jaoks on vaja käivituslaadur avada"</string>
     <string name="confirm_oem_unlock_for_16k_text" msgid="3583604865119937957">"Arendaja valiku 16 kB kasutamiseks peab seadme käivituslaadur olema avatud. Selles režiimis ei saa garanteerida tarkvara terviklust ja andmed, mis salvestatakse telefoni, kui käivituslaadur on avatud, võivad olla ohus. Režiimi 16 kB aktiveerimisel tühjendatakse seade kõigist kasutaja andmetest ja seadetest. Kui käivituslaadur on avatud, on valiku 16 kB aktiveerimiseks vaja seade kaks korda taaskäivitada. Selles režiimis saate 4 kB ja 16 kB režiimide vahel vahetada ühe taaskäivitamisega. Mõned funktsioonid on nendes režiimides keelatud, mistõttu ei pruugi kõik rakendused töötada. Selleks, et viia seade uuesti tavarežiimile, peate lülituma tagasi 4 kB režiimile ja lukustama OEM-i/käivituslaaduri. See lähtestab seadme tehaseseadetele. Avage käivituslaadur ja proovige uuesti. Juhiseid selle kohta vaadake aadressilt &lt;a href=\"https://source.android.com/docs/core/architecture/bootloader/locking_unlocking\"&gt;https://source.android.com/docs/core/architecture/bootloader/locking_unlocking&lt;/a&gt;"</string>
     <string name="page_agnostic_4k_pages_title" msgid="1184703958249093215">"Lehest sõltumatu 4 kB režiimi kasutamine"</string>
-    <string name="page_agnostic_4k_pages_text_short" msgid="2894243902906666242">"Olete lehest sõltumatus 4 kB režiimis. Selles režiimis ei saa garanteerida tarkvara terviklust ja andmed, mis salvestatakse telefoni, kui käivituslaadur on avatud, võivad olla ohus. Mõned funktsioonid on nendes režiimides keelatud, mistõttu ei pruugi kõik rakendused töötada. Tavarežiimile tagasi lülitumiseks peate avama seadme käivituslaaduri. Puudutage lisateabe vaatamiseks."</string>
-    <string name="page_agnostic_4k_pages_text" msgid="8284806650260868833">"Olete lehest sõltumatus 4 kB režiimis. Selles režiimis ei saa garanteerida tarkvara terviklust ja andmed, mis salvestatakse telefoni, kui käivituslaadur on avatud, võivad olla ohus. Mõned funktsioonid on nendes režiimides keelatud, mistõttu ei pruugi kõik rakendused töötada. Tavarežiimile tagasi lülitumiseks peate avama seadme käivituslaaduri. See lähtestab seadme tehaseseadetele. Pärast seda, kui seade on Androidi käivitanud, keelake arendaja valikutes OEM-tootjaluku avamine. Kui seadmel ei õnnestu Androidi käivitada või see on ebastabiilne, installige kogu operatsioonisüsteem ja püsivara uuesti, kasutades tehaseoleku süsteemikujutisi aadressilt &lt;a href=\"https://developers.google.com/android/images\"&gt;https://developers.google.com/android/images&lt;/a&gt; or use &lt;a href=\"https://flash.android.com/back-to-public\"&gt;https://flash.android.com/back-to-public&lt;/a&gt; ja valige „Tühjenda seade“, „Lukusta käivituslaadur“ ja „Installi kõik sektsioonid uuesti“."</string>
+    <string name="page_agnostic_4k_pages_text_short" msgid="2894243902906666242">"Olete lehest sõltumatus 4 kB režiimis. Selles režiimis ei saa garanteerida tarkvara terviklust ja andmed, mis salvestatakse telefoni, kui käivituslaadur on avatud, võivad olla ohus. Mõned funktsioonid on nendes režiimides keelatud, mistõttu ei pruugi kõik rakendused töötada. Tavarežiimi naasmiseks peate avama seadme käivituslaaduri. Puudutage lisateabe vaatamiseks."</string>
+    <string name="page_agnostic_4k_pages_text" msgid="8284806650260868833">"Olete lehest sõltumatus 4 kB režiimis. Selles režiimis ei saa garanteerida tarkvara terviklust ja andmed, mis salvestatakse telefoni, kui käivituslaadur on avatud, võivad olla ohus. Mõned funktsioonid on nendes režiimides keelatud, mistõttu ei pruugi kõik rakendused töötada. Tavarežiimi naasmiseks peate avama seadme käivituslaaduri. See lähtestab seadme tehaseseadetele. Pärast seda, kui seade on Androidi käivitanud, keelake arendaja valikutes OEM-tootjaluku avamine. Kui seadmel ei õnnestu Androidi käivitada või see on ebastabiilne, installige kogu operatsioonisüsteem ja püsivara uuesti, kasutades tehaseoleku süsteemikujutisi aadressilt &lt;a href=\"https://developers.google.com/android/images\"&gt;https://developers.google.com/android/images&lt;/a&gt; või kasutage tööriista aadressil &lt;a href=\"https://flash.android.com/back-to-public\"&gt;https://flash.android.com/back-to-public&lt;/a&gt; ja valige „Tühjenda seade“, „Lukusta käivituslaadur“ ja „Installi kõik sektsioonid uuesti“."</string>
     <string name="page_agnostic_16k_pages_title" msgid="7762533464569818498">"Lehest sõltumatu 16 kB režiimi kasutamine"</string>
     <string name="page_agnostic_16k_pages_text_short" msgid="269039281591806585">"Olete lehest sõltumatus 16 kB režiimis. Selles režiimis ei saa garanteerida tarkvara terviklust ja andmed, mis salvestatakse telefoni, kui käivituslaadur on avatud, võivad olla ohus. Mõned funktsioonid on nendes režiimides keelatud, mistõttu ei pruugi kõik rakendused töötada. Selleks et viia seade uuesti tavarežiimile, peate lülituma tagasi 4K režiimile ja seejärel avama seadme käivituslaaduri. Puudutage lisateabe vaatamiseks."</string>
-    <string name="page_agnostic_16k_pages_text" msgid="6208765386837706582">"Olete lehest sõltumatus 16 kB režiimis. Selles režiimis ei saa garanteerida tarkvara terviklust ja andmed, mis salvestatakse telefoni, kui käivituslaadur on avatud, võivad olla ohus. Mõned funktsioonid on nendes režiimides keelatud, mistõttu ei pruugi kõik rakendused töötada. Selleks et viia seade uuesti tavarežiimile, peate lülituma tagasi 4K režiimile ja seejärel avama seadme käivituslaaduri. See lähtestab seadme tehaseseadetele. Pärast seda, kui seade on Androidi käivitanud, keelake arendaja valikutes OEM-tootjaluku avamine. Kui seadmel ei õnnestu Androidi käivitada või see on ebastabiilne, installige kogu operatsioonisüsteem ja püsivara uuesti, kasutades tehaseoleku süsteemikujutisi aadressilt &lt;a href=\"https://developers.google.com/android/images\"&gt;https://developers.google.com/android/images&lt;/a&gt; or use &lt;a href=\"https://flash.android.com/back-to-public\"&gt;https://flash.android.com/back-to-public&lt;/a&gt; ja valige „Tühjenda seade“, „Lukusta käivituslaadur“ ja „Installi kõik sektsioonid uuesti“."</string>
+    <string name="page_agnostic_16k_pages_text" msgid="6208765386837706582">"Olete lehest sõltumatus 16 kB režiimis. Selles režiimis ei saa garanteerida tarkvara terviklust ja andmed, mis salvestatakse telefoni, kui käivituslaadur on avatud, võivad olla ohus. Mõned funktsioonid on nendes režiimides keelatud, mistõttu ei pruugi kõik rakendused töötada. Seadme tehaseseadetele lähtestamiseks ja tavarežiimi naasmiseks lülituge uuesti 4K režiimile ja avage seadme käivituslaadur. Pärast seda, kui seade on Androidi käivitanud, keelake arendaja valikutes OEM-tootjaluku avamine. Kui seadmel ei õnnestu Androidi käivitada või see on ebastabiilne, installige kogu operatsioonisüsteem ja püsivara uuesti, kasutades tehaseoleku süsteemikujutisi aadressilt &lt;a href=\"https://developers.google.com/android/images\"&gt;https://developers.google.com/android/images&lt;/a&gt;, või kasutage tööriista aadressilt &lt;a href=\"https://flash.android.com/back-to-public\"&gt;https://flash.android.com/back-to-public&lt;/a&gt; ja valige „Tühjenda seade“, „Lukusta käivituslaadur“ ja „Installi kõik sektsioonid uuesti“."</string>
     <string name="page_agnostic_notification_channel_name" msgid="1658444283036376361">"Lehest sõltumatu 16 kB režiim"</string>
     <string name="page_agnostic_notification_action" msgid="2309805437430150456">"Lisateave"</string>
     <string name="bug_report_handler_title" msgid="713439959113250125">"Veaaruannete töötleja"</string>
@@ -4875,7 +4931,7 @@
     <string name="overlay_settings_summary" msgid="2745336273786148166">"Lubage rakendustel, mida tohib kuvada teiste rakenduste peal, katta Seadete ekraanikuvasid"</string>
     <string name="allow_mock_modem" msgid="3832264806530479214">"Luba matkitud modem"</string>
     <string name="allow_mock_modem_summary" msgid="9097416612748005374">"Lubab sellel seadmel käitada matkitud modemi teenust instrumentide testimiseks. Ärge lubage seda telefoni tavapärase kasutuse ajal."</string>
-    <string name="disable_screen_share_protections_for_apps_and_notifications" msgid="4987116103699222633">"Ekraani jagamise kaitsemeetmete keelamine"</string>
+    <string name="disable_screen_share_protections_for_apps_and_notifications" msgid="4987116103699222633">"Keela ekraani jagamise kaitsemeetmed"</string>
     <string name="disable_screen_share_protections_for_apps_and_notifications_summary" msgid="5379583403909210858">"Lülitab eelseisvate ekraani jagamise seansside jaoks välja tundliku rakenduse sisu süsteemikaitsed"</string>
     <string name="media_controls_title" msgid="403271085636252597">"Meedia"</string>
     <string name="media_controls_resume_title" msgid="855076860336652370">"Meediapleieri kinnitamine"</string>
@@ -4950,7 +5006,7 @@
     <string name="category_name_display_controls" msgid="7046581691184725216">"Muud ekraanikuva juhtelemendid"</string>
     <string name="category_name_general" msgid="7737273712848115886">"Üldine"</string>
     <string name="dark_theme_main_switch_title" msgid="4045147031947562280">"Kasuta tumedat teemat"</string>
-    <string name="bluetooth_main_switch_title" msgid="8409835540311309632">"Bluetoothi kasutamine"</string>
+    <string name="bluetooth_main_switch_title" msgid="8409835540311309632">"Kasuta Bluetoothi"</string>
     <string name="prevent_ringing_main_switch_title" msgid="4726252811262086643">"Helisemise vältimise kasutamine"</string>
     <string name="use_wifi_hotsopt_main_switch_title" msgid="3909731167290690539">"WiFi-kuumkoha kasutamine"</string>
     <string name="app_pinning_main_switch_title" msgid="5465506660064032876">"Rakenduse kinnitamise kasutamine"</string>
@@ -4993,12 +5049,9 @@
     <string name="uwb_settings_summary_airplane_mode" msgid="1328864888135086484">"Ülilairibaühenduse kasutamiseks lülitage lennukirežiim välja."</string>
     <string name="uwb_settings_summary_no_uwb_regulatory" msgid="3465456428217979428">"UWB pole praeguses asukohas saadaval."</string>
     <string name="thread_network_settings_title" msgid="4212301030523859220">"Thread"</string>
-    <!-- no translation found for thread_network_settings_main_switch_title (3859168481929323474) -->
-    <skip />
-    <!-- no translation found for thread_network_settings_footer_title (7385600318850220927) -->
-    <skip />
-    <!-- no translation found for thread_network_settings_learn_more (8278498005848565050) -->
-    <skip />
+    <string name="thread_network_settings_main_switch_title" msgid="3859168481929323474">"Kasuta Threadi"</string>
+    <string name="thread_network_settings_footer_title" msgid="7385600318850220927">"Thread aitab teil ühendada oma nuti-koduseadmeid, täiustades tõhusust ja jõudlust.\n\nKui see on lubatud, saab see seade liituda Threadi võrguga, mis võimaldab juhtida selle telefoni kaudu Matteri toega seadmeid."</string>
+    <string name="thread_network_settings_learn_more" msgid="8278498005848565050">"Lisateave Threadi kohta"</string>
     <string name="camera_toggle_title" msgid="8952668677727244992">"Juurdepääs kaamerale"</string>
     <string name="mic_toggle_title" msgid="265145278323852547">"Juurdepääs mikrofonile"</string>
     <string name="perm_toggle_description" msgid="5754629581767319022">"Rakenduste ja teenuste jaoks"</string>
@@ -5083,12 +5136,12 @@
     <string name="bluetooth_details_head_tracking_summary" msgid="3942238746595985395">"Heli muutub pead liigutades, et kõla oleks loomulikum"</string>
     <string name="bluetooth_details_permissions_sync_title" msgid="7277580382321003521">"Lubade sünkroonimine telefonist"</string>
     <string name="bluetooth_details_permissions_sync_summary" msgid="8125037984381432059">"Andke oma kellale samad rakenduse load, mille olete andnud selles telefonis"</string>
-    <string name="bluetooth_details_audio_device_types_title" msgid="3381941189346781614">"Heliseadme tüüp"</string>
-    <string name="bluetooth_details_audio_device_type_unknown" msgid="839337391037998014">"Teadmata"</string>
+    <string name="bluetooth_details_audio_device_types_title" msgid="1889644189800180316">"Audioseadme tüüp"</string>
+    <string name="bluetooth_details_audio_device_type_unknown" msgid="5299284975435974206">"Määramata"</string>
     <string name="bluetooth_details_audio_device_type_speaker" msgid="3706227767994792124">"Kõlar"</string>
     <string name="bluetooth_details_audio_device_type_headphones" msgid="7644588291215033798">"Kõrvaklapid"</string>
-    <string name="bluetooth_details_audio_device_type_hearing_aid" msgid="1310631131071939859">"Kuuldeaparaat"</string>
-    <string name="bluetooth_details_audio_device_type_carkit" msgid="4439017600454703229">"Autokomplekt"</string>
+    <string name="bluetooth_details_audio_device_type_hearing_aid" msgid="6311786545025321187">"Kuuldeseade"</string>
+    <string name="bluetooth_details_audio_device_type_carkit" msgid="1866236563013629394">"Auto"</string>
     <string name="bluetooth_details_audio_device_type_other" msgid="7019481234617207563">"Muu"</string>
     <string name="ingress_rate_limit_title" msgid="2106694002836274350">"Võrgu allalaadimiskiiruse limiit"</string>
     <string name="ingress_rate_limit_summary" msgid="1097811019742438371">"Seadistage võrgu ribalaiuse kasutusmäära limiit, mis rakendatakse kõikidele võrkudele, mis võrguühendust pakuvad."</string>
@@ -5173,8 +5226,6 @@
     <string name="screen_flash_color_violet" msgid="1279950780509029495">"Lilla"</string>
     <string name="color_selector_dialog_done" msgid="121253968943363376">"Valmis"</string>
     <string name="color_selector_dialog_cancel" msgid="8667350644753900701">"Tühista"</string>
-    <string name="contrast_title" msgid="6885768151336508075">"Kontrastsus"</string>
-    <string name="contrast_standard" msgid="1097297089917185235">"Tavaline"</string>
     <string name="contrast_default" msgid="8918545965525226966">"Vaikeseade"</string>
     <string name="contrast_medium" msgid="384414510709285811">"Keskmine"</string>
     <string name="contrast_high" msgid="3988567609694797696">"Kõrge"</string>
@@ -5211,4 +5262,98 @@
     <string name="fingerprint_acquired_imager_dirty_udfps" msgid="7005042288289506776">"Puhastage ekraani anduri ümbruses ja proovige uuesti"</string>
     <string name="sim_category_converted_sim" msgid="8575548015816988908">"Teisendati eSIM-iks. Eemaldage ja visake ära."</string>
     <string name="sync_across_devices_title" msgid="3447757705383089345">"Seadmete vahel sünkroonimine"</string>
+    <string name="device_diagnostics_title" msgid="2914523189695727897">"Seadme diagnostika"</string>
+    <string name="audio_sharing_title" msgid="4144157137502923821">"Heli jagamine"</string>
+    <string name="audio_sharing_switch_title" msgid="7052827328670825701">"Heli jagamine"</string>
+    <string name="calls_and_alarms_device_title" msgid="6993559028175454198">"Kõned ja äratused"</string>
+    <string name="audio_sharing_description" msgid="1660255584523640628">"Andke inimestele võimalus kuulata meediasisu koos teiega. Kuulajatel on vaja enda LE Audio kõrvaklappe."</string>
+    <string name="audio_sharing_device_group_title" msgid="3019780581643956943">"Aktiivsed meediaseadmed"</string>
+    <string name="audio_sharing_call_audio_title" msgid="7978867452289583929">"Kõne heliväljund"</string>
+    <string name="audio_sharing_call_audio_description" msgid="6573621048260616924">"Esitatakse ainult seadmes <xliff:g id="DEVICE_NAME">%1$s</xliff:g>"</string>
+    <string name="audio_sharing_test_sound_title" msgid="6438868185641027763">"Testheli esitamine"</string>
+    <string name="audio_sharing_test_sound_description" msgid="4072462502371937399">"Kõik kuulajad peaksid seda kuulma"</string>
+    <string name="audio_sharing_stream_settings_title" msgid="1374391898689242036">"Helivoo seaded"</string>
+    <string name="audio_sharing_stream_name_title" msgid="8156859441897180940">"Nimi"</string>
+    <string name="audio_sharing_stream_password_title" msgid="7026649168165764602">"Parool"</string>
+    <string name="audio_sharing_stream_compatibility_title" msgid="5690947186724469918">"Ühilduvuse parandamine"</string>
+    <string name="audio_sharing_stream_compatibility_description" msgid="8170241188606110963">"Aitab mõnel seadmel (nt kuuldeaparaadid) ühendust luua, alandades helikvaliteeti"</string>
+    <string name="audio_sharing_stream_compatibility_disabled_description" msgid="2586408353546825682">"Lülitab ühilduvuse seadistamiseks heli jagamise välja"</string>
+    <string name="audio_sharing_nearby_audio_title" msgid="4795438407040677177">"Läheduses esitatava heli kuulamine"</string>
+    <string name="audio_sharing_footer_description" msgid="4786942197840271680">"Heli jagamine toetab Auracast™-i"</string>
+    <string name="audio_sharing_stream_name_dialog_title" msgid="6706027295417556499">"Helivoo nimi"</string>
+    <string name="audio_sharing_stream_password_dialog_title" msgid="4148196538860845705">"Helivoo parool"</string>
+    <string name="audio_sharing_media_device_group_title" msgid="4850674234590549565">"Muud meediaseadmed"</string>
+    <string name="audio_sharing_summary_on" msgid="611197542982323788">"Sees"</string>
+    <string name="audio_sharing_summary_off" msgid="8833198995257547378">"Väljas"</string>
+    <string name="audio_sharing_share_dialog_title" msgid="427514648577553621">"Heli jagamine"</string>
+    <string name="audio_sharing_share_dialog_subtitle" msgid="5208582843732057871">"<xliff:g id="DEVICE_NAME1">%1$s</xliff:g> ja <xliff:g id="DEVICE_NAME2">%2$s</xliff:g>"</string>
+    <string name="audio_sharing_share_button_label" msgid="3895900668317105537">"Jaga heli"</string>
+    <string name="audio_sharing_no_thanks_button_label" msgid="5822491984114744357">"Tänan, ei"</string>
+    <string name="audio_sharing_share_with_dialog_title" msgid="3934377530640830364">"Kas jagada heli seadmega <xliff:g id="DEVICE_NAME">%1$s</xliff:g>?"</string>
+    <string name="audio_sharing_share_with_more_dialog_title" msgid="2840069088858232267">"Heli jagamine teise seadmega"</string>
+    <string name="audio_sharing_share_with_button_label" msgid="4146194430380237357">"Jaga seadmega <xliff:g id="DEVICE_NAME">%1$s</xliff:g>"</string>
+    <string name="audio_sharing_close_button_label" msgid="2666534149100498574">"Sule"</string>
+    <string name="audio_sharing_dialog_connect_device_content" msgid="2873230647152283734">"Ühendage teine paar ühilduvaid kõrvaklappe või jagage oma voo nime ja parooli teise inimesega"</string>
+    <string name="audio_sharing_dialog_pair_device_content" msgid="3136997898244863470">"Siduge teine komplekt ühilduvaid kõrvaklappe või jagage oma helivoo QR-koodi teise inimesega"</string>
+    <string name="audio_sharing_sharing_label" msgid="1038021053061111508">"Heli jagamine"</string>
+    <string name="audio_sharing_pair_button_label" msgid="7987236990273083588">"Seo uus seade"</string>
+    <string name="audio_sharing_qrcode_button_label" msgid="3207039106555097659">"Kuva QR-kood"</string>
+    <string name="audio_sharing_notification_title" msgid="1204798942946033005">"Jagate heli"</string>
+    <string name="audio_sharing_notification_content" msgid="1577180829878785642">"Kuulajad kuulevad teie meediasisu. Nad ei kuule kõnesid."</string>
+    <string name="audio_sharing_stop_button_label" msgid="8770519671470608849">"Lõpeta jagamine"</string>
+    <string name="audio_sharing_settings_button_label" msgid="8574808650318270491">"Seaded"</string>
+    <string name="audio_sharing_disconnect_dialog_title" msgid="2192751727237748602">"Valige seade, mille ühendus katkestada"</string>
+    <string name="audio_sharing_dialog_disconnect_content" msgid="3840488888970653308">"Korraga saavad heli jagada ainult kaks seadet"</string>
+    <string name="audio_sharing_disconnect_device_button_label" msgid="4272897217708930576">"Katkesta ühendus seadmega <xliff:g id="DEVICE_NAME">%1$s</xliff:g>"</string>
+    <string name="audio_sharing_stop_dialog_title" msgid="4872853738164232075">"Kas ühendada seade <xliff:g id="DEVICE_NAME">%1$s</xliff:g>?"</string>
+    <string name="audio_sharing_stop_dialog_content" msgid="6371546856710692910">"Lõpetate heli jagamise seadmega <xliff:g id="DEVICE_NAME">%1$s</xliff:g>"</string>
+    <string name="audio_sharing_stop_dialog_with_two_content" msgid="2119020725467967219">"Lõpetate heli jagamise seadmetega <xliff:g id="DEVICE_NAME1">%1$s</xliff:g> ja <xliff:g id="DEVICE_NAME2">%2$s</xliff:g>"</string>
+    <string name="audio_sharing_stop_dialog_with_more_content" msgid="5262441138981618703">"Lõpetate heli jagamise ühendatud kõrvaklappidega"</string>
+    <string name="audio_sharing_connect_button_label" msgid="4241911519063029982">"Ühenda"</string>
+    <string name="audio_sharing_sharing_stopped_label" msgid="8128194452354240996">"Heli jagamine on lõpetatud"</string>
+    <string name="audio_sharing_confirm_dialog_title" msgid="7655147122624691167">"Ühilduva seadme ühendamine"</string>
+    <string name="audio_sharing_comfirm_dialog_content" msgid="3479217934447446066">"Heli jagamise alustamiseks ühendage esmalt LE Audio kõrvaklapid oma telefoniga"</string>
+    <string name="audio_streams_category_title" msgid="4878022761829895463">"LE Audio vooga ühendamine"</string>
+    <string name="audio_streams_pref_title" msgid="6320485086288646209">"Läheduses asuvad helivood"</string>
+    <string name="audio_streams_title" msgid="6617990880383079165">"Helivood"</string>
+    <string name="audio_streams_qr_code_summary" msgid="2838923349871884871">"QR-koodi kaudu helivooga ühendamine"</string>
+    <string name="audio_streams_empty" msgid="8803517701437394982">"Läheduses asuvaid helivooge ei leitud"</string>
+    <string name="audio_streams_disconnect" msgid="1755594831469579161">"Katkesta ühendus"</string>
+    <string name="audio_streams_connect" msgid="1955964373102927954">"Ühenda"</string>
+    <string name="audio_streams_qr_code_is_not_valid_format" msgid="4856288389653121830">"QR-kood ei ole sobilik vorming"</string>
+    <string name="audio_streams_qr_code_scanner" msgid="525396804963685478">"Kuulamise alustamiseks paigutage QR-kood allpool keskele"</string>
+    <string name="audio_streams_add_source_bad_code_state_summary" msgid="6527086906921868757">"Kontrollige parooli ja proovige uuesti"</string>
+    <string name="audio_streams_add_source_failed_state_summary" msgid="3937546443978562322">"Ei saa ühendada. Proovige uuesti."</string>
+    <string name="audio_streams_connecting_summary" msgid="7237827765572331702">"Ühendamine …"</string>
+    <string name="audio_streams_dialog_stream_is_not_available" msgid="4032878851270690546">"Helivoog pole saadaval"</string>
+    <string name="audio_streams_is_not_playing" msgid="8480293894696007941">"Helivoog ei esita praegu midagi"</string>
+    <string name="audio_streams_dialog_close" msgid="8177201719298408431">"Sule"</string>
+    <string name="audio_streams_dialog_listen" msgid="7290340191504987685">"Kuulamine"</string>
+    <string name="audio_streams_dialog_retry" msgid="4456843891970998556">"Proovi uuesti"</string>
+    <string name="audio_streams_dialog_listen_to_audio_stream" msgid="8585253007762261528">"Helivoo kuulamine"</string>
+    <string name="audio_streams_dialog_control_volume" msgid="7615062686016713544">"Helivoogu esitatakse seadmes <xliff:g id="DEVICE_NAME">%1$s</xliff:g>. Kasutage helitugevuse reguleerimiseks seda seadet."</string>
+    <string name="audio_streams_dialog_cannot_listen" msgid="4432257183698209966">"Helivoogu ei saa kuulata"</string>
+    <string name="audio_streams_dialog_default_device" msgid="6159800303379303266">"ühendatud ühilduvad kõrvaklapid"</string>
+    <string name="audio_streams_activity_title" msgid="6766869545769831935">"Helivood"</string>
+    <string name="audio_streams_no_password_summary" msgid="8976357323034830144">"Parooli pole"</string>
+    <string name="audio_streams_dialog_learn_more" msgid="6711241053442211345">"Lisateave"</string>
+    <string name="audio_streams_dialog_cannot_play" msgid="1358828316927479091">"Seda helivoogu ei saa seadmes <xliff:g id="DEVICE_NAME">%1$s</xliff:g> esitada."</string>
+    <string name="audio_streams_listening_now" msgid="4205614429222949176">"Kuulamine käib"</string>
+    <string name="audio_streams_media_service_notification_leave_broadcast_text" msgid="4938656134300913647">"Lõpeta kuulamine"</string>
+    <string name="audio_streams_dialog_no_le_device_title" msgid="3931163990976742282">"Ühilduvate kõrvaklappide ühendamine"</string>
+    <string name="audio_streams_dialog_no_le_device_button" msgid="4484355549428642588">"Ühenda seade"</string>
+    <string name="audio_streams_detail_page_title" msgid="7884132061275273766">"Helivoo üksikasjad"</string>
+    <string name="audio_streams_qr_code_page_title" msgid="9169570362469544641">"Helivoo QR-kood"</string>
+    <string name="audio_streams_qr_code_page_password" msgid="7268475614131297060">"Parool: <xliff:g id="PASSWORD">%1$s</xliff:g>"</string>
+    <string name="audio_streams_qr_code_page_description" msgid="1317961663706630428">"Voo <xliff:g id="STREAM_NAME">%1$s</xliff:g> kuulamiseks saavad teised inimesed ühendada oma Android-seadmega ühilduvad kõrvaklapid. Seejärel saavad nad skannida selle QR-koodi."</string>
+    <string name="audio_streams_main_page_title" msgid="1838380471076527639">"Helivoo otsimine"</string>
+    <string name="audio_streams_main_page_subtitle" msgid="3251995732921981539">"Saate kuulata heli jagavat seadet või läheduses toimuvat Auracasti leviedastust"</string>
+    <string name="audio_streams_main_page_device_title" msgid="2635744035523908253">"Teie heliseade"</string>
+    <string name="audio_streams_main_page_no_device_summary" msgid="2936000845397406389">"Ühilduvate kõrvaklappide ühendamine"</string>
+    <string name="audio_streams_main_page_scan_section_title" msgid="2778235929304061163">"Läheduses esitatavad helivood"</string>
+    <string name="audio_streams_main_page_scan_qr_code_title" msgid="8337270277392468895">"QR-koodi skannimine"</string>
+    <string name="audio_streams_main_page_scan_qr_code_summary" msgid="1991792283368249499">"Kuulamise alustamiseks skannige voo QR-kood"</string>
+    <string name="audio_streams_main_page_password_dialog_join_button" msgid="2967747276379153408">"Kuula voogu"</string>
+    <string name="audio_streams_main_page_qr_code_scanner_summary" msgid="5312980105735143360">"Seadmega <xliff:g id="DEVICE_NAME">%1$s</xliff:g> kuulamiseks skannige helivoo QR-kood"</string>
+    <string name="audio_streams_main_page_password_dialog_cannot_edit" msgid="9020898619297520153">"Parooli ei saa jagamise ajal muuta. Parooli muutmiseks lülitage esmalt heli jagamine välja."</string>
 </resources>

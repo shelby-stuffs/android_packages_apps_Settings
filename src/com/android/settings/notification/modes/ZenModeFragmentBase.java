@@ -51,12 +51,27 @@ abstract class ZenModeFragmentBase extends ZenModesFragmentBase {
         if (bundle != null && bundle.containsKey(MODE_ID)) {
             String id = bundle.getString(MODE_ID);
             if (!reloadMode(id)) {
-                Log.d(TAG, "Mode id " + id + " not found");
+                Log.e(TAG, "Mode id " + id + " not found");
                 toastAndFinish();
+                return;
             }
         } else {
-            Log.d(TAG, "Mode id required to set mode config settings");
+            Log.e(TAG, "Mode id required to set mode config settings");
             toastAndFinish();
+            return;
+        }
+        if (mZenMode != null) {
+            // Propagate mode info through to controllers.
+            for (List<AbstractPreferenceController> list : getPreferenceControllers()) {
+                try {
+                    for (AbstractPreferenceController controller : list) {
+                        // mZenMode guaranteed non-null from reloadMode() above
+                        ((AbstractZenModePreferenceController) controller).setZenMode(mZenMode);
+                    }
+                } catch (ClassCastException e) {
+                    // ignore controllers that aren't AbstractZenModePreferenceController
+                }
+            }
         }
     }
 
@@ -88,6 +103,7 @@ abstract class ZenModeFragmentBase extends ZenModesFragmentBase {
         if (!reloadMode(id)) {
             Log.d(TAG, "Mode id=" + id + " not found");
             toastAndFinish();
+            return;
         }
         updateControllers();
     }

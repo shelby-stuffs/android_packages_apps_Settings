@@ -15,8 +15,7 @@
  */
 
 /*
- * Changes from Qualcomm Innovation Center are provided under the following license:
- *
+ * Changes from Qualcomm Innovation Center, Inc. are provided under the following license:
  * Copyright (c) 2022-2024 Qualcomm Innovation Center, Inc. All rights reserved.
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
@@ -70,6 +69,8 @@ import com.google.common.collect.ImmutableList;
 
 import kotlin.Unit;
 
+import kotlinx.coroutines.Job;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -121,6 +122,8 @@ public class NetworkSelectSettings extends DashboardFragment implements
     private AtomicBoolean mShouldFilterOutSatellitePlmn = new AtomicBoolean();
 
     private NetworkScanRepository mNetworkScanRepository;
+    @Nullable
+    private Job mNetworkScanJob = null;
 
     private NetworkSelectRepository mNetworkSelectRepository;
 
@@ -176,6 +179,7 @@ public class NetworkSelectSettings extends DashboardFragment implements
                 mCarrierConfigChangeListener);
         mNetworkScanRepository = new NetworkScanRepository(context, mSubId);
         mNetworkSelectRepository = new NetworkSelectRepository(context, mSubId);
+        mSubscriptionsChangeListener.start();
     }
 
     @Keep
@@ -252,13 +256,14 @@ public class NetworkSelectSettings extends DashboardFragment implements
 
     private void launchNetworkScan() {
         setProgressBarVisible(true);
-        mNetworkScanRepository.launchNetworkScan(getViewLifecycleOwner(), (networkScanResult) -> {
-            if (isPreferenceScreenEnabled()) {
-                scanResultHandler(networkScanResult);
-            }
+        mNetworkScanJob = mNetworkScanRepository.launchNetworkScan(getViewLifecycleOwner(),
+                (networkScanResult) -> {
+                    if (isPreferenceScreenEnabled()) {
+                        scanResultHandler(networkScanResult);
+                    }
 
-            return Unit.INSTANCE;
-        });
+                    return Unit.INSTANCE;
+                });
     }
 
     /**
@@ -282,6 +287,12 @@ public class NetworkSelectSettings extends DashboardFragment implements
         if (!(preference instanceof NetworkOperatorPreference)) {
             Log.d(TAG, "onPreferenceTreeClick: preference is not the NetworkOperatorPreference.");
             return false;
+        }
+
+        // Need stop network scan before manual select network.
+        if (mNetworkScanJob != null) {
+            mNetworkScanJob.cancel(null);
+            mNetworkScanJob = null;
         }
 
         // Refresh the last selected item in case users reselect network.
@@ -578,6 +589,7 @@ public class NetworkSelectSettings extends DashboardFragment implements
     @Override
     public void onDestroy() {
         Log.d(TAG, "onDestroy()");
+        mSubscriptionsChangeListener.stop();
         mNetworkScanExecutor.shutdown();
         super.onDestroy();
     }

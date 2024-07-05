@@ -19,6 +19,7 @@ package com.android.settings.privatespace;
 import static android.os.UserManager.USER_TYPE_PROFILE_PRIVATE;
 import static android.provider.Settings.Secure.HIDE_PRIVATESPACE_ENTRY_POINT;
 import static android.provider.Settings.Secure.PRIVATE_SPACE_AUTO_LOCK;
+import static android.provider.Settings.Secure.PRIVATE_SPACE_AUTO_LOCK_AFTER_DEVICE_RESTART;
 import static android.provider.Settings.Secure.PRIVATE_SPACE_AUTO_LOCK_ON_DEVICE_LOCK;
 import static android.provider.Settings.Secure.SKIP_FIRST_USE_HINTS;
 import static android.provider.Settings.Secure.USER_SETUP_COMPLETE;
@@ -30,6 +31,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.IntentSender;
+import android.content.pm.PackageManager;
 import android.content.pm.UserInfo;
 import android.os.Flags;
 import android.os.UserHandle;
@@ -43,6 +45,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
 import com.android.internal.annotations.GuardedBy;
+import com.android.settings.Utils;
 
 import java.util.List;
 
@@ -60,8 +63,9 @@ public class PrivateSpaceMaintainer {
     @GuardedBy("this")
     private UserHandle mUserHandle;
     private final KeyguardManager mKeyguardManager;
-    /** This variable should be accessed via {@link #getBroadcastReceiver()} only. */
-    @Nullable private ProfileAvailabilityBroadcastReceiver mProfileAvailabilityBroadcastReceiver;
+    /** This variable should be accessed via {@link #getProfileBroadcastReceiver()} only. */
+    @Nullable
+    private ProfileBroadcastReceiver mProfileBroadcastReceiver;
 
     /** This is the default value for the hide private space entry point settings. */
     public static final int HIDE_PRIVATE_SPACE_ENTRY_POINT_DISABLED_VAL = 0;
@@ -70,6 +74,10 @@ public class PrivateSpaceMaintainer {
     @Settings.Secure.PrivateSpaceAutoLockOption
     public static final int PRIVATE_SPACE_AUTO_LOCK_DEFAULT_VAL =
             PRIVATE_SPACE_AUTO_LOCK_ON_DEVICE_LOCK;
+    /** Value for private space auto lock settings after private space creation. */
+    @Settings.Secure.PrivateSpaceAutoLockOption
+    public static final int PRIVATE_SPACE_CREATE_AUTO_LOCK_VAL =
+            PRIVATE_SPACE_AUTO_LOCK_AFTER_DEVICE_RESTART;
     /** Default value for the hide private space sensitive notifications on lockscreen. */
     public static final int HIDE_PRIVATE_SPACE_SENSITIVE_NOTIFICATIONS_DISABLED_VAL = 0;
 
@@ -124,6 +132,7 @@ public class PrivateSpaceMaintainer {
             resetPrivateSpaceSettings();
             setUserSetupComplete();
             setSkipFirstUseHints();
+            disableComponentsToHidePrivateSpaceSettings();
         }
         return true;
     }
@@ -142,7 +151,6 @@ public class PrivateSpaceMaintainer {
             Log.i(TAG, "Deleting Private space with id: " + mUserHandle.getIdentifier());
             if (mUserManager.removeUser(mUserHandle)) {
                 Log.i(TAG, "Private space deleted");
-                unregisterBroadcastReceiver();
                 mUserHandle = null;
 
                 return ErrorDeletingPrivateSpace.DELETE_PS_ERROR_NONE;
@@ -327,7 +335,7 @@ public class PrivateSpaceMaintainer {
     @GuardedBy("this")
     private void resetPrivateSpaceSettings() {
         setHidePrivateSpaceEntryPointSetting(HIDE_PRIVATE_SPACE_ENTRY_POINT_DISABLED_VAL);
-        setPrivateSpaceAutoLockSetting(PRIVATE_SPACE_AUTO_LOCK_DEFAULT_VAL);
+        setPrivateSpaceAutoLockSetting(PRIVATE_SPACE_CREATE_AUTO_LOCK_VAL);
         setPrivateSpaceSensitiveNotificationsDefaultValue();
     }
 
@@ -352,6 +360,24 @@ public class PrivateSpaceMaintainer {
     }
 
     /**
+     * Disables the launcher icon and shortcut picker component for the Settings app instance
+     * inside the private space
+     */
+    @GuardedBy("this")
+    private void disableComponentsToHidePrivateSpaceSettings() {
+        if (mUserHandle == null) {
+            Log.e(TAG, "User handle null while hiding settings icon");
+            return;
+        }
+
+        Context privateSpaceUserContext = mContext.createContextAsUser(mUserHandle, /* flags */ 0);
+        PackageManager packageManager = privateSpaceUserContext.getPackageManager();
+
+        Log.d(TAG, "Hiding settings app launcher icon for " + mUserHandle);
+        Utils.disableComponentsToHideSettings(privateSpaceUserContext, packageManager);
+    }
+
+    /**
      * Sets the SKIP_FIRST_USE_HINTS for private profile so that the first launch of an app in
      * private space will not display introductory hints.
      */
@@ -368,13 +394,15 @@ public class PrivateSpaceMaintainer {
                 && android.multiuser.Flags.enablePrivateSpaceFeatures();
     }
 
-    /** {@link BroadcastReceiver} which handles the private profile's availability related
-     * broadcasts.
+    /**
+     * {@link BroadcastReceiver} which handles the private profile's availability and deletion
+     * related broadcasts.
      */
-    private final class ProfileAvailabilityBroadcastReceiver extends BroadcastReceiver {
+    private final class ProfileBroadcastReceiver extends BroadcastReceiver {
         void register() {
             IntentFilter filter = new IntentFilter();
             filter.addAction(Intent.ACTION_PROFILE_UNAVAILABLE);
+            filter.addAction(Intent.ACTION_PROFILE_REMOVED);
             mContext.registerReceiver(/* receiver= */ this, filter, Context.RECEIVER_NOT_EXPORTED);
         }
 
@@ -386,6 +414,13 @@ public class PrivateSpaceMaintainer {
         @Override
         public void onReceive(@NonNull Context context, @NonNull Intent intent) {
             UserHandle userHandle = intent.getParcelableExtra(Intent.EXTRA_USER, UserHandle.class);
+            if (intent.getAction().equals(Intent.ACTION_PROFILE_REMOVED)) {
+                // This applies to all profiles getting removed, since there is no way to tell if
+                // it is a private profile that got removed.
+                removeSettingsAllTasks();
+                unregisterBroadcastReceiver();
+                return;
+            }
             if (!userHandle.equals(getPrivateProfileHandle())) {
                 Log.d(TAG, "Ignoring intent for non-private profile with user id "
                         + userHandle.getIdentifier());
@@ -402,7 +437,7 @@ public class PrivateSpaceMaintainer {
                 || !android.multiuser.Flags.enablePrivateSpaceFeatures()) {
             return;
         }
-        var broadcastReceiver = getBroadcastReceiver();
+        var broadcastReceiver = getProfileBroadcastReceiver();
         if (broadcastReceiver == null) {
             return;
         }
@@ -414,17 +449,18 @@ public class PrivateSpaceMaintainer {
                 || !android.multiuser.Flags.enablePrivateSpaceFeatures()) {
             return;
         }
-        if (mProfileAvailabilityBroadcastReceiver == null) {
+        if (mProfileBroadcastReceiver == null) {
             Log.w(TAG, "Requested to unregister when there is no receiver.");
             return;
         }
-        mProfileAvailabilityBroadcastReceiver.unregister();
-        mProfileAvailabilityBroadcastReceiver = null;
+        mProfileBroadcastReceiver.unregister();
+        mProfileBroadcastReceiver = null;
     }
 
-    /** Always use this getter to access {@link #mProfileAvailabilityBroadcastReceiver}. */
+    /** Always use this getter to access {@link #mProfileBroadcastReceiver}. */
     @VisibleForTesting
-    @Nullable synchronized ProfileAvailabilityBroadcastReceiver getBroadcastReceiver() {
+    @Nullable
+    synchronized ProfileBroadcastReceiver getProfileBroadcastReceiver() {
         if (!android.os.Flags.allowPrivateProfile()
                 || !android.multiuser.Flags.enablePrivateSpaceFeatures()) {
             return null;
@@ -433,22 +469,22 @@ public class PrivateSpaceMaintainer {
             Log.e(TAG, "Cannot return a broadcast receiver when private space doesn't exist");
             return null;
         }
-        if (mProfileAvailabilityBroadcastReceiver == null) {
-            mProfileAvailabilityBroadcastReceiver = new ProfileAvailabilityBroadcastReceiver();
+        if (mProfileBroadcastReceiver == null) {
+            mProfileBroadcastReceiver = new ProfileBroadcastReceiver();
         }
-        return mProfileAvailabilityBroadcastReceiver;
+        return mProfileBroadcastReceiver;
     }
 
     /** This is purely for testing purpose only, and should not be used elsewhere. */
     @VisibleForTesting
     synchronized void resetBroadcastReceiver() {
-        mProfileAvailabilityBroadcastReceiver = null;
+        mProfileBroadcastReceiver = null;
     }
 
     private void removeSettingsAllTasks() {
         List<ActivityManager.AppTask> appTasks = mActivityManager.getAppTasks();
         for (var appTask : appTasks) {
-            if (!appTask.getTaskInfo().isVisible()) {
+            if (!(appTask.getTaskInfo().isVisible() || appTask.getTaskInfo().isFocused)) {
                 appTask.finishAndRemoveTask();
             }
         }
