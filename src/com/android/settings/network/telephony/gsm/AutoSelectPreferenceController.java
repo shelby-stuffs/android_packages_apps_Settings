@@ -17,14 +17,11 @@
 /*
  * Changes from Qualcomm Innovation Center are provided under the following license:
  *
- * Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (c) 2022, 2024 Qualcomm Innovation Center, Inc. All rights reserved.
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
 
 package com.android.settings.network.telephony.gsm;
-
-import static androidx.lifecycle.Lifecycle.Event.ON_START;
-import static androidx.lifecycle.Lifecycle.Event.ON_STOP;
 
 import static com.android.settings.Utils.SETTINGS_PACKAGE_NAME;
 
@@ -44,10 +41,11 @@ import android.telephony.TelephonyCallback;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
+import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.LifecycleObserver;
-import androidx.lifecycle.OnLifecycleEvent;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
@@ -82,7 +80,7 @@ import com.qti.extphone.Token;
  * Preference controller for "Auto Select Network"
  */
 public class AutoSelectPreferenceController extends TelephonyTogglePreferenceController
-        implements LifecycleObserver,
+        implements DefaultLifecycleObserver,
         Enhanced4gBasePreferenceController.On4gLteUpdateListener,
         SubscriptionsChangeListener.SubscriptionsChangeListenerClient,
         SelectNetworkPreferenceController.OnNetworkScanTypeListener {
@@ -149,19 +147,28 @@ public class AutoSelectPreferenceController extends TelephonyTogglePreferenceCon
         }
     }
 
-    @OnLifecycleEvent(ON_START)
-    public void onStart() {
+    @Override
+    public void onStart(@NonNull LifecycleOwner lifecycleOwner) {
         mAllowedNetworkTypesListener.register(mContext, mSubId);
         mSubscriptionsListener.start();
         mTelephonyManager.registerTelephonyCallback(new HandlerExecutor(mUiHandler),
                 mTelephonyCallbackListener);
     }
 
-    @OnLifecycleEvent(ON_STOP)
-    public void onStop() {
+    @Override
+    public void onStop(@NonNull LifecycleOwner lifecycleOwner) {
         mAllowedNetworkTypesListener.unregister(mContext, mSubId);
         mSubscriptionsListener.stop();
         mTelephonyManager.unregisterTelephonyCallback(mTelephonyCallbackListener);
+    }
+
+    @Override
+    public void onDestroy(@NonNull LifecycleOwner lifecycleOwner) {
+       Log.d(TAG, "onDestroy");
+       if (mServiceConnected) {
+           mExtTelephonyManager.unregisterCallback(mExtPhoneCallbackListener);
+           mExtTelephonyManager.disconnectService();
+       }
     }
 
     @Override
@@ -361,6 +368,7 @@ public class AutoSelectPreferenceController extends TelephonyTogglePreferenceCon
             if (mServiceConnected) {
                 mServiceConnected = false;
                 mClient = null;
+                mExtTelephonyManager.unregisterCallback(mExtPhoneCallbackListener);
             }
         }
     };
